@@ -1,0 +1,1542 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Building an API Reference Implementation - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#00bdd6">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="cyan" data-md-color-accent="blue-grey">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#developing-an-olive-api-reference-implementation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Building an API Reference Implementation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="requirements.md" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Developer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Developer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Building an API Reference Implementation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="apiBuildReferenceImp.html" class="md-nav__link md-nav__link--active">
+      Building an API Reference Implementation
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#developing-an-olive-api-reference-implementation" class="md-nav__link">
+    Developing an OLIVE API Reference Implementation
+  </a>
+  
+    <nav class="md-nav" aria-label="Developing an OLIVE API Reference Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#things-to-know-before-you-start" class="md-nav__link">
+    Things to know before you start
+  </a>
+  
+    <nav class="md-nav" aria-label="Things to know before you start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-communicating-with-the-olive-server" class="md-nav__link">
+    1. Communicating with the OLIVE Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-serialization-of-messages-to-and-from-the-olive-server" class="md-nav__link">
+    2.  Serialization of messages to and from the OLIVE Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-building-example" class="md-nav__link">
+    Message Building Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-analysis-scoring-message-example" class="md-nav__link">
+    An Analysis (Scoring) Message Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-a-new-olive-api-reference-implementation" class="md-nav__link">
+    Request a new OLIVE API Reference Implementation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="requirements.md" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    
+    <label class="md-nav__link" for="nav-4-3">
+      ASDEC
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="ASDEC" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        ASDEC
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/aed-enrollable-v1.html" class="md-nav__link">
+      Acoustic Event Detection (AED)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/aln-waveformAlignment-v1.html" class="md-nav__link">
+      Waveform Alignment (ALN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-indoorOutdoor-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Indoor/Outdoor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-multiClass-v2.html" class="md-nav__link">
+      Environmental Analysis (ENV) Multi Class
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-powerSupplyHum-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Power Supply
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-speakerCount-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Speaker Count
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sed-rmsEnergy-v1.html" class="md-nav__link">
+      Signal Energy Detection (SED)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/voi-speakingStyle-v1.html" class="md-nav__link">
+      Voice Characterization (VOI) Speaking Style
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/voi-vocalEffort-v1.html" class="md-nav__link">
+      Voice Characterization (VOI) Vocal Effort
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v7.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v2.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-embed-v6.html" class="md-nav__link">
+      Speaker Identification (SID) Legacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-sbcEmbed-v2.html" class="md-nav__link">
+      Speaker Detection (SDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-sbcEmbed-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7" >
+    
+    <label class="md-nav__link" for="nav-4-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-tdnn-v5.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8" >
+    
+    <label class="md-nav__link" for="nav-4-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9" >
+    
+    <label class="md-nav__link" for="nav-4-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-statistical-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" >
+    
+    <label class="md-nav__link" for="nav-4-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v3.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-embed-v3.html" class="md-nav__link">
+      Topic Detection (TPD) Acoustic-based
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#developing-an-olive-api-reference-implementation" class="md-nav__link">
+    Developing an OLIVE API Reference Implementation
+  </a>
+  
+    <nav class="md-nav" aria-label="Developing an OLIVE API Reference Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#things-to-know-before-you-start" class="md-nav__link">
+    Things to know before you start
+  </a>
+  
+    <nav class="md-nav" aria-label="Things to know before you start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-communicating-with-the-olive-server" class="md-nav__link">
+    1. Communicating with the OLIVE Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-serialization-of-messages-to-and-from-the-olive-server" class="md-nav__link">
+    2.  Serialization of messages to and from the OLIVE Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-building-example" class="md-nav__link">
+    Message Building Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-analysis-scoring-message-example" class="md-nav__link">
+    An Analysis (Scoring) Message Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-a-new-olive-api-reference-implementation" class="md-nav__link">
+    Request a new OLIVE API Reference Implementation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Building an API Reference Implementation</h1>
+                
+                <h2 id="developing-an-olive-api-reference-implementation"><strong>Developing an OLIVE API Reference Implementation</strong></h2>
+<p>If SRI’s Java client library does not meet your needs or you need to create an implementation in a language other than Java, then the following information is helpful for creating a new reference implementation of the OLIVE Enterprise API.</p>
+<h3 id="things-to-know-before-you-start"><strong>Things to know before you start</strong></h3>
+<p>Before you start, it is a good idea to first develop an understanding of the current OLIVE Java Client API.  Reading the <a href="apiInfo.html">API Primer</a> page and reviewing the provided Java Client API source files are all good places to start.  As an alternative, </p>
+<p>To enable users to quickly put together client codes, the <a href="#the-olive-java-api">OLIVE Java API</a> hides many of the low level implementation details such as assemby of request messages, submission of requests over a port, etc. This section describes some of these implementation details you need to consider when creating a brand new OLIVE API.</p>
+<h4 id="1-communicating-with-the-olive-server"><strong>1. Communicating with the OLIVE Server</strong></h4>
+<p>A messaging system called <a href="https://zeromq.org"><code>ZeroMQ</code></a>, or <a href="https://zeromq.org"><code>ZMQ</code></a> for short, is used as the backbone for communicating with the OLIVE Server.  </p>
+<p>In order to communicate with a running server, you must initialize ZeroMQ (ZMQ) sockets in your client code. There are two sockets:</p>
+<ul>
+<li><code>request</code> socket: This is the socket over which you send requests and receive replies, all of which are serialized protobuf messages. You must conect to this socket using the <code>ZMQ.DEALER</code> configuration.</li>
+<li><code>status</code> socket: This socket provides a simple heartbeat broadcast from the server. You may optionally monitor this socket to determine the up/down status of the server. Connect to this socket using the <code>ZMQ.PUB</code> configuration.</li>
+</ul>
+<p>The code for initializing a ZMQ context and creating/connecting the necessary sockets can differ by language. Below is a ZMQ initialization example in Java.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ZMQ</span><span class="p">.</span><span class="na">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">ZMQ</span><span class="p">.</span><span class="na">context</span><span class="p">();</span>
+
+<span class="n">ZMQ</span><span class="p">.</span><span class="na">Socket</span> <span class="n">request_socket</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="na">socket</span><span class="p">(</span><span class="n">ZMQ</span><span class="p">.</span><span class="na">DEALER</span><span class="p">);</span>
+<span class="n">ZMQ</span><span class="p">.</span><span class="na">Socket</span> <span class="n">status_socket</span>  <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="na">socket</span><span class="p">(</span><span class="n">ZMQ</span><span class="p">.</span><span class="na">SUB</span><span class="p">);</span>
+
+<span class="n">request_socket</span><span class="p">.</span><span class="na">connect</span><span class="p">(</span><span class="s">&quot;tcp://myserver:6678&quot;</span><span class="p">);</span>
+<span class="n">status_socket</span><span class="p">.</span><span class="na">connect</span><span class="p">(</span><span class="s">&quot;tcp://myserver:6679&quot;</span><span class="p">);</span>
+<span class="n">status_socket</span><span class="p">.</span><span class="na">subscribe</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span> <span class="c1">// Don’t forget this</span>
+</code></pre></div>
+<p>After connecting the sockets, you can begin sending requests and receiving responses over the request port.  The specifics of how this operation is performed are described in the next section.</p>
+<hr />
+<h4 id="2-serialization-of-messages-to-and-from-the-olive-server"><strong>2.  Serialization of messages to and from the OLIVE Server</strong></h4>
+<p>Messages are exchanged between the client and server in serialized form, over the request port. Serialization is provided by the Google Protobufs library. You should familiarize yourself with protobufs before beginning your integration. In order to utilize protobufs, you must first take the scenic.proto message definition file (provided in the example code package or available <a href="contact.html">upon request</a>) and use protoc (or protobuf.net) to automatically generate classes that represent the OLIVE API messages. For more information see the <a href="https://developers.google.com/protocol-buffers/docs/overview?csw=1">Google Protocol Buffers Documentation</a>. </p>
+<p>For example for the OLIVE Java Client API, protoc is used to produce the Java file Scenic.java, located in src/main/java/com/sri/scenic/api within the example code package.  This file contains the class <code>Scenic</code> which is used in the Java API for all message related classes and definitions.</p>
+<p>Once you have compiled the OLIVE messages into your code base you can begin your integration.  As you may have seen in the OLIVE Java Client API code, (Scenic.java), every OLIVE message is an instance of a class named <a href="apiMessage.html#envelope"><code>Envelope</code></a>.  As its name implies, <a href="apiMessage.html#envelope"><code>Envelope</code></a> acts as a container for enclosing messages.  Messages are instances of a class named <a href="apiMessage.html#scenicmessage"><code>ScenicMessage</code></a>. An <a href="apiMessage.html#envelope"><code>Envelope</code></a> can contain multiple instances of <a href="apiMessage.html#scenicmessage"><code>ScenicMessage</code></a>, allowing you to batch your communications to the server.</p>
+<p><a href="apiMessage.html#envelope"><code>Envelope</code></a> and <a href="apiMessage.html#scenicmessage"><code>ScenicMessage</code></a> are special because they are used for every communication across the request_port and are basically just wrappers. They’re analogous to the envelope and paper when writing someone a letter. The remaining OLIVE messages comprise the actual API requests and responses. The remaining messages each have an entry in the <a href="apiMessage.html#messagetype">MessageType</a> enum, allowing you to request certain types when retrieving data from database as well as dynamically deserializing data returned by the server.</p>
+<!--
+#####TODO: Left off here when merging.
+-->
+
+<h3 id="message-building-example"><strong>Message Building Example</strong></h3>
+<p>To get started, your integration will probably need to retrieve some information from the server. For example, you may wish to know the list of available plugins. An example pseudocode excerpt accomplishing this is shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="n">PluginDirectoryRequest</span><span class="p">.</span><span class="na">Builder</span> <span class="n">req</span> <span class="o">=</span> <span class="n">PluginDirectoryRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+
+<span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">getUUIDString</span><span class="p">()</span>
+<span class="n">ScenicMessage</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">ScenicMessage</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+    <span class="p">.</span><span class="na">setMessageType</span><span class="p">(</span><span class="n">MessageType</span><span class="p">.</span><span class="na">PLUGIN_DIRECTORY_REQUEST</span><span class="p">)</span>
+    <span class="p">.</span><span class="na">addMessageData</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="na">build</span><span class="p">().</span><span class="na">toByteString</span><span class="p">())</span>
+    <span class="p">.</span><span class="na">setMessageId</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">Envelope</span> <span class="n">env</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+    <span class="p">.</span><span class="na">setSenderId</span><span class="p">(</span><span class="err">“</span><span class="n">third</span><span class="o">-</span><span class="n">party</span><span class="o">-</span><span class="n">integration</span><span class="err">”</span><span class="p">)</span>
+    <span class="p">.</span><span class="na">addMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+
+<span class="c1">// Now send the message to the server</span>
+<span class="n">request_socket</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">toByteArray</span><span class="p">());</span>
+
+<span class="n">Envelope</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">.</span><span class="na">parseFrom</span><span class="p">(</span><span class="n">request_socket</span><span class="p">.</span><span class="na">recv</span><span class="p">());</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">ScenicMessage</span> <span class="n">sm</span> <span class="p">:</span> <span class="n">resp</span><span class="p">.</span><span class="na">getMessageList</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// For purposes of this example, we assume the above message was </span>
+    <span class="c1">// the first and only sent so we can assume things about the response</span>
+    <span class="c1">// message, namely that it corresponds to  our request. </span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">id</span> <span class="o">==</span> <span class="n">msg</span><span class="p">.</span><span class="na">getMessageId</span><span class="p">())</span><span class="err">’</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="na">getMessageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">MessageType</span><span class="p">.</span><span class="na">PLUGIN_DIRECTORY_RESULT</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sm</span><span class="p">.</span><span class="na">hasError</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="err">“</span><span class="n">Dang</span><span class="p">:</span> <span class="err">“</span> <span class="o">+</span> <span class="n">sm</span><span class="p">.</span><span class="na">getError</span><span class="p">());</span>
+        <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">PluginDirectoryResult</span> <span class="n">rep</span> <span class="o">=</span> <span class="n">PluginDirectoryResult</span><span class="p">.</span><span class="na">parseFrom</span><span class="p">(</span><span class="n">sm</span><span class="p">.</span><span class="na">getMessageData</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">Plugin</span> <span class="n">p</span> <span class="p">:</span> <span class="n">rep</span><span class="p">.</span><span class="na">getPluginsList</span><span class="p">()){</span>
+  <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getId</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;: &quot;</span> <span class="o">+</span> <span class="n">p</span><span class="p">.</span><span class="na">getDesc</span><span class="p">()</span> <span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>Please note the following:</p>
+<ul>
+<li>We could have put other requests in the Envelope. Their responses may or may not have come back in the same envelope, but they would have come back in order.</li>
+<li>We are guaranteed that our messages are received in order by the server and responses sent in order. However, for messages such as scoring requests and class modification requests (enrollment), which are highly asynchronous, there is no guarantee about the order in which they will finish.</li>
+<li>The sure-fire way to ensure that you process a message from the server correctly is to base your actions on the message id (which you originally assigned in your request).</li>
+<li>To properly deserialize the data contained within a <a href="apiMessage.html#scenicmessage">ScenicMessage</a>, you must check or otherwise be sure of the <a href="apiMessage.html#messagetype">MessageType</a>.</li>
+<li>Some OLIVE plugins need to be preloaded by the server in order to fulfill a request.  In such cases either the API or the client program must first send a <a href="apiMessage.html#loadplugindomainrequest"><code>Load Plugin Domain Request</code></a> to have the targeted plugin preloaded.</li>
+</ul>
+<h3 id="an-analysis-scoring-message-example">An Analysis (Scoring) Message Example</h3>
+<p>Now let’s assume we wish to perform language identification on an audio file. We can create a LID like request as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Variable init</span>
+<span class="n">String</span> <span class="n">plugin</span> <span class="o">=</span> <span class="err">“</span><span class="n">lid</span><span class="o">-</span><span class="n">embed</span><span class="o">-</span><span class="n">v2</span><span class="err">”</span>
+<span class="n">String</span> <span class="n">domain</span> <span class="o">=</span> <span class="err">“</span><span class="n">multi</span><span class="o">-</span><span class="n">v1</span><span class="err">”</span>
+<span class="n">String</span> <span class="n">audioFilePath</span> <span class="o">=</span> <span class="err">“</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">audio</span><span class="o">/</span><span class="n">file1</span><span class="p">.</span><span class="na">wav</span><span class="err">”</span>
+
+<span class="c1">// Build audio object</span>
+<span class="n">Scenic</span><span class="p">.</span><span class="na">Audio</span><span class="p">.</span><span class="na">Builder</span> <span class="n">audio</span> <span class="o">=</span> <span class="n">Scenic</span><span class="p">.</span><span class="na">Audio</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setPath</span><span class="p">(</span><span class="n">audioFilePath</span><span class="p">.</span><span class="na">toAbsolutePath</span><span class="p">().</span><span class="na">toString</span><span class="p">;</span>
+
+<span class="c1">// Create LID request</span>
+<span class="c1">// If specifically processing stereo audio files and wish to score </span>
+<span class="c1">// both channels, please use the FrameScorerStereoRequest or </span>
+<span class="c1">// GlobalScorerStereoRequest messages, that will be responded to with </span>
+<span class="c1">// an FrameScoreStereo or GlobalScoreStereo message, containing score results</span>
+<span class="c1">// for both channels of the submitted audio.</span>
+<span class="c1">// If submitting a stereo audio file using the standard xScorerRequest functions,</span>
+<span class="c1">// and you don’t desire to score both channels independently, there are two </span>
+<span class="c1">// options:</span>
+<span class="c1">//   - Specify the channel you wish to be scored -&gt; you will receive results</span>
+<span class="c1">//             for that channel only.</span>
+<span class="c1">//   - Do not specify a channel -&gt; you will receive a single set of results</span>
+<span class="c1">//             corresponding to the merged mono representation of the stereo file. </span>
+
+<span class="n">Scenic</span><span class="p">.</span><span class="na">GlobalScorerRequest</span><span class="p">.</span><span class="na">Builder</span> <span class="n">req</span> <span class="o">=</span> <span class="n">Scenic</span><span class="p">.</span><span class="na">GlobalScorerRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+  <span class="p">.</span><span class="na">setAudio</span><span class="p">(</span><span class="n">audio</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">setPlugin</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">setDomain</span><span class="p">(</span><span class="n">domain</span><span class="p">);</span>
+</code></pre></div>
+<p>Note that this example relies on code written in our Java Client API, but the general steps to perform the task are the same.</p>
+<p>Now we wrap the request in a <code>ScenicMessage</code> and <code>Envelope</code> like we did in the last example and send it across the request socket. Analysis requests as well as Enrollment requests take significant time to process on the server. It’s likely you’ll want your integration to be doing other things while it is waiting for the response, such as issuing further analysis requests. This is fully supported. However, you don’t know when or in what order the responses to your analyze request will emerge from the server. Therefore, it’s advantageous to track the message ids that you’ve issued in a map of the form <code>message_id -&gt; request message</code>, so that you know the request to which a newly received response pertains. </p>
+<p>Let’s assume we’ve received a <a href="apiMessage.html#globalscorerresult"><code>GlobalScorerResult</code></a> message and have deserialized it into a variable named <code>res</code>. We could process the result as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Currently OLIVE (SCENIC) will only send back one score reply per score</span>
+<span class="c1">// request. Future releases may be able to send back multiple.</span>
+<span class="c1">// Because of this, we must iterate though all of the scores.</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Scenic</span><span class="p">.</span><span class="na">GlobalScore</span><span class="o">&gt;</span> <span class="n">scores</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="na">getScoreList</span><span class="p">();</span>
+
+<span class="k">for</span><span class="p">(</span><span class="n">Scenic</span><span class="p">.</span><span class="na">GlobalScore</span> <span class="n">gs</span> <span class="p">:</span> <span class="n">scores</span><span class="p">){</span>
+        <span class="n">system</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;LID Score: class &quot;</span> <span class="o">+</span>  <span class="n">gs</span><span class="p">.</span><span class="na">getClassId</span><span class="p">()</span> <span class="err">“</span> <span class="o">=</span> <span class="err">“</span> <span class="o">+</span>  <span class="n">gs</span><span class="p">.</span><span class="na">getScore</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>For more details regarding the specifications and breadth of the possible requests, their replies, and the structure of each of these data objects, including how results are represented, please refer to the <a href="apiMessage.html">OLIVE API Message Reference</a> documentation.
+ </p>
+<!--
+
+
+###**Example API Code**
+
+Though they are written in Java, reviewing source code in the OLIVE-API-examples package can give you an idea what steps will be necessary to implement .  Specifically, functionalities found in these files are desirable to have in a new API of another language:
+
+- OLIVE-API-examples/src/main/java/com/sri/scenic/api/Server.java
+
+    \*This file contains functions such as connect() for making connection to the OLIVE server are provided.
+
+- OLIVE-API-examples/src/main/java/com/sri/scenic/api/Scenic.java
+
+    \*This file contains OLIVE request types, result types, and message types.
+
+- OLIVE-API-examples/src/main/java/com/sri/scenic/api/utils/ClientUtils.java
+
+    \*Many of the client utilities are in this file.  High level API request calls such as requestFrameScore() and requestEnrollClass() are here.
+
+- OLIVE-API-examples/src/main/java/com/sri/scenic/api/client/SimpleClient.java
+
+    \*This file contains useful audio utilities for package audio data in the desirable format such as packageAudioAsRawBuffer() and packageAudioAsPath() are available here.
+
+
+-->
+
+<h3 id="request-a-new-olive-api-reference-implementation"><strong>Request a new OLIVE API Reference Implementation</strong></h3>
+<p>If there is a need for an OLIVE API in another language, SRI International would be an ideal candidate to undertake the task because of its rich experience having already done it in Java.  However, it will still be a complex software engineering undertaking which will definitely take up a significant amount of project resources. For more information about what this would entail, please reach out to olive-support@sri.com.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="apiCode.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Integrating (Java) Client API
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="apiMessage.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Enterprise API Message Reference
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+    
+  </body>
+</html>

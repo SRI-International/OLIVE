@@ -1,0 +1,1266 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Overview - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#00bdd6">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="cyan" data-md-color-accent="blue-grey">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#open-language-interface-for-voice-exploitation-olive-510" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="index.html" class="md-nav__link md-nav__link--active">
+      Overview
+    </a>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="requirements.md" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Developer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Developer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="requirements.md" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    
+    <label class="md-nav__link" for="nav-4-3">
+      ASDEC
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="ASDEC" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        ASDEC
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/aed-enrollable-v1.html" class="md-nav__link">
+      Acoustic Event Detection (AED)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/aln-waveformAlignment-v1.html" class="md-nav__link">
+      Waveform Alignment (ALN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-indoorOutdoor-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Indoor/Outdoor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-multiClass-v2.html" class="md-nav__link">
+      Environmental Analysis (ENV) Multi Class
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-powerSupplyHum-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Power Supply
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-speakerCount-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Speaker Count
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sed-rmsEnergy-v1.html" class="md-nav__link">
+      Signal Energy Detection (SED)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/voi-speakingStyle-v1.html" class="md-nav__link">
+      Voice Characterization (VOI) Speaking Style
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/voi-vocalEffort-v1.html" class="md-nav__link">
+      Voice Characterization (VOI) Vocal Effort
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v7.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v2.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-embed-v6.html" class="md-nav__link">
+      Speaker Identification (SID) Legacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-sbcEmbed-v2.html" class="md-nav__link">
+      Speaker Detection (SDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-sbcEmbed-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7" >
+    
+    <label class="md-nav__link" for="nav-4-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-tdnn-v5.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8" >
+    
+    <label class="md-nav__link" for="nav-4-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9" >
+    
+    <label class="md-nav__link" for="nav-4-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-statistical-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" >
+    
+    <label class="md-nav__link" for="nav-4-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v3.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-embed-v3.html" class="md-nav__link">
+      Topic Detection (TPD) Acoustic-based
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="open-language-interface-for-voice-exploitation-olive-510">Open Language Interface for Voice Exploitation (OLIVE) 5.1.0</h1>
+<p>OLIVE is a suite of audio processing software tools to enable a wide range of audio analysis for several mission types, including large scale audio triage, targeted close forensic analysis, detection of speech, speakers, languages, and keywords of interest. </p>
+<p>OLIVE 5.1.0 contains the first official release of <a href="workflows.html">OLIVE Workflows</a> - a powerful new feature allowing multiple OLIVE plugins to be exercised with a single analysis request, allowing reduced overhead and integration learning curve, as well as additional flexibility compared to manual integration with the <a href="apiInfo.html">OLIVE Enterprise API</a>. </p>
+<p>OLIVE 5.1.0 also launches the first supported delivery of the <a href="raven.html">Raven Batch Web UI</a>, as part of the <a href="oliveMulti.md">OLIVE Multi</a> software package.</p>
+<p>For more information about the OLIVE 5.1 plugins that are currently released and their capabilities, refer to the <a href="releasePlugins.html">OLIVE 5.1 Release Plugins</a> list, that links to more information about each.</p>
+<p>There are many facets to OLIVE, several of which are documented here. Feel free to navigate through the documentation using the bar along the left side of each page. The links along the right side of each page provide navigation within that particular page. If you're unsure of the best place to look, this may help you choose where to get started:</p>
+<ul>
+<li>User Centric Documentation<ul>
+<li><a href="install.html"><code>Installation</code></a> - Details for installing the OLIVE software package and getting up and running.
+<!--- * <a href="docker.md">klzzwxh:0029</a> - Details for installing and setting up the OLIVE software package for docker-container-based deliveries. ---></li>
+<li><a href="martini.html"><code>OLIVE Martini Docker-based Installation</code></a> or <a href="docker.html"><code>Standalone Docker-based Installation</code></a> - Details for installing and setting up the OLIVE software package for docker-container-based deliveries. "Standalone" refers to the OLIVE Docker Container alone, while OLIVE Martini is a new delivery package that includes a web-based Raven Batch GUI, and other utilities.</li>
+<li><a href="server.html"><code>Server</code></a> - For reference for setting up the OLIVE environment and firing up an OLIVE server instance, along with important details about how the Server works with the OLIVE Runtime and the OLIVE Runtime contents.</li>
+<li><a href="nightingale.html"><code>OLIVE Nightingale GUI</code></a> - Details for launching and interacting with the OLIVE tools through the the optional OLIVE Nightingale GUI.</li>
+<li><a href="redaction.html"><code>Speaker Redaction GUI Task</code></a> - Details how to step through the process of using the OLIVE GUI for Speaker Redaction.</li>
+<li><a href="cli.html"><code>Command Line Interface Documentation</code></a> - If you're interested in exploring the capabilities of OLIVE and its plugins as an evaluation tool just using the command line.</li>
+<li><a href="audioFormats.html"><code>Supported Audio Formats</code></a> - Outlines the audio formats OLIVE can currently process and which situations these restrictions apply.</li>
+</ul>
+</li>
+<li>Developer Documentation<ul>
+<li><a href="integrationOverview.html"><code>OLIVE Integration Guide</code></a> - Start here if you're not sure what level of integration is appropriate. Provides links to further information and guidance for getting started with integrating OLIVE capabilities at various levels. </li>
+<li><a href="workflows.html"><code>Workflow Integration</code></a> - Details for getting started submitting enrollment and analysis requests using OLIVE workflows, a powerful new tool allowing you to leverage several plugins with a single server request/API message. Workflow integration is recommended for most integrations, unless very specific functionality is required that's not yet supported by workflows.</li>
+<li><a href="apiInfo.html"><code>Enterprise API Information</code></a> - If interested in details about the mechanisms that allow integrating the OLIVE Server and backend audio processing capabilities to an existing system or GUI.</li>
+<li><a href="apiCode.html"><code>Integrating the (Java) Client API</code></a> - Provides code examples (currently only in Java) for how to perform several OLIVE tasks and integrate the OLIVE Java Reference Implementation to create a new client or augment a client with OLIVE functionality.</li>
+<li><a href="apiBuildReferenceImp.html"><code>Creating an API Reference Implementation</code></a> - Contains information to help guide the creation of a new API Reference Implementation if Java is not the target language for client integration.</li>
+<li><a href="apiMessage.html"><code>Enterprise API Message Definitions</code></a> - Provides more of the low-level details on the available API messages, their structures and contents.</li>
+</ul>
+</li>
+<li>Plugins<ul>
+<li><a href="releasePlugins.html"><code>Release Plugins</code></a> - List of the plugins released with this version of OLIVE, with links to more information on the specific plugins themselves.</li>
+<li><a href="plugins.html"><code>General Plugin Info</code></a> - Information regarding the actual technologies and capabilities provided by OLIVE (such as speech activity detection, language identification, etc.), and details on implementing these technologies. </li>
+<li><a href="requirements.md"><code>OLIVE Plugin Resource Requirements</code></a> - Information about the processing speed and memory requirements for a selection of OLIVE plugins.</li>
+</ul>
+</li>
+<li><a href="glossary.html"><code>Glossary</code></a> - Definitions of important terms and concepts.</li>
+<li><a href="contact.html"><code>Contact Us</code></a> - Information for how to reach out to the OLIVE team</li>
+</ul>
+<!-- If interested in integrating the OLIVE Server and backend audio processing, please refer to the [API Documentation](api.md), and [API Message Definitions](apiMessage.md) pages.  Information regarding the actual technologies provided by OLIVE (such as speech activity detection, language identification, etc.), or details on implementing these technologies can be found in the [Plugins](plugins.md) section. Standalone command-line interface tools and their usage is described in the [Command Line Tools](cli.md). Definitions of important terms and concepts can be found in the [Glossary](glossary.md) and linked throughout the rest of the documentation. -->
+
+<p>Care was made to provide links to important contextual information regarding important terms, acronyms, API messages, etc. throughout the documentation.  If you find any section to be unclear or lacking in important details, please let us know which area(s) require improvement.</p>
+<p>For any questions, comments, or concerns about this documentation contact <a href="mailto:olive-support@sri.com">olive-support@sri.com</a>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+        
+          <a href="install.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Installation
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+    
+  </body>
+</html>

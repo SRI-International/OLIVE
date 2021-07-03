@@ -1,0 +1,2850 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Workflows - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#00bdd6">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="cyan" data-md-color-accent="blue-grey">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olive-python-workflow-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Workflows
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="requirements.md" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Developer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Developer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Workflows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="workflows.html" class="md-nav__link md-nav__link--active">
+      Workflows
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-concepts-to-know" class="md-nav__link">
+    Useful Concepts to Know
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-client-install" class="md-nav__link">
+    Python Client Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis-request" class="md-nav__link">
+    Analysis Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrollment-request" class="md-nav__link">
+    Enrollment Request
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollment Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-enrollment-options" class="md-nav__link">
+    Other Enrollment Options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-workflow-features" class="md-nav__link">
+    Advanced Workflow Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Workflow Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio-submission-options" class="md-nav__link">
+    Audio Submission Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Submission Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio-annotations" class="md-nav__link">
+    Audio Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-a-workflow-analysis-response-python" class="md-nav__link">
+    Handling A Workflow Analysis Response (Python)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspecting-tasks-in-workflow-definition" class="md-nav__link">
+    Inspecting Tasks in Workflow Definition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsing-analysis-output" class="md-nav__link">
+    Parsing Analysis Output
+  </a>
+  
+    <nav class="md-nav" aria-label="Parsing Analysis Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frame-scorer-task-output" class="md-nav__link">
+    Frame Scorer Task Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-scorer-tasks" class="md-nav__link">
+    Global Scorer Tasks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-scorer-tasks" class="md-nav__link">
+    Region Scorer Tasks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrolled-classes" class="md-nav__link">
+    Enrolled Classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-channel-audio" class="md-nav__link">
+    Multi-channel Audio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaption-using-a-workflow" class="md-nav__link">
+    Adaption Using a Workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-workflow-example" class="md-nav__link">
+    Python Workflow Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-specification" class="md-nav__link">
+    API Specification
+  </a>
+  
+    <nav class="md-nav" aria-label="API Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oliveworkflowdefinition" class="md-nav__link">
+    OliveWorkflowDefinition
+  </a>
+  
+    <nav class="md-nav" aria-label="OliveWorkflowDefinition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_workflow" class="md-nav__link">
+    create_workflow()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_json" class="md-nav__link">
+    get_json()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowexception" class="md-nav__link">
+    WorkflowException
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oliveworkflow" class="md-nav__link">
+    OliveWorkflow
+  </a>
+  
+    <nav class="md-nav" aria-label="OliveWorkflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serialize_audio" class="md-nav__link">
+    serialize_audio()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze" class="md-nav__link">
+    analyze()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enroll" class="md-nav__link">
+    enroll()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_analysis_class_ids" class="md-nav__link">
+    get_analysis_class_ids()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_analysis_task_info" class="md-nav__link">
+    get_analysis_task_info()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_analysis_tasks" class="md-nav__link">
+    get_analysis_tasks()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_enrollment_tasks" class="md-nav__link">
+    get_enrollment_tasks()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package_audio" class="md-nav__link">
+    package_audio()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package_image" class="md-nav__link">
+    package_image()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package_text" class="md-nav__link">
+    package_text()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package_video" class="md-nav__link">
+    package_video()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapt" class="md-nav__link">
+    adapt()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="requirements.md" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    
+    <label class="md-nav__link" for="nav-4-3">
+      ASDEC
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="ASDEC" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        ASDEC
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/aed-enrollable-v1.html" class="md-nav__link">
+      Acoustic Event Detection (AED)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/aln-waveformAlignment-v1.html" class="md-nav__link">
+      Waveform Alignment (ALN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-indoorOutdoor-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Indoor/Outdoor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-multiClass-v2.html" class="md-nav__link">
+      Environmental Analysis (ENV) Multi Class
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-powerSupplyHum-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Power Supply
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-speakerCount-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Speaker Count
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sed-rmsEnergy-v1.html" class="md-nav__link">
+      Signal Energy Detection (SED)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/voi-speakingStyle-v1.html" class="md-nav__link">
+      Voice Characterization (VOI) Speaking Style
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/voi-vocalEffort-v1.html" class="md-nav__link">
+      Voice Characterization (VOI) Vocal Effort
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v7.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v2.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-embed-v6.html" class="md-nav__link">
+      Speaker Identification (SID) Legacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-sbcEmbed-v2.html" class="md-nav__link">
+      Speaker Detection (SDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-sbcEmbed-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7" >
+    
+    <label class="md-nav__link" for="nav-4-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-tdnn-v5.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8" >
+    
+    <label class="md-nav__link" for="nav-4-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9" >
+    
+    <label class="md-nav__link" for="nav-4-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-statistical-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" >
+    
+    <label class="md-nav__link" for="nav-4-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v3.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-embed-v3.html" class="md-nav__link">
+      Topic Detection (TPD) Acoustic-based
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-concepts-to-know" class="md-nav__link">
+    Useful Concepts to Know
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-client-install" class="md-nav__link">
+    Python Client Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis-request" class="md-nav__link">
+    Analysis Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrollment-request" class="md-nav__link">
+    Enrollment Request
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollment Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-enrollment-options" class="md-nav__link">
+    Other Enrollment Options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-workflow-features" class="md-nav__link">
+    Advanced Workflow Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Workflow Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio-submission-options" class="md-nav__link">
+    Audio Submission Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Submission Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio-annotations" class="md-nav__link">
+    Audio Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-a-workflow-analysis-response-python" class="md-nav__link">
+    Handling A Workflow Analysis Response (Python)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspecting-tasks-in-workflow-definition" class="md-nav__link">
+    Inspecting Tasks in Workflow Definition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsing-analysis-output" class="md-nav__link">
+    Parsing Analysis Output
+  </a>
+  
+    <nav class="md-nav" aria-label="Parsing Analysis Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frame-scorer-task-output" class="md-nav__link">
+    Frame Scorer Task Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-scorer-tasks" class="md-nav__link">
+    Global Scorer Tasks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-scorer-tasks" class="md-nav__link">
+    Region Scorer Tasks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrolled-classes" class="md-nav__link">
+    Enrolled Classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-channel-audio" class="md-nav__link">
+    Multi-channel Audio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaption-using-a-workflow" class="md-nav__link">
+    Adaption Using a Workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-workflow-example" class="md-nav__link">
+    Python Workflow Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-specification" class="md-nav__link">
+    API Specification
+  </a>
+  
+    <nav class="md-nav" aria-label="API Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oliveworkflowdefinition" class="md-nav__link">
+    OliveWorkflowDefinition
+  </a>
+  
+    <nav class="md-nav" aria-label="OliveWorkflowDefinition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_workflow" class="md-nav__link">
+    create_workflow()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_json" class="md-nav__link">
+    get_json()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowexception" class="md-nav__link">
+    WorkflowException
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oliveworkflow" class="md-nav__link">
+    OliveWorkflow
+  </a>
+  
+    <nav class="md-nav" aria-label="OliveWorkflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serialize_audio" class="md-nav__link">
+    serialize_audio()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze" class="md-nav__link">
+    analyze()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enroll" class="md-nav__link">
+    enroll()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_analysis_class_ids" class="md-nav__link">
+    get_analysis_class_ids()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_analysis_task_info" class="md-nav__link">
+    get_analysis_task_info()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_analysis_tasks" class="md-nav__link">
+    get_analysis_tasks()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_enrollment_tasks" class="md-nav__link">
+    get_enrollment_tasks()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package_audio" class="md-nav__link">
+    package_audio()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package_image" class="md-nav__link">
+    package_image()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package_text" class="md-nav__link">
+    package_text()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package_video" class="md-nav__link">
+    package_video()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapt" class="md-nav__link">
+    adapt()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olive-python-workflow-api">OLIVE Python Workflow API</h1>
+<h2 id="introduction"><strong>Introduction</strong></h2>
+<p>The OLIVE Workflow API extends the <a href="apiInfo.html">OLIVE Enterprise API</a> to simplify working with an OLIVE server, allowing clients to
+request multiple OLIVE tasks with one API call.  This eliminates the more verbose and complex calls necessary when 
+using the Enterprise API. In particular, this framework will encapsulate 'feeding' functionality, to link together tasks, like speech activity detection 
+and a plugin that uses speech regions or frames in its processing, or to 'bundle' multiple requests in a single call, rather than having every 
+API call to a plugin be a separate action. The Workflow API is based around binary or text "Workflow Definition" files that SRI 
+distributes to clients.  These files contain a 'recipe' to be executed on an OLIVE server to perform analysis, enrollment, and 
+eventually adaption using one or more audio files/inputs. This places the work of specifying how to execute a complex task to execute 
+within the OLIVE server, instead of the client.    </p>
+<p>To use this API, a client submits the SRI provided Workflow Definition file to an OLIVE server.  The server verifies it can run the 
+Workflow Definition through a process called "actualization".  If successful, an activated Workflow is returned to the 
+client.  This activated Workflow is then ready for one or more analysis (or enrollment) requests.  These requests can 
+be made numerous times with one or more audio submissions. </p>
+<p>OLIVE still supports the original <a href="apiInfo.html">OLIVE Enterprise API</a> that was based on creating and sending Google Protocol 
+Buffers (Protobuf) message for each request, so if desired, clients can combine classic OLIVE API calls with the 
+Workflow API to implement advanced functionality.   </p>
+<p>For more information about working with OLIVE, please see:</p>
+<ol>
+<li><a href="server.html">The OLIVE Server</a></li>
+<li><a href="plugins.html">The OLIVE Plugins</a></li>
+<li><a href="apiInfo.html">The OLIVE Enterprise API</a></li>
+</ol>
+<h2 id="useful-concepts-to-know"><strong>Useful Concepts to Know</strong></h2>
+<ul>
+<li>Tasks: a Workflow is composed of one or more tasks, such as SAD, LID, SID, QBE, ASR, etc. A task typically maps 
+to a traditional plugin/domain, but as we expand the capabilities of the Workflow API, 'tasks' are likely to 
+include functionality that is not implemented by a traditional OLIVE plugin, but by private helper plug-ins that facilitate the process but do not return values to the user.</li>
+<li>Job: A set of tasks and the audio (data) used with those tasks.  Currently, a Workflow only includes one job, 
+with most jobs accepting only one audio input. </li>
+<li>Workflow Definition - distributed as a read-only binary or text file with these characteristics:<ul>
+<li>Similar to Plugins, workflows are independent of the OLIVE software and can be updated and/or distributed 
+outside of an OLIVE software release.</li>
+<li>Can be submitted to multiple OLIVE servers for actualization in parallel.  </li>
+<li>Each actualized Workflow Definition is unique to the server where it was actualized.   </li>
+<li>Actualized Workflows use the names of plugins and domains in the users environment to execute tasks. These names are assumed to be the standard 
+names they were delivered with. Changing the name of a plugin or domain will cause workflows that use them to cease to function. </li>
+</ul>
+</li>
+</ul>
+<h2 id="limitations"><strong>Limitations</strong></h2>
+<p>The current implementation of workflows is a first release. This release covers two types of behavior: </p>
+<ol>
+<li>bundling of disparate tasks together into a single call and</li>
+<li>restricted feeding processes, wherein the output of one plugin may be fed into one or more other "downstream" plugins that will use this information in their processing. </li>
+</ol>
+<p>The most common example in this is SAD feeding other processes. The plugins that receive output from other plugins in a workflow must have an interface that accepts this input. I.e. to use SAD output the downstream plugin(s) must be designed to accept SAD input in addition to the usual audio inputs. Current workflows only allow for categorical feeding (e.g. SAD output always goes to SID input) but not conditional feeding behavior (audio goes to the ASR English domain if LID detects file is English).</p>
+<p>Further, the current implementation of workflows does not support tasks that create entirely new domains, like adaptation. This is much easier to accomplish with a direct call to the plugin, as bundling and feeding behavior is not relevant to this activity.</p>
+<h2 id="python-client-install"><strong>Python Client Install</strong></h2>
+<p>The OLIVE Python API is distributed as a Python wheel package.  </p>
+<p>To install, navigate into the 'api' folder distributed with your OLIVE delivery, and install it using your native pip3:</p>
+<div class="codehilite"><pre><span></span><code>$ pip3 install olivepy-5.1.0rc1-py3-none-any.whl
+</code></pre></div>
+
+<p>This installs OLIVE and its dependencies into your local Python distribution.  The client source is also available in 
+the olivepy-5.1.0rc1.tar.gz package.</p>
+<p>OLIVE client dependencies include:</p>
+<ul>
+<li>protobuf</li>
+<li>soundfile</li>
+<li>numpy</li>
+<li>zmq </li>
+<li>python3</li>
+</ul>
+<h2 id="integration">Integration</h2>
+<h3 id="analysis-request"><strong>Analysis Request</strong></h3>
+<p>With a Workflow Definition file, it only takes a few steps to make an analysis request:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;~/olive/sad_lid_sid.workflow&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">workflow</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">buffer</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">serialize_audio</span><span class="p">(</span><span class="s1">&#39;filename.wav&#39;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;filename.wav&#39;</span><span class="p">))</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">([</span><span class="nb">buffer</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The analysis response can be pretty printed as JSON:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">print</span><span class="p">(</span><span class="s">&quot;Workflow Results: {}&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">get_response_as_json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mh">1</span><span class="p">)))</span>
+
+ <span class="n">Workflow</span> <span class="nl">results:</span>
+     <span class="p">[</span>
+      <span class="p">{</span>
+       <span class="s">&quot;job_name&quot;</span><span class="o">:</span> <span class="s">&quot;Simple SAD and LID workflow&quot;</span><span class="p">,</span>
+       <span class="s">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+         <span class="s">&quot;dataId&quot;</span><span class="o">:</span> <span class="s">&quot;test_audio.wav&quot;</span><span class="p">,</span>
+         <span class="s">&quot;msgType&quot;</span><span class="o">:</span> <span class="s">&quot;PREPROCESSED_AUDIO_RESULT&quot;</span><span class="p">,</span>
+         <span class="s">&quot;mode&quot;</span><span class="o">:</span> <span class="s">&quot;MONO&quot;</span><span class="p">,</span>
+         <span class="s">&quot;merged&quot;</span><span class="o">:</span> <span class="n">false</span><span class="p">,</span>
+         <span class="s">&quot;sampleRate&quot;</span><span class="o">:</span> <span class="mh">8000</span><span class="p">,</span>
+         <span class="s">&quot;durationSeconds&quot;</span><span class="o">:</span> <span class="mf">10.509625434875488</span><span class="p">,</span>
+         <span class="s">&quot;numberChannels&quot;</span><span class="o">:</span> <span class="mh">1</span><span class="p">,</span>
+         <span class="s">&quot;label&quot;</span><span class="o">:</span> <span class="s">&quot;~/audio/test_audio.wav&quot;</span><span class="p">,</span>
+         <span class="s">&quot;id&quot;</span><span class="o">:</span> <span class="s">&quot;edd6f2d8abb69e754cc4bd03c2d3f60379255048fdb20a8924858c0723ea4bbd&quot;</span>
+        <span class="p">}</span>
+       <span class="p">],</span>
+       <span class="s">&quot;tasks&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s">&quot;SAD&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s">&quot;taskTrait&quot;</span><span class="o">:</span> <span class="s">&quot;REGION_SCORER&quot;</span><span class="p">,</span>
+         <span class="s">&quot;taskType&quot;</span><span class="o">:</span> <span class="s">&quot;SAD&quot;</span><span class="p">,</span>
+         <span class="s">&quot;messageType&quot;</span><span class="o">:</span> <span class="s">&quot;REGION_SCORER_RESULT&quot;</span><span class="p">,</span>
+         <span class="s">&quot;analysis&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s">&quot;region&quot;</span><span class="o">:</span> <span class="p">[</span>
+           <span class="p">{</span>
+            <span class="s">&quot;startT&quot;</span><span class="o">:</span> <span class="mf">3.3399999141693115</span><span class="p">,</span>
+            <span class="s">&quot;endT&quot;</span><span class="o">:</span> <span class="mf">10.5</span><span class="p">,</span>
+            <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;speech&quot;</span><span class="p">,</span>
+            <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0.0</span>
+           <span class="p">}</span>
+          <span class="p">]</span>
+         <span class="p">},</span>
+         <span class="s">&quot;plugin&quot;</span><span class="o">:</span> <span class="s">&quot;sad-dnn&quot;</span><span class="p">,</span>
+         <span class="s">&quot;domain&quot;</span><span class="o">:</span> <span class="s">&quot;vtd-v1&quot;</span>
+        <span class="p">},</span>
+        <span class="s">&quot;LID&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s">&quot;taskTrait&quot;</span><span class="o">:</span> <span class="s">&quot;GLOBAL_SCORER&quot;</span><span class="p">,</span>
+         <span class="s">&quot;taskType&quot;</span><span class="o">:</span> <span class="s">&quot;LID&quot;</span><span class="p">,</span>
+         <span class="s">&quot;messageType&quot;</span><span class="o">:</span> <span class="s">&quot;GLOBAL_SCORER_RESULT&quot;</span><span class="p">,</span>
+         <span class="s">&quot;analysis&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="p">[</span>
+           <span class="p">{</span>
+            <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;eng&quot;</span><span class="p">,</span>
+            <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="mf">2.5195693969726562</span>
+           <span class="p">},</span>
+           <span class="p">{</span>
+            <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;apc&quot;</span><span class="p">,</span>
+            <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">3.509812355041504</span>
+           <span class="p">},</span>
+           <span class="p">{</span>
+            <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;tgl&quot;</span><span class="p">,</span>
+            <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">3.566483974456787</span>
+           <span class="p">},</span>
+           <span class="p">{</span>
+            <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;arb&quot;</span><span class="p">,</span>
+            <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">3.994529962539673</span>
+           <span class="p">},</span>
+           <span class="p">{</span>
+            <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;fre&quot;</span><span class="p">,</span>
+            <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">21.55596160888672</span>
+           <span class="p">}</span>
+          <span class="p">]</span>
+         <span class="p">},</span>
+         <span class="s">&quot;plugin&quot;</span><span class="o">:</span> <span class="s">&quot;lid-embedplda&quot;</span><span class="p">,</span>
+         <span class="s">&quot;domain&quot;</span><span class="o">:</span> <span class="s">&quot;multi-v1&quot;</span>
+        <span class="p">}</span>
+       <span class="p">}</span>
+      <span class="p">}</span>
+     <span class="p">]</span>
+</code></pre></div>
+
+<h3 id="enrollment-request"><strong>Enrollment Request</strong></h3>
+<p>Some workflows support enrollment for one or more tasks. To list the tasks that support enrollment in a workflow, 
+use the OliveWorkflow get_enrollment_tasks method:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;~/olive/sad_lid_sid.workflow&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">workflow</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Enrollment Tasks: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">get_enrollment_tasks</span><span class="p">()))</span> 
+<span class="n">Enrollment</span> <span class="n">Tasks</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SID&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Shown above, a workflow that supports SAD, LID, and SID analysis also supports SID enrollment. To enroll a speaker via this 
+workflow, use the OliveWorkflow's enroll method:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">...</span><span class="w"></span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workflow</span><span class="p">.</span><span class="n">package_audio</span><span class="p">(</span><span class="n">workflow</span><span class="p">.</span><span class="n">serialize_audio</span><span class="p">(</span><span class="s1">&#39;filename.wav&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="k">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;filename.wav&#39;</span><span class="p">))</span><span class="w"></span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workflow</span><span class="p">.</span><span class="n">enroll</span><span class="p">(</span><span class="o">[</span><span class="n">buffer</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;example speaker&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="n">&#39;SID&#39;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+<span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="k">print</span><span class="p">(</span><span class="ss">&quot;Workflow enrollment: {}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">get_response_as_json</span><span class="p">(),</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"></span>
+
+<span class="n">Workflow</span><span class="w"> </span><span class="nl">enrollment</span><span class="p">:</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="w"> </span><span class="ss">&quot;successful&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>For the OLIVE 5.1 release only one task can be enrolled per request, even though the enrollment interface accepts multiple enrollment tasks. </p>
+<h4 id="other-enrollment-options"><strong>Other Enrollment Options</strong></h4>
+<p>Enrollment can also be done via the Python CLI tool, olivepyenroll:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">olivepyenroll -p sid-embed-v6.0.1 --domain multicond-v1 -e Test_Speaker -w test.wav</span>
+</code></pre></div>
+
+<p>Or incorporate the code from OliveClient (or AsyncOliveClient if client your client needs non-blocking calls):</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.oliveclient</span> <span class="kn">as</span> <span class="nn">oc</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">OliveClient</span><span class="p">(</span><span class="s1">&#39;test client&#39;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">enroll</span><span class="p">(</span><span class="s1">&#39;sid-embed-v6.0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;multicond-v1&#39;</span><span class="p">,</span> <span class="s1">&#39;Test_Speaker&#39;</span><span class="p">,</span> <span class="s1">&#39;/olive/data/test.wav&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="advanced-workflow-features"><strong>Advanced Workflow Features</strong></h2>
+<h3 id="audio-submission-options"><strong>Audio Submission Options</strong></h3>
+<p>Audio can be submitted as a path name or as a buffer.  If submitted as a path name, then the path must be 
+accessible by the OLIVE server.  If submitting audio as a buffer then that buffer can contain either:</p>
+<ul>
+<li>A 'serialized' file, where the file contents are read into a buffer.  OliveWorkflow's 
+serialize_audio() was added as a helper utility to load a local file into a serialized buffer.  See more below.</li>
+<li>PCM-16 encoded samples.  If the client has decoded a audio source, then those samples can be submitted directly in 
+the audio buffer. </li>
+</ul>
+<p>The audio pathname or buffer is wrapped in a WorkflowDataRequest object before submitting to OLIVE.</p>
+<p>Sending a local file as a serialized buffer:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">...</span>
+<span class="err"># Submit the serialize the audio file into a buffer for submission to OLIVE</span>
+<span class="err">audio_filename = &quot;~/audio/test_audio.wav&quot;</span>
+<span class="err"># OliveWorkflow provides a helper method to serialize a file:</span>
+<span class="err">buffer = workflow.serialize_audio(audio_filename)</span>
+<span class="err"># Wrap the buffer in a WorkflowDataRequest:</span>
+<span class="err">olive_data = workflow.package_audio(buffer, label=os.path.basename(audio_filename))</span>
+</code></pre></div>
+
+<p>Or to send the path to a local file (assuming the server and client are running on the same host or have access to a 
+shared file system):</p>
+<div class="codehilite"><pre><span></span><code><span class="err">...</span>
+<span class="err"># Submit the path of the audio file:   </span>
+<span class="err">audio_filename = &quot;~/audio/test_audio.wav&quot;</span>
+<span class="err">olive_data = workflow.package_audio(audio_filename,  mode=msgutil.AudioTransferType.AUDIO_PATH)</span>
+</code></pre></div>
+
+<p>Once the data has been wrapped in a WorkflowDataRequest it can be submitted for analysis or enrollment.  </p>
+<h4 id="audio-annotations"><strong>Audio Annotations</strong></h4>
+<p>The audio submitted for analysis (or enrollment) can be annotated with start/end regions when packaging audio using the 
+OliveWorkflow.package_audio() method. For example, here is how to specify two regions within a file:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">...</span>
+<span class="err">filename = &#39;/home/olive/test.wav&#39;</span>
+<span class="err"># Provide annotations for two regions: 0.3 to 1.7 seconds, and 2.4 to 3.3 seconds in filename:</span>
+<span class="err">regions = [(0.3, 1.7), (2.4, 3.3)]</span>
+<span class="err"># serialize the file:</span>
+<span class="err">buffer = workflow.serialize_audio(filename)</span>
+<span class="err">audio = workflow.package_audio(buffer, annotations=regions)</span>
+<span class="err">...</span>
+</code></pre></div>
+
+<h3 id="handling-a-workflow-analysis-response-python"><strong>Handling A Workflow Analysis Response (Python)</strong></h3>
+<p>A successful Workflow analysis produces a response that includes information about the audio analyzed and the results of 
+one or more tasks.  The Workflow API includes methods workflow.get_analysis_tasks(), and get_analysis_task_info() 
+(discussed below) to help clients identify and prepare for the types of tasks a Workflow will produce.  </p>
+<h3 id="inspecting-tasks-in-workflow-definition"><strong>Inspecting Tasks in Workflow Definition</strong></h3>
+<p>A Python OliveWorkflow object (olivepy.workflow.OliveWorkflow) provides two methods to query the underlying 
+Workflow Definition about the data and tasks that it supports.  These methods are get_analysis_tasks() and 
+get_analysis_task_info().  The first method, get_analysis_tasks(), returns the names of the tasks supported by this 
+workflow, while the second method, get_analysis_task_info(), returns the names of the tasks plus details such as the 
+type of score (Fame, Region, Global) returned by this task and when possible the name of the plugin/domain used to 
+implement this task.  get_analysis_task_info() also returns information about the data used by the job.</p>
+<p>For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">print(&quot;Analysis Tasks: {}&quot;.format(workflow.get_analysis_tasks()))</span>
+</code></pre></div>
+
+<p>Outputs</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Analysis Tasks: [&#39;SAD&#39;, &#39;LID&#39;]</span>
+</code></pre></div>
+
+<p>For more detailed information about these tasks use get_analysis_task_info():</p>
+<div class="codehilite"><pre><span></span><code><span class="err">tasks_json = workflow.get_analysis_task_info()</span>
+<span class="err"># Pretty print the output using json.dumps:</span>
+<span class="err">print(&quot;Analysis Task Info: {}&quot;.format(json.dumps(tasks_json, indent=1)))</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Analysis Task Info: [</span>
+<span class="err"> {</span>
+<span class="err"> &quot;data&quot;: {</span>
+<span class="err">    &quot;minNumberInputs&quot;: 1,</span>
+<span class="err">    &quot;maxNumberInputs&quot;: 1,</span>
+<span class="err">    &quot;type&quot;: &quot;AUDIO&quot;,</span>
+<span class="err">    &quot;preprocessingRequired&quot;: true,</span>
+<span class="err">    &quot;resampleRate&quot;: 8000,</span>
+<span class="err">    &quot;mode&quot;: &quot;MONO&quot;</span>
+<span class="err">   },</span>
+<span class="err">  &quot;SAD&quot;: {</span>
+<span class="err">   &quot;messageType&quot;: &quot;REGION_SCORER_REQUEST&quot;,</span>
+<span class="err">   &quot;traitOutput&quot;: &quot;REGION_SCORER&quot;,</span>
+<span class="err">   &quot;task&quot;: &quot;SAD&quot;,</span>
+<span class="err">   &quot;consumerDataLabel&quot;: &quot;audio&quot;,</span>
+<span class="err">   &quot;consumerResultLabel&quot;: &quot;SAD&quot;,</span>
+<span class="err">   &quot;returnResult&quot;: true,</span>
+<span class="err">   &quot;job_name&quot;: &quot;Basic SAD and LID workflow&quot;,</span>
+<span class="err">   &quot;analysis&quot;: {</span>
+<span class="err">    &quot;plugin&quot;: &quot;sad-dnn&quot;,</span>
+<span class="err">    &quot;domain&quot;: &quot;multi-v1&quot;</span>
+<span class="err">   }</span>
+<span class="err">  },</span>
+<span class="err">  &quot;LID&quot;: {</span>
+<span class="err">   &quot;messageType&quot;: &quot;GLOBAL_SCORER_REQUEST&quot;,</span>
+<span class="err">   &quot;traitOutput&quot;: &quot;GLOBAL_SCORER&quot;,</span>
+<span class="err">   &quot;task&quot;: &quot;LID&quot;,</span>
+<span class="err">   &quot;consumerDataLabel&quot;: &quot;audio&quot;,</span>
+<span class="err">   &quot;consumerResultLabel&quot;: &quot;LID&quot;,</span>
+<span class="err">   &quot;returnResult&quot;: true,</span>
+<span class="err">   &quot;job_name&quot;: &quot;Basic SAD and LID workflow&quot;,</span>
+<span class="err">   &quot;analysis&quot;: {</span>
+<span class="err">    &quot;plugin&quot;: &quot;lid-embedplda&quot;,</span>
+<span class="err">    &quot;domain&quot;: &quot;multi-v1&quot;</span>
+<span class="err">   }</span>
+<span class="err">  }</span>
+<span class="err"> }</span>
+<span class="err">]</span>
+</code></pre></div>
+
+<p>In the above example, the 'traitOutput' attribute, identifies the type of score out produced by the task.  This 
+attribute lets clients know the type of score produced by this task.  Currently, Workflow tasks return one of these 
+three score (analysis) types: </p>
+<ul>
+<li>FRAME_SCORER - these tasks create a set of scores for each frame in the submitted audio.  Typically 
+frame scoring is returned by SAD plugins to provide a set of frame scores for 'speech'. For users of the 
+Enterprise API, this the output from a FrameScorerResult message.</li>
+<li>GLOBAL_SCORER - these tasks create a single set of scores (one per class) for an entire audio.  In the 
+Enterprise API this maps to a GlobalScorerResult message.</li>
+<li>REGION_SCORER - these tasks create a set of scores for regions in the audio submission.  In 
+the Enterprise API this maps to a RegionScorerResult message  </li>
+</ul>
+<h3 id="parsing-analysis-output"><strong>Parsing Analysis Output</strong></h3>
+<p>Analysis output is grouped into one or more 'jobs', where a job is the audio info plus the analysis task result(s). In the example above, one audio file was serialized, then submitted to OLIVE for analysis by SAD and LID tasks.  This resulted in an OLIVE response containing the SAD and LID task results, plus information about the audio used for analysis. Since only one file was submitted for analysis, only one 'job' was returned. Had two audio files been submitted, then OLIVE would have created two job results - one for each file submitted.</p>
+<p>Each job will have a data element that describes properties of the audio used for analysis and one or more 'task' elements that contain the analysis results which are either frame scores, global scores, or region scores.</p>
+<h4 id="frame-scorer-task-output"><strong>Frame Scorer Task Output</strong></h4>
+<p>Tasks that return frame scores, are based the Enterprise API FrameScoreResult message:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">//</span> <span class="n">The</span> <span class="n">results</span> <span class="k">from</span> <span class="n">a</span> <span class="n">FrameScorerRequest</span>
+<span class="n">message</span> <span class="n">FrameScorerResult</span> <span class="err">{</span>
+  <span class="n">repeated</span> <span class="n">FrameScores</span> <span class="k">result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span> <span class="n">List</span> <span class="k">of</span> <span class="n">frame</span> <span class="n">scores</span> <span class="k">by</span> <span class="n">class_id</span>
+<span class="err">}</span>
+
+<span class="o">//</span> <span class="n">The</span> <span class="n">basic</span> <span class="n">unit</span> <span class="k">of</span> <span class="n">a</span> <span class="n">frame</span> <span class="n">score</span><span class="p">,</span> <span class="n">returned</span> <span class="k">in</span> <span class="n">a</span> <span class="n">FrameScorerRequest</span>
+<span class="n">message</span> <span class="n">FrameScores</span> <span class="err">{</span>
+  <span class="n">required</span> <span class="n">string</span> <span class="n">class_id</span>     <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="k">class</span> <span class="n">id</span> <span class="k">to</span> <span class="n">which</span> <span class="n">the</span> <span class="n">frame</span> <span class="n">scores</span> <span class="n">pertain</span>
+  <span class="n">required</span> <span class="n">int32</span>  <span class="n">frame_rate</span>   <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="nb">number</span> <span class="k">of</span> <span class="n">frames</span> <span class="n">per</span> <span class="k">second</span>
+  <span class="n">required</span> <span class="n">double</span> <span class="n">frame_offset</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="k">offset</span> <span class="k">to</span> <span class="n">the</span> <span class="n">center</span> <span class="k">of</span> <span class="n">the</span> <span class="n">frame</span> <span class="s1">&#39;window&#39;</span>
+  <span class="n">repeated</span> <span class="n">double</span> <span class="n">score</span>        <span class="o">=</span> <span class="mi">4</span> <span class="p">[</span><span class="n">packed</span><span class="o">=</span><span class="k">true</span><span class="p">];</span> <span class="o">//</span> <span class="n">The</span> <span class="n">frame</span><span class="o">-</span><span class="k">level</span> <span class="n">scores</span> <span class="k">for</span> <span class="n">the</span> <span class="n">class_id</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<p>The JSON output for frame score results has the form:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">result</span><span class="o">[</span><span class="n"> {classId:str, frameRate:int, frameOffset:double, score:[double</span><span class="o">]</span><span class="err">}</span><span class="w"> </span><span class="err">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>Here is an example of SAD output as frame scores:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">&quot;tasks&quot;: {</span>
+<span class="err">...</span>
+<span class="err"> &quot;SAD&quot;: {</span>
+<span class="err">  &quot;taskTrait&quot;: &quot;FRAME_SCORER&quot;,</span>
+<span class="err">  &quot;taskType&quot;: &quot;SAD&quot;,</span>
+<span class="err">  &quot;messageType&quot;: &quot;FRAME_SCORER_RESULT&quot;,</span>
+<span class="err">  &quot;analysis&quot;: {</span>
+<span class="err">   &quot;result&quot;: [</span>
+<span class="err">    {</span>
+<span class="err">     &quot;classId&quot;: &quot;speech&quot;,</span>
+<span class="err">     &quot;frameRate&quot;: 100,</span>
+<span class="err">     &quot;frameOffset&quot;: 0.0,</span>
+<span class="err">     &quot;score&quot;: [</span>
+<span class="err">      -1.65412407898345,</span>
+<span class="err">      -1.65412407898345,</span>
+<span class="err">      -1.6976179167708825,</span>
+<span class="err">      -1.7201831820448585,</span>
+<span class="err">      -1.7218198748053783,</span>
+<span class="err">      -1.7285406659981328,</span>
+<span class="err">      -1.7403455556231222,</span>
+<span class="err">      -1.7572345436803467,</span>
+<span class="err">      -1.779207630169806,</span>
+<span class="err">      -1.8052880586341415,</span>
+<span class="err">      ...</span>
+<span class="err">      ]</span>
+<span class="err">        }</span>
+<span class="err">       ]</span>
+<span class="err">      },</span>
+<span class="err">      &quot;plugin&quot;: &quot;sad-dnn&quot;,</span>
+<span class="err">      &quot;domain&quot;: &quot;multi-v1&quot;</span>
+<span class="err">     },</span>
+</code></pre></div>
+
+<h4 id="global-scorer-tasks"><strong>Global Scorer Tasks</strong></h4>
+<p>Tasks that return global scores, are based on the Enterprise API's GlobalScorerResult message:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">message</span> <span class="n">GlobalScorerResult</span> <span class="err">{</span>
+  <span class="n">repeated</span> <span class="n">GlobalScore</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="k">class</span> <span class="n">scores</span>
+<span class="err">}</span>
+
+<span class="o">//</span> <span class="n">The</span> <span class="k">global</span> <span class="n">score</span> <span class="k">for</span> <span class="n">a</span> <span class="k">class</span>
+<span class="n">message</span> <span class="n">GlobalScore</span> <span class="err">{</span>
+  <span class="n">required</span> <span class="n">string</span> <span class="n">class_id</span>      <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="k">class</span>
+  <span class="n">required</span> <span class="nb">float</span>  <span class="n">score</span>         <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="n">score</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">the</span> <span class="k">class</span>
+  <span class="n">optional</span> <span class="nb">float</span>  <span class="n">confidence</span>    <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="o">//</span> <span class="n">An</span> <span class="n">optional</span> <span class="n">confidence</span> <span class="n">value</span> <span class="k">when</span> <span class="n">part</span> <span class="k">of</span> <span class="n">a</span> <span class="n">calibration</span> <span class="n">report</span>
+  <span class="n">optional</span> <span class="n">string</span> <span class="k">comment</span>       <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="o">//</span> <span class="n">An</span> <span class="n">optional</span> <span class="n">suggested</span> <span class="n">action</span> <span class="k">when</span> <span class="n">part</span> <span class="k">of</span> <span class="n">a</span> <span class="n">calibration</span> <span class="n">report</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<p>The JSON output for global score results has the form:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">score</span><span class="o">[</span><span class="n"> {classId:str, score:[float</span><span class="o">]</span><span class="err">}</span><span class="w"> </span><span class="err">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>Here is an example of LID output as global scores:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">&quot;tasks&quot;: {</span>
+<span class="err">...</span>
+<span class="err">&quot;LID&quot;: {</span>
+<span class="err">    &quot;taskTrait&quot;: &quot;GLOBAL_SCORER&quot;,</span>
+<span class="err">    &quot;taskType&quot;: &quot;LID&quot;,</span>
+<span class="err">    &quot;messageType&quot;: &quot;GLOBAL_SCORER_RESULT&quot;,</span>
+<span class="err">    &quot;analysis&quot;: {</span>
+<span class="err">     &quot;score&quot;: [</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;eng&quot;,</span>
+<span class="err">       &quot;score&quot;: 2.5195693969726562</span>
+<span class="err">      },</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;apc&quot;,</span>
+<span class="err">       &quot;score&quot;: -3.509812355041504</span>
+<span class="err">      },</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;tgl&quot;,</span>
+<span class="err">       &quot;score&quot;: -3.566483974456787</span>
+<span class="err">      },</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;arb&quot;,</span>
+<span class="err">       &quot;score&quot;: -3.994529962539673</span>
+<span class="err">      },</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;fre&quot;,</span>
+<span class="err">       &quot;score&quot;: -21.55596160888672</span>
+<span class="err">      }</span>
+<span class="err">     ]</span>
+<span class="err">    },</span>
+<span class="err">    &quot;plugin&quot;: &quot;lid-embedplda&quot;,</span>
+<span class="err">    &quot;domain&quot;: &quot;multi-v1&quot;</span>
+<span class="err">   }</span>
+</code></pre></div>
+
+<h4 id="region-scorer-tasks"><strong>Region Scorer Tasks</strong></h4>
+<p>Tasks that return region scores, are based on the Enterprise API's RegionScorerResult message:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// The region score result</span>
+<span class="n">message</span> <span class="n">RegionScorerResult</span> <span class="p">{</span>
+  <span class="n">repeated</span> <span class="n">RegionScore</span> <span class="n">region</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span> <span class="c1">// The scored regions</span>
+<span class="p">}</span>
+
+<span class="c1">// The basic unit a region score.  There may be multiple RegionScore values in a RegionScorerResult</span>
+<span class="n">message</span> <span class="n">RegionScore</span> <span class="p">{</span>
+  <span class="n">required</span> <span class="n">float</span>   <span class="n">start_t</span>  <span class="o">=</span> <span class="mh">1</span><span class="p">;</span> <span class="c1">// Begin-time of the region (in seconds)</span>
+  <span class="n">required</span> <span class="n">float</span>   <span class="n">end_t</span>    <span class="o">=</span> <span class="mh">2</span><span class="p">;</span> <span class="c1">// End-time of t he region (in seconds)</span>
+  <span class="n">required</span> <span class="k">string</span>  <span class="n">class_id</span> <span class="o">=</span> <span class="mh">3</span><span class="p">;</span> <span class="c1">// Class ID associated with region</span>
+  <span class="n">optional</span> <span class="n">float</span>   <span class="n">score</span>    <span class="o">=</span> <span class="mh">4</span><span class="p">;</span> <span class="c1">// Optional score associated with the class_id label</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The JSON output for region score results has the form:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">score[ {startT:float, endT:float, classId:str, score:float} ]</span>
+</code></pre></div>
+
+<p>Here is an example of SAD output as region score:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">&quot;tasks&quot;: {</span>
+<span class="err">       &quot;SAD&quot;: {</span>
+<span class="err">        &quot;taskTrait&quot;: &quot;REGION_SCORER&quot;,</span>
+<span class="err">        &quot;taskType&quot;: &quot;SAD&quot;,</span>
+<span class="err">        &quot;messageType&quot;: &quot;REGION_SCORER_RESULT&quot;,</span>
+<span class="err">        &quot;analysis&quot;: {</span>
+<span class="err">         &quot;region&quot;: [</span>
+<span class="err">          {</span>
+<span class="err">           &quot;startT&quot;: 3.3399999141693115,</span>
+<span class="err">           &quot;endT&quot;: 10.5,</span>
+<span class="err">           &quot;classId&quot;: &quot;speech&quot;,</span>
+<span class="err">           &quot;score&quot;: 0.0</span>
+<span class="err">          }</span>
+<span class="err">         ]</span>
+<span class="err">        },</span>
+<span class="err">        &quot;plugin&quot;: &quot;sad-dnn&quot;,</span>
+<span class="err">        &quot;domain&quot;: &quot;vtd-v1&quot;</span>
+<span class="err">       },</span>
+</code></pre></div>
+
+<h3 id="enrolled-classes"><strong>Enrolled Classes</strong></h3>
+<p>To list the current classes (such as speakers for a SID task, or languages for LID) in a workflow, 
+use the OliveWorkflow get_analysis_class_ids method:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;~/olive/sad_lid_sid.workflow&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">workflow</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">class_status_response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_analysis_class_ids</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Task Class IDs: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">class_status_response</span><span class="o">.</span><span class="n">get_response_as_json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">))</span>
+
+<span class="n">Enrollment</span> <span class="n">Class</span> <span class="n">IDs</span><span class="p">:</span> 
+ <span class="p">[</span>
+ <span class="p">{</span>
+  <span class="s2">&quot;job_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SAD LID, SID&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;tasks&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="s2">&quot;SAD&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;classId&quot;</span><span class="p">:</span> <span class="p">[</span>
+     <span class="s2">&quot;speech&quot;</span>
+    <span class="p">]</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;LID&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;classId&quot;</span><span class="p">:</span> <span class="p">[</span>
+     <span class="s2">&quot;amh&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;apc&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;arb&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;arz&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;cmn&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;eng&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;fas&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;fre&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;jpn&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;kor&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;pus&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;rus&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;spa&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;tgl&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;tha&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;tur&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;urd&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;vie&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;yue&quot;</span>
+    <span class="p">]</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;SID&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;classId&quot;</span><span class="p">:</span> <span class="p">[</span>
+     <span class="s2">&quot;test speaker&quot;</span>
+    <span class="p">]</span>
+   <span class="p">}</span>
+  <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>Note that some tasks, such as SID, support enrollment, so the list of class IDs can can change over time as new 
+enrollments are added.</p>
+<h2 id="multi-channel-audio"><strong>Multi-channel Audio</strong></h2>
+<p>The default workflow behavior is to merge multi-channel audio into a single channel, which is known as 'MONO' mode. To perform analysis on each channel instead of a merged channel, then the Workflow Definition must be authored with a data mode of 'SPLIT'.   When using the split mode, each channel in a multi-channel audio input is "split" into a job.</p>
+<p>Here is a typical workflow that merges any multi-channel audio into a single channel audio input:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;~/olive/sad_lid_sid.workflow&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">workflow</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">json_ouput</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_analysis_task_info</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_output</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> 
+<span class="p">[</span>
+ <span class="p">{</span>
+  <span class="s2">&quot;Preprocess Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="s2">&quot;minNumberInputs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="s2">&quot;maxNumberInputs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;AUDIO&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;preprocessingRequired&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+   <span class="s2">&quot;resampleRate&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+   <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;MONO&quot;</span>
+  <span class="p">},</span>
+  <span class="o">...</span>
+</code></pre></div>
+
+<p>Here is a workflow that will split each channel in a multi-channel (stereo) audio input into separate jobs:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;~/olive/multi_channel_sad_lid_sid.workflow&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">workflow</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">json_ouput</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_analysis_task_info</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_output</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> 
+<span class="p">[</span>
+ <span class="p">{</span>
+  <span class="s2">&quot;Preprocess Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="s2">&quot;minNumberInputs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="s2">&quot;maxNumberInputs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;AUDIO&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;preprocessingRequired&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+   <span class="s2">&quot;resampleRate&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+   <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;SPLIT&quot;</span>
+  <span class="p">},</span>
+  <span class="o">...</span>
+</code></pre></div>
+
+<p>The above Workflow Definition when applied to stereo file will produce a set of SAD, LID, and SID scores for each channel.</p>
+<h2 id="adaption-using-a-workflow"><strong>Adaption Using a Workflow</strong></h2>
+<p>Not yet implemented via a Workflow.  The adaption process is complicated, time-consuming, and plugin/domain specific.  Until 
+Adaptation via a workflow is implemented, please use the SRI provided Python client (olivepylearn) or Java client 
+(OliveLearn) to perform adaptation.     </p>
+<p>To adapt using the olivepylearn utility:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">olivepylearn --plugin sad-dnn --domain multi-v1 -a TEST_NEW_DOMAIN -i /olive/sadRegression/lists/adapt_s.lst</span>
+</code></pre></div>
+
+<p>Where that adapt_s.lst looks like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">/olive/sadRegression/audio/adapt/20131209T225239UTC_10777_A.wav S 20.469 21.719</span>
+<span class="err">/olive/sadRegression/audio/adapt/20131209T225239UTC_10777_A.wav NS 10.8000 10.8229</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131209T234551UTC_10782_A.wav S 72.898 73.748</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131209T234551UTC_10782_A.wav NS 42.754 43.010</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131210T184243UTC_10791_A.wav S 79.437 80.427</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131210T184243UTC_10791_A.wav NS 61.459 62.003</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T030311UTC_10817_A.wav S 11.0438 111.638</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T030311UTC_10817_A.wav NS 69.058 73.090</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T052052UTC_10823_A.wav S 112.936 113.656</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T052052UTC_10823_A.wav NS 83.046 83.114</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T064501UTC_10831_A.wav S 16.940 20.050</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T064501UTC_10831_A.wav NS 59.794 59.858</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T084501UTC_10856_A.wav S 87.280 88.651</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T084501UTC_10856_A.wav NS 82.229 82.461</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T101501UTC_10870_A.wav S 111.346 111.936</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T101501UTC_10870_A.wav NS 83.736 84.446</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T104501UTC_10876_A.wav S 77.291 78.421</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T104501UTC_10876_A.wav NS 0 4.951</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T111501UTC_10878_A.wav S 30.349 32.429</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T111501UTC_10878_A.wav NS 100.299 101.647</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T114501UTC_10880_A.wav S 46.527 49.147</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T114501UTC_10880_A.wav NS 44.747 46.148</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T134501UTC_10884_A.wav S 24.551 25.471</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T134501UTC_10884_A.wav NS 52.033 52.211</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T141502UTC_10887_A.wav S 88.358 93.418</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T141502UTC_10887_A.wav NS 46.564 46.788</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T151501UTC_10895_A.wav S 10.507 11.077</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T151501UTC_10895_A.wav NS 41.099 41.227</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T154502UTC_10906_A.wav S 61.072 63.002</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131212T154502UTC_10906_A.wav NS 19.108 19.460</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T023248UTC_10910_A.wav S 97.182 97.789</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T023248UTC_10910_A.wav NS 71.711 71.732</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T041143UTC_10913_A.wav S 114.312 117.115</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T041143UTC_10913_A.wav NS 31.065 31.154</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T044200UTC_10917_A.wav S 90.346 91.608</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T044200UTC_10917_A.wav NS 50.028 51.377</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T050721UTC_10921_A.wav S 75.986 76.596</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T050721UTC_10921_A.wav NS 12.485 12.709</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T071501UTC_11020_A.wav S 72.719 73.046</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T071501UTC_11020_A.wav NS 51.923 53.379</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T104502UTC_18520_A.wav NS 11.1192 112.761</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T121501UTC_18530_A.wav NS 81.277 82.766</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T124501UTC_18533_A.wav NS 83.702 84.501</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131213T134502UTC_18567_A.wav NS 69.379 72.258</span>
+<span class="err">/olive//sadRegression/audio/adapt/20131217T015001UTC_18707_A.wav NS 5.099 10.507</span>
+</code></pre></div>
+
+<p>You may also incorporate the adapt code from olivepy.oliveclient directly into your client:</p>
+<div class="codehilite"><pre><span></span><code>    <span class="c1"># Setup processing variables (get this config or via command line options</span>
+    <span class="n">plugin</span> <span class="o">=</span> <span class="s2">&quot;sad-dnn&quot;</span>
+    <span class="n">domain</span> <span class="o">=</span> <span class="s2">&quot;multi-v1&quot;</span>
+    <span class="n">new_domain_name</span> <span class="o">=</span> <span class="s2">&quot;python_adapted_multi-v2&quot;</span>
+
+    <span class="c1"># Build the list of files plus the regions in the those files to adapt by parsing the input file:</span>
+    <span class="n">file_annotations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_annotation_file</span><span class="p">(</span><span class="s2">&quot;lists/adapt.lst&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">adapt_supervised_old</span><span class="p">(</span><span class="n">plugin</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">file_annotations</span><span class="p">,</span> <span class="n">new_domain_name</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="python-workflow-example"><strong>Python Workflow Example</strong></h2>
+<p>As previously mentioned, SRI distributes Workflow Definitions as files, which are preconfigured to perform tasks 
+such as SAD, LID, SID, etc.  The example below uses a Workflow Definition file with the SRI implemented Python Workflow 
+API to make a SAD and LID request via a Workflow Definition file:</p>
+<div class="codehilite"><pre><span></span><code>    <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">sys</span>
+    <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
+    <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+    <span class="kn">import</span> <span class="nn">olivepy.messaging.msgutil</span> <span class="kn">as</span> <span class="nn">msgutil</span>
+
+    <span class="c1"># Create a connection to a local OLIVE server</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;test olive client&quot;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+    <span class="c1"># Example workflow definition file:</span>
+    <span class="n">workflow_filename</span> <span class="o">=</span> <span class="s2">&quot;~/sad_lid.workflow&quot;</span>
+    <span class="n">workflow_def</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="n">workflow_filename</span><span class="p">)</span>
+
+    <span class="c1"># Submit the workflow definition to the client for actualization (instantiation or sometimes called activation):</span>
+    <span class="n">workflow</span> <span class="o">=</span> <span class="n">workflow_def</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+    <span class="c1"># Prepare a audio file to submit (as a serialzied file)</span>
+    <span class="n">audio_filename</span> <span class="o">=</span> <span class="s2">&quot;~/audio/test_audio.wav&quot;</span>
+    <span class="n">buffers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># read in the file as raw bytes so a buffer can be sent to the server as a buffer:</span>
+    <span class="nb">buffer</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">serialize_audio</span><span class="p">(</span><span class="n">audio_filename</span><span class="p">)</span>
+    <span class="n">data_wrapper</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">audio_filename</span><span class="p">)</span>
+    <span class="n">buffers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_wrapper</span><span class="p">)</span>
+
+    <span class="c1"># OR - if the server and client share a filesystem, uncomment the following to send the path to the audio file instead of a buffer:</span>
+    <span class="c1"># data_wrapper = workflow.package_audio(audio_filename, mode=msgutil.AudioTransferType.AUDIO_PATH)</span>
+
+    <span class="c1"># Submit the workflow to OLIVE for analysis:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">buffers</span><span class="p">)</span>
+
+    <span class="c1"># response will contain an error message if the workflow failed, or results for each task:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Workflow results:&quot;</span><span class="p">)</span>
+    <span class="c1"># Use json.dumps to pretty print the json output:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">get_response_as_json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+
+    <span class="c1"># Be sure to close the connection to the server when done </span>
+    <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</code></pre></div>
+
+<p>For the above code, one would see JSON formatted output like this (of course your output will vary by the audio 
+submitted for analysis):</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Workflow results:</span>
+<span class="err">[</span>
+<span class="err"> {</span>
+<span class="err">  &quot;job_name&quot;: &quot;Simple SAD and LID workflow&quot;,</span>
+<span class="err">  &quot;data&quot;: [</span>
+<span class="err">   {</span>
+<span class="err">    &quot;dataId&quot;: &quot;test_audio.wav&quot;,</span>
+<span class="err">    &quot;msgType&quot;: &quot;PREPROCESSED_AUDIO_RESULT&quot;,</span>
+<span class="err">    &quot;mode&quot;: &quot;MONO&quot;,</span>
+<span class="err">    &quot;merged&quot;: false,</span>
+<span class="err">    &quot;sampleRate&quot;: 8000,</span>
+<span class="err">    &quot;durationSeconds&quot;: 10.509625434875488,</span>
+<span class="err">    &quot;numberChannels&quot;: 1,</span>
+<span class="err">    &quot;label&quot;: &quot;~/audio/test_audio.wav&quot;,</span>
+<span class="err">    &quot;id&quot;: &quot;edd6f2d8abb69e754cc4bd03c2d3f60379255048fdb20a8924858c0723ea4bbd&quot;</span>
+<span class="err">   }</span>
+<span class="err">  ],</span>
+<span class="err">  &quot;tasks&quot;: {</span>
+<span class="err">   &quot;SAD&quot;: {</span>
+<span class="err">    &quot;taskTrait&quot;: &quot;REGION_SCORER&quot;,</span>
+<span class="err">    &quot;taskType&quot;: &quot;SAD&quot;,</span>
+<span class="err">    &quot;messageType&quot;: &quot;REGION_SCORER_RESULT&quot;,</span>
+<span class="err">    &quot;analysis&quot;: {</span>
+<span class="err">     &quot;region&quot;: [</span>
+<span class="err">      {</span>
+<span class="err">       &quot;startT&quot;: 3.3399999141693115,</span>
+<span class="err">       &quot;endT&quot;: 10.5,</span>
+<span class="err">       &quot;classId&quot;: &quot;speech&quot;,</span>
+<span class="err">       &quot;score&quot;: 0.0</span>
+<span class="err">      }</span>
+<span class="err">     ]</span>
+<span class="err">    },</span>
+<span class="err">    &quot;plugin&quot;: &quot;sad-dnn&quot;,</span>
+<span class="err">    &quot;domain&quot;: &quot;vtd-v1&quot;</span>
+<span class="err">   },</span>
+<span class="err">   &quot;LID&quot;: {</span>
+<span class="err">    &quot;taskTrait&quot;: &quot;GLOBAL_SCORER&quot;,</span>
+<span class="err">    &quot;taskType&quot;: &quot;LID&quot;,</span>
+<span class="err">    &quot;messageType&quot;: &quot;GLOBAL_SCORER_RESULT&quot;,</span>
+<span class="err">    &quot;analysis&quot;: {</span>
+<span class="err">     &quot;score&quot;: [</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;eng&quot;,</span>
+<span class="err">       &quot;score&quot;: 2.5195693969726562</span>
+<span class="err">      },</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;apc&quot;,</span>
+<span class="err">       &quot;score&quot;: -3.509812355041504</span>
+<span class="err">      },</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;tgl&quot;,</span>
+<span class="err">       &quot;score&quot;: -3.566483974456787</span>
+<span class="err">      },</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;arb&quot;,</span>
+<span class="err">       &quot;score&quot;: -3.994529962539673</span>
+<span class="err">      },</span>
+<span class="err">      {</span>
+<span class="err">       &quot;classId&quot;: &quot;fre&quot;,</span>
+<span class="err">       &quot;score&quot;: -21.55596160888672</span>
+<span class="err">      }</span>
+<span class="err">     ]</span>
+<span class="err">    },</span>
+<span class="err">    &quot;plugin&quot;: &quot;lid-embedplda&quot;,</span>
+<span class="err">    &quot;domain&quot;: &quot;multi-v1&quot;</span>
+<span class="err">   }</span>
+<span class="err">  }</span>
+<span class="err"> }</span>
+<span class="err">]</span>
+</code></pre></div>
+
+<hr />
+<h2 id="api-specification"><strong>API Specification</strong></h2>
+<h3 id="oliveworkflowdefinition">OliveWorkflowDefinition</h3>
+<p><code>class olivepy.workflow.OliveWorkflowDefinition(filename: str)</code></p>
+<p>The class is used to load a Workflow Definition from a file.</p>
+<p><em>Parameters</em></p>
+<ul>
+<li>filename: the name of the workflow definition file</li>
+</ul>
+<h4 id="create_workflow">create_workflow()</h4>
+<p>create_workflow(client: olivepy.olive_async_client.AsyncOliveClient)</p>
+<p>Create a new Workflow for making OLIVE analysis, enrollment, or adaptation requests</p>
+<p><em>Parameters</em></p>
+<ul>
+<li>client: a valid, client connection to an OLIVE server</li>
+</ul>
+<p><em>Returns</em></p>
+<ul>
+<li>A new OliveWorkflow object, which  has been actualized (activated) by the olive server and</li>
+</ul>
+<h4 id="get_json">get_json()</h4>
+<p>Create a JSON structure of the Workflow output</p>
+<p><em>Returns</em></p>
+<ul>
+<li>A JSON formated dictionary of the Workflow Definition </li>
+</ul>
+<hr />
+<h3 id="workflowexception">WorkflowException</h3>
+<p><code>exception olivepy.workflow.WorkflowException()</code></p>
+<p>Bases: <code>Exception</code></p>
+<p>This exception means that an error occurred handling a Workflow     </p>
+<hr />
+<h3 id="oliveworkflow">OliveWorkflow</h3>
+<p><code>class olivepy.workflow.OliveWorkflow(olive_async_client: olivepy.olive_async_client.AsyncOliveClient, actualized_workflow: olivepy.messaging.response.OliveWorkflowActualizedResponse)</code></p>
+<p>An OliveWorkflow instance represents a Workflow actualized by an OLIVE server, and is ready for analysis,
+enrollment, or adaptation.</p>
+<p><em>Parameters</em>   </p>
+<ul>
+<li>filename: the name of the workflow definition file</li>
+</ul>
+<p><em>Raises</em></p>
+<ul>
+<li><strong>WorkflowException</strong> – If the workflow was not actualized</li>
+</ul>
+<h4 id="serialize_audio">serialize_audio()</h4>
+<p><code>serialize_audio(filename: str)</code></p>
+<p>Read in an audio file as a serialized buffer.  This is a helper utility for package_audio() when using the 
+AUDIO_SERIALIZED mode and the audio input has not yet been serialized</p>
+<p><em>Parameters</em>   </p>
+<ul>
+<li>filename: the local path to the file</li>
+</ul>
+<p><em>Returns</em></p>
+<ul>
+<li>The contents of the file as a byte buffer, otherwise an exception if the file can not be opened.  This buffer contains the raw content of the file, it does NOT contain encoded samples</li>
+</ul>
+<h4 id="analyze">analyze()</h4>
+<p><code>analyze(data_inputs: List[olive_pb2.WorkflowDataRequest], callback=None, options: Optional[Dict[str, str]] = None)</code></p>
+<p>Perform a workflow analysis </p>
+<p><em>Parameters</em></p>
+<ul>
+<li>data_inputs – a list of data inputs created using the package_audio(), package_text(), package_image(), or package_video() method.</li>
+<li>callback – an optional function callback that is invoked with the workflow completes.  If not specified this method blocks, returning an OliveWorkflowAnalysisResponse when done.  Otherwise, this method immediately returns and the callback method is invoked when the response is received.  The call back function must accept 3 parameters (request, response, and error message)</li>
+<li>options – a dictionary of name/value option pairs to include with the analysis request</li>
+</ul>
+<p><em>Returns</em></p>
+<ul>
+<li>An OliveWorkflowAnalysisResponse if no callback provided</li>
+</ul>
+<h4 id="enroll">enroll()</h4>
+<p><code>enroll(data_inputs: List[olive_pb2.WorkflowDataRequest], class_id: str, task_names: List[str], callback=None, options=None)</code></p>
+<p>Submit data for enrollment.</p>
+<p><em>Parameters</em></p>
+<ul>
+<li>data_inputs – a list of data inputs created using the package_audio(), package_text(), package_image(), or package_video() method.</li>
+<li>class_id – the name of the enrollment</li>
+<li>task_names – a list of task names, where the audio is enrolled with tasks (NOTE only one task currently supported) that support enrollment.  This value can be None, in which case the data input(s) is enrolled for each enrollable task.</li>
+<li>callback – an optional function callback that is invoked with the workflow completes.  If not specified this method blocks, returning OliveWorkflowAnalysisResponse when done.  Otherwise this method immediately returns and the callback method is invoked when the response is received.</li>
+<li>options – a dictionary of name/value option pairs to include with the analysis request</li>
+</ul>
+<p><em>Returns</em></p>
+<ul>
+<li>An OliveWorkflowEnrollmentResponse if no callback provided</li>
+</ul>
+<h4 id="get_analysis_class_ids">get_analysis_class_ids()</h4>
+<p><code>get_analysis_class_ids(callback=None)</code></p>
+<p>Query OLIVE for the current class IDs (i.e. speaker names for SID, keywords for QbE, etc)</p>
+<p><em>Parameters</em></p>
+<ul>
+<li>callback - a callback method that accepts a OliveClassStatusResponse object.  Such as: my_callback(result : response.OliveClassStatusResponse)</li>
+</ul>
+<p><em>Returns</em></p>
+<ul>
+<li>An OliveClassStatusResponse object if no callback specified, otherwise the callback receives the OliveClassStatusResponse object</li>
+</ul>
+<h4 id="get_analysis_task_info">get_analysis_task_info()</h4>
+<p><code>get_analysis_task_info()</code></p>
+<p>Reports information on the tasks used for analysis from the actualized workflow.  When possible, this reports the plugins used in the workflow (although there can be cases when the final plugin/domain used is not known until runtime)</p>
+<p><em>Returns</em></p>
+<ul>
+<li>A list of dictionaries, where each dictionary contains information about an analysis task</li>
+</ul>
+<h4 id="get_analysis_tasks">get_analysis_tasks()</h4>
+<p><code>get_analysis_tasks(job_name: Optional[str] = None)</code></p>
+<p>Return a list of tasks supported by this workflow.  These names are unique and can generally be assumed they are named 
+after the task type (SAD, LID, SID, etc) they support but they could use alternate names if there are multiple tasks 
+with the same task type in a workflow (for example a workflow could have a SAD task that does frame scoring and a SAD 
+task that does regions scoring)</p>
+<p>It is possible, although unlikely, that a Workflow could define two of the the same type of tasks in a job. The keys
+in the dictionary ensure that the tasks in a workflow have a unique name.</p>
+<p><em>Parameters</em></p>
+<ul>
+<li>job_name – the name of the analysis job.  Optional since most workflows only support one analysis job and ‘jobs; may be hidden from users in a future release.</li>
+</ul>
+<p><em>Returns</em></p>
+<ul>
+<li>a list of task names</li>
+</ul>
+<h4 id="get_enrollment_tasks">get_enrollment_tasks()</h4>
+<p><code>get_enrollment_tasks(job_name: Optional[str] = None)</code></p>
+<p>Return a list of tasks supported by this workflow.  These names are unique and can generally be assumed they are named 
+after the task type (SAD, LID, SID, etc)</p>
+<p><em>Parameters</em></p>
+<ul>
+<li>job_name – the name of the enrollment job.  Optional since most workflows only support one job</li>
+</ul>
+<p><em>Returns</em></p>
+<ul>
+<li>a list of task names</li>
+</ul>
+<h4 id="package_audio">package_audio()</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">package_audio</span><span class="p">(</span><span class="nl">audio_data</span><span class="p">:</span><span class="w"> </span><span class="n">AnyStr</span><span class="p">,</span><span class="w"> </span><span class="n">mode</span><span class="o">=&lt;</span><span class="n">AudioTransferType</span><span class="p">.</span><span class="nl">AUDIO_SERIALIZED</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nl">annotations</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">List[Tuple[float, float</span><span class="o">]</span><span class="err">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span><span class="nl">task_annotations</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="n">Optional</span><span class="o">[</span><span class="n">List[Tuple[float, float</span><span class="o">]</span><span class="err">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span><span class="nl">selected_channel</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">int</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nl">num_channels</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">int</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span><span class="nl">sample_rate</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">int</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nl">num_samples</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">int</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span><span class="nl">validate_local_path</span><span class="p">:</span><span class="w"> </span><span class="n">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="n">label</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>Creates an Audio object that can be submitted with a Workflow analysis, enrollment, or adapt request</p>
+<p><em>Parameters</em></p>
+<ul>
+<li>audio_data – the audio input is a string file path if mode is ‘AUDIO_PATH’, otherwise it should be a binary buffer.  Use serialize_audio() to serialize a file into a buffer, or pass in PCM_16 encoded samples</li>
+<li>mode – specifies how the audio is sent to the server: either as the filename of the audio input (file path must be valid for the server), send as a serialized buffer, or send PCM-16 encoded samples</li>
+<li>annotations – optional regions (start/end regions in seconds) as a list of tuples (start_seconds, end_seconds)</li>
+<li>
+<p>task_annotations – optional regions (start/end regions in seconds) for a task. for example: </p>
+<div class="codehilite"><pre><span></span><code><span class="err"> {‘SHL’: {‘speaker’’:[(0.5, 4.5), (6.8, 9.2)]}, are annotations for the ‘SHL’ task, which are </span>
+<span class="err"> labeled for as class ‘speaker’ and has regions 0.5 to 4.5 and 6.8 to 9.2 </span>
+<span class="err"> (use get_analysis_tasks() to get the name of workflow tasks).</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>selected_channel – optional - the channel to use in the workflow if the audio input is multi-channel</p>
+</li>
+<li>num_channels – The number of channels if audio input is a list of decoded (PCM-16) samples, if not using a buffer of PCM-16 samples this is value is ignored</li>
+<li>sample_rate – The sample rate if audio input is a list of  decoded (PCM-16) samples, if not usingma buffer of PCM-16 samples this is value is ignored </li>
+<li>num_samples – The number of samples if audio input is a list of decoded (PCM-16) samples, if not using a buffer of PCM-16 samples this is value is ignored</li>
+<li>validate_local_path – If sending audio as as a string path name, then check that the path exists on the local filesystem.  In some cases you may want to pass a path which is valid on the server but not this client so validation is not desired</li>
+<li>label – an optional name to use with the audio</li>
+</ul>
+<p><em>Returns</em></p>
+<ul>
+<li>A populated WorkflowDataRequest to use in a workflow activity</li>
+</ul>
+<h4 id="package_image">package_image()</h4>
+<p><code>package_image(image_input)</code></p>
+<p>Not yet supported</p>
+<h4 id="package_text">package_text()</h4>
+<p><code>package_text(text_input: str)</code></p>
+<p>Not yet supported</p>
+<h4 id="package_video">package_video()</h4>
+<p><code>package_video(video_input)</code></p>
+<p>Not yet supported</p>
+<h4 id="adapt">adapt()</h4>
+<p><code>adapt(data_input, callback, options=None, finalize=True)</code></p>
+<p>Not yet supported</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="martini.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                OLIVE Martini Docker Setup
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="apiInfo.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Enterprise API Primer
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3052 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>apiLegacy - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#00bdd6">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="cyan" data-md-color-accent="blue-grey">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              apiLegacy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="requirements.md" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Developer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Developer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="requirements.md" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    
+    <label class="md-nav__link" for="nav-4-3">
+      ASDEC
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="ASDEC" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        ASDEC
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/aed-enrollable-v1.html" class="md-nav__link">
+      Acoustic Event Detection (AED)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/aln-waveformAlignment-v1.html" class="md-nav__link">
+      Waveform Alignment (ALN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-indoorOutdoor-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Indoor/Outdoor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-multiClass-v2.html" class="md-nav__link">
+      Environmental Analysis (ENV) Multi Class
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-powerSupplyHum-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Power Supply
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/env-speakerCount-v1.html" class="md-nav__link">
+      Environmental Analysis (ENV) Speaker Count
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sed-rmsEnergy-v1.html" class="md-nav__link">
+      Signal Energy Detection (SED)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/voi-speakingStyle-v1.html" class="md-nav__link">
+      Voice Characterization (VOI) Speaking Style
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/voi-vocalEffort-v1.html" class="md-nav__link">
+      Voice Characterization (VOI) Vocal Effort
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v7.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v2.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-embed-v6.html" class="md-nav__link">
+      Speaker Identification (SID) Legacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-sbcEmbed-v2.html" class="md-nav__link">
+      Speaker Detection (SDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-sbcEmbed-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7" >
+    
+    <label class="md-nav__link" for="nav-4-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-tdnn-v5.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8" >
+    
+    <label class="md-nav__link" for="nav-4-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9" >
+    
+    <label class="md-nav__link" for="nav-4-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-statistical-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" >
+    
+    <label class="md-nav__link" for="nav-4-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v3.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-embed-v3.html" class="md-nav__link">
+      Topic Detection (TPD) Acoustic-based
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>apiLegacy</h1>
+                
+                <!-- TODO: Finish pulling important pieces from this
+
+# Enterprise API Documentation   
+
+##### TODO: Split this into a 'tutorial' and a reference?
+##### Tutorial would be more general and informal, like the first part of this, and the "Appendix" with the hard code examples would be the reference?
+
+## Introduction
+
+This document provides guidance for implementing OLIVE’s speech processing tools and capabilities within a client application by integrating through the OLIVE Enterprise API (previously known as the SCENIC Enterprise API) and establishing a connection to a running OLIVE Server.  Instructions and examples are presented for building and submitting requests to an OLIVE Server and unpacking the resulting reply. This document should be accompanied by the OLIVE 4.13.0 API Message Reference document, which provides exhaustive specifications for the possible message types and contents. Code examples are provided in Java, or Java-like pseudocode, but the same concepts apply to several different programming languages and can be generalized.
+ 
+
+
+
+
+
+
+## 1. Overview
+
+The OLIVE Enterprise API (previously known as the SCENIC Enterprise API) enables integration of the OLIVE backend system with third-party tools and existing workflows. The OLIVE Enterprise API is client/server based, allowing integrations from a variety of machine types including certain versions of Windows, Linux, and MacOS. The API is a powerful tool for many integration use cases and is continually evolving to address the needs of users and integrators. 
+
+### 1.1 OLIVE Terminology  
+
+#### #TODO A lot of this can be moved elsewhere in the site (or already *is* elsewhere) now that this doesn't have to be a single self-contained document - needs review.
+
+If you are new to the OLIVE Enterprise API then you will quickly discover that the API does not offer explicit API calls for making “SAD”, “SID”, or “LID” requests.  The reason for this is the API is based on the OLIVE Plugin Framework used by the OLIVE server, which abstracts speech systems such as SAD, SID, and LID into “traits”.  It is these “traits” that are expressed in this API, so score and class modification requests are based on the plugins traits and not the type of speech system.  For simplicity, these common systems are usually associated with these traits:
+
+- [Speech Activity Detection (SAD)](plugins/sad.md): FrameScorer 
+- [Language Identification (LID)](plugins/lid.md): GlobalScorer
+- [Speaker Identification (SID)](plugins/sid.md): GlobalScorer
+- [Speaker Diarization and Detection (SDD)](plugins/sdd.md): RegionScorer
+- [Keyword Spotting (KWS)](plugins/kws.md): RegionScorer
+
+Please remember, this may not be true for all plugins and some Plugins may support additional traits.  This mapping is only intended to help introduce the OLIVE Enterprise API and its underlying Plugin Framework to new developers.  
+
+#### #TODO COnvert or expand this section to be based on the plugin traits, make/show table or list of messages associated with each trait, link to message definitions within table, show examples of plugins that have each trait
+
+#### [Plugin Trait Information](alltraitsallday.md)
+
+List of traits, brief description of what trait means, list of messages that each trait implements (optional if optional) that is all linked up and yayyy.
+
+### Traits:
+
+- Trait 1
+    - Trait 1 message 2
+    - Trait 1 message b
+- Trait 2
+    - Trait 2 message a
+    - Trait 2 message b
+
+
+
+### 1.2 API Message Overview
+
+The OLIVE API supports over 20 messages, with many of these messages used as request and response messages:
+
+- [`PluginDirectoryRequest`](apiMessage.md#plugindirectoryrequest) and [`PluginDirectoryResult`](apiMessage.md#plugindirectoryresult) - client request for available plugins.  The PluginDirectoryResult response from the server includes supported plugins, their traits, and any optional parameters they support. 
+- [`FrameScorerRequest`](apiMessage.md#framescorerrequest) and [`FrameScoreResult`](apiMessage.md#framescorerresult) - client request for frame scoring on the specified audio file.  The FrameScoreResult response includes the scores for each frame, where the class(es) being scored are dependent on the plugin being used.
+- [`GlobalScorerRequest`](apiMessage.md#globalscorerrequest) and [`GlobalScorerResult`](apiMessage.md#globalscorerresult) - client request for global scoring on the specified audio file.  The GlobalScorerResult response contains a global score for each supported “class” across the entire file that was submitted (i.e. a class for a LID system would be a language name).
+- [`RegionScorerRequest`](apiMessage.md#regionscorerrequest) and [`RegionScorerResult`](apiMessage.md#regionscorerresult) - client request for region scoring on the specified audio file.  The RegionScorerResult response contains scores for regions and classes supported by the system (i.e. for a KWS system, class would be a supported keyword, and would be reported for a specific region of the submitted audio file).
+- [`ClassModificationRequest`](apiMessage.md#classmodificationrequest) and [`ClassModificationResult`](apiMessage.md#classmodificationresult) - client request for training or adaptation.  The ClassModificationResult response acknowledges the completion of the request.
+
+See the accompanying [API Messages Reference](apiMessage.md) page for the complete details of all available OLIVE API messages.  Also see the appendix below for several examples of using the API and these messages within a Java client. 
+
+### 1.3 Dependencies
+
+The OLIVE API utilizes the following dependencies:
+
+- [Google Protocol Buffers](https://developers.google.com/protocol-buffers) 3.4: Used to define the messages that comprise the OLIVE API. Most messages are in the form of request/reply.
+- [ZeroMQ](https://zeromq.org) 3.2.3: Provides inter-process communication over several possible mechanisms including TCP.
+- [Protobuf-net](https://github.com/protobuf-net/protobuf-net): Optional - needed if you wish to integrate from a .NET/Mono application.
+
+##### #TODO: Chris, is that link correct for protobuf-net?
+
+You will need versions of these software dependencies appropriate for your system architecture/operating system in order to communicate with the OLIVE server.
+
+
+### 1.5 Persistence
+
+As of OLIVE 4.0 the backend OLIVE server and API no longer support persistence.  It is the responsibility of the client to store, manage, and reference results.
+
+##### #TODO: Do we need to mention this? I don't think anyone will remember pre SCENIC 4.0
+
+## 2    Java Client Library 
+
+SRI developed a Java Client Library (scenic-api.jar) to aid in the development of the OLIVE UI.  The library is available for use in third-party integrations. The library takes care of many essential tasks such as tracking message IDs, issuing callbacks, and thread management. Even if you don’t intend to integrate from a Java-based environment, we recommend you study the source code of SRI’s client library as it is the current reference implementation of a OLIVE client.   
+
+See the [Appendix](#appendix) for more in-depth Java code samples for how to submit messages and receive the associated replies in several common OLIVE use cases.
+
+## 3    Running the OLIVE Server
+
+As mentioned above, the OLIVE Enterprise API is client/server based. Therefore, you must run the OLIVE server and manage its lifecycle as part of your integration effort. The server is included as part of the primary system installation. The name of the server executable is “scenicserver” and its usage information is as follows:
+
+        usage: scenicserver [-h] [--version] [--request_port REQUEST_PORT]
+                            [--status_port STATUS_PORT] [--workers WORKERS]
+                            [--work_dir WORK_DIR] [--debug]
+
+        optional arguments:
+          -h, --help            
+                                show this help message and exit
+          --version             
+                                show program's version number and exit
+          --request_port REQUEST_PORT
+                                port server will listen for requests on; default 5588
+          --status_port STATUS_PORT
+                                port server will send status heartbeats on; default
+                                5589
+          --workers WORKERS, -j WORKERS
+                                specify number of parallel WORKERS to run; default is
+                                the number of local processors
+        --work_dir WORK_DIR   
+                                path to work dir to create; default working dir is 
+                                value of $SCENIC_APP_DATA
+          --debug               debug mode prevents deletion of logs and intermediate
+                                files on success
+
+
+An example for setting up the SCENIC runtime environment and launching the OLIVE server:
+
+        $ export SCENIC_RUNTIME_OVERRIDE=/home/<user>/scenicRuntimeLocation/
+        $ cd /home/<user>/scenicRuntimeLocation/oliveDirectory/
+        $ source scenic_env.sh
+
+        $ scenicserver --request_port 6678 --status_port 6679 --work_dir /home/sysadmin/SCENIC
+
+Note that upon launching the server, if the operation was successful, the user will be greeted with a display of the plugins and domains that the server has access to, as well as a “Server ready” message.  If a list of plugins does not appear, but the “Server ready” message does, the SCENIC_APP_DATA environment variable should be checked to ensure that it contains a valid plugins directory.  An example output of a successful server startup:
+
+        [oliveuser@localhost olive4.13.0]$ scenicserver
+
+        TASK    PLUGIN        DOMAINS
+        ------  ------------  ---------------------------------
+        LID     lid-embed-v2  ['multi-v1']
+        SID     sid-embed-v2  ['multi-v1']
+        SAD     sad-dnn-v4a   ['digPtt-v1', 'ptt-v1', 'tel-v1']
+
+        --------- Server ready Fri Jan 11 12:43:26 2019 ---------
+
+
+The scenic_env.sh file is included with OLIVE deliveries and does the bulk of the environment setup required for running the server.  Important variables that are handled with this script and that are required for running the OLIVE Server include:
+
+- `SCENIC_RUNTIME`
+    - Must be set to the path of the OLIVE runtime directory. Allows OLIVE to find the libraries it requires.
+    - Ex: `/home/user1/olive4.13.0-installation/scenic-runtime-4.13.0-centos-7.3.1611-x86_64/`
+- `SCENIC`
+    - Contains the path to the OLIVE installation directory.  Allows OLIVE to find the binaries and utilities it relies on to function.
+    - Ex: `/home/user1/olive4.13.0-installation/olive-4.13.0-centos-7.3.1611-x86_64/`
+- `SCENIC_APP_DATA`
+    - This is the path used by the server to store class enrollments and log files.  This is also where the plugins that the server will have access to must be stored, in a directory simply named plugins. If SCENIC_APP_DATA is set to a directory that does not contain a plugins folder, the server will launch with no plugins.
+    - Ex: `/home/user1/oliveAppData/`
+        - Where the contents of oliveAppData might be:
+            - `plugins/`
+                - `sad-dnn-v4a`
+                - `sid-embed-v2`
+                - `lid-embed-v2`
+            - `server/` (generated by the server)
+                - `enrollments/`
+                - `processing/`
+
+Additional information regarding these variables and how to use scenic_env.sh is included in a short README in the comments at the top of the scenic_env.sh file:
+
+        # Sets the Olive/Scenic environment when running from a distribution.
+        # Assumes this will be sourced in the Olive directory, as:
+        #
+        # % source scenic_env.sh
+        #
+        # If this script is sourced in the runtime distribution, it will only set
+        # runtime-related values.
+        #
+        # If this script is source in the Olive distribution, it will set both
+        # Olive (SCENIC) and runtime-related values if:
+        # (1) the Olive directory is a sub-directory of the runtime directory
+        # or (2) the Olive and runtime directories have been combined.
+        #
+        # If the Olive directory is a subdirectory of the runtime, then you
+        # should only source scenic_env.sh from the Olive directory.
+        #
+        # If the runtime and Olive directories are completely separate, then
+        # do the following (in this order, so that $SCENIC paths come before
+        # $SCENIC_RUNTIME paths):
+        # (1) cd /path/to/runtime; source scenic_env.sh
+        # (2) cd /path/to/olive; source scenic_env.sh
+
+If your server is protected by a firewall you must ensure that any ports you attempt to utilize for the server are able to send and receive network traffic. The path you provide to --work_dir will ideally point to a large and performant hard drive. The location will house the enrollments, log files and temporary workspaces utilized by the server. 
+
+Typical OLIVE installations follow the general formats shown below.  We recommend installing the OLIVE Runtime and OLIVE itself within a directory in an easy-to-find location. Typically `olive4.x.y/` within `$HOME` is a reasonable starting place.  Plugins we generally store outside of this location, in a directory we name `oliveAppData` to allow for retention of plugins and audio enrollments if/when a new version of OLIVE is installed. `$HOME` is again often a reasonable location for this folder.
+
+The configuration or relationship between the runtime and the olive package itself generally matches one of the following two examples.  Often, they are placed side-by-side in the same parent directory, for easier readability.  If this configuration is used, it is necessary to source two separate scenic_env.sh files to properly establish the OLIVE environment, as outlined in the scenic_env.sh README shown above. You should always start by sourcing the scenic_env.sh file for the runtime.
+
+- `$HOME`
+    - `olive4.13.0/`
+        - `scenic-runtime-4.13.0-centos-7.3.1611-x86_64/`
+        - `olive-4.13.0-centos-7.3.1611-x86_64/`
+        - `documentation/`
+    - `oliveAppData/`
+        - `plugins/`
+            - `lid-embed-v2/`
+            - `sad-dnn-v4a/`
+            - `sid-embed-v2/`
+
+
+Example environment setup with this configuration:
+
+        $ cd $HOME/olive4.13.0/scenic-runtime-4.13.0-centos-7.3.1611-x86_64
+        $ source scenic_env.sh
+        $ cd $HOME/olive4.13.0/olive-4.13.0-centos-7.3.1611-x86_64
+        $ source scenic_env.sh
+        $ export SCENIC_APP_DATA=$HOME/oliveAppData/
+
+Alternately, the OLIVE package can be nested within the runtime directory, a structure shown in the example below.  If this arrangement is used, it is only necessary to source the scenic_env.sh script within the OLIVE package, as it is aware that its parent directory is the OLIVE runtime, and appropriately establishes the environment with this information.
+
+
+- `$HOME`
+    - `olive4.13.0/`
+        - `scenic-runtime-4.13.0-centos-7.3.1611-x86_64/`
+            - `olive-4.13.0-centos-7.3.1611-x86_64/`
+        - `documentation/`
+    - `oliveAppData/`
+        - `plugins/`
+            - `lid-embed-v2/`
+            - `sad-dnn-v4a/`
+            - `sid-embed-v2/`
+
+
+Example environment setup with this configuration:
+
+$ cd $HOME/olive4.13.0/scenic-runtime-4.13.0-centos-7.3.1611-x86_64/olive-4.13.0-centos-7.3.1611-x86_64
+$ source scenic_env.sh
+$ export SCENIC_APP_DATA=$HOME/oliveAppData/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 4    Creating an OLIVE Enterprise API Reference Implementation
+
+If SRI’s Java client library does not meet your needs or you need to create an implementation in a language other than Java, then the following information is helpful for creating a new reference implementation of the OLIVE Enterprise API.
+
+
+
+
+
+
+### 4.1 Communicating with the Server
+
+In order to communicate with a running server, you must initialize ZeroMQ (ZMQ) sockets in your client code. There are two sockets:
+
+- `request` socket: This is the socket over which you send requests and receive replies, all of which are serialized protobuf messages. You must connect to this socket using the ZMQ.DEALER configuration.
+- `status` socket: This socket provides a simple heartbeat broadcast from the server. You may optionally monitor this socket to determine the up/down status of the server. Connect to this socket using the `ZMQ.PUB` configuration.
+
+The code for initializing a ZMQ context and creating/connecting the necessary sockets differs slightly by language. Here’s some example Java code to get you started.
+
+        ZMQ.Context context = ZMQ.context();
+
+        ZMQ.Socket request_socket = context.socket(ZMQ.DEALER);
+        ZMQ.Socket status_socket  = context.socket(ZMQ.SUB);
+
+        request_socket.connect("tcp://myserver:6678”);
+        status_socket.connect("tcp://myserver:6679”);
+        status_socket.subscribe(""); // Don’t forget this
+
+Upon connecting the sockets, you can begin to send requests and receive responses over the request port, the specifics of which are described in the next section. 
+
+If you monitor the status port to determine server status, you should expect to receive messages with an empty or meaningless payload. Simply receiving them means the server is up. 
+
+
+
+
+
+
+
+
+### 4.2 Messaging Implementation
+
+Messages are exchanged between the client and server in serialized form, over the request port. Serialization is provided by the Google Protobufs library. You should familiarize yourself with protobufs before beginning your integration. In order to utilize protobufs, you must first take the scenic.proto message definition file and use protoc (or protobuf.net) to automatically generate classes that represent the OLIVE API messages. For more information see the [Google Protocol Buffers Documentation](https://developers.google.com/protocol-buffers/docs/overview?csw=1). 
+
+Once you have compiled the OLIVE messages into your code base you can begin your integration. The first thing to know is that every message that is passed to or from the server is an instance of `Envelope`. As its name implies, `Envelope` is just a container for messages, in our case instances of `ScenicMessage`. An `Envelope` can contain multiple `ScenicMessage` instances, allowing you to batch your communications to the server. 
+
+`Envelope` and `ScenicMessage` are special because they are used for every communication across the request_port and are basically just wrappers. They’re analogous to the envelope and paper when writing someone a letter. The remaining OLIVE messages comprise the actual API requests and responses. The remaining messages each have an entry in the `MessageType` enum, allowing you to request certain types when retrieving data from database as well as dynamically deserializing data returned by the server.
+
+### 4.3 An Example of Retrieving Data
+
+To get started, your integration will probably need to retrieve some information from the server. For example, you may wish to know the list of available plugins. An example pseudocode excerpt accomplishing this is shown below.
+
+        PluginDirectoryRequest.Builder req = PluginDirectoryRequest.newBuilder()
+
+        String id = getUUIDString()
+        ScenicMessage msg = ScenicMessage.newBuilder()
+            .setMessageType(MessageType.PLUGIN_DIRECTORY_REQUEST)
+            .addMessageData(req.build().toByteString())
+            .setMessageId(id)
+              .build();
+
+        Envelope env = Envelope.newBuilder()
+            .setSenderId(“third-party-integration”)
+            .addMessage(msg).build();
+
+        // Now send the message to the server
+        request_socket.send(env.toByteArray());
+
+        Envelope resp = Envelope.parseFrom(request_socket.recv());
+
+        for (ScenicMessage sm : resp.getMessageList()) {
+            // For purposes of this example, we assume the above message was 
+            // the first and only sent so we can assume things about the response
+            // message, namely that it corresponds to  our request. 
+            assert(id == msg.getMessageId())’
+            assert(msg.getMessageType() == MessageType.PLUGIN_DIRECTORY_RESULT);
+            if (sm.hasError()) {
+                System.out.println(“Dang: “ + sm.getError());
+                continue;
+            }
+
+            PluginDirectoryResult rep = PluginDirectoryResult.parseFrom(sm.getMessageData(0));
+
+            for(Plugin p : rep.getPluginsList()){
+          System.out.println(p.getId() + ": " + p.getDesc() );
+            }
+
+        }
+
+Please note the following:
+
+- We could have put other requests in the Envelope. Their responses may or may not have come back in the same envelope, but they would have come back in order.
+- We are guaranteed that our messages are received in order by the server and responses sent in order. However, for messages such as scoring requests and class modification requests (enrollment), which are highly asynchronous, there is no guarantee about the order in which they will finish.
+- The sure-fire way to ensure that you process a message from the server correctly is to base your actions on the message id (which you originally assigned in your request).
+- To properly deserialize the data contained within a `ScenicMessage`, you must check or otherwise be sure of the `MessageType`.
+
+### 4.4 An Analysis (Scoring) Example
+
+Now let’s assume we wish to perform language identification on an audio file. We can create a LID like request as follows:
+
+        // Variable init
+        String plugin = “lid-embed-v2”
+        String domain = “multi-v1”
+        String audioFilePath = “/home/user/audio/file1.wav”
+
+        // Build audio object
+        Scenic.Audio.Builder audio = Scenic.Audio.newBuilder().setPath(audioFilePath.toAbsolutePath().toString;
+
+        // Create LID request
+        // If specifically processing stereo audio files and wish to score 
+        // both channels, please use the FrameScorerStereoRequest or 
+        // GlobalScorerStereoRequest messages, that will be responded to with 
+        // an FrameScoreStereo or GlobalScoreStereo message, containing score results
+        // for both channels of the submitted audio.
+        // If submitting a stereo audio file using the standard xScorerRequest functions,
+        // and you don’t desire to score both channels independently, there are two 
+        // options:
+        //   - Specify the channel you wish to be scored -> you will receive results
+        //             for that channel only.
+        //   - Do not specify a channel -> you will receive a single set of results
+        //             corresponding to the merged mono representation of the stereo file. 
+
+        Scenic.GlobalScorerRequest.Builder req = Scenic.GlobalScorerRequest.newBuilder()
+          .setAudio(audio)
+          .setPlugin(plugin)
+          .setDomain(domain);
+
+Now we wrap the request in a `ScenicMessage` and `Envelope` like we did in the last example and send it across the request socket. Analysis requests as well as Enrollment requests take significant time to process on the server. It’s likely you’ll want your integration to be doing other things while it is waiting for the response, such as issuing further analysis requests. This is fully supported. However, you don’t know when or in what order the responses to your analyze request will emerge from the server. Therefore, it’s advantageous to track the message ids that you’ve issued in a map of the form `message_id -> request message`, so that you know the request to which a newly received response pertains. 
+
+Let’s assume we’ve received a [`GlobalScorerResult`](apiMessage.md#globalscorerresult) message and have deserialized it into a variable named `res`. We could process the result as follows:
+
+        // Currently OLIVE (SCENIC) will only send back one score reply per score
+        // request. Future releases may be able to send back multiple.
+        // Because of this, we must iterate though all of the scores.
+
+        List<Scenic.GlobalScore> scores = res.getScoreList();
+
+        for(Scenic.GlobalScore gs : scores){
+                system.out.println("LID Score: class " +  gs.getClassId() “ = “ +  gs.getScore());
+        }
+
+For more details regarding the specifications and breadth of the possible requests, their replies, and the structure of each of these data objects, including how results are represented, please refer to the [OLIVE API Message Reference](apiMessage.md) documentation.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## APPENDIX
+
+Following is an example file implementing the OLIVE Java API (scenic-api.jar) to communicate with the scenic server to accomplish several tasks.  This code has been broken up to add comments and documentation that should make it clearer how to perform each task, and what the code is doing at each point. For the full list of possible message options and specifications, please refer to the “API Message Reference” PDF that should have accompanied this document.
+
+A general outline of the contents of this code example:
+
+1.  **General Setup** – Importing libraries, initializing variables and objects
+2.  **Establishing Server Connection** – Creating a message pathway between the client implementation and a running OLIVE server
+3.  **First Interactions** – Request the available plugins and domains from the server.
+4.  **Speech Activity Detection** - Submit audio to the server for scoring from a SAD plugin. Depends on the requestFrameScore function defined in 9.4.
+5.  **Speaker Identification and Speaker Diarization and Detection**
+    1.  **Enrollment** – Submit audio file(s) for creating/enrolling a speaker model. Uses requestEnrollClass function defined in Appendix section 10.
+    2.  **SID Scoring** – Submit audio file(s) for scoring from the list of enrolled speaker models. Relies on requestGlobalScores helper function defined in section 10.
+    3.  **SDD Scoring** – Submit audio files for region scoring using an SDD plugin. Can detect speaker changes and multiple participants in the same audio recording. Relies on requestRegionScores helper function defined in section 10.
+6.  **Language Identification** – Submit audio to the server for scoring against target language models, using helper functions defined in section 10.
+7.  **Topic Identification** – Enroll topics from annotated audio examples, and submit audio for topic ID region scoring.
+8.  **Training and Adaption** – Generic instructions for performing training and adaptation for all plugins that support this ability.
+9.  **Helper Functions**
+    1.  **findPluginDomain** – Find an available domain for a given plugin name.
+    2.  **requestPlugins** – Submit a synchronous request to the server for the available plugins, and unpack the resulting message to a list of these available plugins.   Optionally provides code to perform the same task with an asynchronous request.
+    3.  **Audio packaging functions** – how to provide audio as a submission to the server
+        1.  **packageAudioAsPath** – Submit audio to the OLIVE server using the pathname of a file on disk 
+        2.  **packageAudioAsRawBuffer** – Submit audio to the OLIVE server using a buffer of raw samples.
+        3.  **packageAudioAsSerializedBuffer** – Submit audio to the OLIVE server as a serialized file.
+    4.  **requestFrameScore** – Submit Audio to the OLIVE server for SID scoring.
+    5.  **requestEnrollClass** – Submit Audio to the OLIVE server for enrollment, usually for enrolling speakers in a SID plugin.
+    6.  **requestGlobalScore** – Submit Audio to the OLIVE server for global scoring.
+    7.  **requestStereoGlobalScore** – a special example of submitting Audio to the server that will return a set of scores for each channel in the Audio.
+    8.  **requestRegionScoring** – Submit Audio to the OLIVE server for region scoring.
+    9.  **processAudioForAdaptation** – Submit Audio to the OLIVE server for preprocessing and later adaptation.
+    10. **finalizeSupervisedAdaption** – Finalize preprocessed audio, creating a new domain.
+    11. **buildAnnotations** – Helper function for handling annotations for preprocessed audio.
+
+### 1   General Setup
+
+This code is simply importing libraries that will be used to facilitate the connection and communications with the OLIVE server, as well as build and submit messages to and from it.  The com.sri.scenic.api.Scenic package is generated by the protocol buffer compiler based on the definitions of the API outlined within scenic.proto.  The Server and utils.AudioUtil libraries from the com.sri.scenic.api package contain a number of utilities that assist with wrapping and submitting messages to the server and to deal with converting between audio files and raw data buffers, respectively. 
+
+Below that, the class ScenicExampleClient is established to contain the examples that will be covered.  A logger is created within the class, to facilitate providing the user with error and info messages along the way.  
+
+        import com.google.protobuf.ByteString;
+        import com.sri.scenic.api.Scenic;
+        import com.sri.scenic.api.Server;
+        import com.sri.scenic.api.utils.AudioUtil;
+        import com.sri.scenic.api.utils.Pair;
+        import org.slf4j.Logger;
+        import org.slf4j.LoggerFactory;
+
+        import java.nio.file.Path;
+        import java.nio.file.Paths;
+        import java.util.ArrayList;
+        import java.util.HashMap;
+        import java.util.List;
+        import java.util.Map;
+
+        public class ScenicExampleClient {
+
+            private static Logger log = LoggerFactory.getLogger(ScenicExampleClient.class);
+            private static final int TIMEOUT = 10000;
+
+### 2   Establishing Server Connection
+
+The first steps taken within the main is to attempt to connect to an OLIVE server that is already running.  For more information on how to set up and run an OLIVE server, please refer to section 4, Running the OLIVE Server, above.  This example assumes that the OLIVE server is running on the same machine as ScenicExampleClient, but to update this, simply provide the IP address of the remote server instead of “localhost” for serverHostname.  This example also assumes that the default serverRequestPort and serverStatusPort ports are being used (5588 and 5589 respectively), but note that if you provide custom ports when launching the server, those values need to be reflected here. 
+
+The next step is to attempt to connect to the server, using the server.connect and server.getConnected routines, and to report an error if unable to connect before the timeout time has expired. Once a connection has been established, the ScenicExampleClient class is initialized to allow the helper functions defined within/below to be used to facilitate communication with the server.
+
+The server object is used to make all subsequent calls to the OLIVE server.
+
+
+    public static void main(String[] args) throws Exception {
+
+        // Set these as necessary
+        String serverHostname = "localhost";
+        int serverRequestPort = 5588;
+        int serverStatusPort = 5589;
+        String audioFilename = "my_file.wav";
+
+        try {
+            Server server = new Server();
+            server.connect("scenic-client", serverHostname,
+                    serverRequestPort,
+                    serverStatusPort,
+                    TIMEOUT);    // may need to adjust timeout
+
+
+            long start_t = System.currentTimeMillis();
+            while (!server.getConnected().get() && System.currentTimeMillis() - start_t < TIMEOUT) {
+                try {
+                    synchronized (server.getConnected()) {
+                        server.getConnected().wait(TIMEOUT);
+                    }
+                } catch (InterruptedException e) {
+                    // Keep waiting
+                }
+            }
+
+            if (!server.getConnected().get()) {
+                log.error("Unable to connect to SCENIC server: {}", serverHostname);
+                throw new Exception("Unable to connect to server");
+            }
+
+            ScenicExampleClient sc = new ScenicExampleClient();
+
+            // Theses examples are all synchronous, but one may also make 
+            // asynchronous calls (see requestPlugins() for an example)
+
+### 3   Request Available Plugins
+
+This section of the code covers the one-line call to the requestPlugins helper function (9.2) that returns the list of plugin/domain pairs that the OLIVE server currently has access to. In addition, code is provided that interacts with these Plugin and Domain data objects to extract information like the scoring type trait of the plugin.  For the complete list of possible plugin trait types, please refer to the OLIVE API Message Reference document.
+
+        // Example of requesting current plugins
+        List<Pair<Scenic.Plugin, Scenic.Domain>> pluginList =  sc.requestPlugins(server);
+
+        // Check capability of of plugin:
+        for(Pair<Scenic.Plugin, Scenic.Domain> pair : pluginList){
+            for(Scenic.Trait t : pair.getFirst().getTraitList()) {
+                if(t.getType() == Scenic.TraitType.FRAME_SCORER){
+                    log.info("Plugin {} supports frame scoring", pair.getFirst().getId());
+                            }
+                if(t.getType() == Scenic.TraitType.GLOBAL_SCORER){
+                    // Supports global scoring (i.e. SID or LID)
+                    log.info("Plugin {} supports global scoring", pair.getFirst().getId());
+                            }
+                if(t.getType() == Scenic.TraitType.REGION_SCORER){
+                    // Supports region scoring (i.e. KWS)
+                    log.info("Plugin {} supports region scoring", pair.getFirst().getId());
+                }
+            }
+        }
+
+### 4   Speech Activity Detection (SAD)
+
+The following example shows how to use the OLIVE Java Client API to submit audio to an OLIVE server to retrieve frame scores that show the likelihood of speech being present in each audio frame.  There are 3 means of submitting audio to the server (send as a path to the actual file, send as a buffer of raw audio, or send the serialized file), with the second option of sending the raw audio show below. 
+
+        // There are three options for sending audio to the server for frame scoring:
+
+        // 1. Send the path to the audio file to the server (assumes
+        // the server and client share a common filesystem)
+        //Scenic.Audio audio = packageAudioAsPath(wavFilename, 0, null);
+
+        // 2. Send the raw audio to the server (default behavior)
+        Scenic.Audio audio = packageAudioAsRawBuffer(wavFilename, 0, null);
+
+        // 3. Send the serialized file to the server for processing
+        //Scenic.Audio audio = packageAudioAsSerializedBuffer(wavFilename, 0, null);
+
+
+        // SAD is (usually) a frame scorer, so make a frame score request to perform SAD.
+        // For simplicity this is made without any options or classID
+
+        // But first create a callback that handles the frame score result from the server:
+        Server.ResultCallback<Scenic.FrameScorerRequest, Scenic.FrameScorerResult> rc
+                = new Server.ResultCallback<Scenic.FrameScorerRequest, Scenic.FrameScorerResult>() {
+
+            @Override
+            public void call(Server.Result<Scenic.FrameScorerRequest, Scenic.FrameScorerResult> r) {
+
+                // do something with the results:
+                if(!r.hasError()){
+                    for(Scenic.FrameScores fs : r.getRep().getResultList()){
+                        // Assume only "speech" results returned (some SAD plugins may recognize
+                        // non-speech but that is non-standard)
+                        log.info("Received {} frame scores for '{}'", fs.getScoreCount(), fs.getClassId());
+
+                        // Do something else with frame scores...
+                    }
+                }
+                else {
+                    log.error("Frame score request failed: {}", r.getError());
+                }
+
+            }
+        };
+
+        requestFrameScore(server, plugin, domain, audio, rc, false, null, null);
+
+
+In the above example, SAD is requested using an buffer of audio samples using the provided server connection, plugin and domain.  Once can uncomment one of the other audio packaging methods to send the audio as a pathname or as the serialized file.  See the corresponding audio packaging functions in section 10.3 for more information. 
+
+### 4.1 SAD Adaptation
+
+See section 9 for information on performing SAD adaption.  The adaption process is the same for all plugin types, so there are no special calls for SAD adaption, however, you will need to consult the plugin developer to understand the minimum duration of audio required to perform adaptation. 
+
+### 5   Speaker Identification (SID) and Speaker Diarization and Detection (SDD)
+
+This code provides examples for how to submit speaker identification (SID) enrollment and scoring requests.  Unlike plugins like SAD, which provides scores that represent the likelihood of the presence of speech, or LID, which is currently delivered pre-enrolled with several target languages, you must enroll a speaker model before a SID plugin can provide any scores.  Enrollment is the first task shown below, followed by SID scoring requests.
+
+### 5.1 Basic SID Invocation (Enrollment and Scoring)
+
+The following code walks through a basic SID enrollment and score request submission.  The enrollment format shown here is the same for both SID and SDD plugins.  All that would change between the two are the values of the plugin and domain variables passed to requestEnrollClass.
+
+        // There are three options for sending audio to the server for enrollment and scoring:
+
+            // 1. Send the path to the audio file to the server (assumes
+            // the server and client share a common filesystem)
+            //Scenic.Audio audio = packageAudioAsPath(wavFilename, 0, null);
+
+            // 2. Send the raw audio to the server (default behavior)
+            Scenic.Audio audio = packageAudioAsRawBuffer(enrollWavFilename, 0, null);
+
+            // 3. Send the serialized file to the server for processing
+            //Scenic.Audio audio = packageAudioAsSerializedBuffer(wavFilename, 0, null);
+
+
+            // SID must have at least one enrolled speaker (class) before an enrollment can be made, so create an new enrollment first:
+
+            // But first create a callback that handles the enrollment result from the server:
+            Server.ResultCallback<Scenic.ClassModificationRequest, Scenic.ClassModificationResult> enrollmentCallback
+                    = new Server.ResultCallback<Scenic.ClassModificationRequest, Scenic.ClassModificationResult>() {
+
+                @Override
+                public void call(Server.Result<Scenic.ClassModificationRequest, Scenic.ClassModificationResult> r) {
+
+                    // do something with the results:
+                    if(!r.hasError()){
+                        // todo handle error
+                    }
+                    else {
+                        log.error("Frame score request failed: {}", r.getError());
+                    }
+
+                }
+            };
+
+            // We make this a synchronized call, so that we know the speaker is enrolled before we make the score request below
+            boolean enrolled = requestEnrollClass(server, plugin, domain, speakerName, audio, enrollmentCallback, false, null);
+
+            if(enrolled){
+
+                // Create a new Audio object from the score wave file.
+                Scenic.Audio scoreAudio = packageAudioAsRawBuffer(scoreWaveFilename, 0, null);
+                // Also valid, but not used:
+                //Scenic.Audio scoreAudio = packageAudioAsPath(scoreWaveFilename, 0, null);
+                //Scenic.Audio scoreAudio = packageAudioAsSerializedBuffer(scoreWaveFilename, 0, null);
+
+                // Create a call back to handle the SID
+                // Create a callback to handle async results from server
+                Server.ResultCallback<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult> scoreCallback = new Server.ResultCallback<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult>() {
+
+                    @Override
+                    public void call(Server.Result<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult> r) {
+
+                        // do something with the results:
+                        if(!r.hasError()){
+                            log.info("Received {} scores:", r.getRep().getScoreCount());
+                            for(Scenic.GlobalScore gs : r.getRep().getScoreList()){
+                                log.info("\t{} = {}", gs.getClassId(), gs.getScore());
+                            }
+                        }
+                        else{
+                            log.error("Global scorer error: {}", r.getError());
+                        }
+
+                    }
+                };
+
+                // SID is a global scorer, so make a global score request:
+                requestGlobalScore(server, plugin, domain, scoreAudio, null, true, scoreCallback, null, null);
+
+            }
+
+        }
+
+
+### 5.2 SID Scoring Using Stereo Audio
+
+If desired, one can also make a SID call using a stereo audio file, where a result is returned for both of the channels in the audio file.  In the example below it is assumed a speaker has already been enrolled.
+
+        // Assumes one or more speakers are already enrolled
+
+            // Create a new Audio object from the score wave file - BUT be sure to NOT set the channel 
+            // number, we want to process all channels of this stereo file
+            Scenic.Audio scoreAudio = packageAudioAsRawBuffer(scoreStereoWaveFilename, 0, null);
+            // Also valid, but not used:
+            //Scenic.Audio scoreAudio = packageAudioAsPath(scoreStereoWaveFilename, 0, null);
+            //Scenic.Audio scoreAudio = packageAudioAsSerializedBuffer(scoreStereoWaveFilename, 0, null);
+            // Create a call back to handle the SID
+            // Create a callback to handle async results from server
+            Server.ResultCallback<Scenic.GlobalScorerStereoRequest, Scenic.GlobalScorerStereoResult> scoreCallback = new Server.ResultCallback<Scenic.GlobalScorerStereoRequest, Scenic.GlobalScorerStereoResult>() {
+
+                @Override
+                public void call(Server.Result<Scenic.GlobalScorerStereoRequest, Scenic.GlobalScorerStereoResult> r) {
+
+                    // do something with the results:
+                    if(!r.hasError()){
+
+                        // Process the scores for EACH channel
+                        for(Scenic.GlobalScoreStereo gss : r.getRep().getScoreList()) {
+                            log.info("\tChannel {} has {} scores ", gss.getChannel(), gss.getScoreCount());
+                            for(Scenic.GlobalScore gs : gss.getScoreList()){
+                                log.info("\t\t{} = {}", gs.getClassId(), gs.getScore());
+                            }
+
+                        }
+
+                    }
+                    else{
+                        log.error("Global stereo scorer error: {}", r.getError());
+                    }
+
+                }
+            };
+
+            // SID is a global scorer, so make a global score request:
+            requestStereoGlobalScore(server, plugin, domain, scoreAudio, true, scoreCallback, null, null);
+
+
+
+### 5.3 SID Update 
+
+Some SID plugins support an “update” feature that can be used to enhance the plugin’s speaker identification based on recent enrollments, allowing the plugin to be exposed to actual operational conditions.  Plugins that support this feature are said to support the “update” trait, which can be invoked using the code snippet below.  Be cautious in invoking this feature at it may take many minutes to apply an update.
+
+A valid server connection and a SID plugin that support the Update trait are required. You can query the list of traits supported by a plugin via it getTraitList() method.
+
+The update status of the plugin should be checked prior to performing the update as shown in the code example below.
+
+        // First, create two callback handlers.  One to handle the results of the update status request, 
+        // and the second to handle the results of an update
+        Server.ResultCallback<Scenic.ApplyUpdateRequest, Scenic.ApplyUpdateResult> updateCB
+                = new Server.ResultCallback<Scenic.ApplyUpdateRequest, Scenic.ApplyUpdateResult>() {
+
+            @Override
+            public void call(Server.Result<Scenic.ApplyUpdateRequest, Scenic.ApplyUpdateResult> r) throws InvalidProtocolBufferException {
+                if(!r.hasError()){
+
+                    log.info("Plugin updated: {}", r.getRep().getSuccessful());
+
+                }
+                else {
+                    log.error("Plugin update request failed: {}", r.getError());
+                }
+
+            }
+        };
+
+
+        // This callback will request an update if the plugin reports that an update is possible
+        Server.ResultCallback<Scenic.GetUpdateStatusRequest, Scenic.GetUpdateStatusResult> rc
+                = new Server.ResultCallback<Scenic.GetUpdateStatusRequest, Scenic.GetUpdateStatusResult>() {
+
+            @Override
+            public void call(Server.Result<Scenic.GetUpdateStatusRequest, Scenic.GetUpdateStatusResult> r) 
+                    throws InvalidProtocolBufferException {
+
+                // Make sure there was not an error
+                if(!r.hasError()){
+
+                    // Pretty print the date - if there is one
+                    DateFormat f = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+
+                    Scenic.DateTime dt = null;
+                    if(r.getRep().hasLastUpdate()) {
+                        dt = r.getRep().getLastUpdate();
+                        Calendar cal = Calendar.getInstance();
+                        cal.set(dt.getYear(), dt.getMonth()-1, dt.getDay(), dt.getHour(), dt.getMin(), dt.getMin());
+                        log.info("Update {}, previous update {}", r.getRep().getUpdateReady() ?  "ready": "not ready", f.format(cal.getTime()));
+                    }
+                    else {
+                        log.info("Update {}, NO previous updates", r.getRep().getUpdateReady() ?  "ready" : "not ready");
+                    }
+
+                    for(Scenic.Metadata ms : r.getRep().getParamsList()){
+                        Server.MetadataWrapper mw = server.deserializeMetadata(ms);
+                        log.info("Update: {} = {}, type: {}", ms.getName(), mw.toString(), ms.getType());
+                    }
+
+                    if(r.getRep().getUpdateReady()){
+                        try {
+                            requestApplyUpdate(server, plugin, domain, updateCB, true);
+                        } catch (ClientException | IOException | UnsupportedAudioFileException e) {
+                            log.error("Could not request ");
+                        }
+                    }
+
+                }
+                else {
+                    log.error("SID request failed: {}", r.getError());
+                }
+
+
+            }
+        };
+
+
+        // Now request the update status, and if an update is available then the callback, rc, 
+        // will make the request
+        requestUpdateStatus(server, plugin, domain, rc, true);
+
+### 5.4   SDD Scoring 
+
+[Speaker Diarization and Detection (SDD)](plugins/sdd.md) plugins are primarily region-scoring plugins that support a variety of different output modes.  The exact supported modes will vary depending on the plugin, but the typically valid modes are described below. To facilitate the understanding of each mode’s output, consider that speech from an audio file is made up of clusters of speakers, and each cluster will have one or more contiguous segment of speech.
+
+##### SPEAKER_DETECTION
+
+The goal of Speaker Detection is to show the most probable speaker model for each segment of the input audio file.  As output, this mode gives one line per segment within the file, along with the top scoring enrolled model for the cluster that segment belongs to, and that cluster's score for the given model. Note that many scores will be repeated in the output file, since each segment in the cluster shares the same score for a given speaker model. This mode is performed by default if no options file with a mode override is given.
+
+##### DIARIZATION
+
+This mode is meant for clustering and labeling of different potential speakers. It does not use enrolled speaker models to attempt to determine who is speaking, but clusters speakers and assigns a placeholder spkr1, spkr2, etc. to each cluster it determines is a new speaker.  While still following the same output format as all other region scoring plugins, the ‘score’ field has been replaced with a placeholder (-100.0) to retain formatting compatibility.
+
+##### SID_EXHAUSTIVE
+
+When using SID Exhaustive, each diarized cluster is scored against each enrolled model. The output is a complete listing for every speech segment of the input audio file, the score from testing every enrolled model against the cluster that the segment belongs to. Many scores will be repeated in the output file, since each segment in the cluster shares the same score.  In this example, Chris and Jimmy are the only enrolled models, and 5 total segments were identified within the file.
+
+
+For more information on each mode, and example outputs, please consult the [Plugin Reference](plugins.md) page.  
+
+The following example shows how to alter the region scoring request submission to pass the appropriate options to alter the mode of scoring, choosing between the options outlined above.
+
+        // Assumes one or more speakers are already enrolled
+
+            // Create a new Audio object from the score wave file.
+            Scenic.Audio scoreAudio = packageAudioAsRawBuffer(scoreWaveFilename, 0, null);
+            // Also valid, but not used:
+            //Scenic.Audio scoreAudio = packageAudioAsPath(scoreWaveFilename, 0, null);
+            //Scenic.Audio scoreAudio = packageAudioAsSerializedBuffer(scoreWaveFilename, 0, null);
+
+            // Create a callback to handle asynchronous results from server
+            Server.ResultCallback<Scenic.RegionScorerRequest, Scenic.RegionScorerResult> scoreCallback 
+                    = new Server.ResultCallback<Scenic.RegionScorerRequest, Scenic.RegionScorerResult>() {
+
+                @Override
+                public void call(Server.Result<Scenic.RegionScorerRequest, Scenic.RegionScorerResult> r) {
+
+                    // do something with the results:
+                    if(!r.hasError()){
+                        log.info("Received {} regions:", r.getRep().getRegionCount());
+                        for(Scenic.RegionScore rs : r.getRep().getRegionList()){
+                            log.info("\t{} = {}, From {} to {}", rs.getClassId(), rs.getScore(), rs.getStartT(), rs.getEndT());
+                        }
+                    }
+                    else{
+                        log.error("Region scorer error: {}", r.getError());
+                    }
+
+                }
+            };
+
+
+
+            // SDD has optional operational modes.  Submitting the score request with no options will
+            // perform Speaker Detection.      
+            requestRegionScores(server, plugin, domain, scoreAudio, scoreCallback, true, null, null);
+
+            // Alternately, it is possible to submit an option for the plugin operation MODE.  In this 
+            // example, DIARIZATION. 
+            Pair<String, String> optionsDiarization = new Pair("mode", "DIARIZATION");
+            requestRegionScores(server, plugin, domain, scoreAudio, scoreCallback, true, optionsDiarization, null);
+
+            // And in this case, SID_EXHAUSTIVE
+            Pair<String, String> optionsSidExhaustive = new Pair("mode", "SID_EXHAUSTIVE");
+            requestRegionScores(server, plugin, domain, scoreAudio, scoreCallback, true, optionsSidExhaustive, null);
+
+            // Some SDD plugins also support basic SID global scoring operations.  If the plugin supports
+            // it, that can be done by setting the MODE option to SID, and submitting a global score 
+            // request:
+            Pair<String, String> optionsSid = new Pair("mode", "SID");
+            requestGlobalScore(server, plugin, domain, scoreAudio, true, scoreCallback, optionsSid, null);
+
+
+### 6   Language Identification (LID)
+
+Submitting scores to the OLIVE Server for LID scoring follows the same structure as the previous example for SID scoring since both SID and LID are Global Scoring plugins. The main consequential difference is going to be the plugin and domain names passed to the requestGlobalScore function below.
+
+        // There are three options for sending audio to the server for enrollment and scoring:
+
+                // Create a new Audio object from the score wave file.
+                Scenic.Audio scoreAudio = packageAudioAsRawBuffer(scoreWaveFilename, 0, null);
+                // Also valid, but not used:
+                //Scenic.Audio scoreAudio = packageAudioAsPath(scoreWaveFilename, 0, null);
+                //Scenic.Audio scoreAudio = packageAudioAsSerializedBuffer(scoreWaveFilename, 0, null);
+
+                // Create a call back to handle the LID results
+                // Create a callback to handle async results from server
+                Server.ResultCallback<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult> scoreCallback = new Server.ResultCallback<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult>() {
+
+                    @Override
+                    public void call(Server.Result<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult> r) {
+
+                        // do something with the results:
+                        if(!r.hasError()){
+                            log.info("Received {} scores:", r.getRep().getScoreCount());
+                            for(Scenic.GlobalScore gs : r.getRep().getScoreList()){
+                                log.info("\t{} = {}", gs.getClassId(), gs.getScore());
+                            }
+                        }
+                        else{
+                            log.error("Global scorer error: {}", r.getError());
+                        }
+
+                    }
+                };
+
+            // LID is a global scorer, so make a global score request:
+            requestGlobalScore(server, plugin, domain, scoreAudio, true, scoreCallback, null, null);
+
+
+### 6.1 LID Language Enrollment
+
+Some LID plugins support an enrollment option.  This option lets the user extend the recognized languages by exposing the system to new, labeled data to enroll a new language, or augment an existing language, without generating an entirely new domain, which would happen if the existing language classes were augmented with additional data via training/adaptation. 
+
+        // First prepare the audio for enrollment 
+        Scenic.Audio audio = packageAudioAsRawBuffer(enrollWavFilename, 0, null);
+        // Other ways to package audio: 
+        // Scenic.Audio audio = packageAudioAsPath(wavFilename, 0, null);
+        //Scenic.Audio audio = packageAudioAsSerializedBuffer(wavFilename, 0, null);
+        // But first create a callback that handles the enrollment result from the server:
+        Server.ResultCallback<Scenic.ClassModificationRequest, Scenic.ClassModificationResult> enrollmentCallback
+                = new Server.ResultCallback<Scenic.ClassModificationRequest, Scenic.ClassModificationResult>() {
+
+            @Override
+            public void call(Server.Result<Scenic.ClassModificationRequest, Scenic.ClassModificationResult> r) {
+
+                // do something with the results:
+                if(!r.hasError()){
+                    // handle result
+                }
+                else {
+                    log.error(“enrollment request failed: {}”, r.getError());
+                }
+
+            }
+        };
+
+        // We make this a sync call, so that we know the language is enrolled before we make the score request below
+        boolean enrolled = requestEnrollClass(server, plugin, domain, classIDName, audio, enrollmentCallback, false, null);
+
+### 6.2 LID Update
+
+Some LID plugins support an “update” feature that can be used to enhance the plugin’s language identification based on recent enrollments.  Plugins that support this feature are said to support the “update” trait, which can be invoked using the code snippet below.  Be cautious in invoking this feature at it may take many minutes to apply an update.
+
+A valid server connection and a LID plugin that support the Update trait are required. You can query the list of traits supported by a plugin via it getTraitList() method.
+
+For a code example for submitting an update request to a LID plugin, the exact same code as provided in 5.3 SID Update can be used, simply by ensuring that the appropriate LID plugin is populated into the plugin and domain variables used.
+
+### 7   Topic Detection (TPD)
+
+Topic Identification is a region-scoring plugin that detects and labels regions of speech where a target topic from a set of enrolled topics-of-interest is being discussed.  Each domain of a topic identification plugin is language-specific, and can only detect topics in its known language, so care should be used when choosing which domain to submit audio to.  Topics are meant to be user-enrolled, through a process that is similar to speaker enrollment in a SID plugin. The example below mirrors the SID example above, and starts out by showing a topic enrollment, followed by a region scoring request.
+
+        // First, create submit a topic as an enrollment
+        // 1. Send the raw audio to the server (default behavior) - NOTE that we specify a region
+
+        List<RegionWord> regions = new ArrayList<>();
+        regions.add(new RegionWord(500, 2500));  // NOTE to add regions in milliseconds
+
+        // Include regions when the audio is packaged in a protobuf message:
+        Scenic.Audio audio = packageAudioAsRawBuffer(enrollWavFilename, 0, regions);
+
+
+        // Valid but not used here:
+        //Scenic.Audio audio = packageAudioAsSerializedBuffer(wavFilename, 0, regions);
+        //Scenic.Audio audio = packageAudioAsPath(wavFilename, 0, regions);
+
+        // TID must have at least one enrolled speaker (class) before an enrollment can be made, so create an new enrollment first:
+
+        // But first create a callback that handles the enrollment result from the server:
+        Server.ResultCallback<Scenic.ClassModificationRequest, Scenic.ClassModificationResult> enrollmentCallback
+                = new Server.ResultCallback<Scenic.ClassModificationRequest, Scenic.ClassModificationResult>() {
+
+            @Override
+            public void call(Server.Result<Scenic.ClassModificationRequest, Scenic.ClassModificationResult> r) {
+
+                // do something with the results:
+                if(!r.hasError()){
+                    // todo handle error
+                }
+                else {
+                    log.error("request failed: {}", r.getError());
+                }
+
+            }
+        };
+
+        // We make this a sync call, so that we know the topic is enrolled before we make the score request below
+        boolean enrolled = requestEnrollClass(server, plugin, domain, topicName, audio, enrollmentCallback, false, null);
+        if(!enrolled){
+            // need to handle this error...
+            log.error("Enrollment failed");
+        }
+
+        // BUT there are other enrollment options, for example you may want to enroll a submission as a "negative" example
+        Scenic.Audio negAudio = packageAudioAsRawBuffer(enrollWavFilename, 0, null);  // not specifying regions, since the target topic is not in the file
+        // We reuse the above callback for to enroll this "negative" topic:
+
+        List<Pair<String, String>> options = new ArrayList<>();
+        options.add(new Pair<>("isNegative", "True"));
+
+        enrolled = requestEnrollClass(server, plugin, domain, topicName, negAudio, enrollmentCallback, false, options);
+        // if true, a negative example was enrolled
+
+
+        if(enrolled){
+
+            // Create a new Audio object from the score wave file.
+            Scenic.Audio scoreAudio = packageAudioAsRawBuffer(scoreWaveFilename, 0, null);
+            // Also valid, but not used:
+            //Scenic.Audio scoreAudio = packageAudioAsPath(scoreWaveFilename, 0, null);
+            //Scenic.Audio scoreAudio = packageAudioAsSerializedBuffer(scoreWaveFilename, 0, null);
+
+            // Create a callback to handle async results from server
+            Server.ResultCallback<Scenic.RegionScorerRequest, Scenic.RegionScorerResult> scoreCallback
+                    = new Server.ResultCallback<Scenic.RegionScorerRequest, Scenic.RegionScorerResult>() {
+
+                @Override
+                public void call(Server.Result<Scenic.RegionScorerRequest, Scenic.RegionScorerResult> r) {
+
+                    // do something with the results:
+                    if(!r.hasError()){
+                        log.info("Received {} regions:", r.getRep().getRegionCount());
+                        for(Scenic.RegionScore rs : r.getRep().getRegionList()){
+                            log.info("\t{} = {}, From {} to {}", rs.getClassId(), rs.getScore(), rs.getStartT(), rs.getEndT());
+                        }
+                    }
+                    else{
+                        log.error("Region scorer error: {}", r.getError());
+                    }
+
+                }
+            };
+
+
+            // Options that can be added (commented out) to the request - consult the Plugin reference guide for options supported by your plugin
+
+            options.clear();
+            /*options.add(new Pair<>("max_segment_length_sec", "0.4"));
+            options.add(new Pair<>("sad_filter_length", "40"));
+            options.add(new Pair<>("sad_interpolate", "2"));
+            options.add(new Pair<>("sad_minimum_duration", "0.4"));
+            options.add(new Pair<>("sad_speech_llr_threshold", "1.5"));
+            options.add(new Pair<>("sad_speech_padding", "0.5"));
+            options.add(new Pair<>("use_sad", "True"));*/
+            // These are region scoring only parameters
+            /*options.add(new Pair<>("padding", "5"));
+            options.add(new Pair<>("threshold", "-2"));
+            options.add(new Pair<>("td_thr_shift", "-0.5"));*/
+
+            // TPD is a region scorer, so make a region score request:
+            requestRegionScores(server, plugin, domain, scoreAudio, scoreCallback, true, options, null);
+
+        }
+
+
+### 8   Keyword Spotting (KWS)
+
+Keyword spotting is a region-scoring plugin that detects and labels regions of speech corresponding to the location of detected keywords of interest.  Like Topic Identification, keyword spotting domains are language-dependent, and can only detect keywords in its known language, and that are in-vocabulary.  Because of this, care should be used when choosing which domain to submit audio to.  Keyword spotting plugins are based on automatic speech recognition (ASR) technology, so keywords are solely text-based.  As such, they are not “enrolled” like a query-by-example word or phrase, or a topic in TID.  Instead, they are passed to the requestRegionScores function as options
+
+The example below mirrors the previous scoring examples, showing audio packaging and submission for region scoring for KWS, passing a set of three keywords: watermelon, pumpkin pie, and mountaintop.
+
+        // There are three options for sending audio to the server for enrollment and scoring:
+
+                // Create a new Audio object from the score wave file.
+                Scenic.Audio scoreAudio = packageAudioAsRawBuffer(scoreWaveFilename, 0, null);
+                // Also valid, but not used:
+                //Scenic.Audio scoreAudio = packageAudioAsPath(scoreWaveFilename, 0, null);
+                //Scenic.Audio scoreAudio = packageAudioAsSerializedBuffer(scoreWaveFilename, 0, null);
+
+                // Create a call back to handle the LID results
+                // Create a callback to handle async results from server
+                Server.ResultCallback<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult> scoreCallback = new Server.ResultCallback<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult>() {
+
+                    @Override
+                    public void call(Server.Result<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult> r) {
+
+                        // do something with the results:
+                        if(!r.hasError()){
+                            log.info("Received {} scores:", r.getRep().getScoreCount());
+                            for(Scenic.GlobalScore gs : r.getRep().getScoreList()){
+                                log.info("\t{} = {}", gs.getClassId(), gs.getScore());
+                            }
+                        }
+                        else{
+                            log.error("Global scorer error: {}", r.getError());
+                        }
+
+                    }
+                };
+
+            // KWS is a region scorer, so make a region score request.
+            // Pass the options string to submit keywords to the plugin.
+            List<String> keywordClasses = Arrays.asList("watermelon", "pumpkin pie", "mountaintop"); 
+            requestRegionScores(server, plugin, domain, scoreAudio, scoreCallback, true, null, keywordClasses);
+
+
+### 9   Training and Adaptation
+
+Some plugins support training and/or adaptation, these plugins implement the Learning Trait or  one of its derived types such as SupervisedAdapter which is covered below.  Both training and adaption result in the creation of a new domain and require preprocessing a set of Audio submissions, followed by a finalize step that creates the new domain from the preprocessed audio.   This process is the same for all plugins, however plugins vary in the recommended duration of audio needed to complete the adaptation process.
+
+### 9.1 Supervised Adaptation
+
+To perform adaptation one will need to build a list of files to use for adaptation, associating each of those files with a class ID.  These audio files are first preprocessed by making the call to preprocessAudioForAdaptation() below.  After all files have been preprocessed, the adaptation can be finalized by calling finalizeSupervisedAdaptation().  Be prepared that Adaptation can be a slow process, taking half an hour or more, depending on hardware used and the amount of audio submitted for adaptation.    
+
+        // Pseudo code shown creating the adaptList: 
+        Map<String, Scenic.Audio> adaptList = new HashMap<>();
+        // Not shown here, but will need to add code that will create one or 
+        // more audio files plus a class ID to the adaptList like this:
+
+        adaptList.put(“English”, packageAudioAsPath(“enlish_train.wav”, 0, null));
+
+        // TODO: consult with plugin developer to determine the min duration of audio for adaptation 
+
+
+        Map<String, List<String>> annotations  = new HashMap<>();
+        String adaptID = UUID.randomUUID().toString();
+
+        int numPreprocessed = 0;
+        for (String classID : adaptList.keySet()){
+
+            //Server.ResultCallback<Scenic.PreprocessAudioAdaptRequest, Scenic.PreprocessAudioAdaptResult> cb = r -> log.info(“Audio preprocessing done”);
+
+            // Submit audio for preprocessing, each audio successfully preprocessed is used to build up the annotations that are submitted below when we finalize
+            if (preprocessAudioForAdaptation(server, plugin, domain, classID, adaptID, adaptList.get(classID), annotations )){
+                numPreprocessed++;
+            }
+        }
+
+        // For this example, we go ahead and finalize if some of our audio was preprocessed,
+        // but one may want to skip this step if one or more files could not be processed
+        if (numPreprocessed>0){
+
+            Server.ResultCallback<Scenic.SupervisedAdaptationRequest, Scenic.SupervisedAdaptationResult> rc = r -> log.info(“New Domain Adapted”);
+
+            finalizeSupervisedAdaptation(server, plugin, domain, adaptID, newDomainName, rc, annotations);
+
+
+        }
+
+
+### 10  Global Comparer (CMP)
+
+A Global Comparer plugin combines multiple audio characterization features into a single plugin, that is used to analyze two audio inputs.  The result is a dictionary of name/value characterizations of the two files and a human readable (PDF) report that summarizes the comparison results in an easy to read format.  To perform audio comparison, the plugin must support the GlobalComparer trait.  Here is an example of making a comparison request:
+
+        // Assumes these are set: 
+        //Server server 
+        //Scenic.Plugin  plugin,
+        //Scenic.Domain domain
+        //String audio_file_one 
+        //String audio_file_two
+
+        // Create new Audio objects from the two input files to comapre
+        Scenic.Audio audio_one = packageAudioAsRawBuffer(audio_file_one, 0, null);
+        Scenic.Audio audio_two = packageAudioAsRawBuffer(audio_file_two, 0, null);
+
+        // Also valid, but not used:
+        //Scenic.Audio audio = packageAudioAsPath(audio_file_one, 0, null);
+        //Scenic.Audio audio = packageAudioAsSerializedBuffer(audio_file_two, 0, null);
+
+        // Create a call back to handle the results of the audio comparison
+        Server.ResultCallback<Scenic.GlobalComparerRequest, Scenic.GlobalComparerResult> rc = new Server.ResultCallback<Scenic.GlobalComparerRequest, Scenic.GlobalComparerResult>() {
+
+            @Override
+            public void call(Server.Result<Scenic.GlobalComparerRequest, Scenic.GlobalComparerResult> r) {
+
+                // do something with the results:
+                if(!r.hasError()){
+
+                    // The real output of the compare result is the PDF report, but there is is the dictionary of results
+                    // that can be evaluated if desired:
+                    log.info("Comparision dictionary contains {} results", r.getRep().getResultsCount());
+
+
+                    // The results can be extracted like this:
+                    Map<String, Server.MetadataWrapper> results = new HashMap<>();
+                    Scenic.GlobalComparerResult result = r.getRep();
+                    for(Scenic.Metadata meta : result.getResultsList()){
+
+                        try {
+                            Server.MetadataWrapper mw = server.deserializeMetadata(meta);
+                            log.info("Comapre metadata result: {} = {}", meta.getName(), mw.toString());
+                            results.put(meta.getName(), mw);
+                        } catch (InvalidProtocolBufferException e) {
+                            log.error("Unsupported metadata type: {}", meta.getType());
+                        }
+                    }
+
+
+                    // Assume there will be only one report
+                    if(result.getReportCount() > 0 ) {
+
+                        Scenic.GlobalComparerReport report = result.getReport(0);
+
+                        // Confirm the report is a PDF (so far only PDF reports are generated)
+                        if (report.getType() == Scenic.ReportType.PDF) {
+                            String rptName = String.format("%s-%s.pdf", audio_file_one, audio_file_two);
+                            // Save this file in the working directory for this example:
+                            Path path = Paths.get("./", rptName);
+
+                            try {
+                                // Save the buffer as a PDF:
+                                InputStream buffer = new ByteArrayInputStream(report.getReportData().toByteArray());
+
+                                Files.copy(buffer, path, StandardCopyOption.REPLACE_EXISTING);
+
+                            } catch (Exception e) {
+                                log.error("Failed to save comparison report because: {}", e.getMessage());
+                            }
+
+                        }
+                    }
+
+
+                }
+                else{
+                    log.error("Global comparison failed with error: {}", r.getError());
+                }
+
+            }
+        };
+
+        Scenic.GlobalComparerRequest.Builder req = Scenic.GlobalComparerRequest.newBuilder()
+                .setPlugin(plugin.getId())
+                .setDomain(domain.getId())
+                .setAudioOne(audio_one)
+                .setAudioTwo(audio_two);
+
+
+        // If you have options to pass to the plugin
+
+        List<Pair<String, String>> option = new ArrayList<>();
+        // for example: option.add(new Pair<>("foo", "bar"));
+        for (Pair<String, String> p : option){
+            req.addOption(Scenic.OptionValue.newBuilder().setName(p.getFirst()).setValue(p.getSecond()));
+        }
+
+
+        // Send the request to the server (callback above handles the result)
+        server.enqueueRequest(req.build(), rc);
+
+
+
+
+
+
+### 11  Helper Functions
+
+These functions perform the actual bulk of the work described above.  The code above serves as an example for how simple the actual interactions with the OLIVE API code can be once a function call has been established to perform each task, while the functions defined below contain the implementation details for accomplishing each of those tasks.
+
+### 11.1    findPluginDomain
+
+This function simply takes a plugin name, and the list of all valid plugin/domain pairs supported by the server (reported by the requestPlugins function), and returns a Pair with the requested plugin and the first valid domain of that plugin.  This allows the client to programmatically build a list of available plugins and domains, as well as query and update this list in real time.
+
+        /**
+         * Helper function for finding a plugin/domain based on the name of the plugin
+         * 
+         * @param pluginName the name of the plugin
+         *                   
+         * @param pluginList all plugins
+         *                   
+         * @return a plugin and domain
+         */
+        public Pair<Scenic.Plugin, Scenic.Domain> findPluginDomain(String pluginName, List<Pair<Scenic.Plugin, Scenic.Domain>> pluginList ){
+
+            Scenic.Plugin plugin = null;
+            Scenic.Domain domain = null;
+            for(Pair<Scenic.Plugin, Scenic.Domain> p : pluginList){
+                // Use the first domain found for the requested plugin
+                if(p.getFirst().getId().equals(pluginName)){
+                    plugin= p.getFirst();
+                    domain = p.getSecond();
+                    break;
+                }
+            }
+
+            if(plugin != null){
+                return new Pair<>(plugin, domain);
+            }
+
+            return null;
+        }
+
+### 11.2    requestPlugins
+
+This function takes an open connection to an OLIVE Server, builds a message requesting information from the server about the plugins it has access to, and returns a list of valid plugin/domain pairs that are available for additional requests.  The main function as defined outlines how this can be done with a synchronous request, as all of the scoring request examples are; but there is an additional example shown in the gray commented-out code providing the code to send the same request asynchronously.
+
+Once the server has replied, a loop is provided to demonstrate how to unpack the reply message to extract the desired information.
+
+        Public List<Pair<Scenic.Plugin, Scenic.Domain>> requestPlugins(Server server) throws ClientException {
+
+
+            List<Pair<Scenic.Plugin, Scenic.Domain>> pluginList = new ArrayList<>();
+            Server.Result<Scenic.PluginDirectoryRequest, Scenic.PluginDirectoryResult> result =
+                    server.synchRequest(Scenic.PluginDirectoryRequest.newBuilder().build());
+
+            // You could also call this asynchronously
+            /*Server.ResultCallback<Scenic.PluginDirectoryRequest, Scenic.PluginDirectoryResult> rc = new Server.ResultCallback<Scenic.PluginDirectoryRequest, Scenic.PluginDirectoryResult>() {
+                @Override
+                public void call(Server.Result<Scenic.PluginDirectoryRequest, Scenic.PluginDirectoryResult> r) {
+                    // do something with the results:
+                    if(!r.hasError()){
+                        for(Scenic.Plugin p : r.getRep().getPluginsList()){
+                            log.info(“{}: {}”, p.getId(), p.getDesc());
+                            for(Scenic.Domain d : p.getDomainList()){
+                                log.debug(“\t {}: {}”, d.getId(), d.getDesc());
+                            }
+                        }
+                    }
+
+                }
+            };
+
+            server.enqueueRequest(Scenic.PluginDirectoryRequest.newBuilder().build(), rc);
+            */;
+
+
+            for(Scenic.Plugin p : result.getRep().getPluginsList()){
+                log.info(“{}: {}”, p.getId(), p.getDesc());
+                for(Scenic.Domain d : p.getDomainList()){
+                    log.debug("“\t {}: {}”, d.getId(), d.getDesc());
+                    pluginList.add(new Pair<Scenic.Plugin, Scenic.Domain>(p, d));
+                }
+            }
+            return  pluginList;
+        }
+
+
+### 11.3    Audio packaging functions
+
+Audio may be submitted to the server either as:
+- The path to the audio file (assumes the server and client share the same filesystem).
+- As a buffer of raw audio samples (assumes the samples are 16-bit PCM data at 8000 Hz).
+- As a serialized audio file, where the file is read of disk and sent entirely to the server as data (audio header and all).
+
+The three functions below, packageAudioAsPath, packageAudioAsRawBuffer, and packageAudioAsSerializedBuffer demonstrate how to create an Audio protobuf that can be used as an OLIVE submission.  
+
+Each of the functions accept a channelNumber and list of RegionWords.  Both of these parameters are optional.  
+
+By default audio is treated as mono by the server, but if a channel number greater than 0 is specified, the channel field is set for the Audio message.  This tells the server to process this channel and not treat the audio submission as mono.  
+
+Optionally, a set of region annotations (start/end regions in milliseconds) can associated with the Audio.  When regions are specified, this is intended to tell the plugin to process these sub regions with in the file.  Support for region annotations varies by plugin, so setting these is no guarantee they will be handled by the plugin.  Please consult with SRI or refer to the Plugin Reference Guide to verify that the plugin can handle region annotations before proceeding.
+
+### 11.3.1  Send the Filesystem Path as the Audio: packageAudioAsPath
+
+The packageAudioAsPath function creates an Audio object that includes the path to the audio.  This should only be used when both the client and server share a filesystem, as this path must accessible to the server.  
+
+Optionally the channel number and annotation regions may be specified as described above if the audio should NOT be treated as mono or one or more regions need to be passed to the server.
+
+        Public Scenic.Audio packageAudioAsPath(String wavFileName,  int channelNumber, List<RegionWord> regions){
+
+            Scenic.Audio.Builder audioBuilder = Scenic.Audio.newBuilder().setPath(wavFileName);
+
+            // For multi-channel (stereo) audio we have the option of specifying the channel 
+            // to process, otherwise the file is treated as mono (if stereo)
+            if (channelNumber > 0) {
+                audioBuilder.setChannel(channelNumber);
+            }
+
+
+            // Add optional region annotations
+            if (null != regions) {
+                for (RegionWord word : regions) {
+
+
+        audioBuilder.addRegions(Scenic.AnnotationRegion.newBuilder().setStartT(word.start).setEndT(word.end));
+                }
+            }
+
+
+
+            return audioBuilder.build();
+
+        }
+
+### 11.3.2  Send Audio as a Buffer of Raw Samples: packageAudioAsRawBuffer
+
+The packageAudioAsRawBuffer function starts by opening an AudioInputStream for the specified audio file. This stream is used to read in the raw samples as a byte array an then fill in the header/metadata (channel, sample rate, length, and bit depth) for the AudioBuffer.  This AudioBuffer is then populated with the byte[] samples data that was provided as input. This step is necessary because the message requires that the data be stored in a protobuf byte array, rather than a Java byte array.  
+
+Finally, a Scenic.Audio object is created with AudioBuffer added as AudioSamples field. 
+
+Note that when submitting audio to the server through a buffer like this, the data must be comprised of 16-bit PCM audio samples and the bit depth is set to “BIT_DEPTH_16”.
+
+Note that submitting a request in this manner has some requirements. The byte array of audio samples must 16-bit PCM data in this example, but this can be updated to support other bitrates if this information is passed into the helper function instead of using the constant value of “BIT_DEPTH_16”. Many audio processing codebases will automatically convert to this format when opening audio files and loading them into memory. However, this allows audio to be submitted for scoring that isn’t stored locally on the machine hosting the OLIVE Server.
+
+
+        Public Scenic.Audio packageAudioAsRawBuffer(String wavFileName, int channelNumber, List<RegionWord> regions) throws IOException, UnsupportedAudioFileException {
+
+
+            AudioInputStream ais = AudioSystem.getAudioInputStream(Paths.get(wavFileName).toFile());
+
+            byte[] samples = convertWav2Buffer(ais);
+
+            Scenic.AudioBuffer.Builder  abuff = Scenic.AudioBuffer.newBuilder()
+                    //.setEncoding(Scenic.AudioEncodingType.PCM16)  Do not set – for future use
+                    .setChannels(ais.getFormat().getChannels())
+                    .setRate((int) ais.getFormat().getSampleRate())
+                    .setSamples(samples.length)
+                    .setBitDepth(Scenic.AudioBitDepth.BIT_DEPTH_16);
+
+            abuff.setData(ByteString.copyFrom(samples));
+
+            Scenic.Audio.Builder audioBuilder = Scenic.Audio.newBuilder();
+
+            // For multi-channel (stereo) audio we have the option of specifying 
+            // the channel to process, otherwise the file is treated as mono (if stereo)
+            if (channelNumber > 0) {
+                audioBuilder.setAudioSamples(abuff.build()).setChannel(channelNumber);
+            }
+            else {
+                // process as mono
+                audioBuilder.setAudioSamples(abuff.build());
+            }
+
+            // Add optional region annotations
+            if (null != regions) {
+                for (RegionWord word : regions) {
+                    audioBuilder.addRegions(Scenic.AnnotationRegion.newBuilder()
+                .setStartT(word.start).setEndT(word.end));
+                }
+            }
+
+            return audioBuilder.build();
+
+
+        }
+
+
+### 11.3.3  Send Audio as a Serialized File: packageAudioAsSerializedBuffer
+
+This function again represents a small but important deviation from the previous audio packaging functions.  This method is again passed the path to an audio file as input, but in this case, the function loads the entire audio file (header included) into a data object, leaving it completely intact and without doing any sort of decoding.  This allows the file to be passed in its entirety to the OLIVE server, allowing the server to read the header and do any decoding in case any uncommon audio formats or compressed audio types are used. Note that this feature currently only supports RIFF wav headered files, of certain formats, including 8-bit a-law, 8-bit mu-law, 16-bit PCM, and others.  If you have a specific audio file format you wish to use, please consult with SRI to verify compatibility. 
+
+This feature allows the server to process the file with full access to the information contained in the file’s header, and converting the data to a processable format if necessary.  This allows some non-standard audio formats (such as 8-bit a-law or 8-bit μ-law).  This may be useful if the client does not have the capability to open and decode these files, and the files are not stored locally on the OLIVE Server machine.
+
+As discussed above, the channel number may be specified if the audio should not be handled as mono.  One may also add one or more annotation regions, if needed by the plugin.
+
+
+        Public Scenic.Audio packageAudioAsSerializedBuffer(String wavFileName, int channelNumber, List<RegionWord> regions) throws IOException {
+
+
+            // NOTE: the audio format is set to zeros or some default value when serializing an
+            // audio file since these fields are required (but ignored by the server for serializing 
+            // audio)
+            byte[] serialized = Files.readAllBytes(Paths.get(wavFileName));
+            Scenic.AudioBuffer.Builder abuff = Scenic.AudioBuffer.newBuilder()
+                    .setSerializedFile(true)
+                    //.setEncoding()  // Ignored for now – this is a future feature
+                    .setChannels(0)
+                    .setRate(0)
+                    .setSamples(0)
+                    .setBitDepth(Scenic.AudioBitDepth.BIT_DEPTH_16);  // Again an
+            abuff.setData(ByteString.copyFrom(serialized));
+
+            Scenic.Audio.Builder audioBuilder = Scenic.Audio.newBuilder();
+
+            // For multi-channel (stereo) audio we have the option of specifying the channel 
+            // to process, otherwise the file is treated as mono (if stereo)
+            if (channelNumber > 0) {
+                audioBuilder.setAudioSamples(abuff.build()).setChannel(channelNumber);
+            }
+            else {
+                // process as mono
+                audioBuilder.setAudioSamples(abuff.build());
+            }
+
+            // Add optional region annotations
+            if (null != regions) {
+                for (RegionWord word : regions) {
+                    audioBuilder.addRegions(Scenic.AnnotationRegion.newBuilder()
+                            .setStartT(word.start).setEndT(word.end));
+                }
+            }
+
+            return audioBuilder.build();
+
+
+        }
+
+
+### 11.4    requestFrameScore
+
+This function is used to make a frame score request, which returns a score for each frame (100 frames per second) of audio submitted.  Frame scores are generally used for SAD, with a list of scores returned for the class ID “speech”.  In the code example below, the Audio object is assumed to be created in one of the three ways previously described (pathname, raw samples, or serialized file).  
+
+In addition to the audio object, this function takes a connection to the server and a valid plugin and domain (the plugin and domain were acquired via the call to requestPlugins()).
+
+This example also illustrates making asynchronous and synchronous requests, where async requests return immediately after submitting the request to the server and sync requests wait for a response to be received from the server.  When the async flag is set to true, the callback, rc, is invoked by the server object when the FrameScoreResult is received, otherwise it is explicitly called when the server’s synchRequest() method returns.  
+
+        Public static boolean requestFrameScore(Server server,
+                                                Scenic.Plugin  plugin,
+                                                Scenic.Domain domain,
+                                                Scenic.Audio audio,
+                                                Server.ResultCallback<Scenic.FrameScorerRequest,      Scenic.FrameScorerResult> rc,
+                                                boolean async,
+                                                List<Pair<String, String>> options,
+                                                List<String> classIDs) throws ClientException, IOException, UnsupportedAudioFileException {
+
+
+            Scenic.FrameScorerRequest.Builder req = Scenic.FrameScorerRequest.newBuilder()
+                    .setAudio(audio)
+                    .setPlugin(plugin.getId())
+                    .setDomain(domain.getId());
+
+            // Process plugin options (if any)
+            if(null != options) {
+                for (Pair<String, String> p : options) {    
+        req.addOption(Scenic.OptionValue.newBuilder().setName(
+                p.getFirst()).setValue(p.getSecond()));
+                }
+            }
+
+            // And add any class IDS  - if any
+            if(null != classIDs && classIDs.size() >0)
+                req.addAllClassId(classIDs);
+
+            //
+            if (async) {
+                server.enqueueRequest(req.build(), rc);
+            }
+            else {
+
+                Server.Result<Scenic.FrameScorerRequest, Scenic.FrameScorerResult> result = server.synchRequest(req.build());
+                rc.call(result);
+            }
+
+
+            return true;
+        }
+
+
+
+### 11.5    requestEnrollClass
+
+The requestEnrollClass method is normally used to enroll new speakers for a SID plugin.   It requires an Audio object (created via one of the three audio packaging techniques), a plugin, domain and the name of the class to enroll.  Normally the class is the name of a speaker to enroll for a SID plugin. The callback can called asynchronously when the server receives the ClassModificationResult message from the server if the async flag is set to true, otherwise this function will block until the server receives the message, invoking the callback when a message is received.
+
+        /**
+         * Make a class enrollment request
+         * @param server the server object
+         * @param plugin the plugin
+         * @param  domain the domain to use for enrollment
+         * @param id the class id (speaker) to enroll
+         * @param rc the call back function
+         * @param async true if this call should be asynchronous
+         * @param options zero or more optional parameters for the plugin
+         * @return true if submitted
+         *
+         * @throws ClientException
+         */
+        public static boolean requestEnrollClass(Server server,
+                                                 Scenic.Plugin plugin,
+                                                 Scenic.Domain domain,
+                                                 String id,
+                                                 Scenic.Audio audio,
+                                                 Server.ResultCallback<Scenic.ClassModificationRequest, Scenic.ClassModificationResult> rc,
+                                                 boolean async,
+                                                 List<Pair<String, String>> options) throws ClientException {
+
+
+            try {
+                // NOTE: not shown here, but one could submit multiple audio submission for the same class id:
+                Scenic.ClassModificationRequest.Builder req = Scenic.ClassModificationRequest.newBuilder()
+                        .setClassId(id)
+                        .addAddition(audio)
+                        .setPlugin(plugin.getId())
+                        .setDomain(domain.getId());
+
+                // Add options, if there are options.  Supported options vary by plugin
+                if (null != options) {
+                    for (Pair<String, String> p : options) { 
+        req.addOption(Scenic.OptionValue.newBuilder().setName(p.getFirst()).
+        setValue(p.getSecond()));
+                    }
+                }
+
+                // Either make a sync or async request
+                if(async){
+                    server.enqueueRequest(req.build(), rc);
+                }
+                else {
+                    Server.Result<Scenic.ClassModificationRequest, Scenic.ClassModificationResult> result = server.synchRequest(req.build());
+                    rc.call(result);
+                }
+
+            } catch (Exception e) {
+                log.error(“Enrollment failed because: {}”, e);
+                return  false;
+            }
+
+            return true;
+
+        }
+
+
+
+### 11.6    requestGlobalScore
+
+This function is used to make a GlobalScorer request, where a set of scores is returned for the entire audio submission.  There should be one score returned for each class supported by the plugin/domain.  LID and SID are normally GlobalScorers.  For SID, scores for each enrolled speaker is returned, while LID returns a score for each supported language. 
+
+As with previous score request a valid connection to the server, plugin, and domain are required.  The result can also be handled asynchronously.
+
+        /**
+         * Make a global score request
+         *
+         * @param server the OLIVE server
+         * @param plugin the requested plugin to provide the score
+         * @param domain the requested domain to provide the score
+         * @param audio the audio submission
+         * @param async true if this function should not block, waiting for a response from the server
+         * @param rc the callback
+         * @param options zero or more options to pass to the plugin
+         * @param classIDs zero or more class IDs to pass to the plugin to filter the scores
+         * @return
+         * @throws ClientException
+         * @throws IOException
+         * @throws UnsupportedAudioFileException
+         */
+        public static boolean requestGlobalScore(Server server,
+                                                 Scenic.Plugin  plugin,
+                                                 Scenic.Domain domain,
+                                                 Scenic.Audio audio,
+                                                 Scenic.AudioVector vector,
+                                                 boolean async,
+                                                 Server.ResultCallback<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult> rc,
+                                                 List<Pair<String, String>> options,
+                                                 List<String> classIDs) throws ClientException, IOException, UnsupportedAudioFileException {
+
+
+
+            Scenic.GlobalScorerRequest.Builder req = Scenic.GlobalScorerRequest.newBuilder()
+                    .setPlugin(plugin.getId())
+                    .setDomain(domain.getId());
+
+            // Add any options, if there are any
+            if(null != options) {
+                for (Pair<String, String> p : options){
+        req.addOption(Scenic.OptionValue.newBuilder().setName(
+        p.getFirst()).setValue(p.getSecond()));
+                }
+            }
+
+            // And add any class IDS  - if any
+            if(null != classIDs && classIDs.size() >0)
+                req.addAllClassId(classIDs);
+
+            if(null != vector){
+                req.setVector(vector);
+            }
+            else {
+                req.setAudio(audio);
+            }
+
+
+            if (async) {
+                server.enqueueRequest(req.build(), rc);
+            }
+            else {
+
+                Server.Result<Scenic.GlobalScorerRequest, Scenic.GlobalScorerResult> result = server.synchRequest(req.build());
+                rc.call(result);
+            }
+
+
+            return true;
+
+        }
+
+### 11.7    requestStereoGlobalScore
+
+This is basically the same call as requestGlobalScore, except if the submitted audio is stereo  then two score results are returned from the server.  The code example below shows to make and process this request.
+
+        /**
+         * Make a global score request
+         * 
+         * @param server the OLIVE server
+         * @param plugin the requested plugin to provide the score
+         * @param domain the requested domain to provide the score
+         * @param audio the audio submission
+         * @param async true if this function should not block, waiting for a response from the server
+         * @param rc the callback 
+         * @param options zero or more options to pass to the plugin
+         * @param classIDs zeror or more class IDs to pass to the plugin to filter the scores
+         * @return
+         * @throws ClientException
+         * @throws IOException
+         * @throws UnsupportedAudioFileException
+         */
+        public static boolean requestStereoGlobalScore(Server server,
+                                                 Scenic.Plugin  plugin,
+                                                 Scenic.Domain domain,
+                                                 Scenic.Audio audio,
+                                                 boolean async,
+                                                 Server.ResultCallback<Scenic.GlobalScorerStereoRequest, Scenic.GlobalScorerStereoResult> rc,
+                                                 List<Pair<String, String>> options,
+                                                 List<String> classIDs) throws ClientException, IOException, UnsupportedAudioFileException {
+
+
+
+            Scenic.GlobalScorerStereoRequest.Builder req = Scenic.GlobalScorerStereoRequest.newBuilder()
+                    .setPlugin(plugin.getId())
+                    .setDomain(domain.getId())
+                    .setAudio(audio);
+
+
+            // Add any options, if there are any
+            if(null != options) {
+                for (Pair<String, String> p : options){ 
+        req.addOption(Scenic.OptionValue.newBuilder().setName(
+        p.getFirst()).setValue(p.getSecond()));
+                }
+            }
+
+            // And add any class IDS  - if any
+            if(null != classIDs && classIDs.size() >0)
+                req.addAllClassId(classIDs);
+
+
+            if (async) {
+                server.enqueueRequest(req.build(), rc);
+            }
+            else {
+
+                Server.Result<Scenic.GlobalScorerStereoRequest, Scenic.GlobalScorerStereoResult> result = server.synchRequest(req.build());
+                rc.call(result);
+            }
+
+
+            return true;
+
+        }
+
+
+
+### 11.8    requestRegionScoring
+
+This function is used to make a region scoring request on the submitted audio.  A region score will contain an arbitrary number of start/end regions and class scores.  KWS and QbE are usually region scoring plugins, as are most of the modes of SDD.  
+
+As with previous score request a valid connection to the server, plugin, and domain are required.  The result can also be handled asynchronously.
+
+        /**
+         * Used to make a region score request.
+         *
+         * @param server the connection to the OLIVE server
+         *
+         * @param plugin the plugin to use for scoring
+         * @param domain the domain to use  for scoring
+         * @param audio the audio to submit for scoring
+         * @param rc a callback to be invoked when the score result is returned from the server.
+         * @param async true, if you want the server to call back
+         * @param options zero or more optional name/value properties to send to the plugin
+         * @param classIDs zero or more class IDs (languages or speakers) to send to the plugin to limit results
+         * @return
+         * @throws ClientException
+         * @throws IOException
+         * @throws UnsupportedAudioFileException
+         */
+        public static boolean requestRegionScores(Server server,
+                                                  Scenic.Plugin  plugin,
+                                                  Scenic.Domain domain,
+                                                  Scenic.Audio audio,
+                                                  Server.ResultCallback<Scenic.RegionScorerRequest, Scenic.RegionScorerResult> rc,
+                                                  boolean async,
+                                                  List<Pair<String, String>> options,
+                                                  List<String> classIDs) throws ClientException, IOException, UnsupportedAudioFileException {
+
+
+            Scenic.RegionScorerRequest.Builder req = Scenic.RegionScorerRequest.newBuilder()
+                    .setAudio(audio)
+                    .setPlugin(plugin.getId())
+                    .setDomain(domain.getId());
+
+            // Add any options, if there are any
+            if(null != options) {
+                for (Pair<String, String> p : options){
+        req.addOption(Scenic.OptionValue.newBuilder().setName(
+        p.getFirst()).setValue(p.getSecond()));
+                }
+            }
+
+            // And add any class IDS  - if any
+            if(null != classIDs && classIDs.size() >0)
+                req.addAllClassId(classIDs);
+
+
+            if (async) {
+                server.enqueueRequest(req.build(), rc);
+            }
+            else {
+
+                Server.Result<Scenic.RegionScorerRequest, Scenic.RegionScorerResult> result = server.synchRequest(req.build());
+                rc.call(result);
+            }
+
+            return true;
+
+        }
+
+
+### 11.9     preprocessAudioForAdaptation 
+
+This function is used to process all of the audio submitted for adaptation, and prepare it for the adaptation process.  This step performs the bulk of the work for adaptation, and is the most time consuming.  
+
+        public boolean preprocessAudioForAdaptation(Server server,
+                                                 Scenic.Plugin  plugin,
+                                                 Scenic.Domain domain,
+                                                 String classIDName,
+                                                 String adaptID,
+                                                 Scenic.Audio audio,
+                                                    Map<String, List<String>> annotations  ){
+
+            // Prepare the request
+            Scenic.PreprocessAudioAdaptRequest.Builder req = Scenic.PreprocessAudioAdaptRequest.newBuilder()
+                    .setPlugin(plugin.getId())
+                    .setDomain(domain.getId())
+                    .setAdaptSpace(adaptID)
+                    .setClassId(classIDName)
+                    .setAudio(audio);
+
+            Server.Result<Scenic.PreprocessAudioAdaptRequest, Scenic.PreprocessAudioAdaptResult> result = server.synchRequest(req.build());
+
+            if (annotations.containsKey(classIDName)) {
+                annotations.get(classIDName).add(result.getRep().getAudioId());
+            } else {
+                List<String> audioFiles = new ArrayList<>();
+                audioFiles.add(result.getRep().getAudioId());
+                annotations.put(classIDName, audioFiles);
+            }
+
+            return !result.hasError();
+
+        }
+
+### 11.10    finalizeSupervisedAdaptation 
+
+This function takes the metadata and other information extracted from the audio submitted in preprocessAudioForAdaptation and finalizes the adaptation, creating the new, adapted domain.
+
+        public void finalizeSupervisedAdaptation(Server server,
+                                                  Scenic.Plugin  plugin,
+                                                  Scenic.Domain domain,
+                                                  String adaptID,
+                                                  String newDomainName,
+                                                 Server.ResultCallback<Scenic.SupervisedAdaptationRequest, Scenic.SupervisedAdaptationResult> cb,
+                                                 Map<String, List<String>> annotations){
+
+            List<Scenic.ClassAnnotation> classAnnotations = buildAnnotations(annotations);
+
+            // Prepare the request
+            Scenic.SupervisedAdaptationRequest.Builder req = Scenic.SupervisedAdaptationRequest.newBuilder()
+                    .setPlugin(plugin.getId())
+                    .setDomain(domain.getId())
+                    .setAdaptSpace(adaptID)
+                    .setNewDomain(newDomainName)
+                    .addAllClassAnnotations(classAnnotations);
+
+
+            // Now send the finalize request
+            server.enqueueRequest(req.build(), cb);
+        }
+
+### 11.11    buildAnnotations
+
+This function is a helper function for finalizing a supervised adaptation request that converts annotations to the proper format required by OLIVE for adaptation.
+
+        public List<Scenic.ClassAnnotation> buildAnnotations(Map<String, List<String>> annotations){
+
+            List<Scenic.ClassAnnotation> classAnnotations = new ArrayList<>();
+            for(String id: annotations.keySet()){
+
+                List<Scenic.AudioAnnotation> aaList = new ArrayList<>();
+                for(String fileid : annotations.get(id)){
+
+                    // Build  the list of preprocessed audio IDs (there will be no regions)
+                    Scenic.AudioAnnotation.Builder aaBuilder = Scenic.AudioAnnotation.newBuilder().setAudioId(fileid);
+                    aaList.add(aaBuilder.build());
+                }
+                Scenic.ClassAnnotation.Builder caBuilder = Scenic.ClassAnnotation.newBuilder().setClassId(id).addAllAnnotations(aaList);
+                classAnnotations.add(caBuilder.build());
+            }
+
+            return  classAnnotations;
+        }
+
+
+
+-->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+    
+  </body>
+</html>
