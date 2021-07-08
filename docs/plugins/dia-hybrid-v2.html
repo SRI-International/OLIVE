@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1425,16 +1421,16 @@
 <p>An audio file or buffer to be scored.</p>
 <h2 id="outputs">Outputs</h2>
 <p>In the basic case, Diarization returns a list of regions labelled with “spkN”. ‘N’ is an integer denoting an unknown speaker, and the maximum N is the total number of unknown speakers in the file. All regions of speaker N are deemed to be spoken by the same speaker. Regions are represented in seconds. The 'score' field is reported as -100.0; this is not a confidence value, but a placeholder to maintain output format compatibility with other region-scoring OLIVE plugins.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    input-audio.wav 0.470 8.210 spk3 1.0</span>
-<span class="err">    input-audio.wav 8.320 13.110 spk4 1.0</span>
-<span class="err">    input-audio.wav 13.280 29.960 spk3 1.0</span>
-<span class="err">    input-audio.wav 30.350 32.030 spk3 1.0</span>
-<span class="err">    input-audio.wav 32.310 46.980 spk1 1.0</span>
-<span class="err">    input-audio.wav 47.790 51.120 spk2 1.0</span>
-<span class="err">    input-audio.wav 51.360 54.290 spk3 1.0</span>
-<span class="err">    input-audio.wav 54.340 55.400 spk2 1.0</span>
-<span class="err">    input-audio.wav 55.550 58.790 spk2 1.0</span>
-<span class="err">    input-audio.wav 58.820 76.340 spk1 1.0</span>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.470 8.210 spk3 1.0
+    input-audio.wav 8.320 13.110 spk4 1.0
+    input-audio.wav 13.280 29.960 spk3 1.0
+    input-audio.wav 30.350 32.030 spk3 1.0
+    input-audio.wav 32.310 46.980 spk1 1.0
+    input-audio.wav 47.790 51.120 spk2 1.0
+    input-audio.wav 51.360 54.290 spk3 1.0
+    input-audio.wav 54.340 55.400 spk2 1.0
+    input-audio.wav 55.550 58.790 spk2 1.0
+    input-audio.wav 58.820 76.340 spk1 1.0
 </code></pre></div>
 
 <h2 id="functionality-traits">Functionality (<a href="../traits.html">Traits</a>)</h2>

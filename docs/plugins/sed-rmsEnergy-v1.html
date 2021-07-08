@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1421,25 +1417,25 @@
 <h2 id="outputs">Outputs</h2>
 <p>SED has two possible output formats: frame scores and region scores, depending on which API is used to interface with the plug-in. Frame scoring interface returns a score (log-likelihood ratio) for each 10ms frame of the input audio segment. “0” is generally used as the threshold for detecting sound regions. Region scores internally post-process frame scores to return sound regions, with some padding and interpolation.</p>
 <p>An excerpt example of what frame scores typically look like:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">0.00223</span>
-<span class="err">0.00237</span>
-<span class="err">0.00250</span>
-<span class="err">0.00265</span>
-<span class="err">0.00280</span>
-<span class="err">0.00291</span>
-<span class="err">0.00305</span>
-<span class="err">0.00319</span>
-<span class="err">0.00332</span>
-<span class="err">0.00345</span>
+<div class="codehilite"><pre><span></span><code><span class="mf">0.00223</span>
+<span class="mf">0.00237</span>
+<span class="mf">0.00250</span>
+<span class="mf">0.00265</span>
+<span class="mf">0.00280</span>
+<span class="mf">0.00291</span>
+<span class="mf">0.00305</span>
+<span class="mf">0.00319</span>
+<span class="mf">0.00332</span>
+<span class="mf">0.00345</span>
 </code></pre></div>
 
 <p>This can be transformed into a region scoring output, either at the client-side, or by requesting region scores from the plugin. Region scores output by the plugin will provide the timestamp boundaries, in seconds, of the locations where sound was detected in the audio.</p>
 <p>When the plugin is invoked with the region scoring interface, the conversion from frame scores to region scores is done internally by applying a threshold and padding to the scores. The contiguous frames that are above a threshold are converted to timestamps representing the start and end of each of these regions in seconds. </p>
 <p>An example of output SED region scores:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">Test.wav 0.50 1.55 sound 0.00000000</span>
-<span class="err">Test.wav 1.54 13.94 sound 0.00000000</span>
-<span class="err">Test.wav 14.42 17.06 sound 0.00000000</span>
-<span class="err">Test.wav 17.73 35.54 sound 0.00000000</span>
+<div class="codehilite"><pre><span></span><code>Test.wav 0.50 1.55 sound 0.00000000
+Test.wav 1.54 13.94 sound 0.00000000
+Test.wav 14.42 17.06 sound 0.00000000
+Test.wav 17.73 35.54 sound 0.00000000
 </code></pre></div>
 
 <p>The final number in this format is a placeholding number to retain formatting compatibility with other region-scoring type plugins.</p>

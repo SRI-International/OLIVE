@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1456,12 +1452,12 @@
 <p>This is the first Text Machine Translation plugin released for the OLIVE architecture. It offers statistical-model based translation of text, using SRI's SRInterp engine. Each domain provides translation from one language into English, with the two source languages currently available being Spanish and French. The input and output formats match those shown on the <a href="tmt.md">TMT</a> information page.</p>
 <p>The goal of this plugin is to ingest text in one language, defined by the specified domain, and translate it to another language. In both currently available domains, the destination language is English.</p>
 <p>An example input string, in Spanish:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    manual de fotografía para aprender todo lo esencial sobre fujifilm cámaras</span>
+<div class="codehilite"><pre><span></span><code>    manual de fotografía para aprender todo lo esencial sobre fujifilm cámaras
 </code></pre></div>
 
 <p>Note that some punctuation and special characters will be stripped from the input during preprocessing.</p>
 <p>An example output string translation of the above example, as provided by the spa-eng-generic-v2 domain:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    manual of photography to learn everything essential about __UNKNOWN:fujifilm cameras</span>
+<div class="codehilite"><pre><span></span><code>    <span class="n">manual</span> <span class="n">of</span> <span class="n">photography</span> <span class="n">to</span> <span class="n">learn</span> <span class="n">everything</span> <span class="n">essential</span> <span class="n">about</span> <span class="n">__UNKNOWN</span><span class="err">:</span><span class="n">fujifilm</span> <span class="n">cameras</span>
 </code></pre></div>
 
 <p>Words that the system does not recognize or can't translate will be marked up with an <code>__UNKNOWN:</code> tag, as can be seen in the example output below. Note that all system output will be lowercase for case sensitive languages, and apart from the <code>__UNKNOWN:</code> tag, all output will be devoid of punctuation.</p>
@@ -1479,7 +1475,7 @@
 <h2 id="inputs">Inputs</h2>
 <p>For scoring, a text string or text-populated file is required. There is no verification performed by OLIVE or by TMT plugins that the text passed as input is actually in the language that the domain is capable of recognizing. The burden lies on the user to manually or automatically screen this audio before attempting to recognize. Note that output may fail or be very confusing if the input language does not match the domain's capabilities.</p>
 <p>An example input string:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    manual de fotografía para aprender todo lo esencial sobre fujifilm cámaras</span>
+<div class="codehilite"><pre><span></span><code>    manual de fotografía para aprender todo lo esencial sobre fujifilm cámaras
 </code></pre></div>
 
 <p>There is a bit of preprocessing of input that occurs before a string is sent to translation. Thus, all input is lower-cased and frequent punctuation marks such as commas, exclamation marks or question marks are stripped from the string. However, no spelling error correction of any kind is performed.</p>
@@ -1488,7 +1484,7 @@
 <h2 id="outputs">Outputs</h2>
 <p>The output format for TMT plugins is simply text. Words that the system does not recognize or can't translate will be marked up with an <code>__UNKNOWN:</code> tag, as can be seen in the example output below. Note that all system output will be lowercase, and apart from the <code>__UNKNOWN:</code> tag, all output will be devoid of punctuation.</p>
 <p>An example output string translation of the input example:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    manual of photography to learn everything essential about __UNKNOWN:fujifilm cameras</span>
+<div class="codehilite"><pre><span></span><code>    <span class="n">manual</span> <span class="n">of</span> <span class="n">photography</span> <span class="n">to</span> <span class="n">learn</span> <span class="n">everything</span> <span class="n">essential</span> <span class="n">about</span> <span class="n">__UNKNOWN</span><span class="err">:</span><span class="n">fujifilm</span> <span class="n">cameras</span>
 </code></pre></div>
 
 <!--TODO ANything else special like other potential tags other than __UNKNOWN?-->
@@ -1510,11 +1506,11 @@
 <p>Regarding performance, TMT plugins are especially sensitive to the tradeoffs between accuracy performance and realistic resource requirement and runtime constraints. The size-on-disk of each domain can be quite large depending on the technology of the individual plugin, and some technologies/plugins may have additional constraints. See the individual plugin detail pages for more information.</p>
 <h3 id="multi-job-threading">Multi-Job Threading</h3>
 <p>This plugin is currently not capable of multi-threading or parallel processing. If using this plugin with an OLIVE server, the server must be run in single-worker mode, by specifying a maximum number of jobs of 1:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    scenicserver -j 1</span>
+<div class="codehilite"><pre><span></span><code>    scenicserver -j 1
 </code></pre></div>
 
 <p>or</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    scenicserver --workers 1</span>
+<div class="codehilite"><pre><span></span><code>    scenicserver --workers 1
 </code></pre></div>
 
 <p>Alternatively, if the connected client only submits jobs synchronously, waiting for the completion and response of each job before submitting additional queries, problems will be avoided.</p>

@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1417,12 +1413,12 @@
 <h2 id="outputs">Outputs</h2>
 <p>Generally, a list of scores, one for each of the speakers enrolled in the domain, for the entire segment. As with SAD and LID, scores are log-likelihood ratios where a score of greater than 0 is considered a detection.  SID plugins, in particular, due to their association with forensics are generally calibrated or use dynamic calibration to ensure valid log-likelihood ratios to facilitate detection.  Plugins may be altered to return only detections, rather than a list of enrollees and scores, but this is generally done on the client side for the sake of flexibility.</p>
 <p>Example output: </p>
-<div class="codehilite"><pre><span></span><code><span class="err">/data/sid/audio/file1.wav speaker1 -0.5348</span>
-<span class="err">/data/sid/audio/file1.wav speaker2 3.2122</span>
-<span class="err">/data/sid/audio/file1.wav speaker3 -5.5340</span>
-<span class="err">/data/sid/audio/file2.wav speaker1 0.5333</span>
-<span class="err">/data/sid/audio/file2.wav speaker2 -4.9444</span>
-<span class="err">/data/sid/audio/file2.wav speaker3 -2.6564</span>
+<div class="codehilite"><pre><span></span><code>/data/sid/audio/file1.wav speaker1 -0.5348
+/data/sid/audio/file1.wav speaker2 3.2122
+/data/sid/audio/file1.wav speaker3 -5.5340
+/data/sid/audio/file2.wav speaker1 0.5333
+/data/sid/audio/file2.wav speaker2 -4.9444
+/data/sid/audio/file2.wav speaker3 -2.6564
 </code></pre></div>
 
 <h2 id="enrollments">Enrollments</h2>

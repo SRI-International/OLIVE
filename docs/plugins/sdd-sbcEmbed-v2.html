@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1522,12 +1518,12 @@
 <h2 id="outputs">Outputs</h2>
 <p>In the basic case, an SDD plugin returns a list of regions with a score for each detected, enrolled speaker. Regions are represented in seconds.  As with SID, scores are log-likelihood ratios where a score of greater than “0” is considered a detection. The SDD plugins are generally calibrated or use dynamic calibration to ensure valid log-likelihood ratios to facilitate detection. </p>
 <p>Example output:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">/data/sid/audio/file1.wav 8.320 13.110 speaker1 -0.5348</span>
-<span class="err">/data/sid/audio/file1.wav 13.280 29.960 speaker2 3.2122</span>
-<span class="err">/data/sid/audio/file1.wav 30.350 32.030 speaker3 -5.5340</span>
-<span class="err">/data/sid/audio/file2.wav 32.310 46.980 speaker1 0.5333</span>
-<span class="err">/data/sid/audio/file2.wav 47.790 51.120 speaker2 -4.9444</span>
-<span class="err">/data/sid/audio/file2.wav 54.340 55.400 speaker3 -2.6564</span>
+<div class="codehilite"><pre><span></span><code>/data/sid/audio/file1.wav 8.320 13.110 speaker1 -0.5348
+/data/sid/audio/file1.wav 13.280 29.960 speaker2 3.2122
+/data/sid/audio/file1.wav 30.350 32.030 speaker3 -5.5340
+/data/sid/audio/file2.wav 32.310 46.980 speaker1 0.5333
+/data/sid/audio/file2.wav 47.790 51.120 speaker2 -4.9444
+/data/sid/audio/file2.wav 54.340 55.400 speaker3 -2.6564
 </code></pre></div>
 
 <h2 id="enrollments">Enrollments</h2>
@@ -1628,18 +1624,18 @@ class CustomPlugin(Plugin, RegionScorer, ClassModifier, AudioVectorizer, ClassEx
 <h4 id="output_only_highest_scoring_detected_speaker">output_only_highest_scoring_detected_speaker</h4>
 <p>The boolean <code>output_only_highest_scoring_detected_speaker</code> parameter determines the format of the output by the plugin. If <code>output_only_highest_scoring_detected_speaker</code> is set to <code>False</code>, the plugin will report all the speakers above the threshold for a given segment. However, if <code>output_only_highest_scoring_detected_speaker</code> is set as <code>True</code>, the plugin will report only the speaker with the maximum score for a given segment even when multiple speakers have scores above the threshold. An example of this behavior distance follows.</p>
 <p>If we have a segment (S) with scores for three different speakers previously enrolled,</p>
-<div class="codehilite"><pre><span></span><code><span class="err">S spk1 10.8</span>
-<span class="err">S spk2 8.2</span>
-<span class="err">S spk3 3.1</span>
+<div class="codehilite"><pre><span></span><code>S spk1 10.8
+S spk2 8.2
+S spk3 3.1
 </code></pre></div>
 
 <p>and the threshold is 5.0, then with output_only_highest_scoring_detected_speaker = True, the system reports:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">S spk1 10.8</span>
+<div class="codehilite"><pre><span></span><code>S spk1 10.8
 </code></pre></div>
 
 <p>However, with output_only_highest_scoring_detected_speaker = False, the system reports:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">S spk1 10.8</span>
-<span class="err">S spk2 8.2</span>
+<div class="codehilite"><pre><span></span><code>S spk1 10.8
+S spk2 8.2
 </code></pre></div>
 
 <p>The default behavior of this plugin is to have this parameter set to <code>False</code> and to report all speaker detections over the detection threshold for each region.</p>

@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1382,13 +1378,13 @@
 <h2 id="description">Description</h2>
 <h3 id="core-behavior">Core behavior</h3>
 <p>This plugin temporally aligns a group of waveforms of different durations, to a common reference waveform. The approach was developed based on the idea that there is a reference event in a scene (yelling, gunshot, accident, etc.) in a reference file, and the user would like to align other files to this event. Hence, we assume that the default case is where the reference is shorter than the other files being searched. In the core cases the system thus uses the first input waveform as the reference and generates a temporal offset for each of the other ("target") waveforms, if they can be aligned. In the exceptional case, the reference waveform is shorter than a target, then this comparison is aligned with respect to the target start time. Thus, if the beginning of the reference aligns with 50 seconds from the start of the target, the alignment is returned as a "50". This is depicted in the figure below, where each "-" is 10 seconds:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">         XXXXXXXXXXXXXX         Reference</span>
-<span class="err">    -----XXXXXXXXXXXXXX-----    Target</span>
+<div class="codehilite"><pre><span></span><code>         XXXXXXXXXXXXXX         Reference
+    -----XXXXXXXXXXXXXX-----    Target
 </code></pre></div>
 
 <p>If the reference is longer than the target then the alignment is reversed, and the results are returned back as negative numbers. The figure below would return "-50". Returning this as a negative number is just a convention to indicate how the file should be aligned, results are always offset from the start of the longer file.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    -----XXXXXXXXXXXXXX-----    Reference</span>
-<span class="err">         XXXXXXXXXXXXXX         Target</span>
+<div class="codehilite"><pre><span></span><code>    -----XXXXXXXXXXXXXX-----    Reference
+         XXXXXXXXXXXXXX         Target
 </code></pre></div>
 
 <p>For cases where two waveforms are found to align with the same start time, a "0" is returned.
@@ -1397,10 +1393,10 @@ The alignment of the files is calculated using the highest correlation of the ca
 <p>Then, the index of the maximum correlation value that crosses the detection threshold is used to indicate where the reference file aligns to the different targets. Each detection uses the correlation value itself as a proxy for confidence. </p>
 <h3 id="annotations">Annotations</h3>
 <p>Input files may also be accompanied by "annotations" that indicate those regions the plugin should process, ignoring other parts of the waveform. This is useful to allow the user to specify a short region in the reference file containing an event of interest that should be searched for in the other files. In the case where annotations are used they must be provided or all files. In general we would expect that the reference waveform would have an annotated region that is relatively short and that the annotations for the target files would simply indicate their start to end times, though this does not have to be the case.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">wave1.wav 130.5 135.8   (reference)</span>
-<span class="err">wave2.wav 0 150.9   (target)</span>
-<span class="err">wave3.wav 0 180.0   (target)</span>
-<span class="err">wave4.wav 0 254.2   (target)</span>
+<div class="codehilite"><pre><span></span><code>wave1.wav 130.5 135.8   (reference)
+wave2.wav 0 150.9   (target)
+wave3.wav 0 180.0   (target)
+wave4.wav 0 254.2   (target)
 </code></pre></div>
 
 <p>Annotations are optional, but, as noted, when annotations are used they must be provided for all files in the call.</p>
@@ -1415,9 +1411,9 @@ The alignment of the files is calculated using the highest correlation of the ca
 <p>The input is a group of audio files, which is different from most OLIVE plugins. The first file is treated as the event, or reference, that must be found in the other longer files. </p>
 <h2 id="outputs">Outputs</h2>
 <p>The plugin returns an estimated lag for each unique pair of the reference waveform with every other waveform. That is, for every (reference, target) pair it returns the relative lag in seconds where reference occurs in target along with a confidence score.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">referenceFile.wav file1.wav -2.47 0.776</span>
-<span class="err">referenceFile.wav file2.wav  7.98 0.84</span>
-<span class="err">referenceFile.wav file3.wav 15.91 0.49</span>
+<div class="codehilite"><pre><span></span><code>referenceFile.wav file1.wav -2.47 0.776
+referenceFile.wav file2.wav  7.98 0.84
+referenceFile.wav file3.wav 15.91 0.49
 </code></pre></div>
 
 <h2 id="functionality-traits">Functionality (<a href="../traits.html">Traits</a>)</h2>
@@ -1439,15 +1435,15 @@ class CustomPlugin(Plugin, RegionScorer, ClassModifier, AudioVectorizer, ClassEx
 --------------XXX
 </code></pre></div>
 <p>The case in the figure below will succeed to align, since no padding is required. This behavior is an artifact of the understanding that users would generally be searching longer target files with limited duration reference events, which may not always be the case.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">              XXX</span>
-<span class="err">    --------------XXX</span>
+<div class="codehilite"><pre><span></span><code>              XXX
+    --------------XXX
 </code></pre></div>
 
 <h2 id="comments">Comments</h2>
 <p>Currently, the plugin uses the first input waveform in the list as the reference event to localize. </p>
 <p>If the reference is not found in a target, then the user is notified of this via a message.</p>
 <p>The following message will appear:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">`&#39;Warning: Reference &quot;{REF_NAME}&quot; was not found in Target &quot;{TARGET_NAME}&quot; at detection threshold={THRESHOLD}.&#39;`</span>
+<div class="codehilite"><pre><span></span><code>`&#39;Warning: Reference &quot;{REF_NAME}&quot; was not found in Target &quot;{TARGET_NAME}&quot; at detection threshold={THRESHOLD}.&#39;`
 </code></pre></div>
 
 <p>Where the values in {} will be replaced with the appropriate waveform names and internal plugin threshold. </p>

@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -73,11 +73,9 @@
     
       
 
-  
-
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -151,14 +149,12 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
 
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -573,7 +569,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -719,7 +715,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1591,17 +1587,17 @@
 <p>The <code>OLIVE</code> environment variable points to the actuall OLIVE installation location - If the software is installed as shown in the <a href="install.html">install page</a>, this is typically something like $HOME/olive5.0.0/.  From this, the OLIVE software is able to properly add the relevant <code>bin/</code> and <code>lib</code> directories to the <code>$PATH</code> and <code>$LD_LIBRARY_PATH</code> environment variables, respectively, and find/set other important variables.</p>
 <h4 id="olive_runtime"><code>OLIVE_RUNTIME</code></h4>
 <p><code>OLIVE_RUNTIME</code> points to the location of the <a href="#runtime-description">OLIVE Runtime</a> library outlined below. It's very important that this is set, as OLIVE will not function properly without access to the libraries and dependencies in the runtime.  In the two examples in the <a href="install.html">install page</a>, the <code>OLIVE_RUNTIME</code> variable would be set to:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $HOME/olive5.0.0/runtime-5.0.0-centos-7.3.1611-x86_64/</span>
+<div class="codehilite"><pre><span></span><code>    $HOME/olive5.0.0/runtime-5.0.0-centos-7.3.1611-x86_64/
 </code></pre></div>
 
 <h4 id="olive_app_data"><code>OLIVE_APP_DATA</code></h4>
 <p>This variable is very important if running the OLIVE Server, but not necessary when using the OLIVE command line tools. <code>OLIVE_APP_DATA</code> tells the Server where to find the OLIVE plugins, and also determines where it will store things like class enrollments (i.e. speakers for SID plugins, keyword examples for QBE plugins), as well as server logs and other files that must be written out by the system.  <code>OLIVE_APP_DATA</code> must contain a directory called <code>plugins</code> that contains valid OLIVE plugins. In the two examples in the <a href="install.html">install page</a>, the <code>OLIVE_APP_DATA</code> variable would be set to:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $HOME/oliveAppData/</span>
+<div class="codehilite"><pre><span></span><code>    $HOME/oliveAppData/
 </code></pre></div>
 
 <h3 id="starting-the-server">Starting the Server</h3>
 <p>Once the OLIVE environment has been properly established, launching the server is as simple as entering this into the appropriate terminal:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    oliveserver</span>
+<div class="codehilite"><pre><span></span><code>    oliveserver
 </code></pre></div>
 
 <p>Additional runtime/configuration options are available for advanced operation, and their details can be found in the <code>oliveserver</code> usage statement:</p>
@@ -2174,7 +2170,7 @@ If remote - no connection to be made - make sure OS firewall is open on ports 55
 <td>transformers</td>
 <td>3.3.1</td>
 <td>Natural Language Processing for PyTorch and TensorFlow</td>
-<td>Opne Source</td>
+<td>Open Source</td>
 <td>Apache</td>
 <td>https://github.com/huggingface/transformers</td>
 </tr>

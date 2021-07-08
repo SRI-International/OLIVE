@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1482,23 +1478,23 @@
 <h2 id="outputs">Outputs</h2>
 <p>SAD has two possible output formats: frame scores and region scores. Frame scores return log-likelihood ratio (LLR) score of speech vs. non-speech per each 10ms frame of the input audio segment. An LLR of greater than “0” indicates that the likelihood of speech is greater than the likelihood of non-speech and “0” is generally used as the threshold for detecting speech regions. A score of “0” indicated that speech is equally likely as non-speech. Region scores internally post-process frame scores to return speech regions, with some padding and interpolation.</p>
 <p>An excerpt example of what frame scores typically look like:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    -0.68944</span>
-<span class="err">    -0.47805</span>
-<span class="err">    -0.27453</span>
-<span class="err">    -0.07032</span>
-<span class="err">    0.13456</span>
-<span class="err">    0.34013</span>
-<span class="err">    0.53357</span>
-<span class="err">    0.97258</span>
-<span class="err">    1.10885</span>
+<div class="codehilite"><pre><span></span><code>    -0.68944
+    -0.47805
+    -0.27453
+    -0.07032
+    0.13456
+    0.34013
+    0.53357
+    0.97258
+    1.10885
 </code></pre></div>
 
 <p>This can be transformed into a region scoring output, either client-side, or by requesting region scores from the plugin.  Region scores output by the plugin will provide the timestamp boundaries, in seconds, of the locations where live speech was detected in the audio. </p>
 <p>When the plugin is asked for region scores, the conversion from frame scores to region scores is done internally by applying a threshold to the scores.  The contiguous frames that are above a threshold are converted to timestamps representing the start and end of each of these regions.  These regions are then extended in duration by subtracting a <code>padding</code> value (typically of 0.5s or lower) to the region time start and adding that same padding value to the region time end. For example, if a region starts at 10 seconds and ends at 20 second, with a 1-second padding value, the new 'padded' region will range from 9 to 21 seconds.  If after region-padding, two regions overlap in time, they will be merged into a single extended region. </p>
 <p>An example of SAD region scores:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    test_1.wav 10.159 13.219 speech 0.00000000</span>
-<span class="err">    test_1.wav 149.290 177.110 speech 0.00000000</span>
-<span class="err">    test_1.wav 188.810 218.849 speech 0.00000000</span>
+<div class="codehilite"><pre><span></span><code>    test_1.wav 10.159 13.219 speech 0.00000000
+    test_1.wav 149.290 177.110 speech 0.00000000
+    test_1.wav 188.810 218.849 speech 0.00000000
 </code></pre></div>
 
 <p>The final number in this format is a placeholding number to retain formatting compatibility with other region-scoring type plugins.  </p>
@@ -1511,8 +1507,8 @@
 </ol>
 <p>The labels indicate which regions in the audio are speech or non-speech. The system adapts the model using this set of data and labels (‘S’ for speech and ‘NS’ for non-speech) in order to improve performance in target conditions that differ from its original training. Adaptation can substantially improve performance with 6 minutes or more of speech and non-speech region annotations, and performance can improve with as little as one minute. Adaptation durations of less than one minute have not been tested, and therefore results will be uncertain. Inputs to the plug-in should include both S and NS (speech and non-speech, respectively) regions. Inputs do not need to be balanced, but it is preferable that the S and NS regions are of similar durations, since just speech or just non-speech may not provide much performance benefit.</p>
 <p>For example:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    20131213T071501UTC_11020_A.wav S 72.719000 73.046</span>
-<span class="err">    20131213T071501UTC_11020_A.wav NS 51.923000 53.379000</span>
+<div class="codehilite"><pre><span></span><code>    20131213T071501UTC_11020_A.wav S 72.719000 73.046
+    20131213T071501UTC_11020_A.wav NS 51.923000 53.379000
 </code></pre></div>
 
 <p>Note that it is important to provide the proper full or relative path to each audio file in order for it to be used for processing. </p>

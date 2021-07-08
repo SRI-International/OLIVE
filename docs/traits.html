@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -73,11 +73,9 @@
     
       
 
-  
-
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -151,14 +149,12 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
 
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -512,7 +508,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -658,7 +654,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1723,15 +1719,15 @@ TODO: Remove | [UnsupervisedAdaptationRequest](apiMessage.md#unsupervisedadaptat
 <h3 id="globalscorer">GlobalScorer</h3>
 <p>A <strong>GlobalScorer</strong> plugin has the output of reporting a single score for each relevant plugin class representing the likelihood that the <em>entire</em> audio file or clip contains this class. For example, when audio is sent to a Speaker Identification (SID) plugin with the <strong>GlobalScorer</strong> Trait, if there are 3 enrolled speakers at that time, the plugin will return a single score for each enrolled speaker representing the likelihood that the audio is comprised of speech from each speaker, respectively.</p>
 <p>The output of such a request will contain information that looks something like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">/data/sid/audio/file1.wav speaker1 -0.5348</span>
-<span class="err">/data/sid/audio/file1.wav speaker2 3.2122</span>
-<span class="err">/data/sid/audio/file1.wav speaker3 -5.5340</span>
+<div class="codehilite"><pre><span></span><code>/data/sid/audio/file1.wav speaker1 -0.5348
+/data/sid/audio/file1.wav speaker2 3.2122
+/data/sid/audio/file1.wav speaker3 -5.5340
 </code></pre></div>
 
 <p>Keep in mind that speakers and speaker identification are just examples in this case, and that this generalizes to any global scoring plugin and whatever classes it is meant to distinguish between.  This same example could be represented more generically as:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">/data/sid/audio/file1.wav class1 -0.5348</span>
-<span class="err">/data/sid/audio/file1.wav class2 3.2122</span>
-<span class="err">/data/sid/audio/file1.wav class3 -5.5340</span>
+<div class="codehilite"><pre><span></span><code>/data/sid/audio/file1.wav class1 -0.5348
+/data/sid/audio/file1.wav class2 3.2122
+/data/sid/audio/file1.wav class3 -5.5340
 </code></pre></div>
 
 <p>Due to the nature of global scoring plugins, they are best used when the attribute that's being estimated is known to be, or very likely to be static.  For example, using global scoring SID on one side of a 4-wire telephone conversation, where the speaker is likely to remain the same throughout, or using global scoring LID on a TV broadcast that is expected to only contain a single language.</p>
@@ -1739,29 +1735,29 @@ TODO: Remove | [UnsupervisedAdaptationRequest](apiMessage.md#unsupervisedadaptat
 <p>The benefits of global scoring plugins are that they are often very fast, since they treat the entirety of the submitted audio as a single unit, and do not worry about trying to subdivide or chunk it in any way.  For a first-pass or quick triage approach, or when the data is known or suspected to be homogenous in the ways discussed above, these plugins are very effective.  When finer grained results are necessary, though, a <strong>RegionScorer</strong> or <strong>FrameScorer</strong> may be more appropriate.</p>
 <h3 id="regionscorer">RegionScorer</h3>
 <p>For each audio file or recording submitted to a <strong>RegionScorer</strong> plugin, results are returned consisting of 0 or more <em>regions</em> with an associated score and plugin class.  Typically, regions are returned in the case of a 'detection' of an instance of the respective class.  A 'region' is a pair of timestamps, referring to the start time and end time of the detected class presence, and includes the name of the respective class, and an associated score.  An example of this might be a keyword spotting plugin returning the keyword class name, as well as the location and likelihood of that keyword's presence.  This might look something like:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">/data/test/testFile1.wav 0.630 1.170 Airplane 4.3725</span>
-<span class="err">/data/test/testFile1.wav 1.520 2.010 Watermelon -1.1978</span>
+<div class="codehilite"><pre><span></span><code>/data/test/testFile1.wav 0.630 1.170 Airplane 4.3725
+/data/test/testFile1.wav 1.520 2.010 Watermelon -1.1978
 </code></pre></div>
 
 <p>Another example of output you may see from a region scoring plugin follows, showing what a region scoring speaker detection plugin might output.  In this example, an enrolled speaker, <em>speaker2</em> was detected in testFile1.wav from 0.630 s to 1.170 s with a likelihood score of 4.3725. Likewise for 1.520 s to 2.010 s in the same file for the enrolled speaker called <em>speaker1</em>, this time with a likelihood score of -1.1978.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">/data/test/testFile1.wav 0.630 1.170 speaker2 4.3725</span>
-<span class="err">/data/test/testFile1.wav 1.520 2.010 speaker1 -1.1978</span>
+<div class="codehilite"><pre><span></span><code>/data/test/testFile1.wav 0.630 1.170 speaker2 4.3725
+/data/test/testFile1.wav 1.520 2.010 speaker1 -1.1978
 </code></pre></div>
 
 <p>An even simpler output of this type may just label the regions within a file that the plugin determines contain speech. Again, these are just arbitrary examples using a specific plugin type to more easily describe the scoring type; a more generic output example could be:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">/data/test/testFile1.wav 0.630 1.170 class1 4.3725</span>
-<span class="err">/data/test/testFile1.wav 1.520 2.010 class2 -1.1978</span>
+<div class="codehilite"><pre><span></span><code>/data/test/testFile1.wav 0.630 1.170 class1 4.3725
+/data/test/testFile1.wav 1.520 2.010 class2 -1.1978
 </code></pre></div>
 
 <p><strong>RegionScorer</strong> plugins allow a finer resolution with respect to results granularity, and allow plugins to be more flexible and deal with transitions between languages or speakers or other classes of interest within a given audio file or recording. Sometimes this comes at a cost of increased processing complexity and/or slower runtime.</p>
 <h3 id="framescorer">FrameScorer</h3>
 <p>A plugin with the <strong>FrameScorer</strong> Trait that is queried with a FrameScorerRequest will provide score results for each frame of whatever audio has been submitted.  Unless otherwise noted, an audio frame is 10 milliseconds.  The most common OLIVE plugin that has the <strong>FrameScorer</strong> Trait are speech activity detection (SAD) plugins, where the score for each frame represents the likelihood of speech being present in that 10 ms audio frame.</p>
 <p>The output in this case is simply a sequential list of numbers, corresponding to the output score for each frame, in order:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">1.9047</span>
-<span class="err">1.8088</span>
-<span class="err">1.2382</span>
-<span class="err">-0.8862</span>
-<span class="err">-2.5509</span>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.9047</span>
+<span class="mf">1.8088</span>
+<span class="mf">1.2382</span>
+<span class="o">-</span><span class="mf">0.8862</span>
+<span class="o">-</span><span class="mf">2.5509</span>
 </code></pre></div>
 
 <p>In this example, these frames can then be processed to turn them into region scores, labeling the locations where speech has been detected as present within the file.  Returning raw frame scores as a result allows more down-stream flexibility, allowing thresholds to be adjusted and regions re-labeled if desired, for example to allow for tuning for more difficult or unexpected audio conditions.</p>

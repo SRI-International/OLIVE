@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -73,11 +73,9 @@
     
       
 
-  
-
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -151,14 +149,12 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
 
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -842,7 +838,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1890,17 +1886,17 @@ the olivepy-5.1.0rc1.tar.gz package.</p>
 <h2 id="integration">Integration</h2>
 <h3 id="analysis-request"><strong>Analysis Request</strong></h3>
 <p>With a Workflow Definition file, it only takes a few steps to make an analysis request:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="k">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="k">as</span> <span class="nn">ow</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;~/olive/sad_lid_sid.workflow&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">workflow</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">buffer</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">serialize_audio</span><span class="p">(</span><span class="s1">&#39;filename.wav&#39;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;filename.wav&#39;</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">serialize_audio</span><span class="p">(</span><span class="s1">&#39;filename.wav&#39;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;filename.wav&#39;</span><span class="p">))</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">([</span><span class="nb">buffer</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">([</span><span class="n">buffer</span><span class="p">])</span>
 </code></pre></div>
 
 <p>The analysis response can be pretty printed as JSON:</p>
@@ -1980,14 +1976,14 @@ the olivepy-5.1.0rc1.tar.gz package.</p>
 <h3 id="enrollment-request"><strong>Enrollment Request</strong></h3>
 <p>Some workflows support enrollment for one or more tasks. To list the tasks that support enrollment in a workflow, 
 use the OliveWorkflow get_enrollment_tasks method:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="k">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="k">as</span> <span class="nn">ow</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;~/olive/sad_lid_sid.workflow&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">workflow</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Enrollment Tasks: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">get_enrollment_tasks</span><span class="p">()))</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enrollment Tasks: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">get_enrollment_tasks</span><span class="p">()))</span> 
 <span class="n">Enrollment</span> <span class="n">Tasks</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SID&#39;</span><span class="p">]</span>
 </code></pre></div>
 
@@ -2007,11 +2003,11 @@ workflow, use the OliveWorkflow's enroll method:</p>
 <p>For the OLIVE 5.1 release only one task can be enrolled per request, even though the enrollment interface accepts multiple enrollment tasks. </p>
 <h4 id="other-enrollment-options"><strong>Other Enrollment Options</strong></h4>
 <p>Enrollment can also be done via the Python CLI tool, olivepyenroll:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">olivepyenroll -p sid-embed-v6.0.1 --domain multicond-v1 -e Test_Speaker -w test.wav</span>
+<div class="codehilite"><pre><span></span><code>olivepyenroll -p sid-embed-v6.0.1 --domain multicond-v1 -e Test_Speaker -w test.wav
 </code></pre></div>
 
 <p>Or incorporate the code from OliveClient (or AsyncOliveClient if client your client needs non-blocking calls):</p>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.oliveclient</span> <span class="kn">as</span> <span class="nn">oc</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.oliveclient</span> <span class="k">as</span> <span class="nn">oc</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">OliveClient</span><span class="p">(</span><span class="s1">&#39;test client&#39;</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">enroll</span><span class="p">(</span><span class="s1">&#39;sid-embed-v6.0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;multicond-v1&#39;</span><span class="p">,</span> <span class="s1">&#39;Test_Speaker&#39;</span><span class="p">,</span> <span class="s1">&#39;/olive/data/test.wav&#39;</span><span class="p">)</span>
 </code></pre></div>
@@ -2028,35 +2024,35 @@ the audio buffer. </li>
 </ul>
 <p>The audio pathname or buffer is wrapped in a WorkflowDataRequest object before submitting to OLIVE.</p>
 <p>Sending a local file as a serialized buffer:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">...</span>
-<span class="err"># Submit the serialize the audio file into a buffer for submission to OLIVE</span>
-<span class="err">audio_filename = &quot;~/audio/test_audio.wav&quot;</span>
-<span class="err"># OliveWorkflow provides a helper method to serialize a file:</span>
-<span class="err">buffer = workflow.serialize_audio(audio_filename)</span>
-<span class="err"># Wrap the buffer in a WorkflowDataRequest:</span>
-<span class="err">olive_data = workflow.package_audio(buffer, label=os.path.basename(audio_filename))</span>
+<div class="codehilite"><pre><span></span><code>...
+# <span class="nv">Submit</span> <span class="nv">the</span> <span class="nv">serialize</span> <span class="nv">the</span> <span class="nv">audio</span> <span class="nv">file</span> <span class="nv">into</span> <span class="nv">a</span> <span class="nv">buffer</span> <span class="k">for</span> <span class="nv">submission</span> <span class="nv">to</span> <span class="nv">OLIVE</span>
+<span class="nv">audio_filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">~/audio/test_audio.wav</span><span class="s2">&quot;</span>
+# <span class="nv">OliveWorkflow</span> <span class="nv">provides</span> <span class="nv">a</span> <span class="nv">helper</span> <span class="nv">method</span> <span class="nv">to</span> <span class="nv">serialize</span> <span class="nv">a</span> <span class="nv">file</span>:
+<span class="nv">buffer</span> <span class="o">=</span> <span class="nv">workflow</span>.<span class="nv">serialize_audio</span><span class="ss">(</span><span class="nv">audio_filename</span><span class="ss">)</span>
+# <span class="nv">Wrap</span> <span class="nv">the</span> <span class="nv">buffer</span> <span class="nv">in</span> <span class="nv">a</span> <span class="nv">WorkflowDataRequest</span>:
+<span class="nv">olive_data</span> <span class="o">=</span> <span class="nv">workflow</span>.<span class="nv">package_audio</span><span class="ss">(</span><span class="nv">buffer</span>, <span class="nv">label</span><span class="o">=</span><span class="nv">os</span>.<span class="nv">path</span>.<span class="k">basename</span><span class="ss">(</span><span class="nv">audio_filename</span><span class="ss">))</span>
 </code></pre></div>
 
 <p>Or to send the path to a local file (assuming the server and client are running on the same host or have access to a 
 shared file system):</p>
-<div class="codehilite"><pre><span></span><code><span class="err">...</span>
-<span class="err"># Submit the path of the audio file:   </span>
-<span class="err">audio_filename = &quot;~/audio/test_audio.wav&quot;</span>
-<span class="err">olive_data = workflow.package_audio(audio_filename,  mode=msgutil.AudioTransferType.AUDIO_PATH)</span>
+<div class="codehilite"><pre><span></span><code>...
+# Submit the path of the audio file:   
+audio_filename = &quot;~/audio/test_audio.wav&quot;
+olive_data = workflow.package_audio(audio_filename,  mode=msgutil.AudioTransferType.AUDIO_PATH)
 </code></pre></div>
 
 <p>Once the data has been wrapped in a WorkflowDataRequest it can be submitted for analysis or enrollment.  </p>
 <h4 id="audio-annotations"><strong>Audio Annotations</strong></h4>
 <p>The audio submitted for analysis (or enrollment) can be annotated with start/end regions when packaging audio using the 
 OliveWorkflow.package_audio() method. For example, here is how to specify two regions within a file:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">...</span>
-<span class="err">filename = &#39;/home/olive/test.wav&#39;</span>
-<span class="err"># Provide annotations for two regions: 0.3 to 1.7 seconds, and 2.4 to 3.3 seconds in filename:</span>
-<span class="err">regions = [(0.3, 1.7), (2.4, 3.3)]</span>
-<span class="err"># serialize the file:</span>
-<span class="err">buffer = workflow.serialize_audio(filename)</span>
-<span class="err">audio = workflow.package_audio(buffer, annotations=regions)</span>
-<span class="err">...</span>
+<div class="codehilite"><pre><span></span><code><span class="p">...</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="p">&#39;</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">olive</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">wav</span><span class="p">&#39;</span>
+<span class="p">#</span> <span class="n">Provide</span> <span class="n">annotations</span> <span class="k">for</span> <span class="n">two</span> <span class="nl">regions:</span> <span class="mf">0.3</span> <span class="n">to</span> <span class="mf">1.7</span> <span class="n">seconds</span><span class="p">,</span> <span class="k">and</span> <span class="mf">2.4</span> <span class="n">to</span> <span class="mf">3.3</span> <span class="n">seconds</span> <span class="n">in</span> <span class="nl">filename:</span>
+<span class="n">regions</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">2.4</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">)]</span>
+<span class="p">#</span> <span class="n">serialize</span> <span class="n">the</span> <span class="nl">file:</span>
+<span class="n">buffer</span> <span class="o">=</span> <span class="n">workflow</span><span class="p">.</span><span class="n">serialize_audio</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">audio</span> <span class="o">=</span> <span class="n">workflow</span><span class="p">.</span><span class="n">package_audio</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">regions</span><span class="p">)</span>
+<span class="p">...</span>
 </code></pre></div>
 
 <h3 id="handling-a-workflow-analysis-response-python"><strong>Handling A Workflow Analysis Response (Python)</strong></h3>
@@ -2071,58 +2067,58 @@ workflow, while the second method, get_analysis_task_info(), returns the names o
 type of score (Fame, Region, Global) returned by this task and when possible the name of the plugin/domain used to 
 implement this task.  get_analysis_task_info() also returns information about the data used by the job.</p>
 <p>For example:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">print(&quot;Analysis Tasks: {}&quot;.format(workflow.get_analysis_tasks()))</span>
+<div class="codehilite"><pre><span></span><code>print(&quot;Analysis Tasks: {}&quot;.format(workflow.get_analysis_tasks()))
 </code></pre></div>
 
 <p>Outputs</p>
-<div class="codehilite"><pre><span></span><code><span class="err">Analysis Tasks: [&#39;SAD&#39;, &#39;LID&#39;]</span>
+<div class="codehilite"><pre><span></span><code>Analysis Tasks: [&#39;SAD&#39;, &#39;LID&#39;]
 </code></pre></div>
 
 <p>For more detailed information about these tasks use get_analysis_task_info():</p>
-<div class="codehilite"><pre><span></span><code><span class="err">tasks_json = workflow.get_analysis_task_info()</span>
-<span class="err"># Pretty print the output using json.dumps:</span>
-<span class="err">print(&quot;Analysis Task Info: {}&quot;.format(json.dumps(tasks_json, indent=1)))</span>
+<div class="codehilite"><pre><span></span><code>tasks_json = workflow.get_analysis_task_info()
+# Pretty print the output using json.dumps:
+print(&quot;Analysis Task Info: {}&quot;.format(json.dumps(tasks_json, indent=1)))
 </code></pre></div>
 
 <p>Output:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">Analysis Task Info: [</span>
-<span class="err"> {</span>
-<span class="err"> &quot;data&quot;: {</span>
-<span class="err">    &quot;minNumberInputs&quot;: 1,</span>
-<span class="err">    &quot;maxNumberInputs&quot;: 1,</span>
-<span class="err">    &quot;type&quot;: &quot;AUDIO&quot;,</span>
-<span class="err">    &quot;preprocessingRequired&quot;: true,</span>
-<span class="err">    &quot;resampleRate&quot;: 8000,</span>
-<span class="err">    &quot;mode&quot;: &quot;MONO&quot;</span>
-<span class="err">   },</span>
-<span class="err">  &quot;SAD&quot;: {</span>
-<span class="err">   &quot;messageType&quot;: &quot;REGION_SCORER_REQUEST&quot;,</span>
-<span class="err">   &quot;traitOutput&quot;: &quot;REGION_SCORER&quot;,</span>
-<span class="err">   &quot;task&quot;: &quot;SAD&quot;,</span>
-<span class="err">   &quot;consumerDataLabel&quot;: &quot;audio&quot;,</span>
-<span class="err">   &quot;consumerResultLabel&quot;: &quot;SAD&quot;,</span>
-<span class="err">   &quot;returnResult&quot;: true,</span>
-<span class="err">   &quot;job_name&quot;: &quot;Basic SAD and LID workflow&quot;,</span>
-<span class="err">   &quot;analysis&quot;: {</span>
-<span class="err">    &quot;plugin&quot;: &quot;sad-dnn&quot;,</span>
-<span class="err">    &quot;domain&quot;: &quot;multi-v1&quot;</span>
-<span class="err">   }</span>
-<span class="err">  },</span>
-<span class="err">  &quot;LID&quot;: {</span>
-<span class="err">   &quot;messageType&quot;: &quot;GLOBAL_SCORER_REQUEST&quot;,</span>
-<span class="err">   &quot;traitOutput&quot;: &quot;GLOBAL_SCORER&quot;,</span>
-<span class="err">   &quot;task&quot;: &quot;LID&quot;,</span>
-<span class="err">   &quot;consumerDataLabel&quot;: &quot;audio&quot;,</span>
-<span class="err">   &quot;consumerResultLabel&quot;: &quot;LID&quot;,</span>
-<span class="err">   &quot;returnResult&quot;: true,</span>
-<span class="err">   &quot;job_name&quot;: &quot;Basic SAD and LID workflow&quot;,</span>
-<span class="err">   &quot;analysis&quot;: {</span>
-<span class="err">    &quot;plugin&quot;: &quot;lid-embedplda&quot;,</span>
-<span class="err">    &quot;domain&quot;: &quot;multi-v1&quot;</span>
-<span class="err">   }</span>
-<span class="err">  }</span>
-<span class="err"> }</span>
-<span class="err">]</span>
+<div class="codehilite"><pre><span></span><code>Analysis Task Info: [
+ {
+ &quot;data&quot;: {
+    &quot;minNumberInputs&quot;: 1,
+    &quot;maxNumberInputs&quot;: 1,
+    &quot;type&quot;: &quot;AUDIO&quot;,
+    &quot;preprocessingRequired&quot;: true,
+    &quot;resampleRate&quot;: 8000,
+    &quot;mode&quot;: &quot;MONO&quot;
+   },
+  &quot;SAD&quot;: {
+   &quot;messageType&quot;: &quot;REGION_SCORER_REQUEST&quot;,
+   &quot;traitOutput&quot;: &quot;REGION_SCORER&quot;,
+   &quot;task&quot;: &quot;SAD&quot;,
+   &quot;consumerDataLabel&quot;: &quot;audio&quot;,
+   &quot;consumerResultLabel&quot;: &quot;SAD&quot;,
+   &quot;returnResult&quot;: true,
+   &quot;job_name&quot;: &quot;Basic SAD and LID workflow&quot;,
+   &quot;analysis&quot;: {
+    &quot;plugin&quot;: &quot;sad-dnn&quot;,
+    &quot;domain&quot;: &quot;multi-v1&quot;
+   }
+  },
+  &quot;LID&quot;: {
+   &quot;messageType&quot;: &quot;GLOBAL_SCORER_REQUEST&quot;,
+   &quot;traitOutput&quot;: &quot;GLOBAL_SCORER&quot;,
+   &quot;task&quot;: &quot;LID&quot;,
+   &quot;consumerDataLabel&quot;: &quot;audio&quot;,
+   &quot;consumerResultLabel&quot;: &quot;LID&quot;,
+   &quot;returnResult&quot;: true,
+   &quot;job_name&quot;: &quot;Basic SAD and LID workflow&quot;,
+   &quot;analysis&quot;: {
+    &quot;plugin&quot;: &quot;lid-embedplda&quot;,
+    &quot;domain&quot;: &quot;multi-v1&quot;
+   }
+  }
+ }
+]
 </code></pre></div>
 
 <p>In the above example, the 'traitOutput' attribute, identifies the type of score out produced by the task.  This 
@@ -2142,18 +2138,18 @@ the Enterprise API this maps to a RegionScorerResult message  </li>
 <p>Each job will have a data element that describes properties of the audio used for analysis and one or more 'task' elements that contain the analysis results which are either frame scores, global scores, or region scores.</p>
 <h4 id="frame-scorer-task-output"><strong>Frame Scorer Task Output</strong></h4>
 <p>Tasks that return frame scores, are based the Enterprise API FrameScoreResult message:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">//</span> <span class="n">The</span> <span class="n">results</span> <span class="k">from</span> <span class="n">a</span> <span class="n">FrameScorerRequest</span>
-<span class="n">message</span> <span class="n">FrameScorerResult</span> <span class="err">{</span>
-  <span class="n">repeated</span> <span class="n">FrameScores</span> <span class="k">result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span> <span class="n">List</span> <span class="k">of</span> <span class="n">frame</span> <span class="n">scores</span> <span class="k">by</span> <span class="n">class_id</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code><span class="o">//</span> <span class="nv">The</span> <span class="nv">results</span> <span class="nv">from</span> <span class="nv">a</span> <span class="nv">FrameScorerRequest</span>
+<span class="nv">message</span> <span class="nv">FrameScorerResult</span> {
+  <span class="nv">repeated</span> <span class="nv">FrameScores</span> <span class="nb">result</span> <span class="o">=</span> <span class="mi">1</span><span class="c1">; // List of frame scores by class_id</span>
+}
 
-<span class="o">//</span> <span class="n">The</span> <span class="n">basic</span> <span class="n">unit</span> <span class="k">of</span> <span class="n">a</span> <span class="n">frame</span> <span class="n">score</span><span class="p">,</span> <span class="n">returned</span> <span class="k">in</span> <span class="n">a</span> <span class="n">FrameScorerRequest</span>
-<span class="n">message</span> <span class="n">FrameScores</span> <span class="err">{</span>
-  <span class="n">required</span> <span class="n">string</span> <span class="n">class_id</span>     <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="k">class</span> <span class="n">id</span> <span class="k">to</span> <span class="n">which</span> <span class="n">the</span> <span class="n">frame</span> <span class="n">scores</span> <span class="n">pertain</span>
-  <span class="n">required</span> <span class="n">int32</span>  <span class="n">frame_rate</span>   <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="nb">number</span> <span class="k">of</span> <span class="n">frames</span> <span class="n">per</span> <span class="k">second</span>
-  <span class="n">required</span> <span class="n">double</span> <span class="n">frame_offset</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="k">offset</span> <span class="k">to</span> <span class="n">the</span> <span class="n">center</span> <span class="k">of</span> <span class="n">the</span> <span class="n">frame</span> <span class="s1">&#39;window&#39;</span>
-  <span class="n">repeated</span> <span class="n">double</span> <span class="n">score</span>        <span class="o">=</span> <span class="mi">4</span> <span class="p">[</span><span class="n">packed</span><span class="o">=</span><span class="k">true</span><span class="p">];</span> <span class="o">//</span> <span class="n">The</span> <span class="n">frame</span><span class="o">-</span><span class="k">level</span> <span class="n">scores</span> <span class="k">for</span> <span class="n">the</span> <span class="n">class_id</span>
-<span class="err">}</span>
+<span class="o">//</span> <span class="nv">The</span> <span class="nv">basic</span> <span class="nv">unit</span> <span class="nv">of</span> <span class="nv">a</span> <span class="nv">frame</span> <span class="nv">score</span>, <span class="nv">returned</span> <span class="nv">in</span> <span class="nv">a</span> <span class="nv">FrameScorerRequest</span>
+<span class="nv">message</span> <span class="nv">FrameScores</span> {
+  <span class="nv">required</span> <span class="nv">string</span> <span class="nv">class_id</span>     <span class="o">=</span> <span class="mi">1</span><span class="c1">; // The class id to which the frame scores pertain</span>
+  <span class="nv">required</span> <span class="nv">int32</span>  <span class="nv">frame_rate</span>   <span class="o">=</span> <span class="mi">2</span><span class="c1">; // The number of frames per second</span>
+  <span class="nv">required</span> <span class="nv">double</span> <span class="nv">frame_offset</span> <span class="o">=</span> <span class="mi">3</span><span class="c1">; // The offset to the center of the frame &#39;window&#39;</span>
+  <span class="nv">repeated</span> <span class="nv">double</span> <span class="nv">score</span>        <span class="o">=</span> <span class="mi">4</span> [<span class="nv">packed</span><span class="o">=</span><span class="nv">true</span>]<span class="c1">; // The frame-level scores for the class_id</span>
+}
 </code></pre></div>
 
 <p>The JSON output for frame score results has the form:</p>
@@ -2161,52 +2157,52 @@ the Enterprise API this maps to a RegionScorerResult message  </li>
 </code></pre></div>
 
 <p>Here is an example of SAD output as frame scores:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">&quot;tasks&quot;: {</span>
-<span class="err">...</span>
-<span class="err"> &quot;SAD&quot;: {</span>
-<span class="err">  &quot;taskTrait&quot;: &quot;FRAME_SCORER&quot;,</span>
-<span class="err">  &quot;taskType&quot;: &quot;SAD&quot;,</span>
-<span class="err">  &quot;messageType&quot;: &quot;FRAME_SCORER_RESULT&quot;,</span>
-<span class="err">  &quot;analysis&quot;: {</span>
-<span class="err">   &quot;result&quot;: [</span>
-<span class="err">    {</span>
-<span class="err">     &quot;classId&quot;: &quot;speech&quot;,</span>
-<span class="err">     &quot;frameRate&quot;: 100,</span>
-<span class="err">     &quot;frameOffset&quot;: 0.0,</span>
-<span class="err">     &quot;score&quot;: [</span>
-<span class="err">      -1.65412407898345,</span>
-<span class="err">      -1.65412407898345,</span>
-<span class="err">      -1.6976179167708825,</span>
-<span class="err">      -1.7201831820448585,</span>
-<span class="err">      -1.7218198748053783,</span>
-<span class="err">      -1.7285406659981328,</span>
-<span class="err">      -1.7403455556231222,</span>
-<span class="err">      -1.7572345436803467,</span>
-<span class="err">      -1.779207630169806,</span>
-<span class="err">      -1.8052880586341415,</span>
-<span class="err">      ...</span>
-<span class="err">      ]</span>
-<span class="err">        }</span>
-<span class="err">       ]</span>
-<span class="err">      },</span>
-<span class="err">      &quot;plugin&quot;: &quot;sad-dnn&quot;,</span>
-<span class="err">      &quot;domain&quot;: &quot;multi-v1&quot;</span>
-<span class="err">     },</span>
+<div class="codehilite"><pre><span></span><code>&quot;tasks&quot;: {
+...
+ &quot;SAD&quot;: {
+  &quot;taskTrait&quot;: &quot;FRAME_SCORER&quot;,
+  &quot;taskType&quot;: &quot;SAD&quot;,
+  &quot;messageType&quot;: &quot;FRAME_SCORER_RESULT&quot;,
+  &quot;analysis&quot;: {
+   &quot;result&quot;: [
+    {
+     &quot;classId&quot;: &quot;speech&quot;,
+     &quot;frameRate&quot;: 100,
+     &quot;frameOffset&quot;: 0.0,
+     &quot;score&quot;: [
+      -1.65412407898345,
+      -1.65412407898345,
+      -1.6976179167708825,
+      -1.7201831820448585,
+      -1.7218198748053783,
+      -1.7285406659981328,
+      -1.7403455556231222,
+      -1.7572345436803467,
+      -1.779207630169806,
+      -1.8052880586341415,
+      ...
+      ]
+        }
+       ]
+      },
+      &quot;plugin&quot;: &quot;sad-dnn&quot;,
+      &quot;domain&quot;: &quot;multi-v1&quot;
+     },
 </code></pre></div>
 
 <h4 id="global-scorer-tasks"><strong>Global Scorer Tasks</strong></h4>
 <p>Tasks that return global scores, are based on the Enterprise API's GlobalScorerResult message:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">message</span> <span class="n">GlobalScorerResult</span> <span class="err">{</span>
-  <span class="n">repeated</span> <span class="n">GlobalScore</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="k">class</span> <span class="n">scores</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">message</span> <span class="nv">GlobalScorerResult</span> {
+  <span class="nv">repeated</span> <span class="nv">GlobalScore</span> <span class="nv">score</span> <span class="o">=</span> <span class="mi">1</span><span class="c1">; // The class scores</span>
+}
 
-<span class="o">//</span> <span class="n">The</span> <span class="k">global</span> <span class="n">score</span> <span class="k">for</span> <span class="n">a</span> <span class="k">class</span>
-<span class="n">message</span> <span class="n">GlobalScore</span> <span class="err">{</span>
-  <span class="n">required</span> <span class="n">string</span> <span class="n">class_id</span>      <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="k">class</span>
-  <span class="n">required</span> <span class="nb">float</span>  <span class="n">score</span>         <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="o">//</span> <span class="n">The</span> <span class="n">score</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">the</span> <span class="k">class</span>
-  <span class="n">optional</span> <span class="nb">float</span>  <span class="n">confidence</span>    <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="o">//</span> <span class="n">An</span> <span class="n">optional</span> <span class="n">confidence</span> <span class="n">value</span> <span class="k">when</span> <span class="n">part</span> <span class="k">of</span> <span class="n">a</span> <span class="n">calibration</span> <span class="n">report</span>
-  <span class="n">optional</span> <span class="n">string</span> <span class="k">comment</span>       <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="o">//</span> <span class="n">An</span> <span class="n">optional</span> <span class="n">suggested</span> <span class="n">action</span> <span class="k">when</span> <span class="n">part</span> <span class="k">of</span> <span class="n">a</span> <span class="n">calibration</span> <span class="n">report</span>
-<span class="err">}</span>
+<span class="o">//</span> <span class="nv">The</span> <span class="nv">global</span> <span class="nv">score</span> <span class="k">for</span> <span class="nv">a</span> <span class="nv">class</span>
+<span class="nv">message</span> <span class="nv">GlobalScore</span> {
+  <span class="nv">required</span> <span class="nv">string</span> <span class="nv">class_id</span>      <span class="o">=</span> <span class="mi">1</span><span class="c1">; // The class</span>
+  <span class="nv">required</span> <span class="nv">float</span>  <span class="nv">score</span>         <span class="o">=</span> <span class="mi">2</span><span class="c1">; // The score associated with the class</span>
+  <span class="nv">optional</span> <span class="nv">float</span>  <span class="nv">confidence</span>    <span class="o">=</span> <span class="mi">3</span><span class="c1">; // An optional confidence value when part of a calibration report</span>
+  <span class="nv">optional</span> <span class="nv">string</span> <span class="nv">comment</span>       <span class="o">=</span> <span class="mi">4</span><span class="c1">; // An optional suggested action when part of a calibration report</span>
+}
 </code></pre></div>
 
 <p>The JSON output for global score results has the form:</p>
@@ -2214,39 +2210,39 @@ the Enterprise API this maps to a RegionScorerResult message  </li>
 </code></pre></div>
 
 <p>Here is an example of LID output as global scores:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">&quot;tasks&quot;: {</span>
-<span class="err">...</span>
-<span class="err">&quot;LID&quot;: {</span>
-<span class="err">    &quot;taskTrait&quot;: &quot;GLOBAL_SCORER&quot;,</span>
-<span class="err">    &quot;taskType&quot;: &quot;LID&quot;,</span>
-<span class="err">    &quot;messageType&quot;: &quot;GLOBAL_SCORER_RESULT&quot;,</span>
-<span class="err">    &quot;analysis&quot;: {</span>
-<span class="err">     &quot;score&quot;: [</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;eng&quot;,</span>
-<span class="err">       &quot;score&quot;: 2.5195693969726562</span>
-<span class="err">      },</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;apc&quot;,</span>
-<span class="err">       &quot;score&quot;: -3.509812355041504</span>
-<span class="err">      },</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;tgl&quot;,</span>
-<span class="err">       &quot;score&quot;: -3.566483974456787</span>
-<span class="err">      },</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;arb&quot;,</span>
-<span class="err">       &quot;score&quot;: -3.994529962539673</span>
-<span class="err">      },</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;fre&quot;,</span>
-<span class="err">       &quot;score&quot;: -21.55596160888672</span>
-<span class="err">      }</span>
-<span class="err">     ]</span>
-<span class="err">    },</span>
-<span class="err">    &quot;plugin&quot;: &quot;lid-embedplda&quot;,</span>
-<span class="err">    &quot;domain&quot;: &quot;multi-v1&quot;</span>
-<span class="err">   }</span>
+<div class="codehilite"><pre><span></span><code>&quot;tasks&quot;: {
+...
+&quot;LID&quot;: {
+    &quot;taskTrait&quot;: &quot;GLOBAL_SCORER&quot;,
+    &quot;taskType&quot;: &quot;LID&quot;,
+    &quot;messageType&quot;: &quot;GLOBAL_SCORER_RESULT&quot;,
+    &quot;analysis&quot;: {
+     &quot;score&quot;: [
+      {
+       &quot;classId&quot;: &quot;eng&quot;,
+       &quot;score&quot;: 2.5195693969726562
+      },
+      {
+       &quot;classId&quot;: &quot;apc&quot;,
+       &quot;score&quot;: -3.509812355041504
+      },
+      {
+       &quot;classId&quot;: &quot;tgl&quot;,
+       &quot;score&quot;: -3.566483974456787
+      },
+      {
+       &quot;classId&quot;: &quot;arb&quot;,
+       &quot;score&quot;: -3.994529962539673
+      },
+      {
+       &quot;classId&quot;: &quot;fre&quot;,
+       &quot;score&quot;: -21.55596160888672
+      }
+     ]
+    },
+    &quot;plugin&quot;: &quot;lid-embedplda&quot;,
+    &quot;domain&quot;: &quot;multi-v1&quot;
+   }
 </code></pre></div>
 
 <h4 id="region-scorer-tasks"><strong>Region Scorer Tasks</strong></h4>
@@ -2266,42 +2262,42 @@ the Enterprise API this maps to a RegionScorerResult message  </li>
 </code></pre></div>
 
 <p>The JSON output for region score results has the form:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">score[ {startT:float, endT:float, classId:str, score:float} ]</span>
+<div class="codehilite"><pre><span></span><code>score[ {startT:float, endT:float, classId:str, score:float} ]
 </code></pre></div>
 
 <p>Here is an example of SAD output as region score:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">&quot;tasks&quot;: {</span>
-<span class="err">       &quot;SAD&quot;: {</span>
-<span class="err">        &quot;taskTrait&quot;: &quot;REGION_SCORER&quot;,</span>
-<span class="err">        &quot;taskType&quot;: &quot;SAD&quot;,</span>
-<span class="err">        &quot;messageType&quot;: &quot;REGION_SCORER_RESULT&quot;,</span>
-<span class="err">        &quot;analysis&quot;: {</span>
-<span class="err">         &quot;region&quot;: [</span>
-<span class="err">          {</span>
-<span class="err">           &quot;startT&quot;: 3.3399999141693115,</span>
-<span class="err">           &quot;endT&quot;: 10.5,</span>
-<span class="err">           &quot;classId&quot;: &quot;speech&quot;,</span>
-<span class="err">           &quot;score&quot;: 0.0</span>
-<span class="err">          }</span>
-<span class="err">         ]</span>
-<span class="err">        },</span>
-<span class="err">        &quot;plugin&quot;: &quot;sad-dnn&quot;,</span>
-<span class="err">        &quot;domain&quot;: &quot;vtd-v1&quot;</span>
-<span class="err">       },</span>
+<div class="codehilite"><pre><span></span><code><span class="s">&quot;tasks&quot;</span><span class="o">:</span> <span class="p">{</span>
+       <span class="s">&quot;SAD&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s">&quot;taskTrait&quot;</span><span class="o">:</span> <span class="s">&quot;REGION_SCORER&quot;</span><span class="p">,</span>
+        <span class="s">&quot;taskType&quot;</span><span class="o">:</span> <span class="s">&quot;SAD&quot;</span><span class="p">,</span>
+        <span class="s">&quot;messageType&quot;</span><span class="o">:</span> <span class="s">&quot;REGION_SCORER_RESULT&quot;</span><span class="p">,</span>
+        <span class="s">&quot;analysis&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s">&quot;region&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+           <span class="s">&quot;startT&quot;</span><span class="o">:</span> <span class="mf">3.3399999141693115</span><span class="p">,</span>
+           <span class="s">&quot;endT&quot;</span><span class="o">:</span> <span class="mf">10.5</span><span class="p">,</span>
+           <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;speech&quot;</span><span class="p">,</span>
+           <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0.0</span>
+          <span class="p">}</span>
+         <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s">&quot;plugin&quot;</span><span class="o">:</span> <span class="s">&quot;sad-dnn&quot;</span><span class="p">,</span>
+        <span class="s">&quot;domain&quot;</span><span class="o">:</span> <span class="s">&quot;vtd-v1&quot;</span>
+       <span class="p">},</span>
 </code></pre></div>
 
 <h3 id="enrolled-classes"><strong>Enrolled Classes</strong></h3>
 <p>To list the current classes (such as speakers for a SID task, or languages for LID) in a workflow, 
 use the OliveWorkflow get_analysis_class_ids method:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="k">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="k">as</span> <span class="nn">ow</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;~/olive/sad_lid_sid.workflow&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">workflow</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">class_status_response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_analysis_class_ids</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Task Class IDs: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">class_status_response</span><span class="o">.</span><span class="n">get_response_as_json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Task Class IDs: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">class_status_response</span><span class="o">.</span><span class="n">get_response_as_json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">))</span>
 
 <span class="n">Enrollment</span> <span class="n">Class</span> <span class="n">IDs</span><span class="p">:</span> 
  <span class="p">[</span>
@@ -2351,8 +2347,8 @@ enrollments are added.</p>
 <h2 id="multi-channel-audio"><strong>Multi-channel Audio</strong></h2>
 <p>The default workflow behavior is to merge multi-channel audio into a single channel, which is known as 'MONO' mode. To perform analysis on each channel instead of a merged channel, then the Workflow Definition must be authored with a data mode of 'SPLIT'.   When using the split mode, each channel in a multi-channel audio input is "split" into a job.</p>
 <p>Here is a typical workflow that merges any multi-channel audio into a single channel audio input:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="k">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="k">as</span> <span class="nn">ow</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 
@@ -2374,8 +2370,8 @@ enrollments are added.</p>
 </code></pre></div>
 
 <p>Here is a workflow that will split each channel in a multi-channel (stereo) audio input into separate jobs:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="k">as</span> <span class="nn">oc</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="k">as</span> <span class="nn">ow</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 
@@ -2402,55 +2398,55 @@ enrollments are added.</p>
 Adaptation via a workflow is implemented, please use the SRI provided Python client (olivepylearn) or Java client 
 (OliveLearn) to perform adaptation.     </p>
 <p>To adapt using the olivepylearn utility:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">olivepylearn --plugin sad-dnn --domain multi-v1 -a TEST_NEW_DOMAIN -i /olive/sadRegression/lists/adapt_s.lst</span>
+<div class="codehilite"><pre><span></span><code>olivepylearn --plugin sad-dnn --domain multi-v1 -a TEST_NEW_DOMAIN -i /olive/sadRegression/lists/adapt_s.lst
 </code></pre></div>
 
 <p>Where that adapt_s.lst looks like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">/olive/sadRegression/audio/adapt/20131209T225239UTC_10777_A.wav S 20.469 21.719</span>
-<span class="err">/olive/sadRegression/audio/adapt/20131209T225239UTC_10777_A.wav NS 10.8000 10.8229</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131209T234551UTC_10782_A.wav S 72.898 73.748</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131209T234551UTC_10782_A.wav NS 42.754 43.010</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131210T184243UTC_10791_A.wav S 79.437 80.427</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131210T184243UTC_10791_A.wav NS 61.459 62.003</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T030311UTC_10817_A.wav S 11.0438 111.638</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T030311UTC_10817_A.wav NS 69.058 73.090</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T052052UTC_10823_A.wav S 112.936 113.656</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T052052UTC_10823_A.wav NS 83.046 83.114</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T064501UTC_10831_A.wav S 16.940 20.050</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T064501UTC_10831_A.wav NS 59.794 59.858</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T084501UTC_10856_A.wav S 87.280 88.651</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T084501UTC_10856_A.wav NS 82.229 82.461</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T101501UTC_10870_A.wav S 111.346 111.936</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T101501UTC_10870_A.wav NS 83.736 84.446</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T104501UTC_10876_A.wav S 77.291 78.421</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T104501UTC_10876_A.wav NS 0 4.951</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T111501UTC_10878_A.wav S 30.349 32.429</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T111501UTC_10878_A.wav NS 100.299 101.647</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T114501UTC_10880_A.wav S 46.527 49.147</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T114501UTC_10880_A.wav NS 44.747 46.148</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T134501UTC_10884_A.wav S 24.551 25.471</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T134501UTC_10884_A.wav NS 52.033 52.211</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T141502UTC_10887_A.wav S 88.358 93.418</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T141502UTC_10887_A.wav NS 46.564 46.788</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T151501UTC_10895_A.wav S 10.507 11.077</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T151501UTC_10895_A.wav NS 41.099 41.227</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T154502UTC_10906_A.wav S 61.072 63.002</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131212T154502UTC_10906_A.wav NS 19.108 19.460</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T023248UTC_10910_A.wav S 97.182 97.789</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T023248UTC_10910_A.wav NS 71.711 71.732</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T041143UTC_10913_A.wav S 114.312 117.115</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T041143UTC_10913_A.wav NS 31.065 31.154</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T044200UTC_10917_A.wav S 90.346 91.608</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T044200UTC_10917_A.wav NS 50.028 51.377</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T050721UTC_10921_A.wav S 75.986 76.596</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T050721UTC_10921_A.wav NS 12.485 12.709</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T071501UTC_11020_A.wav S 72.719 73.046</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T071501UTC_11020_A.wav NS 51.923 53.379</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T104502UTC_18520_A.wav NS 11.1192 112.761</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T121501UTC_18530_A.wav NS 81.277 82.766</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T124501UTC_18533_A.wav NS 83.702 84.501</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131213T134502UTC_18567_A.wav NS 69.379 72.258</span>
-<span class="err">/olive//sadRegression/audio/adapt/20131217T015001UTC_18707_A.wav NS 5.099 10.507</span>
+<div class="codehilite"><pre><span></span><code>/olive/sadRegression/audio/adapt/20131209T225239UTC_10777_A.wav S 20.469 21.719
+/olive/sadRegression/audio/adapt/20131209T225239UTC_10777_A.wav NS 10.8000 10.8229
+/olive//sadRegression/audio/adapt/20131209T234551UTC_10782_A.wav S 72.898 73.748
+/olive//sadRegression/audio/adapt/20131209T234551UTC_10782_A.wav NS 42.754 43.010
+/olive//sadRegression/audio/adapt/20131210T184243UTC_10791_A.wav S 79.437 80.427
+/olive//sadRegression/audio/adapt/20131210T184243UTC_10791_A.wav NS 61.459 62.003
+/olive//sadRegression/audio/adapt/20131212T030311UTC_10817_A.wav S 11.0438 111.638
+/olive//sadRegression/audio/adapt/20131212T030311UTC_10817_A.wav NS 69.058 73.090
+/olive//sadRegression/audio/adapt/20131212T052052UTC_10823_A.wav S 112.936 113.656
+/olive//sadRegression/audio/adapt/20131212T052052UTC_10823_A.wav NS 83.046 83.114
+/olive//sadRegression/audio/adapt/20131212T064501UTC_10831_A.wav S 16.940 20.050
+/olive//sadRegression/audio/adapt/20131212T064501UTC_10831_A.wav NS 59.794 59.858
+/olive//sadRegression/audio/adapt/20131212T084501UTC_10856_A.wav S 87.280 88.651
+/olive//sadRegression/audio/adapt/20131212T084501UTC_10856_A.wav NS 82.229 82.461
+/olive//sadRegression/audio/adapt/20131212T101501UTC_10870_A.wav S 111.346 111.936
+/olive//sadRegression/audio/adapt/20131212T101501UTC_10870_A.wav NS 83.736 84.446
+/olive//sadRegression/audio/adapt/20131212T104501UTC_10876_A.wav S 77.291 78.421
+/olive//sadRegression/audio/adapt/20131212T104501UTC_10876_A.wav NS 0 4.951
+/olive//sadRegression/audio/adapt/20131212T111501UTC_10878_A.wav S 30.349 32.429
+/olive//sadRegression/audio/adapt/20131212T111501UTC_10878_A.wav NS 100.299 101.647
+/olive//sadRegression/audio/adapt/20131212T114501UTC_10880_A.wav S 46.527 49.147
+/olive//sadRegression/audio/adapt/20131212T114501UTC_10880_A.wav NS 44.747 46.148
+/olive//sadRegression/audio/adapt/20131212T134501UTC_10884_A.wav S 24.551 25.471
+/olive//sadRegression/audio/adapt/20131212T134501UTC_10884_A.wav NS 52.033 52.211
+/olive//sadRegression/audio/adapt/20131212T141502UTC_10887_A.wav S 88.358 93.418
+/olive//sadRegression/audio/adapt/20131212T141502UTC_10887_A.wav NS 46.564 46.788
+/olive//sadRegression/audio/adapt/20131212T151501UTC_10895_A.wav S 10.507 11.077
+/olive//sadRegression/audio/adapt/20131212T151501UTC_10895_A.wav NS 41.099 41.227
+/olive//sadRegression/audio/adapt/20131212T154502UTC_10906_A.wav S 61.072 63.002
+/olive//sadRegression/audio/adapt/20131212T154502UTC_10906_A.wav NS 19.108 19.460
+/olive//sadRegression/audio/adapt/20131213T023248UTC_10910_A.wav S 97.182 97.789
+/olive//sadRegression/audio/adapt/20131213T023248UTC_10910_A.wav NS 71.711 71.732
+/olive//sadRegression/audio/adapt/20131213T041143UTC_10913_A.wav S 114.312 117.115
+/olive//sadRegression/audio/adapt/20131213T041143UTC_10913_A.wav NS 31.065 31.154
+/olive//sadRegression/audio/adapt/20131213T044200UTC_10917_A.wav S 90.346 91.608
+/olive//sadRegression/audio/adapt/20131213T044200UTC_10917_A.wav NS 50.028 51.377
+/olive//sadRegression/audio/adapt/20131213T050721UTC_10921_A.wav S 75.986 76.596
+/olive//sadRegression/audio/adapt/20131213T050721UTC_10921_A.wav NS 12.485 12.709
+/olive//sadRegression/audio/adapt/20131213T071501UTC_11020_A.wav S 72.719 73.046
+/olive//sadRegression/audio/adapt/20131213T071501UTC_11020_A.wav NS 51.923 53.379
+/olive//sadRegression/audio/adapt/20131213T104502UTC_18520_A.wav NS 11.1192 112.761
+/olive//sadRegression/audio/adapt/20131213T121501UTC_18530_A.wav NS 81.277 82.766
+/olive//sadRegression/audio/adapt/20131213T124501UTC_18533_A.wav NS 83.702 84.501
+/olive//sadRegression/audio/adapt/20131213T134502UTC_18567_A.wav NS 69.379 72.258
+/olive//sadRegression/audio/adapt/20131217T015001UTC_18707_A.wav NS 5.099 10.507
 </code></pre></div>
 
 <p>You may also incorporate the adapt code from olivepy.oliveclient directly into your client:</p>
@@ -2470,9 +2466,9 @@ Adaptation via a workflow is implemented, please use the SRI provided Python cli
 such as SAD, LID, SID, etc.  The example below uses a Workflow Definition file with the SRI implemented Python Workflow 
 API to make a SAD and LID request via a Workflow Definition file:</p>
 <div class="codehilite"><pre><span></span><code>    <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">sys</span>
-    <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="kn">as</span> <span class="nn">oc</span>
-    <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="kn">as</span> <span class="nn">ow</span>
-    <span class="kn">import</span> <span class="nn">olivepy.messaging.msgutil</span> <span class="kn">as</span> <span class="nn">msgutil</span>
+    <span class="kn">import</span> <span class="nn">olivepy.olive_async_client</span> <span class="k">as</span> <span class="nn">oc</span>
+    <span class="kn">import</span> <span class="nn">olivepy.workflow</span> <span class="k">as</span> <span class="nn">ow</span>
+    <span class="kn">import</span> <span class="nn">olivepy.messaging.msgutil</span> <span class="k">as</span> <span class="nn">msgutil</span>
 
     <span class="c1"># Create a connection to a local OLIVE server</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;test olive client&quot;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">)</span>
@@ -2489,8 +2485,8 @@ API to make a SAD and LID request via a Workflow Definition file:</p>
     <span class="n">audio_filename</span> <span class="o">=</span> <span class="s2">&quot;~/audio/test_audio.wav&quot;</span>
     <span class="n">buffers</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># read in the file as raw bytes so a buffer can be sent to the server as a buffer:</span>
-    <span class="nb">buffer</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">serialize_audio</span><span class="p">(</span><span class="n">audio_filename</span><span class="p">)</span>
-    <span class="n">data_wrapper</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="nb">buffer</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">audio_filename</span><span class="p">)</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">serialize_audio</span><span class="p">(</span><span class="n">audio_filename</span><span class="p">)</span>
+    <span class="n">data_wrapper</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">audio_filename</span><span class="p">)</span>
     <span class="n">buffers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_wrapper</span><span class="p">)</span>
 
     <span class="c1"># OR - if the server and client share a filesystem, uncomment the following to send the path to the audio file instead of a buffer:</span>
@@ -2500,9 +2496,9 @@ API to make a SAD and LID request via a Workflow Definition file:</p>
     <span class="n">response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">buffers</span><span class="p">)</span>
 
     <span class="c1"># response will contain an error message if the workflow failed, or results for each task:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Workflow results:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow results:&quot;</span><span class="p">)</span>
     <span class="c1"># Use json.dumps to pretty print the json output:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">get_response_as_json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">get_response_as_json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
 
     <span class="c1"># Be sure to close the connection to the server when done </span>
     <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
@@ -2510,75 +2506,75 @@ API to make a SAD and LID request via a Workflow Definition file:</p>
 
 <p>For the above code, one would see JSON formatted output like this (of course your output will vary by the audio 
 submitted for analysis):</p>
-<div class="codehilite"><pre><span></span><code><span class="err">Workflow results:</span>
-<span class="err">[</span>
-<span class="err"> {</span>
-<span class="err">  &quot;job_name&quot;: &quot;Simple SAD and LID workflow&quot;,</span>
-<span class="err">  &quot;data&quot;: [</span>
-<span class="err">   {</span>
-<span class="err">    &quot;dataId&quot;: &quot;test_audio.wav&quot;,</span>
-<span class="err">    &quot;msgType&quot;: &quot;PREPROCESSED_AUDIO_RESULT&quot;,</span>
-<span class="err">    &quot;mode&quot;: &quot;MONO&quot;,</span>
-<span class="err">    &quot;merged&quot;: false,</span>
-<span class="err">    &quot;sampleRate&quot;: 8000,</span>
-<span class="err">    &quot;durationSeconds&quot;: 10.509625434875488,</span>
-<span class="err">    &quot;numberChannels&quot;: 1,</span>
-<span class="err">    &quot;label&quot;: &quot;~/audio/test_audio.wav&quot;,</span>
-<span class="err">    &quot;id&quot;: &quot;edd6f2d8abb69e754cc4bd03c2d3f60379255048fdb20a8924858c0723ea4bbd&quot;</span>
-<span class="err">   }</span>
-<span class="err">  ],</span>
-<span class="err">  &quot;tasks&quot;: {</span>
-<span class="err">   &quot;SAD&quot;: {</span>
-<span class="err">    &quot;taskTrait&quot;: &quot;REGION_SCORER&quot;,</span>
-<span class="err">    &quot;taskType&quot;: &quot;SAD&quot;,</span>
-<span class="err">    &quot;messageType&quot;: &quot;REGION_SCORER_RESULT&quot;,</span>
-<span class="err">    &quot;analysis&quot;: {</span>
-<span class="err">     &quot;region&quot;: [</span>
-<span class="err">      {</span>
-<span class="err">       &quot;startT&quot;: 3.3399999141693115,</span>
-<span class="err">       &quot;endT&quot;: 10.5,</span>
-<span class="err">       &quot;classId&quot;: &quot;speech&quot;,</span>
-<span class="err">       &quot;score&quot;: 0.0</span>
-<span class="err">      }</span>
-<span class="err">     ]</span>
-<span class="err">    },</span>
-<span class="err">    &quot;plugin&quot;: &quot;sad-dnn&quot;,</span>
-<span class="err">    &quot;domain&quot;: &quot;vtd-v1&quot;</span>
-<span class="err">   },</span>
-<span class="err">   &quot;LID&quot;: {</span>
-<span class="err">    &quot;taskTrait&quot;: &quot;GLOBAL_SCORER&quot;,</span>
-<span class="err">    &quot;taskType&quot;: &quot;LID&quot;,</span>
-<span class="err">    &quot;messageType&quot;: &quot;GLOBAL_SCORER_RESULT&quot;,</span>
-<span class="err">    &quot;analysis&quot;: {</span>
-<span class="err">     &quot;score&quot;: [</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;eng&quot;,</span>
-<span class="err">       &quot;score&quot;: 2.5195693969726562</span>
-<span class="err">      },</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;apc&quot;,</span>
-<span class="err">       &quot;score&quot;: -3.509812355041504</span>
-<span class="err">      },</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;tgl&quot;,</span>
-<span class="err">       &quot;score&quot;: -3.566483974456787</span>
-<span class="err">      },</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;arb&quot;,</span>
-<span class="err">       &quot;score&quot;: -3.994529962539673</span>
-<span class="err">      },</span>
-<span class="err">      {</span>
-<span class="err">       &quot;classId&quot;: &quot;fre&quot;,</span>
-<span class="err">       &quot;score&quot;: -21.55596160888672</span>
-<span class="err">      }</span>
-<span class="err">     ]</span>
-<span class="err">    },</span>
-<span class="err">    &quot;plugin&quot;: &quot;lid-embedplda&quot;,</span>
-<span class="err">    &quot;domain&quot;: &quot;multi-v1&quot;</span>
-<span class="err">   }</span>
-<span class="err">  }</span>
-<span class="err"> }</span>
-<span class="err">]</span>
+<div class="codehilite"><pre><span></span><code><span class="n">Workflow</span> <span class="nl">results:</span>
+<span class="p">[</span>
+ <span class="p">{</span>
+  <span class="s">&quot;job_name&quot;</span><span class="o">:</span> <span class="s">&quot;Simple SAD and LID workflow&quot;</span><span class="p">,</span>
+  <span class="s">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+   <span class="p">{</span>
+    <span class="s">&quot;dataId&quot;</span><span class="o">:</span> <span class="s">&quot;test_audio.wav&quot;</span><span class="p">,</span>
+    <span class="s">&quot;msgType&quot;</span><span class="o">:</span> <span class="s">&quot;PREPROCESSED_AUDIO_RESULT&quot;</span><span class="p">,</span>
+    <span class="s">&quot;mode&quot;</span><span class="o">:</span> <span class="s">&quot;MONO&quot;</span><span class="p">,</span>
+    <span class="s">&quot;merged&quot;</span><span class="o">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">&quot;sampleRate&quot;</span><span class="o">:</span> <span class="mh">8000</span><span class="p">,</span>
+    <span class="s">&quot;durationSeconds&quot;</span><span class="o">:</span> <span class="mf">10.509625434875488</span><span class="p">,</span>
+    <span class="s">&quot;numberChannels&quot;</span><span class="o">:</span> <span class="mh">1</span><span class="p">,</span>
+    <span class="s">&quot;label&quot;</span><span class="o">:</span> <span class="s">&quot;~/audio/test_audio.wav&quot;</span><span class="p">,</span>
+    <span class="s">&quot;id&quot;</span><span class="o">:</span> <span class="s">&quot;edd6f2d8abb69e754cc4bd03c2d3f60379255048fdb20a8924858c0723ea4bbd&quot;</span>
+   <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s">&quot;tasks&quot;</span><span class="o">:</span> <span class="p">{</span>
+   <span class="s">&quot;SAD&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s">&quot;taskTrait&quot;</span><span class="o">:</span> <span class="s">&quot;REGION_SCORER&quot;</span><span class="p">,</span>
+    <span class="s">&quot;taskType&quot;</span><span class="o">:</span> <span class="s">&quot;SAD&quot;</span><span class="p">,</span>
+    <span class="s">&quot;messageType&quot;</span><span class="o">:</span> <span class="s">&quot;REGION_SCORER_RESULT&quot;</span><span class="p">,</span>
+    <span class="s">&quot;analysis&quot;</span><span class="o">:</span> <span class="p">{</span>
+     <span class="s">&quot;region&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+       <span class="s">&quot;startT&quot;</span><span class="o">:</span> <span class="mf">3.3399999141693115</span><span class="p">,</span>
+       <span class="s">&quot;endT&quot;</span><span class="o">:</span> <span class="mf">10.5</span><span class="p">,</span>
+       <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;speech&quot;</span><span class="p">,</span>
+       <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0.0</span>
+      <span class="p">}</span>
+     <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&quot;plugin&quot;</span><span class="o">:</span> <span class="s">&quot;sad-dnn&quot;</span><span class="p">,</span>
+    <span class="s">&quot;domain&quot;</span><span class="o">:</span> <span class="s">&quot;vtd-v1&quot;</span>
+   <span class="p">},</span>
+   <span class="s">&quot;LID&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s">&quot;taskTrait&quot;</span><span class="o">:</span> <span class="s">&quot;GLOBAL_SCORER&quot;</span><span class="p">,</span>
+    <span class="s">&quot;taskType&quot;</span><span class="o">:</span> <span class="s">&quot;LID&quot;</span><span class="p">,</span>
+    <span class="s">&quot;messageType&quot;</span><span class="o">:</span> <span class="s">&quot;GLOBAL_SCORER_RESULT&quot;</span><span class="p">,</span>
+    <span class="s">&quot;analysis&quot;</span><span class="o">:</span> <span class="p">{</span>
+     <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+       <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;eng&quot;</span><span class="p">,</span>
+       <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="mf">2.5195693969726562</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+       <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;apc&quot;</span><span class="p">,</span>
+       <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">3.509812355041504</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+       <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;tgl&quot;</span><span class="p">,</span>
+       <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">3.566483974456787</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+       <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;arb&quot;</span><span class="p">,</span>
+       <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">3.994529962539673</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+       <span class="s">&quot;classId&quot;</span><span class="o">:</span> <span class="s">&quot;fre&quot;</span><span class="p">,</span>
+       <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">21.55596160888672</span>
+      <span class="p">}</span>
+     <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&quot;plugin&quot;</span><span class="o">:</span> <span class="s">&quot;lid-embedplda&quot;</span><span class="p">,</span>
+    <span class="s">&quot;domain&quot;</span><span class="o">:</span> <span class="s">&quot;multi-v1&quot;</span>
+   <span class="p">}</span>
+  <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">]</span>
 </code></pre></div>
 
 <hr />
@@ -2728,9 +2724,9 @@ after the task type (SAD, LID, SID, etc)</p>
 <li>annotations – optional regions (start/end regions in seconds) as a list of tuples (start_seconds, end_seconds)</li>
 <li>
 <p>task_annotations – optional regions (start/end regions in seconds) for a task. for example: </p>
-<div class="codehilite"><pre><span></span><code><span class="err"> {‘SHL’: {‘speaker’’:[(0.5, 4.5), (6.8, 9.2)]}, are annotations for the ‘SHL’ task, which are </span>
-<span class="err"> labeled for as class ‘speaker’ and has regions 0.5 to 4.5 and 6.8 to 9.2 </span>
-<span class="err"> (use get_analysis_tasks() to get the name of workflow tasks).</span>
+<div class="codehilite"><pre><span></span><code> <span class="p">{</span><span class="err">‘</span><span class="n">SHL</span><span class="err">’</span><span class="o">:</span> <span class="p">{</span><span class="err">‘</span><span class="n">speaker</span><span class="err">’’</span><span class="o">:</span><span class="p">[(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">6.8</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">)]},</span> <span class="n">are</span> <span class="n">annotations</span> <span class="k">for</span> <span class="n">the</span> <span class="err">‘</span><span class="n">SHL</span><span class="err">’</span> <span class="k">task</span><span class="p">,</span> <span class="n">which</span> <span class="n">are</span> 
+ <span class="n">labeled</span> <span class="k">for</span> <span class="n">as</span> <span class="n">class</span> <span class="err">‘</span><span class="n">speaker</span><span class="err">’</span> <span class="k">and</span> <span class="n">has</span> <span class="n">regions</span> <span class="mf">0.5</span> <span class="n">to</span> <span class="mf">4.5</span> <span class="k">and</span> <span class="mf">6.8</span> <span class="n">to</span> <span class="mf">9.2</span> 
+ <span class="p">(</span><span class="n">use</span> <span class="n">get_analysis_tasks</span><span class="p">()</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">workflow</span> <span class="n">tasks</span><span class="p">).</span>
 </code></pre></div>
 
 </li>

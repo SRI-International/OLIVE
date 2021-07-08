@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1480,21 +1476,21 @@
 <h2 id="outputs">Outputs</h2>
 <p>Generally, a list of scores for all classes in the domain, for the entire segment. As with SAD and SID, scores are generally log-likelihood ratios where a score of greater than “0” is considered a detection. Plugins may be altered to return only detections, rather than a list of classes and scores, but this is generally done on the client side for sake of flexibility.</p>
 <p>An example output excerpt:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    input-audio.wav amh -19.9012123573</span>
-<span class="err">    input-audio.wav ara -15.8882738579</span>
-<span class="err">    input-audio.wav cmn -15.5530382622</span>
-<span class="err">    input-audio.wav eng -14.1870705116</span>
-<span class="err">    input-audio.wav fas -17.3224474419</span>
-<span class="err">    input-audio.wav fre 10.1847232353</span>
-<span class="err">    input-audio.wav hau -15.1134468544</span>
-<span class="err">    input-audio.wav jpn -21.0655495155</span>
-<span class="err">    input-audio.wav kor -18.3601671684</span>
-<span class="err">    input-audio.wav pus -16.2738787163</span>
-<span class="err">    input-audio.wav rus -10.4046117294</span>
-<span class="err">    input-audio.wav spa -18.1588427055</span>
-<span class="err">    input-audio.wav tur -14.0825478065</span>
-<span class="err">    input-audio.wav urd -20.4127785194</span>
-<span class="err">    input-audio.wav vie -18.552107476</span>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav amh -19.9012123573
+    input-audio.wav ara -15.8882738579
+    input-audio.wav cmn -15.5530382622
+    input-audio.wav eng -14.1870705116
+    input-audio.wav fas -17.3224474419
+    input-audio.wav fre 10.1847232353
+    input-audio.wav hau -15.1134468544
+    input-audio.wav jpn -21.0655495155
+    input-audio.wav kor -18.3601671684
+    input-audio.wav pus -16.2738787163
+    input-audio.wav rus -10.4046117294
+    input-audio.wav spa -18.1588427055
+    input-audio.wav tur -14.0825478065
+    input-audio.wav urd -20.4127785194
+    input-audio.wav vie -18.552107476
 </code></pre></div>
 
 <h2 id="functionality-traits">Functionality (<a href="../traits.html">Traits</a>)</h2>
@@ -1531,15 +1527,15 @@
 <p>Some recent LID plugins allows class modifications. A class modification is essentially an enrollment capability similar to SID. A new enrollment is created with the first class modification request (sending the system audio with a language label, generally 30 seconds or more per cut), and becomes usable when sufficient cuts have been provided (approximately 10). In general, 30 minutes from around 30 samples is the minimum amount of data required to produce a reasonable language model. This enrollment can be augmented with subsequent class modification requests by adding more audio from the same language to an existing class, again, like SID or SDD. In addition to user enrolled languages, most LID plugins are supplied with several pre-enrolled languages. Users can augment these existing languages using their own data by enrolling audio with the same label as an existing language.</p>
 <h3 id="configuring-languages">Configuring Languages</h3>
 <p>Most LID plugins have the ability to re-configure the languages available in a domain. Configuring languages in the domain can be done by entering the domain directory of interest within the plugin folder using the command line interface and calling </p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ ./configure_languages.py</span>
+<div class="codehilite"><pre><span></span><code>    $ ./configure_languages.py
 </code></pre></div>
 
 <p>to get all languages or </p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ ./configure_languages.py lang1,lang2,…,langN</span>
+<div class="codehilite"><pre><span></span><code>    $ ./configure_languages.py lang1,lang2,…,langN
 </code></pre></div>
 
 <p>for a subset of available languages.  Please note that running <code>./configure_languages.py</code> without any arguments should be done with extreme care.  This will enable all languages and dialects in the domain; including those that were included solely for their utility in score calibration, that may not have enough training data to create a model that acts as a reliable detector.  Enabling all languages may adversely affect the plugin’s performance. This plugin supports adjusting the <a href="#languagedialect-detection-granularity">language detection granularity</a> discussed above, though this is for advanced users only.  An example of changing this setting using the configure_langauges,py script is</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ ./configure_languages.py lang1,lang2,...,langN BASEONLY</span>
+<div class="codehilite"><pre><span></span><code>    $ ./configure_languages.py lang1,lang2,...,langN BASEONLY
 </code></pre></div>
 
 <p>Where the options for this setting are discussed above, if supported.</p>

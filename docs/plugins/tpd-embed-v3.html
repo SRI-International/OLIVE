@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1532,11 +1528,11 @@
 <p>For enrollment, an audio file or buffer and time-annotated regions corresponding to a given topic identifier/label are required.  For scoring, an audio buffer or file. IMPORTANT: TPD requires substantial enrollment data per class to function properly, or error rates will be very high. The system begins to perform well with ten or more examples of the topic, from different conversations. These topics should be annotated to include only the parts of the conversation that are "on-topic". Each conversational example should be at least 30 seconds or more in duration.</p>
 <h2 id="outputs">Outputs</h2>
 <p>TPD is a region scorer, and as such will return a list of detections consisting of timestamp regions in seconds, each with an accompanying score, and a previously-enrolled topic name that this score belongs to, when a topic has been detected in the input audio. It's possible to have overlapping topics, to have more than one topic detected within the same audio file/segment, and to have more than one detected region with the same topic being discussed.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">/data/eng/jRVUhtd_O1M.wav 352.380 424.550 WINE_MAKING 2.60474730</span>
-<span class="err">/data/eng/jRVUhtd_O1M.wav 431.180 442.280 WINE_MAKING 2.52452803</span>
-<span class="err">/data/eng/mueQ8-wABmg.wav 48.670 131.130 FISHING 5.71391582</span>
-<span class="err">/data/eng/mueQ8-wABmg.wav 142.250 167.950 FISHING 9.55547237</span>
-<span class="err">/data/eng/mueQ8-wABmg.wav 172.220 182.370 FISHING 9.55547237</span>
+<div class="codehilite"><pre><span></span><code>/data/eng/jRVUhtd_O1M.wav 352.380 424.550 WINE_MAKING 2.60474730
+/data/eng/jRVUhtd_O1M.wav 431.180 442.280 WINE_MAKING 2.52452803
+/data/eng/mueQ8-wABmg.wav 48.670 131.130 FISHING 5.71391582
+/data/eng/mueQ8-wABmg.wav 142.250 167.950 FISHING 9.55547237
+/data/eng/mueQ8-wABmg.wav 172.220 182.370 FISHING 9.55547237
 </code></pre></div>
 
 <h2 id="enrollments">Enrollments</h2>

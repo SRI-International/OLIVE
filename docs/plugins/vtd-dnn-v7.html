@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1460,23 +1456,23 @@
 <p>The current VTD plugin is capable of performing both <a href="../traits.html#framescorer">frame scoring</a> and <a href="../traits.html#regionscorer">region scoring</a>.</p>
 <p>For frame scoring, typically, a log-likelihood ratio (LLR) score of live-speech vs. non-speech/non-live-speech per each 10ms frame of the input audio segment is output (i.e. 100 audio frames per second). An LLR of greater than “0” indicates that the likelihood of live-speech is greater than the likelihood of non-speech or non-live-speech and “0” is generally used as the threshold for detecting these live-speech regions. A score of “0” indicated that speech is equally likely as non-speech or non-live-speech. VTD plugins may also post-process frame scores to return speech regions, though this is often done on the client-side for flexibility.</p>
 <p>An excerpt example of what this typically looks like:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    -0.68944</span>
-<span class="err">    -0.47805</span>
-<span class="err">    -0.27453</span>
-<span class="err">    -0.07032</span>
-<span class="err">    0.13456</span>
-<span class="err">    0.34013</span>
-<span class="err">    0.53357</span>
-<span class="err">    0.97258</span>
-<span class="err">    1.10885</span>
+<div class="codehilite"><pre><span></span><code>    -0.68944
+    -0.47805
+    -0.27453
+    -0.07032
+    0.13456
+    0.34013
+    0.53357
+    0.97258
+    1.10885
 </code></pre></div>
 
 <p>This can be transformed into a region scoring output, either client-side, or by requesting region scores from the plugin.  Region scores output by the plugin will provide the timestamp boundaries, in seconds, of the locations where live speech was detected in the audio. </p>
 <p>When the plugin is asked for region scores, the conversion from frame scores to region scores is done internally by applying a threshold to the scores.  The contiguous frames that are above a threshold are converted to timestamps representing the start and end of each of these regions.  These regions are then extended in duration by adding a <code>padding</code> value (typically of 0.5s or lower) to the region time start and adding that same padding value to the region time end. For example, if a region starts at 10 seconds and ends at 20 seconds, with a 1-second padding value, the new 'padded' region will range from 9 to 21 seconds.  If after region-padding, two regions overlap in time, they will be merged into a single extended region. </p>
 <p>An example of VTD region scores:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    test_1.wav 10.159 13.219 speech 0.00000000</span>
-<span class="err">    test_1.wav 149.290 177.110 speech 0.00000000</span>
-<span class="err">    test_1.wav 188.810 218.849 speech 0.00000000</span>
+<div class="codehilite"><pre><span></span><code>    test_1.wav 10.159 13.219 speech 0.00000000
+    test_1.wav 149.290 177.110 speech 0.00000000
+    test_1.wav 188.810 218.849 speech 0.00000000
 </code></pre></div>
 
 <p>The final number in this format is a place holder number to retain formatting compatibility with other region-scoring type plugins.  </p>

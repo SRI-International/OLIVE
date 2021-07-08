@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1590,26 +1586,26 @@
 <h2 id="outputs">Outputs</h2>
 <p>LDD plugins return a list of regions with a score for each detected language. The starting and stopping boundaries are denoted in seconds. As with LID, scores are log-likelihood ratios, where a score greater than "0" is considered to be a detection.</p>
 <p>An example output excerpt:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    input-audio.wav 0.000 41.500 fre 11.40590000</span>
-<span class="err">    input-audio.wav 43.500 77.500 fre 11.29558277</span>
-<span class="err">    input-audio.wav 77.500 78.500 arz 2.63369179</span>
-<span class="err">    input-audio.wav 78.500 80.500 arb 2.25519705</span>
-<span class="err">    input-audio.wav 85.500 86.500 arz 2.06612849</span>
-<span class="err">    input-audio.wav 97.500 98.500 fas 3.74665093</span>
-<span class="err">    input-audio.wav 98.500 99.500 arz 2.22936487</span>
-<span class="err">    input-audio.wav 105.500 106.500 spa 2.72254372</span>
-<span class="err">    input-audio.wav 107.500 108.500 fas 2.60355234</span>
-<span class="err">    input-audio.wav 108.500 110.500 eng 2.76414633</span>
-<span class="err">    input-audio.wav 109.500 113.140 eng 2.85003138</span>
-<span class="err">    input-audio.wav 113.760 116.260 arz 2.50716114</span>
-<span class="err">    input-audio.wav 120.260 140.260 kor 14.93032360</span>
-<span class="err">    input-audio.wav 143.260 157.260 kor 12.62243176</span>
-<span class="err">    input-audio.wav 158.260 161.260 cmn 3.24917603</span>
-<span class="err">    input-audio.wav 161.260 162.260 jpn 2.73345900</span>
-<span class="err">    input-audio.wav 165.260 177.260 kor 12.32051945</span>
-<span class="err">    input-audio.wav 178.260 180.260 arz 2.41706276</span>
-<span class="err">    input-audio.wav 186.320 188.820 arz 2.85040617</span>
-<span class="err">    input-audio.wav 193.820 194.820 spa 2.21501803</span>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 41.500 fre 11.40590000
+    input-audio.wav 43.500 77.500 fre 11.29558277
+    input-audio.wav 77.500 78.500 arz 2.63369179
+    input-audio.wav 78.500 80.500 arb 2.25519705
+    input-audio.wav 85.500 86.500 arz 2.06612849
+    input-audio.wav 97.500 98.500 fas 3.74665093
+    input-audio.wav 98.500 99.500 arz 2.22936487
+    input-audio.wav 105.500 106.500 spa 2.72254372
+    input-audio.wav 107.500 108.500 fas 2.60355234
+    input-audio.wav 108.500 110.500 eng 2.76414633
+    input-audio.wav 109.500 113.140 eng 2.85003138
+    input-audio.wav 113.760 116.260 arz 2.50716114
+    input-audio.wav 120.260 140.260 kor 14.93032360
+    input-audio.wav 143.260 157.260 kor 12.62243176
+    input-audio.wav 158.260 161.260 cmn 3.24917603
+    input-audio.wav 161.260 162.260 jpn 2.73345900
+    input-audio.wav 165.260 177.260 kor 12.32051945
+    input-audio.wav 178.260 180.260 arz 2.41706276
+    input-audio.wav 186.320 188.820 arz 2.85040617
+    input-audio.wav 193.820 194.820 spa 2.21501803
 </code></pre></div>
 
 <h2 id="functionality-traits">Functionality (<a href="../traits.html">Traits</a>)</h2>
@@ -1955,15 +1951,15 @@
 <p>Some recent LID plugins allows class modifications. A class modification is essentially an enrollment capability similar to SID. A new enrollment is created with the first class modification request (sending the system audio with a language label, generally 30 seconds or more per cut), and becomes usable when sufficient cuts have been provided (approximately 10). In general, 30 minutes from around 30 samples is the minimum amount of data required to produce a reasonable language model. This enrollment can be augmented with subsequent class modification requests by adding more audio from the same language to an existing class, again, like SID or SDD. In addition to user enrolled languages, most LID plugins are supplied with several pre-enrolled languages. Users can augment these existing languages using their own data by enrolling audio with the same label as an existing language.</p>
 <h3 id="configuring-languages">Configuring Languages</h3>
 <p>Most LID plugins have the ability to re-configure the languages available in a domain. Configuring languages in the domain can be done by entering the domain directory of interest within the plugin folder using the command line interface and calling </p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ ./configure_languages.py</span>
+<div class="codehilite"><pre><span></span><code>    $ ./configure_languages.py
 </code></pre></div>
 
 <p>to get all languages or </p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ ./configure_languages.py lang1,lang2,…,langN</span>
+<div class="codehilite"><pre><span></span><code>    $ ./configure_languages.py lang1,lang2,…,langN
 </code></pre></div>
 
 <p>for a subset of available languages.  Please note that running <code>./configure_languages.py</code> without any arguments should be done with extreme care.  This will enable all languages and dialects in the domain; including those that were included solely for their utility in score calibration, that may not have enough training data to create a model that acts as a reliable detector.  Enabling all languages may adversely affect the plugin’s performance. Some plugins may support adjusting the <a href="#languagedialect-detection-granularity">language detection granularity</a> discussed above, though this is for advanced users only.  An example of changing this setting using the configure_langauges,py script is</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ ./configure_languages.py lang1,lang2,...,langN BASEONLY</span>
+<div class="codehilite"><pre><span></span><code>    $ ./configure_languages.py lang1,lang2,...,langN BASEONLY
 </code></pre></div>
 
 <p>Where the options for this setting are discussed above, if supported. This will be discussed on the individual plugin page if supported.</p>
@@ -2026,18 +2022,18 @@
 <h4 id="output_only_highest_scoring_detected_language">output_only_highest_scoring_detected_language</h4>
 <p>The boolean <code>output_only_highest_scoring_detected_language</code> parameter determines the format of the output by the plugin. If <code>output_only_highest_scoring_detected_language</code> is set to False, the plugin will report all the languages above the threshold for a given segment. However, if <code>output_only_highest_scoring_detected_language</code> is set as True, the plugin will report only the language with the maximum score for a given segment even when multiple languages have scores above the threshold. An example of this behavior distance follows.</p>
 <p>If we have a segment (S) with scores for three different languages previously enrolled,</p>
-<div class="codehilite"><pre><span></span><code><span class="err">S lang1 10.8</span>
-<span class="err">S lang2 8.2</span>
-<span class="err">S lang3 3.1</span>
+<div class="codehilite"><pre><span></span><code>S lang1 10.8
+S lang2 8.2
+S lang3 3.1
 </code></pre></div>
 
 <p>and the threshold is 5.0, then with output_only_highest_scoring_detected_language = True, the system reports:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">S lang1 10.8</span>
+<div class="codehilite"><pre><span></span><code>S lang1 10.8
 </code></pre></div>
 
 <p>However, with output_only_highest_scoring_detected_language = False, the system reports:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">S lang1 10.8</span>
-<span class="err">S lang2 8.2</span>
+<div class="codehilite"><pre><span></span><code>S lang1 10.8
+S lang2 8.2
 </code></pre></div>
 
 <p>The default behavior of this plugin is to have this parameter set to <code>False</code> and to report all language detections over the detection threshold for each region.</p>

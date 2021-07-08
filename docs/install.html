@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -73,11 +73,9 @@
     
       
 
-  
-
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -151,14 +149,12 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
 
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -392,7 +388,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -592,7 +588,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1280,43 +1276,43 @@
 <p>The configuration or relationship between the runtime and the OLIVE package itself generally matches one of the following two examples.  In either case, you will need to properly set up the OLIVE environment before performing any operations with OLIVE, and SRI provides a script to make this as straightforward as possible.</p>
 <h2 id="olive_envsh-setup-script">olive_env.sh setup script</h2>
 <p>This script is included with every release and is generally the recommended and easiest way to properly set up the OLIVE environment, as shown above. It should be possible to use this script to cover environmental setup in even advanced OLIVE deployments. This script will properly set a number of necessary environment variables and paths essential for OLIVE operation all in one go. Depending on how you've chosen to lay out your OLIVE package on disk, you may need to source two of these scripts. As a quick primer, this is the README included at the top of the olive_env.sh script, that will be explained in more detail below:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    # Sets the Olive/Scenic environment when running from a distribution.</span>
-<span class="err">    # Assumes this will be sourced in the Olive directory, as:</span>
-<span class="err">    #</span>
-<span class="err">    # % source olive_env.sh</span>
-<span class="err">    #</span>
-<span class="err">    # If this script is sourced in the runtime distribution, it will only set</span>
-<span class="err">    # runtime-related values.</span>
-<span class="err">    #</span>
-<span class="err">    # If this script is sourced in the Olive distribution, it will set both</span>
-<span class="err">    # OLIVE (SCENIC) and runtime-related values if:</span>
-<span class="err">    # (1) the Olive directory is a sub-directory of the runtime directory</span>
-<span class="err">    # or (2) the Olive and runtime directories have been combined.</span>
-<span class="err">    #</span>
-<span class="err">    # If the Olive directory is a subdirectory of the runtime, then you</span>
-<span class="err">    # should only source olive_env.sh from the Olive directory.</span>
-<span class="err">    #</span>
-<span class="err">    # If the runtime and Olive directories are completely separate, then</span>
-<span class="err">    # do the following (in this order, so that $OLIVE paths come before</span>
-<span class="err">    # $OLIVE_RUNTIME paths):</span>
-<span class="err">    # </span>
-<span class="err">    # (1) cd /path/to/runtime; source olive_env.sh</span>
-<span class="err">    # (2) cd /path/to/olive; source olive_env.sh</span>
+<div class="codehilite"><pre><span></span><code>    <span class="err">#</span> <span class="nt">Sets</span> <span class="nt">the</span> <span class="nt">Olive</span><span class="o">/</span><span class="nt">Scenic</span> <span class="nt">environment</span> <span class="nt">when</span> <span class="nt">running</span> <span class="nt">from</span> <span class="nt">a</span> <span class="nt">distribution</span><span class="o">.</span>
+    <span class="err">#</span> <span class="nt">Assumes</span> <span class="nt">this</span> <span class="nt">will</span> <span class="nt">be</span> <span class="nt">sourced</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">Olive</span> <span class="nt">directory</span><span class="o">,</span> <span class="nt">as</span><span class="o">:</span>
+    <span class="err">#</span>
+    <span class="err">#</span> <span class="o">%</span> <span class="nt">source</span> <span class="nt">olive_env</span><span class="p">.</span><span class="nc">sh</span>
+    <span class="err">#</span>
+    <span class="err">#</span> <span class="nt">If</span> <span class="nt">this</span> <span class="nt">script</span> <span class="nt">is</span> <span class="nt">sourced</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">runtime</span> <span class="nt">distribution</span><span class="o">,</span> <span class="nt">it</span> <span class="nt">will</span> <span class="nt">only</span> <span class="nt">set</span>
+    <span class="err">#</span> <span class="nt">runtime-related</span> <span class="nt">values</span><span class="o">.</span>
+    <span class="err">#</span>
+    <span class="err">#</span> <span class="nt">If</span> <span class="nt">this</span> <span class="nt">script</span> <span class="nt">is</span> <span class="nt">sourced</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">Olive</span> <span class="nt">distribution</span><span class="o">,</span> <span class="nt">it</span> <span class="nt">will</span> <span class="nt">set</span> <span class="nt">both</span>
+    <span class="err">#</span> <span class="nt">OLIVE</span> <span class="o">(</span><span class="nt">SCENIC</span><span class="o">)</span> <span class="nt">and</span> <span class="nt">runtime-related</span> <span class="nt">values</span> <span class="nt">if</span><span class="o">:</span>
+    <span class="err">#</span> <span class="o">(</span><span class="nt">1</span><span class="o">)</span> <span class="nt">the</span> <span class="nt">Olive</span> <span class="nt">directory</span> <span class="nt">is</span> <span class="nt">a</span> <span class="nt">sub-directory</span> <span class="nt">of</span> <span class="nt">the</span> <span class="nt">runtime</span> <span class="nt">directory</span>
+    <span class="err">#</span> <span class="nt">or</span> <span class="o">(</span><span class="nt">2</span><span class="o">)</span> <span class="nt">the</span> <span class="nt">Olive</span> <span class="nt">and</span> <span class="nt">runtime</span> <span class="nt">directories</span> <span class="nt">have</span> <span class="nt">been</span> <span class="nt">combined</span><span class="o">.</span>
+    <span class="err">#</span>
+    <span class="err">#</span> <span class="nt">If</span> <span class="nt">the</span> <span class="nt">Olive</span> <span class="nt">directory</span> <span class="nt">is</span> <span class="nt">a</span> <span class="nt">subdirectory</span> <span class="nt">of</span> <span class="nt">the</span> <span class="nt">runtime</span><span class="o">,</span> <span class="nt">then</span> <span class="nt">you</span>
+    <span class="err">#</span> <span class="nt">should</span> <span class="nt">only</span> <span class="nt">source</span> <span class="nt">olive_env</span><span class="p">.</span><span class="nc">sh</span> <span class="nt">from</span> <span class="nt">the</span> <span class="nt">Olive</span> <span class="nt">directory</span><span class="o">.</span>
+    <span class="err">#</span>
+    <span class="err">#</span> <span class="nt">If</span> <span class="nt">the</span> <span class="nt">runtime</span> <span class="nt">and</span> <span class="nt">Olive</span> <span class="nt">directories</span> <span class="nt">are</span> <span class="nt">completely</span> <span class="nt">separate</span><span class="o">,</span> <span class="nt">then</span>
+    <span class="err">#</span> <span class="nt">do</span> <span class="nt">the</span> <span class="nt">following</span> <span class="o">(</span><span class="nt">in</span> <span class="nt">this</span> <span class="nt">order</span><span class="o">,</span> <span class="nt">so</span> <span class="nt">that</span> <span class="o">$</span><span class="nt">OLIVE</span> <span class="nt">paths</span> <span class="nt">come</span> <span class="nt">before</span>
+    <span class="err">#</span> <span class="o">$</span><span class="nt">OLIVE_RUNTIME</span> <span class="nt">paths</span><span class="o">):</span>
+    <span class="err">#</span> 
+    <span class="err">#</span> <span class="o">(</span><span class="nt">1</span><span class="o">)</span> <span class="nt">cd</span> <span class="o">/</span><span class="nt">path</span><span class="o">/</span><span class="nt">to</span><span class="o">/</span><span class="nt">runtime</span><span class="o">;</span> <span class="nt">source</span> <span class="nt">olive_env</span><span class="p">.</span><span class="nc">sh</span>
+    <span class="err">#</span> <span class="o">(</span><span class="nt">2</span><span class="o">)</span> <span class="nt">cd</span> <span class="o">/</span><span class="nt">path</span><span class="o">/</span><span class="nt">to</span><span class="o">/</span><span class="nt">olive</span><span class="o">;</span> <span class="nt">source</span> <span class="nt">olive_env</span><span class="p">.</span><span class="nc">sh</span>
 </code></pre></div>
 
 <p>One important thing to note is that the <code>olive_env.sh</code> scripts do not cover setting the <code>OLIVE_APP_DATA</code> environment variable, which informs the server of the location of the OLIVE plugins, among other things. More details available <a href="server.html#olive-app-data">here</a>. This is a very important step to make sure the Server can find and utilize the appropriate plugins.  Setting this variable is included in each of the examples below.</p>
 <h2 id="oliveolive-runtime-layouts">OLIVE/OLIVE-Runtime Layouts</h2>
 <p>Often, the OLIVE Runtime and OLIVE itself are placed side-by-side in the same parent directory, for easier readability.  If this configuration is used, it is necessary to source two separate olive_env.sh files to properly establish the OLIVE environment, as outlined in the olive_env.sh README shown above. You should always start by sourcing the olive_env.sh file for the runtime. An example file structure of side-by-side OLIVE and OLIVE runtime directories:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $HOME</span>
-<span class="err">        olive5.1.0/</span>
-<span class="err">            runtime-5.1.0-centos-7.3.1611-x86_64/</span>
-<span class="err">            olive-5.1.0-centos-7.3.1611-x86_64/</span>
-<span class="err">            documentation/</span>
-<span class="err">        oliveAppData/</span>
-<span class="err">            plugins/</span>
-<span class="err">                sad-dnn-v7.0.0</span>
-<span class="err">                sid-dplda-v2.0.0/</span>
-<span class="err">                lid-embedplda-v2.0.0/</span>
+<div class="codehilite"><pre><span></span><code>    $HOME
+        olive5.1.0/
+            runtime-5.1.0-centos-7.3.1611-x86_64/
+            olive-5.1.0-centos-7.3.1611-x86_64/
+            documentation/
+        oliveAppData/
+            plugins/
+                sad-dnn-v7.0.0
+                sid-dplda-v2.0.0/
+                lid-embedplda-v2.0.0/
 </code></pre></div>
 
 <p>Example environment setup with this configuration:</p>
@@ -1328,16 +1324,16 @@
 </code></pre></div>
 
 <p>Alternately, the OLIVE package can be nested within the runtime directory, a structure shown in the example below.  If this arrangement is used, it is only necessary to source the olive_env.sh script within the OLIVE package, as it is aware that its parent directory is the OLIVE runtime, and appropriately establishes the environment with this information.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $HOME</span>
-<span class="err">        olive5.1.0/</span>
-<span class="err">            runtime-5.1.0-centos-7.3.1611-x86_64/</span>
-<span class="err">                olive-5.1.0-centos-7.3.1611-x86_64/</span>
-<span class="err">            documentation/</span>
-<span class="err">        oliveAppData/</span>
-<span class="err">            plugins/</span>
-<span class="err">                lid-embed-v2/</span>
-<span class="err">                sad-dnn-v4a/</span>
-<span class="err">                sid-embed-v2/</span>
+<div class="codehilite"><pre><span></span><code>    $HOME
+        olive5.1.0/
+            runtime-5.1.0-centos-7.3.1611-x86_64/
+                olive-5.1.0-centos-7.3.1611-x86_64/
+            documentation/
+        oliveAppData/
+            plugins/
+                lid-embed-v2/
+                sad-dnn-v4a/
+                sid-embed-v2/
 </code></pre></div>
 
 <p>Example environment setup with this configuration:</p>
@@ -1366,7 +1362,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="audioFormats.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="hardware.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -1375,7 +1371,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Supported Audio Formats
+                OLIVE Resource Requirements
               </div>
             </div>
           </a>

@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../requirements.md" class="md-nav__link">
+    <a href="../../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../requirements.md" class="md-nav__link">
+    <a href="../../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1164,8 +1160,8 @@
 </ol>
 <p>The labels indicate which regions in the audio are speech or non-speech. The system adapts the model using this set of data and labels (‘S’ for speech and ‘NS’ for non-speech) in order to improve performance in target conditions that differ from its original training. Adaptation can substantially improve performance with 6 minutes of speech and non-speech annotations, and performance will improve with as little as a minute. inputs to the plug-in should include both S and NS. Inputs do not need to be balanced but just a single type may not provide much benefit.</p>
 <p>For example:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    20131213T071501UTC_11020_A.wav S 72.719000 73.046</span>
-<span class="err">    20131213T071501UTC_11020_A.wav NS 51.923000 53.379000</span>
+<div class="codehilite"><pre><span></span><code>    20131213T071501UTC_11020_A.wav S 72.719000 73.046
+    20131213T071501UTC_11020_A.wav NS 51.923000 53.379000
 </code></pre></div>
 
 <p>For more details about integration of adaptation in the <a href="../../api.md#adaptation">API Integration</a>, or for performing adaptation using the OLIVE command line tools, see the appropriate section in the <a href="../../cli.html#3-command-line-field-adaptation">CLI User Guide</a>.</p>

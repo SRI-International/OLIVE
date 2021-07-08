@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -73,11 +73,9 @@
     
       
 
-  
-
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -151,14 +149,12 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
 
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -579,7 +575,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -966,7 +962,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1862,7 +1858,7 @@
 </div>
 <h2 id="download-olive-docker-package">Download OLIVE Docker Package</h2>
 <p>Now that Docker is installed and properly configured, you can download and uncompress the OLIVE Docker package from the SRI-provided share link. The link, delivery method, and exact filenames will vary from delivery to delivery, but once you have downloaded and unpacked the software archive:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">olive5.1.0-martini-11June2021.tar.gz</span>
+<div class="codehilite"><pre><span></span><code>olive5.1.0-martini-11June2021.tar.gz
 </code></pre></div>
 
 <p>You should find similar content to below unless told otherwise: </p>
@@ -2015,7 +2011,7 @@
 <li><code>list</code> - List the running container(s), if any.</li>
 <li><code>log</code> - Display the OLIVE Server log in the terminal; <code>ctrl + c</code> to exit. Useful to expert users for troubleshooting.</li>
 <li><code>status</code> - Show the status of the processes on the container.</li>
-<li><code>net</code> - Show the ports on the host that the continer is linstening on.</li>
+<li><code>net</code> - Show the ports on the host that the container is linstening on.</li>
 <li><code>cli</code> - Starts a shell on the container for debugging or operating the OLIVE CLI tools.</li>
 </ul>
 <p>More details for each command, how to use it, and the designed functionality can be found below.</p>
@@ -2023,14 +2019,14 @@
 <p>All of these commands assume that your container is running on a machine called <code>host</code>. When performing the operations below, replace <code>host</code> with the actual name of the host machine. If all operations (client and server) are running on the same machine, this may be simply <code>localhost</code>. If they are on separate machines, you may have to use the actual hostname, or IP.</p>
 <h3 id="martinish-help">martini.sh help</h3>
 <p>Prints out the <code>martini.sh</code> help statement, reminding the user of the available commands:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    You must provide one argument which is a command.</span>
-<span class="err">    Supported commands include: cli, help, list, start, stop, status, net.</span>
-<span class="err">            olivemulti.sh start: Start the container.</span>
-<span class="err">            olivemulti.sh stop: Stop the container.</span>
-<span class="err">            olivemulti.sh list: List the running container.</span>
-<span class="err">            olivemulti.sh status: Shows status of the processes on the container.</span>
-<span class="err">            olivemulti.sh net: Shows the ports on the host that the container is listening on.</span>
-<span class="err">            olivemulti.sh cli: Starts a shell on the container for debugging.</span>
+<div class="codehilite"><pre><span></span><code>    <span class="nv">You</span> <span class="nv">must</span> <span class="nv">provide</span> <span class="nv">one</span> <span class="nv">argument</span> <span class="nv">which</span> <span class="nv">is</span> <span class="nv">a</span> <span class="nv">command</span>.
+    <span class="nv">Supported</span> <span class="nv">commands</span> <span class="k">include</span>: <span class="nv">cli</span>, <span class="nv">help</span>, <span class="nv">list</span>, <span class="nv">start</span>, <span class="nv">stop</span>, <span class="nv">status</span>, <span class="nv">net</span>.
+            <span class="nv">olivemulti</span>.<span class="nv">sh</span> <span class="nv">start</span>: <span class="nv">Start</span> <span class="nv">the</span> <span class="nv">container</span>.
+            <span class="nv">olivemulti</span>.<span class="nv">sh</span> <span class="nv">stop</span>: <span class="nv">Stop</span> <span class="nv">the</span> <span class="nv">container</span>.
+            <span class="nv">olivemulti</span>.<span class="nv">sh</span> <span class="nv">list</span>: <span class="nv">List</span> <span class="nv">the</span> <span class="nv">running</span> <span class="nv">container</span>.
+            <span class="nv">olivemulti</span>.<span class="nv">sh</span> <span class="nv">status</span>: <span class="nv">Shows</span> <span class="nv">status</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">processes</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">container</span>.
+            <span class="nv">olivemulti</span>.<span class="nv">sh</span> <span class="nv">net</span>: <span class="nv">Shows</span> <span class="nv">the</span> <span class="nv">ports</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">host</span> <span class="nv">that</span> <span class="nv">the</span> <span class="nv">container</span> <span class="nv">is</span> <span class="nv">listening</span> <span class="nv">on</span>.
+            <span class="nv">olivemulti</span>.<span class="nv">sh</span> <span class="nv">cli</span>: <span class="nv">Starts</span> <span class="nv">a</span> <span class="nv">shell</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">container</span> <span class="k">for</span> <span class="nv">debugging</span>.
 </code></pre></div>
 
 <h3 id="martinish-start">martini.sh start</h3>
@@ -2143,11 +2139,11 @@ Background-Noise-Detection.workflow  Speech-Analysis.workflow
 <h3 id="nightingale-forensic-ui"><a href="nightingale.html">Nightingale Forensic UI</a></h3>
 <p>This GUI provides access to the full suite of available OLIVE plugins and workflows, for performing close file analysis. It offers powerful audio visualization tools, live streaming capabilities, and a number of other useful features. For more information on what Nightingale offers and how to get started using it, please refer to the <a href="nightingale.html">Nightingale GUI</a> dedicated documentation page.</p>
 <p>As a quick primer, the Nightingale UI is typically provided in:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">&lt;...&gt;/olive5.1.0/OliveGUI</span>
+<div class="codehilite"><pre><span></span><code>&lt;...&gt;/olive5.1.0/OliveGUI
 </code></pre></div>
 
 <p>Nightingale requires OpenJDK Java 11. Once this is installed, you can run it by navigating to:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">&lt;...&gt;/olive5.1.0/OliveGUI/bin/</span>
+<div class="codehilite"><pre><span></span><code>&lt;...&gt;/olive5.1.0/OliveGUI/bin/
 </code></pre></div>
 
 <p>And either double-clicking or running the <code>Nightingale</code> (macOS, linux) or <code>Nightingale.bat</code> (Windows) script appropriate for your OS.</p>
@@ -2166,7 +2162,7 @@ Background-Noise-Detection.workflow  Speech-Analysis.workflow
 <p>NOTE that Nightingale will need to connect to the oliveMulti container using port 9900 by default. This should be set for you before the software ships if the GUI is accompanying an oliveMulti software package.</p>
 <h3 id="olive-example-api-client-implementations">OLIVE Example API Client Implementations</h3>
 <p>OLIVE is also generally shipped with example API Client implementations in both Java and python. They are usually included in:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">&lt;...&gt;/olive5.1.0/api/[java, python]</span>
+<div class="codehilite"><pre><span></span><code>&lt;...&gt;/olive5.1.0/api/[java, python]
 </code></pre></div>
 
 <p>These can provide both a command-line-based method of interacting with the OLIVE server, and as integration examples providing templates or code bases for some integration teams.</p>

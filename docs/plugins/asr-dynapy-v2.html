@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1503,44 +1499,44 @@
 <p>ASR plugins are region scorers, and as such will return a list of words, in the order they are spoken. Each detected word consists of timestamp regions in seconds (start and end time pairs), each with an accompanying score, along with the 'value' of that word. Each word output must be part of the vocabulary that specific language's domain was trained with. At this point, out-of-vocabulary words are not supported, so uncommon words, slang words, names, and some other vocabulary may not be able to be recognized by these plugins. If interested in this feature in the future, please <a href="../contact.html">contact us</a> to start a conversation about adding such functionality.</p>
 <p>Note that all current ASR plugin domains will output words in their 'native' script.  This means that for languages like English and Spanish, each word will be in ASCII text, with the Latin alphabet. Mandarin Chinese, Russian, and Farsi, however, words will be comprised of unicode characters in the native script.</p>
 <p>An example output excerpt for an English domain:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    input-audio.wav 0.000 0.190 and 43.00000000</span>
-<span class="err">    input-audio.wav 0.210 0.340 we&#39;re 44.00000000</span>
-<span class="err">    input-audio.wav 0.330 0.460 going 97.00000000</span>
-<span class="err">    input-audio.wav 0.450 0.520 to 97.00000000</span>
-<span class="err">    input-audio.wav 0.510 0.940 fly 66.00000000</span>
-<span class="err">    input-audio.wav 1.080 1.300 was 31.00000000</span>
-<span class="err">    input-audio.wav 1.290 1.390 that 24.00000000</span>
-<span class="err">    input-audio.wav 1.290 1.390 it 22.00000000</span>
-<span class="err">    input-audio.wav 1.380 1.510 we&#39;re 27.00000000</span>
-<span class="err">    input-audio.wav 1.500 1.660 going 97.00000000</span>
-<span class="err">    input-audio.wav 1.650 1.720 to 98.00000000</span>
-<span class="err">    input-audio.wav 1.710 1.930 fly 94.00000000</span>
-<span class="err">    input-audio.wav 1.920 2.110 over 79.00000000</span>
-<span class="err">    input-audio.wav 2.100 2.380 saint 93.00000000</span>
-<span class="err">    input-audio.wav 2.370 2.950 louis 96.00000000</span>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.190 and 43.00000000
+    input-audio.wav 0.210 0.340 we&#39;re 44.00000000
+    input-audio.wav 0.330 0.460 going 97.00000000
+    input-audio.wav 0.450 0.520 to 97.00000000
+    input-audio.wav 0.510 0.940 fly 66.00000000
+    input-audio.wav 1.080 1.300 was 31.00000000
+    input-audio.wav 1.290 1.390 that 24.00000000
+    input-audio.wav 1.290 1.390 it 22.00000000
+    input-audio.wav 1.380 1.510 we&#39;re 27.00000000
+    input-audio.wav 1.500 1.660 going 97.00000000
+    input-audio.wav 1.650 1.720 to 98.00000000
+    input-audio.wav 1.710 1.930 fly 94.00000000
+    input-audio.wav 1.920 2.110 over 79.00000000
+    input-audio.wav 2.100 2.380 saint 93.00000000
+    input-audio.wav 2.370 2.950 louis 96.00000000
 </code></pre></div>
 
 <p>An example output excerpt for a Mandarin Chinese domain:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    input-audio.wav 0.280 0.610 战斗 99.00000000</span>
-<span class="err">    input-audio.wav 0.600 0.880 爆发 98.00000000</span>
-<span class="err">    input-audio.wav 0.870 0.970 的 99.00000000</span>
-<span class="err">    input-audio.wav 0.960 1.420 居民区 86.00000000</span>
-<span class="err">    input-audio.wav 1.410 2.120 有很多 93.00000000</span>
-<span class="err">    input-audio.wav 2.110 2.590 忠于 99.00000000</span>
-<span class="err">    input-audio.wav 2.580 3.140 萨德尔 100.00000000</span>
-<span class="err">    input-audio.wav 3.130 3.340 的 100.00000000</span>
-<span class="err">    input-audio.wav 3.330 3.720 武装 55.00000000</span>
-<span class="err">    input-audio.wav 3.710 4.190 份子 53.00000000</span>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.280 0.610 战斗 99.00000000
+    input-audio.wav 0.600 0.880 爆发 98.00000000
+    input-audio.wav 0.870 0.970 的 99.00000000
+    input-audio.wav 0.960 1.420 居民区 86.00000000
+    input-audio.wav 1.410 2.120 有很多 93.00000000
+    input-audio.wav 2.110 2.590 忠于 99.00000000
+    input-audio.wav 2.580 3.140 萨德尔 100.00000000
+    input-audio.wav 3.130 3.340 的 100.00000000
+    input-audio.wav 3.330 3.720 武装 55.00000000
+    input-audio.wav 3.710 4.190 份子 53.00000000
 </code></pre></div>
 
 <p>Note that for languages that read from right to left, the direction that text is rendered may appear to 'flip' when viewing the bare text output in a terminal or text editor that doesn't properly deal with the orientation switch mid-line in some operating systems. This can cause the order of the 'word' and 'score' fields to reverse relative to the output of left-to-right read languages, and appear like this Farsi output example:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    input-audio.wav 0.000 0.480 58.00000000 خوب </span>
-<span class="err">    input-audio.wav 0.470 0.740 51.00000000 ای </span>
-<span class="err">    input-audio2.wav 0.00 0.320 100.00000000 آره </span>
-<span class="err">    input-audio2.wav 0.310 0.460 99.00000000 می </span>
-<span class="err">    input-audio2.wav 0.450 0.680 99.00000000 گم </span>
-<span class="err">    input-audio2.wav 0.670 0.880 73.00000000 چند </span>
-<span class="err">    input-audio2.wav 0.870 1.330 50.00000000 داره</span>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.480 58.00000000 خوب 
+    input-audio.wav 0.470 0.740 51.00000000 ای 
+    input-audio2.wav 0.00 0.320 100.00000000 آره 
+    input-audio2.wav 0.310 0.460 99.00000000 می 
+    input-audio2.wav 0.450 0.680 99.00000000 گم 
+    input-audio2.wav 0.670 0.880 73.00000000 چند 
+    input-audio2.wav 0.870 1.330 50.00000000 داره
 </code></pre></div>
 
 <p>This is a rendering problem only, however, and rest assured that if interacting with OLIVE through the API, all ordering is properly preserved. Most methods of automatically parsing the raw text output should also properly deal with the ordering, as column-based operators like awk are not affected by the visual order.</p>
@@ -1571,13 +1567,13 @@
 <p>The Russian domain, rus-tdnnChain-tel-v1, thanks to its large TDNN architecture, complex language model, and large vocabulary thanks to Russian's agglutinative, is currently tuned more for maximum accuracy performance than for speed or resource management. As a result, it currently has a rather high minimum memory requirement for execution, relative to other plugins. Roughly 9GB of free system memory is required as a baseline for performing recognition with this domain. </p>
 <h3 id="arabic-script-languages">Arabic Script Languages</h3>
 <p>Note that for the Farsi domain, fas-tdnn-tel-v1, and for other languages that read from right to left, the direction that text is rendered may appear to 'flip' when viewing the bare text output in a terminal or text editor that doesn't properly deal with the orientation switch mid-line in some operating systems. This can cause the order of the 'word' and 'score' fields to reverse relative to the output of left-to-right read languages, and appear like this Farsi output example:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    input-audio.wav 0.000 0.480 58.00000000 خوب </span>
-<span class="err">    input-audio.wav 0.470 0.740 51.00000000 ای </span>
-<span class="err">    input-audio2.wav 0.000 0.320 100.00000000 آره </span>
-<span class="err">    input-audio2.wav 0.310 0.460 99.00000000 می </span>
-<span class="err">    input-audio2.wav 0.450 0.680 99.00000000 گم </span>
-<span class="err">    input-audio2.wav 0.670 0.880 73.00000000 چند </span>
-<span class="err">    input-audio2.wav 0.870 1.330 50.00000000 داره</span>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.480 58.00000000 خوب 
+    input-audio.wav 0.470 0.740 51.00000000 ای 
+    input-audio2.wav 0.000 0.320 100.00000000 آره 
+    input-audio2.wav 0.310 0.460 99.00000000 می 
+    input-audio2.wav 0.450 0.680 99.00000000 گم 
+    input-audio2.wav 0.670 0.880 73.00000000 چند 
+    input-audio2.wav 0.870 1.330 50.00000000 داره
 </code></pre></div>
 
 <p>This is a rendering problem only, however, and rest assured that if interacting with OLIVE through the API, all ordering is properly preserved. Most methods of automatically parsing the raw text output should also properly deal with the ordering, as column-based operators like awk are not affected by the visual order.</p>

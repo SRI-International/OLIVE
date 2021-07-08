@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -73,11 +73,9 @@
     
       
 
-  
-
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="./index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -151,14 +149,12 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
 
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="./index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
       
   <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
 
@@ -474,7 +470,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -756,7 +752,7 @@
 
 
   <li class="md-nav__item">
-    <a href="requirements.md" class="md-nav__link">
+    <a href="hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1567,7 +1563,7 @@
 </div>
 <h2 id="download-olive-docker-package">Download OLIVE Docker Package</h2>
 <p>Now that Docker is installed and properly configured, you can download and uncompress the OLIVE Docker package from the SRI-provided share link. The link, delivery method, and exact filenames will vary from delivery to delivery, but once you have downloaded and unpacked the software archive:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">olive5.1.0-docker-19Sep2020.tar.gz</span>
+<div class="codehilite"><pre><span></span><code>olive5.1.0-docker-19Sep2020.tar.gz
 </code></pre></div>
 
 <p>You should find similar content to below unless told otherwise: </p>
@@ -1667,11 +1663,11 @@ LID      lid-embedplda-v2.0.1              <span class="m">2</span>.0.1      <sp
 </code></pre></div>
 
 <p><strong>NOTE</strong> that it is still necessary to set the <code>LOCAL_OLIVE_DATA</code> variable <em>within</em> the <code>run-shell</code> script if you wish to have access to shared audio files. On top of setting OLIVE_APP_DATA as above (which will mount plugins inside the container <code>/home/olive/olive/plugins</code>), you will also need to set the <code>LOCAL_OLIVE_DATA</code> variable within the script. <code>LOCAL_OLIVE_DATA</code> must be set to a location that ends with a directory called <code>olive-data</code>, and can contain scripts, text files, audio files, and any other utilities you might wish to use with the shell while inside your container. To set this variable, you will need to edit this line in side <code>run-shell.sh</code>:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">LOCAL_OLIVE_DATA=`cd &quot;$THISDIR/../../../../../../olive-data&quot; &amp;&amp; pwd`</span>
+<div class="codehilite"><pre><span></span><code>LOCAL_OLIVE_DATA=`cd &quot;$THISDIR/../../../../../../olive-data&quot; &amp;&amp; pwd`
 </code></pre></div>
 
 <p>So that the path matches where your audio and scripts are stored, for example:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">LOCAL_OLIVE_DATA=/home/user1/audio/olive-data/</span>
+<div class="codehilite"><pre><span></span><code>LOCAL_OLIVE_DATA=/home/user1/audio/olive-data/
 </code></pre></div>
 
 <h3 id="direct-script-editing">Direct Script Editing</h3>
@@ -1689,24 +1685,24 @@ LOCAL_OLIVE_DATA=&quot;/home/<span class="nt">&lt;username&gt;</span>/olive-data
 
 </div>
 <input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">run-shell.cmd and run.cmd (Windows)</label><div class="tabbed-content">
-<div class="codehilite"><pre><span></span><code><span class="err">    REM You must set LOCAL_OLIVE below to the directory on your local host that contains the OLIVE &#39;plugins&#39; directory</span>
-<span class="err">    set OLIVE_DATA=C:\Users\&lt;username&gt;\olive5.1.0\oliveAppData</span>
-<span class="err">    set LOCAL_OLIVE_DATA=C:\Users\&lt;username&gt;\olive-data</span>
+<div class="codehilite"><pre><span></span><code>    REM You must set LOCAL_OLIVE below to the directory on your local host that contains the OLIVE &#39;plugins&#39; directory
+    set OLIVE_DATA=C:\Users\&lt;username&gt;\olive5.1.0\oliveAppData
+    set LOCAL_OLIVE_DATA=C:\Users\&lt;username&gt;\olive-data
 </code></pre></div>
 
 </div>
 </div>
 <p>Note that for macOS and linux hosts, the OLIVE_DATA variable is automatically assigned to the value of the $OLIVE_APP_DATA environment variable, if it is preferable to set this before calling the <code>run</code> scripts, instead of editing the scripts themselves.</p>
 <p>Your delivered run.sh and/or run-shell.sh scripts may have had the line that sets OLIVE_DATA modified to match your specific software installation package more closely and make the necessary changes clearer, especially if there are special cases to consider for your delivery, and may look more similar to this:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    OLIVE_DATA=[REPLACE-WITH-LOCAL-PATH]/olive5.1.0/oliveAppDataMT/</span>
+<div class="codehilite"><pre><span></span><code>    OLIVE_DATA=[REPLACE-WITH-LOCAL-PATH]/olive5.1.0/oliveAppDataMT/
 </code></pre></div>
 
 <p>An example of what this might look like after adapting it to your local environment:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    OLIVE_DATA=/home/users/allen/olive5.1.0/oliveAppDataMT/</span>
+<div class="codehilite"><pre><span></span><code>    OLIVE_DATA=/home/users/allen/olive5.1.0/oliveAppDataMT/
 </code></pre></div>
 
 <p>or</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    OLIVE_DATA=/Users/allen/olive5.1.0/oliveAppDataMT/</span>
+<div class="codehilite"><pre><span></span><code>    OLIVE_DATA=/Users/allen/olive5.1.0/oliveAppDataMT/
 </code></pre></div>
 
 <p>Note that if your run.sh or run-shell.sh scripts look like this, OLIVE_DATA will <em>not</em> be set automatically based on your OLIVE_APP_DATA environment variable, but must be manually changed within the script before running.</p>
@@ -1714,10 +1710,10 @@ LOCAL_OLIVE_DATA=&quot;/home/<span class="nt">&lt;username&gt;</span>/olive-data
 <p>Now that all of the prep work has been done, you are ready to launch OLIVE and start running jobs.  </p>
 <h3 id="windows-hosts">Windows hosts</h3>
 <p>Launching the OLIVE server inside the container, or opening a shell with the OLIVE environment within the container.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ cd C:\Users\&lt;username&gt;\olive5.1.0\oliveDocker</span>
-<span class="err">    $ .\run.cmd </span>
-<span class="err">        -or- </span>
-<span class="err">    $ .\run-shell.cmd</span>
+<div class="codehilite"><pre><span></span><code>    $ cd C:\Users\&lt;username&gt;\olive5.1.0\oliveDocker
+    $ .\run.cmd 
+        -or- 
+    $ .\run-shell.cmd
 </code></pre></div>
 
 <h3 id="macos-and-linux-hosts">macOS and linux hosts</h3>
@@ -1733,13 +1729,13 @@ LOCAL_OLIVE_DATA=&quot;/home/<span class="nt">&lt;username&gt;</span>/olive-data
 <p>For command line processing, the <code>run-shell.cmd</code> or <code>run-shell.sh</code> scripts will launch the OLIVE Docker container and open a command line prompt with the OLIVE environment properly set up for running <code>localenroll</code>, <code>localanalyze</code>, and other command-line based tasks. </p>
 <h2 id="unload-olive-docker-container-image">Unload OLIVE Docker Container Image</h2>
 <p>To remove/unload a docker image, whether to upgrade OLIVE containers or for any other reason, first, check that the container is actually still loaded.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ docker images</span>
-<span class="err">    REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE</span>
-<span class="err">    olive-5.1.0-docker   latest              d00396687de1        5 days ago          3.56GB</span>
+<div class="codehilite"><pre><span></span><code>    $ docker images
+    REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
+    olive-5.1.0-docker   latest              d00396687de1        5 days ago          3.56GB
 </code></pre></div>
 
 <p>And then unload it.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ docker rmi olive-5.1.0-docker</span>
+<div class="codehilite"><pre><span></span><code>    $ docker rmi olive-5.1.0-docker
 </code></pre></div>
 
 <h2 id="optional-install-set-up-and-launch-olive-gui">[Optional] Install, set up, and launch OLIVE GUI</h2>
@@ -1759,15 +1755,15 @@ LOCAL_OLIVE_DATA=&quot;/home/<span class="nt">&lt;username&gt;</span>/olive-data
 <p>From the Environment Variables window, select New from the lower System variables section, and create a new variable named JAVA_HOME that points to the full path of the JDK installation path. Typically, this is C:\Program Files\Java\jdk11\bin.  </p>
 <p><img alt="Windows Setting JAVA_HOME Step 4" src="img/docker/win-java_home-4.png" /></p>
 <p>Finally, you are ready to launch the GUI, either by navigating in File Explorer to the location where the package was uncompressed, then OliveGui/olive-ui/bin/, and double-clicking Nightingale.bat. You can create a shortcut to this file that you can then place on your desktop for more convenient access. Alternatively, it can be launched from the Windows PowerShell by navigating to the same location, then invoking Nightingale.bat.  When launching this way, it is possible to provide a config file if desired.  </p>
-<div class="codehilite"><pre><span></span><code><span class="err">    $ cd C:\Users\&lt;username&gt;\olive5.1.0\oliveGui </span>
-<span class="err">    $ .\Nightingale.bat -c nightingale_config.xml</span>
+<div class="codehilite"><pre><span></span><code>    $ cd C:\Users\&lt;username&gt;\olive5.1.0\oliveGui 
+    $ .\Nightingale.bat -c nightingale_config.xml
 </code></pre></div>
 
 <!--- TODO: Is the bottom of this actually true still for 5.1? --->
 
 <p>[Optional]  If you wish to use the Batch mode of the OLIVE GUI, an additional step is required to allow the Batch GUI to access audio files stored on the host operating system.  Once you’ve installed and run the GUI at least once, open and edit the <code>.scenic-properties</code> file that was created in the user’s home folder in the host OS. For example, for a user named ‘olive’, this file will be created at the location C:\Users\olive.scenic-properties.  Once you’ve located and opened this file (it is a text file), add the following lines:  </p>
-<div class="codehilite"><pre><span></span><code><span class="err">    use_scenic_data=true </span>
-<span class="err">    olive_data_directory=C:\\Users\\&lt;username&gt;\\olive-data</span>
+<div class="codehilite"><pre><span></span><code>    use_scenic_data=true 
+    olive_data_directory=C:\\Users\\&lt;username&gt;\\olive-data
 </code></pre></div>
 
 <p>Note that it is very important that the directory assigned to olive_data_directory matches the directory assigned to LOCAL_OLIVE_DATA in the step above. </p>

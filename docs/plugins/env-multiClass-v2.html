@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1497,58 +1493,58 @@
 <h2 id="outputs">Outputs</h2>
 <p>Generally, a list of scores for all classes in the domain, for the entire segment. Unlike with SAD and SID, where scores are generally log-likelihood ratios where a score of greater than “0” is considered a detection, most of the classes within an ENV plugin are set up differently.</p>
 <p>Some ENV plugins, like this one will have a 'parent' superclass that has several subclasses within it.  For example, the Gender superclass has subclasses of m (male) and f (female); the Channel superclass may have subclasses of mic (microphone), tel (telephone), and ac (acoustic coupling).  When the plugin reports its results, these classes are reported as:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    Gender-f &lt;score&gt;</span>
-<span class="err">    Gender-m &lt;score&gt;</span>
+<div class="codehilite"><pre><span></span><code>    Gender-f &lt;score&gt;
+    Gender-m &lt;score&gt;
 </code></pre></div>
 
 <p>and</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    Channel-ac &lt;score&gt;</span>
-<span class="err">    Channel-mic &lt;score&gt;</span>
-<span class="err">    Channel-tel &lt;score&gt;</span>
+<div class="codehilite"><pre><span></span><code>    Channel-ac &lt;score&gt;
+    Channel-mic &lt;score&gt;
+    Channel-tel &lt;score&gt;
 </code></pre></div>
 
 <p>respectively.  Note that within many of these superclasses, the scores are scaled so that the sum of all subclasses within the superclass will sum to one, to make the scores more legible and easier to interpret. In these cases, the highest score represents the most likely subclass for that category.</p>
 <p>An example output excerpt:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    input-audio.wav Channel-ac 0.0</span>
-<span class="err">    input-audio.wav Channel-mic 1.0</span>
-<span class="err">    input-audio.wav Channel-tel 0.0</span>
-<span class="err">    input-audio.wav Codec-aac 0.0</span>
-<span class="err">    input-audio.wav Codec-amrnb 0.0</span>
-<span class="err">    input-audio.wav Codec-clean 1.0</span>
-<span class="err">    input-audio.wav Codec-g723_1 0.0</span>
-<span class="err">    input-audio.wav Codec-g726 0.0</span>
-<span class="err">    input-audio.wav Codec-gsm 0.0</span>
-<span class="err">    input-audio.wav Codec-ilbc 0.0</span>
-<span class="err">    input-audio.wav Codec-mp3 0.0</span>
-<span class="err">    input-audio.wav Codec-opus 0.0</span>
-<span class="err">    input-audio.wav Codec-real144 0.0</span>
-<span class="err">    input-audio.wav Codec-speex 0.0</span>
-<span class="err">    input-audio.wav Codec-vorbis 0.0</span>
-<span class="err">    input-audio.wav Emotion-A 0.0</span>
-<span class="err">    input-audio.wav Emotion-H 0.0</span>
-<span class="err">    input-audio.wav Emotion-N 0.9999999</span>
-<span class="err">    input-audio.wav Gender-f 0.0</span>
-<span class="err">    input-audio.wav Gender-m 1.0</span>
-<span class="err">    input-audio.wav Language-amh 0.0</span>
-<span class="err">    input-audio.wav Language-ara 0.0</span>
-<span class="err">    input-audio.wav Language-cmn 0.0</span>
-<span class="err">    input-audio.wav Language-eng 0.99999642</span>
-<span class="err">    input-audio.wav Language-fas 0.0</span>
-<span class="err">    input-audio.wav Language-fre 0.0040021786</span>
-<span class="err">    input-audio.wav Language-hau 0.0</span>
-<span class="err">    input-audio.wav Language-jpn 0.0</span>
-<span class="err">    input-audio.wav Language-kor 0.0</span>
-<span class="err">    input-audio.wav Language-pus 0.0</span>
-<span class="err">    input-audio.wav Language-rus 0.0</span>
-<span class="err">    input-audio.wav Language-spa 0.00023994729</span>
-<span class="err">    input-audio.wav Language-tur 0.0</span>
-<span class="err">    input-audio.wav Language-urd 0.0</span>
-<span class="err">    input-audio.wav Language-vie 0.0</span>
-<span class="err">    input-audio.wav Reverb-nml 1.0</span>
-<span class="err">    input-audio.wav Reverb-rev 0.0</span>
-<span class="err">    input-audio.wav SNR-clean 0.90663459</span>
-<span class="err">    input-audio.wav SNR-snr08db 0.0</span>
-<span class="err">    input-audio.wav SNR-snr20db 0.093361041</span>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav Channel-ac 0.0
+    input-audio.wav Channel-mic 1.0
+    input-audio.wav Channel-tel 0.0
+    input-audio.wav Codec-aac 0.0
+    input-audio.wav Codec-amrnb 0.0
+    input-audio.wav Codec-clean 1.0
+    input-audio.wav Codec-g723_1 0.0
+    input-audio.wav Codec-g726 0.0
+    input-audio.wav Codec-gsm 0.0
+    input-audio.wav Codec-ilbc 0.0
+    input-audio.wav Codec-mp3 0.0
+    input-audio.wav Codec-opus 0.0
+    input-audio.wav Codec-real144 0.0
+    input-audio.wav Codec-speex 0.0
+    input-audio.wav Codec-vorbis 0.0
+    input-audio.wav Emotion-A 0.0
+    input-audio.wav Emotion-H 0.0
+    input-audio.wav Emotion-N 0.9999999
+    input-audio.wav Gender-f 0.0
+    input-audio.wav Gender-m 1.0
+    input-audio.wav Language-amh 0.0
+    input-audio.wav Language-ara 0.0
+    input-audio.wav Language-cmn 0.0
+    input-audio.wav Language-eng 0.99999642
+    input-audio.wav Language-fas 0.0
+    input-audio.wav Language-fre 0.0040021786
+    input-audio.wav Language-hau 0.0
+    input-audio.wav Language-jpn 0.0
+    input-audio.wav Language-kor 0.0
+    input-audio.wav Language-pus 0.0
+    input-audio.wav Language-rus 0.0
+    input-audio.wav Language-spa 0.00023994729
+    input-audio.wav Language-tur 0.0
+    input-audio.wav Language-urd 0.0
+    input-audio.wav Language-vie 0.0
+    input-audio.wav Reverb-nml 1.0
+    input-audio.wav Reverb-rev 0.0
+    input-audio.wav SNR-clean 0.90663459
+    input-audio.wav SNR-snr08db 0.0
+    input-audio.wav SNR-snr20db 0.093361041
 </code></pre></div>
 
 <h2 id="functionality-traits">Functionality (<a href="../traits.html">Traits</a></h2>

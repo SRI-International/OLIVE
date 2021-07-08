@@ -10,7 +10,7 @@
       
       
       <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
     
     
       
@@ -72,8 +72,6 @@
     </div>
     
       
-
-  
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
@@ -150,8 +148,6 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-  
 
 
 
@@ -342,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -488,7 +484,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../requirements.md" class="md-nav__link">
+    <a href="../hardware.html" class="md-nav__link">
       OLIVE Resource Requirements
     </a>
   </li>
@@ -1422,26 +1418,26 @@
 <h2 id="inputs">Inputs</h2>
 <p>For enrollment, an audio file or buffer with a corresponding sound labels. This assumes that the entire audio file is the event. To identify sub-regions of the file time annotations should also be provided using the standard methods.</p>
 <p>An example:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">Input-audio_1.wav MUSIC</span>
-<span class="err">Input-audio_2.wav MUSIC</span>
-<span class="err">Input-audio_3.wav DOG</span>
-<span class="err">Input-audio_4.wav DOG</span>
-<span class="err">Input-audio_5.wav TRAFFIC</span>
+<div class="codehilite"><pre><span></span><code>Input-audio_1.wav MUSIC
+Input-audio_2.wav MUSIC
+Input-audio_3.wav DOG
+Input-audio_4.wav DOG
+Input-audio_5.wav TRAFFIC
 </code></pre></div>
 
 <p>For scoring, an audio file or buffer and (optional) identifier and (optional) regions to be scored. If no regions are specified the entire audio file or buffer will be scored.</p>
 <h2 id="outputs">Outputs</h2>
 <p>The AED plugin returns a list of regions with a score for each detected classes. Regions are represented in seconds. Scores are log-likelihood ratios where a score of greater than “0” is considered a detection. The list of results has a file name (or in the case of a buffer, an identifier), class label, a score for each detected sound class and the begin and end seconds of where the class was detected.</p>
 <p>The command-line interface output is formatted in this form:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">&lt;file_name&gt; &lt;start _seconds&gt; &lt;end _seconds&gt; &lt;class&gt; &lt;score&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="nv">file_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nv">start</span> <span class="nv">_seconds</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="k">end</span> <span class="nv">_seconds</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nv">class</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nv">score</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <p>An example output excerpt:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">audio.wav 0.00 1.49 GUNSHOT 4.38631201</span>
-<span class="err">audio.wav 2.45 7.49 MUSIC 3.77045155</span>
-<span class="err">audio.wav 8.70 10.74 DOOR 3.85196638</span>
-<span class="err">audio.wav 10.74 11.74 TRAFFIC 0.08894229</span>
-<span class="err">audio.wav 12.20 13.74 WIND 0.65049744</span>
+<div class="codehilite"><pre><span></span><code>audio.wav 0.00 1.49 GUNSHOT 4.38631201
+audio.wav 2.45 7.49 MUSIC 3.77045155
+audio.wav 8.70 10.74 DOOR 3.85196638
+audio.wav 10.74 11.74 TRAFFIC 0.08894229
+audio.wav 12.20 13.74 WIND 0.65049744
 </code></pre></div>
 
 <h2 id="enrollments">Enrollments</h2>
