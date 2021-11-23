@@ -1,0 +1,2674 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Server Guide - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#00bdd6">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="cyan" data-md-color-accent="blue-grey">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olive-server" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Server Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Standalone Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Server Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="server.html" class="md-nav__link md-nav__link--active">
+      Server Guide
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-environment-setup-and-startup" class="md-nav__link">
+    Installation, Environment Setup and Startup
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation, Environment Setup and Startup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olive" class="md-nav__link">
+    OLIVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive_runtime" class="md-nav__link">
+    OLIVE_RUNTIME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive_app_data" class="md-nav__link">
+    OLIVE_APP_DATA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-the-server" class="md-nav__link">
+    Starting the Server
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting the Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-options" class="md-nav__link">
+    Server Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workers" class="md-nav__link">
+    workers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#work_dir" class="md-nav__link">
+    work_dir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enroll_dir" class="md-nav__link">
+    enroll_dir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    debug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbose" class="md-nav__link">
+    verbose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quite" class="md-nav__link">
+    quite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-access" class="md-nav__link">
+    Remote Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-information" class="md-nav__link">
+    Important Information
+  </a>
+  
+    <nav class="md-nav" aria-label="Important Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio-formats" class="md-nav__link">
+    Audio Formats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    Common Pitfalls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-description" class="md-nav__link">
+    Runtime Description
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    Python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-python" class="md-nav__link">
+    Non-Python
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" >
+    
+    <label class="md-nav__link" for="nav-2-3">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Developer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Developer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Standalone Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Server Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="server.html" class="md-nav__link md-nav__link--active">
+      Server Guide
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-environment-setup-and-startup" class="md-nav__link">
+    Installation, Environment Setup and Startup
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation, Environment Setup and Startup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olive" class="md-nav__link">
+    OLIVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive_runtime" class="md-nav__link">
+    OLIVE_RUNTIME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive_app_data" class="md-nav__link">
+    OLIVE_APP_DATA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-the-server" class="md-nav__link">
+    Starting the Server
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting the Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-options" class="md-nav__link">
+    Server Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workers" class="md-nav__link">
+    workers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#work_dir" class="md-nav__link">
+    work_dir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enroll_dir" class="md-nav__link">
+    enroll_dir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    debug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbose" class="md-nav__link">
+    verbose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quite" class="md-nav__link">
+    quite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-access" class="md-nav__link">
+    Remote Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-information" class="md-nav__link">
+    Important Information
+  </a>
+  
+    <nav class="md-nav" aria-label="Important Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio-formats" class="md-nav__link">
+    Audio Formats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    Common Pitfalls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-description" class="md-nav__link">
+    Runtime Description
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    Python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-python" class="md-nav__link">
+    Non-Python
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    
+    <label class="md-nav__link" for="nav-3-4">
+      OLIVE API Integration Info
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="OLIVE API Integration Info" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        OLIVE API Integration Info
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy_api_html/modules.html" class="md-nav__link">
+      OlivePy Python Client API Documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v7.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v2.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-embed-v6.html" class="md-nav__link">
+      Speaker Identification (SID) Legacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-sbcEmbed-v2.html" class="md-nav__link">
+      Speaker Detection (SDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedplda-v3.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedplda-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-gb-v2.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7" >
+    
+    <label class="md-nav__link" for="nav-4-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-tdnn-v5.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8" >
+    
+    <label class="md-nav__link" for="nav-4-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v3.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9" >
+    
+    <label class="md-nav__link" for="nav-4-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-statistical-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" >
+    
+    <label class="md-nav__link" for="nav-4-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR/Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-11" type="checkbox" id="nav-4-11" >
+    
+    <label class="md-nav__link" for="nav-4-11">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-11">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-environment-setup-and-startup" class="md-nav__link">
+    Installation, Environment Setup and Startup
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation, Environment Setup and Startup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olive" class="md-nav__link">
+    OLIVE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive_runtime" class="md-nav__link">
+    OLIVE_RUNTIME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive_app_data" class="md-nav__link">
+    OLIVE_APP_DATA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-the-server" class="md-nav__link">
+    Starting the Server
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting the Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-options" class="md-nav__link">
+    Server Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workers" class="md-nav__link">
+    workers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#work_dir" class="md-nav__link">
+    work_dir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enroll_dir" class="md-nav__link">
+    enroll_dir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    debug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbose" class="md-nav__link">
+    verbose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quite" class="md-nav__link">
+    quite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-access" class="md-nav__link">
+    Remote Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-information" class="md-nav__link">
+    Important Information
+  </a>
+  
+    <nav class="md-nav" aria-label="Important Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio-formats" class="md-nav__link">
+    Audio Formats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    Common Pitfalls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-description" class="md-nav__link">
+    Runtime Description
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    Python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-python" class="md-nav__link">
+    Non-Python
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olive-server">OLIVE Server</h1>
+<h2 id="overview">Overview</h2>
+<p>In the OLIVE architecture, if the individual plugins are the muscles of the system, the Server serves as the brains. It provides coordination and tasking, and is responsible for properly receiving and interpreting messages from client applications, kicking off the appropriate plugin jobs that these messages may request, as well as routing the proper response or results from these jobs back to the requesting client. The OLIVE Enterprise API is client/server based. Therefore, you must run the OLIVE server and manage its lifecycle as part of your integration effort. The server is included as part of the primary system installation.</p>
+<p>The OLIVE server communicates with clients over two ports, 5588 and 5589 by default (configurable), using ZeroMQ and Google Protocol Buffers. It relies on other components to perform its duties; namely an assembly of third party and other libraries that are delivered with OLIVE as the <a href="#olive-runtime">OLIVE Runtime</a>, two SRI-built libraries; Idento and dnn, that empower the final puzzle piece, the plugins themselves, to complete their assigned tasks. OLIVE is usually delivered with a simple startup script for ease of use and to facilitate a rapid deployment, so the actual details of the relationship between these pieces does not need to be considered too closely if sticking, but the next section outlines how to properly establish the environmental setup that the Server needs to properly function, and how to manually start and configure the server.</p>
+<h2 id="installation-environment-setup-and-startup">Installation, Environment Setup and Startup</h2>
+<p>This section outlines the steps needed to prepare the OLIVE environment for proper operation, describes the contents of the OLIVE runtime library, and covers starting the actual server.  The final section of this page also outlines some common pitfalls encountered with running the OLIVE server, and offers troubleshooting advice.</p>
+<h3 id="installation">Installation</h3>
+<p>If you haven't already installed the OLIVE software package, please jump over and refer to our <a href="install.html">OLIVE Installation Guide</a> for information about the layout of the software and a quick-start setup guide before continuing on.</p>
+<h3 id="environment-variables">Environment Variables</h3>
+<p>As discussed in the <a href="install.html">Installation Guide</a>, we recommend using the provided olive_env.sh scripts to do the heavy lifting and set up the OLIVE environment, but it may be helpful to know what some of the important environment variables being set are referring to.  Below is a selection of some of the major variables, with a brief description of their function.</p>
+<h4 id="olive"><code>OLIVE</code></h4>
+<p>The <code>OLIVE</code> environment variable points to the actuall OLIVE installation location - If the software is installed as shown in the <a href="install.html">install page</a>, this is typically something like $HOME/olive5.0.0/.  From this, the OLIVE software is able to properly add the relevant <code>bin/</code> and <code>lib</code> directories to the <code>$PATH</code> and <code>$LD_LIBRARY_PATH</code> environment variables, respectively, and find/set other important variables.</p>
+<h4 id="olive_runtime"><code>OLIVE_RUNTIME</code></h4>
+<p><code>OLIVE_RUNTIME</code> points to the location of the <a href="#runtime-description">OLIVE Runtime</a> library outlined below. It's very important that this is set, as OLIVE will not function properly without access to the libraries and dependencies in the runtime.  In the two examples in the <a href="install.html">install page</a>, the <code>OLIVE_RUNTIME</code> variable would be set to:</p>
+<div class="codehilite"><pre><span></span><code>    $HOME/olive5.0.0/runtime-5.0.0-centos-7.3.1611-x86_64/
+</code></pre></div>
+
+<h4 id="olive_app_data"><code>OLIVE_APP_DATA</code></h4>
+<p>This variable is very important if running the OLIVE Server, but not necessary when using the OLIVE command line tools. <code>OLIVE_APP_DATA</code> tells the Server where to find the OLIVE plugins, and also determines where it will store things like class enrollments (i.e. speakers for SID plugins, keyword examples for QBE plugins), as well as server logs and other files that must be written out by the system.  <code>OLIVE_APP_DATA</code> must contain a directory called <code>plugins</code> that contains valid OLIVE plugins. In the two examples in the <a href="install.html">install page</a>, the <code>OLIVE_APP_DATA</code> variable would be set to:</p>
+<div class="codehilite"><pre><span></span><code>    $HOME/oliveAppData/
+</code></pre></div>
+
+<h3 id="starting-the-server">Starting the Server</h3>
+<p>Once the OLIVE environment has been properly established, launching the server is as simple as entering this into the appropriate terminal:</p>
+<div class="codehilite"><pre><span></span><code>    oliveserver
+</code></pre></div>
+
+<p>Additional runtime/configuration options are available for advanced operation, and their details can be found in the <code>oliveserver</code> usage statement:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">usage</span><span class="o">:</span> <span class="n">oliveserver</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">version</span><span class="o">]</span> <span class="o">[--</span><span class="n">verbose</span><span class="o">]</span> <span class="o">[--</span><span class="kd">interface</span> <span class="n">INTERFACE</span><span class="o">]</span>
+                   <span class="o">[--</span><span class="n">port</span> <span class="n">REQUEST_PORT</span><span class="o">]</span> <span class="o">[--</span><span class="n">workers</span> <span class="n">WORKERS</span><span class="o">]</span>
+                   <span class="o">[--</span><span class="n">work_dir</span> <span class="n">WORK_DIR</span><span class="o">]</span> <span class="o">[--</span><span class="n">enroll_dir</span> <span class="n">ENROLL_DIR</span><span class="o">]</span> <span class="o">[--</span><span class="n">debug</span><span class="o">]</span>
+                   <span class="o">[--</span><span class="n">quiet</span><span class="o">]</span> <span class="o">[--</span><span class="n">timeout</span> <span class="n">TIMEOUT</span><span class="o">]</span> <span class="o">[--</span><span class="n">options</span> <span class="n">OPTIONS_PATH</span><span class="o">]</span>
+
+<span class="n">optional</span> <span class="k">arguments</span><span class="o">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="o">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="k">this</span> <span class="n">help</span> <span class="n">message</span> <span class="n">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">version</span>             <span class="n">show</span> <span class="n">program</span><span class="s1">&#39;s version number and exit</span>
+<span class="s1">  --verbose             increase server logging output</span>
+<span class="s1">  --interface INTERFACE</span>
+<span class="s1">                        server binds to this address; default * (all)</span>
+<span class="s1">  --port REQUEST_PORT   ther first of three sequentially numbered ports used</span>
+<span class="s1">                        by the server. The request port is the first port in</span>
+<span class="s1">                        this range, followd by the status port, and then an</span>
+<span class="s1">                        interal port only used by the server; default value is</span>
+<span class="s1">                        5588.</span>
+<span class="s1">  --workers WORKERS, -j WORKERS</span>
+<span class="s1">                        specify number of parallel WORKERS to run; default is</span>
+<span class="s1">                        the number of local processors</span>
+<span class="s1">  --work_dir WORK_DIR   path to work dir to create. default value of</span>
+<span class="s1">                        environment variable $OLIVE_APP_DATA</span>
+<span class="s1">  --enroll_dir ENROLL_DIR</span>
+<span class="s1">                        path for storage of enrollment data. default value of</span>
+<span class="s1">                        environment variable $OLIVE_APP_DATA</span>
+<span class="s1">  --debug               debug mode prevents deletion of logs and intermediate</span>
+<span class="s1">                        files on success</span>
+<span class="s1">  --quiet, -q           suppress sending log information to the console</span>
+<span class="s1">  --timeout TIMEOUT     timeout, in seconds, for all jobs regardless of the</span>
+<span class="s1">                        audio duration. otherwise the job will timeout based</span>
+<span class="s1">                        on the duration of audio to process and the domain&#39;</span><span class="n">s</span>
+                        <span class="n">timeout_weight</span>
+  <span class="o">--</span><span class="n">options</span> <span class="n">OPTIONS_PATH</span>
+                        <span class="n">Optional</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">name</span><span class="o">/</span><span class="n">value</span> <span class="n">pairs</span><span class="o">.</span> <span class="n">The</span> <span class="n">option</span>
+                        <span class="n">file</span> <span class="n">must</span> <span class="n">have</span> <span class="n">more</span> <span class="n">or</span> <span class="n">more</span> <span class="n">configuration</span> <span class="n">sections</span><span class="o">.</span>
+                        <span class="n">Currently</span> <span class="n">only</span> <span class="n">the</span> <span class="n">server</span> <span class="s1">&#39;server&#39;</span> <span class="n">section</span> <span class="k">is</span>
+                        <span class="n">supported</span>
+</code></pre></div>
+
+<p>An example for setting up the OLIVE runtime environment using the first directory setup shown on the <a href="install.html">install page</a>, and launching the OLIVE server:</p>
+<div class="codehilite"><pre><span></span><code>    <span class="o">$</span> <span class="n">cd</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">olive5</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="n">runtime</span><span class="o">-</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">centos</span><span class="o">-</span><span class="mf">7.3</span><span class="o">.</span><span class="mi">1611</span><span class="o">-</span><span class="n">x86_64</span>
+    <span class="o">$</span> <span class="n">source</span> <span class="n">olive_env</span><span class="o">.</span><span class="n">sh</span>
+    <span class="o">$</span> <span class="n">cd</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">olive5</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="n">olive</span><span class="o">-</span><span class="mf">5.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">centos</span><span class="o">-</span><span class="mf">7.3</span><span class="o">.</span><span class="mi">1611</span><span class="o">-</span><span class="n">x86_64</span>
+    <span class="o">$</span> <span class="n">source</span> <span class="n">olive_env</span><span class="o">.</span><span class="n">sh</span>
+    <span class="o">$</span> <span class="k">export</span> <span class="n">OLIVE_APP_DATA</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">oliveAppData</span><span class="o">/</span>
+
+    <span class="o">$</span> <span class="n">oliveserver</span> <span class="o">--</span><span class="n">port</span> <span class="mi">6678</span> <span class="o">--</span><span class="n">work_dir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">sysadmin</span><span class="o">/</span><span class="n">OLIVE</span>
+</code></pre></div>
+
+<p>In this example, the ports that the server will listen on and broadcast its status heartbeat messages on have been update, in addition to setting a custom WORK directory. For more information on the available server options, please refer to the <a href="#server-options">OLIVE Server Options</a> section below.</p>
+<p>Note that upon launching the server, if the operation was successful, the user will be greeted with a display of the plugins and domains that the server has access to, as well as a “Server ready” message.  If a list of plugins does not appear, but the “Server ready” message does, the OLIVE_APP_DATA environment variable should be checked to ensure that it contains a valid plugins directory.  An example output of a successful server startup:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="o">[</span><span class="n">oliveuser@localhost olive5.0.0</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">oliveserver</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">TASK</span><span class="w">    </span><span class="n">PLUGIN</span><span class="w">        </span><span class="n">DOMAINS</span><span class="w"></span>
+<span class="w">    </span><span class="o">------</span><span class="w">  </span><span class="o">------------</span><span class="w">  </span><span class="o">---------------------------------</span><span class="w"></span>
+<span class="w">    </span><span class="n">LID</span><span class="w">     </span><span class="n">lid</span><span class="o">-</span><span class="n">embed</span><span class="o">-</span><span class="n">v2</span><span class="w">  </span><span class="o">[</span><span class="n">&#39;multi-v1&#39;</span><span class="o">]</span><span class="w"></span>
+<span class="w">    </span><span class="n">SID</span><span class="w">     </span><span class="n">sid</span><span class="o">-</span><span class="n">embed</span><span class="o">-</span><span class="n">v2</span><span class="w">  </span><span class="o">[</span><span class="n">&#39;multi-v1&#39;</span><span class="o">]</span><span class="w"></span>
+<span class="w">    </span><span class="n">SAD</span><span class="w">     </span><span class="n">sad</span><span class="o">-</span><span class="n">dnn</span><span class="o">-</span><span class="n">v4a</span><span class="w">   </span><span class="o">[</span><span class="n">&#39;digPtt-v1&#39;, &#39;ptt-v1&#39;, &#39;tel-v1&#39;</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">--------- Server ready Fri Jan 11 12:43:26 2019 ---------</span>
+</code></pre></div>
+
+<p>The olive_env.sh file is included with OLIVE deliveries and does the bulk of the environment setup required for running the server.  Important variables that are handled with this script and that are required for running the OLIVE Server include:</p>
+<ul>
+<li><code>OLIVE_RUNTIME</code><ul>
+<li>Must be set to the path of the OLIVE runtime directory. Allows OLIVE to find the libraries it requires.</li>
+<li>Ex: <code>/home/user1/olive5.0.0-installation/runtime-5.0.0-centos-7.3.1611-x86_64/</code></li>
+</ul>
+</li>
+<li><code>OLIVE</code><ul>
+<li>Contains the path to the OLIVE installation directory.  Allows OLIVE to find the binaries and utilities it relies on to function.</li>
+<li>Ex: <code>/home/user1/olive5.0.0-installation/olive-5.0.0-centos-7.3.1611-x86_64/</code> or <code>/home/user1/olive5.0.0-installation/runtime-5.0.0-centos-7.3.1611-x86_64/olive-5.0.0-centos-7.3.1611-x86_64/</code></li>
+</ul>
+</li>
+<li><code>OLIVE_APP_DATA</code><ul>
+<li>This is the path used by the server to store class enrollments and log files.  This is also where the plugins that the server will have access to must be stored, in a directory simply named plugins. If OLIVE_APP_DATA is set to a directory that does not contain a plugins folder, the server will launch with no plugins.</li>
+<li>Ex: <code>/home/user1/oliveAppData/</code><ul>
+<li>Where the contents of oliveAppData might be:<ul>
+<li><code>plugins/</code><ul>
+<li><code>sad-dnn-v4a</code></li>
+<li><code>sid-embed-v2</code></li>
+<li><code>lid-embed-v2</code></li>
+</ul>
+</li>
+<li><code>server/</code> (generated by the server)<ul>
+<li><code>enrollments/</code></li>
+<li><code>processing/</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>If your server is protected by a firewall you must ensure that any ports you attempt to utilize for the server are able to send and receive network traffic. The path you provide to --work_dir will ideally point to a large and performant hard drive. The location will house the enrollments, log files and temporary workspaces utilized by the server. </p>
+<h4 id="server-options">Server Options</h4>
+<h5 id="interface">interface</h5>
+<p>Use this option to specify a single interface for the server to use for communication, otherwise the ports used by the server (5588, 5589, 5590 by default ) are available to all interfaces on the host.  For example, <code>--interface 192.168.10.20</code> would restrict the server to using only that interface, and only available to clients on that interface   </p>
+<h5 id="port">port</h5>
+<p>Use this option to change the set of ports used by the server for external and internal communication.  For example <code>--port 6000</code> instructs the server to use ports 6000 (requests), 6001 (heartbeats), 60002 (internal communication)</p>
+<h5 id="workers">workers</h5>
+<p>Use this option to specify the number of current jobs the server can process, this value should be set between 1 and the number of processors on the host</p>
+<h5 id="work_dir">work_dir</h5>
+<p>Use this option to specify an alternate location of the directory where the server stores log files, enrollments, and temporary data.  Setting this does NOT change the location of the plugins, which should still be located at <code>$OLIVE_APP_DATA/plugins</code></p>
+<h5 id="enroll_dir">enroll_dir</h5>
+<p>Use this option to specify an alternate location of the enrollments directory, when specified the work directory and plugins location is not changed.  </p>
+<h5 id="debug">debug</h5>
+<p>Use this option to preserver all logs files and provide extra</p>
+<h5 id="verbose">verbose</h5>
+<p>Use this option with the <code>--debug</code> option to produce to maximize debug output</p>
+<h5 id="quite">quite</h5>
+<p>Use this option to start the server without non-error output messages</p>
+<h5 id="timeout">timeout</h5>
+<p>Use this option adjust the timeout (in seconds) used for jobs, unless instructed by OLIVE technical support this value should not specified </p>
+<h5 id="options">options</h5>
+<p>Used to pass special options to the server, this option should only be used with guidance from OLIVE technical support</p>
+<h4 id="remote-access">Remote Access</h4>
+<p>The OLIVE server uses three sequential ports for communication; by default these are ports are 5588, 5589, and 5590.  An alternate set of ports can be specified using the <code>--port</code> argument, which instructs the server to use 3 ports starting at the given value, so if <code>--port 6000</code> is specified then ports 6000 (request port), 6001 (status port), and 6002 (internal port) are used.  </p>
+<p>Clients send and receive responses on the request port (5588 by default), while the server publishes health and status information on the status port (5589 by default).  The internal IPC port (5590 by default) is only used for internal server communication. </p>
+<p>You can restrict these ports to a specific interface by using the <code>--interface</code> option, so that the server is only available on that network (by default the server should be available on all interfaces, which may not be desirable on a multi-homed server).  For example, specifying an interface of <code>--interface 192.168.10.99</code> would restrict the server to communication only on that port.  You could also use the interface option to restrict the server to local processing, not networked, by setting interface as: <code>--interface 127.0.0.1</code> (on some OSs you may be able to specify <code>--interface localhost</code> instead of the loopback address, 127.0.0.1).  If using the localhost interface, the server is not accessible to remote clients.</p>
+<h2 id="important-information">Important Information</h2>
+<h3 id="audio-formats">Audio Formats</h3>
+<p>The OLIVE server can handle a wide range of input audio file formats, but does have some limitations.  For more information on the details of these limitations, please refer to the <a href="audioFormats.html">OLIVE Audio Formats</a> information page.</p>
+<!-- TODO:
+
+### Server Storage
+
+The OLIVE Server 
+
+- learn
+- enrollments
+- logs
+- other? 
+-->
+
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<p>One common mistake that's encountered is when informing the OLIVE Server where to find plugins.  There is a directory within the OLIVE distribution, <code>olive/plugins</code> that is often mistaken for the directory where OLIVE plugins should oro do reside.  This directory has a different purpose, however, and should not be used as such. Guidelines are provided above for general recommendations for where to place your OLIVE plugins.  </p>
+<!--- Likewise, the environment variable SCENIC_PLUGIN_PATH is not related to the OLIVE plugins, and is a deprecated value that due to confusability will be soon removed. --->
+
+<!-- TODO: 
+
+ show error messages that happen if something is source improperly, refer back to previous section on setup 
+
+show server that starts up with no plugins, refer to setting OLIVE_APP_DATA
+    A common mistake is to set this variable to $HOME/oliveAppData/plugins/, 
+
+If remote - no connection to be made - make sure OS firewall is open on ports 5588, 5589, or custom ports if they're being used
+
+-->
+
+<h2 id="runtime-description">Runtime Description</h2>
+<p>The OLIVE Runtime is a collection of third party server dependencies, which are typically Python packages and C libraries, that are distributed with OLIVE and necessary for proper/full functionality. A full list of the included packages/libraries included in the OLIVE 5.2.0 release can be found below, with links for more information, and license information.</p>
+<h3 id="python">Python</h3>
+<table>
+<thead>
+<tr>
+<th>Components</th>
+<th>Version</th>
+<th>How Obtained</th>
+<th>License</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python 3.8.5 (Anaconda) (Miniconda Distribution)</td>
+<td>3.85</td>
+<td>Open Source</td>
+<td>BSD-3</td>
+<td>https://docs.anaconda.com/anaconda/eula</td>
+</tr>
+<tr>
+<td>cython</td>
+<td>0.29.23</td>
+<td>Open Source</td>
+<td>Apache-2.0</td>
+<td>https://docs.anaconda.com/anaconda/packages/py2.7_linux-64</td>
+</tr>
+<tr>
+<td>Google Protocal Buffers (protobuf)</td>
+<td>3.14.0</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://raw.githubusercontent.com/google/protobuf/master/LICENSE</td>
+</tr>
+<tr>
+<td>numpy</td>
+<td>1.20.2</td>
+<td>Open Source</td>
+<td>BSD-3</td>
+<td>https://docs.anaconda.com/anaconda/packages/py2.7_linux-64</td>
+</tr>
+<tr>
+<td>zmq</td>
+<td>20.0.0</td>
+<td>Open Source</td>
+<td>LGPL</td>
+<td>http://zeromq.org/area:licensing</td>
+</tr>
+<tr>
+<td>tabulate</td>
+<td>0.8.9</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://bitbucket.org/astanin/python-tabulate</td>
+</tr>
+<tr>
+<td>klepto</td>
+<td>0.2.0</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>http://www.cacr.caltech.edu/~mmckerns/klepto.htm</td>
+</tr>
+<tr>
+<td>fastcluster</td>
+<td>1.1.26</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>http://danifold.net</td>
+</tr>
+<tr>
+<td>nose-cprof</td>
+<td>1.3.7</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://github.com/msherry/nose-cprof</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>1.8.1</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://github.com/pytorch/pytorch/blob/master/LICENSE</td>
+</tr>
+<tr>
+<td>pycryptodome</td>
+<td>3.10.1</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://pycryptodome.readthedocs.io/en/latest/src/license.html</td>
+</tr>
+<tr>
+<td>rsa</td>
+<td>4.7.2</td>
+<td>Open Source</td>
+<td>Apache 2</td>
+<td>https://stuvel.eu/software/rsa/</td>
+</tr>
+<tr>
+<td>pysoundfile</td>
+<td>0.10.3</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://pysoundfile.readthedocs.io/en/latest/</td>
+</tr>
+<tr>
+<td>ninja</td>
+<td>1.10.2</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://pypi.org/project/ninja/</td>
+</tr>
+<tr>
+<td>pyyaml</td>
+<td>5.4.1</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://pyyaml.org/wiki/PyYAMLDocumentation</td>
+</tr>
+<tr>
+<td>cffi</td>
+<td>1.14.5</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://pypi.org/project/cffi/</td>
+</tr>
+<tr>
+<td>future</td>
+<td>0.18.2</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://pypi.org/project/future/</td>
+</tr>
+<tr>
+<td>six</td>
+<td>1.15.0</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://pypi.org/project/six/</td>
+</tr>
+<tr>
+<td>requests</td>
+<td>2.25.1</td>
+<td>Open Source</td>
+<td>Apache 2</td>
+<td>https://pypi.org/project/requests/</td>
+</tr>
+<tr>
+<td>typing_extensions</td>
+<td>3.7.4.3</td>
+<td>Open Source</td>
+<td>PSF (Python Software Foundation)</td>
+<td>https://pypi.org/project/typing-extensions/</td>
+</tr>
+<tr>
+<td>mkl-include</td>
+<td>2021.2.0</td>
+<td>Open Source</td>
+<td>Intel Simplified Software License</td>
+<td>https://pypi.org/project/mkl/</td>
+</tr>
+<tr>
+<td>av</td>
+<td>8.0.3</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://pypi.org/project/av/</td>
+</tr>
+<tr>
+<td>opencv</td>
+<td>4.5.1</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://pypi.org/project/opencv-python/</td>
+</tr>
+<tr>
+<td>distro</td>
+<td>1.5.0</td>
+<td>Open Source</td>
+<td>Apache 2</td>
+<td>https://pypi.org/project/distro/</td>
+</tr>
+<tr>
+<td>mpi4py</td>
+<td>3.0.3</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://pypi.org/project/mpi4py/</td>
+</tr>
+<tr>
+<td>pytest</td>
+<td>6.2.3</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://docs.pytest.org/en/6.2.x/#license</td>
+</tr>
+<tr>
+<td>scikit-learn</td>
+<td>0.24.2</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://scikit-learn.org/stable/</td>
+</tr>
+<tr>
+<td>numexpr</td>
+<td>2.7.3</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://pypi.org/project/numexpr/</td>
+</tr>
+<tr>
+<td>h5py</td>
+<td>2.10.0</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://pypi.org/project/h5py/</td>
+</tr>
+<tr>
+<td>ipython</td>
+<td>7.22.0</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://ipython.org/</td>
+</tr>
+<tr>
+<td>lxml</td>
+<td>4.6.3</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://pypi.org/project/lxml/</td>
+</tr>
+<tr>
+<td>psutil</td>
+<td>5.8.0</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://pypi.org/project/lxml/</td>
+</tr>
+<tr>
+<td>facenet-pytorch</td>
+<td>1.0.1</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://github.com/timesler/facenet-pytorch</td>
+</tr>
+<tr>
+<td>torchvggish</td>
+<td>0.0.2</td>
+<td>Open Source</td>
+<td>Apache 2</td>
+<td>https://github.com/harritaylor/torchvggish</td>
+</tr>
+<tr>
+<td>transformers</td>
+<td>4.6.1</td>
+<td>Open Source</td>
+<td>Apache 2</td>
+<td>https://github.com/huggingface/transformers</td>
+</tr>
+<tr>
+<td>pyworld</td>
+<td>0.2.12</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://github.com/JeremyCCHsu/Python-Wrapper-for-World-Vocoder</td>
+</tr>
+</tbody>
+</table>
+<h3 id="non-python">Non-Python</h3>
+<table>
+<thead>
+<tr>
+<th>Components</th>
+<th>Version</th>
+<th>How Obtained</th>
+<th>License</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>libspeex</td>
+<td>1.2</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://www.speex.org/</td>
+</tr>
+<tr>
+<td>libogg</td>
+<td>1.3.2</td>
+<td>Open Source</td>
+<td>BSD  https://xiph.org/ogg/</td>
+<td></td>
+</tr>
+<tr>
+<td>libvorbis</td>
+<td>1.3.5</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>http://www.vorbis.com/</td>
+</tr>
+<tr>
+<td>libflac</td>
+<td>1.3.2</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://xiph.org/flac/index.html</td>
+</tr>
+<tr>
+<td>libsndfile</td>
+<td>1.0.28</td>
+<td>Open Source</td>
+<td>LGPL</td>
+<td>http://www.mega-nerd.com/libsndfile/</td>
+</tr>
+<tr>
+<td>liblinear</td>
+<td>1.8</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://www.csie.ntu.edu.tw/~cjlin/liblinear/</td>
+</tr>
+<tr>
+<td>libsvm</td>
+<td></td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>http://www.csie.ntu.edu.tw/~cjlin/libsvm/</td>
+</tr>
+<tr>
+<td>sox</td>
+<td>14.3.2</td>
+<td>Open Source</td>
+<td>LGPL</td>
+<td>http://sox.sourceforge.net/</td>
+</tr>
+<tr>
+<td>dpwelib</td>
+<td>5/16/13</td>
+<td>Open Source</td>
+<td>Public Domain</td>
+<td>http://www1.icsi.berkeley.edu/~dpwe/dpwelib.html</td>
+</tr>
+<tr>
+<td>get_f0_snd</td>
+<td>n/a</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://github.com/MattShannon/HTS-demo_CMU-ARCTIC-SLT-STRAIGHT-AR-decision-tree/blob/master/License</td>
+</tr>
+<tr>
+<td>upfirdn</td>
+<td>0.2.1</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://github.com/telegraphic/upfirdn</td>
+</tr>
+<tr>
+<td>openfst</td>
+<td>1.6.7</td>
+<td>Open Source</td>
+<td>ASL</td>
+<td>http://www.openfst.org/twiki/bin/view/FST/WebHome</td>
+</tr>
+<tr>
+<td>OpenBlas</td>
+<td>0.3.15</td>
+<td>Open Source</td>
+<td>BSD</td>
+<td>https://raw.githubusercontent.com/xianyi/OpenBLAS/develop/LICENSE</td>
+</tr>
+<tr>
+<td>kaldi</td>
+<td>5.2.125</td>
+<td>Open Source</td>
+<td>5.2.125</td>
+<td>ASL 2.0</td>
+</tr>
+<tr>
+<td>Marian NMT</td>
+<td>3.16.0</td>
+<td>Open Source</td>
+<td>MIT</td>
+<td>https://marian-nmt.github.io/</td>
+</tr>
+</tbody>
+</table>
+<!--- OLIVE 5.0.0 version below (I think)
+
+Name | Version | Description | How Obtained | License | Link |
+|---|---|---|---|---|---|
+Python | 3.7.8 (Anaconda 4.8.4 Distribution) | Python distribution for scientific computing | Open Source | BSD-3 | https://docs.anaconda.com/anaconda/eula
+| Cython | 0.29.21 | python library for access to native C libraries | Open Source | Apache-2.0 | https://docs.anaconda.com/anaconda/packages/py2.7_linux-64
+| protobuf (python) | 3.13.0 | library to serialize data | Open Source | BSD | https://docs.anaconda.com/anaconda/packages/py2.7_linux-64
+| psutil | 5.7.2 | library to provide OS status | Open Source | BSD | https://github.com/giampaolo/psutil
+| numpy | 1.19.1 | python library of high level math functions | Open Source | BSD-3 | https://docs.anaconda.com/anaconda/packages/py2.7_linux-64 https://raw.githubusercontent.com/google/protobuf/master/LICENSE 
+| scipy | 1.5.2 | python library for scientific computing | Open Source | BSD/MIT | https://github.com/scipy/scipy/blob/master/LICENSE.txt 
+| scikit-learn | 0.23.2 | python machine learning library | Open Source | BSD | https://github.com/scikit-learn/scikit-learn/blob/master/COPYING 
+| numexpr | 2.7.1 | python mathematical library | Open Source | MIT | https://github.com/pydata/numexpr
+| h5py | 2.10.10 | python library for HDF5 binary data format | Open Source | PSF | https://github.com/h5py/h5py
+| ipython | 7.17.0 | interactive shell for python | Open Source | BSD-3 | https://github.com/ipython/ipython
+| lxml | 4.5.1 | python library for processing XML and HTML | Open Source | BSD | https://github.com/lxml/lxml
+| matplotlib | 3.3.1 | python plotting library | Open Source | PSF | https://github.com/matplotlib/matplotlib/tree/master/LICENSE 
+| zeromq | 4.3.2 | messaging library | Open Source | LGPL | http://zeromq.org/area:licensing
+| pyzmq | 19.0.1 | messaging library | Open Source | BSD | https://github.com/zeromq/pyzmq
+| mpi4py | 3.0.3 | Message Passing Interface (MPI) | Open Source | BSD |  https://bitbucket.org/mpi4py/mpi4py/src/master/ 
+| nose | 1.3.7 | Testing Package | Open Source | LGPL | https://nose.readthedocs.io/en/latest/
+| pytest | 6.0.1 | Testing Package | Open Source | MIT | https://docs.pytest.org/ 
+| fastcluster | 1.1.26 | python library for hierarchical clustering | Open Source | BSD | http://danifold.net
+| av | 8.0.2 | Pythonic binding for the FFmpeg libraries | Open Source | BSD | https://github.com/PyAV-Org/PyAV 
+| opencv | 4.4.0 | CPU-only OpenCV packages | Open Source | MIT | https://github.com/skvark/opencv-python 
+| distro | 1.5.0 | OS platform information AP | Open Source | Apache v2.0 | https://github.com/nir0s/distro
+| ninja | 1.10.0 | Python build support | Open Source  | BSD | http://ninja-build.org/
+| pyyaml | 5.3.1 | Python YAML parser | Open Source | MIT | https://github.com/yaml/pyyaml
+| cffi | 1.14.0 | Foreign Function Interface for Python  | Open Source | MIT | http://cffi.readthedocs.org/ 
+| future | 0.18.2 | Python 2 to 3 compatible interface | Open Source  | MIT | https://python-future.org/
+| six |  1.15.0 | Python 2 and 3 compatibility library | Open Source | MIT | https://github.com/benjaminp/six
+| requests |  2.24.0 | HTTP library | Open Source | Apache 2.0 | https://requests.readthedocs.io/ 
+| mkl-include | 2020.2  | Math Kernel Librar| Open Source | Intel Simplified Software License | https://software.intel.com/en-us/oneapi/onemkl 
+| typing_extensions | 3.7.4.2 | Backported and Experimental Type Hints for Python | Open Source | Python Software Foundation License (PSF) | https://github.com/python/typing/blob/master/typing_extensions/README.rst   
+| python-gnupg | 0.4.6 | cryptographic library | Open Source | GPL-3 | https://github.com/isislovecruft/python-gnupg 
+| pysoundfile | 0.10.2 | audio library based on libsndfile, | Open Source | BSD | https://github.com/bastibe/PySoundFile
+| tabulate | 0.8.7 | python library for printing output | Open Source | MIT | https://bitbucket.org/astanin/python-tabulate
+| pytorch | 1.6.0 |  open source machine learning library based on the Torch library | Open Source | BSD | https://pytorch.org/
+| liblinear | 1.8 | mathematical library | Open Source | BSD | https://www.csie.ntu.edu.tw/~cjlin/liblinear/ 
+| libogg | 1.3.2 | library for ogg audio | Open Source | BSD | https://xiph.org/ogg/
+| libspeex | 1.2 | audio codec | Open Source | BSD | https://www.speex.org/
+| libvorbis | 1.3.5 | vorbis audio codec | Open Source | BSD | http://www.vorbis.com/
+| libflac | 1.3.2 | flac audio codec | Open Source | BSD | https://xiph.org/flac/index.html
+| libsndfile | 1.0.28 | library for audio files | Open Source | LGPL | http://www.mega-nerd.com/libsndfile/
+| sox | 14.3.2 | audio processing utility | Open Source | LGPL | http://sox.sourceforge.net/
+| dpwelib | 5/16/13 | audio processing library | Open Source | Public Domain | http://www1.icsi.berkeley.edu/~dpwe/dpwelib.html
+| get_f0_snd | n/a | audio library | Open Source | BSD | https://github.com/MattShannon/HTS-demo_CMU-ARCTIC-SLT-STRAIGHT-AR-decision-tree/blob/master/License 
+| upfirdn | 0.2.1 | signal processing library | Open Source | BSD | https://github.com/telegraphic/upfirdn
+| gnupg | 1.4.22 | cryptographic library | Open Source | CC BY-SA 3.0 | https://www.gnupg.org/
+| klepto | 0.1.9 | python caching library | Open Source | BSD | http://www.cacr.caltech.edu/~mmckerns/klepto.htm
+| facenet | 1.0.1 | Face recognition with Google’s FaceNet deep neural network & TensorFlow  | Open Source | MIT | https://github.com/jonaphin/facenet
+| libopenfst | 1.6.2 | library for processing finite-state transducers (FSTs) | Open Source | ASL | http://www.openfst.org/twiki/bin/view/FST/WebHome
+| libopenblas | 0.2.19 | mathematical library | Open Source | BSD | https://raw.githubusercontent.com/xianyi/OpenBLAS/develop/LICENSE 
+| kaldi | 5.1 | speech processing library | Open Source | ASL 2.0 | http://kaldi.sourceforge.net/ 
+| torchvggish | 0.1 | A torch-compatible port of VGGish | Open Source | Apache v2.0 | https://github.com/harritaylor/torchvggish
+| transformers | 3.3.1 |  Natural Language Processing for PyTorch and TensorFlow  | Open Source | Apache | https://github.com/huggingface/transformers
+--->
+
+<!--- TODO
+dynapspeak
+SRILM.no_block_malloc
+lm-wrapper
+srinterp
+speexdsp
+--->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="install.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                OLIVE CentOS/RedHat 7 Native Setup
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="workflows.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Workflows
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+    
+  </body>
+</html>

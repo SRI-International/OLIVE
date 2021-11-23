@@ -1,0 +1,380 @@
+swagger: "2.0"
+info:
+  title: OLIVE Message Broker
+  version: 0.1.0
+host: martini.sri.com:9905
+basePath: /api
+schemes:
+  - "http"
+tags:
+- name: "Media"
+  description: "Upload / access media files, e.g., audio, video and image files"
+- name: "Workflow"
+  description: "Access to workflows to process media"
+- name: "Job"
+  description: "Operations of workflow for media"
+- name: "Server-sent Event"
+  description: "Unidirectional message(s) from server to client upon completing analysis of media"
+paths:
+  /media:
+    get:
+      summary: list of audio files available / hosted on the server
+      description: It returns the list of server side hosted media
+                   files that can be used for analysis with workflow(s)
+      tags:
+        - "Media"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: JSON array of media files
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "unique-file-id"
+                name:
+                  type: string
+                  example: "/opt/media/sample-audio.wav"
+  /media/{mediaId}:
+    get:
+      summary: download the media content binary
+      description: It returns the media in its binary format
+      tags:
+        - Media
+      parameters:
+        - name: mediaId
+          in: path
+          required: true
+          description: The unique ID of the media
+          type: string
+      responses:
+        200:
+          description: media binary
+          schema:
+            type: string
+            format: binary
+            example: media binary
+        404:
+          description: Media with the provided ID was not found
+    put:
+      summary: upload media with the ID
+      description: It uploads media with the ID received from `/workflows/{id}`
+                   POST request for the current media file
+      tags:
+        - Media
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - name: mediaId
+          in: path
+          required: true
+          description: The unique ID generated / received from `/workflows/{id}` POST API
+          type: string
+        - name: file
+          in: formData
+          description: media file to upload
+          required: true
+          type: file
+      responses:
+        200:
+          description: The media is successfully accepted / received.
+        404:
+          description: Media with the provided ID was not found
+  /workflows:
+    get:
+      summary: list of workflows
+      description: It returns the list of workflows that can accept / analyize media files
+      tags:
+        - "Workflow"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: JSON array of workflows
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: unique-workflow-id
+                name:
+                  type: string
+                  example: Speech acitivy and speaker detection
+                  description: Human readable / friendly name for the workflow
+                description:
+                  type: string
+                  example: Workflow to detect speech activity in audio and identify
+                           the speaker(s) from the detected speech regions
+                  description: Verbose description for the work flow that explains
+                               the details of the workflow analysis / operation
+                plugins:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: sid-dplda-v2.0.1
+                      domain:
+                        type: string
+                        example: multi-v1
+                tasks:
+                  type: array
+                  items:
+                    type: object
+                    properties: 
+                      id:
+                        type: string
+                        example: unique-task-id
+                      description:
+                        type: string
+                        example: Speaker detection task
+                        description: Human friendly description of what the task performs
+                      taskType:
+                        type: string
+                        example: SDD
+                        description: Typically 3 letter long task type indicator, e.g.,
+                                     SAD, SID, LID, LDD, etc.
+                      scoreType:
+                        type: string
+                        example: REGION_SCORER
+                        description: The type of score the task returns. Examples are
+                                     GLOBAL_SCORER, REGION_SCORER, FRAME_SCORER, etc.
+                      classLabel:
+                        type: object
+                        properties:
+                          singular:
+                            type: string
+                            example: Speaker
+                            description: Human friendly name in singular form for the task that
+                                         can be used to display in the client side user interface
+                          plural:
+                            type: string
+                            example: Speakers
+                            description: Human friendly name in plural form for the task that
+                                         can be used to display in the client side user interface
+                      classes:
+                        type: array
+                        items:
+                          type: string
+                          example: tom sawyer
+                          description: The array of classes that are enrolled for the task
+  /workflows/{workflowId}:
+    post:
+      summary: initiate a job for the workflow specified by ID
+      description: This endpoint creates a new job for the given workflow ID and the list of files.
+                   It returns job ID, and in case of local media upload it also returns
+                   the server side unique ID for each of the local media.
+      tags:
+        - Workflow
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: workflowId
+          in: path
+          required: true
+          description: The unique ID of the workflow
+          type: string
+        - name: media resources
+          in: body
+          description: media file list to analyize with the workflow
+          required: true
+          schema:
+            type: object
+            properties: 
+              localResources:
+                type: array
+                description: the list of local file names.
+                items:
+                  type: string
+                  example: tom_2021-07-22.wav
+              remoteResources:
+                type: array
+                description: the list of media IDs for the files hosted on the server side,
+                             which is received from `/media` endpoint's GET request.
+                items:
+                  type: string
+                  example: unique-server-side-file-id
+              
+      responses:
+        200:
+          description: A new job is successfully created
+          schema:
+            type: object
+            properties: 
+              id:
+                type: string
+                description: A unique ID for the job that is created with the request
+                example: unique-job-id
+              localResources:
+                type: array
+                description: It is included in the response ONLY when the request body
+                             included `localResources` array in its submission
+                items:
+                  type: object
+                  properties: 
+                    id:
+                      type: string
+                      example: unique-media-id
+                      description: the server generated unique ID assigned to the local file,
+                                   which then will be used later to upload the same file using
+                                   `/media/{id}` PUT request
+                    localId:
+                      type: string
+                      example: tom_2021-07-22.wav
+                      description: the same string value that was submitted in the request body
+                                   as part of the `localResources` array.
+        400:
+          description: Invalid request format, e.g., both `localResources` and `remoteResources`
+                       are submitted in one request or neither of them is submitted
+        404:
+          description: Workflow with the specified ID doesn't exist.
+  /jobs/{jobId}:
+    delete:
+      summary: cancel the job specified with the job ID
+      description: It cancels the job if it is still pending / running.
+                   If already completed and not cancellable, 404 error
+                   is returned as a job not fonund / existing.
+      tags:
+        - Job
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          description: The unique ID of the job to be cancelled
+          type: string
+      responses:
+        200:
+          description: successfully cancelled the pending job
+          schema:
+            type: object
+            properties:
+              jobId:
+                type: string
+                example: unique-job-id
+        404:
+          description: Job ID is not found / invalid or
+                       the job is already completed (thus not found)
+  /jobs/{jobId}/{mediaId}:
+    delete:
+      summary: cancel processing of the specified media only for the job
+      description: It cancels processing of the media file only that belongs
+                   the job while the rest of media keeps being analyzed. 
+      tags:
+        - Job
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          description: The unique ID of the job that includes the media to be cancelled
+          type: string
+        - name: mediaId
+          in: path
+          required: true
+          description: The unique ID of the media to be cancelled for analysis
+          type: string
+      responses:
+        200:
+          description: successfully cancelled processing / analsys of the pending media file
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: processing / analysis of media, tom_2021-07-22.wav, is successfully cancelled
+        404:
+          description: Job ID and/or media ID is not found / invalid or
+                       the media is already completed (thus not found)
+  /sse/jobs/{jobId}:
+    get:
+      summary: Server-sent Event source to send / notify analysis result of media
+      description: As a workflow job completes for each file, Olive Message Broker will
+                   notify / send the following format event to the client per file
+                   so that it can react properly with the workflow result.
+ 
+
+                   If an error occurs that prevents results being returned, the Broker
+                   will return a textual error message in an `error` field
+                   within the `data` structure and `results` will be an empty array.
+ 
+
+                   If an error occurs for a specific task, an `error` field with
+                   a text message will be returned within the task results entry.
+ 
+                   
+                   Server-sent Event is not properly supported to be documented in OpenAPI,
+                   so GET method is used here for document purpose, but please refer to
+                   Server-sent Event documentation to properly understand its behavior.
+                   This API cannot be "tried out" through Swagger UI because Swagger UI
+                   can't process / parse / understand Server-sent Event.
+      tags:
+        - Server-sent Event
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          description: The unique ID of the job whose processing / analysis result should
+                       be sent back over this Server-sent Event connection
+          type: string
+      produces: ["text/event-stream"]
+      responses:
+        default:
+          description: As the body of the message, `id`, `event`, and `data` fields are expected.
+                       `id` can be any unique value while `event`'s value is `result`. `data` field
+                       carries the stringified JSON of the following structure
+          schema:
+            type: object
+            properties:
+              workflowId:
+                type: string
+                example: unique-workflow-id
+              mediaId:
+                type: string
+                example: unique-media-id
+              results:
+                type: array
+                items:
+                  type: object
+                  properties: 
+                    taskId:
+                      type: string
+                    scores:
+                      type: array
+                      items:
+                        type: object
+                        properties: 
+                          class:
+                            type: string
+                            description: this field is required only when the task type
+                          score:
+                            type: number
+                          startSec:
+                            type: number
+                          endSec:
+                            type: number
+                          text:
+                            type: string
+                example:
+                  - taskId: unique-task-id-for-global-scorer
+                    scores:
+                      - class: tom sawyer
+                        score: 1.44
+                  - taskId: unique-task-id-for-region-scorer
+                    scores:
+                      - class: tom sawyer
+                        score: 2.3
+                        startSec: 0.87
+                        endSec: 5.27
+                  - taskId: unique-task-id-for-transcript
+                    text: hello my name is tom sawyer huckleberry finn is my best friend
+

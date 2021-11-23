@@ -1,0 +1,1287 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>olivepy.api package &#8212; OlivePy 5.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">OlivePy 5.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">olivepy.api package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="olivepy-api-package">
+<h1>olivepy.api package<a class="headerlink" href="#olivepy-api-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-olivepy.api.olive_async_client">
+<span id="olivepy-api-olive-async-client-module"></span><h2>olivepy.api.olive_async_client module<a class="headerlink" href="#module-olivepy.api.olive_async_client" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.api.olive_async_client.</span></span><span class="sig-name descname"><span class="pre">AsyncOliveClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5588</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_second</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>This class is used to make asynchronous requests to the OLIVE server</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monitor_status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect this client to the server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>monitor_server</strong> – if true, starts a thread to monitor the server status connection for heartbeat messages</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.add_heartbeat_listener">
+<span class="sig-name descname"><span class="pre">add_heartbeat_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heartbeat_callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.add_heartbeat_listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register a callback function to be notified when a heartbeat is received from the OLIVE server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>heartbeat_callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">Heartbeat</span></code>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – The callback method that is notified each time a heartbeat message is received         from the OLIVE server</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.clear_heartbeat_listeners">
+<span class="sig-name descname"><span class="pre">clear_heartbeat_listeners</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.clear_heartbeat_listeners" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all heartbeat listeners</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.enqueue_request">
+<span class="sig-name descname"><span class="pre">enqueue_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.enqueue_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a message request to the outbound queue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> – the request message to send</p></li>
+<li><p><strong>callback</strong> – this is called when response message is received from the server</p></li>
+<li><p><strong>wrapper</strong> – the message wrapper</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.sync_request">
+<span class="sig-name descname"><span class="pre">sync_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.sync_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a request to the OLIVE server, but wait for a response from the server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – the request message to send to the OLIVE server</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the response from the server</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the thread to handle async messages</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the connection to the  OLIVE server</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.is_connected">
+<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Status of the connection to the OLIVE server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if connected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.setup_multithreading">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">setup_multithreading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.setup_multithreading" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is only needed for multithreaded programs.  For those programs,
+you must call this function from the main thread, so it can properly set up
+your signals so that control-C will work properly to exit your program.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.request_plugins">
+<span class="sig-name descname"><span class="pre">request_plugins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.request_plugins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to make a PluginDirectoryRequest</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]]) – optional method called when the OLIVE server returns a response to this request.         If a callback is not provided, this call blocks until a response is received from the OLIVE server.          The callback method accepts one argument: OliveServerResponse</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing information about available plugin/domains (PluginDirectoryResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.get_update_status">
+<span class="sig-name descname"><span class="pre">get_update_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.get_update_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to make a GetUpdateStatusRequest</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin to query</p></li>
+<li><p><strong>domain</strong> – the name of the domain to query</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]]) – optional method called when the OLIVE server returns a response to this request.         If a callback is not provided, this call blocks until a response is received from the OLIVE server.          The callback method accepts one argument: OliveServerResponse</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the update status of the requested plugin/domain  (GetUpdateStatusResult</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.load_plugin_domain">
+<span class="sig-name descname"><span class="pre">load_plugin_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.load_plugin_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to make a request to pre-load a plugin/domain (via a LoadPluginDomainRequest message)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin to pre-load</p></li>
+<li><p><strong>domain</strong> – the name of hte domain to pre-load</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to this request.         If a callback is not provided, this call blocks until a response is received from the OLIVE server.          The callback method accepts one argument: OliveServerResponse</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the update status of the request  (LoadPluginDomainResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.unload_plugin_domain">
+<span class="sig-name descname"><span class="pre">unload_plugin_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.unload_plugin_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to make a unload plugin/domain request (RemovePluginDomainRequest).  This request will un-load a loaded         plugin from server memory)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin to unload</p></li>
+<li><p><strong>domain</strong> – the name of hte domain to unload</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to this request.         If a callback is not provided, this call blocks until a response is received from the OLIVE server.          The callback method accepts one argument: OliveServerResponse</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the status of the request  (RemovePluginDomainResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.update_plugin_domain">
+<span class="sig-name descname"><span class="pre">update_plugin_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.update_plugin_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to make a ApplyUpdateRequest</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin to update</p></li>
+<li><p><strong>domain</strong> – the name of hte domain to update</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to this request.         If a callback is not provided, this call blocks until a response is received from the OLIVE server.          The callback method accepts one argument: OliveServerResponse</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the status of the request  (ApplyUpdateResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.get_active">
+<span class="sig-name descname"><span class="pre">get_active</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.get_active" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to make a GetActiveRequest</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to this request.         If a callback is not provided, this call blocks until a response is received from the OLIVE server.          The callback method accepts one argument: OliveServerResponse</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the status of the request  (GetActiveResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.get_status">
+<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.get_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to make a GetStatusRequest and receive a GetStatusResult</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]]) – optional method called when the OLIVE server returns a response to the request.  If a callback is not provided, this call blocks until a response is received from the OLIVE server.  The callback method accepts one argument: OliveServerResponse</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse that contains the most recent server status (GetStatusResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.analyze_frames">
+<span class="sig-name descname"><span class="pre">analyze_frames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_SERIALIZED</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.analyze_frames" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Request a analysis of ‘filename’, returning frame scores.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>audio_input</strong> – the audio to score</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to this request.         If a callback is not provided, this call blocks until a response is received from the OLIVE server.          The callback method accepts one argument: OliveServerResponse</p></li>
+<li><p><strong>mode</strong> – the audio transfer mode</p></li>
+<li><p><strong>opts</strong> – a dictionary of name/value pair options for this plugin request</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the status of the request  (FrameScorerResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.analyze_regions">
+<span class="sig-name descname"><span class="pre">analyze_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_SERIALIZED</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.analyze_regions" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Request a analysis of ‘filename’, returning regions</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>filename</strong> – the name of the audio file to score</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to the request.  If a         callback is not provided, this call blocks until a response is received from the OLIVE server.  The callback         method accepts one argument: OliveServerResponse</p></li>
+<li><p><strong>mode</strong> – the audio transfer mode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the status of the request  (RegionScorerResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.analyze_global">
+<span class="sig-name descname"><span class="pre">analyze_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_SERIALIZED</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.analyze_global" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Request a global score analysis of ‘filename’</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>audio_input</strong> – the name of the audio file to score</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to the request.  If a         callback is not provided, this call blocks until a response is received from the OLIVE server.  The callback         method accepts one argument: OliveServerResponse</p></li>
+<li><p><strong>mode</strong> – the audio transfer mode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the status of the request  (GlobalScorerResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.enroll">
+<span class="sig-name descname"><span class="pre">enroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_SERIALIZED</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.enroll" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Request a enrollment of ‘audio’</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>class_id</strong> – the name of the class (i.e. speaker) to enroll</p></li>
+<li><p><strong>audio_input</strong> – the Audio message to add as an enrollment addition</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to the request.  If a         callback is not provided, this call blocks until a response is received from the OLIVE server.  The callback         method accepts one argument: OliveServerResponse</p></li>
+<li><p><strong>mode</strong> – the audio transfer mode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the status of the request  (ClassModificationResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.unenroll">
+<span class="sig-name descname"><span class="pre">unenroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.unenroll" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Unenroll class_id</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>class_id</strong> – the name of the class (i.e. speaker) to remove</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to the request.  If a         callback is not provided, this call blocks until a response is received from the OLIVE server.  The callback         method accepts one argument: OliveServerResponse</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the status of the request  (ClassRemovalResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.AsyncOliveClient.audio_modification">
+<span class="sig-name descname"><span class="pre">audio_modification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_SERIALIZED</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.AsyncOliveClient.audio_modification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to make a AudioModificationRequest (enhancement).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>audio_input</strong> – the audio path or buffer to submit for modification</p></li>
+<li><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveServerResponse</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – optional method called when the OLIVE server returns a response to the request.  If a         callback is not provided, this call blocks until a response is received from the OLIVE server.  The callback         method accepts one argument: OliveServerResponse</p></li>
+<li><p><strong>mode</strong> – the audio transfer mode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a OliveServerResponse containing the status of the request  (AudioModificationResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.ClientMonitorThread">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.api.olive_async_client.</span></span><span class="sig-name descname"><span class="pre">ClientMonitorThread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status_socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.ClientMonitorThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>Helper used to monitor the status of the Oliveserver</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.ClientMonitorThread.stopWorker">
+<span class="sig-name descname"><span class="pre">stopWorker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.ClientMonitorThread.stopWorker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.ClientMonitorThread.add_event_callback">
+<span class="sig-name descname"><span class="pre">add_event_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.ClientMonitorThread.add_event_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback function that is notified of a heartbeat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>callback</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">Heartbeat</span></code>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – the function that is called with a Heartbeat object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.ClientMonitorThread.clear_callbacks">
+<span class="sig-name descname"><span class="pre">clear_callbacks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.ClientMonitorThread.clear_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.olive_async_client.ClientMonitorThread.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.olive_async_client.ClientMonitorThread.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method representing the thread’s activity.</p>
+<p>You may override this method in a subclass. The standard run() method
+invokes the callable object passed to the object’s constructor as the
+target argument, if any, with sequential and keyword arguments taken
+from the args and kwargs arguments, respectively.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-olivepy.api.oliveclient">
+<span id="olivepy-api-oliveclient-module"></span><h2>olivepy.api.oliveclient module<a class="headerlink" href="#module-olivepy.api.oliveclient" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.api.oliveclient.</span></span><span class="sig-name descname"><span class="pre">OliveClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5588</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_second</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is a simplified version of network library used to contact the Olive server via python code.  All OLIVE calls
+below are synchronous, and block and until a response is received from the OLIVE server.  These example API calls
+are intended to make working with the OLIVE API clearer since all calls are blocking.  To make asynchronous requests
+to the OLIVE server use olivepy.api.olive_async_client.AsyncOliveClient for your enterprise application.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monitor_server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect this client to the server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>monitor_server</strong> – if true, start a thread to monitor the server connection (helpful if debugging connection issues)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.is_connected">
+<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.setup_multithreading">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">setup_multithreading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.setup_multithreading" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is only needed for multithreaded programs.  For those programs,
+you must call this function from the main thread, so it can properly set up
+your signals so that control-C will work properly to exit your program.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.request_plugins">
+<span class="sig-name descname"><span class="pre">request_plugins</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.request_plugins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.get_update_status">
+<span class="sig-name descname"><span class="pre">get_update_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.get_update_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.load_plugin_domain">
+<span class="sig-name descname"><span class="pre">load_plugin_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.load_plugin_domain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.unload_plugin_domain">
+<span class="sig-name descname"><span class="pre">unload_plugin_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.unload_plugin_domain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.update_plugin_domain">
+<span class="sig-name descname"><span class="pre">update_plugin_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.update_plugin_domain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the info data from the last call to the server. Will return None if the last call did not return any info.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.get_fullobj">
+<span class="sig-name descname"><span class="pre">get_fullobj</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.get_fullobj" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>This object should be used for debugging only.  Example use::success = client.enroll(‘sid-embed-v5-py3’, ‘multilang-v1’, ‘joshua’, ‘file’)            if troubleshooting:</dt><dd><p>fullobj = client.get_fullobj()
+print(‘Whole object returned from server: ‘+str(fullobj))</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the full object returned from the last call to the server.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.get_active">
+<span class="sig-name descname"><span class="pre">get_active</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.get_active" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.get_status">
+<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.get_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.analyze_frames">
+<span class="sig-name descname"><span class="pre">analyze_frames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_PATH</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.analyze_frames" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Request a analysis of ‘filename’ returning frame scores.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>filename</strong> – the name of the audio file to score</p></li>
+<li><p><strong>opts</strong> – a dictionary of name/value pair options</p></li>
+<li><p><strong>classes</strong> – optionally,  a list of classes classes to be scored</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the analysis as a list of (frame) scores</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.analyze_regions">
+<span class="sig-name descname"><span class="pre">analyze_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_PATH</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.analyze_regions" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Request a analysis of ‘filename’ returning regions</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>filename</strong> – the name of the audio file to score</p></li>
+<li><p><strong>mode</strong> – the way audio is submitted to the server</p></li>
+<li><p><strong>opts</strong> – a dictionary of name/value pair options</p></li>
+<li><p><strong>classes</strong> – optionally,  a list of classes classes to be scored</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of (start, end) regions in seconds, each region indicates a speech region found in the submitted file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.enroll">
+<span class="sig-name descname"><span class="pre">enroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.enroll" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Request a enrollment of ‘audio’</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>class_id</strong> – the name of the class (speaker) to enroll</p></li>
+<li><p><strong>audio2</strong> – the Audio message to add as an enrollment addition</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if enrollment successful</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.unenroll">
+<span class="sig-name descname"><span class="pre">unenroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.unenroll" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Unenrollment the class_id</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>class_id</strong> – the name of the class (speaker) to enroll</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if enrollment successful</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.apply_threshold">
+<span class="sig-name descname"><span class="pre">apply_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.apply_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Very simple  method to convert frame scores to regions.  If speech regions are desired
+we can provide a SAD plugin that returns regions instead of frame scores</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scores</strong> – </p></li>
+<li><p><strong>threshold</strong> – </p></li>
+<li><p><strong>rate</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>frame scores a regions</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.analyze_global">
+<span class="sig-name descname"><span class="pre">analyze_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_PATH</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.analyze_global" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Request a LID analysis of ‘filename’</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the LID plugin</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain</p></li>
+<li><p><strong>filename</strong> – the name of the audio file to score</p></li>
+<li><p><strong>mode</strong> – the audio transfer mode</p></li>
+<li><p><strong>opts</strong> – a dictionary of name/value pair options</p></li>
+<li><p><strong>classes</strong> – optionally,  a list of classes classes to be scored</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the analysis result as a list of (global) scores</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.audio_modification">
+<span class="sig-name descname"><span class="pre">audio_modification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_PATH</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.audio_modification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do an audio modification (such as an enhansement). This function only accepts one audio and returns on modified audio.
+:param plugin: the name of the plugin
+:param domain: the name of the plugin domain
+:param filename: the name of the audio file to score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the analysis as a list of (frame) scores</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.requst_sad_adaptation">
+<span class="sig-name descname"><span class="pre">requst_sad_adaptation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.requst_sad_adaptation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example of performing SAD adaptation
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.parse_annotation_file">
+<span class="sig-name descname"><span class="pre">parse_annotation_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.parse_annotation_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a file for the names of files of audio files and their regions to use for adaptation.
+:param filename: the path and name of the file that contains the input. This file must have one or more lines having 4 columns:
+# filename, class, start_region_ms, end_region_ms
+:return: the parsed output, in a dictionary indexed by the filename, each element having one or more regions,
+for example {test.wav: [(2618, 6200, ‘S’), (7200, 9500, ‘NS’)]}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.adapt_supervised">
+<span class="sig-name descname"><span class="pre">adapt_supervised</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotations_file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_domain_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.adapt_supervised" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the plugin for adaptation</p></li>
+<li><p><strong>domain</strong> – the domain for adaptation</p></li>
+<li><p><strong>adapt_workspace</strong> – a unique label for this client’s adaptation</p></li>
+<li><p><strong>annotations_file_name</strong> – the name of a file containing annotations.
+This file contains lines with four tokens: filename, start, end, and class.
+start and end are in milliseconds, but that should change to seconds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the full path name of the new domain.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.adapt_supervised_old">
+<span class="sig-name descname"><span class="pre">adapt_supervised_old</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_annotations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_domain_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.adapt_supervised_old" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the plugin for adaptation</p></li>
+<li><p><strong>domain</strong> – the domain for adaptation</p></li>
+<li><p><strong>adapt_workspace</strong> – a unique label for this client’s adaptation</p></li>
+<li><p><strong>file_annotations</strong> – a dictionary of files to preprocess, each file has one or more annotated regions for
+processing {filename: [(start_ms, end_ms, class)]}, for example {test.wav: [(2618, 6200, ‘S’), (7200, 9500, ‘NS’)]}</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the full path name of the new domain.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.preprocess_supervised_audio">
+<span class="sig-name descname"><span class="pre">preprocess_supervised_audio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_workspace</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.preprocess_supervised_audio" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Submit audio for pre-processing phase of adaptation.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin to adapt</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain to adapt</p></li>
+<li><p><strong>filename</strong> – the name of the audio file to submit to the server/plugin/domain for preprocessing</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the unique id generated by the server for the preprocess audio, which must be used</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.convert_preprocessed_annotations">
+<span class="sig-name descname"><span class="pre">convert_preprocessed_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processed_audio_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.convert_preprocessed_annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the file annotations (a dictionary grouped by file ID, where annotations are grouped by file ID, which
+has one or more regions/classes) into class annotations (where annotations are grouped by class ID, with each
+class having one or more files, then each file having one or more regions).
+:param processed_audio_list: the list of files (indexed by an OLIVE generated ID) and
+the regions/classes annotated in that file
+:return: a dictionary of ClassAnnotation objects, indexed by class ID</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.finalize_supervised_adaptation">
+<span class="sig-name descname"><span class="pre">finalize_supervised_adaptation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_domain_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_annotations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_workspace</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.finalize_supervised_adaptation" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Complete the adaptation</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin</strong> – the name of the plugin to adapt</p></li>
+<li><p><strong>domain</strong> – the name of the plugin domain to adapt</p></li>
+<li><p><strong>new_domain_name</strong> – the name of the new domain that is created within the plugin</p></li>
+<li><p><strong>class_annotations</strong> – the audio annotations, grouped by class ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the name of the new domain</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.OliveClient.version">
+<span class="sig-name descname"><span class="pre">version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.OliveClient.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.package_buffer_audio">
+<span class="sig-prename descclassname"><span class="pre">olivepy.api.oliveclient.</span></span><span class="sig-name descname"><span class="pre">package_buffer_audio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.package_buffer_audio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to wrap audio data (decoded samples) into a AudioBuffer message that can submitted to the
+server instead of a file name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the data as a numpy ndarray</p></li>
+<li><p><strong>num_samples</strong> – the number of samples</p></li>
+<li><p><strong>sample_rate</strong> – the audio sample rate</p></li>
+<li><p><strong>num_channels</strong> – the number of channels in the audio</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.get_bit_depth">
+<span class="sig-prename descclassname"><span class="pre">olivepy.api.oliveclient.</span></span><span class="sig-name descname"><span class="pre">get_bit_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.get_bit_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not using since not assuming numpy is available…</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.ClientBrokerWorker">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.api.oliveclient.</span></span><span class="sig-name descname"><span class="pre">ClientBrokerWorker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status_socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.ClientBrokerWorker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>Performs async interactions with Olive</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.ClientBrokerWorker.enqueueRequest">
+<span class="sig-name descname"><span class="pre">enqueueRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.ClientBrokerWorker.enqueueRequest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.ClientBrokerWorker.stopWorker">
+<span class="sig-name descname"><span class="pre">stopWorker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.ClientBrokerWorker.stopWorker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.ClientBrokerWorker.add_event_callback">
+<span class="sig-name descname"><span class="pre">add_event_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.ClientBrokerWorker.add_event_callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.oliveclient.ClientBrokerWorker.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.oliveclient.ClientBrokerWorker.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method representing the thread’s activity.</p>
+<p>You may override this method in a subclass. The standard run() method
+invokes the callable object passed to the object’s constructor as the
+target argument, if any, with sequential and keyword arguments taken
+from the args and kwargs arguments, respectively.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-olivepy.api.workflow">
+<span id="olivepy-api-workflow-module"></span><h2>olivepy.api.workflow module<a class="headerlink" href="#module-olivepy.api.workflow" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="olivepy.api.workflow.WorkflowException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.api.workflow.</span></span><span class="sig-name descname"><span class="pre">WorkflowException</span></span><a class="headerlink" href="#olivepy.api.workflow.WorkflowException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>This exception means that an error occurred handling a Workflow</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflowDefinition">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.api.workflow.</span></span><span class="sig-name descname"><span class="pre">OliveWorkflowDefinition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflowDefinition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Used to load a Workflow Definition from a file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflowDefinition.get_json">
+<span class="sig-name descname"><span class="pre">get_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflowDefinition.get_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a JSON structure of the Workflow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indent</strong> – if a non-negative integer, then JSON array elements and object members will be pretty-printed with that indent level. An indent level of 0 will only insert newlines. None is the most compact representation. A negative value will return the JSON document</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A JSON (dictionary) representation of the Workflow Definition</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflowDefinition.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflowDefinition.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the workflow as a JSON string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indent</strong> – if a non-negative integer, then JSON array elements and object members will be pretty-printed with         that indent level. An indent level of 0 will only insert newlines. <code class="docutils literal notranslate"><span class="pre">None</span></code> is the most compact          representation. A negative value will return the JSON document</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the Workflow Definition as as JSON string:</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflowDefinition.create_workflow">
+<span class="sig-name descname"><span class="pre">create_workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflowDefinition.create_workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new, executable (actualized), Workflow, which can be used to make OLIVE analysis, or enrollment requests</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>client</strong> (<a class="reference internal" href="#olivepy.api.olive_async_client.AsyncOliveClient" title="olivepy.api.olive_async_client.AsyncOliveClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncOliveClient</span></code></a>) – an open client connection to an OLIVE server</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new OliveWorkflow object, which  has been actualized (activated) by the olive server</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.api.workflow.</span></span><span class="sig-name descname"><span class="pre">OliveWorkflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">olive_async_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actualized_workflow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An OliveWorkflow instance represents a Workflow Definition actualized by an OLIVE server.  Once actualized, an OliveWorkflow instance is used to make analysis,
+or enrollment/unenrollment requests.  An OliveWorkflow should be created using an OliveWorkflowDefinition’s create_workflow() method.  All calls to the server include an optional callback.  When the callback is provided, the call does not block and the callback method is invoked when a response is received from the server.  A callback method has 3 arguments:  the original request, the response, and an  error message if the request failed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#olivepy.api.workflow.WorkflowException" title="olivepy.api.workflow.WorkflowException"><strong>WorkflowException</strong></a> – If the workflow was not actualized</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.get_analysis_job_names">
+<span class="sig-name descname"><span class="pre">get_analysis_job_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.get_analysis_job_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>The names of analysis jobs in this workflow (usually only one analysis job)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of analysis job names in this workflow</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.get_enrollment_job_names">
+<span class="sig-name descname"><span class="pre">get_enrollment_job_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.get_enrollment_job_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>The names of enrollment jobs in this workflow.  There should be one enrollment job for each analysis tasks that supports class enrollment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of enrollment job names in this workflow</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.get_unenrollment_job_names">
+<span class="sig-name descname"><span class="pre">get_unenrollment_job_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.get_unenrollment_job_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>The names of un-enrollment jobs in this workflow.  There should be one un-enrollment job for each analysis task that supports class un-enrollment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of un-enrollment job names in this workflow</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.get_analysis_tasks">
+<span class="sig-name descname"><span class="pre">get_analysis_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.get_analysis_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of tasks supported by this workflow. These names are unique and can generally be assumed they are named after the task type (SAD, LID, SID, etc) they support but they could use alternate names if there are multiple tasks with the same task type in a workflow (for example a workflow could have a SAD task that does frame scoring and a SAD task that does regions scoring)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>job_name</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – filter the returned task names to those belonging to this job name.  Optional since most workflows only support one analysis job.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of task names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.get_enrollment_tasks">
+<span class="sig-name descname"><span class="pre">get_enrollment_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.get_enrollment_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of tasks that support enrollment in this workflow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>job_name</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – optionally the name of the enrollment job.  Optional since most workflows only support one job</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of task names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.get_unenrollment_tasks">
+<span class="sig-name descname"><span class="pre">get_unenrollment_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.get_unenrollment_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of tasks that support UNenrollment in this workflow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>job_name</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – optionally the name of the enrollment job.  Optional since most workflows only support one job</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of task names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.get_analysis_task_info">
+<span class="sig-name descname"><span class="pre">get_analysis_task_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.get_analysis_task_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>A JSON like report of the tasks used for analysis from the actualized workflow.  When possible, this report         includes the plugins used in the workflow (although there can be cases when the final plugin/domain used is         not known until runtime)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>]]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON structured detailed information of analysis tasks used in this workflow</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the workflow as a JSON string
+:param indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code class="docutils literal notranslate"><span class="pre">None</span></code> is the most compact             representation. A negative value will return the JSON document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Workflow Definition as as JSON string:</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.serialize_audio">
+<span class="sig-name descname"><span class="pre">serialize_audio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.serialize_audio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function used to read in an audio file and output a serialized buffer.  Can be used with package_audio()         when using the AUDIO_SERIALIZED mode and the audio input has not already been serialized</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the local path to the file to serialize</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">AnyStr</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the contents of the file as a byte buffer, otherwise an exception if the file can not be opened.  This buffer contains the raw content of the file, it does NOT contain encoded samples</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.package_audio">
+<span class="sig-name descname"><span class="pre">package_audio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_SERIALIZED</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_annotations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_local_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.package_audio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an Audio object that can be submitted with a Workflow analysis, enrollment, or adapt request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio_data</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">AnyStr</span></code>) – the input data is  a string (file path) if mode is ‘AUDIO_PATH’, otherwise the input data is a binary buffer.  Use serialize_audio() to serialize a file into a buffer, or pass in a list of PCM_16 encoded samples</p></li>
+<li><p><strong>mode</strong> – specifies how the audio is sent to the server: either as (string) file path or as a binary buffer.  NOTE: if sending a path, the path must be valid for the server.</p></li>
+<li><p><strong>annotations</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]]]) – optional regions (start/end regions in seconds) as a list of tuples (start_seconds, end_seconds)</p></li>
+<li><p><strong>task_annotations</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]]]]]) – optional and more regions (start/end regions in seconds) targeted for a task and classifed by a lable (such as speech, non-speech, speaker).  For example: {‘SHL’: {‘speaker’’:[(0.5, 4.5), (6.8, 9.2)]}, are annotations for the ‘SHL’ task, which are labeled as class ‘speaker’ having regions 0.5 to 4.5, and 6.8 to 9.2. Use get_analysis_tasks() to get the name of workflow tasks .</p></li>
+<li><p><strong>selected_channel</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – optional - the channel to process if using multi-channel audio</p></li>
+<li><p><strong>num_channels</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – The number of channels if audio input is a list of decoded (PCM-16) samples, if not using a buffer of PCM-16 samples this is value is ignored</p></li>
+<li><p><strong>sample_rate</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – The sample rate if audio input is a list of  decoded (PCM-16) samples, if not using a buffer of PCM-16 samples this is value is ignored</p></li>
+<li><p><strong>num_samples</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – The number of samples if audio input is a list of decoded (PCM-16) samples, if not using a buffer of PCM-16 samples this is value is ignored</p></li>
+<li><p><strong>validate_local_path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If sending audio as as a string path name, then check that the path exists on the local filesystem.  In some cases you may want to pass a path which is valid on the server but not this client so validation is not desired</p></li>
+<li><p><strong>label</strong> – an optional name to use with the audio</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowDataRequest</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A populated WorkflowDataRequest to use in a workflow activity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.package_text">
+<span class="sig-name descname"><span class="pre">package_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.package_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not yet supported</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text_input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – a text input</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowDataRequest</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>TBD</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.package_image">
+<span class="sig-name descname"><span class="pre">package_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.package_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not yet supported</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image_input</strong> – An image input</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowDataRequest</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>TBD</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.package_video">
+<span class="sig-name descname"><span class="pre">package_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.package_video" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not yet supported</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>video_input</strong> – a video input</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowDataRequest</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>TBD</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.get_analysis_class_ids">
+<span class="sig-name descname"><span class="pre">get_analysis_class_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.get_analysis_class_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query OLIVE for the current class IDs (i.e. speaker names for SID, keywords for QbE, etc).  For tasks that support enrollment, their class IDs can change over time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>callback</strong> – an optional callback method that accepts a OliveClassStatusResponse object.  Such as: my_callback(result : response.OliveClassStatusResponse)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveClassStatusResponse" title="olivepy.messaging.response.OliveClassStatusResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveClassStatusResponse</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an OliveClassStatusResponse object if no callback specified, otherwise the callback receives the OliveClassStatusResponse object when a response is received from the OLIVE server</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.analyze">
+<span class="sig-name descname"><span class="pre">analyze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.analyze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a workflow analysis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_inputs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowDataRequest</span></code>]) – a list of data inputs created using the package_audio(), package_text(), package_image(), or package_video() method.</p></li>
+<li><p><strong>callback</strong> – an optional callback that is invoked with the workflow completes.  If not specified this method blocks, returning OliveWorkflowAnalysisResponse when done. Otherwise this method immediately returns and the callback method is invoked when the response is received.  The callback method signature requires 3 arguments: requst, result, error_mssage.</p></li>
+<li><p><strong>options</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – a JSON string of name/value options to include with the analysis request such as ‘{“filter_length”:99, “interpolate”:1.0, “test_name”:”midge”}’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="olivepy.messaging.html#olivepy.messaging.response.OliveWorkflowAnalysisResponse" title="olivepy.messaging.response.OliveWorkflowAnalysisResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">OliveWorkflowAnalysisResponse</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an OliveWorkflowAnalysisResponse (if no callback provided)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.enroll">
+<span class="sig-name descname"><span class="pre">enroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.enroll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submit data for enrollment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_inputs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowDataRequest</span></code>]) – a list of data inputs created using the package_audio(), package_text(), package_image(), or package_video() method.</p></li>
+<li><p><strong>class_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the name of the enrollment</p></li>
+<li><p><strong>job_names</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – a list of job names, where the audio is enrolled with these jobs support enrollment.  This value can be None, in which case the data input(s) is enrolled for each job.</p></li>
+<li><p><strong>callback</strong> – an optional callback that is invoked when the workflow completes.  If not specified this method blocks, returning an OliveWorkflowAnalysisResponse when the enrollment completes on the server.  Otherwise this method immediately returns and the callback method is invoked when the response is received.</p></li>
+<li><p><strong>options</strong> – a dictionary of name/value option pairs to include with the enrollment request</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>server enrollment response if no callback provided</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.unenroll">
+<span class="sig-name descname"><span class="pre">unenroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.unenroll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submit a class id (speaker name, language name, etc) for un-enrollment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>class_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the name of the enrollment class to remove</p></li>
+<li><p><strong>job_names</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – a list of job names, where the class is to be unenrolled.  Jobs must support class modification .  This value can be None, in which case the data input(s) is unenrolled for each job (which is likely dangerous).</p></li>
+<li><p><strong>callback</strong> – an optional callback that is invoked when this workflow action completes.  If not specified this method blocks, returning an OliveWorkflowAnalysisResponse when the enrollment completes on the server.  Otherwise this method immediately returns and the callback method is invoked when the response is received.</p></li>
+<li><p><strong>options</strong> – a dictionary of name/value option pairs to include with the enrollment request</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>server unenrollment response if no callback provided</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.api.workflow.OliveWorkflow.adapt">
+<span class="sig-name descname"><span class="pre">adapt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">finalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.api.workflow.OliveWorkflow.adapt" title="Permalink to this definition">¶</a></dt>
+<dd><p>NOT YET SUPPORTED – and not sure it will ever be supported via workflow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_input</strong> – </p></li>
+<li><p><strong>callback</strong> – </p></li>
+<li><p><strong>options</strong> – </p></li>
+<li><p><strong>finalize</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>not supported</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-olivepy.api">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-olivepy.api" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">olivepy.api package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-olivepy.api.olive_async_client">olivepy.api.olive_async_client module</a></li>
+<li><a class="reference internal" href="#module-olivepy.api.oliveclient">olivepy.api.oliveclient module</a></li>
+<li><a class="reference internal" href="#module-olivepy.api.workflow">olivepy.api.workflow module</a></li>
+<li><a class="reference internal" href="#module-olivepy.api">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/olivepy.api.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">OlivePy 5.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">olivepy.api package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, SRI International.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+    </div>
+  </body>
+</html>

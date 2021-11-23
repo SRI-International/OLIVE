@@ -1,0 +1,86 @@
+olivepy.client package
+======================
+
+Submodules
+----------
+
+olivepy.client.analyze\_client module
+-------------------------------------
+
+.. automodule:: olivepy.client.analyze_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+olivepy.client.enroll\_client module
+------------------------------------
+
+.. automodule:: olivepy.client.enroll_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+olivepy.client.learn\_client module
+-----------------------------------
+
+.. automodule:: olivepy.client.learn_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+olivepy.client.status\_client module
+------------------------------------
+
+.. automodule:: olivepy.client.status_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+olivepy.client.utils\_client module
+-----------------------------------
+
+.. automodule:: olivepy.client.utils_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+olivepy.client.workflow\_cem module
+-----------------------------------
+
+.. automodule:: olivepy.client.workflow_cem
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+olivepy.client.workflow\_client module
+--------------------------------------
+
+.. automodule:: olivepy.client.workflow_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+olivepy.client.workflow\_enroll\_client module
+----------------------------------------------
+
+.. automodule:: olivepy.client.workflow_enroll_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+Module contents
+---------------
+
+.. automodule:: olivepy.client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource

@@ -1,0 +1,37 @@
+usage: OliveEnroll
+    --channel <arg>     Process stereo files using channel NUMBER
+    --classes           Print class names if also printing plugin/domain
+                        names.  Must use with --print option.  Default is
+                        to not print class IDs
+    --domain <arg>      Use Domain NAME
+    --enroll <arg>      Enroll speaker NAME. If no name specified then,
+                        the pem or list option must specify an input file
+    --export <arg>      Export speaker NAME to an EnrollmentModel
+                        (enrollment.tar.gz)
+ -h                     Print this help message
+    --import <arg>      Import speaker from EnrollmentModel FILE
+    --list <arg>        Batch enroll using this input list FILE having
+                        multiple filenames/class IDs. If you need regions
+                        with you class enrollemnts then use the PEM option
+    --nobatch           Disable batch enrollment when using pem or list
+                        input files, so that files are processed serially
+    --options <arg>     Enrollment options from FILE
+    --output <arg>      Write any output to DIR, default is ./
+ -p,--port <arg>        Scenicserver port number. Defauls is 5588
+ -pem,--pem <arg>       NAME of the PEM file to use to read audio inputs
+                        for batch enrollment with annotated regions
+    --plugin <arg>      Use Plugin NAME
+    --print             Print all plugins and domains that suport
+                        enrollment and/or class import and export
+    --remove <arg>      Remove audio enrollment for NAME
+ -s,--server <arg>      Scenicserver hostname. Default is localhost
+    --serialized        Serialize audio file and send it to the server
+                        instead of the decoded samples
+ -t,--timeout <arg>     timeout (in seconds) when waiting for server
+                        response.  Default is 10 seconds
+    --threshold <arg>   Apply threshold NUMBER when scoring
+    --unenroll <arg>    Un-enroll all enrollments for speaker NAME
+ -v,--vec <arg>         PATH to a serialized AudioVector, for plugins that
+                        support audio vectors in addition to wav files
+ -w,--wav <arg>         NAME of the wav file (some pluigns may let you
+                        specify a audio vector instead)

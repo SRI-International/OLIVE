@@ -1,0 +1,2628 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>`olivepy` `client` module - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffa724">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="orange" data-md-color-accent="blue-grey">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olivepy-client-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              `olivepy` `client` module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../docker.html" class="md-nav__link">
+      OLIVE Standalone Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" >
+    
+    <label class="md-nav__link" for="nav-2-3">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../cli.html" class="md-nav__link">
+      Command Line Tools
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hardware.html" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Developer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Developer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../docker.html" class="md-nav__link">
+      OLIVE Standalone Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    
+    <label class="md-nav__link" for="nav-3-4">
+      OLIVE API Integration Info
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="OLIVE API Integration Info" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        OLIVE API Integration Info
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../olivepy-api.html" class="md-nav__link">
+      OlivePy Python Client API Documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hardware.html" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sad-dnn-v7.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/dfa-spoofnet-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sid-dplda-v2.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sid-embed-v6.html" class="md-nav__link">
+      Speaker Identification (SID) Legacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/lid-embedplda-v3.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/ldd-embedplda-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/gid-gb-v2.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7" >
+    
+    <label class="md-nav__link" for="nav-4-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/qbe-tdnn-v5.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8" >
+    
+    <label class="md-nav__link" for="nav-4-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/asr-dynapy-v3.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9" >
+    
+    <label class="md-nav__link" for="nav-4-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/tmt-statistical-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" >
+    
+    <label class="md-nav__link" for="nav-4-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR/Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-11" type="checkbox" id="nav-4-11" >
+    
+    <label class="md-nav__link" for="nav-4-11">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-11">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-12" type="checkbox" id="nav-4-12" >
+    
+    <label class="md-nav__link" for="nav-4-12">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-12">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyclientanalyze_client" class="md-nav__link">
+    olivepy.client.analyze_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.analyze_client" class="md-nav__link">
+    olivepy.client.analyze_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyclientclient_common" class="md-nav__link">
+    olivepy.client.client_common
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.client_common" class="md-nav__link">
+    olivepy.client.client_common
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.client_common.extract_input_data" class="md-nav__link">
+    extract_input_data()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyclientenroll_client" class="md-nav__link">
+    olivepy.client.enroll_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.enroll_client" class="md-nav__link">
+    olivepy.client.enroll_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyclientlearn_client" class="md-nav__link">
+    olivepy.client.learn_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.learn_client" class="md-nav__link">
+    olivepy.client.learn_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyclientstatus_client" class="md-nav__link">
+    olivepy.client.status_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.status_client" class="md-nav__link">
+    olivepy.client.status_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.status_client.heartbeat_notification" class="md-nav__link">
+    heartbeat_notification()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyclientutils_client" class="md-nav__link">
+    olivepy.client.utils_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.utils_client" class="md-nav__link">
+    olivepy.client.utils_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.utils_client.main" class="md-nav__link">
+    main()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyclientworkflow_client" class="md-nav__link">
+    olivepy.client.workflow_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.workflow_client" class="md-nav__link">
+    olivepy.client.workflow_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.workflow_client.heartbeat_notification" class="md-nav__link">
+    heartbeat_notification()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.workflow_client.main" class="md-nav__link">
+    main()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyclientworkflow_enroll_client" class="md-nav__link">
+    olivepy.client.workflow_enroll_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.workflow_enroll_client" class="md-nav__link">
+    olivepy.client.workflow_enroll_client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.workflow_enroll_client.main" class="md-nav__link">
+    main()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.client.workflow_enroll_client.parse_pem_file" class="md-nav__link">
+    parse_pem_file()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olivepy-client-module"><code>olivepy</code> <code>client</code> module</h1>
+<h2 id="olivepyclientanalyze_client"><code>olivepy.client.analyze_client</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.client.analyze_client"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h2 id="olivepyclientclient_common"><code>olivepy.client.client_common</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.client.client_common"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.client.client_common.extract_input_data" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">extract_input_data</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">expected_data_type</span><span class="o">=&lt;</span><span class="n">OliveInputDataType</span><span class="o">.</span><span class="n">AUDIO_DATA_TYPE</span><span class="p">:</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">fail_if_no_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">has_class_ids</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Helper util to use the standard CLI arguments to package input (audio, video, image, text) for processing by
+the OLIVE server</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>args</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>fail_if_no_data</code></td>
+        <td></td>
+        <td></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>has_class_ids</code></td>
+        <td></td>
+        <td></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/client/client_common.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">extract_input_data</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">expected_data_type</span><span class="o">=</span><span class="n">OliveInputDataType</span><span class="o">.</span><span class="n">AUDIO_DATA_TYPE</span><span class="p">,</span> <span class="n">fail_if_no_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">has_class_ids</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper util to use the standard CLI arguments to package input (audio, video, image, text) for processing by</span>
+<span class="sd">    the OLIVE server</span>
+
+<span class="sd">    :param args:</span>
+<span class="sd">    :param fail_if_no_data:</span>
+<span class="sd">    :param has_class_ids:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">send_pathname</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">path</span> <span class="k">else</span> <span class="kc">False</span>
+    <span class="n">send_serialized</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">send_pathname</span>
+
+    <span class="n">data_input</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">send_pathname</span><span class="p">:</span>
+        <span class="c1"># fixme more generic for image and video?</span>
+        <span class="n">transfer_mode</span> <span class="o">=</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">transfer_mode</span> <span class="o">=</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span>
+
+    <span class="n">audio</span> <span class="o">=</span> <span class="n">text</span> <span class="o">=</span> <span class="n">image</span> <span class="o">=</span> <span class="n">video</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">input_list</span><span class="p">:</span>
+        <span class="c1"># parse input list to make sure we actually have one or more files...</span>
+        <span class="n">data_input</span> <span class="o">=</span> <span class="n">parse_data_list2</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">input_list</span><span class="p">,</span> <span class="n">transfer_mode</span><span class="p">,</span> <span class="n">expected_data_type</span><span class="p">,</span> <span class="n">has_class_ids</span><span class="p">)</span>
+        <span class="c1"># data_intpu --&gt; [{filename: DATA_MSG, {channel: [start, end, class]}] , filename: Audio,  {-1: (None, None, None)}</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_input</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data input list &#39;</span><span class="si">{}</span><span class="s2">&#39; contains no valid files&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">list</span><span class="p">))</span>
+
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">input</span><span class="p">:</span>
+        <span class="c1"># Do we want to support sending a path that is not local?  In case they want to specify a path that is a</span>
+        <span class="c1"># available for the server</span>
+
+        <span class="k">if</span> <span class="n">has_class_ids</span><span class="p">:</span>
+            <span class="c1"># data_input.append( (convert_filename_to_data(args.input, transfer_mode, expected_data_type), args.enroll))</span>
+            <span class="n">data_input</span> <span class="o">=</span> <span class="p">{</span><span class="n">args</span><span class="o">.</span><span class="n">enroll</span><span class="p">:</span> <span class="p">[</span><span class="n">convert_filename_to_data</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">transfer_mode</span><span class="p">,</span> <span class="n">expected_data_type</span><span class="p">)]}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">convert_filename_to_data</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">transfer_mode</span><span class="p">,</span> <span class="n">expected_data_type</span><span class="p">)</span> <span class="p">)</span>
+
+
+    <span class="c1"># do some basic validation</span>
+    <span class="c1"># If mo data input supplied, make sure that is okay with the other options provided</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data_input</span> <span class="ow">and</span> <span class="n">fail_if_no_data</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The command requires data input(s).&#39;</span><span class="p">)</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data_input</span><span class="p">,</span> <span class="n">transfer_mode</span><span class="p">,</span> <span class="n">send_pathname</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h2 id="olivepyclientenroll_client"><code>olivepy.client.enroll_client</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.client.enroll_client"></a>
+    <div class="doc doc-contents first">
+
+
+
+    </div>
+
+  </div>
+
+<h2 id="olivepyclientlearn_client"><code>olivepy.client.learn_client</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.client.learn_client"></a>
+    <div class="doc doc-contents first">
+
+
+
+    </div>
+
+  </div>
+
+<h2 id="olivepyclientstatus_client"><code>olivepy.client.status_client</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.client.status_client"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.client.status_client.heartbeat_notification" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">heartbeat_notification</span><span class="p">(</span><span class="n">heatbeat</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Callback method, notified by the async client that a heartbeat message has been received from the OLIVE server</p>
+
+        <details class="quote">
+          <summary>Source code in <code>olivepy/client/status_client.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">heartbeat_notification</span><span class="p">(</span><span class="n">heatbeat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Callback method, notified by the async client that a heartbeat message has been received from the OLIVE server&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">heatbeat</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">heatbeat</span><span class="o">.</span><span class="n">HasField</span><span class="p">(</span><span class="s2">&quot;stats&quot;</span><span class="p">):</span>
+            <span class="n">stats</span> <span class="o">=</span> <span class="n">heatbeat</span><span class="o">.</span><span class="n">stats</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System CPU Used:    </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System CPU Average: </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">cpu_average</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System MEM Used:    </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">mem_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System MEM Max:     </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">max_mem_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System SWAP Used:   </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">swap_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System SWAP Max:    </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">max_swap_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number active jobs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">pool_busy</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number pending jobs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">pool_pending</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number finished jobs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">pool_finished</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max number jobs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">max_num_jobs</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Server version: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">server_version</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No OLIVE heatbeat received.  Olive server or connection down&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h2 id="olivepyclientutils_client"><code>olivepy.client.utils_client</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.client.utils_client"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.client.utils_client.main" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">main</span><span class="p">()</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/client/utils_client.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;olivepyutils&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The workflow definition to use.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--save_as_text&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Save the workflow to a JSON formatted text file having this name.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--save_as_binary&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Save the workflow to a binary formatted workflow file.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--print_workflow&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Print the workflow definition file info (before it is actualized/sent to server)&#39;</span><span class="p">)</span>
+
+    <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">workflow</span> <span class="ow">is</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No workflow definition is specified.&#39;</span><span class="p">)</span>
+        <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">save_as_text</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">print_workflow</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">save_as_binary</span><span class="p">):</span>
+            <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The command requires one or more tasks.&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args_bad</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Run the command with --help or -h to see all the command line options.&#39;</span><span class="p">)</span>
+        <span class="n">quit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># first, create the workflow definition from the workflow file:</span>
+        <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">workflow</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">save_as_text</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saving Workflow Definition &#39;</span><span class="si">{}</span><span class="s2">&#39; as &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">workflow</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">save_as_text</span><span class="p">))</span>
+            <span class="n">owd</span><span class="o">.</span><span class="n">_save_as_json</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">save_as_text</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">save_as_binary</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saving Workflow Definition &#39;</span><span class="si">{}</span><span class="s2">&#39; as &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">workflow</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">save_as_binary</span><span class="p">))</span>
+            <span class="n">owd</span><span class="o">.</span><span class="n">_save_as_binary</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">save_as_binary</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">print_workflow</span><span class="p">:</span>
+            <span class="n">wdef_json</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow Definition Task Info: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wdef_json</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow failed with error: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h2 id="olivepyclientworkflow_client"><code>olivepy.client.workflow_client</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.client.workflow_client"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.client.workflow_client.heartbeat_notification" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">heartbeat_notification</span><span class="p">(</span><span class="n">heatbeat</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Callback method, notified by the async client that a heartbeat message has been received from the OLIVE server</p>
+
+        <details class="quote">
+          <summary>Source code in <code>olivepy/client/workflow_client.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">heartbeat_notification</span><span class="p">(</span><span class="n">heatbeat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Callback method, notified by the async client that a heartbeat message has been received from the OLIVE server</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">heatbeat</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">heatbeat</span><span class="o">.</span><span class="n">HasField</span><span class="p">(</span><span class="s2">&quot;stats&quot;</span><span class="p">):</span>
+            <span class="n">stats</span> <span class="o">=</span> <span class="n">heatbeat</span><span class="o">.</span><span class="n">stats</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System CPU Used:    </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System CPU Average: </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">cpu_average</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System MEM Used:    </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">mem_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System MEM Max:     </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">max_mem_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System SWAP Used:   </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">swap_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System SWAP Max:    </span><span class="si">%02.01f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stats</span><span class="o">.</span><span class="n">max_swap_percent</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number active jobs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">pool_busy</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number pending jobs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">pool_pending</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number finished jobs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">pool_finished</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max number jobs: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">max_num_jobs</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Server version: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">server_version</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Too long since a heatbeat message was received.  Olive server or connection down&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.client.workflow_client.main" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">main</span><span class="p">()</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Client for interacting with the workflow API</p>
+
+        <details class="quote">
+          <summary>Source code in <code>olivepy/client/workflow_client.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Client for interacting with the workflow API</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;olivepyworkflow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Perform OLIVE analysis using a Workflow &quot;</span>
+                                                                         <span class="s2">&quot;Definition file&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Required positional option</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The workflow definition to use.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--tasks&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Print the workflow analysis tasks.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--class_ids&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Print the class IDs available for analysis in the specified workflow.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--print_actualized&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Print the actualized workflow info.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--print_workflow&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Print the workflow definition file info (before it is actualized, if requested)&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># parser.add_argument(&#39;--print_options&#39;, action=&#39;store_true&#39;,</span>
+    <span class="c1">#                     help=&#39;Print the options recognized for each task&#39;)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--server&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The machine the server is running on. Defaults to </span><span class="si">%(default)s</span><span class="s1">.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-P&#39;</span><span class="p">,</span> <span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5588</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The port to use.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;--timeout&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The timeout (in seconds) to wait for a response from the server &#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;--input&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The data input to analyze.  Either a pathname to an audio/image/video file or a string for text input.  For text input, also specify the --text flag&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--input_list&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;A list of files to analyze. One file per line.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--text&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Indicates that input (or input list) is a literal text string to send in the analysis request.&#39;</span><span class="p">)</span>
+
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--options&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;A JSON formatted string of workflow options such as &#39;</span>
+                             <span class="s1">&#39;[{&quot;task&quot;:&quot;SAD&quot;, &quot;options&quot;:{&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0}] or &#39;</span>
+                             <span class="s1">&#39;{&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0, &quot;name&quot;:&quot;midge&quot;}, where the former &#39;</span>
+                             <span class="s1">&#39;options are only applied to the SAD task, and the later are applied to all tasks &#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--path&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Send the path of the audio instead of a buffer.  &#39;</span>
+                             <span class="s1">&#39;Server and client must share a filesystem to use this option&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># parser.add_argument(&#39;--heartbeat&#39;, action=&#39;store_true&#39;,</span>
+    <span class="c1">#                     help=&#39;Listen for server heartbeats &#39;)</span>
+    <span class="c1"># parser.add_argument(&#39;--status&#39;, action=&#39;store_true&#39;,</span>
+    <span class="c1">#                     help=&#39;get server status&#39;)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--debug&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Debug mode &#39;</span><span class="p">)</span>
+
+    <span class="c1"># Not supported since it needs an additional 3rd party lib:</span>
+    <span class="c1"># parser.add_argument(&#39;--decoded&#39;, action=&#39;store_true&#39;,</span>
+    <span class="c1">#                     help=&#39;Send audio file as decoded PCM16 samples instead of sending as serialized buffer. &#39;</span>
+    <span class="c1">#                          &#39;Input file must be a wav file&#39;)</span>
+
+
+    <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="c1"># Simple logging config</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+        <span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+        <span class="c1"># log_level = logging.WARN</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">log_level</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">workflow</span> <span class="ow">is</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No workflow definition is specified.&#39;</span><span class="p">)</span>
+        <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">tasks</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">class_ids</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">print_actualized</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">print_workflow</span><span class="p">):</span>
+        <span class="n">data_required</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data_required</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Our workflow should consume one of the 4 data types (but not a combination of types) ....</span>
+    <span class="c1"># data_input, audio_mode, send_pathname, audio, text, image, video = client_com.extract_input_data_type(args, fail_if_no_data=data_required)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+        <span class="c1"># special case of handling text data</span>
+        <span class="n">expected_data_type</span> <span class="o">=</span> <span class="n">OliveInputDataType</span><span class="o">.</span><span class="n">TEXT_DATA_TYPE</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">expected_data_type</span> <span class="o">=</span> <span class="n">OliveInputDataType</span><span class="o">.</span><span class="n">BINARY_DATA_TYPE</span>
+    <span class="n">data_input</span><span class="p">,</span> <span class="n">transfer_mode</span><span class="p">,</span> <span class="n">send_pathname</span> <span class="o">=</span> <span class="n">client_com</span><span class="o">.</span><span class="n">extract_input_data</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">expected_data_type</span><span class="o">=</span><span class="n">expected_data_type</span><span class="p">,</span> <span class="n">fail_if_no_data</span><span class="o">=</span><span class="n">data_required</span><span class="p">)</span>
+
+
+    <span class="n">json_opts</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+        <span class="n">json_opts</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">options</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Options: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json_opts</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">args_bad</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Run the command with --help or -h to see all the command line options.&#39;</span><span class="p">)</span>
+        <span class="n">quit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">enable_status_socket</span> <span class="o">=</span>  <span class="kc">False</span>
+    <span class="c1"># Create the connection to the OLIVE server</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;olivepy_workflow&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">server</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">monitor_status</span><span class="o">=</span><span class="n">enable_status_socket</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># if args.heartbeat:</span>
+        <span class="c1">#     # Register to be notified of heartbeats from the OLIVE server</span>
+        <span class="c1">#     client.add_heartbeat_listener(heartbeat_notification)</span>
+
+        <span class="c1"># if args.status:</span>
+        <span class="c1">#     # Request the current server status</span>
+        <span class="c1">#     server_status_response = client.get_status()</span>
+        <span class="c1">#     if server_status_response.is_successful():</span>
+        <span class="c1">#         print(&quot;OLIVE JSON Server status: {}&quot;.format(server_status_response.to_json(indent=10)))</span>
+        <span class="c1">#         #</span>
+        <span class="c1">#         # Or you can access the GetStatusResult protobuf:</span>
+        <span class="c1">#         print(&quot;OLIVE Server status: pending: {}, busy: {}, finished: {}, version: {}&quot;</span>
+        <span class="c1">#               .format(server_status_response.get_response().num_pending,</span>
+        <span class="c1">#                       server_status_response.get_response().num_busy,</span>
+        <span class="c1">#                       server_status_response.get_response().num_finished,</span>
+        <span class="c1">#                       server_status_response.get_response().version))</span>
+
+
+        <span class="c1"># first, create the workflow definition from the workflow file:</span>
+        <span class="n">workflow_def</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">workflow</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">print_workflow</span><span class="p">:</span>
+            <span class="n">wdef_json</span> <span class="o">=</span> <span class="n">workflow_def</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow Definition: </span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wdef_json</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Submit that workflow definition to the client for actualization (instantiation):</span>
+        <span class="n">workflow</span> <span class="o">=</span> <span class="n">workflow_def</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">print_actualized</span><span class="p">:</span>
+            <span class="c1"># tasks_json = workflow.get_analysis_task_info()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Actualized Workflow: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">tasks</span><span class="p">:</span>
+            <span class="c1">#  Print the analysis tasks:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Analysis Tasks: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">get_analysis_tasks</span><span class="p">()))</span>
+
+            <span class="k">for</span> <span class="n">enroll_job_name</span> <span class="ow">in</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_enrollment_job_names</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enrollment job &#39;</span><span class="si">{}</span><span class="s2">&#39; has Tasks: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">enroll_job_name</span><span class="p">,</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_enrollment_tasks</span><span class="p">(</span><span class="n">enroll_job_name</span><span class="p">)))</span>
+            <span class="k">for</span> <span class="n">unenroll_job_name</span> <span class="ow">in</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_unenrollment_job_names</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unenrollment job &#39;</span><span class="si">{}</span><span class="s2">&#39; has Tasks: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">unenroll_job_name</span><span class="p">,</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_unenrollment_tasks</span><span class="p">(</span><span class="n">unenroll_job_name</span><span class="p">)))</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">class_ids</span><span class="p">:</span>
+            <span class="c1">#  Print the class IDs available for the workflow tasks:</span>
+            <span class="c1"># support other types: type=olive_pb2.WORKFLOW_ENROLLMENT_TYPE?</span>
+            <span class="n">class_status_response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_analysis_class_ids</span><span class="p">()</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Class Info: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">class_status_response</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+
+        <span class="n">buffers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">data_input</span><span class="p">:</span>
+            <span class="n">buffers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">package_workflow_input</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">expected_data_type</span><span class="p">))</span>
+
+        <span class="k">if</span>  <span class="p">(</span><span class="n">data_required</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sending analysis request...&quot;</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">buffers</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">json_opts</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow analysis results:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow failed with error: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h2 id="olivepyclientworkflow_enroll_client"><code>olivepy.client.workflow_enroll_client</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.client.workflow_enroll_client"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.client.workflow_enroll_client.main" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">main</span><span class="p">()</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/client/workflow_enroll_client.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;olivepyworkflowenroll&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Perform OLIVE enrollment using a Workflow &quot;</span>
+                                                                         <span class="s2">&quot;Definition file&quot;</span><span class="p">)</span>
+
+    <span class="c1"># parser.add_argument(&#39;-C&#39;, &#39;--client-id&#39;, action=&#39;store&#39;, default=&#39;olivepy_&#39;,</span>
+    <span class="c1">#                     help=&#39;Experimental: the client_id to use&#39;)</span>
+
+    <span class="c1"># Required positional option</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The workflow definition to use.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--print_jobs&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Print the supported workflow enrollment jobs.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--job&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Enroll/Unenroll an Class ID for a job(s) in the specified workflow. If not specified enroll or unenroll for ALL enrollment/unenrollment jobst&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--enroll&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Enroll using this (class) name.  Should be used with the job argument to specify a target job to enroll with (if there are more than one enrollment jobs) &#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--unenroll&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Enroll using this (class) name.  Should be used with the job argument to specify a job to unenroll (if there are more than one unenrollment jobs)&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;--input&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The data input to enroll.  Either a pathname to an audio/image/video file or a string for text input&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--input_list&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;A list of files to enroll. One file per line plus the class id to enroll.&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--path&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Send the path of the audio instead of a buffer.  &#39;</span>
+                             <span class="s1">&#39;Server and client must share a filesystem to use this option&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Connection arguments</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--server&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The machine the server is running on. Defaults to </span><span class="si">%(default)s</span><span class="s1">.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-P&#39;</span><span class="p">,</span> <span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5588</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The port to use.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;--timeout&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The timeout (in seconds) to wait for a response from the server &#39;</span><span class="p">)</span>
+
+
+    <span class="c1"># not supporting batch enrollments:</span>
+    <span class="c1"># parser.add_argument(&#39;--audio_list&#39;, action=&#39;store&#39;,</span>
+    <span class="c1">#                     help=&#39;A list of audio files to analyze. One file per line&#39;)</span>
+
+    <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">workflow</span> <span class="ow">is</span> <span class="kc">None</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No workflow definition is specified.&#39;</span><span class="p">)</span>
+        <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">require_data</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">unenroll</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">print_jobs</span><span class="p">:</span>
+        <span class="n">require_data</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">expected_data_type</span> <span class="o">=</span> <span class="n">OliveInputDataType</span><span class="o">.</span><span class="n">BINARY_DATA_TYPE</span>
+    <span class="n">data_input</span><span class="p">,</span> <span class="n">transfer_mode</span><span class="p">,</span> <span class="n">send_pathname</span> <span class="o">=</span> <span class="n">client_com</span><span class="o">.</span><span class="n">extract_input_data</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">expected_data_type</span><span class="o">=</span><span class="n">expected_data_type</span><span class="p">,</span> <span class="n">fail_if_no_data</span><span class="o">=</span><span class="n">require_data</span><span class="p">,</span> <span class="n">has_class_ids</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># if args.enroll:</span>
+    <span class="c1">#     # there must be only one input</span>
+    <span class="c1">#     if len(data_input) &gt; 1:</span>
+    <span class="c1">#         args_bad = True</span>
+    <span class="c1">#         print(&quot;The enroll and audio_list argument are mutually exclusive. Pick one and run again&quot;)</span>
+    <span class="c1">#     else:</span>
+    <span class="c1">#         data_input = [(data_input[0], args.enroll)]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;enrolling </span><span class="si">{}</span><span class="s2"> files&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_input</span><span class="p">)))</span>
+    <span class="c1"># if len(data_input) &gt; 1 and not audio:</span>
+    <span class="c1">#     args_bad = True</span>
+    <span class="c1">#     print(&quot;Non-audio files can not be enrolled from an input list&quot;)</span>
+
+    <span class="c1"># support other data types....</span>
+    <span class="c1"># audios = []</span>
+    <span class="n">using_pem</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<span class="c1"># TODO GET CLASS IDS FROM ENROLLMENT FILE</span>
+
+    <span class="n">enroll</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">unenroll</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">enroll</span><span class="p">:</span>
+        <span class="n">action_str</span> <span class="o">=</span> <span class="s2">&quot;Enrollment&quot;</span>
+        <span class="n">enroll</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">unenroll</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enrollment and un-enrollment are mutually exclusive.  Pick one and run again&quot;</span><span class="p">)</span>
+            <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">unenroll</span><span class="p">:</span>
+        <span class="n">action_str</span> <span class="o">=</span> <span class="s2">&quot;Unenrollment&quot;</span>
+        <span class="n">unenroll</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_input</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">enroll</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">print_jobs</span><span class="p">:</span>
+        <span class="n">args_bad</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Must use one of the options: --enroll, --unenroll, or --print_jobs &quot;</span><span class="p">)</span>
+    <span class="n">action_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="c1"># support enrollments from a file (list and/or PEM format)?</span>
+    <span class="c1"># if not (audio or image or video):</span>
+    <span class="c1">#     # no input provided, make sure this is a status request and not an analysis task</span>
+    <span class="c1">#     if (enroll):</span>
+    <span class="c1">#         args_bad = True</span>
+    <span class="c1">#         print(&#39;The command requires data (audio, image, or video) input.&#39;)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">job</span><span class="p">:</span>
+        <span class="n">jobs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">jobs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">job</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">args_bad</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Run the command with --help or -h to see all the command line options.&#39;</span><span class="p">)</span>
+        <span class="n">quit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Create the connection to the OLIVE server</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;olivepy_workflow&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">server</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># right now, we only support analysis, so that is what we do...</span>
+
+        <span class="c1"># first, create the workflow definition from the workflow file:</span>
+        <span class="n">owd</span> <span class="o">=</span> <span class="n">ow</span><span class="o">.</span><span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">workflow</span><span class="p">)</span>
+
+        <span class="c1"># Submit that workflow definition to the client for actualization (instantiation):</span>
+        <span class="n">workflow</span> <span class="o">=</span> <span class="n">owd</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">print_jobs</span><span class="p">:</span>
+            <span class="c1">#  Print available jobs:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enrollment jobs &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">get_enrollment_job_names</span><span class="p">()))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Un-Enrollment jobs &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">get_unenrollment_job_names</span><span class="p">()))</span>
+            <span class="c1"># for enroll_job_name in workflow.get_enrollment_job_names():</span>
+                <span class="c1"># print(&quot;Enrollment job &#39;{}&#39; has Tasks: {}&quot;.format(enroll_job_name, workflow.get_enrollment_tasks(enroll_job_name)))</span>
+            <span class="c1"># for unenroll_job_name in workflow.get_unenrollment_job_names():</span>
+                <span class="c1"># print(&quot;Unenrollment job &#39;{}&#39; has Tasks: {}&quot;.format(unenroll_job_name, workflow.get_unenrollment_tasks(unenroll_job_name)))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">job</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">enroll</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enrolling for all jobs: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">get_enrollment_job_names</span><span class="p">()))</span>
+            <span class="k">if</span> <span class="n">unenroll</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unenrolling for all job: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">get_unenrollment_job_names</span><span class="p">()))</span>
+            <span class="n">jobs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_input</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="n">enroll_jobs</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_enrollment_job_names</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">enroll_jobs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: This workflow has no jobs that support enrollment&quot;</span><span class="p">)</span>
+                <span class="n">quit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">jobs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">enroll_jobs</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span>
+                        <span class="s2">&quot;Error: Job &#39;</span><span class="si">{}</span><span class="s2">&#39;  can not be enrolled via this workflow.  Only jobs(s) &#39;</span><span class="si">{}</span><span class="s2">&#39; support enrollment.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">t</span><span class="p">,</span> <span class="n">enroll_jobs</span><span class="p">))</span>
+                    <span class="n">quit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="n">enroll_buffers</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">classid</span> <span class="ow">in</span> <span class="n">data_input</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">input_msg</span> <span class="ow">in</span> <span class="n">data_input</span><span class="p">[</span><span class="n">classid</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">classid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">enroll_buffers</span><span class="p">:</span>
+                        <span class="n">enroll_buffers</span><span class="p">[</span><span class="n">classid</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="c1"># buffers.append(workflow.package_workflow_input(input, expected_data_type))</span>
+                    <span class="n">enroll_buffers</span><span class="p">[</span><span class="n">classid</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">workflow</span><span class="o">.</span><span class="n">package_workflow_input</span><span class="p">(</span><span class="n">input_msg</span><span class="p">,</span> <span class="n">expected_data_type</span><span class="p">))</span>
+
+                <span class="c1"># if audio:</span>
+                <span class="c1">#     # NOT SUPPORTING PEM</span>
+                <span class="c1">#</span>
+                <span class="c1">#     # if using_pem:</span>
+                <span class="c1">#     #     for filename, channel_dict in list(data_input.items()):</span>
+                <span class="c1">#     #         for channel, regions in list(channel_dict.items()):</span>
+                <span class="c1">#     #             try:</span>
+                <span class="c1">#     #                 if channel is None:</span>
+                <span class="c1">#     #                     ch_label = 0</span>
+                <span class="c1">#     #                 else:</span>
+                <span class="c1">#     #                     ch_label = int(channel)</span>
+                <span class="c1">#     #</span>
+                <span class="c1">#     #                 buffers.append(workflow.package_audio(filename, mode=audio_mode,  label=os.path.basename(filename),</span>
+                <span class="c1">#     #                                                       annotations=regions, selected_channel=ch_label))</span>
+                <span class="c1">#     #</span>
+                <span class="c1">#     #             except Exception as e:</span>
+                <span class="c1">#     #                 print(&quot;Failed to parse regions from (PEM) input file: {}&quot;.format(e))</span>
+                <span class="c1">#     #                 quit(1)</span>
+                <span class="c1"># elif text:</span>
+                <span class="c1">#     print(&quot;Text enrollment not supported&quot;)</span>
+                <span class="c1"># elif video:</span>
+                <span class="c1">#     print(&quot;clg adding video file: {}&quot;.format(filename))</span>
+                <span class="c1">#     enroll_buffers[classid].append(</span>
+                <span class="c1">#         workflow.package_binary(filename, mode=audio_mode, label=os.path.basename(filename)))</span>
+                <span class="c1"># elif image:</span>
+                <span class="c1">#     enroll_buffers[classid].append(</span>
+                <span class="c1">#         workflow.package_image(filename, mode=audio_mode, label=os.path.basename(filename)))</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow </span><span class="si">{}</span><span class="s2"> results:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">action_str</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span>
+            <span class="k">for</span> <span class="n">classid</span> <span class="ow">in</span> <span class="n">enroll_buffers</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">buffers</span> <span class="o">=</span> <span class="n">enroll_buffers</span><span class="p">[</span><span class="n">classid</span><span class="p">]</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;enrolling </span><span class="si">{}</span><span class="s2"> files for class: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">buffers</span><span class="p">),</span> <span class="n">classid</span><span class="p">))</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">enroll</span><span class="p">(</span><span class="n">buffers</span><span class="p">,</span> <span class="n">classid</span><span class="p">,</span> <span class="n">jobs</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+        <span class="k">elif</span> <span class="n">unenroll</span><span class="p">:</span>
+            <span class="c1"># TODO use options</span>
+            <span class="n">unenroll_jobs</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">get_unenrollment_job_names</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">unenroll_jobs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: This workflow has no job that support unenrollment&quot;</span><span class="p">)</span>
+                <span class="n">quit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">jobs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">unenroll_jobs</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span>
+                        <span class="s2">&quot;Error: Job &#39;</span><span class="si">{}</span><span class="s2">&#39; can not be un-enrolled via this workflow.  Only job(s) &#39;</span><span class="si">{}</span><span class="s2">&#39; support &quot;</span>
+                        <span class="s2">&quot;un-enrollment.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">unenroll_jobs</span><span class="p">))</span>
+                    <span class="n">quit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="n">response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">unenroll</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">unenroll</span><span class="p">,</span> <span class="n">jobs</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow </span><span class="si">{}</span><span class="s2"> results:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">action_str</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow failed with error: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.client.workflow_enroll_client.parse_pem_file" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_pem_file</span><span class="p">(</span><span class="n">data_lines</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Parse a PEM file, grouping the results by audio file and channel</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data_lines</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>a dictionary of audio files to score and the channel region: {'filename': {channel: [(start_region, end_region)]} }</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/client/workflow_enroll_client.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_pem_file</span><span class="p">(</span><span class="n">data_lines</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parse a PEM file, grouping the results by audio file and channel</span>
+<span class="sd">    :param data_lines:</span>
+<span class="sd">    :return:  a dictionary of audio files to score and the channel region: {&#39;filename&#39;: {channel: [(start_region, end_region)]} }</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1">#  We process by file and channel - the class/label is ignored</span>
+    <span class="n">regions</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">input_pem</span> <span class="o">=</span> <span class="n">Pem</span><span class="p">()</span>
+    <span class="n">input_pem</span><span class="o">.</span><span class="n">add_records_from_data_lines</span><span class="p">(</span><span class="n">data_lines</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">input_pem</span><span class="o">.</span><span class="n">get_ids</span><span class="p">():</span>
+        <span class="n">audio_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+        <span class="c1"># Create a dictionary of the regions specified for the the current file</span>
+        <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="n">input_pem</span><span class="o">.</span><span class="n">get_records</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+            <span class="c1"># channel could be a list...</span>
+            <span class="n">channels</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+                <span class="c1"># convert to a list</span>
+                <span class="n">channels</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">))</span>
+
+            <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+                <span class="n">channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unsupported channel value: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">ch</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">]:</span>
+                    <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">][</span><span class="n">ch</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">][</span><span class="n">ch</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">rec</span><span class="o">.</span><span class="n">start_t</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">end_t</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">regions</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="../assets/javascript/iframe-worker.js"></script>
+<script src="../search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../search/search_index.js"></script>
+      
+    
+  </body>
+</html>

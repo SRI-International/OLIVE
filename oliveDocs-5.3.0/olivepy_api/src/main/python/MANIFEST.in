@@ -1,0 +1,22 @@
+
+recursive-exclude __pycache__  *.pyc *.pyo *.orig
+
+exclude *.js*
+exclude *.git*
+exclude *.coveragerc
+exclude *.sh
+exclude proc*
+exclude pylint*
+exclude README*
+
+include olivepy/*.ipynb
+include olivepy/README-Windows.txt
+include olivepy/messaging/*.py
+include olivepy/api/*.py
+include olivepy/utils/*.py
+include olivepy/client/*.py
+
+
+prune .git
+prune venv
+prune test*
