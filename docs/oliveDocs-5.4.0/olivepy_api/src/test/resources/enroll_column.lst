@@ -1,0 +1,5 @@
+${TEST_DATA_ROOT}/testSuite/general/sad_smoke.wav sam
+${TEST_DATA_ROOT}/testSuite/general/sad_smoke.wav bran
+${TEST_DATA_ROOT}/testSuite/general/English.wav hodor
+${TEST_DATA_ROOT}/testSuite/general/fsh_kws.wav sansa
+

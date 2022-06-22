@@ -1,0 +1,2153 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>OLIVE Plugin Traits - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="blue-grey">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olive-plugin-traits" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              OLIVE Plugin Traits
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Standalone Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" >
+    
+    <label class="md-nav__link" for="nav-2-3">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Legacy)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        OLIVE Plugin Traits
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="traits.html" class="md-nav__link md-nav__link--active">
+      OLIVE Plugin Traits
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#traits-overview" class="md-nav__link">
+    Traits Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Traits Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traits-and-their-corresponding-messages" class="md-nav__link">
+    Traits and their Corresponding Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requestresult-message-pairs" class="md-nav__link">
+    Request/Result Message Pairs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traits-deep-dive" class="md-nav__link">
+    Traits Deep Dive
+  </a>
+  
+    <nav class="md-nav" aria-label="Traits Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globalscorer" class="md-nav__link">
+    GlobalScorer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regionscorer" class="md-nav__link">
+    RegionScorer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescorer" class="md-nav__link">
+    FrameScorer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classmodifier" class="md-nav__link">
+    ClassModifier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classexporter" class="md-nav__link">
+    ClassExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioconverter" class="md-nav__link">
+    AudioConverter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiovectorizer" class="md-nav__link">
+    AudioVectorizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learningtrait" class="md-nav__link">
+    LearningTrait
+  </a>
+  
+    <nav class="md-nav" aria-label="LearningTrait">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supervisedadapter" class="md-nav__link">
+    SupervisedAdapter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updatetrait" class="md-nav__link">
+    UpdateTrait
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalcomparer" class="md-nav__link">
+    GlobalComparer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#texttransformer" class="md-nav__link">
+    TextTransformer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioalignmentscorer" class="md-nav__link">
+    AudioAlignmentScorer
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Developer
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Developer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker.html" class="md-nav__link">
+      OLIVE Standalone Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    
+    <label class="md-nav__link" for="nav-3-4">
+      OLIVE API Integration Info
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="OLIVE API Integration Info" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        OLIVE API Integration Info
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      OlivePy Python Client API Documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE Resource Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v7.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnnSmolive-v1.html" class="md-nav__link">
+      Speech Activity Detection (SAD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-spoofnet-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-speakerSpecific-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v2.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-embedSmolive-v1.html" class="md-nav__link">
+      Speaker Identification (SID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v1.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedpldaSmolive-v1.html" class="md-nav__link">
+      Language Identification (LID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedplda-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-gb-v2.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7" >
+    
+    <label class="md-nav__link" for="nav-4-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8" >
+    
+    <label class="md-nav__link" for="nav-4-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v3.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9" >
+    
+    <label class="md-nav__link" for="nav-4-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-neural-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" >
+    
+    <label class="md-nav__link" for="nav-4-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR/Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-11" type="checkbox" id="nav-4-11" >
+    
+    <label class="md-nav__link" for="nav-4-11">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-11">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-12" type="checkbox" id="nav-4-12" >
+    
+    <label class="md-nav__link" for="nav-4-12">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-12">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#traits-overview" class="md-nav__link">
+    Traits Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Traits Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traits-and-their-corresponding-messages" class="md-nav__link">
+    Traits and their Corresponding Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requestresult-message-pairs" class="md-nav__link">
+    Request/Result Message Pairs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traits-deep-dive" class="md-nav__link">
+    Traits Deep Dive
+  </a>
+  
+    <nav class="md-nav" aria-label="Traits Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globalscorer" class="md-nav__link">
+    GlobalScorer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regionscorer" class="md-nav__link">
+    RegionScorer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescorer" class="md-nav__link">
+    FrameScorer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classmodifier" class="md-nav__link">
+    ClassModifier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classexporter" class="md-nav__link">
+    ClassExporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioconverter" class="md-nav__link">
+    AudioConverter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiovectorizer" class="md-nav__link">
+    AudioVectorizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learningtrait" class="md-nav__link">
+    LearningTrait
+  </a>
+  
+    <nav class="md-nav" aria-label="LearningTrait">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supervisedadapter" class="md-nav__link">
+    SupervisedAdapter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updatetrait" class="md-nav__link">
+    UpdateTrait
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalcomparer" class="md-nav__link">
+    GlobalComparer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#texttransformer" class="md-nav__link">
+    TextTransformer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audioalignmentscorer" class="md-nav__link">
+    AudioAlignmentScorer
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olive-plugin-traits">OLIVE Plugin Traits</h1>
+<!-- ###### TODO: Code Ex/Tutorial for the big ones (scorers, modifier, adaptation) - links should already be in place in the first list below, but may need updated once the code examples are finalized. Add or move these tutorial links to the description sections below?
+###### TODO: Add sections below to cover the purposes of the non-Trait messages, like GetStatusRequest? Or should this  be in the main API doc, or in the server guide, since it's server management messages?
+-->
+
+<h2 id="traits-overview">Traits Overview</h2>
+<p>The functionality of each OLIVE plugin is defined by the API <strong>Traits</strong> that it implements.  Each Trait defines a message or set of messages that the plugin must implement to perform an associated task. The available Traits are listed below, along with their associated implemented API messages, in the format:</p>
+<ul>
+<li>Trait<ul>
+<li>Implemented Message 1</li>
+<li>...</li>
+<li>Implemented Message N</li>
+</ul>
+</li>
+</ul>
+<h3 id="traits-and-their-corresponding-messages">Traits and their Corresponding Messages</h3>
+<p>The Trait and Message List follows. Each Trait name links to the relevant section on this page . Each API message entry links to the relevant portion of the Protocol Buffers Message Definition Reference Page.</p>
+<ul>
+<li><a href="#globalscorer">GlobalScorer</a> - (<a href="apiCode.html#global-score-request">Tutorial</a>)<ul>
+<li><a href="apiMessage.html#globalscorerrequest">GlobalScorerRequest</a></li>
+<li><a href="apiMessage.html#globalscorerstereorequest">GlobalScorerStereoRequest</a></li>
+</ul>
+</li>
+<li><a href="#regionscorer">RegionScorer</a> - (<a href="apiCode.html#region-score-request">Tutorial</a>)<ul>
+<li><a href="apiMessage.html#regionscorerrequest">RegionScorerRequest</a></li>
+<li><a href="apiMessage.html#regionscorerstereorequest">RegionScorerStereoRequest</a></li>
+</ul>
+</li>
+<li><a href="#framescorer">FrameScorer</a> - (<a href="apiCode.html#frame-score-request">Tutorial</a>)<ul>
+<li><a href="apiMessage.html#framescorerrequest">FrameScorerRequest</a></li>
+<li><a href="apiMessage.html#framescorerstereorequest">FrameScorerStereoRequest</a></li>
+</ul>
+</li>
+<li><a href="#classmodifier">ClassModifier</a> - (<a href="apiCode.html#enrollment-request">Tutorial</a>)<ul>
+<li><a href="apiMessage.html#classmodificationrequest">ClassModificationRequest</a></li>
+<li><a href="apiMessage.html#classremovalrequest">ClassRemovalRequest</a></li>
+</ul>
+</li>
+<li><a href="#classexporter">ClassExporter</a><ul>
+<li><a href="apiMessage.html#classexportrequest">ClassExportRequest</a></li>
+<li><a href="apiMessage.html#classimportrequest">ClassImportRequest</a></li>
+</ul>
+</li>
+<li><a href="#audioconverter">AudioConverter</a><ul>
+<li><a href="apiMessage.html#audiomodificationrequest">AudioModificationRequest</a></li>
+</ul>
+</li>
+<li><a href="#audiovectorizer">AudioVectorizer</a><ul>
+<li><a href="apiMessage.html#audiovectorizer">PluginAudioVectorRequest</a></li>
+</ul>
+</li>
+<li><a href="#learningtrait">LearningTrait</a> (SupervisedAdapter, SupervisedTrainer, UnsupervisedAdapter) - (<a href="apiCode.html#sad-supervised-adaptation-request">Tutorial</a>)<ul>
+<li><a href="apiMessage.html#preprocessaudiotrainrequest">PreprocessAudioTrainRequest</a></li>
+<li><a href="apiMessage.html#preprocessaudioadaptrequest">PreprocessAudioAdaptRequest</a></li>
+<li><a href="apiMessage.html#supervisedtrainingrequest">SupervisedTrainingRequest</a></li>
+<li><a href="apiMessage.html#unsupervisedadaptationrequest">UnsupervisedAdaptationRequest</a></li>
+</ul>
+</li>
+<li><a href="#updatetrait">UpdateTrait</a><ul>
+<li><a href="apiMessage.html#getupdatestatusrequest">GetUpdateStatusRequest</a></li>
+<li><a href="apiMessage.html#applyupdaterequest">ApplyUpdateRequest</a></li>
+</ul>
+</li>
+<li><a href="apiMessage.html#globalcomparer">GlobalComparer</a><ul>
+<li><a href="apiMessage.html#globalcomparerrequest">GlobalComparerRequest</a></li>
+</ul>
+</li>
+<li><a href="apiMessage.html#texttransformer">TextTransformer</a><ul>
+<li><a href="apiMessage.html#textranformationrequest">TextTransformationRequest</a></li>
+</ul>
+</li>
+<li><a href="apiMessage.html#audioalignmentscore">AudioAlignmentScorer</a><ul>
+<li><a href="apiMessage.html#audioalignmentscorerequest">AudioAlignmentScoreRequest</a></li>
+</ul>
+</li>
+</ul>
+<p>In addition to the messages above, the following messages exist for interacting with the server itself and are independent of individual plugins or plugin Traits:</p>
+<ul>
+<li><a href="apiMessage.html#getstatusrequest">GetStatusRequest</a></li>
+<li><a href="apiMessage.html#plugindirectoryrequest">PluginDirectoryRequest</a></li>
+<li><a href="apiMessage.html#loadplugindomainrequest">LoadPluginDomainRequest</a></li>
+<li><a href="apiMessage.html#removeplugindomainrequest">RemovePluginDomainRequest</a></li>
+</ul>
+<p>Full message definition details for all of the messages mentioned here </p>
+<h3 id="requestresult-message-pairs">Request/Result Message Pairs</h3>
+<p>In general, each <strong>Request</strong> message is paired with a <strong>Result</strong> message, that defines the structure and contents of the server's reply to a given client <strong>Request</strong> message.  The table below defines the pairs of the <strong>Result</strong> messages for the <strong>Request</strong> messages mentioned above; and the full message definition details can be found in the <a href="apiMessage.html">OLIVE API Message Protocol Documentation</a>, which each entry below is linked to.</p>
+<table>
+<thead>
+<tr>
+<th>Request Message</th>
+<th>Result (Response) Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="apiMessage.html#globalscorerrequest">GlobalScorerRequest</a></td>
+<td><a href="apiMessage.html#globalscorerresult">GlobalScorerResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#regionscorerrequest">RegionScorerRequest</a></td>
+<td><a href="apiMessage.html#regionscorerresult">RegionScorerResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#framescorerrequest">FrameScorerRequest</a></td>
+<td><a href="apiMessage.html#framescorerresult">FrameScorerResult</a></td>
+</tr>
+<tr>
+<td><a href="classmodificationrequest">ClassModificationRequest</a></td>
+<td><a href="apiMessage.html#classmodificationresult">ClassModificationResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#classremovalrequest">ClassRemovalRequest</a></td>
+<td><a href="apiMessage.html#classremovalresult">ClassRemovalResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#classexportrequest">ClassExportRequest</a></td>
+<td><a href="apiMessage.html#classexportresult">ClassExportResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#classimportrequest">ClassImportRequest</a></td>
+<td><a href="apiMessage.html#classimportresult">ClassImportResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#audiomodificationrequest">AudioModificationRequest</a></td>
+<td><a href="apiMessage.html#audiomodificationresult">AudioModificationResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#pluginaudiovectorrequest">PluginAudioVectorRequest</a></td>
+<td><a href="apiMessage.html#pluginaudiovectorresult">PluginAudioVectorResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#preprocessaudiotrainrequest">PreprocessAudioTrainRequest</a></td>
+<td><a href="apiMessage.html#preprocessaudiotrainresult">PreprocessAudioTrainResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#preprocessaudioadaptrequest">PreprocessAudioAdaptRequest</a></td>
+<td><a href="apiMessage.html#preprocessaudioadaptresult">PreprocessAudioAdaptResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#supervisedtrainingrequest">SupervisedTrainingRequest</a></td>
+<td><a href="apiMessage.html#supervisedtrainingresult">SupervisedTrainingResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#unsupervisedadaptationrequest">UnsupervisedAdaptationRequest</a></td>
+<td><a href="apiMessage.html#unsupervisedadaptationresult">UnsupervisedAdaptationResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#getupdatestatusrequest">GetUpdateStatusRequest</a></td>
+<td><a href="apiMessage.html#getupdatestatusresult">GetUpdateStatusResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#applyupdaterequest">ApplyUpdateRequest</a></td>
+<td><a href="apiMessage.html#applyupdateresult">ApplyUpdateResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#globalcomparerrequest">GlobalComparerRequest</a></td>
+<td><a href="apiMessage.html#globalcomparrerresult">GlobalComparerResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#texttransformationrequest">TextTransformationRequest</a></td>
+<td><a href="apiMessage.html#texttransformationresult">TextTransformationResult</a></td>
+</tr>
+<tr>
+<td><a href="apiMessage.html#audioalignmentscorerequest">AudioAlignmentScoreRequest</a></td>
+<td><a href="apiMessage.html#audioalignmentscoreresult">AudioAlignmentScoreResult</a></td>
+</tr>
+</tbody>
+</table>
+<p>or</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Request Message</th>
+<th>Result (Response) Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global Score</td>
+<td><a href="apiMessage.html#globalscorerrequest">GlobalScorerRequest</a></td>
+<td><a href="apiMessage.html#globalscorerresult">GlobalScorerResult</a></td>
+</tr>
+<tr>
+<td>Region Score</td>
+<td><a href="apiMessage.html#regionscorerrequest">RegionScorerRequest</a></td>
+<td><a href="apiMessage.html#regionscorerresult">RegionScorerResult</a></td>
+</tr>
+<tr>
+<td>Frame Score</td>
+<td><a href="apiMessage.html#framescorerrequest">FrameScorerRequest</a></td>
+<td><a href="apiMessage.html#framescorerresult">FrameScorerResult</a></td>
+</tr>
+<tr>
+<td>Create or modify a class enrollment</td>
+<td><a href="classmodificationrequest">ClassModificationRequest</a></td>
+<td><a href="apiMessage.html#classmodificationresult">ClassModificationResult</a></td>
+</tr>
+<tr>
+<td>Remove an enrolled class</td>
+<td><a href="apiMessage.html#classremovalrequest">ClassRemovalRequest</a></td>
+<td><a href="apiMessage.html#classremovalresult">ClassRemovalResult</a></td>
+</tr>
+<tr>
+<td>Export a class for later use or for model sharing</td>
+<td><a href="apiMessage.html#classexportrequest">ClassExportRequest</a></td>
+<td><a href="apiMessage.html#classexportresult">ClassExportResult</a></td>
+</tr>
+<tr>
+<td>Import a previously exported class</td>
+<td><a href="apiMessage.html#classimportrequest">ClassImportRequest</a></td>
+<td><a href="apiMessage.html#classimportresult">ClassImportResult</a></td>
+</tr>
+<tr>
+<td>Submit audio for modification (enhancement)</td>
+<td><a href="apiMessage.html#audiomodificationrequest">AudioModificationRequest</a></td>
+<td><a href="apiMessage.html#audiomodificationresult">AudioModificationResult</a></td>
+</tr>
+<tr>
+<td>Request a vectorized representation of audio</td>
+<td><a href="apiMessage.html#pluginaudiovectorrequest">PluginAudioVectorRequest</a></td>
+<td><a href="apiMessage.html#pluginaudiovectorresult">PluginAudioVectorResult</a></td>
+</tr>
+<tr>
+<td>Prepare audio for submission to training a new domain from scratch</td>
+<td><a href="apiMessage.html#preprocessaudiotrainrequest">PreprocessAudioTrainRequest</a></td>
+<td><a href="apiMessage.html#preprocessaudiotrainresult">PreprocessAudioTrainResult</a></td>
+</tr>
+<tr>
+<td>Prepare audio for submission to adapt an existing domain</td>
+<td><a href="apiMessage.html#preprocessaudioadaptrequest">PreprocessAudioAdaptRequest</a></td>
+<td><a href="apiMessage.html#preprocessaudioadaptresult">PreprocessAudioAdaptResult</a></td>
+</tr>
+<tr>
+<td>Query a plugin to see if it is ready to apply an "Update"</td>
+<td><a href="apiMessage.html#getupdatestatusrequest">GetUpdateStatusRequest</a></td>
+<td><a href="apiMessage.html#getupdatestatusresult">GetUpdateStatusResult</a></td>
+</tr>
+<tr>
+<td>Instruct a plugin to perform an "Update"</td>
+<td><a href="apiMessage.html#applyupdaterequest">ApplyUpdateRequest</a></td>
+<td><a href="apiMessage.html#applyupdateresult">ApplyUpdateResult</a></td>
+</tr>
+<tr>
+<td>Submit two audio files for forensic comparison</td>
+<td><a href="apiMessage.html#globalcomparerrequest">GlobalComparerRequest</a></td>
+<td><a href="apiMessage.html#globalcomparrerresult">GlobalComparerResult</a></td>
+</tr>
+<tr>
+<td>Submit text (string) for translation</td>
+<td><a href="apiMessage.html#texttransformationrequest">TextTransformationRequest</a></td>
+<td><a href="apiMessage.html#texttransformationresult">TextTransformationResult</a></td>
+</tr>
+<tr>
+<td>Submit two or more audio files for alignment shift scores</td>
+<td><a href="apiMessage.html#audioalignmentscorerequest">AudioAlignmentScoreRequest</a></td>
+<td><a href="apiMessage.html#audioalignmentscoreresult">AudioAlignmentScoreResult</a></td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: Remove | [SupervisedTrainingRequest](apiMessage.md#supervisedtrainingrequest) | [SupervisedTrainingResult](apiMessage.md#supervisedtrainingresult)
+TODO: Remove | [UnsupervisedAdaptationRequest](apiMessage.md#unsupervisedadaptationrequest) | [UnsupervisedAdaptationResult](apiMessage.md#unsupervisedadaptationresult) -->
+
+<h2 id="traits-deep-dive">Traits Deep Dive</h2>
+<p>This section provides more details on what the "real world" usage and definition of each of the above Traits actually entails. If anything is unclear or could use more expansion, please contact us and we will provide updates and/or clarification.</p>
+<h3 id="globalscorer">GlobalScorer</h3>
+<p>A <strong>GlobalScorer</strong> plugin has the output of reporting a single score for each relevant plugin class representing the likelihood that the <em>entire</em> audio file or clip contains this class. For example, when audio is sent to a Speaker Identification (SID) plugin with the <strong>GlobalScorer</strong> Trait, if there are 3 enrolled speakers at that time, the plugin will return a single score for each enrolled speaker representing the likelihood that the audio is comprised of speech from each speaker, respectively.</p>
+<p>The output of such a request will contain information that looks something like this:</p>
+<div class="codehilite"><pre><span></span><code>/data/sid/audio/file1.wav speaker1 -0.5348
+/data/sid/audio/file1.wav speaker2 3.2122
+/data/sid/audio/file1.wav speaker3 -5.5340
+</code></pre></div>
+
+<p>Keep in mind that speakers and speaker identification are just examples in this case, and that this generalizes to any global scoring plugin and whatever classes it is meant to distinguish between.  This same example could be represented more generically as:</p>
+<div class="codehilite"><pre><span></span><code>/data/sid/audio/file1.wav class1 -0.5348
+/data/sid/audio/file1.wav class2 3.2122
+/data/sid/audio/file1.wav class3 -5.5340
+</code></pre></div>
+
+<p>Due to the nature of global scoring plugins, they are best used when the attribute that's being estimated is known to be, or very likely to be static.  For example, using global scoring SID on one side of a 4-wire telephone conversation, where the speaker is likely to remain the same throughout, or using global scoring LID on a TV broadcast that is expected to only contain a single language.</p>
+<p>These plugins can miss the nuances of or be confused by things like code-switching within recordings, or unexpected speaker changes.  </p>
+<p>The benefits of global scoring plugins are that they are often very fast, since they treat the entirety of the submitted audio as a single unit, and do not worry about trying to subdivide or chunk it in any way.  For a first-pass or quick triage approach, or when the data is known or suspected to be homogenous in the ways discussed above, these plugins are very effective.  When finer grained results are necessary, though, a <strong>RegionScorer</strong> or <strong>FrameScorer</strong> may be more appropriate.</p>
+<h3 id="regionscorer">RegionScorer</h3>
+<p>For each audio file or recording submitted to a <strong>RegionScorer</strong> plugin, results are returned consisting of 0 or more <em>regions</em> with an associated score and plugin class.  Typically, regions are returned in the case of a 'detection' of an instance of the respective class.  A 'region' is a pair of timestamps, referring to the start time and end time of the detected class presence, and includes the name of the respective class, and an associated score.  An example of this might be a keyword spotting plugin returning the keyword class name, as well as the location and likelihood of that keyword's presence.  This might look something like:</p>
+<div class="codehilite"><pre><span></span><code>/data/test/testFile1.wav 0.630 1.170 Airplane 4.3725
+/data/test/testFile1.wav 1.520 2.010 Watermelon -1.1978
+</code></pre></div>
+
+<p>Another example of output you may see from a region scoring plugin follows, showing what a region scoring speaker detection plugin might output.  In this example, an enrolled speaker, <em>speaker2</em> was detected in testFile1.wav from 0.630 s to 1.170 s with a likelihood score of 4.3725. Likewise for 1.520 s to 2.010 s in the same file for the enrolled speaker called <em>speaker1</em>, this time with a likelihood score of -1.1978.</p>
+<div class="codehilite"><pre><span></span><code>/data/test/testFile1.wav 0.630 1.170 speaker2 4.3725
+/data/test/testFile1.wav 1.520 2.010 speaker1 -1.1978
+</code></pre></div>
+
+<p>An even simpler output of this type may just label the regions within a file that the plugin determines contain speech. Again, these are just arbitrary examples using a specific plugin type to more easily describe the scoring type; a more generic output example could be:</p>
+<div class="codehilite"><pre><span></span><code>/data/test/testFile1.wav 0.630 1.170 class1 4.3725
+/data/test/testFile1.wav 1.520 2.010 class2 -1.1978
+</code></pre></div>
+
+<p><strong>RegionScorer</strong> plugins allow a finer resolution with respect to results granularity, and allow plugins to be more flexible and deal with transitions between languages or speakers or other classes of interest within a given audio file or recording. Sometimes this comes at a cost of increased processing complexity and/or slower runtime.</p>
+<h3 id="framescorer">FrameScorer</h3>
+<p>A plugin with the <strong>FrameScorer</strong> Trait that is queried with a FrameScorerRequest will provide score results for each frame of whatever audio has been submitted.  Unless otherwise noted, an audio frame is 10 milliseconds.  The most common OLIVE plugin that has the <strong>FrameScorer</strong> Trait are speech activity detection (SAD) plugins, where the score for each frame represents the likelihood of speech being present in that 10 ms audio frame.</p>
+<p>The output in this case is simply a sequential list of numbers, corresponding to the output score for each frame, in order:</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.9047</span>
+<span class="mf">1.8088</span>
+<span class="mf">1.2382</span>
+<span class="o">-</span><span class="mf">0.8862</span>
+<span class="o">-</span><span class="mf">2.5509</span>
+</code></pre></div>
+
+<p>In this example, these frames can then be processed to turn them into region scores, labeling the locations where speech has been detected as present within the file.  Returning raw frame scores as a result allows more down-stream flexibility, allowing thresholds to be adjusted and regions re-labeled if desired, for example to allow for tuning for more difficult or unexpected audio conditions.</p>
+<h3 id="classmodifier">ClassModifier</h3>
+<p>Any plugin capable of adding or removing classes to or from its set of enrollments or target classes carries the <strong>ClassModifier</strong> Trait.  This trait means the set of classes the plugin is interested in is mutable, and can be altered.  Typically this is done by providing labeled data that belongs to the new class of interest to the server, which then enrolls a new model representing what it has learned about distinguishing this class from others. Existing class models can also be augmented by providing the system with additional data with this class label.</p>
+<p>In addition to adding new classes, and improving/augmenting existing ones, it is also possible to remove enrolled classes from domains of plugins carrying this trait, using the ClassRemovalRequest message.</p>
+<h3 id="classexporter">ClassExporter</h3>
+<p>A plugin that implements the <strong>ClassExporter</strong> Trait is capable of exporting enrolled class models in a form that can be either imported back into the same system, as a way to save the model for preservation, or it can be imported into a different system, so long as that system has the same plugin and domain that was used to initially create the class model.  This allows enrollments to be shared between systems.</p>
+<p>In general, exported models are specific to the plugin and domain that created them, so care must be taken to ensure models are not mixed in to other plugins.  It is up to the client program or end user to keep tabs on where the exported models came from and what class they represent, and to manage these models once they've been exported.</p>
+<h3 id="audioconverter">AudioConverter</h3>
+<p>An <strong>AudioConverter</strong> plugin has audio as both its input and as its output.  This Trait allows the system to take an audio file or buffer, potentially perform some modification(s) on it, and return audio to the requestor, this can be the same audio untouched, a modified version of this audio, or completely different audio, depending on the purpose of the plugin. The only current plugin to implement the <strong>AudioConverter</strong> Trait is a speech enhancement plugin for enhancing the speech intelligibility of the submitted audio.</p>
+<h3 id="audiovectorizer">AudioVectorizer</h3>
+<p>This is a prototype feature that allows the system to preprocess an audio file or model to perform the compute-heavy steps of feature extraction and others, so that at a later time a user can either enroll a model or score a file very quickly, since the most time-consuming steps have already been performed.  Like the <strong>ClassExporter</strong> Trait and exported classes/models, the vectorized audio representations are plugin/domain specific and cannot be used with plugins other than the one that created them.  This is helpful if enrollments will be frequently rolled in or out of the system, or if the same audio files will be frequently re-tested, to avoid wasted repeat compute cycles.</p>
+<h3 id="learningtrait">LearningTrait</h3>
+<p>There are three total <code>LearningTrait</code>s:</p>
+<ol>
+<li>SupervisedAdapter</li>
+<li>SupervisedTrainer</li>
+<li>UnsupervisedAdapter</li>
+</ol>
+<p>Only SupervisedAdapter is currently supported by plugins in the OLIVE ecosystem; the others are deprecated or prototype features and should be ignored.</p>
+<h4 id="supervisedadapter">SupervisedAdapter</h4>
+<p>Plugins with the SupervisedAdapter Trait enable the ability to perform Supervised Adaptation of a domain.  This is human assisted improvement of a plugin's domain, generally with feedback to the system in the form of annotations of target phenomena, or in some cases, error corrections. For more information on Adaptation, refer to <a href="glossary.html#adaptable-adaptation">this section</a>.</p>
+<h3 id="updatetrait">UpdateTrait</h3>
+<p>Certain systems, such as recent speaker and language recognition plugins, sid-embed-v5 and lid-embedplda-v1], have the capability to adapt themselves based purely on raw data provided by the user in the normal use of the system (enrollment and test data). These systems collect statistics over from the data feed through the system that can be used to update system parameters in unsupervised (autonomous) adaptation, thereby improving the performance of the plugin in the conditions in which is has been deployed. Since the use of this data in adaptation changes the behavior of the plugin the system does not automatically update itself, but rather requires the end user to "trigger" the update and use the data the system has collected to adapt. Implementing and invoking the associated <a href="apiMessage.html#updater-messages">Update Request Messages</a> to start the <code>Update</code> process will use the accrued data from the test and enroll conditions to pdate system parameters and apply the update. One can always revert to the plugin's original state by clearing out the data and statistics collected the <a href="server.html#where-the-server-stores-things"><code>learn</code></a> directory from the server's storage.</p>
+<h3 id="globalcomparer">GlobalComparer</h3>
+<p>A plugin that supports the GlobalComparer Trait has the capability of accepting two waveforms as input, performing some sort of analysis or comparison of the two, and returning a PDF report summarizing the analysis.</p>
+<h2 id="texttransformer">TextTransformer</h2>
+<p>A plugin with the <strong>TextTransformer</strong> Trait is used to translate a text input when queried with a TextTransformationRequest, providing translation results for the submitted string (it does not take an audio input, unlike other scoring traits).</p>
+<p>The output in this case is simply a string, which is the translation result </p>
+<h2 id="audioalignmentscorer">AudioAlignmentScorer</h2>
+<p>A plugin with the <strong>AudioAlignmentScorer</strong> Trait can be used to provide alignment shift scores for two or more audio inputs using an AudioAlignmentScoreRequest.</p>
+<p>The output is a set of shift scores betwen each combination of two audio inputs in the AudioAlignmentScoreRequest</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="redaction.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Speaker Redaction
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="audioFormats.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Supported Audio Formats
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

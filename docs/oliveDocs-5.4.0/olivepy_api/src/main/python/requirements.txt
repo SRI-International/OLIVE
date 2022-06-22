@@ -1,0 +1,4 @@
+protobuf
+soundfile
+numpy
+zmq

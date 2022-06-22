@@ -1,0 +1,4 @@
+${TEST_DATA_ROOT}/testSuite/general/sad_smoke.wav sad
+${TEST_DATA_ROOT}/testSuite/general/sad_smoke.wav smk
+${TEST_DATA_ROOT}/testSuite/general/English.wav eng
+${TEST_DATA_ROOT}/testSuite/general/fsh_kws.wav fsh

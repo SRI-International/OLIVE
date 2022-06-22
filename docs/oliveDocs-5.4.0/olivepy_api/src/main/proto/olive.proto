@@ -1,0 +1,1550 @@
+/**
+* OLIVE Protobuf message reference
+*/
+syntax = "proto2";
+package com.sri.speech.olive.api;
+
+// The MessageType enum provides a value for each top-level SCENIC message.
+// It is used within a ScenicMessage to indicate the type of the serialized message contained therein.
+enum MessageType {
+  PLUGIN_DIRECTORY_REQUEST     =  1;
+  PLUGIN_DIRECTORY_RESULT      =  2;
+  GLOBAL_SCORER_REQUEST        =  3;
+  GLOBAL_SCORER_RESULT         =  4;
+  REGION_SCORER_REQUEST        =  5;
+  REGION_SCORER_RESULT         =  6;
+  FRAME_SCORER_REQUEST         =  7;
+  FRAME_SCORER_RESULT          =  8;
+  CLASS_MODIFICATION_REQUEST   =  9;
+  CLASS_MODIFICATION_RESULT    = 10;
+  CLASS_REMOVAL_REQUEST        = 11;
+  CLASS_REMOVAL_RESULT         = 12;
+  GET_ACTIVE_REQUEST           = 13;
+  GET_ACTIVE_RESULT            = 14;
+  LOAD_PLUGIN_REQUEST          = 15;
+  LOAD_PLUGIN_RESULT           = 16;
+  GET_STATUS_REQUEST           = 17;
+  GET_STATUS_RESULT            = 18;
+  HEARTBEAT                    = 19;
+  PREPROCESS_AUDIO_TRAIN_REQUEST    = 20;
+  PREPROCESS_AUDIO_TRAIN_RESULT     = 21;
+  PREPROCESS_AUDIO_ADAPT_REQUEST    = 22;
+  PREPROCESS_AUDIO_ADAPT_RESULT     = 23;
+  SUPERVISED_TRAINING_REQUEST       = 24;
+  SUPERVISED_TRAINING_RESULT        = 25;
+  SUPERVISED_ADAPTATION_REQUEST     = 26;
+  SUPERVISED_ADAPTATION_RESULT      = 27;
+  UNSUPERVISED_ADAPTATION_REQUEST   = 28;
+  UNSUPERVISED_ADAPTATION_RESULT    = 29;
+  CLASS_ANNOTATION                  = 30;
+  AUDIO_ANNOTATION                  = 31;
+  ANNOTATION_REGION                 = 32;
+  REMOVE_PLUGIN_REQUEST             = 33;
+  REMOVE_PLUGIN_RESULT              = 34;
+  AUDIO_MODIFICATION_REQUEST        = 35;
+  AUDIO_MODIFICATION_RESULT         = 36;
+  PLUGIN_AUDIO_VECTOR_REQUEST       = 37;
+  PLUGIN_AUDIO_VECTOR_RESULT        = 38;
+
+  CLASS_EXPORT_REQUEST              = 39;
+  CLASS_EXPORT_RESULT               = 40;
+  CLASS_IMPORT_REQUEST              = 41;
+  CLASS_IMPORT_RESULT               = 42;
+
+  APPLY_UPDATE_REQUEST              = 43;
+  APPLY_UPDATE_RESULT               = 44;
+  GET_UPDATE_STATUS_REQUEST         = 45;
+  GET_UPDATE_STATUS_RESULT          = 46;
+
+  GLOBAL_COMPARER_REQUEST           = 47;
+  GLOBAL_COMPARER_RESULT            = 48;
+
+  // ==== WORKFLOW ======================
+
+  WORKFLOW_ACTUALIZE_REQUEST                   = 49;
+  WORKFLOW_ACTUALIZE_RESULT                   = 50;
+  WORKFLOW_ANALYSIS_REQUEST          = 51;
+  WORKFLOW_ANALYSIS_RESULT          = 52;
+  WORKFLOW_ENROLL_REQUEST            = 53;
+  WORKFLOW_UNENROLL_REQUEST          = 54;
+  WORKFLOW_ADAPT_REQUEST             = 55;
+  WORKFLOW_ADAPT_RESULT             = 56;
+  WORKFLOW_DEFINITION               = 57;
+  WORKFLOW_TASK                     = 58;
+  ABSTRACT_WORKFLOW_TASK            = 59;
+  CONDITIONAL_WORKFLOW_TASK         = 60;
+  OLIVE_NODE                        = 61;
+  WORKFLOW_JOB_RESULT               = 62;
+  WORKFLOW_TASK_RESULT              = 63;
+  WORKFLOW_DATA_REQUEST             = 64;
+  WORKFLOW_DATA_RESULT              = 65;
+  WORKFLOW_CLASS_REQUEST            = 66;
+  WORKFLOW_CLASS_RESULT             = 67;
+
+  // ==== POST WORKFLOW Messages ==========
+
+    AUDIO_ALIGN_REQUEST             = 68;
+    AUDIO_ALIGN_RESULT              = 69;
+    TEXT_TRANSFORM_REQUEST          = 70;
+    TEXT_TRANSFORM_RESULT           = 71;
+    PREPROCESSED_AUDIO_RESULT       = 72;
+    DYNAMIC_PLUGIN_REQUEST          = 73;
+    PLUGIN_2_PLUGIN_REQUEST         = 74;
+    PLUGIN_2_PLUGIN_RESULT          = 75;
+    WORKFlOW_TEXT_RESULT            = 76;
+    SCORE_OUTPUT_TRANSFORMER_REQUEST= 77;
+    SCORE_OUTPUT_TRANSFORMER_RESULT = 78;
+    DATA_OUTPUT_TRANSFORMER_REQUEST = 79;
+    DATA_OUTPUT_TRANSFORMER_RESULT  = 80;
+    // Image and Video processing
+    BOUNDING_BOX_REQUEST            = 81;
+    BOUNDING_BOX_RESULT             = 82;
+    BINARY_MEDIA_RESULT             = 83;
+
+    INVALID_MESSAGE                 = 84;
+}
+
+// Every message passed between the server and client is an instance of
+// Envelope. An Envelope can contain multiple ScenicMessage instances, so it's important
+// to iterate through them all when you receive an envelope.
+message Envelope {
+  repeated ScenicMessage message = 1; // The messages to be sent
+  required string sender_id = 2; // string description of the message sender
+}
+
+// A ScenicMessage represents a single logical message between a client and server. It is placed within
+// an Envelope. It contains nested messages in serialized form. The message_type field is used to
+// determine the type of the nested data. Not all ScenicMessage instance will have message_data, and
+// some may have multiple, but they will all be of the same type. It depends on the value of message_type. */
+message ScenicMessage {
+  required string message_id        = 1; // id issued by client (and unique to that client) used to track a request. Any reply for that request will have the same id.
+  required MessageType message_type = 2; // type of message
+  repeated bytes message_data       = 3; // nested message data that can be deserialized according to message_type. Some messages do not have nested data, some have multiple records
+  optional string error             = 4; // error message; if present an error has occurred on the server
+  optional string info              = 5; // informational message, typically used to explain why message_data is empty but no error is reported
+}
+
+// TODO REMOVE
+
+// Message to request the list of ScenicMessages that are still active
+message GetActiveRequest {
+}
+
+message GetActiveResult {
+  repeated string message_id = 1; // List containing the ID of a message still being processed on the server
+  required string total_num  = 2; // Total number of messages still being processed
+}
+
+// ================================= Record Types ====================================
+
+// Use a PluginDirectoryRequest message to receive the list of plugins available on the server.
+// A Plugin performs tasks such as SAD, LID, SID & KWS. There may be multiple plugins
+// registered for a given task. A plugin typically has one or more Domains. Plugins
+// contain the code of the recognizer, while Domains correspond to a particular
+// training or adaptation sessions. Domains therefore represent the data/conditions.
+// A plugin and domain together are necessary to perform scoring.  Use the
+message PluginDirectoryRequest {
+}
+
+// The collection of plugins available on the server
+message PluginDirectoryResult {
+  repeated Plugin plugins = 1; // The available plugins
+}
+
+// The description of a plugin
+message Plugin {
+  optional string id      = 1; // The id of the plugin
+  optional string task    = 2; // e.g. LID, SID, SAD, KWS, AED, etc.
+  optional string label   = 3; // Display label for plugin
+  optional string desc    = 4; // A brief description of how the plugin works/technologies it employs.
+  optional string vendor  = 5; // The provider for this plugin.
+  repeated Domain domain  = 6; // The domains owned by this plugin
+  repeated Trait  trait   = 7; // The traits (capabilities) of this plugin
+  // New for OLIVE 5.x
+  optional string version                 = 8;    // The version of this pluing in major.minor.patch format
+  optional string minimum_runtime_version = 9;    // The minimum runtime version required by this plugin
+  optional string minimum_olive_version   = 10;   // The minimjm olive version required by this plugin
+  optional string create_date             = 11;   // The date this plugin was created
+  optional string revision_date           = 12;   // The date this plugin was revised/patched
+  optional string group                   = 13;   // Allows additional grouping of plugins such as Keyword, Speaker, Language, etc
+}
+
+// A description of a domain
+message Domain {
+  optional string id        = 1; // The id of the domain
+  optional string label     = 2; // Display label for the domain
+  optional string desc      = 3; // A brief description of the domain conditions
+  repeated string class_id  = 4; // The list of classes known to this domain
+}
+
+// A trait implemented by a plugin
+message Trait {
+  optional TraitType type = 1; // The trait type
+  repeated OptionDefinition options = 2; // Any options specific to this plugin's implementation of the trait
+}
+
+// The list of possible traits that a plugin can implement
+enum TraitType {
+  GLOBAL_SCORER         = 1;
+  REGION_SCORER         = 2;
+  FRAME_SCORER          = 3;
+  CLASS_ENROLLER        = 4;
+  CLASS_MODIFIER        = 5;
+  SUPERVISED_TRAINER    = 6;
+  SUPERVISED_ADAPTER    = 7;
+  UNSUPERVISED_ADAPTER  = 8;
+  AUDIO_CONVERTER       = 9;
+  AUDIO_VECTORIZER      = 10;
+  CLASS_EXPORTER          = 11;
+  UPDATER                 = 12;
+  LEARNING_TRAIT          = 13;
+  GLOBAL_COMPARER         = 14;
+  TEXT_TRANSFORMER        = 15;
+  AUDIO_ALIGNMENT_SCORER  = 16;
+  PLUGIN_2_PLUGIN         = 17;
+  SCORE_OUTPUT_TRANSFORMER= 18;
+  DATA_OUTPUT_TRANSFORMER = 19;
+  BOUNDING_BOX_SCORER     = 20;
+}
+
+// A plugin TraitOption, describing how a plugin trait is used
+message OptionDefinition {
+  required string name     = 1; // The name/id of the option
+  required string label    = 2; // Display label for the option
+  optional string desc     = 3; // A description of the option
+  required OptionType type = 4; // The type of the option (boolean, choice/drop-down, etc)
+  repeated string choice   = 5; // Optional list of choices used by CHOICE type options
+  optional string default  = 6; // The default option in the list of Options
+}
+
+// Classifies how a OptionDefinition (TraitOption) should be represented in a UI widget
+enum OptionType {
+  BOOLEAN = 1;
+  CHOICE  = 2;
+}
+
+// A name/value property pair
+message OptionValue {
+  required string name  = 1; // The name/id of the option
+  required string value = 2; // The option value as a string
+  optional bytes serialized_value = 3;  // Optionally serialize the value so it can be handled in a native format by the handler - used internally by OLIVE
+  optional string task_filter_name = 4; // An option for workflows used to limit/filter this option to a task with this name (consumer_result_label) in a workflow
+  optional string job_filter_name  = 5; // An option for workflows used to limit/filter this option to a job in a workflow
+}
+
+// Number of bits in each audio sample
+enum AudioBitDepth {
+    BIT_DEPTH_8 = 1;
+    BIT_DEPTH_16 = 2;
+    BIT_DEPTH_24 = 3;
+    BIT_DEPTH_32 = 4;
+}
+
+// Audio encoding types
+enum AudioEncodingType {
+        PCMU8   = 1;
+        PCMS8   = 2;
+        PCM16   = 3;
+        PCM24   = 4;
+        PCM32   = 5;
+        FLOAT32 = 6;
+        FLOAT64 = 7;
+        ULAW    = 8;
+        ALAW    = 9;
+        IMA_ADPCM   = 10;
+        MS_ADPCM    = 11;
+        GSM610      = 12;
+        G723_24     = 13;
+        G721_32     = 14;
+        DWW12       = 15;
+        DWW16       = 16;
+        DWW24       = 17;
+        VORBIS      = 18;
+        VOX_ADPCM   = 19;
+        DPCM16      = 20;
+        DPCM8       = 21;
+}
+
+// Possible report formats
+enum ReportType {
+    PDF = 1;
+    PNG = 2;
+    GIF = 3;
+    JPEG = 4;
+    TIFF = 5;
+}
+
+// Workflow(?) Input Data Types
+enum InputDataType {
+    AUDIO = 1;
+    VIDEO = 2;
+    TEXT  = 3;
+    IMAGE = 4;
+    BINARY = 5; // Generic binary data, useful for workflows that may use the same data in multiple modalities such as video which could be used as video, image, or audio
+}
+
+// Workflow(?) Input Processing Types
+// The various modes for handling (pre-processing) multi-channel prior to submitting to a plugin(s)
+// Other names:  PreprocessChannelMode
+enum MultiChannelMode {
+    MONO     = 1;     // Merge multi-channel input into a mono input before sending to the pluin(s).  This is the default mode:
+    IMMUTABLE = 2;    // All channels in the input are passed to the plugin(s)
+    SPLIT     = 3;    // Process each channel separately, plugin(s) invoked for each channel (the job tasks are duplicated for each channel)
+    SELECTED = 4;     // A specific channel (provided separately) is passed to the plugin
+  // Other names?
+  // MONO --> SINGLE-CHANNEL (MONO-CHANNEL
+  // SELECTED--> SELECTED-SINGLE-CHANNEL, SINGLE-CHANNEL
+  // DEMUX --> MULTI-CHANNEL, EACH-CHANNEL, ALL-CHANNEL (the requested task(s) are applied to each/all channels are
+  // CHANNEL-IGNORED
+}
+
+
+// Represents an audio. Can either refer to a local file or embed an audio buffer directly.
+// The path and audioSamples fields should be treated as mutually exclusive, with one and
+// only one of these fields implemented
+message Audio {
+  optional string path                = 1;    // Path to the audio file represented by this record (if not specified then audio is input as a buffer)
+  optional AudioBuffer audioSamples   = 2;    // Audio included as a buffer (if not specified, then path must be set)
+  optional uint32 selected_channel    = 3;    // Optional - if using multi-channel audio and 'mode' is SELECTED, then this channel is provided to the plugin(s).
+  repeated AnnotationRegion regions   = 4;    // Optional annotated regions for this audio, generally  this means to segment this audio using these regions
+  repeated TaskAnnotation task_annotations = 5; // Optional, introduced for workflows where an audio input may be annotated for a specific task and these annotations should be ignored for other tasks
+  optional string label               = 6;    // Optional - label used to identify this audio input
+  optional uint32 number_channels     = 7;    // Optional - added for OLIVE 5.2 so that OLIVE can internally track the number of channels in a file or buffer
+}
+
+// Audio is contained in a buffer (and the path filed is NOT set in Audio) - by default the audio in the buffer should
+// be PCM encoded, unless the buffer contains a serialized file (unencoded) in which case the 'serialized_file' must
+// be set to true.  If the data has been decoded and is not PCM encoded data, then the encoding field must be specified
+message AudioBuffer {
+  optional uint32 channels          = 1;    // The number of channels contained in data, ignored for serialized buffers
+  optional uint32 samples           = 2;    // The number of samples (in each channel), ignored for serialized buffers
+  optional uint32 rate              = 3;    // The sample rate, ignored for serialized buffers
+  optional AudioBitDepth bit_depth  = 4;    // The number of bits in each sample, ignored for serialized buffers
+  required bytes data               = 5;        // Should be channels * samples long, striped by channels
+  optional bool serialized_file     = 6;        // Optional - true if  data contains a serialized buffer
+  optional AudioEncodingType encoding   = 7;    // Optional - Not yet supported - the audio encoding type.  Assumed to be PCM if not specified.  Ignored for serialized buffer
+
+  // FIXME better support for serialized data buffers
+}
+
+message Video {
+  required BinaryMedia media  = 1;
+}
+
+message Image {
+  required BinaryMedia media  = 1;
+}
+
+// The container for submitting string/text data
+message Text {
+  repeated string text = 1;   // The text (string) submitted for a job that does text processing (i.e. machine translation)
+  optional string label = 2;  // Optional - label used to identify or track this text input
+  // todo optional pathname pointer to a text file that contains one or more lines????
+}
+
+/*
+Information about the audio submitted to the server for preprocessing.
+ */
+// This isn't the best name as preprocessing may or may not have been done
+message PreprocessedAudioResult{
+  required MultiChannelMode mode    = 1;  // The multi-channel handling mode
+  required bool merged              = 2;  // True if the original audio was merged into one channel
+  required uint32 sample_rate       = 3;  // The final sample rate of the processed audio
+  required float duration_seconds   = 4;  // The duration (in seconds) of the processed audio
+  required uint32 number_channels   = 5;
+  optional string label             = 6;  // The  label/name  used in the original audio submission
+  optional string id                = 7;  // The unique ID generated by the server for the submitted audio
+  optional string path              = 8;  // The path name used in the original audio submission (audio submitted as a buffer will not have a path/filename)
+  optional string channel_selected  = 9;  // the channel selected from the original audio (if multi-channel)
+  optional string cache_id          = 10;  // For future use when/if out of band audio submissions are supported
+
+  // I think binary/url/serialize stuff not needed since that would be handled in the DataLoader
+//  required bool binary              = 11;  // True if audio is being passed as a buffer
+//  required bool serialize           = 12;  // True if the original audio was merged into one channel
+//
+  // Add regions/annotations?
+}
+
+message WorkflowBinaryMediaResult {
+  optional string label             = 6;  // The  label/name  used in the original audio submission
+  optional string id                = 7;  // The unique ID generated by the server for the submitted audio
+  optional string path              = 8;  // The path name used in the original audio submission (audio submitted as a buffer will not have a path/filename)
+  optional string channel_selected  = 9;  // the channel selected from the original audio (if multi-channel)
+  optional float frames_per_second = 2;
+}
+
+message WorkflowTextResult {
+  required string text = 1;
+  optional string label = 2;
+}
+
+
+
+// Represents audio preprocessed by a plugin/domain.
+message AudioVector {
+    required string plugin      = 1; // The origin plugin
+    required string domain      = 2; // The origin domain
+    required bytes data         = 3; // The audio vector data, varies by plugin
+    repeated Metadata params    = 4; // Name/value parameter data generated by the plugin and needed for later processing
+}
+
+/**
+* Request region scoring for the specified plugin/domain.  The plugin must implement the RegionScorer trait to handle this request
+* If this request is successful, then one set of scores is returned since the audio submission is
+* assumed to be mono.  If submitting multichannel audio then the audio is merged (unless a channel specified in the Audio message, then that
+* channel is used) to produce one set of region scores.
+*/
+message RegionScorerRequest {
+  required string plugin      = 1; // The plugin to score
+  required string domain      = 2; // The domain
+  optional Audio audio        = 3; // The audio to analyze/score, Optional as of OLIVE 5.0 since Audio can be specified as part of a workflow
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify the classes to be scored
+}
+
+// The region score result
+message RegionScorerResult {
+  repeated RegionScore region = 1; // The scored regions
+}
+
+// The basic unit a region score.  There may be multiple RegionScore values in a RegionScorerResult
+message RegionScore {
+  required float   start_t  = 1; // Begin-time of the region (in seconds)
+  required float   end_t    = 2; // End-time of t he region (in seconds)
+  required string  class_id = 3; // Class ID associated with region
+  optional float   score    = 4; // Optional score associated with the class_id label
+}
+
+/** Request global scoring using the specified plugin.  The plugin must implement the GlobalScorer trait to handle this request.
+* If this request is successful, then one set of scores is returned since the audio submission is
+* assumed to be mono.  If submitting multichannel audio then the audio is merged (unless a channel specified in the Audio message, then that
+* channel is used) to produce one set of global scores.
+*/
+message GlobalScorerRequest {
+  required string plugin      = 1; // The plugin to invoke
+  required string domain      = 2; // The domain
+  optional Audio audio        = 3; // The audio to analyze/score. Either audio or vector must be set (unless part of a workflow, where the audio is provided separatly)
+  optional AudioVector vector = 4; // The preprocessed audio vector to analyze/score. Either audio or vector must be set.
+  repeated OptionValue option = 5; // Any options specified
+  repeated string class_id    = 6; // Optionally specify the classes to be scored
+}
+
+// The result from a GlobalScorerRequest, having zero or more GlobalScore elements
+message GlobalScorerResult {
+  repeated GlobalScore score = 1; // The class scores
+}
+
+// The global score for a class
+message GlobalScore {
+  required string class_id      = 1; // The class
+  required float  score         = 2; // The score associated with the class
+  optional float  confidence    = 3; // An optional confidence value when part of a calibration report
+  optional string comment       = 4; // An optional suggested action when part of a calibration report
+}
+
+// Request the comparison of two audio submission.  The plugin must implement the GlobalComparer trait to handle this request
+message GlobalComparerRequest {
+  required string plugin      = 1; // The plugin to invoke
+  required string domain      = 2; // The domain
+  required Audio audio_one    = 3; // One of two audio submissions to analyze/score.
+  required Audio audio_two    = 4; // One of two audio submissions to analyze/score.
+  repeated OptionValue option = 5; // Any options specified
+  repeated string class_id    = 6; // Optionally specify the classes to be scored   // todo remove!
+}
+
+// The result of a GlobalComparerRequest
+message GlobalComparerResult {
+  repeated Metadata results            = 1; // The metadata/scores returned from a global compare analysis
+  repeated GlobalComparerReport report = 2; // A comparison report generated by the plugin
+}
+
+
+// The visual representation of a global comparison
+message GlobalComparerReport {
+    required ReportType type    = 1;    // The type of report (normally a PDF)
+    required bytes report_data  = 2;    // The serialized report
+}
+
+/**
+* Request frame scoring using the specified plugin and audio.
+* The plugin must implement the FrameScorer trait to handle this request.
+* If this request is successful, then one set of scores is returned since the audio submission is  assumed to be mono.  If submitting multichannel audio then the audio is merged (unless a channel specified in the Audio message, then that channel is used) to produce one set of frame scores.
+*/
+message FrameScorerRequest {
+  required string plugin      = 1; // The plugin to invoke
+  required string domain      = 2; // The domain
+  optional Audio audio        = 3; // The audio to analyze/score, Optional as of OLIVE 5.0 since Audio can be specified as part of a workflow
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify the classes to be scored
+}
+
+// The results from a FrameScorerRequest
+message FrameScorerResult {
+  repeated FrameScores result = 1; // List of frame scores by class_id
+}
+
+// The basic unit of a frame score, returned in a FrameScorerRequest
+message FrameScores {
+  required string class_id     = 1; // The class id to which the frame scores pertain
+  required int32  frame_rate   = 2; // The number of frames per second
+  required double frame_offset = 3; // The offset to the center of the frame 'window'
+  repeated double score        = 4 [packed=true]; // The frame-level scores for the class_id
+}
+
+// Request a modification of a class for the specified plugin.  The plugin must implement the ClassModifier trait to handle this request
+message ClassModificationRequest {
+  required string       plugin          = 1; // The plugin
+  required string       domain          = 2; // The domain
+  required string       class_id        = 3; // The id of the class being enrolled/modified
+  repeated Audio        addition        = 4; // List of Audio, action pairs to apply to the class
+  repeated Audio        removal         = 5; // List of Audio, action pairs to apply to the class
+  repeated AudioVector  addition_vector = 6; // List of preprocessed audio vector to apply to the class
+  optional bool         finalize        = 7 [default = true]; // Whether or not to finalize the class. You can send multiple ClassModificationRequests and only finalize on the last request for efficiency.
+  repeated OptionValue  option          = 8; // Any modification options
+  // Added in 5.3 for Image/Video enrollment (specified for image, video, or audio enrollment in a more generic way):
+  repeated BinaryMedia  addition_media = 9; // List of generic binary data for class enrollment
+  repeated BoundingBox bounding_box     = 10;
+}
+
+// The result of a ClassModificationRequest
+message ClassModificationResult {
+  repeated AudioResult addition_result          = 1; // Provides feedback about the success/failure of individual audio additions
+  repeated AudioResult removal_result           = 2; // Provides feedback about the success/failure of individual audio removals
+  repeated AudioResult vector_addition_result   = 3; // Provides feedback about the success/failure of individual audio vector additions
+  repeated DataResult binary_addition_result    = 4; // Provides feedback about the success/failure of individual binary data additions
+}
+
+
+// The feedback/description of class modification for a result in a ClassModificationResult message
+message AudioResult {
+  required bool   successful  = 1; // Whether or not the individual audio succeeded
+  optional string message     = 2; // Description of what occurred on this audio
+  optional string label       = 3; // The optional name/label of the audio
+}
+
+message DataResult {
+  required bool   successful  = 1; // Whether or not the individual audio succeeded
+  optional string message     = 2; // Description of what occurred on this audio
+  optional string label       = 3; // The optional name/label of the data
+
+}
+
+// Request removal of a class in the specified plugin/domain
+message ClassRemovalRequest {
+  required string     plugin     = 1; // The plugin
+  required string     domain     = 2; // The domain
+  required string     class_id   = 3; // The id of the class to be removed
+}
+
+// Acknowledgment that a ClassRemovalRequest was received
+message ClassRemovalResult {
+}
+
+message ScoreOutputTransformRequest {
+  required string plugin      = 1; // The plugin (pimiento) to invoke
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify that only these classes be transformed
+  required TraitType trait_input  = 8;
+  required TraitType trait_output = 9;
+}
+
+// I don't think we should support this?
+message ScoreOutputTransformResult {
+  //  repeated PluginAnalysis result = 1; // List of plugin analysis results
+  optional string plugin      = 1; // The plugin invoked
+  optional string domain      = 2; // The domain invoked
+  // The transformed score
+  optional MessageType message_type   = 3;  // the type of message  (FrameScorer, RegionScorer, etc)
+  optional bytes message_data         = 4;  // the message data, deserialized according to message type.
+  repeated OptionValue opt = 5; // List of additional optioanl options created when tansforming the scores
+}
+
+message DataOutputTransformRequest {
+  required string plugin      = 1; // The plugin (pimiento) to invoke
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify that only these classes be transformed
+  required InputDataType data_output = 9; // Transform data/options into this new data type
+}
+
+// I don't think we should support this?
+message DataOutputTransformResult {
+  // An empty message is created for an error
+  optional string plugin      = 1; // The plugin invoked
+  optional string domain      = 2; // The domain invoked
+  // The transformed data
+  optional InputDataType data_type   = 3;  // the type of message  (Audio, Text, etc)
+  optional bytes message_data         = 4;  // the message data, deserialized according to message type.
+  repeated OptionValue opt = 5; // List of additional optioanl options created when tansforming the scores
+}
+
+message Plugin2PluginRequest {
+  required string plugin      = 1; // The plugin (pimiento) to invoke
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify the classes to be scored
+}
+
+// The results from a plugin to plugin pimimento (which should be private so not sure we actually want to expose this?)
+message Plugin2PluginResult {
+//  repeated PluginAnalysis result = 1; // List of plugin analysis results
+  optional string plugin      = 1; // The plugin to invoke
+  optional string domain      = 2; // The domain
+  optional double score       = 3; // An optional score used for selecting this plugin/domain
+  repeated OptionValue result = 4; // List of additional options returned by the analysis
+}
+
+// The basic unit of a frame score, returned in a FrameScorerRequest
+message PluginAnalysis {
+  required string plugin      = 1; // The plugin to invoke
+  required string domain      = 2; // The domain
+  optional double score       = 3; // An optional score used for selecting this plugin/domain
+  repeated OptionValue result = 4; // List of additional options returned by the analysis
+}
+
+
+// Request a plugin be pre-loaded to optimize later score request(s)
+message LoadPluginDomainRequest {
+  required string     plugin     = 1; // The plugin
+  required string     domain     = 2; // The domain
+}
+
+// Acknowledgment that a plugin is being loaded
+message LoadPluginDomainResult {
+    required bool successful = 1; // True if the request is being loaded (but receipt of this message does not guarantee the plugin has finished loaded)
+}
+
+// Current status of the OLIVE server, sent as part of a Heartbeat message.
+message ServerStats {
+  required float        cpu_percent       = 1;  // The current percentage of CPU used
+  required float        cpu_average       = 2;  // The average CPU percentage used since the server was started
+  required float        mem_percent       = 3;  // The percentage of memory used
+  required float        max_mem_percent   = 4;  // The most memory used since the server was started
+  required float        swap_percent      = 5;  // The current swap used
+  required float        max_swap_percent  = 6;  // The max (most) swap space used since the server was started
+  required uint32       pool_busy         = 7;  // The number of jobs currently running on the server
+  required uint32       pool_pending      = 8;  // The number of jobs queued on the server
+  required uint32       pool_finished     = 9;  // The number of jobs completed
+  required bool         pool_reinit       = 10; // The number of jobs that need to be re-ran
+  optional uint32       max_num_jobs      = 11; // The max number of concurrent jobs
+  optional string       server_version    = 12; // The current version of the server
+}
+
+// A "heartbeat" Message, acknowledging that the server is running, this message is continuously broadcast by the
+// server on it's status port (this is the only message sent on the status port)
+message Heartbeat {
+  optional ServerStats  stats   = 1;    // The current status of the server, optional since status is not available when the server first starts, but a heartbeat is still sent
+  required string       logdir  = 2;    // The location where the server writes it log files
+}
+
+
+// Request a simple server status message, similar to a heartbeat except the request reply is sent on the request port
+// and is requested by the client
+message GetStatusRequest {
+}
+
+// The result of a GetStatusRequest
+message GetStatusResult {
+  required uint32 num_pending 	= 1; // The number of pending jobs
+  required uint32 num_busy  	  = 2; // the number of active jobs
+  required uint32 num_finished  = 3; // The number of finished jobs
+  optional string version       = 4; // The OLIVE server version
+}
+
+
+// Request preprocessing of this audio submission, which is part of a training set.  Supervised training is
+// required.  For supervised training set either class_id is OR class_id, start_t, and end_t.  Training should be
+// finalized by calling SupervisedTrainingRequest.  Unsupervised training is NOT supported.  Plugins must support
+// the SupervisedTrainer trait to handle this request
+message PreprocessAudioTrainRequest {
+    required string     plugin      = 1; // The plugin
+    required Audio      audio       = 3; // The submitted Audio
+    required string     train_space = 4; // A unique name for the client where pre-processed data is stored.  This could be a UUID used for all requests in set of training files
+    optional string     class_id    = 5; // The id of the class annotation being preprocessed (supervised training)
+    optional float     start_t     = 6; // Begin-time of the region (in seconds) - NOT currently supported
+    optional float     end_t       = 7; // End-time of the region (in seconds) - NOT currently supported
+}
+
+// The result of a PreprocessAudioTrainRequest
+message PreprocessAudioTrainResult {
+    required string audio_id = 1;   // The ID of the preprocessed audio
+    required double duration = 2;   // The duration of the audio processed
+}
+
+// Request preprocessing of this audio submission, which may be part of an adaptation set.  Adaptation can be unsupervised (neither class_id, start_t, and end_t set)
+// or supervised by setting class_id or class_id, start_t, and end_t.  Adaptation should be finalized by calling either
+// SupervisedAdaptationRequest or UnsupervisedAdaptationRequest.  Plugins must support either the SupervisedAdapter
+// or UnsupervisedAdapter trait to handle this request.
+message PreprocessAudioAdaptRequest {
+    required string     plugin      = 1; // The plugin
+    required string     domain      = 2; // The domain
+    required Audio      audio       = 3; // The submitted audio
+    required string     adapt_space = 4; // A unique name for the client where pre-processed data is stored
+    optional string     class_id    = 5; // The id of the class annotation being preprocessed (supervised training)
+    optional float     start_t     = 6; // Begin-time of the region (in seconds) - NOT currently supported
+    optional float     end_t       = 7; // End-time of the region (in seconds) - NOT currently supported
+}
+
+// The result of a PreprocessAudioAdaptRequest
+message PreprocessAudioAdaptResult {
+    required string audio_id = 1;   // The ID of the preprocessed audio
+    required double duration = 2;   // The duration of the audio
+}
+
+// A single, annotated region
+message AnnotationRegion {
+    required float     start_t     = 1; // Begin-time of the region (in seconds)
+    required float     end_t       = 2; // End-time of the region (in seconds)
+}
+
+// A set of audio annotations for a specific audio submission
+message AudioAnnotation {
+    required string audio_id            = 1;  // The audio ID returned in a PreprocessAudioAdaptResult or PreprocessAudioTrainResult message
+    repeated AnnotationRegion regions   = 2;  // The set of annotations
+}
+
+// Set of annotations for a class
+message ClassAnnotation {
+    required string class_id             = 1;   // The class ID (such as speaker name or language name)
+    repeated AudioAnnotation annotations = 2;   // the set of all audio annotations for this class.
+}
+
+// Set of annotations to use in a workflow, so that different audio region annotations can be assigned to the
+// same audio input for a specific task.
+message TaskAnnotation {
+  required string task_label            = 1;   // The label (consumer_result_label ID) for the task that will use these annotations
+  repeated AnnotationRegion regions     = 2;   // the set of all audio annotations for this class.
+  optional string region_label          = 3;  // An optional label this set of annotations, if not specifed 'region' is used
+}
+
+// Generic annotation for any binary media
+message BinaryAnnotation {
+  optional string task_label            = 1;   // When used in a workflow, restrict these annotations to this task (consumer_result_label).  If not set, these annotaions are used for all task in a workflow
+  repeated AnnotationRegion regions     = 2;   // audio annotations
+  repeated BoundingBox bbox             = 3;   // Optional regions for visual media
+  optional string region_label          = 4;  // An optional label this set of annotations, if not specified 'region' is used
+}
+
+// Finalize training of the specified plugin using audio preprocessed using calls to PreprocessAudioTrainRequest.
+// The plugin must implement the SupervisedTrainer to handle this request
+message SupervisedTrainingRequest {
+
+    required string plugin                      = 1; // The plugin to invoke
+    required string new_domain                  = 2; // The new domain name
+    repeated ClassAnnotation class_annotations  = 3; // The annotations to use for training, audio annotations are created via PreprocessAudioTrainRequest calls
+    required string train_space                 = 4; // The location (adapt space) where pre-processed data is stored (created via calls to PreprocessAudioTrainRequest)
+}
+
+// Acknowledgment that training successfully completed
+message SupervisedTrainingResult {
+    required string new_domain = 1; // Confirmation of the new domain name
+}
+
+// Finalize adaptation of the specified plugin/domain using audio preprocessed using calls to PreprocessAudioAdaptRequest
+// The plugin must implement the SupervisedAdapter trait to handle this request.
+message SupervisedAdaptationRequest {
+    required string plugin                      = 1; // The plugin to invoke
+    required string domain                      = 2; // The domain to adapt
+    required string new_domain                  = 3; // the new domain name
+    repeated ClassAnnotation class_annotations  = 4; // The annotations to use for adaptation, audio annotations are created via PreprocessAudioAdaptRequest calls
+    required string adapt_space                 = 5; // The location (adapt space) where pre-processed data is stored
+}
+
+// Acknowledgment that adaptation successfully completed
+message SupervisedAdaptationResult {
+    required string new_domain = 1; // Confirmation of the new domain name
+}
+
+// Finalize adaptation of the specified plugin/domain using audio preprocessed via calls to PreprocessAudioAdaptRequest
+// and located in adapt_space.  The plugin must implement the UnsupervisedAdapter trait to handle this request
+message UnsupervisedAdaptationRequest {
+    required string plugin      = 1; // The plugin to invoke
+    required string domain      = 2; // The domain to adapt
+    required string new_domain  = 3; // The new domain
+    required string adapt_space = 4; // The location (adapt space) where pre-processed data is stored
+
+}
+
+// Acknowledgment that adaptation successfully completed
+message UnsupervisedAdaptationResult {
+    required string new_domain = 1; // Confirmation of the new domain name
+}
+
+// Unload (remove from memory) a previously loaded plugin.  Use to free resources on the server or force reloading of a plugin/domain
+message RemovePluginDomainRequest {
+    required string plugin = 1; // The plugin to remove
+    optional string domain = 2; // The domain to remove, if omitted all domains removed for this plugin.
+}
+
+// Acknowledgment that a plugin/domain has been removed (unloaded)
+message RemovePluginDomainResult {
+    required bool successful = 1; // True if the plugin was been removed
+}
+
+// Request enhancement (modification) of the submitted audio.  The plugin must support the AudioConverter trait to support this request
+message AudioModificationRequest {
+    required string 			  plugin              = 1;    // The plugin
+    required string    		  domain              = 2;    // The domain
+    optional uint32 	  		requested_channels 	= 3;	// Convert audio to have this number of channels
+    optional uint32 	  		requested_rate   	  = 4;  	// Convert audio to this sample rate
+    repeated Audio      		modifications 		  = 5;	// List of Audio, action pairs to apply to the class - may have to limit to one audio submission per request, not sure how to handle multiple results
+    repeated OptionValue    option              = 6; 	// Any options specified
+}
+
+//fixme: AudioModification should be a repeated field?
+
+// The result of a AudioModificationRequest, having 1 or more AudioModification messages, if the request was successful
+message AudioModificationResult {
+    required bool  		    successful 	            = 1; // Whether or not the individual audio modification succeeded
+    repeated AudioModification modification_result  = 2; // Provides both the converted audio nad feedback about the success/failure of individual audio additions.
+}
+
+// The product of a successful AudioModificationRequest, which contains the converted audio plus information about the conversion
+message AudioModification {
+    required AudioBuffer 	audio 		= 1; // The transformed audio
+    required string 		message		= 2; // Description of how this audio was transformed, or an error description.  Not sure if needed?
+    repeated Metadata       scores      = 3; // Zero or more scores (metadata) about the modified audio.  Metadata is a list of name/value pairs.
+}
+
+
+// Request the transformation of a text/string using MT
+message TextTransformationRequest {
+  required string plugin      = 1; // The plugin to invoke
+  required string domain      = 2; // The domain
+  optional string text        = 3; // The string text to analyze/score, Optional as of OLIVE 5.0 since data input(s) can be specified as part of a workflow
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify the classes to be scored
+}
+
+// The text value returned in a TextTransformationResult
+message TextTransformation {
+  required string class_id  = 1;         // A classifier for this result, usually just 'text'
+  required string transformed_text = 2;  // The text result
+}
+
+//  The response to a TextTransformationRequest
+message TextTransformationResult {
+  repeated TextTransformation transformation = 1;
+}
+
+// Request the alignment of two or more audio inputs
+message AudioAlignmentScoreRequest {
+  required string plugin      = 1; // The plugin to invoke
+  required string domain      = 2; // The domain
+  repeated Audio audios       = 3; // The audio to analyze/score, Optional as of OLIVE 5.0 since Audio can be specified
+  // as part of a workflow. If specified there should be two or more audio inputs
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify the classes to be scored
+}
+
+// A score in an AudioAlignmentScoreResult
+message AudioAlignmentScore {
+  required string reference_audio_label = 1;    // The source or reference audio name (file 1)
+  required string other_audio_label     = 2;    // The name of the audio input in comparison  (file 2)
+  required float shift_offset           = 3;    // shift offset between the audion in the reference and
+  required float confidence             = 4;    // The confidence of this score
+}
+
+// The result of a AudioAlignmentScoreRequest
+message AudioAlignmentScoreResult {
+  repeated AudioAlignmentScore scores = 1;
+}
+
+// Data types supported in an AudioModificationResult's metadata:
+ enum MetadataType {
+     STRING_META    = 1;
+     INTEGER_META   = 2;
+     DOUBLE_META    = 3;
+     BOOLEAN_META   = 4;
+     LIST_META      = 5;
+}
+
+
+// A "metadata" score.  The value is generic and can be one of the supported MetadataTypes.
+// The recipient must decode the value into the type specified by the MetadataType.
+//message MetadataScore {
+//
+//    required MetadataType type  = 1;  // Indicates the type of this metadata, so it can be deserialized to the appropriate type
+//    required string name        = 2;  // The name (key) for this metadata
+//    repeated bytes value        = 3;  // The value is one of MetadataType, must be deserialized by the client into the type specified by type
+//}
+
+// Value as a string
+message StringMetadata {
+    required string value       = 1;
+}
+
+// Value as an integer
+message IntegerMetadata {
+    required int32 value       = 1;
+}
+
+// Value as a double
+message DoubleMetadata {
+    required double value       = 1;
+}
+
+// Value as boolean
+message BooleanMetadata {
+    required  bool value       = 1;
+}
+
+// Value as list of Metadata values
+message ListMetadata {
+    repeated MetadataType type  = 1;  // The type for the corresponding element
+    repeated bytes value        = 2;  // The value is one or more MetadataType elements, each element must be deserialized by the client into the type specified by type.  For example, for the type, STRING_META, deserialize data as StringMetadata
+}
+
+
+// The parent container for Metadata so that typed name/value properties can be transported in a generalized way
+message Metadata {
+    required MetadataType type  = 1;  // Indicates the type of this metadata, so it can be deserialized to the appropriate type
+    required string name        = 2;  // The name (key) for this metadata
+    required bytes value        = 3;  // The value is one of MetadataType, must be deserialized into the type specified by type
+}
+
+// ****************************************
+// Audio Vectorize Messages (AudioVectorizer):
+// ****************************************
+
+// Request one or more audio submissions be vectorized (preprocesssed) by the specified plugin.  The resulting
+// vectorized audio can only be handled by the same plugin.  A plugin must support the AudioVectorizer to support this request
+message PluginAudioVectorRequest {
+  required string     plugin        = 1; // The plugin
+  required string     domain        = 2; // The domain
+  repeated Audio      addition      = 3; // List of Audio to process
+}
+
+// The result of a PluginAudioVectorRequest, containing a set of VectorResults
+message PluginAudioVectorResult {
+  repeated VectorResult vector_result = 1; // The results of processing the submitted audio.  One result per audio addition.
+}
+
+// The status of the vector request, and if successful includes an AudioVector
+message VectorResult {
+  required bool   successful            = 1; // Whether or not the audio was successfully processed
+  optional string message               = 2; // Description of what occurred to cause an error
+  optional AudioVector audio_vector     = 3; // If successful, the vectorized audio
+
+}
+
+
+
+// ****************************************
+// Enrollment Export/Import Messages:
+// ****************************************
+
+// Exports an existing class enrollment (i.e. speaker enrollment) from the server for the specified class_id.  The
+// plugin must support the ClassExporter trait to handle this request.
+message ClassExportRequest {
+  required string     plugin            = 1; // The plugin
+  required string     domain            = 2; // The domain
+  required string     class_id         = 3; // The Id of the class model to export
+}
+
+// The result of an enrollment export
+message ClassExportResult {
+  required bool   successful          = 1; // Whether or not the individual audio succeeded
+  optional string message             = 2; // Description of what occurred to cause an error
+  optional EnrollmentModel enrollment = 3; // If successful, then this is the exported model for the specified class.
+}
+
+// Used to import an enrollment model (exported via a ClassExportRequest).  Only plugins that support the
+// ClassExporter trait can handle this request.  Only import an enrollment into the same plugin AND domain as previously
+// exported.
+message ClassImportRequest {
+  required string           plugin          = 1; // The plugin
+  required string           domain          = 2; // The domain
+  optional string           class_id        = 3;  // Import the model using this class name, instead of the original name
+  required EnrollmentModel  enrollment      = 4; // the enrollment to import
+}
+
+//fixme:  include the name of the imported class?
+
+// The status of a ClassImportRequest
+message ClassImportResult {
+  required bool   successful           = 1; // Whether or not the import succeeded
+  optional string message              = 2; // Description of what occurred to cause an error
+}
+
+
+// An enrollment model for a specific plugin and domain.  This is used to save a current enrollment or restore a class
+// enrollment via a ClassImportRequest.  This model is not used as an AudioVector in a scoring requests.
+message EnrollmentModel {
+    required string plugin      = 1; // The origin plugin
+    required string domain      = 2; // The origin domain
+    required string class_id    = 3;  // the class_id of the enrollment
+    required bytes data         = 4;  // The enrollment model data
+    repeated Metadata params    = 5;  // Name/value parameter data generated by the plugin and needed for later processing
+}
+
+
+
+// ****************************************
+// Plugin Update Messages (UpdateTrait):
+// ****************************************
+
+
+// Used to request the status for a Plugin that supports the Update trait
+message GetUpdateStatusRequest {
+    required string plugin      = 1; // The  plugin
+    required string domain      = 2; // The  domain
+}
+
+//  The result of a GetUpdateStatusRequest message.
+message GetUpdateStatusResult {
+    required bool update_ready      = 1; // True if the plugin has determined it is ready for an update
+    optional DateTime last_update   = 2; // The date of the last update, if any
+    repeated Metadata params        = 3; // Zero or more Metadata values describing the update status of the plugin.  Metadata is a typed list of name/value pairs.
+}
+
+// Used to request an update of a Plugin that supports the Update trait.  Use GetUpdateStatusRequest to check if a
+// plugin is ready for an update, otherwise this request is ignored by the server/plugin
+message ApplyUpdateRequest {
+    required string plugin      = 1; // The plugin to apply the update
+    required string domain      = 2; // The domain
+    repeated Metadata params    = 5;  // Name/value options - options depend on plugin
+}
+
+// Response to an request to update a plugin.  This message is immediately returned after an ApplyUpdateRequest,  as
+// the updating process can take an extended time range to complete.
+//
+message ApplyUpdateResult {
+    required bool successful = 1; // True if the plugin is being updated
+}
+
+// Date and time info
+message DateTime {
+    required uint32 year         = 1; // Year
+    required uint32 month        = 2; // Month
+    required uint32 day          = 3; // Day
+    required uint32 hour         = 4; // Hour
+    required uint32 min          = 5; // Minute
+    required uint32 sec          = 6; // Seconds
+
+}
+
+
+// ****************************************
+// New Data Containers for OLIVE 5.3 to support more generic data types
+// ****************************************
+
+// A generic container for sending  visual, non-audio, buffered/file based data to OLIVE (imagery?)
+message BinaryMedia {
+  // Either path or buffer must be set!
+  optional string path                = 1;    // Path to the data file represented by this record (if not specified then data is input as a buffer)
+  optional BinaryBuffer buffer       = 2;    // Data included as a serialized buffer (if not specified, then path must be set)
+
+  repeated BinaryAnnotation regions   = 3;      // Optional annotated regions for the data - repeated in case we need multiple region (like 'region', 'speaker') but not fully supported yet
+  optional uint32 selected_channel    = 4;    // Optional - if using multi-channel data then this channel should be used for processing.
+  optional string label               = 5;    // Optional - label used to identify this data input
+}
+
+// Imagery data sent as a serialzied buffer - sending decoded image data is not supported
+message BinaryBuffer {
+  required bytes data               = 1;        // For audio, should be channels * samples long, striped by channels
+  optional uint32 frames_per_second = 2;
+}
+
+message BoundingBoxScorerRequest{
+  required string plugin        = 1; // The plugin to score
+  required string domain        = 2; // The domain
+  optional BinaryMedia data      = 3; // The image or video to analyze/score, Optional as of OLIVE 5.0 since Data can be specified as part of a workflow
+  repeated OptionValue option   = 4; // Any options specified
+  repeated string class_id      = 5; // Optionally specify the classes to be scored
+
+}
+
+message BoundingBoxScorerResult{
+  repeated BoundingBoxScore region = 1;
+}
+
+message BoundingBoxScore {
+  required string class_id    = 1;  // The class ID associated with this region where the object is detected (default is 'face' for non-enrollable box scores)
+  required BoundingBox bbox   = 2;  // Defines the area where the object is detected.. is this a single or repeated field???
+  required float score        = 3;  // score associated with the identified object
+
+  // Video will have either a timestamp or start/end time (seconds) of when the object was identified.
+  // For FDI and FRI (image) there will be no regions.  FDV has a single timestamp, and FRV has a start/end time region.
+  optional AnnotationRegion time_region = 4;
+}
+
+message BoundingBox {
+  required int32 x1   =1;
+  required int32 y1   =2;
+  required int32 x2   =3;
+  required int32 y2   =4;
+}
+
+
+// ================================= Workflows  ====================================
+
+
+enum WorkflowType {
+  WORKFLOW_ANALYSIS_TYPE    = 1;
+  WORKFLOW_ENROLLMENT_TYPE  = 2;
+  WORKFLOW_ADAPT_TYPE       = 3;    // NOT SUPPORTED
+  WORKFLOW_UNENROLLMENT_TYPE       = 4;
+}
+
+enum InputType {
+  FRAME = 1;
+  REGION = 2;
+}
+
+// The types of selection/filtering supported for selecting an abstract workflow task
+enum SelectionType {
+  SELECTION_IS        = 1;  // string name must fully match criteria value
+  SELECTION_CONTAINS  = 2;  // string name must contain the criteria value
+  SELECTION_STARTS    = 3;  // string name must begin with criteria value
+  SELECTION_ENDS      = 4;  // string name must end with criteria value
+  // NON-String criteria values - these are kind of odd, as they are aggregate criteria that must be applied to
+  // to the set of plugins - maybe we should break these out but then the message gets real ugly...
+  SELECTION_NEWEST_VERSION  = 5;  // use the newest version
+  SELECTION_OLDEST_VERSION  = 6;  // use the oldest version
+  // Criteria for plugin results, don't use yet
+  SELECTION_GREATER_THAN        = 7;  // numerical value must be greater than criteria value
+  SELECTION_GREATER_THAN_EQUAL  = 8;  // numerical value must be greater than or equal to criteria value
+  SELECTION_LESS_THAN           = 9;  // numerical value must be less than criteria value
+  SELECTION_LESS_THAN_EQUAL     = 10; // numerical value must be less or equal to criteria value
+  SELECTION_EQUAL               = 11;  // numerical values must match (use IS to match strings)
+}
+
+// Options for handling Workflows with multiple WorkflowJobs.  Where is a job is a set of tasks operating on
+// a common data input
+enum WorkflowJobType {
+  MERGE       = 1;  // Attempt to create one OLIVE job for all WorkflowJobs
+  PARALLEL    = 2;  // Create an OLIVE job for each WorkflowJob that may run in parallel and no not share
+                    // task results
+  SEQUENTIAL  = 3;  // Execute WorkflowJobs in sequence, with the results from the previous job(s) feeding into
+                    // subsequent jobs.
+}
+
+// Message used to classify how a plugin/domain is selected
+message SelectionCriteria {
+  required SelectionType type = 1;   // the type of selection filtering to apply
+  optional string value       = 2;   // Specified when selection type is matching a string value
+}
+
+// Message used to filter plugins/domains from a set of plugin scores.  Can be used to find match a result from a
+// completed plugin job and then use the plugin/domain criteria to finalize the plugin selection.
+// Assumes plugin results have an id/name and an optional score that.  Should a score match the expected name/value
+// in this message then the the plugin/domain criteria at bottom can be used to make a final plugin selection
+message ConditionalSelectionCriteria {
+  // Use the 'result' selection criteria to find a matching result then use the plugin/domain criteria to
+  // finalize the plugin selection.  Lets us do somethig like: if result matches 'eng' and value is >= 0
+  required string expected_result_name      = 1;
+  required SelectionCriteria name_criteria  = 2;  // IS eng-uk, START eng, etc
+
+  // Optional threshold for result selection
+  optional float expected_value = 5;            // for a result value 0
+  optional SelectionCriteria value_criteria = 6; // this  >=  expected value
+
+  // If result criteria above is met, then use this criteria to finalize the plugin/domain selection
+  repeated SelectionCriteria plugin_criteria = 7;  // likely have already have selected the plugin from the min criteria
+  repeated SelectionCriteria domain_criteria = 8;  // filter domain options - STARTS with eng-mul
+}
+
+// Used to map a result or option in a workflow to the option name used by a plugin  (i.e. SAD_FRAMES --> SAD)
+message OptionMap {
+  required string workflow_keyword_name     = 1;  // The name (key) for this option used by the workflow
+  required string plugin_keyword_name       = 2;  // The corresponding name used by the plugin (or other node)
+}
+
+
+
+
+/*
+A WorkflowDefinition is distributed to clients and describes one or more OLIVE tasks to perform.  These tasks, are
+grouped into jobs, which are then grouped into orders, where an order can be one of the WorkflowTypes (ANALYSIS,
+ENROLLMENT, and/or ADAPT). Only one type of order per Workflow is supported (i.e. A workflow can only support
+one analysis order, but may also support one enrollment and/or adaptation order).
+
+The implementation details described in a job(s) is flexible in order for the WorkflowDefinition to be deployed to as
+many systems as possible since the WorkflowDefinition is not server specific.  A WorkflowDefinition must be submitted to an
+ OLIVE server to actualize an executable Workflow.
+
+An actualized Workflow defines the plugins and other implementation detials necessary for an OLIVE server to execute
+the workflow job(s).   Actualized workflows may be differ from server to server, which is possible when a
+WorkflowDefinition has tasks that are specified as AbstractWorkflowPluginTask tasks.  These AbstractWorkflowPluginTasks
+allow the characteristics of a plugin to be specified without specifying the exact plugin and domain name.  The process
+of actualizing a WorkflowDefinition converts these abstract tasks into a concrete plugin task (i.e. FrameScorerRequest).
+
+NOTE: For OLIVE 5.0 only one Job in a WorkflowDefinition Order is supported.
+*/
+
+message WorkflowDefinition {
+  // A Workflow can have upto 3 orders, one for Analysis, Enrollment, and/or Unenrollment.  Each order can have multiple
+  // jobs, where a job is one or more tasks associated with data input(s).
+
+  repeated WorkflowOrderDefinition order   = 1;  // A collection of jobs grouped by 'order' where an order is
+  // an analysis, enrollment, or unenrollment workflow
+
+  required bool actualized = 2;   // If true, this WorkflowDefinition was submitted to an OLVE server, which verified it
+  // was capable of running this workflow.
+
+  // Metadata about this Workflow Definition
+  optional string version  = 5;
+  optional string description = 6;
+  optional DateTime created = 7;
+  optional DateTime updated = 8;    // Actualized date?
+  optional string server_id = 9;  // When supported this is the ID of the server that actualized this WD
+
+}
+
+// A Workflow recipe contains one or more jobs to perform an analysis, enrollment, or adaption.  Where each job has
+// one or more tasks.  (Currently only one job per order/recipe is supported)
+message WorkflowOrderDefinition {
+  // add name/id?
+  required WorkflowType workflow_type   = 1;  // The type of workflow to perform (analysis, enrollment, adapt)
+  repeated JobDefinition job_definition = 2;  // The list of work (jobs) to be done for this workflow
+  optional string order_name            = 3;  // The optional name of this order
+}
+
+
+// The basic work group in a Workflow, defines the tasks to run for the data input(s)
+message JobDefinition {
+  required string job_name = 1;   // This should be a unique name within the workflow
+  repeated WorkflowTask tasks = 2;  // The list of work to be done for this workflow (workflow job nodes)
+  required DataHandlerProperty data_properties = 3;  // Could a job consume multiple data types?  # todo make repeated?
+  optional string description = 4;  // An optional description of this job
+
+  // Internal fields:
+  optional WorkflowJobType processing_type = 5;  // SEQUENTIAL, PARALLEL, MERGE
+  // Most jobs are basically deterministic in that they will produce the same tasks each time they are ran on the
+  // same OLIVE server, but some jobs evaluate the data input to determine the tasks that are used by downstream tasks
+  optional bool conditional_job_output = 6;   // True, if this job uses a 'conditional' task to dynamically provide input for a subsequent job (such as determining a plugin/domain for a task).  The job(s) that use this ouptut must specify the dynamic_job_name as the name of the conditional job
+  repeated string dynamic_job_name = 7;   // If specified, then this job requires the results from this previous (sequential) job to execute.
+  optional bool resolved = 8;  // By default we assume false, but only true if the job contains no abstract or conditional (dynamic) tasks.  This is set by the server
+  repeated string transfer_result_labels = 9;  // The task result names to transfer/carry over from a completed job to a subsequent job, if jobs executed sequentially.
+  // OLIVE 5.3 internal use only (which I think we can remove:
+  repeated DataInputRecord data_input = 10;   // Data record(s) to use with an activated job.  Used internally when OLIVE instruments data for a job
+}
+
+// Each job in a order can have unique data properties
+message DataHandlerProperty {
+  required uint32 min_number_inputs   = 1;  // The minimum number of data inputs required for a job.  Can be zero
+  optional uint32 max_number_inputs   = 2;  // Optional, if not specifed we assume one input.  Used to limit the number of batch jobs
+  required InputDataType type         = 3;  // The type of data (audio, text, image, etc)  --> consider making a list?  Where that list can be empty
+  required bool preprocessing_required = 4; // True if pre-processing of this data is required, normally audio is always preprocessed, but we let that be configurable and other data types will not need preprocessing
+
+  // Optional properties for handling audio inputs
+  optional int32 resample_rate        = 5;    // If set, resample audio to this sample rate.  By default audio is resampled to 8K
+  optional MultiChannelMode mode      = 6;    // Mode for handling/pre-processing multi-channel input for a plugin(s).
+  optional string consumer_data_label = 7;    // The name used by workflow tasks to consume/find this data (usually 'audio')
+
+  // Options for video inputs
+  optional uint32 target_fps        = 8;
+  optional uint32 max_width         = 9;
+  optional uint32 max_height        = 10;
+}
+
+message DataInputRecord{
+  required string data_id             = 1;
+  optional string interal_id          = 2;  // An optional UUID for the data that is unique for the data based on the channel, format, etc used when loading or pre-processing the data
+  optional string consumer_data_label = 3;
+  optional int32 selected_channel     = 4;  // Can be negative, where -1 is a merged input
+
+}
+
+/*
+The WorkflowTask describes a unit of work to accomplish a plugin task or an inter-plugin task (OLIVE pit/pimento).
+Similar to ScenicMessage, a  WorkflowTask is a wrapper around a serialized abstract or concrete taks (so message_data
+can contains a serialized AbstractWorkflowPluginTask message, FrameScorerReqeust, GlobalScorerReqeust, etc).
+
+Tasks assume to consume an data input (audio, text, video, or even the results of a previous task) and produce a result
+that can be consumed by a downstream (executed after this task) task.  The 'consumer' lable values let tasks have
+configurable options for the names of data they consume and the result they advertise for consumption by other tasks.
+ */
+message WorkflowTask {
+  //
+  required MessageType message_type   = 1;  // the type of message  (FrameScorer, RegionScorer, etc)
+  required bytes message_data         = 2;  // the message data, deserialized according to message type.
+
+  // Internal values
+  required TraitType trait_output     = 3;  // The type of output produced by this task (i.e. Frame scores)  todo rename?  task_trait_output
+  required string task                = 4;  // The type of task to perform
+  required string consumer_data_label = 5; // Consumes data having this label.  Default value is 'audio'.
+
+  // todo better names:  task_name, task_consumer_name (vs data_consumer_name, data_name, data_id, data_input_id), allow to be repeated
+  required string consumer_result_label = 6; // Results from this task are identifed by this keyword/label (aka the task label).  This label
+  // should be unique within a job so downstream consumers can find this plugin result using this label/keyword .
+  // AKA task_name, producer_name (if we keep with the consumer/producer relationship), task_id
+
+  // task_result_name, task_result_name
+  optional bool return_result         = 7; // If specified, this output is returned to the client
+  repeated OptionMap option_mappings  = 8; // used to map the workflow options to an option key/value recognized by a plugin
+  optional bool allow_failure         = 9; // If task fails should the job continue?  True by default, otherwise if False then entire workflow fails on an error for this task.
+  // or use name 'allow_error'?
+  // mabye have an error mode:  ignore/skip_allowable_errors,  ignore/skip_all_errors, fail_on_error
+
+  // Optional public values  -
+  repeated OptionDefinition supported_options = 10;
+  repeated string class_id             = 11;  // Not yet supported, add class IDs to the message stored in message_data
+  optional string description          = 12; // An optional description of this task
+
+
+  // Coming soon!
+//  optional string class_label_singular   = 13;
+//  optional string class_label_plural    = 14;
+//  optional ScoreType scoreDataType    = 15;  # TBD something like LLR, String (word/paragraph?), %,.... where the trait type is not specific enough to identify how the score should be handled type.  this also only applies to analysis tasks I think
+
+  // optional -  consider adding to help clients understand workflow?
+  // * plugin name/domain name
+  // * allowable options
+  // a name instead of using consumer_result_label as the ID?  So SAD_REGIONS might the unique ID, but SAD is the name and we could have two tasks named SAD in the workflow
+}
+
+// actions: interpret, actualize (activate)
+
+// This 'task' is used when creating a WorkflowDefinition deployed to multiple clients independent of a server.
+// A server, when resolving (interpreting) a 'deployed' WorkflowDefinition  will instantiate this tasks into an
+// executable (concrete) plugin task (i.e. such as a FrameScorerRequest).  This can be task could also be
+// considered a 'meta' task.  A WorkflowDefnition with one or more AbstractWorkflowPluginTask elements is considered
+// an interpereted workflow (maybe use a better name than interpereted???)
+  message AbstractWorkflowPluginTask {  // WorkflowAbstractPlugin - lets the server/workflow pick the plugin based on criteria
+  // Use this criteria to provide additional filtering of the available plugins/domains:
+  repeated SelectionCriteria plugin_criteria = 3;
+  repeated SelectionCriteria domain_criteria = 4;
+
+  repeated string required_options            = 5; // the options a plugin must support;
+
+  // NOTE: This stuff is in the parent WorkflowTask container:
+  // * nickname
+  // * input_label
+  // * output_label
+    // Support class IDs?
+}
+
+// TODO: how do pre-load plugins that are part of a conditional workflow?
+/*
+This 'task' is used to select a plugin/domain in 'real time' based on the results of a completed task(s).  This task
+ is used for workflows that cannot fully actualize a WorkflowDefinition because the plugin selection depends on the
+ the results of a previous plugin task.
+ */
+message ConditionalWorkflowPluginTask {
+  required AbstractWorkflowPluginTask min_criteria  = 1;    // Provides an initial, but incomplete plugin/domain selection criteria
+  // For example this might select a KWS plugin but the domain
+  // can not be selected until the LID results are available
+  required TraitType input_type    = 2; // The type of input data, the data input label is defined in the parent WorkflowTask
+  // Attempt to match the results from an upstream plugin with one of the elements in result_criteria, if a match is
+  // found then the contained plugin/domain criteria is used to finalize the plugin/domain selection
+  repeated ConditionalSelectionCriteria result_criteria = 3;
+
+  // fixme: replace with parent task's
+  optional bool allowable_error    = 4;  // If true, then failure to find a plugin/domain that matches the selection
+  // criteria results in an allowable error (does not stop job)
+}
+
+// trying something new
+/**
+This basically a placeholder for a workflow that does not know the name of the pluing.
+*/
+message DynamicPluginRequest {
+  required string conditional_task_name = 1 ; // The name of the task that determines the plugin/domain(s) to use
+  optional string plugin                = 2; // The plugin to invoke - can be empty if the plugin name will be supplied by a conditional job
+  optional string domain                = 3; // The domain to invoke - can be empty if the domain name will be supplied by a conditional job
+  optional bool allowable_error         = 4;  // If true, then failure to find a plugin/domain that matches the selection
+}
+
+/*
+An "olive pit" this is an internal node that handles a task within a workflow but outside the plugin framework.
+ Often used as a bridge between plugin results or to prepare input for a plugin
+ */
+message OliveNodeWorkflow {
+  required string label               = 1; // the name/label for this internal node
+  required string node_handler        = 2; // the OLIVE handler
+//  required string node_result_handler = 3; // the OLIVE handler that converts results in a protobuf message
+  repeated OptionValue option         = 3; // Options for this task - these do not support filtering by job/task since they coded in the workflow
+  repeated string class_id             =4; // An optional list of classes supported by this non-plugin node
+  //
+  //  Examples: Convert SAD frame scores to regions?
+}
+
+/**
+A special OLIVE pit/node used to describe how audio is to be preprocessed in a workflow
+ */
+message AudioPreprocessTask {
+  required MultiChannelMode mode    = 1;  // The multi-channel handling mode
+  required bool merged              = 2;  // True if the original audio was merged into one channel
+  required uint32 sample_rate       = 3;  // The final sample rate of the processed audio
+  required float duration_seconds   = 4;  // The duration (in seconds) of the processed audio
+  required uint32 number_channels   = 5;
+  optional string label             = 6;  // The  label/name  used in the original audio submission
+  optional string id                = 7;  // The unique ID generated by the server for the submitted audio
+  optional string path              = 8;  // The path name used in the original audio submission (audio submitted as a buffer will not have a path/filename)
+  optional string channel_selected  = 9;  // the channel selected from the original audio (if multi-channel)
+  optional string cache_id          = 10;  // For future use when/if out of band audio submissions are supported
+
+}
+
+// ================================= Workflow Client Request/Response Messages ====================================
+
+// Message used by a client to submit a WorkflowDefinition to be resolved (actualized) by the server.  The server
+// resolves any 'abstract' tasks in the WorkflowDefinition, creating concerte tasks that specify a plugin/domain.
+message WorkflowActualizeRequest {  // WorkflowResoulutionReqeust - to actualize a plugin
+  required WorkflowDefinition workflow_definition   = 1;
+}
+
+// Response to a Workflow request message, contains the actualized workflow
+message WorkflowActualizeResult {
+  optional WorkflowDefinition workflow  = 1;  // An actualized workflow that can be executed on the OLIVE server when combined with data inputs
+  optional string error                 = 2;  // If set, a description of the error when actualizing a workflow
+}
+// WorkflowResult -> WorkflowOrder, has one or more jobs.  Group jobs by analysis/enrollment/adapt?  Don't have data
+
+
+// An analysis request assembled by a client that includes the server instantiated WorkflowDefintion(s) plus
+// data (audio) and any plugin/workflow options.
+message WorkflowAnalysisRequest  // WorkflowAnalysisOrder...
+{
+  // Currently, only one WorkflowDefinition is supported, but this could be a repeated field in the future if/when we
+  // support multiple (parallel) jobs in a workflow such as processing LID on merged/mono audio while also
+  // processing SID for each channel, then returning the
+  required WorkflowDefinition workflow_definition   = 1;
+  repeated WorkflowDataRequest workflow_data_input  = 2;
+  repeated OptionValue option                       = 3; // Any options specified for this workflow
+  // TODO group options by task (SAD, LID, etc) so options can be targeted for a plugin, and we can have multiple values
+  //  for the same option name (such as threshold, so there can be different thresholds for SAD, LID, SID, etc).
+}
+
+//... so far seems like a ClassModificationRequest
+// TODO ALLOW multiiple class/audio(data) enrollments? right now only allow enrollmet for one class
+message WorkflowEnrollRequest{
+  required WorkflowDefinition workflow_definition   = 1;
+  repeated WorkflowDataRequest workflow_data_input  = 2;
+  required string class_id                          = 3;
+  repeated OptionValue option                       = 4; // Any options specified for this workflow
+  repeated string job_names                         = 5;  // Enroll for this job(s) (jobs?) in the workflow, if empty enroll for all jobs in the workflow order
+//  repeated string task_name                         = 5; // Enroll for these tasks (jobs?) in the workflow - not supporting for now
+
+}
+
+message WorkflowUnenrollRequest{
+  required WorkflowDefinition workflow_definition   = 1;
+//  repeated WorkflowDataRequest workflow_data_input  = 2;  // Not supported... although we might want to support removing an audio submission in the future
+  required string class_id                          = 3;
+  repeated OptionValue option                       = 4; // Any options specified for this workflow
+  repeated string job_names                         = 5; // Un-Enroll for this job(s) in the workflow.  If empty unenroll for all jobs
+//  repeated string task_names                         = 5; // Enroll for these tasks in the workflow - not supported yet
+//  # if we also support un-enrollment then we remove this audio?  Can we specify an audio ID?
+}
+
+// The Job Response in a WorkflowAnalysisRequest, where a job is one or more tasks applied to a common set of data
+// input(s).
+message WorkflowAnalysisResult {
+  repeated WorkflowJobResult job_result    = 1;  //  One or more results
+  optional string error                 = 2;  // If set the workflow could not be executed
+}
+
+// The results of task(s) in a job using a set of data.  So for a SAD/LID/SID workflow there would be 3 task results
+// and one data_result value
+message WorkflowJobResult {
+  required string job_name                  = 1;  // The name from the JobDefinition (may not be unique in the returned job results due to the MultiChannelMode)
+  repeated WorkflowTaskResult task_results  = 2;  //  One or more task results from the workflow
+  repeated WorkflowDataResult data_results  = 3;  // Information about the
+  optional string error                     = 4;
+
+}
+
+// Part of an WorkflowAnalysisResult message - The analysis task (FrameScorerResult, GlobalScorerResult, etc)
+// that was part of a Workflow Analysis request.  Results are only returned if requested in the origional Workflow,
+// so every task in Workflow/WorkflowDefinition may not have a corresponding result
+message WorkflowTaskResult {
+  required string task_name         = 1; // The name of this task (from the WorkflowTask's consumer_result_label)
+  required TraitType task_trait     = 2; // This task's trait (can also be inferred from the message  type)  # todo this should be MessageType?
+  required string task_type         = 3;  // This task's type (SAD, LID, etc)
+  required MessageType message_type = 4;  // the type of message
+  required bytes message_data       = 5;  // the message data, deserialized according to message type.
+  optional string error             = 7;  // If set this task failed with this error message
+  optional string plugin            = 8; // The plugin that implemented for this task
+  optional string domain            = 9; // The domain that implemented for this task
+}
+
+// TODO data_id is confusing since it doesn't match data_id in WorkflowDataRequest???
+message WorkflowDataResult {
+  required string data_id           = 1;  // The label/name given to the data (WorkflowDataRequest.data_id)
+  required MessageType msg_type     = 2;  // The type of data serialized in this message
+  required bytes result_data        = 3;  // The workflow data, usually a PreprocessedAudioResult message but can be other types
+  optional string error             = 4;  // An error message if the audio could not be pre-processed
+}
+
+// Data (usually audio) included in a workflow
+message WorkflowDataRequest {
+  required string data_id           = 1;  // A label/name for this data, this ID must be unique to the workflow order
+  // this data is part of.  For example, for audio data this could be the name of the file where the audio originated
+  required InputDataType data_type  = 2;  // The type of data serialzied in this message (audio, text, image, video) -- this should be able to be optional
+
+  required bytes workflow_data      = 3;  // The workflow data, usually Audio but can be other types
+
+  // todo this may need to be a list
+  optional string job_name            = 5; // If specified, limits this data to tasks belonging to this job name
+
+  // consumers can find it.  Default value is 'audio' but examples of other labels include 'audios' for workflows
+  // that consume multiple audio/data inputs, or 'text' for a translation workflow
+}
+
+
+message WorkflowEnrollAdditionResult{
+  required bool   successful  = 1; // Whether or not the individual enrollment succeeded
+  optional string message     = 2; // Description of what occurred for this enrollment
+  optional string label       = 6; // The optional name/label of the data added
+}
+
+// How is this different from a normal adapt request...  I assume we/the API keeps track of annots
+message WorkflowAdaptRequest{
+  // finalize, annotations, workspace, if preprocessing, the API takes care of appending annotations.
+  // When finalizing the API applies the annotations that have been created/built.  Returns either annots, or
+  // final plugin name...  If only doing pre-processing then need to return the annots to the client and they must
+  // supply those for the next pre-process request or to finalize.
+}
+// Response to a WorkflowAdaptRequest
+message WorkflowAdaptResult{
+}
+
+
+/**
+Request current class IDs for the job/tasks in a WorkflowDefinition.
+ */
+message WorkflowClassStatusRequest {
+  required WorkflowDefinition workflow_definition   = 1;
+  optional WorkflowType type = 2; // Classes supported for this workflow type, Analysis workflows by default
+}
+
+// The current Class IDs available for analysis in a workflow
+message WorkflowClassStatusResult {
+    repeated JobClass job_class = 1;
+}
+
+message JobClass {
+  required string job_name = 1;    // The parent job name in a Workflow JobDefinition
+  repeated TaskClass task   =2;
+}
+
+message TaskClass {
+  required string task_name     = 1;  // The ID from the associated  WorkflowTask (consumer_result_label)
+  repeated string class_id      = 2;  // Zero or more class IDs available to this task.  Some tasks do not support classes
+  optional string class_label   = 3;  // An optional label/name to describe the classes used by this task such a 'speaker' or 'language'
+  optional string classes_label = 4;  // The speaker label when refering to plural classes, such as speakers, or languages
+}
+
+// ================================= Workflow other ====================================
+
+
+
+// Conditional example: diarize audio, then do LID on segments. Finally, translate segments based on LID result.
+// So must do DIA and LID in one job, then a second job is created that uses the output of Job 1 to choose
+// language specific domain to perform translation
+message AnalysisWorkflow{
+  required string plugin      = 1; // The origin plugin
+  required string domain      = 2; // The origin domain
+
+  // request:
+
+  // optionally set channel_number to use for this audio?  If multi-channel audio then
+}
+
+
+
+

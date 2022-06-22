@@ -1,0 +1,6 @@
+
+Issues to fix:
+If server is down, client never comes back, and can not even be killed with control-C.
+Why does client need a name?
+timeout in constructor is not used.
+connect(True) doesn't work.

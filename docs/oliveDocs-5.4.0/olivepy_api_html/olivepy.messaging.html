@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>olivepy.messaging package &#8212; OlivePy 5.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">OlivePy 5.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">olivepy.messaging package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="olivepy-messaging-package">
+<h1>olivepy.messaging package<a class="headerlink" href="#olivepy-messaging-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-olivepy.messaging.msgutil">
+<span id="olivepy-messaging-msgutil-module"></span><h2>olivepy.messaging.msgutil module<a class="headerlink" href="#module-olivepy.messaging.msgutil" title="Permalink to this headline">¶</a></h2>
+<p>Contains data structures that map message_type enum values
+to protobuf types and vice versa. Should be updated whenever
+new message types are added.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="olivepy.messaging.msgutil.AllowableErrorFromServer">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.messaging.msgutil.</span></span><span class="sig-name descname"><span class="pre">AllowableErrorFromServer</span></span><a class="headerlink" href="#olivepy.messaging.msgutil.AllowableErrorFromServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>This exception means that the server could not complete a request; however, the reason it could not do isn’t
+considered an error.  This special case most often occurs when requesting analysis of a submission that contains
+no speech, in which case the analysis could not complete since there was not speech and not due to an error running
+the plugin.  Otherwise, this is identical to Python’s plain old Exception</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.messaging.msgutil.AudioTransferType">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.messaging.msgutil.</span></span><span class="sig-name descname"><span class="pre">AudioTransferType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.msgutil.AudioTransferType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>The method used to send audio to the OLIVE server.   There are three options for sending audio to the server:</p>
+<p>1. AUDIO_PATH: Send the path of the audio file to the server.  NOTE: If using this option, the path must be
+accessible to the server</p>
+<p>2. AUDIO_DECODED: Send the audio as a buffer of decoded samples (PCM-16).  This option is not well supported
+by this client since it does not</p>
+<ol class="arabic simple" start="3">
+<li><p>AUDIO_SERIALIZED: Send the file as a binary buffer</p></li>
+</ol>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="olivepy.messaging.msgutil.AudioTransferType.AUDIO_DECODED">
+<span class="sig-name descname"><span class="pre">AUDIO_DECODED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#olivepy.messaging.msgutil.AudioTransferType.AUDIO_DECODED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="olivepy.messaging.msgutil.AudioTransferType.AUDIO_PATH">
+<span class="sig-name descname"><span class="pre">AUDIO_PATH</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#olivepy.messaging.msgutil.AudioTransferType.AUDIO_PATH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="olivepy.messaging.msgutil.AudioTransferType.AUDIO_SERIALIZED">
+<span class="sig-name descname"><span class="pre">AUDIO_SERIALIZED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#olivepy.messaging.msgutil.AudioTransferType.AUDIO_SERIALIZED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="olivepy.messaging.msgutil.ExceptionFromServer">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.messaging.msgutil.</span></span><span class="sig-name descname"><span class="pre">ExceptionFromServer</span></span><a class="headerlink" href="#olivepy.messaging.msgutil.ExceptionFromServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="simple">
+<dt>This exception means that an error occured on the server side, and this error is</dt><dd><p>being sent “up the chain” on the client side.  Otherwise, it is identical to
+Python’s plain old Exception</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="olivepy.messaging.msgutil.get_uuid">
+<span class="sig-prename descclassname"><span class="pre">olivepy.messaging.msgutil.</span></span><span class="sig-name descname"><span class="pre">get_uuid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.msgutil.get_uuid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="olivepy.messaging.msgutil.package_audio">
+<span class="sig-prename descclassname"><span class="pre">olivepy.messaging.msgutil.</span></span><span class="sig-name descname"><span class="pre">package_audio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio_msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">AudioTransferType.AUDIO_PATH</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_local_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.msgutil.package_audio" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audio_msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Audio</span></code>) – the Olive Audio message to populate</p></li>
+<li><p><strong>audio_data</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">AnyStr</span></code>) – either a filename or binary buffer</p></li>
+<li><p><strong>annotations</strong> – a list of tuple start/end regions (in seconds)</p></li>
+<li><p><strong>selected_channel</strong> – if audio_data is multi-channel then select this channel for processing</p></li>
+<li><p><strong>mode</strong> – the submission mode: pathname, serialized, samples</p></li>
+<li><p><strong>num_channels</strong> – the number of channels in the audio</p></li>
+<li><p><strong>sample_rate</strong> – the sample rate of the audio</p></li>
+<li><p><strong>num_samples</strong> – the number of samples in the audio.</p></li>
+<li><p><strong>validate_local_path</strong> – if sending audio as a path, throw an exception if the file does not exist. We let this be an option for the possible case where the client may want to provide a path on the server’s filesystem, but not the local filesystem.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a valid Audio message</p>
+</dd>
+</dl>
+<p>:raises Exception if unable to package the audio for the specified mode.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="olivepy.messaging.msgutil.serialize_audio">
+<span class="sig-prename descclassname"><span class="pre">olivepy.messaging.msgutil.</span></span><span class="sig-name descname"><span class="pre">serialize_audio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.msgutil.serialize_audio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function used to read in an audio file and output a serialized buffer.  Can be used with package_audio()     when using the AUDIO_SERIALIZED mode and the audio input has not already been serialized</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the local path to the file to serialize</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">AnyStr</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the contents of the file as a byte buffer, otherwise an exception if the file can not be opened.      This buffer contains the raw content of the file, it does NOT contain encoded samples</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-olivepy.messaging.olive_pb2">
+<span id="olivepy-messaging-olive-pb2-module"></span><h2>olivepy.messaging.olive_pb2 module<a class="headerlink" href="#module-olivepy.messaging.olive_pb2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-olivepy.messaging.response">
+<span id="olivepy-messaging-response-module"></span><h2>olivepy.messaging.response module<a class="headerlink" href="#module-olivepy.messaging.response" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveClassStatusResponse">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.messaging.response.</span></span><span class="sig-name descname"><span class="pre">OliveClassStatusResponse</span></span><a class="headerlink" href="#olivepy.messaging.response.OliveClassStatusResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">olivepy.messaging.response.OliveServerResponse</span></code></a></p>
+<p>The  container/wrapper for WorkflowClassStatusResult from an OLIVE server (when using the AsyncOliveClient).  This is
+intended to make it easier for clients to handle the traditional (original) protobuf message results (such as
+RegionScorerResult) returned from the server.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveClassStatusResponse.get_response_as_json">
+<span class="sig-name descname"><span class="pre">get_response_as_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveClassStatusResponse.get_response_as_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveClassStatusResponse.get_workflow_type">
+<span class="sig-name descname"><span class="pre">get_workflow_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveClassStatusResponse.get_workflow_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the type of workflow done in this response (analysis, enrollment, adaptation)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A WorkflowType: WORKFLOW_ANALYSIS_TYPE, WORKFLOW_ENROLLMENT_TYPE, WORKFLOW_ADAPT_TYPE or an Exception if an non-workflow response message was wrapped</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveClassStatusResponse.parse_from_response">
+<span class="sig-name descname"><span class="pre">parse_from_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveClassStatusResponse.parse_from_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create this response from the
+:param request:
+:param response:
+:param message:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveClassStatusResponse.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveClassStatusResponse.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the response as a JSON string
+:param indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code class="docutils literal notranslate"><span class="pre">None</span></code> is the most compact             representation. A negative value will return the JSON document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Workflow response as as JSON string:</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveServerResponse">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.messaging.response.</span></span><span class="sig-name descname"><span class="pre">OliveServerResponse</span></span><a class="headerlink" href="#olivepy.messaging.response.OliveServerResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The default container/wrapper for responses from an OLIVE server (when using the AsyncOliveClient).  This is
+intended to make it easier for clients to handle the traditional (original) protobuf message results (such as
+RegionScorerResult) returned from the server.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveServerResponse.get_error">
+<span class="sig-name descname"><span class="pre">get_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveServerResponse.get_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveServerResponse.get_response">
+<span class="sig-name descname"><span class="pre">get_response</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveServerResponse.get_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Protobuf message returned from the OLIVE server
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveServerResponse.get_response_as_json">
+<span class="sig-name descname"><span class="pre">get_response_as_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveServerResponse.get_response_as_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveServerResponse.get_workflow_type">
+<span class="sig-name descname"><span class="pre">get_workflow_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveServerResponse.get_workflow_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the type of workflow done in this response (analysis, enrollment, adaptation)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A WorkflowType: WORKFLOW_ANALYSIS_TYPE, WORKFLOW_ENROLLMENT_TYPE, WORKFLOW_ADAPT_TYPE or an Exception if an non-workflow response message was wrapped</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveServerResponse.is_error">
+<span class="sig-name descname"><span class="pre">is_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveServerResponse.is_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveServerResponse.is_successful">
+<span class="sig-name descname"><span class="pre">is_successful</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveServerResponse.is_successful" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveServerResponse.parse_from_response">
+<span class="sig-name descname"><span class="pre">parse_from_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveServerResponse.parse_from_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create this response from the
+:param request:
+:param response:
+:param message:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveServerResponse.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveServerResponse.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the response as a JSON string
+:param indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code class="docutils literal notranslate"><span class="pre">None</span></code> is the most compact             representation. A negative value will return the JSON document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the response as as JSON string:</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowActualizedResponse">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.messaging.response.</span></span><span class="sig-name descname"><span class="pre">OliveWorkflowActualizedResponse</span></span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowActualizedResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">olivepy.messaging.response.OliveServerResponse</span></code></a></p>
+<p>Extracts info from an actualized workflow definition</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowActualizedResponse.get_analysis_jobs">
+<span class="sig-name descname"><span class="pre">get_analysis_jobs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.get_analysis_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the names of analysis jobs.  Typically a workflow has just one job with multiple tasks, the most likely
+reason to have multiple jobs is for workflows using multi-channel audio so there may be a set of job tasks for
+each channel of audio submitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of job names in the analysis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowActualizedResponse.get_analysis_tasks">
+<span class="sig-name descname"><span class="pre">get_analysis_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.get_analysis_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowActualizedResponse.get_request_jobs">
+<span class="sig-name descname"><span class="pre">get_request_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflow_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.get_request_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the jobs in the original request for the specified analysis type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>workflow_type</strong> – the type of workflow (i.e. WORKFLOW_ANALYSIS_TYPE)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the list of jobs for this type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowActualizedResponse.get_response_as_json">
+<span class="sig-name descname"><span class="pre">get_response_as_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.get_response_as_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowActualizedResponse.get_workflow">
+<span class="sig-name descname"><span class="pre">get_workflow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.get_workflow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowActualizedResponse.is_allowable_error">
+<span class="sig-name descname"><span class="pre">is_allowable_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.is_allowable_error" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if this response failed with an allowable error</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowActualizedResponse.parse_from_response">
+<span class="sig-name descname"><span class="pre">parse_from_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.parse_from_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create this response from the
+:param request:
+:param response:
+:param message:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowActualizedResponse.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the response as a JSON string
+:param indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code class="docutils literal notranslate"><span class="pre">None</span></code> is the most compact             representation. A negative value will return the JSON document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Workflow response as as JSON string:</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.messaging.response.</span></span><span class="sig-name descname"><span class="pre">OliveWorkflowAnalysisResponse</span></span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">olivepy.messaging.response.OliveServerResponse</span></code></a></p>
+<p>The default container/wrapper for responses from an OLIVE server (when using the AsyncOliveClient).  This is
+intended to make it easier for clients to handle the traditional (original) protobuf message results (such as
+RegionScorerResult) returned from the server.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_job_result">
+<span class="sig-name descname"><span class="pre">get_analysis_job_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_job_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_jobs">
+<span class="sig-name descname"><span class="pre">get_analysis_jobs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the names of analysis jobs.  Typically a workflow has just one job with multiple tasks, the most likely
+reason to have multiple jobs is for workflows using multi-channel audio so there may be a set of job tasks for
+each channel of audio submitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of job names in the analysis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_task_result">
+<span class="sig-name descname"><span class="pre">get_analysis_task_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_task_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the result for the specified job_name and task_name, also include the data used for this task.  If
+the workflow analyzes each channel in multi-channel data then there can be multiple jobs with the
+same name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_name</strong> – for convenience can be None, since there is normally only one job.  But if the workflow has multiple jobs then a valid name must be specified.</p></li>
+<li><p><strong>task_name</strong> – the name to the task</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of dictionaries, where each dictionary in the list includes the results for the specified task and a list of the data analyzed by this task, such as [ {task_name:{}, data:[] }]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_tasks">
+<span class="sig-name descname"><span class="pre">get_analysis_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_failed_tasks">
+<span class="sig-name descname"><span class="pre">get_failed_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_failed_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_request_jobs">
+<span class="sig-name descname"><span class="pre">get_request_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflow_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_request_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the jobs in the original request for the specified analysis type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>workflow_type</strong> – the type of workflow (i.e. WORKFLOW_ANALYSIS_TYPE)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the list of jobs for this type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_response_as_json">
+<span class="sig-name descname"><span class="pre">get_response_as_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_response_as_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.is_allowable_error">
+<span class="sig-name descname"><span class="pre">is_allowable_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.is_allowable_error" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if this response failed with an allowable error</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.parse_from_response">
+<span class="sig-name descname"><span class="pre">parse_from_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.parse_from_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create this response from the
+:param request:
+:param response:
+:param message:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the workflow as a JSON string
+:indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code class="docutils literal notranslate"><span class="pre">None</span></code> is the most compact             representation. A negative value will return the JSON document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Workflow Definition as as JSON string:</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowEnrollmentResponse">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">olivepy.messaging.response.</span></span><span class="sig-name descname"><span class="pre">OliveWorkflowEnrollmentResponse</span></span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowEnrollmentResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#olivepy.messaging.response.OliveServerResponse" title="olivepy.messaging.response.OliveServerResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">olivepy.messaging.response.OliveServerResponse</span></code></a></p>
+<p>The  container/wrapper for responses from an OLIVE server (when using the AsyncOliveClient) for enrollment.  This is
+intended to make it easier for clients to handle the traditional (original) protobuf message results (such as
+RegionScorerResult) returned from the server.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowEnrollmentResponse.get_response_as_json">
+<span class="sig-name descname"><span class="pre">get_response_as_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowEnrollmentResponse.get_response_as_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowEnrollmentResponse.is_allowable_error">
+<span class="sig-name descname"><span class="pre">is_allowable_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowEnrollmentResponse.is_allowable_error" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if this message failed with an allowable error</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowEnrollmentResponse.parse_from_response">
+<span class="sig-name descname"><span class="pre">parse_from_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowEnrollmentResponse.parse_from_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create this response from the
+:param request:
+:param response:
+:param message:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="olivepy.messaging.response.OliveWorkflowEnrollmentResponse.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.OliveWorkflowEnrollmentResponse.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the response as a JSON string
+:param indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code class="docutils literal notranslate"><span class="pre">None</span></code> is the most compact             representation. A negative value will return the JSON document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Workflow response as as JSON string:</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="olivepy.messaging.response.get_workflow_job_names">
+<span class="sig-prename descclassname"><span class="pre">olivepy.messaging.response.</span></span><span class="sig-name descname"><span class="pre">get_workflow_job_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflow_definition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.get_workflow_job_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse a workflow definition, returning a list of job definition name  (job_name)</p>
+<p>return [job_name] for the requested workflow_type</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="olivepy.messaging.response.get_workflow_job_tasks">
+<span class="sig-prename descclassname"><span class="pre">olivepy.messaging.response.</span></span><span class="sig-name descname"><span class="pre">get_workflow_job_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.get_workflow_job_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch the tasks from a job</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobs</strong> – a dictionary of WorkflowTasks, indexed by a job names</p></li>
+<li><p><strong>job_name</strong> – find tasks that belong to a job having this name. This can be None if there is only one job</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a dictionary of WorkflowTask indexed by the task’s consumer_result_label for the specified job.  An exception is thrown if there are multiple jobs but no job_name was specified</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="olivepy.messaging.response.get_workflow_jobs">
+<span class="sig-prename descclassname"><span class="pre">olivepy.messaging.response.</span></span><span class="sig-name descname"><span class="pre">get_workflow_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflow_definition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.get_workflow_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse a workflow definition, returning a dictionary  indexed job (definition) name (job_name) and a list of      WorkflowTask elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>workflow_definition</strong> – find jobs in this workflow definition</p></li>
+<li><p><strong>workflow_type</strong> – the type of workflow order (analysis, enrollment, unenrollment)</p></li>
+</ul>
+</dd>
+</dl>
+<p>return {job_name: [WorkflowTask]} for the requested workflow_type</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="olivepy.messaging.response.sort_global_scores">
+<span class="sig-prename descclassname"><span class="pre">olivepy.messaging.response.</span></span><span class="sig-name descname"><span class="pre">sort_global_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#olivepy.messaging.response.sort_global_scores" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-olivepy.messaging">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-olivepy.messaging" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">olivepy.messaging package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-olivepy.messaging.msgutil">olivepy.messaging.msgutil module</a></li>
+<li><a class="reference internal" href="#module-olivepy.messaging.olive_pb2">olivepy.messaging.olive_pb2 module</a></li>
+<li><a class="reference internal" href="#module-olivepy.messaging.response">olivepy.messaging.response module</a></li>
+<li><a class="reference internal" href="#module-olivepy.messaging">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/olivepy.messaging.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">OlivePy 5.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">olivepy.messaging package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, SRI International.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+    </div>
+  </body>
+</html>

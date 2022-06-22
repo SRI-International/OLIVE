@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sri.speech.olive.api</groupId>
+  <artifactId>olive-api</artifactId>
+  <version>5.3.0</version>
+  <packaging>jar</packaging>
+
+  <name>olive-api</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <repositories>
+    <repository>
+      <id>sri.artifactory</id>
+      <name>SRI Artifactory repository </name>
+      <url>https://artifactory.sri.com/artifactory/olive-local</url>
+    </repository>
+  </repositories>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+
+<!--    <maven.compiler.source>1.7</maven.compiler.source>-->
+<!--    <maven.compiler.target>1.7</maven.compiler.target>-->
+
+    <!-- protobuf paths -->
+    <protobuf.input.directory>${project.basedir}/src/main/proto</protobuf.input.directory>
+    <protobuf.output.directory>${project.build.directory}/generated-sources</protobuf.output.directory>
+
+    <!-- library versions -->
+<!--    <build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>-->
+<!--    <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>-->
+<!--    <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>-->
+<!--    <maven-shade-plugin.version>2.4.2</maven-shade-plugin.version>-->
+<!--    <os-maven-plugin.version>1.4.1.Final</os-maven-plugin.version>-->
+
+    <protobuf.version>3.8.0</protobuf.version>
+    <json.version>1.1.1</json.version>
+
+    <org.xolstice.version>0.5.1</org.xolstice.version>
+    <jeromq.version>0.4.3</jeromq.version>
+    <org.slf4j.version>1.7.30</org.slf4j.version>
+    <commons-lang.version>2.6</commons-lang.version>
+    <commons-io.version>2.4</commons-io.version>
+    <commons-cli.version>1.4</commons-cli.version>
+    <org.testng.version>6.1.1</org.testng.version>
+    <logback_version>1.2.3</logback_version>
+  </properties>
+
+
+
+  <dependencies>
+<!--    <dependency>-->
+<!--      <groupId>junit</groupId>-->
+<!--      <artifactId>junit</artifactId>-->
+<!--      <version>4.11</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>${protobuf.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java-util</artifactId>
+      <version>${protobuf.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.json-simple</groupId>
+      <artifactId>json-simple</artifactId>
+      <version>${json.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.zeromq</groupId>
+      <artifactId>jeromq</artifactId>
+      <version>${jeromq.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${org.slf4j.version}</version>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>slf4j-log4j12</artifactId>-->
+<!--      <version>${org.slf4j.version}</version>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>${logback_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback_version}</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>${commons-lang.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons-io.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-cli</groupId>
+      <artifactId>commons-cli</artifactId>
+      <version>${commons-cli.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${org.testng.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+                    <configuration>
+                      <source>11</source>
+                      <target>11</target>
+                    </configuration>
+        </plugin>
+
+
+
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+
+<!--         default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging-->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+          <executions>
+            <execution>
+              <id>copy-python-protobufs</id>
+              <phase>process-sources</phase>
+              <goals>
+                <goal>copy-resources</goal>
+              </goals>
+              <configuration>
+                <!-- overwrite! -->
+                <overwrite>true</overwrite>
+                <outputDirectory>../software/olive/server/messaging/</outputDirectory>
+                <resources>
+                  <resource>
+                    <directory>${basedir}/target/generated-sources/protobuf/python/</directory>
+                    <filtering>false</filtering>
+                    <includes>
+                      <include>olive_pb2.py</include>
+                    </includes>
+                  </resource>
+                </resources>
+              </configuration>
+            </execution>
+            <execution>
+              <id>copy-python-api-protobufs</id>
+              <phase>process-sources</phase>
+              <goals>
+                <goal>copy-resources</goal>
+              </goals>
+              <configuration>
+                <!-- overwrite! -->
+                <overwrite>true</overwrite>
+                <outputDirectory>${basedir}/src/main/python/olivepy/messaging/</outputDirectory>
+                <resources>
+                  <resource>
+                    <directory>${basedir}/target/generated-sources/protobuf/python/</directory>
+                    <filtering>false</filtering>
+                    <includes>
+                      <include>olive_pb2.py</include>
+                    </includes>
+                  </resource>
+                </resources>
+              </configuration>
+            </execution>
+
+
+<!--  JAVA ARTIFACTS -->
+<!--            <execution>-->
+<!--              <id>copy-java-protobufs</id>-->
+<!--              <phase>process-sources</phase>-->
+<!--              <goals>-->
+<!--                <goal>copy-resources</goal>-->
+<!--              </goals>-->
+<!--              <configuration>-->
+<!--                &lt;!&ndash; overwrite! &ndash;&gt;-->
+<!--                <overwrite>true</overwrite>-->
+<!--                <outputDirectory>${basedir}/src/main/java/com/sri/speech/olive/api/</outputDirectory>-->
+<!--                <resources>-->
+<!--                  <resource>-->
+<!--                    <directory>${basedir}/target/generated-sources/protobuf/java/com/sri/speech/olive/api/</directory>-->
+<!--                    <filtering>false</filtering>-->
+<!--                    <includes>-->
+<!--                      <include>Olive.java</include>-->
+<!--                    </includes>-->
+<!--                  </resource>-->
+<!--                </resources>-->
+<!--              </configuration>-->
+<!--            </execution>-->
+
+          </executions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+<!--         site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle-->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+    <plugin>
+      <groupId>org.xolstice.maven.plugins</groupId>
+      <artifactId>protobuf-maven-plugin</artifactId>
+      <version>${org.xolstice.version}</version>
+      <configuration>
+        <!--            <protocExecutable>/usr/local/bin/protoc</protocExecutable>-->
+        <protocExecutable>protoc</protocExecutable>
+      </configuration>
+      <executions>
+        <execution>
+          <goals>
+            <goal>compile</goal>
+            <goal>compile-python</goal>
+<!--            NO protobuf tests... -->
+<!--            <goal>test-compile</goal>-->
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+<!--      Create scripts to execute Java CLI tools:  OliveAnalyze, OliveEnroll, etc.  These will be in target/java_cli/bin/-->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>appassembler-maven-plugin</artifactId>
+        <version>1.10</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>assemble</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- Set the target configuration directory to be used in the bin scripts -->
+<!--          <configurationDirectory>conf</configurationDirectory>-->
+          <!-- Copy the contents from "/src/main/config" to the target
+               configuration directory in the assembled application -->
+<!--          <copyConfigurationDirectory>true</copyConfigurationDirectory>-->
+          <!-- Include the target configuration directory in the beginning of
+               the classpath declaration in the bin scripts -->
+<!--          <includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>-->
+
+
+          <!-- set alternative assemble directory -->
+          <assembleDirectory>${project.build.directory}/java_cli</assembleDirectory>
+          <!-- Extra JVM arguments that will be included in the bin scripts -->
+          <extraJvmArguments>-Xms4096m</extraJvmArguments>
+          <!-- Generate bin scripts for windows and unix pr default -->
+          <platforms>
+            <platform>unix</platform>
+            <platform>windows</platform>
+          </platforms>
+          <programs>
+            <program>
+              <mainClass>com.sri.speech.olive.api.client.OliveAnalyze</mainClass>
+              <id>OliveAnalyze</id>
+              <platforms>
+                <platform>unix</platform>
+                <platform>windows</platform>
+              </platforms>
+            </program>
+            <program>
+              <mainClass>com.sri.speech.olive.api.client.OliveAnalyzeText</mainClass>
+              <id>OliveAnalyzeText</id>
+              <platforms>
+                <platform>unix</platform>
+                <platform>windows</platform>
+              </platforms>
+            </program>
+            <program>
+              <mainClass>com.sri.speech.olive.api.client.OliveEnroll</mainClass>
+              <id>OliveEnroll</id>
+              <!-- Only generate unix shell script for this application -->
+              <platforms>
+                <platform>unix</platform>
+                <platform>windows</platform>
+              </platforms>
+            </program>
+            <program>
+              <mainClass>com.sri.speech.olive.api.client.OliveLearn</mainClass>
+<!--              <commandLineArguments>-->
+                <!-- Add two predefined command line arguments to the call of App3 -->
+<!--                <commandLineArgument>arg1</commandLineArgument>-->
+<!--                <commandLineArgument>arg2</commandLineArgument>-->
+<!--              </commandLineArguments>-->
+              <id>OliveLearn</id>
+            </program>
+            <program>
+              <mainClass>com.sri.speech.olive.metrics.EnterpriseMetrics</mainClass>
+              <id>EnterpriseMetrics</id>
+              <platforms>
+                <platform>unix</platform>
+                <platform>windows</platform>
+              </platforms>
+            </program>
+          </programs>
+        </configuration>
+      </plugin>
+
+
+    </plugins>
+
+  </build>
+</project>
