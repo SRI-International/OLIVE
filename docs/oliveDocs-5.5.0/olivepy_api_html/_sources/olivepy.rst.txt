@@ -1,0 +1,22 @@
+olivepy package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   olivepy.api
+   olivepy.client
+   olivepy.messaging
+   olivepy.utils
+
+Module contents
+---------------
+
+.. automodule:: olivepy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource

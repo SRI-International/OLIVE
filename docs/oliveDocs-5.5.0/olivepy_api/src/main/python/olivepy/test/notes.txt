@@ -1,0 +1,8 @@
+ENH     enh-mmse-v1            ['multi-v1']
+LID     lid-embedplda-v1b-py3  ['multi-v1']
+QBE     qbe-tdnn-v7-py3        ['digPtt-v1', 'multi-v1']
+SAD     sad-dnn-v6-py3         ['tel-v1']
+SDD     sdd-sbcEmbed-v1b-py3   ['micFarfield-v1', 'telClosetalk-v1']
+SID     sid-dplda-v1-py3       ['multi-v1']
+SID     sid-embed-v5-py3       ['multicond-v1', 'multilang-v1']
+TID     tpd-embed-v1-py3       ['eng-cts-v1', 'rus-cts-v1']

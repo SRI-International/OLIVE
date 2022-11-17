@@ -1,0 +1,552 @@
+syntax = "proto2";
+package com.sri.speech.olive.api;
+
+import "olive.proto";
+
+// ================================= Workflows  ====================================
+
+
+enum WorkflowType {
+  WORKFLOW_ANALYSIS_TYPE    = 1;
+  WORKFLOW_ENROLLMENT_TYPE  = 2;
+  WORKFLOW_ADAPT_TYPE       = 3;    // NOT SUPPORTED
+  WORKFLOW_UNENROLLMENT_TYPE       = 4;
+}
+
+enum InputType {
+  FRAME = 1;
+  REGION = 2;
+}
+
+// The types of selection/filtering supported for selecting an abstract workflow task
+enum SelectionType {
+  SELECTION_IS        = 1;  // string name must fully match criteria value
+  SELECTION_CONTAINS  = 2;  // string name must contain the criteria value
+  SELECTION_STARTS    = 3;  // string name must begin with criteria value
+  SELECTION_ENDS      = 4;  // string name must end with criteria value
+  // NON-String criteria values - these are kind of odd, as they are aggregate criteria that must be applied to
+  // to the set of plugins - maybe we should break these out but then the message gets real ugly...
+  SELECTION_NEWEST_VERSION  = 5;  // use the newest version
+  SELECTION_OLDEST_VERSION  = 6;  // use the oldest version
+  // Criteria for plugin results, don't use yet
+  SELECTION_GREATER_THAN        = 7;  // numerical value must be greater than criteria value
+  SELECTION_GREATER_THAN_EQUAL  = 8;  // numerical value must be greater than or equal to criteria value
+  SELECTION_LESS_THAN           = 9;  // numerical value must be less than criteria value
+  SELECTION_LESS_THAN_EQUAL     = 10; // numerical value must be less or equal to criteria value
+  SELECTION_EQUAL               = 11;  // numerical values must match (use IS to match strings)
+}
+
+// Options for handling Workflows with multiple WorkflowJobs.  Where is a job is a set of tasks operating on
+// a common data input
+enum WorkflowJobType {
+  MERGE       = 1;  // Attempt to create one OLIVE job for all WorkflowJobs
+  PARALLEL    = 2;  // Create an OLIVE job for each WorkflowJob that may run in parallel and no not share
+  // task results
+  SEQUENTIAL  = 3;  // Execute WorkflowJobs in sequence, with the results from the previous job(s) feeding into
+  // subsequent jobs.
+}
+
+// Message used to classify how a plugin/domain is selected
+message SelectionCriteria {
+  required SelectionType type = 1;   // the type of selection filtering to apply
+  optional string value       = 2;   // Specified when selection type is matching a string value
+}
+
+// Message used to filter plugins/domains from a set of plugin scores.  Can be used to find match a result from a
+// completed plugin job and then use the plugin/domain criteria to finalize the plugin selection.
+// Assumes plugin results have an id/name and an optional score that.  Should a score match the expected name/value
+// in this message then the the plugin/domain criteria at bottom can be used to make a final plugin selection
+message ConditionalSelectionCriteria {
+  // Use the 'result' selection criteria to find a matching result then use the plugin/domain criteria to
+  // finalize the plugin selection.  Lets us do somethig like: if result matches 'eng' and value is >= 0
+  required string expected_result_name      = 1;
+  required SelectionCriteria name_criteria  = 2;  // IS eng-uk, START eng, etc
+
+  // Optional threshold for result selection
+  optional float expected_value = 5;            // for a result value 0
+  optional SelectionCriteria value_criteria = 6; // this  >=  expected value
+
+  // If result criteria above is met, then use this criteria to finalize the plugin/domain selection
+  repeated SelectionCriteria plugin_criteria = 7;  // likely have already have selected the plugin from the min criteria
+  repeated SelectionCriteria domain_criteria = 8;  // filter domain options - STARTS with eng-mul
+}
+
+// Used to map a result or option in a workflow to the option name used by a plugin  (i.e. SAD_FRAMES --> SAD)
+message OptionMap {
+  required string workflow_keyword_name     = 1;  // The name (key) for this option used by the workflow
+  required string plugin_keyword_name       = 2;  // The corresponding name used by the plugin (or other node)
+}
+
+
+
+
+/*
+A WorkflowDefinition is distributed to clients and describes one or more OLIVE tasks to perform.  These tasks, are
+grouped into jobs, which are then grouped into orders, where an order can be one of the WorkflowTypes (ANALYSIS,
+ENROLLMENT, and/or ADAPT). Only one type of order per Workflow is supported (i.e. A workflow can only support
+one analysis order, but may also support one enrollment and/or adaptation order).
+
+The implementation details described in a job(s) is flexible in order for the WorkflowDefinition to be deployed to as
+many systems as possible since the WorkflowDefinition is not server specific.  A WorkflowDefinition must be submitted to an
+ OLIVE server to actualize an executable Workflow.
+
+An actualized Workflow defines the plugins and other implementation detials necessary for an OLIVE server to execute
+the workflow job(s).   Actualized workflows may be differ from server to server, which is possible when a
+WorkflowDefinition has tasks that are specified as AbstractWorkflowPluginTask tasks.  These AbstractWorkflowPluginTasks
+allow the characteristics of a plugin to be specified without specifying the exact plugin and domain name.  The process
+of actualizing a WorkflowDefinition converts these abstract tasks into a concrete plugin task (i.e. FrameScorerRequest).
+
+NOTE: For OLIVE 5.0 only one Job in a WorkflowDefinition Order is supported.
+*/
+
+message WorkflowDefinition {
+  // A Workflow can have upto 3 orders, one for Analysis, Enrollment, and/or Unenrollment.  Each order can have multiple
+  // jobs, where a job is one or more tasks associated with data input(s).
+
+  repeated WorkflowOrderDefinition order   = 1;  // A collection of jobs grouped by 'order' where an order is
+  // an analysis, enrollment, or unenrollment workflow
+
+  required bool actualized = 2;   // If true, this WorkflowDefinition was submitted to an OLVE server, which verified it
+  // was capable of running this workflow.
+
+  // Metadata about this Workflow Definition
+  optional string version  = 5;
+  optional string description = 6;
+  optional DateTime created = 7;
+  optional DateTime updated = 8;    // Actualized date?
+  optional string server_id = 9;  // When supported this is the ID of the server that actualized this WD
+
+}
+
+// A Workflow recipe contains one or more jobs to perform an analysis, enrollment, or adaption.  Where each job has
+// one or more tasks.  (Currently only one job per order/recipe is supported)
+message WorkflowOrderDefinition {
+  // add name/id?
+  required WorkflowType workflow_type   = 1;  // The type of workflow to perform (analysis, enrollment, adapt)
+  repeated JobDefinition job_definition = 2;  // The list of work (jobs) to be done for this workflow
+  optional string order_name            = 3;  // The optional name of this order
+}
+
+
+// The basic work group in a Workflow, defines the tasks to run for the data input(s)
+message JobDefinition {
+  required string job_name = 1;   // This should be a unique name within the workflow
+  repeated WorkflowTask tasks = 2;  // The list of work to be done for this workflow (workflow job nodes)
+  required DataHandlerProperty data_properties = 3;  // Could a job consume multiple data types?  # todo make repeated?
+  optional string description = 4;  // An optional description of this job
+
+  // Internal fields:
+  optional WorkflowJobType processing_type = 5;  // SEQUENTIAL, PARALLEL, MERGE
+  // Most jobs are basically deterministic in that they will produce the same tasks each time they are ran on the
+  // same OLIVE server, but some jobs evaluate the data input to determine the tasks that are used by downstream tasks
+  optional bool conditional_job_output = 6;   // True, if this job uses a 'conditional' task to dynamically provide input for a subsequent job (such as determining a plugin/domain for a task).  The job(s) that use this ouptut must specify the dynamic_job_name as the name of the conditional job
+  repeated string dynamic_job_name = 7;       // If specified, then this job requires the results from this previous (sequential) job to execute.
+  optional bool resolved = 8;                 // By default, we assume false, but only true if the job contains no abstract or conditional (dynamic) tasks.  This is set by the server
+  repeated string transfer_result_labels = 9; // The task result names to transfer/carry over from a completed job to a subsequent job, if jobs executed sequentially.
+  // OLIVE 5.3 internal use only (which I think we can remove:
+  repeated DataInputRecord data_input = 10;   // Data record(s) to use with an activated job.  Used internally when OLIVE instruments data for a job
+  optional string batch_job_id = 11;          // Used to internally track
+}
+
+// Each job in a order can have unique data properties
+message DataHandlerProperty {
+  required uint32 min_number_inputs   = 1;  // The minimum number of data inputs required for a job.  Can be zero
+  optional uint32 max_number_inputs   = 2;  // Optional, if not specifed we assume one input.  Used to limit the number of batch jobs
+  required InputDataType type         = 3;  // The type of data (audio, text, image, etc)  --> consider making a list?  Where that list can be empty
+  required bool preprocessing_required = 4; // True if pre-processing of this data is required, normally audio is always preprocessed, but we let that be configurable and other data types will not need preprocessing
+
+  // Optional properties for handling audio inputs
+  optional int32 resample_rate        = 5;    // If set, resample audio to this sample rate.  By default audio is resampled to 8K
+  optional MultiChannelMode mode      = 6;    // Mode for handling/pre-processing multi-channel input for a plugin(s).
+  optional string consumer_data_label = 7;    // The name used by workflow tasks to consume/find this data (usually 'audio')
+
+  // Options for video inputs
+  optional uint32 target_fps        = 8;
+  optional uint32 max_width         = 9;
+  optional uint32 max_height        = 10;
+
+  optional uint32 stream_chunk_size = 11;     // Optional value for specifying a streaming 'chunk' size.  Only supported for streaming workfows
+
+
+}
+
+message DataInputRecord{
+  required string data_id             = 1;
+  optional string interal_id          = 2;  // An optional UUID for the data that is unique for the data based on the channel, format, etc used when loading or pre-processing the data
+  optional string consumer_data_label = 3;
+  optional int32 selected_channel     = 4;  // Can be negative, where -1 is a merged input
+
+}
+
+/*
+The WorkflowTask describes a unit of work to accomplish a plugin task or an inter-plugin task (OLIVE pit/pimento).
+Similar to ScenicMessage, a  WorkflowTask is a wrapper around a serialized abstract or concrete taks (so message_data
+can contains a serialized AbstractWorkflowPluginTask message, FrameScorerReqeust, GlobalScorerReqeust, etc).
+
+Tasks assume to consume an data input (audio, text, video, or even the results of a previous task) and produce a result
+that can be consumed by a downstream (executed after this task) task.  The 'consumer' lable values let tasks have
+configurable options for the names of data they consume and the result they advertise for consumption by other tasks.
+ */
+message WorkflowTask {
+  //
+  required MessageType message_type   = 1;  // the type of enteprise message request ()
+  required bytes message_data         = 2;  // the message data, deserialized according to message type.
+
+  // Internal values
+  required TraitType trait_output     = 3;  // The type of output produced by this task (i.e. FrameScorer, RegionScorer, etc)  todo rename?  task_trait_output
+  required string task                = 4;  // The type of task to perform, task code from the plugin such as SAD, ASR, etc
+  required string consumer_data_label = 5; // Consumes data having this label.  Default value is 'audio'.
+
+  // todo better names:  task_name, task_consumer_name (vs data_consumer_name, data_name, data_id, data_input_id), allow to be repeated
+  required string consumer_result_label = 6; // Results from this task are identified by this keyword/label (aka the task label).  This label
+  // should be unique within a job so downstream consumers can find this plugin result using this label/keyword .
+  // AKA task_name, producer_name (if we keep with the consumer/producer relationship).  NOTE -
+  // Do I ever really need the task_name and consumer_result_label to be different?  I think this just causes too much
+  // confusion for what little value it gives.
+
+  // task_result_name, task_result_name
+  optional bool return_result         = 7; // If specified, this output is returned to the client
+  repeated OptionMap option_mappings  = 8; // used to map the workflow options to an option key/value recognized by a plugin
+  optional bool allow_failure         = 9; // If task fails should the job continue?  True by default, otherwise if False then entire workflow fails on an error for this task.
+  // or use name 'allow_error'?
+  // mabye have an error mode:  ignore/skip_allowable_errors,  ignore/skip_all_errors, fail_on_error
+
+  // Optional public values  -
+  repeated OptionDefinition supported_options = 10;
+  repeated string class_id             = 11;  // Not yet supported, add class IDs to the message stored in message_data
+  optional string description          = 12; // An optional description of this task
+
+  // consider for streaming plugins...
+  optional bool async_plugin            = 13;
+  optional string return_result_keyword = 14;  // If a plugin produces multiple results, then select the result that has this name as the return result sent to the client (assumes return_result is true)
+
+  // Coming soon!
+  //  optional string class_label_singular   = 13;
+  //  optional string class_label_plural    = 14;
+  //  optional ScoreType scoreDataType    = 15;  # TBD something like LLR, String (word/paragraph?), %,.... where the trait type is not specific enough to identify how the score should be handled type.  this also only applies to analysis tasks I think
+
+  // optional -  consider adding to help clients understand workflow?
+  // * plugin name/domain name
+  // * allowable options
+  // a name instead of using consumer_result_label as the ID?  So SAD_REGIONS might the unique ID, but SAD is the name and we could have two tasks named SAD in the workflow
+}
+
+// actions: interpret, actualize (activate)
+
+// This 'task' is used when creating a WorkflowDefinition deployed to multiple clients independent of a server.
+// A server, when resolving (interpreting) a 'deployed' WorkflowDefinition  will instantiate this tasks into an
+// executable (concrete) plugin task (i.e. such as a FrameScorerRequest).  This can be task could also be
+// considered a 'meta' task.  A WorkflowDefnition with one or more AbstractWorkflowPluginTask elements is considered
+// an interpereted workflow (maybe use a better name than interpereted???)
+message AbstractWorkflowPluginTask {  // WorkflowAbstractPlugin - lets the server/workflow pick the plugin based on criteria
+  // Use this criteria to provide additional filtering of the available plugins/domains:
+  repeated SelectionCriteria plugin_criteria = 3;
+  repeated SelectionCriteria domain_criteria = 4;
+
+  repeated string required_options            = 5; // the options a plugin must support;
+
+  // NOTE: This stuff is in the parent WorkflowTask container:
+  // * nickname
+  // * input_label
+  // * output_label
+  // Support class IDs?
+}
+
+// TODO: how do pre-load plugins that are part of a conditional workflow?
+/*
+This 'task' is used to select a plugin/domain in 'real time' based on the results of a completed task(s).  This task
+ is used for workflows that cannot fully actualize a WorkflowDefinition because the plugin selection depends on the
+ the results of a previous plugin task.
+ */
+message ConditionalWorkflowPluginTask {
+  required AbstractWorkflowPluginTask min_criteria  = 1;    // Provides an initial, but incomplete plugin/domain selection criteria
+  // For example this might select a KWS plugin but the domain
+  // can not be selected until the LID results are available
+  required TraitType input_type    = 2; // The type of input data, the data input label is defined in the parent WorkflowTask
+  // Attempt to match the results from an upstream plugin with one of the elements in result_criteria, if a match is
+  // found then the contained plugin/domain criteria is used to finalize the plugin/domain selection
+  repeated ConditionalSelectionCriteria result_criteria = 3;
+
+  // fixme: replace with parent task's
+  optional bool allowable_error    = 4;  // If true, then failure to find a plugin/domain that matches the selection
+  // criteria results in an allowable error (does not stop job)
+}
+
+// trying something new
+/**
+This basically a placeholder for a workflow that does not know the name of the pluing.
+*/
+message DynamicPluginRequest {
+  required string conditional_task_name = 1 ; // The name of the task that determines the plugin/domain(s) to use
+  optional string plugin                = 2; // The plugin to invoke - can be empty if the plugin name will be supplied by a conditional job
+  optional string domain                = 3; // The domain to invoke - can be empty if the domain name will be supplied by a conditional job
+  optional bool allowable_error         = 4;  // If true, then failure to find a plugin/domain that matches the selection
+}
+
+/*
+An "olive pit" this is an internal node that handles a task within a workflow but outside the plugin framework.
+ Often used as a bridge between plugin results or to prepare input for a plugin
+ */
+message OliveNodeWorkflow {
+  required string label               = 1; // the name/label for this internal node
+  required string node_handler        = 2; // the OLIVE handler
+  //  required string node_result_handler = 3; // the OLIVE handler that converts results in a protobuf message
+  repeated OptionValue option         = 3; // Options for this task - these do not support filtering by job/task since they coded in the workflow
+  repeated string class_id             =4; // An optional list of classes supported by this non-plugin node
+  //
+  //  Examples: Convert SAD frame scores to regions?
+}
+
+/**
+A special OLIVE pit/node used to describe how audio is to be preprocessed in a workflow
+ */
+message AudioPreprocessTask {
+  required MultiChannelMode mode    = 1;  // The multi-channel handling mode
+  required bool merged              = 2;  // True if the original audio was merged into one channel
+  required uint32 sample_rate       = 3;  // The final sample rate of the processed audio
+  required float duration_seconds   = 4;  // The duration (in seconds) of the processed audio
+  required uint32 number_channels   = 5;
+  optional string label             = 6;  // The  label/name  used in the original audio submission
+  optional string id                = 7;  // The unique ID generated by the server for the submitted audio
+  optional string path              = 8;  // The path name used in the original audio submission (audio submitted as a buffer will not have a path/filename)
+  optional string channel_selected  = 9;  // the channel selected from the original audio (if multi-channel)
+  optional string cache_id          = 10;  // For future use when/if out of band audio submissions are supported
+
+}
+
+// ================================= Workflow Client Request/Response Messages ====================================
+
+// Message used by a client to submit a WorkflowDefinition to be resolved (actualized) by the server.  The server
+// resolves any 'abstract' tasks in the WorkflowDefinition, creating concerte tasks that specify a plugin/domain.
+message WorkflowActualizeRequest {  // WorkflowResoulutionReqeust - to actualize a plugin
+  required WorkflowDefinition workflow_definition   = 1;
+}
+
+// Response to a Workflow request message, contains the actualized workflow
+message WorkflowActualizeResult {
+  optional WorkflowDefinition workflow  = 1;  // An actualized workflow that can be executed on the OLIVE server when combined with data inputs
+  optional string error                 = 2;  // If set, a description of the error when actualizing a workflow
+}
+// WorkflowResult -> WorkflowOrder, has one or more jobs.  Group jobs by analysis/enrollment/adapt?  Don't have data
+
+
+// An analysis request assembled by a client that includes the server instantiated WorkflowDefintion(s) plus
+// data (audio) and any plugin/workflow options.
+message WorkflowAnalysisRequest  // WorkflowAnalysisOrder...
+{
+  // Currently, only one WorkflowDefinition is supported, but this could be a repeated field in the future if/when we
+  // support multiple (parallel) jobs in a workflow such as processing LID on merged/mono audio while also
+  // processing SID for each channel, then returning the
+  required WorkflowDefinition workflow_definition   = 1;
+  repeated WorkflowDataRequest workflow_data_input  = 2;
+  repeated OptionValue option                       = 3; // Any options specified for this workflow
+  // TODO group options by task (SAD, LID, etc) so options can be targeted for a plugin, and we can have multiple values
+  //  for the same option name (such as threshold, so there can be different thresholds for SAD, LID, SID, etc).
+}
+
+//... so far seems like a ClassModificationRequest
+// TODO ALLOW multiiple class/audio(data) enrollments? right now only allow enrollmet for one class
+message WorkflowEnrollRequest{
+  required WorkflowDefinition workflow_definition   = 1;
+  repeated WorkflowDataRequest workflow_data_input  = 2;
+  required string class_id                          = 3;
+  repeated OptionValue option                       = 4; // Any options specified for this workflow
+  repeated string job_names                         = 5;  // Enroll for this job(s) (jobs?) in the workflow, if empty enroll for all jobs in the workflow order
+  //  repeated string task_name                         = 5; // Enroll for these tasks (jobs?) in the workflow - not supporting for now
+
+}
+
+message WorkflowUnenrollRequest{
+  required WorkflowDefinition workflow_definition   = 1;
+  //  repeated WorkflowDataRequest workflow_data_input  = 2;  // Not supported... although we might want to support removing an audio submission in the future
+  required string class_id                          = 3;
+  repeated OptionValue option                       = 4; // Any options specified for this workflow
+  repeated string job_names                         = 5; // Un-Enroll for this job(s) in the workflow.  If empty unenroll for all jobs
+  //  repeated string task_names                         = 5; // Enroll for these tasks in the workflow - not supported yet
+  //  # if we also support un-enrollment then we remove this audio?  Can we specify an audio ID?
+}
+
+// The Job Response in a WorkflowAnalysisRequest, where a job is one or more tasks applied to a common set of data
+// input(s).
+message WorkflowAnalysisResult {
+  repeated WorkflowJobResult job_result    = 1;  //  One or more results
+  optional string error                 = 2;  // If set the workflow could not be executed
+}
+
+// The results of task(s) in a job using a set of data.  So for a SAD/LID/SID workflow there would be 3 task results
+// and one data_result value
+message WorkflowJobResult {
+  required string job_name                  = 1;  // The name from the JobDefinition (may not be unique in the returned job results due to the MultiChannelMode)
+  repeated WorkflowTaskResult task_results  = 2;  //  One or more task results from the workflow
+  repeated WorkflowDataResult data_results  = 3;  // Information about the data processed
+  optional string error                     = 4;
+
+}
+
+// Part of an WorkflowAnalysisResult message - The analysis task (FrameScorerResult, GlobalScorerResult, etc)
+// that was part of a Workflow Analysis request.  Results are only returned if requested in the origional Workflow,
+// so every task in Workflow/WorkflowDefinition may not have a corresponding result
+message WorkflowTaskResult {
+  required string task_name         = 1; // The name of this task (from the WorkflowTask's consumer_result_label)
+  required TraitType task_trait     = 2; // This task's trait (can also be inferred from the message  type)  # todo this should be MessageType?
+  required string task_type         = 3;  // This task's type (SAD, LID, etc)
+  required MessageType message_type = 4;  // the type of message (BINARY_MEDIA_RESULT, PREPROCESSED_AUDIO_RESULT, WORKFlOW_TEXT_RESULT)
+  required bytes message_data       = 5;  // the message data, deserialized according to message type.
+  optional string error             = 7;  // If set this task failed with this error message
+  optional string plugin            = 8; // The plugin that implemented for this task
+  optional string domain            = 9; // The domain that implemented for this task
+}
+
+// TODO data_id is confusing since it doesn't match data_id in WorkflowDataRequest???
+message WorkflowDataResult {
+  required string data_id           = 1;  // The label/name given to the data (WorkflowDataRequest.data_id)
+  required MessageType msg_type     = 2;  // The type of data serialized in this message (
+  required bytes result_data        = 3;  // The workflow data, usually a PreprocessedAudioResult message but can be other types (InputDataType)
+  optional string error             = 4;  // An error message if the audio could not be pre-processed
+}
+
+// Data (usually audio) included in a workflow
+message WorkflowDataRequest {
+  required string data_id           = 1;  // A label/name for this data, this ID must be unique to the workflow order
+  // this data is part of.  For example, for audio data this could be the name of the file where the audio originated
+  required InputDataType data_type  = 2;  // The type of data serialzied in this message (audio, text, image, video) -- this should be able to be optional
+
+  required bytes workflow_data      = 3;  // The workflow data, usually Audio but can be other types
+
+  // todo this may need to be a list
+  optional string job_name            = 5; // If specified, limits this data to tasks belonging to this job name
+
+  // consumers can find it.  Default value is 'audio' but examples of other labels include 'audios' for workflows
+  // that consume multiple audio/data inputs, or 'text' for a translation workflow
+}
+
+
+message WorkflowEnrollAdditionResult{
+  required bool   successful  = 1; // Whether or not the individual enrollment succeeded
+  optional string message     = 2; // Description of what occurred for this enrollment
+  optional string label       = 6; // The optional name/label of the data added
+}
+
+// How is this different from a normal adapt request...  I assume we/the API keeps track of annots
+message WorkflowAdaptRequest{
+  // finalize, annotations, workspace, if preprocessing, the API takes care of appending annotations.
+  // When finalizing the API applies the annotations that have been created/built.  Returns either annots, or
+  // final plugin name...  If only doing pre-processing then need to return the annots to the client and they must
+  // supply those for the next pre-process request or to finalize.
+}
+// Response to a WorkflowAdaptRequest
+message WorkflowAdaptResult{
+}
+
+
+/**
+Request current class IDs for the job/tasks in a WorkflowDefinition.
+ */
+message WorkflowClassStatusRequest {
+  required WorkflowDefinition workflow_definition   = 1;
+  optional WorkflowType type = 2; // Classes supported for this workflow type, Analysis workflows by default
+}
+
+// The current Class IDs available for analysis in a workflow
+message WorkflowClassStatusResult {
+  repeated JobClass job_class = 1;
+}
+
+message JobClass {
+  required string job_name = 1;    // The parent job name in a Workflow JobDefinition
+  repeated TaskClass task   =2;
+}
+
+message TaskClass {
+  required string task_name     = 1;  // The ID from the associated  WorkflowTask (consumer_result_label)
+  repeated string class_id      = 2;  // Zero or more class IDs available to this task.  Some tasks do not support classes
+  optional string class_label   = 3;  // An optional label/name to describe the classes used by this task such a 'speaker' or 'language'
+  optional string classes_label = 4;  // The speaker label when refering to plural classes, such as speakers, or languages
+}
+
+// ================================= Workflow Pimiento ====================================
+
+
+message ScoreOutputTransformRequest {
+  required string plugin      = 1; // The plugin (pimiento) to invoke
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify that only these classes be transformed
+  required TraitType trait_input  = 8;
+  required TraitType trait_output = 9;
+}
+
+// I don't think we should support this?
+message ScoreOutputTransformResult {
+  optional string plugin      = 1; // The plugin invoked
+  optional string domain      = 2; // The domain invoked
+  // The transformed score
+  optional MessageType message_type   = 3;  // the type of message  (FrameScorer, RegionScorer, etc)
+  optional bytes message_data         = 4;  // the message data, deserialized according to message type.
+  repeated OptionValue opt = 5; // List of additional optioanl options created when tansforming the scores
+}
+
+
+message DataOutputTransformRequest {
+  required string plugin      = 1; // The plugin (pimiento) to invoke
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify that only these classes be transformed
+  required InputDataType data_output = 9; // Transform data/options into this new data type
+}
+
+// I don't think we should support this?
+message DataOutputTransformResult {
+  // An empty message is created for an error
+  optional string plugin      = 1; // The plugin invoked
+  optional string domain      = 2; // The domain invoked
+  // The transformed data
+  optional InputDataType data_type   = 3;  // the type of message  (Audio, Text, etc)
+  optional bytes message_data         = 4;  // the message data, deserialized according to message type.
+  repeated OptionValue opt = 5; // List of additional optioanl options created when tansforming the scores
+}
+
+message Plugin2PluginRequest {
+  required string plugin      = 1; // The plugin (pimiento) to invoke
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify the classes to be scored
+}
+
+// The results from a plugin to plugin pimimento (which should be private so not sure we actually want to expose this?)
+message Plugin2PluginResult {
+  optional string plugin      = 1; // The plugin to invoke
+  optional string domain      = 2; // The domain
+  optional double score       = 3; // An optional score used for selecting this plugin/domain
+  repeated OptionValue result = 4; // List of additional options returned by the analysis
+}
+
+// ================================= Workflow other ====================================
+
+
+
+message WorkflowBinaryMediaResult {
+  optional string label             = 6;  // The  label/name  used in the original audio submission
+  optional string id                = 7;  // The unique ID generated by the server for the submitted audio
+  optional string path              = 8;  // The path name used in the original audio submission (audio submitted as a buffer will not have a path/filename)
+  optional string channel_selected  = 9;  // the channel selected from the original audio (if multi-channel)
+  optional float frames_per_second = 2;
+}
+
+message WorkflowTextResult {
+  required string text = 1;
+  optional string label = 2;
+}
+
+
+// Conditional example: diarize audio, then do LID on segments. Finally, translate segments based on LID result.
+// So must do DIA and LID in one job, then a second job is created that uses the output of Job 1 to choose
+// language specific domain to perform translation
+message AnalysisWorkflow{
+  required string plugin      = 1; // The origin plugin
+  required string domain      = 2; // The origin domain
+
+  // request:
+
+  // optionally set channel_number to use for this audio?  If multi-channel audio then
+}
