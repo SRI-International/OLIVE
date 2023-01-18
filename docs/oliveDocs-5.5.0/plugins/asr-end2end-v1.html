@@ -1305,7 +1305,7 @@
 
 
   <li class="md-nav__item">
-    <a href="asr-dynapy-v3.html" class="md-nav__link">
+    <a href="asr-dynapy-v4.html" class="md-nav__link">
       Automatic Speech Recognition (ASR)
     </a>
   </li>
@@ -1735,11 +1735,15 @@
 <td>v1.0.0</td>
 <td>Initial plugin release of the end-to-end models, tested and published with OLIVE 5.5.0</td>
 </tr>
+<tr>
+<td>v1.0.1</td>
+<td>Updated plugin, improved overall stability and performance, updated sample rate configuration to allow boosted performance when using 16 kHz audio, bug fixes and workflow-compatibility fixes.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="description">Description</h2>
 <p>Automatic Speech Recognition plugins perform speech-to-text conversion of speech contained within a submitted audio segment to create a transcript of what is being said. Currently the outputs are based on word-level transcriptions. ASR plugins are not-performing any translation, but simply speech-to-text in the native language. All ASR domains are language-dependent, and each one is meant to work only with a single, specific language.  </p>
-<p>This plugin is the first release of SRI's end-to-end ASR plugin which uses a wav2vec v2.0 model for mapping the microphone samples to the letters/characters in the target language. Currently, this plugin supports 10 languages which overlaps with the language capabilities of the alternative <a href="asr-dynapy-v4.md">asr-dynapy-v4</a> plugin. The output format is identical to the asr-dynapy output which is detailed below. This first version does not provide a word-level confidence score which will be a future work. The input speech is resampled to 16k and processed at this sampling frequency throughout the system. </p>
+<p>This plugin is the first release of SRI's end-to-end ASR plugin which uses a wav2vec v2.0 model for mapping the microphone samples to the letters/characters in the target language. Currently, this plugin supports 10 languages which overlaps with the language capabilities of the alternative <a href="asr-dynapy-v4.html">asr-dynapy-v4</a> plugin. The output format is identical to the asr-dynapy output which is detailed below. This first version does not provide a word-level confidence, which will be a future work, instead inserting a placeholder score of "1.0". The input speech is resampled to 16k and processed at this sampling frequency throughout the system. </p>
 <p>Each domain in the plugin is specific to a single language, and is only capable of transcribing speech in that one language. See below for the domains (and languages) available for this plugin, along with additional details regarding each.</p>
 <p>All domains are trained on a diverse set of training data covering conversational telephone, broadcast, read, distant speech (training data may vary per domain depending on availability), and are expected to perform well on a wide variety of acoustic conditions. The plugin will have a wider domain coverage on high-resourced domains, e.g. English, Mandarin, Spanish, on account of more diverse training data.</p>
 <p>Any input audio at a sample rate different than 16000 Hz will be resampled and processed as 16 kHz audio. Any higher-frequency (&gt; 8 kHz) information will be discarded. </p>
@@ -1763,44 +1767,44 @@
 <p>ASR plugins are region scorers, and as such will return a list of words, in the order they are spoken. Each detected word consists of timestamp regions in seconds (start and end time pairs), each with an accompanying placeholder score, along with the 'value' of that word. Each word output must be part of the vocabulary that specific language's domain was trained with. At this point, out-of-vocabulary words are not supported, so uncommon words, slang words, names, and some other vocabulary may not be able to be recognized by these plugins. If interested in this feature in the future, please <a href="../contact.html">contact us</a> to start a conversation about adding such functionality.</p>
 <p>Note that all current ASR plugin domains will output words in their 'native' script.  This means that for languages like English and Spanish, each word will be in ASCII text, with the Latin alphabet. Mandarin Chinese, Russian, and Farsi, however, words will be comprised of unicode characters in the native script.</p>
 <p>An example output excerpt for an English domain:</p>
-<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.190 AND 0.00000000
-    input-audio.wav 0.210 0.340 WE&#39;RE 0.00000000
-    input-audio.wav 0.330 0.460 GOING 0.00000000
-    input-audio.wav 0.450 0.520 TO 0.00000000
-    input-audio.wav 0.510 0.940 FLY 0.00000000
-    input-audio.wav 1.080 1.300 WAS 0.00000000
-    input-audio.wav 1.290 1.390 THAT 0.00000000
-    input-audio.wav 1.290 1.390 IT 0.00000000
-    input-audio.wav 1.380 1.510 WE&#39;RE 0.00000000
-    input-audio.wav 1.500 1.660 GOING 0.00000000
-    input-audio.wav 1.650 1.720 TO 0.00000000
-    input-audio.wav 1.710 1.930 FLY 0.00000000
-    input-audio.wav 1.920 2.110 OVER 0.00000000
-    input-audio.wav 2.100 2.380 SAINT 0.00000000
-    input-audio.wav 2.370 2.950 LOUIS 0.00000000
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.190 AND 1.00000000
+    input-audio.wav 0.210 0.340 WE&#39;RE 1.00000000
+    input-audio.wav 0.330 0.460 GOING 1.00000000
+    input-audio.wav 0.450 0.520 TO 1.00000000
+    input-audio.wav 0.510 0.940 FLY 1.00000000
+    input-audio.wav 1.080 1.300 WAS 1.00000000
+    input-audio.wav 1.290 1.390 THAT 1.00000000
+    input-audio.wav 1.290 1.390 IT 1.00000000
+    input-audio.wav 1.380 1.510 WE&#39;RE 1.00000000
+    input-audio.wav 1.500 1.660 GOING 1.00000000
+    input-audio.wav 1.650 1.720 TO 1.00000000
+    input-audio.wav 1.710 1.930 FLY 1.00000000
+    input-audio.wav 1.920 2.110 OVER 1.00000000
+    input-audio.wav 2.100 2.380 SAINT 1.00000000
+    input-audio.wav 2.370 2.950 LOUIS 1.00000000
 </code></pre></div>
 
 <p>An example output excerpt for a Mandarin Chinese domain:</p>
-<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.280 0.610 战斗 0.00000000
-    input-audio.wav 0.600 0.880 爆发 0.00000000
-    input-audio.wav 0.870 0.970 的 0.00000000
-    input-audio.wav 0.960 1.420 居民区 0.00000000
-    input-audio.wav 1.410 2.120 有很多 0.00000000
-    input-audio.wav 2.110 2.590 忠于 0.00000000
-    input-audio.wav 2.580 3.140 萨德尔 0.00000000
-    input-audio.wav 3.130 3.340 的 0.00000000
-    input-audio.wav 3.330 3.720 武装 0.00000000
-    input-audio.wav 3.710 4.190 份子 0.00000000
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.280 0.610 战斗 1.00000000
+    input-audio.wav 0.600 0.880 爆发 1.00000000
+    input-audio.wav 0.870 0.970 的 1.00000000
+    input-audio.wav 0.960 1.420 居民区 1.00000000
+    input-audio.wav 1.410 2.120 有很多 1.00000000
+    input-audio.wav 2.110 2.590 忠于 1.00000000
+    input-audio.wav 2.580 3.140 萨德尔 1.00000000
+    input-audio.wav 3.130 3.340 的 1.00000000
+    input-audio.wav 3.330 3.720 武装 1.00000000
+    input-audio.wav 3.710 4.190 份子 1.00000000
 </code></pre></div>
 
 <p>Note that for languages that read from right to left, the direction that text is rendered may appear to 'flip' when viewing the bare text output in a terminal or text editor that doesn't properly deal with the orientation switch mid-line in some operating systems. This can cause the order of the 'word' and 'score' fields to reverse relative to the output of left-to-right read languages, and appear like this Farsi output example:</p>
-<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.480 0.00000000 خوب 
-    input-audio.wav 0.470 0.740 0.00000000 ای 
-    input-audio2.wav 0.00 0.320 0.00000000 آره 
-    input-audio2.wav 0.310 0.460 0.00000000 می 
-    input-audio2.wav 0.450 0.680 0.00000000 گم 
-    input-audio2.wav 0.670 0.880 0.00000000 چند 
-    input-audio2.wav 0.870 1.330 0.00000000 داره
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.480 1.00000000 خوب 
+    input-audio.wav 0.470 0.740 1.00000000 ای 
+    input-audio2.wav 0.00 0.320 1.00000000 آره 
+    input-audio2.wav 0.310 0.460 1.00000000 می 
+    input-audio2.wav 0.450 0.680 1.00000000 گم 
+    input-audio2.wav 0.670 0.880 1.00000000 چند 
+    input-audio2.wav 0.870 1.330 1.00000000 داره
 </code></pre></div>
 
 <p>This is a rendering problem only, however, and rest assured that if interacting with OLIVE through the API, all ordering is properly preserved. Most methods of automatically parsing the raw text output should also properly deal with the ordering, as column-based operators like awk are not affected by the visual order.</p>
@@ -1824,18 +1828,18 @@
 <p>To keep memory usage of the plugin under control, incoming audio is segmented into smaller chunks for processing, preventing large audio files from overwhelming system RAM during processing. This allows the plugin performance to be less dependent on the length of input audio, but transcription errors near these break points become much more likely, especially if a word happens to be split in the process. Often when chunking audio like this, the audio is split into chunks that overlap slightly, to minimize the chance of a split word causing errors, and give the recognizer another chance to correctly identify the word or words being spoken near the break points. Typically this requires some sort of duplicated recognition resolution or merging logic, for reconciling differences in recognition output within the overlapped sections. This feature has not yet been added to the plugin, which will be addressed in a future release. Due to the lack of overlap/conflict resolution, this plugin is currently configured to have 0 overlap between consecutive segments, and there may be transcription errors resulting from these audio chunk break points. </p>
 <h3 id="arabic-script-languages">Arabic Script Languages</h3>
 <p>Note that for the Farsi and Arabic domains, and for other languages that read from right to left, the direction that text is rendered may appear to 'flip' when viewing the bare text output in a terminal or text editor that doesn't properly deal with the orientation switch mid-line in some operating systems. This can cause the order of the 'word' and 'score' fields to reverse relative to the output of left-to-right read languages, and appear like this Farsi output example:</p>
-<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.480 0.00000000 خوب 
-    input-audio.wav 0.470 0.740 0.00000000 ای 
-    input-audio2.wav 0.000 0.320 0.00000000 آره 
-    input-audio2.wav 0.310 0.460 0.00000000 می 
-    input-audio2.wav 0.450 0.680 0.00000000 گم 
-    input-audio2.wav 0.670 0.880 0.00000000 چند 
-    input-audio2.wav 0.870 1.330 0.00000000 داره
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.480 1.00000000 خوب 
+    input-audio.wav 0.470 0.740 1.00000000 ای 
+    input-audio2.wav 0.000 0.320 1.00000000 آره 
+    input-audio2.wav 0.310 0.460 1.00000000 می 
+    input-audio2.wav 0.450 0.680 1.00000000 گم 
+    input-audio2.wav 0.670 0.880 1.00000000 چند 
+    input-audio2.wav 0.870 1.330 1.00000000 داره
 </code></pre></div>
 
 <p>This is a rendering problem only, however, and rest assured that if interacting with OLIVE through the API, all ordering is properly preserved. Most methods of automatically parsing the raw text output should also properly deal with the ordering, as column-based operators like awk are not affected by the visual order.</p>
 <h3 id="minimum-speech-duration">Minimum Speech Duration</h3>
-<p>The system will not attempt to perform speech recognition unless 0.75 seconds of speech of more is found in the file.</p>
+<p>The system will not attempt to perform speech recognition unless 0.31 seconds of speech of more is found in the file.</p>
 <h2 id="comments">Comments</h2>
 <h3 id="gpu-support">GPU Support</h3>
 <p>This plugin was designed and developed to run optimally on GPU hardware. It is capable of running on CPU in the absence of an available GPU or the proper configuration, but it will do so at a significantly reduced speed.</p>
@@ -1904,7 +1908,7 @@ For command line interface use see the appropriate section of the [OLIVE CLI Use
           </a>
         
         
-          <a href="asr-dynapy-v3.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="asr-dynapy-v4.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">

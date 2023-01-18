@@ -1651,7 +1651,7 @@
 
 
   <li class="md-nav__item">
-    <a href="plugins/asr-dynapy-v3.html" class="md-nav__link">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
       Automatic Speech Recognition (ASR)
     </a>
   </li>
@@ -2330,6 +2330,31 @@ The OLIVE Server
 - enrollments
 - logs
 - other? 
+-->
+
+<!-- TODO Ports
+
+## Ports
+
+The OLIVE server requires a number of ports to be open and accessible for proper function. Some of these ports are exclusive to [Martini](martini.md) and Vermouth based delivery packages, and some are configurable, but the defaults are listed below. 
+
+- 5580 (Raven, Martini only)
+- 5588 
+
+
+Port | Package | Purpose
+-- | -- | --
+5580 | Martini | [Raven Web UI](raven.md) access port
+5588 | All | OLIVE Server communication port for Enterprise API requests
+5589 | All | OLIVE Server communication port for Enterprise API heartbeat and status messages
+5590 | All | ?? OLIVE Server, used for Live Streaming only
+5591 | All | ?? OLIVE Server, used for Live Streaming only
+5004 | Martini | OLIVE Broker, REST API (OLIVE HOST PORT TEST? )
+5005 | Martini | OLIVE Broker, REST API (Is this still using both of these? Joshua's docs list both)
+5570 | Martini | OLIVE Documentation access port
+8088? | Martini? | I don't know, Joshua's documentation lists this, but first I'm hearing
+5888? | Martini? | OLIVE_HOST_PORT_REVERSEPROXY=${OLIVE_HOST_PORT_REVERSEPROXY}  ECS seems to have things working without this, so ? 
+
 -->
 
 <h2 id="common-pitfalls">Common Pitfalls</h2>
