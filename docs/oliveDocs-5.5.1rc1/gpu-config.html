@@ -1,0 +1,1722 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>GPU Plugin Configuration - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#8bc34b">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-green" data-md-color-accent="brown">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gpu-capable-olive-plugin-domain-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              GPU Plugin Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Administrator
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administrator" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administrator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        GPU Plugin Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="gpu-config.html" class="md-nav__link md-nav__link--active">
+      GPU Plugin Configuration
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-configuration-for-gpu-use" class="md-nav__link">
+    Plugin Configuration for GPU Use
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Configuration for GPU Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-gpu-usage-for-a-plugins-domain" class="md-nav__link">
+    Enable GPU usage for a plugin's domain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#currently-supported-gpu-plugins" class="md-nav__link">
+    Currently supported GPU plugins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olive-gpu-restrictions-and-configuration-notes" class="md-nav__link">
+    OLIVE GPU Restrictions and Configuration Notes
+  </a>
+  
+    <nav class="md-nav" aria-label="OLIVE GPU Restrictions and Configuration Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-compute-mode-default-vs-exclusive" class="md-nav__link">
+    GPU Compute Mode: "Default" vs "Exclusive"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Legacy)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integrator
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integrator" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integrator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      OlivePy Python Client API PyDocs
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnnSmolive-v1.html" class="md-nav__link">
+      Speech Activity Detection (SAD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-spoofnet-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-embedSmolive-v1.html" class="md-nav__link">
+      Speaker Identification (SID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedplda-v4.html" class="md-nav__link">
+      Language Identification (LID) GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v1.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedpldaSmolive-v1.html" class="md-nav__link">
+      Language Identification (LID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedplda-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-gb-v2.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-neural-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR/Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-12" type="checkbox" id="nav-5-12" >
+    
+    <label class="md-nav__link" for="nav-5-12">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-12">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-configuration-for-gpu-use" class="md-nav__link">
+    Plugin Configuration for GPU Use
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Configuration for GPU Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-gpu-usage-for-a-plugins-domain" class="md-nav__link">
+    Enable GPU usage for a plugin's domain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#currently-supported-gpu-plugins" class="md-nav__link">
+    Currently supported GPU plugins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olive-gpu-restrictions-and-configuration-notes" class="md-nav__link">
+    OLIVE GPU Restrictions and Configuration Notes
+  </a>
+  
+    <nav class="md-nav" aria-label="OLIVE GPU Restrictions and Configuration Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-compute-mode-default-vs-exclusive" class="md-nav__link">
+    GPU Compute Mode: "Default" vs "Exclusive"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="gpu-capable-olive-plugin-domain-configuration">GPU-Capable OLIVE Plugin / Domain Configuration</h1>
+<h2 id="introduction">Introduction</h2>
+<p>With the release of OLIVE 5.5.0, certain plugin capabilities are now able to leverage GPU hardware to enhance the speed of certain operations and algorithms. This allows us to either use advanced technologies that were previously infeasible to deploy without the GPU speed bump, or to sometimes dramatically increase the speed performance of existing technologies.</p>
+<p>In order to use GPUs with an OLIVE software instance, three things need to happen;</p>
+<ol>
+<li>The hardware OLIVE is being installed and run on must have a compatible GPU or GPUs installed. Currently, OLIVE can only use Nvidia GPUs with CUDA cores and properly installed Nvidia drivers. If applicable, you will also need the Nvidia Docker toolkit. Refer to Nvidia's documentation for installation of these.</li>
+<li>OLIVE itself must be configured and/or launched so that it has access to these GPUs. Refer to the documentation specific to your delivery type for information on how to do this. The most likely appropriate reference for this is the <a href="martini.html#martinish-start---gpu">Martini Startup Instructions</a>.</li>
+<li>Each domain of each plugin that you wish to run on the GPU must be configured to specify this information. This is covered <a href="#plugin-configuration-for-gpu-use">below</a>.</li>
+</ol>
+<!--- Add compatible GPU properties or what ever is appropriate to the system requirements documentation page! --->
+
+<h2 id="plugin-configuration-for-gpu-use">Plugin Configuration for GPU Use</h2>
+<h3 id="enable-gpu-usage-for-a-plugins-domain">Enable GPU usage for a plugin's domain</h3>
+<p>To allow a plugin to run on an available GPU, it is crucial that the plugin:</p>
+<ol>
+<li>Has each desired domain configured to choose a GPU device in its meta.conf file</li>
+<li>Only has domains configured to select GPU device(s) that are properly exposed to the server by configuring/launghing the server appropriately</li>
+</ol>
+<p>Configuring a plugin to use a GPU is done at the <em>domain</em> level, by changing the <code>device</code> variable assignment within the domain's <code>meta.conf</code> file. By default, most plugins have this variable assigned to <code>cpu</code>, and as such the domain will run on CPU only, even when running within a GPU-enabled OLIVE server. To assign a domain access to a GPU, change this <code>device</code> assignment from <code>cpu</code> to <code>gpuN</code> where <code>N</code> is the device ID of the GPU to run on, as reported by NVIDIA System Management Interface, or <code>nvidia-smi</code> (more info <a href="https://developer.nvidia.com/nvidia-system-management-interface">here</a>). As already discussed it is critical that the system's GPU device(s) assigned to the domain is exposed to the OLIVE server that will be running this domain. These device IDs can be verified by checking the top left entry for each GPU in the <code>nvidia-smi</code> output; an example can be expanded below.</p>
+<details class="info"><summary>nvidia-smi Example Output (Click to expand)</summary><div class="highlight"><pre><span></span><code>+-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.46       Driver Version: 495.46       CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:04:00.0 Off |                  N/A |
+| 20%   28C    P0    71W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:05:00.0 Off |                  N/A |
+| 20%   28C    P0    73W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA GeForce ...  Off  | 00000000:08:00.0 Off |                  N/A |
+| 19%   28C    P0    73W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA GeForce ...  Off  | 00000000:09:00.0 Off |                  N/A |
+| 19%   28C    P0    73W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   4  NVIDIA GeForce ...  Off  | 00000000:84:00.0 Off |                  N/A |
+| 18%   26C    P0    71W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   5  NVIDIA GeForce ...  Off  | 00000000:85:00.0 Off |                  N/A |
+| 19%   27C    P0    71W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   6  NVIDIA GeForce ...  Off  | 00000000:88:00.0 Off |                  N/A |
+| 18%   28C    P0    71W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   7  NVIDIA GeForce ...  Off  | 00000000:89:00.0 Off |                  N/A |
+| 17%   27C    P0    73W / 250W |      0MiB / 12212MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+</code></pre></div>
+</details>
+<p>Most hardware setups will only have a single GPU available, so enabling this is simply replacing <code>cpu</code> with <code>gpu0</code>.</p>
+<p>As an example, the meta.conf for the <code>english-v1</code> domain of <code>asr-end2end-v1.0.0</code> in its off-the-shelf format is shown below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">label</span><span class="o">:</span> <span class="n">english</span><span class="o">-</span><span class="n">v1</span>
+<span class="n">description</span><span class="o">:</span> <span class="n">Large</span> <span class="n">vocabulary</span> <span class="n">English</span> <span class="n">wav2vec2</span> <span class="n">model</span> <span class="k">for</span> <span class="n">both</span> <span class="mi">8</span><span class="n">K</span> <span class="n">and</span> <span class="mi">16</span><span class="n">K</span> <span class="n">data</span>
+<span class="n">resample_rate</span><span class="o">:</span> <span class="mi">8000</span>
+<span class="n">language</span><span class="o">:</span> <span class="n">English</span>
+<span class="n">device</span><span class="o">:</span> <span class="n">cpu</span>
+</code></pre></div>
+
+<p>To instead configure this domain to run on the GPU with ID #0, as it is when delivered with OLIVE 5.5.1, this domain then becomes:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">label</span><span class="o">:</span> <span class="n">english</span><span class="o">-</span><span class="n">v1</span>
+<span class="n">description</span><span class="o">:</span> <span class="n">Large</span> <span class="n">vocabulary</span> <span class="n">English</span> <span class="n">wav2vec2</span> <span class="n">model</span> <span class="k">for</span> <span class="n">both</span> <span class="mi">8</span><span class="n">K</span> <span class="n">and</span> <span class="mi">16</span><span class="n">K</span> <span class="n">data</span>
+<span class="n">resample_rate</span><span class="o">:</span> <span class="mi">8000</span>
+<span class="n">language</span><span class="o">:</span> <span class="n">English</span>
+<span class="n">device</span><span class="o">:</span> <span class="n">gpu0</span>
+</code></pre></div>
+
+<div class="admonition info">
+<p class="admonition-title">Each <em>domain</em> must be configured separately. If within a single plugin, one domain is configured for GPU, the others don't automatically start using a GPU. By default they will still run on CPU, which for most GPU-capable plugins will run significantly more slowly. By extension, it is <em>not</em> necessary for all domains of a plugin to run on the same GPU.</p>
+</div>
+<p>Having this device assignment at the domain level allows the distribution of domains across multiple GPUs. For example, if multiple GPUs are available on a system, lower-memory-usage plugins like SAD, SID, and LID may share a single GPU, while heavier plugins like ASR or MT can be flexible enough to assign different language domains of each plugin across multiple GPUs, spreading the memory load to minimize the chance of exhausting GPU memory, while also saving lost time frequently loading and unloading models.</p>
+<p>Building off of the example above, if we wanted to run the <code>russian-v1</code> domain of the same ASR plugin on GPU device #2, so that <code>english-v1</code> and <code>russian-v1</code> don't compete with respect to GPU memory, the <code>russian-v1</code> domain would look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">label</span><span class="o">:</span> <span class="n">russian</span><span class="o">-</span><span class="n">v1</span>
+<span class="n">description</span><span class="o">:</span> <span class="n">Large</span> <span class="n">vocabulary</span> <span class="n">Russian</span> <span class="n">wav2vec2</span> <span class="n">model</span> <span class="k">for</span> <span class="n">both</span> <span class="mi">8</span><span class="n">K</span> <span class="n">and</span> <span class="mi">16</span><span class="n">K</span> <span class="n">data</span>
+<span class="n">resample_rate</span><span class="o">:</span> <span class="mi">8000</span>
+<span class="n">language</span><span class="o">:</span> <span class="n">Russian</span>
+<span class="n">device</span><span class="o">:</span> <span class="n">gpu2</span>
+</code></pre></div>
+
+<p>The exact ideal configuration may vary greatly depending on specific customer use case and mission needs.</p>
+<h3 id="currently-supported-gpu-plugins">Currently supported GPU plugins</h3>
+<p>These plugins currently support GPU operation, when configured as outlined above:</p>
+<ul>
+<li><a href="plugins/sad-dnn-v8.html">sad-dnn-v8.0.0+ (Speech Activity Detection)</a></li>
+<li><a href="plugins/sid-dplda-v3.html">sid-dplda-v4.0.0+ (Speaker Identification)</a></li>
+<li><a href="plugins/lid-embedplda-v4.html">lid-embedplda-v4.0.0+ (Language Identification)</a></li>
+<li><a href="plugins/tmt-neural-v1.html">tmt-neural-v1.1.0+ (Text Machine Translation)</a></li>
+<li><a href="plugins/asr-end2end-v1.html">asr-end2end-v1.0.0+ (Speech Recognition)</a></li>
+</ul>
+<p>All are capable of running on CPU as well, though in some cases (notably asr-end2end-v1) at a drastically reduced speed. </p>
+<h2 id="olive-gpu-restrictions-and-configuration-notes">OLIVE GPU Restrictions and Configuration Notes</h2>
+<h3 id="gpu-compute-mode-default-vs-exclusive">GPU Compute Mode: "Default" vs "Exclusive"</h3>
+<p>The OLIVE software currently assumes that any available GPUs are in the "default" mode. In testing, some configurations of number of OLIVE server workers have been found to cause unexpected issues if the GPUs are configured to be running in "Exclusive" mode. If possible, please configure GPUs that OLIVE will be using in "Default" mode, and if this is not possible, please ensure that the number of workers for the GPU-enabled server is specified to be 1. This is configured in the provided docker-compose.yml file.</p>
+<p>To check the mode of your GPU, you can view the <code>Compute Mode</code> field of the <code>nvidia-smi</code> command output. Please refer to <a href="https://www.nvidia.com/content/Control-Panel-Help/vLatest/en-us/mergedProjects/nvwks/To_change_the_usage_mode_of_a_GPU.htm">Nvidia's instructions for Nvidia Control Panel</a> or the <a href="https://developer.download.nvidia.com/compute/DCGM/docs/nvidia-smi-367.38.pdf">Usage instructions for nvidia-smi</a> for more information on how to set these modes.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="install.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                OLIVE CentOS/RedHat 7 Native Setup
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="server.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Server Guide
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

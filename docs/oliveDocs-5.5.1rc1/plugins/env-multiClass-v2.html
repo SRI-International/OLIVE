@@ -1,0 +1,1735 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>env-multiClass-v2 (Environmental Analysis) - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#8bc34b">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/css/swagger-ui.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-green" data-md-color-accent="brown">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#env-multiclass-v2-environmental-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              env-multiClass-v2 (Environmental Analysis)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administrator
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administrator" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administrator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../cli.html" class="md-nav__link">
+      Command Line Tools (Legacy)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integrator
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integrator" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integrator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../olivepy-api.html" class="md-nav__link">
+      OlivePy Python Client API PyDocs
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sad-dnnSmolive-v1.html" class="md-nav__link">
+      Speech Activity Detection (SAD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="dfa-spoofnet-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sid-embedSmolive-v1.html" class="md-nav__link">
+      Speaker Identification (SID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="lid-embedplda-v4.html" class="md-nav__link">
+      Language Identification (LID) GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="lid-hdplda-v1.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="lid-embedpldaSmolive-v1.html" class="md-nav__link">
+      Language Identification (LID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="ldd-embedplda-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gid-gb-v2.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="asr-end2end-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tmt-neural-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR/Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-12" type="checkbox" id="nav-5-12" >
+    
+    <label class="md-nav__link" for="nav-5-12">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-12">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#version-changelog" class="md-nav__link">
+    Version Changelog
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-classes" class="md-nav__link">
+    Supported Classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domains" class="md-nav__link">
+    Domains
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputs" class="md-nav__link">
+    Inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    Outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functionality-traits" class="md-nav__link">
+    Functionality (Traits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-audio-conditions" class="md-nav__link">
+    Changing Audio Conditions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+    <nav class="md-nav" aria-label="Comments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calibration" class="md-nav__link">
+    Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subsetting-classes" class="md-nav__link">
+    Subsetting Classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-options" class="md-nav__link">
+    Global Options
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="env-multiclass-v2-environmental-analysis">env-multiClass-v2 (Environmental Analysis)</h1>
+<h2 id="version-changelog">Version Changelog</h2>
+<table>
+<thead>
+<tr>
+<th>Plugin Version</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v2.0.0</td>
+<td>Initial plugin release with OLIVE 5.1.0, functionally identical to v1.0.0, but updated to be compatible with OLIVE 5.1.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description">Description</h2>
+<p>ENV plugins are designed to analyze submitted audio to glean information from the audio. Often not necessarily meant for detecting specific events, languages, or speakers, these plugins are instead pulling information about the environment or conditions of the audio recording, like the noise type(s) and level, codec, background conditions, reverberation, or other such characteristics. The specific classes that are reported will vary from plugin-to-plugin, so for more information regarding these, refer below.</p>
+<p>This plugin extracts information regarding the acoustic conditions and content of the audio file being analyzed, such as language, codec, SNR levels, etc.</p>
+<p>This plugin features:</p>
+<ul>
+<li>Model Ensemble<ul>
+<li>The plugin leverages 7 systems for extracting 40 subclasses of information related to Language, Codec, SNR, Emotion, Reverb, Channel and Gender.</li>
+</ul>
+</li>
+<li>Scaled Scores<ul>
+<li>To faciltate interpretation, all scores for a given class (out of 7) are scaled to sum to 1.0. An exception is for Language due to the scores being LLRs and accounting for unknown languages in the model.</li>
+</ul>
+</li>
+</ul>
+<h3 id="supported-classes">Supported Classes</h3>
+<p>The table below shows each class and the associated subclasses that this plugin reports scores for.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Class</strong></th>
+<th><strong>Subclasses</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><br><br><strong>Channel</strong></td>
+<td><ul><li>ac (Acoustic projection via a mobile phone recording of a speakerphone voice output</li><li>mic (Microphone)</li><li>tel (Telephone)</li></ul></td>
+</tr>
+<tr>
+<td><br><br><br><br><br><br><br><br><strong>Codec</strong></td>
+<td><ul><li>aac</li><li>amrnb</li><li>clean (Uncompressed)</li><li>g723_1</li><li>g726</li><li>gsm</li><li>ilbc</li><li>mp3</li><li>opus</li><li>real144</li><li>speex</li><li>vorbis</li> </ul></td>
+</tr>
+<tr>
+<td><br><br><strong>Emotion</strong></td>
+<td><ul><li>A (Aroused)</li><li>H (Happy)</li><li>N (Neutral)</li></ul></td>
+</tr>
+<tr>
+<td><br><strong>Gender</strong></td>
+<td><ul><li>f (Female)</li><li>m (Male)</li></ul></td>
+</tr>
+<tr>
+<td><br><br><br><br><br><br><br><br><strong>Language</strong></td>
+<td><ul><li>amh (Amharic)</li><li>ara (Arabic)</li><li>cmn (Chinese Mandarin)</li><li>eng (English)</li><li>fas (Farsi)</li><li>fre (French)</li><li>hau (Hausa)</li><li>jpn (Japanese)</li><li>kor (Korean)</li><li>pus (Pushto)</li><li>rus (Russian)</li><li>spa (Spanish)</li><li>tur (Turkish)</li><li>urd (Urdu)</li><li>vie (Vietnamese)</li></ul></td>
+</tr>
+<tr>
+<td><br><strong>Reverb</strong></td>
+<td><ul><li>nml (Limited to no reverberation)</li><li>rev (Moderate to high levels of reverberation)</li></ul></td>
+</tr>
+<tr>
+<td><br><br><strong>SNR</strong></td>
+<td><ul><li>clean   (SNR better than 30dB)</li><li>snr20db (SNR of approximately 20dB)</li><li>snr08db (SNR of 8dB or lower)</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h2 id="domains">Domains</h2>
+<ul>
+<li>multi-v1<ul>
+<li>Multi-condition domain tested heavily on telephone and microphone conditions, multiple languages, distances, and varying background noises and codecs.</li>
+</ul>
+</li>
+</ul>
+<h2 id="inputs">Inputs</h2>
+<p>Audio file or buffer and an optional identifier.</p>
+<h2 id="outputs">Outputs</h2>
+<p>Generally, a list of scores for all classes in the domain, for the entire segment. Unlike with SAD and SID, where scores are generally log-likelihood ratios where a score of greater than “0” is considered a detection, most of the classes within an ENV plugin are set up differently.</p>
+<p>Some ENV plugins, like this one will have a 'parent' superclass that has several subclasses within it.  For example, the Gender superclass has subclasses of m (male) and f (female); the Channel superclass may have subclasses of mic (microphone), tel (telephone), and ac (acoustic coupling).  When the plugin reports its results, these classes are reported as:</p>
+<div class="codehilite"><pre><span></span><code>    Gender-f &lt;score&gt;
+    Gender-m &lt;score&gt;
+</code></pre></div>
+
+<p>and</p>
+<div class="codehilite"><pre><span></span><code>    Channel-ac &lt;score&gt;
+    Channel-mic &lt;score&gt;
+    Channel-tel &lt;score&gt;
+</code></pre></div>
+
+<p>respectively.  Note that within many of these superclasses, the scores are scaled so that the sum of all subclasses within the superclass will sum to one, to make the scores more legible and easier to interpret. In these cases, the highest score represents the most likely subclass for that category.</p>
+<p>An example output excerpt:</p>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav Channel-ac 0.0
+    input-audio.wav Channel-mic 1.0
+    input-audio.wav Channel-tel 0.0
+    input-audio.wav Codec-aac 0.0
+    input-audio.wav Codec-amrnb 0.0
+    input-audio.wav Codec-clean 1.0
+    input-audio.wav Codec-g723_1 0.0
+    input-audio.wav Codec-g726 0.0
+    input-audio.wav Codec-gsm 0.0
+    input-audio.wav Codec-ilbc 0.0
+    input-audio.wav Codec-mp3 0.0
+    input-audio.wav Codec-opus 0.0
+    input-audio.wav Codec-real144 0.0
+    input-audio.wav Codec-speex 0.0
+    input-audio.wav Codec-vorbis 0.0
+    input-audio.wav Emotion-A 0.0
+    input-audio.wav Emotion-H 0.0
+    input-audio.wav Emotion-N 0.9999999
+    input-audio.wav Gender-f 0.0
+    input-audio.wav Gender-m 1.0
+    input-audio.wav Language-amh 0.0
+    input-audio.wav Language-ara 0.0
+    input-audio.wav Language-cmn 0.0
+    input-audio.wav Language-eng 0.99999642
+    input-audio.wav Language-fas 0.0
+    input-audio.wav Language-fre 0.0040021786
+    input-audio.wav Language-hau 0.0
+    input-audio.wav Language-jpn 0.0
+    input-audio.wav Language-kor 0.0
+    input-audio.wav Language-pus 0.0
+    input-audio.wav Language-rus 0.0
+    input-audio.wav Language-spa 0.00023994729
+    input-audio.wav Language-tur 0.0
+    input-audio.wav Language-urd 0.0
+    input-audio.wav Language-vie 0.0
+    input-audio.wav Reverb-nml 1.0
+    input-audio.wav Reverb-rev 0.0
+    input-audio.wav SNR-clean 0.90663459
+    input-audio.wav SNR-snr08db 0.0
+    input-audio.wav SNR-snr20db 0.093361041
+</code></pre></div>
+
+<h2 id="functionality-traits">Functionality (<a href="../traits.html">Traits</a></h2>
+<p>The functions of this plugin are defined by its Traits and implemented API messages. A list of these Traits is below, along with the corresponding API messages for each. Click the message name below to go to additional implementation details below.</p>
+<ul>
+<li><a href="../traits.html#globalscorer">GLOBAL_SCORER</a> – Score all submitted audio, returning a single score for the entire audio segment for each of the enrolled speakers of interest.<ul>
+<li><a href="../apiMessage.html#globalscorerrequest">GlobalScorerRequest</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="compatibility">Compatibility</h2>
+<p>OLIVE 5.1+</p>
+<h2 id="limitations">Limitations</h2>
+<p>Known or potential limitations of the plugin are outlined below.</p>
+<h3 id="changing-audio-conditions">Changing Audio Conditions</h3>
+<p>This plugin is a global scoring plugin. The scores reported will represent a summarization of the entire submitted audio buffer or file with respect to each of the classes in the plugin. If conditions change, or there are multiple speakers, or multiple languages spoken, if the environment changes in any way, it may be very difficult or impossible for these changes to be captured and represented by the results from this plugin.</p>
+<h2 id="comments">Comments</h2>
+<h3 id="calibration">Calibration</h3>
+<p>This plugin applies calibration only to the scores from the Language class. All other classes have the sum of scores for that class scaled to sum to 1.0.</p>
+<h3 id="subsetting-classes">Subsetting Classes</h3>
+<p>If only a limited number of the metadata classes are of interest, it is possible to subset the report back from the plugin by passing these classes as --ids with the scoring request. Refer to the <a href="../cli.html">Command Line Interface</a> or <a href="../apiCode.html">API Documentation</a> for instructions on how to do this, depending on how you are interacting with the plugin.</p>
+<h2 id="global-options">Global Options</h2>
+<p>The following options are available to this plugin, adjustable in the plugin's configuration file; <code>plugin_config.py</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Option Name</th>
+<th>Description</th>
+<th>Default</th>
+<th>Expected Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>threshold</td>
+<td>Detection threshold: Higher value results in less detections being output, but of higher reliability.</td>
+<td>0.0</td>
+<td>0.0 to 1.0</td>
+</tr>
+<tr>
+<td>sad_threshold</td>
+<td>SAD threshold for determining the audio to be used in meteadata extraction</td>
+<td>1.0</td>
+<td>-5.0 - 6.0</td>
+</tr>
+</tbody>
+</table>
+<!--- 
+## Interface 
+
+For command line interface use see the appropriate section of the [OLIVE CLI User Guide](../cli.md#invoking-oliveanalyze). For API usage see the appropriate section of the [OLIVE Application Programming Interface Guide](../apiCode.md#global-score-request).
+
+--->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="../assets/javascript/iframe-worker.js"></script>
+<script src="../search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../search/search_index.js"></script>
+      
+        <script src="../assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,30 @@
+usage: olive_learn.py [-h] [-a ADAPT] [-c CHANNEL] [-C CLIENT_ID] [-d DOMAIN]
+                      [-i INPUT] [-p PLUGIN] [-P PORT] [-s SERVER] [-S]
+                      [-t TIMEOUT] [-T TRAIN] [-L THRESHOLD]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -a ADAPT, --adapt ADAPT
+                        Adapt a plugin/domain, giving the new domain ADAPT
+  -c CHANNEL, --channel CHANNEL
+                        Learn from this channel of audio (defaults to 1).
+  -C CLIENT_ID, --client-id CLIENT_ID
+                        Experimental: the client_id to use
+  -d DOMAIN, --domain DOMAIN
+                        The domain to use
+  -i INPUT, --input INPUT
+                        Input data from INPUT.
+  -p PLUGIN, --plugin PLUGIN
+                        The plugin to use.
+  -P PORT, --port PORT  The port to use.
+  -s SERVER, --server SERVER
+                        The machine the server is running on. Defaults to
+                        localhost.
+  -S, --serialized      Serialize audio file and send it to the server instead
+                        of the decoded samples
+  -t TIMEOUT, --timeout TIMEOUT
+                        The timeout to use
+  -T TRAIN, --train TRAIN
+                        Train a plugin/domain, giving the new domain TRAIN
+  -L THRESHOLD, --threshold THRESHOLD
+                        Apply threshold THRESHOLD when scoring

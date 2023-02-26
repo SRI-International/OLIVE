@@ -1,0 +1,174 @@
+/**
+* OLIVE STREAM Protobuf message reference
+*/
+
+syntax = "proto2";
+package com.sri.speech.olive.api.stream;
+import "olive.proto";
+import "workflow.proto";
+
+//import "olive.proto";
+//
+//enum StreamingMessageType{
+//  START_STREAMING_REQUEST         = 1;
+//  START_STREAMING_RESULT          = 2;
+//  INVALID_MESSAGE                 = 3;
+//}
+
+// Client reqeust to start streaming audio to the broker
+message StartStreamingRequest {
+  required string client_stream_id              = 1;      // The name of this client and/or it's streaming request.  This should be a unique name that is also used to identify all comms with this client.
+  optional string client_channel_id             = 2;      // The id/name/number of the channel used by this client for this session. channel IDs should be unique.
+  required uint32 sampleRate                    = 7;      // The sample rate of the audio to stream
+  optional uint32 channels                      = 8;
+  optional AudioBitDepth bit_depth  = 4;    // The number of bits in each sample, ignored for serialized buffers
+  optional uint32 startFrameNumber              = 9;     // not sure if needed... but might want to let client know where frames start  this might also be a time value
+
+  required WorkflowDefinition workflow_definition   = 10;
+  repeated WorkflowDataRequest workflow_data_input  = 11;
+  repeated OptionValue option                       = 12; // Any options specified for this workflow
+
+}
+
+// The server's response to starting a streaming session
+message StartStreamingResult {
+  required string client_stream_id    = 1;            // The stream_id supplied in the start stream request
+  required bool successful            = 2;            // True if a new streaming session was started
+  optional string session_id          = 3;            // Unique ID created by the server
+  optional uint32 data_port           = 4;            // The port number the client must use to submit data (audio) messages
+  optional string info                = 5;            // Optional - an explanation of why the streaming request failed
+}
+
+
+// Client request/notification that is done sending audio
+message StopStreamingRequest {
+  optional string session_id            = 1;            // currently optional - if empty stop any/all streaming sessions.
+//  required string client_stream_id    = 2;           // The streaming session
+}
+
+// Acknowledgement that the streaming session has ended - not sure if needed
+message StopStreamingResult {
+  // todo sessions still active?
+}
+
+// Request to 'flush' an active stream.  Behavior is workflow/task dependent.  For some streaming plugins this may
+// generate a state change that produces an immediate response.
+message FlushStreamingRequest {
+  required string session_id            = 1;  // Send a flush command to the workflow stream having this ID
+  repeated OptionValue option           = 2;  // Any options for streaming task(s)
+  repeated string task_names            = 3;  // Restrict the flush command to tasks who's consumer_result_label matches.  If empty, the flush command is sent to all tasks in the streaming workflow.
+  optional bool suspend                 = 4;  // Optional (TBD) if True indicates that streaming should be paused (after flush) -- adding for future use
+}
+
+// acknowledgment that the flush request was received
+message FlushStreamingResult {
+  required bool   successful  = 1; // Status of the flush request
+  optional string message     = 2; // Description of what occurred for this flush attempt
+}
+
+
+// Added in 5.5 to provide more options over the flush command
+
+// Request to 'drain' an active stream.  Behavior is workflow/task dependent. Like a flush request, but stream frame index is not
+// reset afterwards.  In addition all processing stops until all tasks have finished draining, whereas flush attempts to restart
+// processing as soon as possible.  Audio sent while 'draining' is queued and will not be processed until all tasks have been finished draining
+message DrainStreamingRequest {
+  required string session_id            = 1;  // Send a flush command to the workflow stream having this ID
+  repeated OptionValue option           = 2;  // Any options for streaming task(s)
+  repeated string task_names            = 3;  // Restrict the flush command to tasks who's consumer_result_label matches.  If empty, the flush command is sent to all tasks in the streaming workflow.
+}
+
+// acknowledgment that the drain request was received -- TBD if this is sent immediately or after all tasks have finished draing and streaming can continue
+message DrainStreamingResult {
+  required bool   successful  = 1; // Status of the drain request
+  optional string message     = 2; // Description of error t hat occurred for this drain attempt.  Assume message is only set if successful false
+}
+
+/**
+ A streaming RegionScorerRequest
+ */
+message RegionScorerStreamingRequest {
+  required string plugin      = 1; // The plugin to score
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify the classes to be scored
+}
+
+// Results for Region and Global scoring...
+// The region score result
+message RegionScorerStreamingResult {
+  repeated RegionStreamingScore stream_region = 1; // The scored regions
+}
+
+// The basic unit a region score.  There may be multiple RegionScore values in a RegionScorerResult
+message RegionStreamingScore {
+  repeated RegionScore region = 1; // The scored regions
+  optional float   start_t    = 2; // Begin-time of the streaming region (in seconds) analyzed
+  optional float   end_t      = 3; // End-time of the streaming region (in seconds) analyzed
+  optional string  label      = 4; // optional label for this set of region scores (such as speech or non-speech)
+  optional float   offset_t   = 5; // This offset plus start_t is time since the first audio sample in the stream was received.  If the stream is flushed, start_t  may reflect the time since flushed.
+}
+
+// See olive.proto for RegionScore:
+//message RegionScore {
+//  required float   start_t  = 1; // Begin-time of the region (in seconds)
+//  required float   end_t    = 2; // End-time of t he region (in seconds)
+//  required string  class_id = 3; // Class ID associated with region
+//  optional float   score    = 4; // Optional score associated with the class_id label
+//}
+
+/**
+ A streaming GlobalScorerRequest
+ */
+message GlobalScorerStreamingRequest {
+  required string plugin      = 1; // The plugin to score
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify the classes to be scored
+}
+
+// The result from a GlobalScorerRequest, having zero or more GlobalScore elements
+message GlobalScorerStreamingResult {
+  repeated GlobalScore score = 1; // The class scores
+  optional float   start_t  = 2; // Begin-time of the streaming region (in seconds) analyzed
+  optional float   end_t    = 3; // End-time of the streaming region (in seconds) analyzed
+  optional float   offset_t   = 5; // This offset plus start_t is time since the first audio sample in the stream was recevied.  If the stream is flushed, start_t  may reflect the time since flushed.
+}
+
+// Request the transformation of a text/string using MT
+message TextTransformationStreamingRequest {
+  required string plugin      = 1; // The plugin to invoke
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 4; // Any options specified
+  repeated string class_id    = 5; // Optionally specify the classes to be scored
+}
+
+// The text value returned in a TextTransformationResult
+message TextTransformation {
+  required string class_id  = 1;         // A classifier for this result, usually just 'text'
+  required string transformed_text = 2;  // The text result
+}
+
+//  The response to a TextTransformationRequest
+message TextTransformationStreamingResult {
+  repeated TextTransformation transformation = 1;
+  optional float   start_t  = 2; // Begin-time of the streaming region (in seconds) analyzed
+  optional float   end_t    = 3; // End-time of the streaming region (in seconds) analyzed
+  optional float   offset_t   = 5; // This offset plus start_t is time since the first audio sample in the stream was recevied.  If the stream is flushed, start_t  may reflect the time since flushed.
+}
+
+// Give (status) updates on frames(?) that have been processed, give updates per plugin/task?  So ASR has processed 8000 frames... SAD has processed 12000 frames...
+
+// PartialResult(s) as a new message type or just modify existing score messages to include partial flag?
+// StreamingRegionScorerResult?
+// StreamingGlobalScorerResult?
+// StreamingFrameScorerResult?
+
+// ================================= Streaming Pimiento ====================================
+
+// Request a SyncStreaming pimiento as part of a streaming workflow
+message SyncStreamingRequest {
+  required string plugin      = 1; // The plugin (pimiento) to invoke
+  required string domain      = 2; // The domain
+  repeated OptionValue option = 3; // Any options specified
+}

@@ -1,0 +1,1788 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>OLIVE Installation for container-based Deliveries - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#8bc34b">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-green" data-md-color-accent="brown">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olive-installation-for-container-based-deliveries" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              OLIVE Installation for container-based Deliveries
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administrator
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administrator" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administrator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      User
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        User
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Legacy)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integrator
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integrator" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integrator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      OlivePy Python Client API PyDocs
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnnSmolive-v1.html" class="md-nav__link">
+      Speech Activity Detection (SAD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-spoofnet-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-embedSmolive-v1.html" class="md-nav__link">
+      Speaker Identification (SID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedplda-v4.html" class="md-nav__link">
+      Language Identification (LID) GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v1.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedpldaSmolive-v1.html" class="md-nav__link">
+      Language Identification (LID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedplda-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-gb-v2.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-neural-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR/Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-12" type="checkbox" id="nav-5-12" >
+    
+    <label class="md-nav__link" for="nav-5-12">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-12">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-olive-in-an-existing-multi-container-application" class="md-nav__link">
+    Deploying OLIVE in an Existing Multi-Container Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-install-and-launch-docker" class="md-nav__link">
+    Download, Install, and Launch Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjust-docker-settings-ram-cores" class="md-nav__link">
+    Adjust Docker settings (RAM, Cores)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-olive-docker-package" class="md-nav__link">
+    Download OLIVE Docker Package
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-the-olive-docker-image" class="md-nav__link">
+    Load the OLIVE Docker Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-run-and-run-shell-scripts" class="md-nav__link">
+    Set up run and run-shell scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="Set up run and run-shell scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable" class="md-nav__link">
+    Environment Variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-script-editing" class="md-nav__link">
+    Direct Script Editing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-olive-scripts" class="md-nav__link">
+    Run OLIVE scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="Run OLIVE scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-hosts" class="md-nav__link">
+    Windows hosts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos-and-linux-hosts" class="md-nav__link">
+    macOS and linux hosts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unload-olive-docker-container-image" class="md-nav__link">
+    Unload OLIVE Docker Container Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-install-set-up-and-launch-olive-gui" class="md-nav__link">
+    [Optional] Install, set up, and launch OLIVE GUI
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olive-installation-for-container-based-deliveries">OLIVE Installation for container-based Deliveries</h1>
+<p>These instructions cover the traditional Docker container based OLIVE delivery where the container only includes the OLIVE server alone. For the new, multi-server delivery packaging that includes the <a href="raven.html">Raven Web GUI</a>, please refer to the <a href="martini.html">OLIVE Martini</a> Setup Guide.</p>
+<h2 id="deploying-olive-in-an-existing-multi-container-application">Deploying OLIVE in an Existing Multi-Container Application</h2>
+<p>If deploying the OLIVE Docker image as a single container in a conventional system then skip to the <a href="#download-install-and-launch-docker">next section</a>. Otherwise, for users deploying OLIVE in an existing multi-container application managed by Docker Compose or Kubernetes, be sure to create OLIVE containers that meet these requirements:</p>
+<ul>
+<li>The <code>oliveAppData</code> directory, distributed with an OLIVE release, must be mounted as /home/olive/olive inside the docker container. The <code>oliveAppData</code> is the directory that contains the 'plugins' folder with one or more OLIVE plugins.<ul>
+<li>OLIVE will write logs and persistent enrollments to the oliveAppData directory.</li>
+<li>The plugins folder mounted in /home/olive/olive can vary by container if specific tasks need to be supported by a container.  For example, an olive data directory can be mounted that contains only one plugin.</li>
+</ul>
+</li>
+<li>The OLIVE server is executed as 'oliveserver'</li>
+<li>The OLIVE server is accessible via ports 5588 and 5589 (and internally uses port 5590). External clients must have access to these ports on your OLIVE container(s).</li>
+<li>You can change the default ports used by the OLIVE server via the --port argument. For example, this command will start the OLIVE server using client accessible ports 5591 and 5592:<ul>
+<li><code>oliveserver --port 5591</code></li>
+<li>Starting the server with different ports is only necessary if the default OLIVE ports are already used by an existing application, or multiple OLIVE containers are addressable at the same hostname.</li>
+</ul>
+</li>
+<li>The number of concurrent jobs supported by an OLIVE server can be restricted using the -j argument.  For example, to limit the server to one job at a time: <ul>
+<li><code>oliveserver -j 1</code></li>
+<li>Limiting the number jobs to one in necessary for the <a href="traits.html#texttransformer">TextTransformer</a> plugin, <a href="plugins/tmt-statistical-v1.html">tmt-statistical-v1</a></li>
+</ul>
+</li>
+<li>If audio needs to be submitted to OLIVE as a path instead of sent as buffer then please <a href="contact.html">contact SRI</a> for some advanced configuration options.</li>
+</ul>
+<h2 id="download-install-and-launch-docker">Download, Install, and Launch Docker</h2>
+<p>First you will need to obtain and install Docker - this can be done in a number of ways, the easiest of which is likely through the Docker website. The Community Edition is free (though you now need to create an account with Docker to obtain it), should fulfill most or all OLIVE needs, and is available for several operating systems, including Windows 10.  Docker is available here - https://www.docker.com/community-edition and up-to-date <a href="https://docs.docker.com/engine/install/">installation instructions</a> can be found from Docker.</p>
+<p><img alt="Windows Hyper-V and Containers features" src="img/docker/win-hyper-v.png" /></p>
+<p>Once Docker is installed, launch it to proceed. When running Docker for the first time, if you are using a Windows OS, you may be prompted to enable some Windows features that are not enabled by default, but are required by Docker to run; Hyper-V and Containers. Select “Ok” and wait for the computer to restart to enable these features. Docker should automatically start up once the computer has restarted.  </p>
+<p><img alt="Docker is running!" src="img/docker/win-docker-running.png" /></p>
+<h2 id="adjust-docker-settings-ram-cores">Adjust Docker settings (RAM, Cores)</h2>
+<p>If you are running Docker on Windows or MacOS, there may be some extra required configuration. By default, Docker is assigned one or two CPU cores, and only 2GB of memory. In order to effectively run the OLIVE docker container, you will need to increase the Memory allocated to Docker to at least 8 GB (or 16 GB for some plugins/tasks), depending on which plugins will be run.  If you have cores available, you can obtain greater performance by also increasing the CPU allocation. Allocating more cores and more memory will almost always improve OLIVE performance.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows</label><div class="tabbed-content">
+<p><img alt="Windows Docker Settings Access" src="img/docker/win-docker-settings-taskbar.png" /></p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">macOS</label><div class="tabbed-content">
+<p><img alt="macOS Docker Settings Access" src="img/docker/mac-docker-settings-notification-bar.png" /></p>
+</div>
+</div>
+<p>These settings are accessed by right clicking the Docker icon in the notification tray on Windows (notification bar if using MacOS), selecting ‘Settings’ and navigating to the ‘Advanced’ tab, then adjusting the CPU and Memory sliders as desired. </p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Windows</label><div class="tabbed-content">
+<p><img alt="Windows Docker Resource Settings Configuration" src="img/docker/win-docker-resources.png" /></p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">macOS</label><div class="tabbed-content">
+<p><img alt="macOS Docker Resource Settings Configuration" src="img/docker/mac-docker-resources.png" /></p>
+</div>
+</div>
+<h2 id="download-olive-docker-package">Download OLIVE Docker Package</h2>
+<p>Now that Docker is installed and properly configured, you can download and uncompress the OLIVE Docker package from the SRI-provided share link. The link, delivery method, and exact filenames will vary from delivery to delivery, but once you have downloaded and unpacked the software archive:</p>
+<div class="codehilite"><pre><span></span><code>olive2.0-docker-19Sep2020.tar.gz
+</code></pre></div>
+
+<p>You should find similar content to below unless told otherwise: </p>
+<ul>
+<li>olive5.5.1<ul>
+<li>docs/ - Directory containing the OLIVE documentation </li>
+<li>oliveDocker/<ul>
+<li>olive-5.5.1-docker.tar – Docker image containing OLIVE </li>
+<li>run.sh - Linux/MacOS version of script that will launch the OLIVE Docker image and oliveserver.</li>
+<li>run.cmd – Windows version of script that will launch the OLIVE Docker image and oliveserver. </li>
+<li>run-shell.sh - Linux/MacOS version of script that will launch the OLIVE Docker image and open a command line prompt within the Docker container, for running command-line experiments and tasks.</li>
+<li>run-shell.cmd – Windows version of script that will launch the OLIVE Docker image and open a command line prompt within the Docker container, for running command-line experiments and tasks. </li>
+</ul>
+</li>
+<li>OliveGUI/ - The OLIVE Nightingale GUI (not included in all deliveries)<ul>
+<li>bin/<ul>
+<li>Nightingale</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>oliveAppData/<ul>
+<li>plugins/<ul>
+<li>sad-dnn-v7.0.0 – Speech Activity Detection plugin </li>
+<li>Actual plugins included will depend on the customer, mission, and delivery</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>--optional-- <em>oliveAppDataMT/</em><ul>
+<li><em>plugins/</em><ul>
+<li><em>tmt-statistical-v1.0.0</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>You may optionally be provided with Machine Translation capabilities, as shown at the end of the list - this plugin has some special runtime constraints, and will be contained in a separate oliveAppData directory as a result. </p>
+<h2 id="load-the-olive-docker-image">Load the OLIVE Docker Image</h2>
+<p>The first setup step is to load the OLIVE Docker image. Loading the image is as simple as opening a command prompt like PowerShell in Windows or Terminal in MacOS, navigating to the directory containing the OLIVE Docker image, and following the examples below.</p>
+<p>Loading the docker image (only necessary once).</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">cd</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>\<span class="n">olive2</span><span class="o">.</span><span class="mi">0</span>\<span class="n">oliveDocker</span> 
+<span class="o">$</span> <span class="n">docker</span> <span class="nb">load</span> <span class="o">-</span><span class="n">i</span> <span class="n">olive</span><span class="o">-</span><span class="mf">5.5</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">tar</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">macOS / linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">olive5</span><span class="o">.</span><span class="mf">5.1</span><span class="o">/</span><span class="n">oliveDocker</span>
+<span class="o">$</span> <span class="n">docker</span> <span class="nb">load</span> <span class="o">-</span><span class="n">i</span> <span class="n">olive</span><span class="o">-</span><span class="mf">5.5</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">docker</span><span class="o">.</span><span class="n">tar</span>
+</code></pre></div>
+
+</div>
+</div>
+<p>This operation can take some time; quite a few minutes, and you may not see feedback right away. Once you are returned to the command prompt, if there are no error messages, loading is complete and you can proceed.</p>
+<h2 id="set-up-run-and-run-shell-scripts">Set up <code>run</code> and <code>run-shell</code> scripts</h2>
+<p>Note that we include two (optionally three, if translation is provided) 'run' scripts in this release. </p>
+<ul>
+<li><code>run-shell.sh</code> will open a shell within the container, with the OLIVE environment properly set up, allowing a user to run CLI tasks using localenroll and localanalyze. This script is mainly used for troubleshooting and debugging.</li>
+</ul>
+<p>The other script(s) will launch an OLIVE server using the olive-5.5.1 container, and vary only slightly.</p>
+<ul>
+<li><code>run.sh</code>is a general-purpose script currently configured to launch an OLIVE server that will only restrict the number of jobs/workers based on the number of cores available on the host machine, and will allow parallel processing to scale based on this. This should be used for most purposes.</li>
+<li>(optional) <em><code>run_mt.sh</code> is a specialized script that is meant to be used to launch an OLIVE server that only points to a Machine Translation plugin. It is configured to limit the number of jobs/workers to one and does not allow parallel processing. It is also configured to have this server listen on different ports than a standard OLIVE server would, in case you need both OLIVE servers to run on the same host. Note that this distinction is the reason that the plugins for deliveries that include translation are split between oliveAppData and oliveAppDataMT - you should be able to support running two containers; one for all plugins that support parallel processing and one for MT - without having to shuffle plugin directories around.</em></li>
+</ul>
+<p>The <code>run.cmd</code>/<code>run.sh</code> and <code>run-shell.cmd</code>/<code>run-shell.sh</code> scripts do most of the heavy-lifting for starting the OLIVE docker and associated processes, but before you can run them, you will need to either set an environment variable, or for a more permanent change, open the desired script with a text editor and edit one or two lines to allow them to establish a shared file location that both the host file system (Windows, Linux, or MacOS) and the OLIVE Docker container can access. Both processes are shown below.</p>
+<h3 id="environment-variable">Environment Variable</h3>
+<p>The <code>run</code> and <code>run-shell</code> scripts are shipped configured to pull the location of the plugins from an environment variable, so that the scripts don't need to be edited out of the box. This does require these variables to be set each time you will need to run If you would like to permanently edit the scripts instead, refer to the next section, <a href="#direct-script-editing">direct script editing</a>. To set this location, you will  need to set the <code>OLIVE_APP_DATA</code> environment variable, that will adjust what the <code>OLIVE_DATA</code> variable inside the script is set to. This variable needs to point to the path on the host machine that contains the <strong>'plugins'</strong> directory you wish for it to use - for typical OLIVE deliveries, this will be [REPLACE-WITH-LOCAL-PATH]/olive2.0/oliveAppData/.</p>
+<p>An example of this setup step for the non-translation server:</p>
+<div class="codehilite"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">OLIVE_APP_DATA</span><span class="o">=[</span>REPLACE-WITH-LOCAL-PATH<span class="o">]</span>/olive2.0/oliveAppData/
+$ ./run.sh
+Docker will get access to directory: /Users/allen/oliveAppData/ as /home/olive/olive and  as /olive-data.  Plugins should be located at /Users/allen/oliveAppData/plugins
+
+TASK     PLUGIN                            VERSION    DOMAINS
+-------  --------------------------------  ---------  -------------------------------------------------------------------------------------------------------------------
+ASR      asr-dynapy-v2.0.2                 <span class="m">2</span>.0.2      <span class="o">[</span><span class="s1">&#39;cmn-tdnnChain-tel-v1&#39;</span>, <span class="s1">&#39;eng-tdnnChain-tel-v1&#39;</span>, <span class="s1">&#39;fas-tdnn-tel-v1&#39;</span>, <span class="s1">&#39;rus-tdnnChain-tel-v1&#39;</span>, <span class="s1">&#39;spa-tdnnChain-tel-v1&#39;</span><span class="o">]</span>
+LDD      ldd-sbcEmbed-v1.0.1               <span class="m">1</span>.0.1      <span class="o">[</span><span class="s1">&#39;multi-v1&#39;</span><span class="o">]</span>
+LID      lid-embedplda-v2.0.1              <span class="m">2</span>.0.1      <span class="o">[</span><span class="s1">&#39;multi-v1&#39;</span><span class="o">]</span>
+... etc.
+
+--------- Server ready Tue Feb <span class="m">23</span> <span class="m">04</span>:03:13 <span class="m">2021</span> ---------
+</code></pre></div>
+
+<p><em>-- Optional step for Machine Translation Only --</em></p>
+<p>This same step described above is necessary for the <code>run-mt.sh</code> script that will launch the job-limited server that is only running Machine Translation. The only difference is that the environment variable is instead <code>$OLIVE_APP_DATA_MT</code>, and the default location for most OLIVE deliveries will likely be [REPLACE-WITH-LOCAL-PATH]/olive5.5.1/oliveAppDataMT/.</p>
+<div class="codehilite"><pre><span></span><code><span class="c">$ export OLIVE_APP_DATA_MT=</span><span class="k">[</span><span class="c">REPLACE</span><span class="nb">-</span><span class="c">WITH</span><span class="nb">-</span><span class="c">LOCAL</span><span class="nb">-</span><span class="c">PATH</span><span class="k">]</span><span class="c">/olive5</span><span class="nt">.</span><span class="c">5</span><span class="nt">.</span><span class="c">1/oliveAppDataMT/</span>
+<span class="c">$ </span><span class="nt">.</span><span class="c">/run</span><span class="nb">-</span><span class="c">mt</span><span class="nt">.</span><span class="c">sh</span>
+<span class="c">Docker will get access to directory: /Users/allen/oliveAppDataMT/ as /home/olive/olive and  as /olive</span><span class="nb">-</span><span class="c">data</span><span class="nt">.</span><span class="c">  Plugins should be located at /Users/allen/oliveAppData/plugins</span>
+
+<span class="c">TASK     PLUGIN                            VERSION    DOMAINS</span>
+<span class="nb">-------</span><span class="c">  </span><span class="nb">--------------------------------</span><span class="c">  </span><span class="nb">---------</span><span class="c">  </span><span class="nb">-------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="c">TMT      tmt</span><span class="nb">-</span><span class="c">statistical</span><span class="nb">-</span><span class="c">v1</span><span class="nt">.</span><span class="c">0</span><span class="nt">.</span><span class="c">1            1</span><span class="nt">.</span><span class="c">0</span><span class="nt">.</span><span class="c">1      </span><span class="k">[</span><span class="c">&#39;spa</span><span class="nb">-</span><span class="c">eng</span><span class="nb">-</span><span class="c">generic</span><span class="nb">-</span><span class="c">v2&#39;</span><span class="nt">,</span><span class="c"> &#39;fre</span><span class="nb">-</span><span class="c">eng</span><span class="nb">-</span><span class="c">generic</span><span class="nb">-</span><span class="c">v1&#39;</span><span class="k">]</span><span class="c"></span>
+
+<span class="nb">---------</span><span class="c"> Server ready Tue Feb 23 04:03:13 2021 </span><span class="nb">---------</span><span class="c"></span>
+</code></pre></div>
+
+<p><strong>NOTE</strong> that it is still necessary to set the <code>LOCAL_OLIVE_DATA</code> variable <em>within</em> the <code>run-shell</code> script if you wish to have access to shared audio files. On top of setting OLIVE_APP_DATA as above (which will mount plugins inside the container <code>/home/olive/olive/plugins</code>), you will also need to set the <code>LOCAL_OLIVE_DATA</code> variable within the script. <code>LOCAL_OLIVE_DATA</code> must be set to a location that ends with a directory called <code>olive-data</code>, and can contain scripts, text files, audio files, and any other utilities you might wish to use with the shell while inside your container. To set this variable, you will need to edit this line in side <code>run-shell.sh</code>:</p>
+<div class="codehilite"><pre><span></span><code>LOCAL_OLIVE_DATA=`cd &quot;$THISDIR/../../../../../../olive-data&quot; &amp;&amp; pwd`
+</code></pre></div>
+
+<p>So that the path matches where your audio and scripts are stored, for example:</p>
+<div class="codehilite"><pre><span></span><code>LOCAL_OLIVE_DATA=/home/user1/audio/olive-data/
+</code></pre></div>
+
+<h3 id="direct-script-editing">Direct Script Editing</h3>
+<p>The first of these shared file locations, stored as the variable OLIVE_DATA within the run/run-shell scripts, is where the container will write information such as model enrollments and log files, as well as where the server will find plugins.  Plugins must be contained in a directory called plugins, located directly within the directory that LOCAL_OLIVE is assigned to.  In the examples below, <code>C:\Users\&lt;username&gt;\olive5.5.1\oliveAppData</code> for the Windows example, and <code>/home/&lt;username&gt;/olive2.0/oliveAppData</code> for the macOS/linux example has a child directory called plugins: <code>C:\Users\&lt;username&gt;\olive5.5.1\oliveAppData\plugins</code> or <code>/home/&lt;username&gt;/olive5.5.1/oliveAppData/plugins</code> respectively.</p>
+<p>The second location is saved into the <code>LOCAL_OLIVE_DATA</code> variable, and should be assigned to a folder that contains audio you wish to process with OLIVE, or where you plan on placing this audio. It can be any directory on the host file system (Windows or MacOS) as long as the current user has access to it and the last directory in the path is a directory named ‘olive-data’. The files and folders contained within the directory assigned to <code>LOCAL_OLIVE_DATA</code> will be mounted to <code>/olive-data/</code> within the OLIVE Docker container, and accessible at that location when operating within the container using the run or run-shell scripts.  </p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">run-shell.sh and run.sh (macOS and linux)</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code># MUST set OLIVE_DATA - For convenience we set it to the value of <span class="nv">$OLIVE_APP_DATA</span>, but one could also manually edit if
+# you don&#39;t normally set OLIVE_APP_DATA.  The path at OLIVE_DATA must include your OLIVE &#39;plugins&#39; folder
+: &quot;<span class="cp">${</span><span class="n">OLIVE_APP_DATA</span><span class="p">:</span><span class="err">?</span><span class="s2">&quot;ERROR: OLIVE_APP_DATA is not set. Set this to the location of your OLIVE plugins folder&quot;</span><span class="cp">}</span>&quot;
+OLIVE_DATA=<span class="nv">$OLIVE_APP_DATA</span>
+
+# Optionally set LOCAL_OLIVE_DATA to a path on the host that ends with a directory named &#39;olive-data&#39;
+LOCAL_OLIVE_DATA=&quot;/home/<span class="nt">&lt;username&gt;</span>/olive-data&quot;
+</code></pre></div>
+
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">run-shell.cmd and run.cmd (Windows)</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>    REM You must set LOCAL_OLIVE below to the directory on your local host that contains the OLIVE &#39;plugins&#39; directory
+    set OLIVE_DATA=C:\Users\&lt;username&gt;\olive2.0\oliveAppData
+    set LOCAL_OLIVE_DATA=C:\Users\&lt;username&gt;\olive-data
+</code></pre></div>
+
+</div>
+</div>
+<p>Note that for macOS and linux hosts, the OLIVE_DATA variable is automatically assigned to the value of the $OLIVE_APP_DATA environment variable, if it is preferable to set this before calling the <code>run</code> scripts, instead of editing the scripts themselves.</p>
+<p>Your delivered run.sh and/or run-shell.sh scripts may have had the line that sets OLIVE_DATA modified to match your specific software installation package more closely and make the necessary changes clearer, especially if there are special cases to consider for your delivery, and may look more similar to this:</p>
+<div class="codehilite"><pre><span></span><code>    OLIVE_DATA=[REPLACE-WITH-LOCAL-PATH]/olive5.5.1/oliveAppDataMT/
+</code></pre></div>
+
+<p>An example of what this might look like after adapting it to your local environment:</p>
+<div class="codehilite"><pre><span></span><code>    OLIVE_DATA=/home/users/allen/olive5.5.1/oliveAppDataMT/
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code>    OLIVE_DATA=/Users/allen/olive5.5.1/oliveAppDataMT/
+</code></pre></div>
+
+<p>Note that if your run.sh or run-shell.sh scripts look like this, OLIVE_DATA will <em>not</em> be set automatically based on your OLIVE_APP_DATA environment variable, but must be manually changed within the script before running.</p>
+<h2 id="run-olive-scripts">Run OLIVE scripts</h2>
+<p>Now that all of the prep work has been done, you are ready to launch OLIVE and start running jobs.  </p>
+<h3 id="windows-hosts">Windows hosts</h3>
+<p>Launching the OLIVE server inside the container, or opening a shell with the OLIVE environment within the container.</p>
+<div class="codehilite"><pre><span></span><code>    $ cd C:\Users\&lt;username&gt;\olive5.5.1\oliveDocker
+    $ .\run.cmd 
+        -or- 
+    $ .\run-shell.cmd
+</code></pre></div>
+
+<h3 id="macos-and-linux-hosts">macOS and linux hosts</h3>
+<p>Launching the OLIVE server inside the container, or opening a shell with the OLIVE environment within the container.</p>
+<div class="codehilite"><pre><span></span><code>    <span class="n">$</span> <span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">olive5</span><span class="mf">.5.1</span><span class="o">/</span><span class="n">oliveDocker</span>
+    <span class="n">$</span> <span class="k">export</span> <span class="n">OLIVE_APP_DATA</span><span class="o">=/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">olive5</span><span class="mf">.5.1</span><span class="o">/</span><span class="n">oliveAppData</span><span class="o">/</span>    <span class="p">(</span><span class="k">Optional</span> <span class="n">step</span> <span class="k">if</span> <span class="n">you</span> <span class="n">haven</span><span class="s1">&#39;t edited the specified line in the `run` scripts to point to your plugins)</span>
+<span class="s1">    $ ./run.sh</span>
+<span class="s1">         -or-</span>
+<span class="s1">    $ ./run-shell.sh</span>
+</code></pre></div>
+
+<p>Which script you run will depend on what task you are hoping to complete.  The <code>run.cmd</code> or <code>run.sh</code> script will fire up the OLIVE Docker container and immediately load the oliveserver process. This is to be used alongside the OLIVE GUI or another tool that interacts with oliveserver through the OLIVE API. </p>
+<p>For command line processing, the <code>run-shell.cmd</code> or <code>run-shell.sh</code> scripts will launch the OLIVE Docker container and open a command line prompt with the OLIVE environment properly set up for running <code>localenroll</code>, <code>localanalyze</code>, and other command-line based tasks. </p>
+<h2 id="unload-olive-docker-container-image">Unload OLIVE Docker Container Image</h2>
+<p>To remove/unload a docker image, whether to upgrade OLIVE containers or for any other reason, first, check that the container is actually still loaded.</p>
+<div class="codehilite"><pre><span></span><code>    $ docker images
+    REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
+    olive-5.5.1-docker   latest              d00396687de1        5 days ago          3.56GB
+</code></pre></div>
+
+<p>And then unload it.</p>
+<div class="codehilite"><pre><span></span><code>    $ docker rmi olive-5.5.1-docker
+</code></pre></div>
+
+<h2 id="optional-install-set-up-and-launch-olive-gui">[Optional] Install, set up, and launch OLIVE GUI</h2>
+<p>An installation of OpenJDK 11 is required for running the OLIVE GUI. Instructions for obtaining and installing OpenJDK 11 will depend on your host's OS and can be found <a href="https://openjdk.java.net/">here</a></p>
+<p>Once you have installed Open JDK 11, you may need to set the JAVA_HOME environment variable, so that the host operating system knows where to find the appropriate JDK. On macOS and linux, this should be done automatically, or can be done as simply as exporting the JAVA_HOME environment variable to the appropriate location for your machine and OS, and/or with the correct settings:</p>
+<div class="codehilite"><pre><span></span><code>    <span class="o">$</span> <span class="k">export</span> <span class="n">JAVA_HOME</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">libexec</span><span class="o">/</span><span class="n">java_home</span> <span class="o">-</span><span class="n">v</span> <span class="mi">11</span>
+</code></pre></div>
+
+<p>You should then be free to launch the OLIVE GUI by simply executing the launcher script included in </p>
+<p>On Windows this process is slightly more complicated, but can be done by right-clicking This PC and selecting Properties.   </p>
+<p>Before continuing, please refer to any additional instructions you may have been given when provided with access to the OLIVE software delivery. This process outlined below is currently being revised to be simpler, and may not be necessary for you to perform, especially for macOS or Windows 10 hosts.</p>
+<p><img alt="Windows Setting JAVA_HOME Step 1" src="img/docker/win-java_home-1.png" /></p>
+<p>From there, select Advanced system settings in the left-side navigation menu. </p>
+<p><img alt="Windows Setting JAVA_HOME Step 2" src="img/docker/win-java_home-2.png" /></p>
+<p>Navigate to the Advanced tab and select the Environment Variables button on the lower right portion of the dialog. </p>
+<p><img alt="Windows Setting JAVA_HOME Step 3" src="img/docker/win-java_home-3.png" /></p>
+<p>From the Environment Variables window, select New from the lower System variables section, and create a new variable named JAVA_HOME that points to the full path of the JDK installation path. Typically, this is C:\Program Files\Java\jdk11\bin.  </p>
+<p><img alt="Windows Setting JAVA_HOME Step 4" src="img/docker/win-java_home-4.png" /></p>
+<p>Finally, you are ready to launch the GUI, either by navigating in File Explorer to the location where the package was uncompressed, then OliveGui/olive-ui/bin/, and double-clicking Nightingale.bat. You can create a shortcut to this file that you can then place on your desktop for more convenient access. Alternatively, it can be launched from the Windows PowerShell by navigating to the same location, then invoking Nightingale.bat.  When launching this way, it is possible to provide a config file if desired.  </p>
+<div class="codehilite"><pre><span></span><code>    $ cd C:\Users\&lt;username&gt;\olive5.5.1\oliveGui 
+    $ .\Nightingale.bat -c nightingale_config.xml
+</code></pre></div>
+
+<!--- TODO: Is the bottom of this actually true still for 5.2? --->
+
+<p>[Optional]  If you wish to use the Batch mode of the OLIVE GUI, an additional step is required to allow the Batch GUI to access audio files stored on the host operating system.  Once you’ve installed and run the GUI at least once, open and edit the <code>.scenic-properties</code> file that was created in the user’s home folder in the host OS. For example, for a user named ‘olive’, this file will be created at the location C:\Users\olive.scenic-properties.  Once you’ve located and opened this file (it is a text file), add the following lines:  </p>
+<div class="codehilite"><pre><span></span><code>    use_scenic_data=true 
+    olive_data_directory=C:\\Users\\&lt;username&gt;\\olive-data
+</code></pre></div>
+
+<p>Note that it is very important that the directory assigned to olive_data_directory matches the directory assigned to LOCAL_OLIVE_DATA in the step above. </p>
+<p>Note also that it is necessary to include double backslashes.  If you don’t, the Java properties reader strips them from the variable, and the path will not be valid.  </p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

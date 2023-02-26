@@ -1,0 +1,11 @@
+
+
+# commands used to test OliveTrain
+
+cat unsupervised.lst
+
+/Users/E24652//audio/fsh_kws.wav
+/Users/E24652//audio/guy_and_constance_wu.wav
+
+
+./OliveTrain --adapt testSidAdapt  --plugin sid-embed-v4d  --domain multi-v1  -i unsupervised.lst

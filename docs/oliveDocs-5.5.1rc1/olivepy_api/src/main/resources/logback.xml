@@ -1,0 +1,45 @@
+<configuration>
+  <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+    <encoder>
+      <pattern>%date [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>
+        %d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>./logs/app.log</file>
+    <immediateFlush>true</immediateFlush>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>./logs/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <!-- each archived file, size max 10MB -->
+      <maxFileSize>10MB</maxFileSize>
+      <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
+      <totalSizeCap>20GB</totalSizeCap>
+      <!-- 60 days to keep -->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="com.sri.speech.olive.api.Server" level="INFO" />
+  <logger name="com.sri.speech.olive.api.StreamingServer" level="INFO" />
+
+
+  <root level="DEBUG">
+    <appender-ref ref="FILE-ROLLING"/>
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
