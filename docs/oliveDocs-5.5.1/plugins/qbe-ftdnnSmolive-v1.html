@@ -1,0 +1,1789 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Query By Example (QBE) - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#8bc34b">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/css/swagger-ui.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-green" data-md-color-accent="brown">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#qbe-ftdnnsmolive-v1-query-by-example-keyword-spotting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Query By Example (QBE)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../nightingale.html" class="md-nav__link">
+      OLIVE Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../raven.html" class="md-nav__link">
+      OLIVE Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../cli.html" class="md-nav__link">
+      Command Line Tools (Legacy)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiCode.html" class="md-nav__link">
+      Integrating (Java) Client API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../olivepy-api.html" class="md-nav__link">
+      OlivePy Python Client API PyDocs
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sad-dnnSmolive-v1.html" class="md-nav__link">
+      Speech Activity Detection (SAD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="dfa-spoofnet-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sid-embedSmolive-v1.html" class="md-nav__link">
+      Speaker Identification (SID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="dia-hybrid-v2.html" class="md-nav__link">
+      Speaker Diarization (DIA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="lid-embedplda-v4.html" class="md-nav__link">
+      Language Identification (LID) GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="lid-hdplda-v1.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="lid-embedpldaSmolive-v1.html" class="md-nav__link">
+      Language Identification (LID) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="ldd-embedplda-v1.html" class="md-nav__link">
+      Language Detection (LDD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gid-gb-v2.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" checked>
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Query By Example (QBE)
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="qbe-ftdnnSmolive-v1.html" class="md-nav__link md-nav__link--active">
+      Query By Example (QBE)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#version-changelog" class="md-nav__link">
+    Version Changelog
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domains" class="md-nav__link">
+    Domains
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputs" class="md-nav__link">
+    Inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    Outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enrollments" class="md-nav__link">
+    Enrollments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functionality-traits" class="md-nav__link">
+    Functionality (Traits)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantized-model-hardware-compatibility" class="md-nav__link">
+    Quantized Model Hardware Compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querykeyword-recognizability" class="md-nav__link">
+    Query/Keyword Recognizability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#silence-sensitivity-during-enrollment" class="md-nav__link">
+    Silence Sensitivity During Enrollment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-options" class="md-nav__link">
+    Global Options
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="asr-end2end-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tmt-neural-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR/Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-12" type="checkbox" id="nav-5-12" >
+    
+    <label class="md-nav__link" for="nav-5-12">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-12">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#version-changelog" class="md-nav__link">
+    Version Changelog
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domains" class="md-nav__link">
+    Domains
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputs" class="md-nav__link">
+    Inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    Outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enrollments" class="md-nav__link">
+    Enrollments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functionality-traits" class="md-nav__link">
+    Functionality (Traits)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantized-model-hardware-compatibility" class="md-nav__link">
+    Quantized Model Hardware Compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querykeyword-recognizability" class="md-nav__link">
+    Query/Keyword Recognizability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#silence-sensitivity-during-enrollment" class="md-nav__link">
+    Silence Sensitivity During Enrollment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-options" class="md-nav__link">
+    Global Options
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="qbe-ftdnnsmolive-v1-query-by-example-keyword-spotting">qbe-ftdnnSmolive-v1 (Query by Example Keyword Spotting)</h1>
+<h2 id="version-changelog">Version Changelog</h2>
+<table>
+<thead>
+<tr>
+<th>Plugin Version</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.0.0</td>
+<td>Initial plugin release with OLIVE 5.4.0 - This plugin is based off of <a href="qbe-tdnn-v5.html">qbe-tdnn-v5</a> but features a shift to Factorized TDNN model architecture as well as model quantization and pruning in addition to a full-resolution model for hardware compatibility when the pruned model cannot operate.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description">Description</h2>
+<p>This plugin is based heavily on its predecessor, qbe-tdnn-v5, with the important distinction that the model has been modified with both quantization and pruning, in addition to the adoption of factorized TDNN models. Quantized models perform computations at a reduced bit resolution (integer8 in our case) than the standard floating point precision allowing for a more compact model representation and the use of high performance vectorized operations on many hardware platforms. Further details can be found at <a href="https://pytorch.org/docs/stable/quantization.html">pytorch</a> Pruning aims to make neural network models smaller by removing a subset of the nodes that have minimal impact on the performance. The pruned neural network is fine-tuned on the target task to minimize the performance loss. The result is a much lighter-weight and often faster-performing model that sacrifices little-to-no accuracy.</p>
+<p>Query by Example Keyword Spotting plugins are designed to allow users to detect and label targeted keywords or keyphrases that are defined by audio sample enrollments. It has no language model or other constraints that accompany a traditional keyword spotting plugin, so it is language independent.  </p>
+<p>This is a query by example plugin constructed with Factorized TDNN architecture models, with score calibration and test-adaptive merging of examples. It features dynamic time warping to compensate for speed and cadence differences when detecting keywords. This version also removes Kaldi dependency, replacing a poor-performing bottleneck feature extractor with an in-house developed and trained model, and reduces false alarms by filtering overlapping lower-confidence detections.</p>
+<h2 id="domains">Domains</h2>
+<ul>
+<li>multi-int8-v1<ul>
+<li>Multi-condition domain meant for general-purpose audio conditions including telephone, broadband microphone, and other noisy situations without too many digital or PTT distortions.</li>
+</ul>
+</li>
+</ul>
+<h2 id="inputs">Inputs</h2>
+<p>For enrollment, an audio file or buffer with a corresponding keyword or query label.  For scoring, an audio buffer or file.</p>
+<h2 id="outputs">Outputs</h2>
+<p>When one or more of the enrolled keywords has been detected in the submitted audio, QBE returns a region or list of timestamped regions (in seconds), each with a score for the keyword that has been detected. </p>
+<!--- TODO: What do scores mean???? Over 0 is a detect? LLRs or something elese? --->
+
+<p>The output of QBE follows the format of the traditional KWS output exactly:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;start_time_s&gt; &lt;end_time_s&gt; &lt;keyword_id&gt; &lt;score&gt;
+</code></pre></div>
+
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>/data/qbe/test/testFile1.wav 0.630 1.170 Airplane 4.37324614709
+/data/qbe/test/testFile2.wav 0.350 1.010 Watermelon -1.19732598006
+</code></pre></div>
+
+<h2 id="enrollments">Enrollments</h2>
+<p>Query by Example plugins allow class modifications. A class modification is essentially the capability to enroll a class with sample(s) of a class's speech - in this case, a new keyword to enroll. A new enrollment is created with the first class modification request, which consists of essentially sending the system an audio sample of a new keyword or key phrase, along with a label for that query. The label is not used at all by the system for detection, and is only a reference for the user to help recall what the query was.  This means that it's completely acceptable to enroll a sample where a speaker is saying something like "buenas noches", and to label it "good night - spanish" or "good night" or even "lorem ipsum" in the system. This enrollment can be augmented with subsequent class modification requests by adding more audio with the same query label.</p>
+<h2 id="functionality-traits">Functionality (<a href="../traits.html">Traits</a>)</h2>
+<p>The functions of this plugin are defined by its Traits and implemented API messages. A list of these Traits is below, along with the corresponding API messages for each. Click the message name below to go to additional implementation details below.</p>
+<ul>
+<li><a href="../traits.html#regionscorer">REGION_SCORER</a> – Score all submitted audio, returning labeled regions within the submitted audio, where each region includes a detected keyword and corresponding score for this keyword.<ul>
+<li><a href="../apiMessage.html#regionscorerrequest">RegionScorerRequest</a></li>
+<li><a href="../apiMessage.html#regionscorerstereorequest">RegionScorerStereoRequest</a></li>
+</ul>
+</li>
+<li><a href="../traits.html#classmodifier">CLASS_MODIFIER</a> – Enroll new keyword models or augment existing keyword models with additional data.<ul>
+<li><a href="../apiMessage.html#classmodificationrequest">ClassModificationRequest</a></li>
+<li><a href="../apiMessage.html#classremovalrequest">ClassRemovalRequest</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="compatibility">Compatibility</h2>
+<p>OLIVE 5.4+</p>
+<h2 id="limitations">Limitations</h2>
+<p>Known or potential limitations of the plugin are outlined below.</p>
+<h3 id="quantized-model-hardware-compatibility">Quantized Model Hardware Compatibility</h3>
+<p>There are certain host/hardware requirements for the quantized models to be able to run; namely support for avx2. To avoid the situation where a lack of this support would cause the plugin to become nonfuntional, a full-bit (float32) model has been included that will be loaded and used in the rare case that the quantized model fails to load. This will use more memory, but allow the plugin to function.</p>
+<h3 id="querykeyword-recognizability">Query/Keyword Recognizability</h3>
+<p>The longer and more distinct the enrolled keyword or key phrase is, the better it will be recognized.  Shorter keywords, that may occur often in speech (for example, enrolling the word 'a') or sound very similar to other words, may cause false alarms.  In general, QBE plugins are language and speaker independent, and enrolled queries should be able to find speech from other talkers as well. However, if the enrolled keyword example is spoken by someone with a particular accent or non-standard pronunciation, it may not generalize with one or few samples.  It's possible to enroll multiple samples and/or samples from multiple speakers to maximize the coverage of the query's model.</p>
+<h3 id="silence-sensitivity-during-enrollment">Silence Sensitivity During Enrollment</h3>
+<p>This version of the plugin is known to be very sensitive to including silence when enrolling new keyword queries, especially at the beginning or end of the query. Care should be taken to ensure that the boundaries of the enrollment submissions are as tight to the actual speech as possible. If excessive amounts of silence are included in the enrollment, the system could confuse this silence as part of the query, and the dynamic-time-warping algorithm may cause this to label keyword detections erroneously including large amounts of silence, and may also drastically increase the keyword search time. Future versions of the plugin will address this.</p>
+<h2 id="comments">Comments</h2>
+<p>Very short keyword queries will be confusable with many other words, since the phonemes they consist of may be common or frequently occur as part of other words, or sound very similar to words or sounds that may commonly occur.  The longer and more distinct a keyword is, the lower the likelihood of false alarms.</p>
+<h2 id="global-options">Global Options</h2>
+<p>This plugin does not feature user-configurable parameters.</p>
+<!---
+
+## Interface
+
+For command line interface use see the appropriate section of the [OLIVE CLI User Guide](../cli.md#query-by-example-qbe). For API usage see the appropriate section of the [OLIVE Application Programming Interface Guide](../apiCode.md#region-score-request).
+
+--->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="gdd-embedplda-v1.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Gender Detection (GDD)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="asr-end2end-v1.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Automatic Speech Recognition (ASR) end2end/GPU
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="../assets/javascript/iframe-worker.js"></script>
+<script src="../search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../search/search_index.js"></script>
+      
+        <script src="../assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>
