@@ -142,138 +142,6 @@
       
       
         
-          
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../index.html" class="md-tabs__link">
-      Overview
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../martini.html" class="md-tabs__link">
-        Administration
-      </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../nightingale.html" class="md-tabs__link">
-        Usage
-      </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../apiInfo.html" class="md-tabs__link">
-        Integration
-      </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../plugins.html" class="md-tabs__link md-tabs__link--active">
-        Plugins
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../glossary.html" class="md-tabs__link">
-      Glossary
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../contact.html" class="md-tabs__link">
-      Contact
-    </a>
-  </li>
-
-      
-    </ul>
-  </div>
-</nav>
-        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -287,10 +155,8 @@
 
 
 
-  
 
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
       
@@ -1922,9 +1788,14 @@
 <td>1.0</td>
 <td>0.0 - 3.0</td>
 </tr>
+<tr>
+<td>score_offset</td>
+<td>An offset added to scores to allow 0.0 to be a tuned decision point. Higher score offset values will shift output scores towards "synthetic", making speech more likely to be detected as deep fake.</td>
+<td>0.0</td>
+<td>-10.0 - 10.0</td>
+</tr>
 </tbody>
 </table>
-<p>score_offset | An offset subtracted from scores to allow 0.0 to be a tuned decision point. Lower score offset values produce higher output scores indicative of more realistic speech.| 0.0 | -10.0 - 10.0</p>
                 
               
               
@@ -2002,7 +1873,7 @@
       <script>
         app = initialize({
           base: "..",
-          features: ['navigation.tabs'],
+          features: [],
           search: Object.assign({
             worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
           }, typeof search !== "undefined" && search)

@@ -142,138 +142,6 @@
       
       
         
-          
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="index.html" class="md-tabs__link">
-      Overview
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="martini.html" class="md-tabs__link">
-        Administration
-      </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="nightingale.html" class="md-tabs__link">
-        Usage
-      </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="apiInfo.html" class="md-tabs__link">
-        Integration
-      </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="plugins.html" class="md-tabs__link md-tabs__link--active">
-        Plugins
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="glossary.html" class="md-tabs__link">
-      Glossary
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="contact.html" class="md-tabs__link">
-      Contact
-    </a>
-  </li>
-
-      
-    </ul>
-  </div>
-</nav>
-        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -287,10 +155,8 @@
 
 
 
-  
 
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
       
@@ -1869,7 +1735,7 @@
 <td>Detects a target speaker in audio with multiple talkers</td>
 </tr>
 <tr>
-<td>Speaker Diarization</td>
+<td>Speaker Diarization (Deprecated)</td>
 <td>DIA</td>
 <td><a href="traits.html#regionscorer">Region</a></td>
 <td>Detect each unlabeled speaker</td>
@@ -1879,11 +1745,25 @@
 <td>Language Identification</td>
 <td>LID</td>
 <td><a href="traits.html#globalscorer">Global</a></td>
-<td>Languages in training data and/or enrolled languages in some plug-ins</td>
-<td>Language and dialect detection</td>
+<td>Languages in training data and/or enrolled languages in some plugins</td>
+<td>Detect and label a single language per input audio segment or file</td>
 </tr>
 <tr>
-<td>Keyword Detection</td>
+<td>Language Detection</td>
+<td>LDD</td>
+<td><a href="traits.html#regionscorer">Region</a></td>
+<td>Languages in training data and/or enrolled languages in some plugins</td>
+<td>Detect and label one or more language regions per input audio</td>
+</tr>
+<tr>
+<td>Automatic Speech Recognition</td>
+<td>ASR</td>
+<td><a href="traits.html#regionscorer">Region</a></td>
+<td><vocabulary></td>
+<td>Creates a text transcription of the input audio</td>
+</tr>
+<tr>
+<td>Keyword Spotting (Deprecated)</td>
 <td>KWS</td>
 <td><a href="traits.html#regionscorer">Region</a></td>
 <td>Enrolled text keywords</td>
@@ -1901,10 +1781,17 @@
 <td>GID</td>
 <td><a href="traits.html#globalscorer">Global</a></td>
 <td>male, female</td>
-<td>Determines whether the audio segment was spoken by a male or female voice</td>
+<td>Determines whether the audio segment was spoken by a male or female voice. Single output class for a given audio input.</td>
 </tr>
 <tr>
-<td>Topic Detection</td>
+<td>Gender Detection</td>
+<td>GDD</td>
+<td><a href="traits.html#regionscorer">Region</a></td>
+<td>male, female</td>
+<td>Detectrs and labels whether speech is likely spoken by a male or female voice. Capable of detecting multiple regions within the input audio.</td>
+</tr>
+<tr>
+<td>Topic Detection (Deprecated)</td>
 <td>TPD</td>
 <td><a href="traits.html#regionscorer">Region</a></td>
 <td>Enrolled topics</td>
@@ -1923,6 +1810,13 @@
 <td><a href="traits.html#framescorer">Frame</a></td>
 <td>live-speech</td>
 <td>Detects presence of live-produced human speech, differentiating from silence, noise, speech coming from electronic device</td>
+</tr>
+<tr>
+<td>Text Machine Translation</td>
+<td>TMT</td>
+<td><a href="traits.html#texttransformer">TextTransformer</a></td>
+<td><vocabulary></td>
+<td>Performs a translation of text from the input language specified to the output language specified. Does not currently output timing information. Does not operate on audio.</td>
 </tr>
 </tbody>
 </table>
@@ -2041,7 +1935,7 @@
       <script>
         app = initialize({
           base: ".",
-          features: ['navigation.tabs'],
+          features: [],
           search: Object.assign({
             worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
           }, typeof search !== "undefined" && search)
