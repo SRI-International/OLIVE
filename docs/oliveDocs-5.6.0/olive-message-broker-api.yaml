@@ -1,0 +1,1006 @@
+openapi: 3.0.1
+info:
+  title: OLIVE Message Broker
+  description: "All REST calls can return a `ErrorResponse` with the following fields:<br>\n1)
+    `title` - a reason for the error<br>\n2) `status` - an HTTP status code<br>\n3)
+    `details` - an optional map with additional information about the error<p>\n`status`
+    is shown as 0, but an actual response will include the correct HTTP status code.<br>
+    \n`details` is rarely used and not included in the example.<p>\nThe same example
+    is used for all operations. "
+  version: 1.6.3
+paths:
+  "/api/media":
+    get:
+      tags:
+        - Media
+      summary: Get a list of media entries for files hosted on the server
+      description: "Each entry that is returned has an `id` field which uniquely identifies
+        the media file \nand a `name` field that contains a relative path to the location
+        of the media file on \nthe server.<br><br>\nThe value of the `id` field is
+        used by the following operations:<br>\n1) `fileId` parameter in `GET /api/media/{fileId}`\n2)
+        `serverMedia` entry in the request body for `POST /api/workflows/{workflowId}/analyses`\n3)
+        `serverMedia` entry in the request body for `PUT /api/workflows/{workflowId}/enrollments/{jobName}`\n4)
+        `fileId` parameter in `DELETE /api/requests/{reqId}/{fileId}`"
+      operationId: getMediaFiles
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/MediaEntry"
+              examples:
+                '':
+                  value:
+                    - id: unique-server-media-file-id-1
+                      name: group1/sample-audio.wav
+                    - id: unique-server-media-file-id-2
+                      name: group1/sample-video.mov
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/media/{fileId}":
+    get:
+      tags:
+        - Media
+      summary: Download a media file using its fileId
+      operationId: getMediaFileById
+      parameters:
+        - name: fileId
+          in: path
+          description: id field return from `GET /api/media`
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+    put:
+      tags:
+        - Media
+      summary: Upload a media file
+      description: |-
+        Uploads a media file using the `clientMedia.id` entry returned from:<br>
+        1) `POST /api/workflows/{workflowId}/analyses`
+        2) `PUT /api/workflows/{workflowId}/enrollments/{jobName}`
+      operationId: putMediaFileById
+      parameters:
+        - name: fileId
+          in: path
+          description: The clientMedia.id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The multi-part 'filename' value
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int32
+        '400':
+          description: The form-data is not correct or the entry is already being
+            uploaded or processed
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '404':
+          description: The fileId is not related to a currently processing workflow
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/workflows":
+    get:
+      tags:
+        - Workflow
+      summary: Get a list of workflow entries
+      description: "Field values returned in the response are used in subsequent operations.<br>\n`{workflowId}`
+        is replaced by the `id` value and `{jobName}` is replaced by the  \n`enrollments.name`
+        or `unenrollments.name` value in the following operations:<br>\n1) `POST /api/workflows/{workflowId}/analyses`\n2)
+        `PUT /api/workflows/{workflowId}/enrollments/{jobName}`\n3) `PUT /api/workflows/{workflowId}/unenrollments/{jobName}`"
+      operationId: getWorkflows
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/WorkflowData"
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/workflows/{workflowId}/analyses":
+    post:
+      tags:
+        - Workflow
+      summary: Submit a workflow request to perform media analysis
+      operationId: submitWorkflowAnalyses
+      parameters:
+        - name: workflowId
+          in: path
+          description: The workflow's unique id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: "There must at least one media entry:<br>\n\n1) `clientMedia`
+          entries are the names of local files that you will upload with\n`PUT /api/media/{fileId}`
+          using the associated `clientMedia.id` field returned in this operation's
+          \nresponse.\n2) `serverMedia` entries are unique server file id's returned
+          from `GET /api/media`.<p>\nBoth `clientMedia` and `serverMedia` entries
+          can be included, but only one is required.<p>\nA request cannot contain
+          any duplicate media entries.\n"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/WorkflowAnalysisRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/WorkflowRequestResponse"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/workflows/{workflowId}/enrollments/{jobName}":
+    put:
+      tags:
+        - Workflow
+      summary: Submit a workflow request to process an enrollment
+      operationId: submitEnrollment
+      parameters:
+        - name: workflowId
+          in: path
+          description: The workflow's unique id
+          required: true
+          schema:
+            type: string
+        - name: jobName
+          in: path
+          description: The enrollments.name field in the workflow
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: "An array that contains an entry for each `class` that you want
+          to enroll.<br>\nEach entry must contain at least one media entry:<br>\n\n1)
+          `clientMedia` entries are the names of local files that you will upload
+          with\n`PUT /api/media/{fileId}` using the associated `clientMedia.id` field
+          returned in this operation's \nresponse.\n2) `serverMedia` entries are unique
+          server file id's returned from `GET /api/media`.<p>\nBoth `clientMedia`
+          and `serverMedia` entries can be included, but only one is required.<p>\nA
+          request cannot contain any duplicate media entries.\n"
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                "$ref": "#/components/schemas/WorkflowEnrollmentRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/WorkflowRequestResponse"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/workflows/{workflowId}/unenrollments/{jobName}":
+    put:
+      tags:
+        - Workflow
+      summary: Submit a workflow request to process an un-enrollment
+      operationId: submitUnEnrollment
+      parameters:
+        - name: workflowId
+          in: path
+          description: The workflow's unique id
+          required: true
+          schema:
+            type: string
+        - name: jobName
+          in: path
+          description: The unenrollments.name field in the workflow
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Array of class names to unenroll
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+        required: false
+      responses:
+        '200':
+          description: |-
+            Returns an array of entries for each `class` that was unenrolled.<p>
+            Each entry has:<br>
+             1) A `workflows` array containing the unique id for each workflow that was impacted by
+            the unenrollment. The `workflows` field may not exist if the `error` field does exist.
+            2) The `plugin` that was used.
+            3) An `error` field that will only exist if an error occurred during unenrollment.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/UnEnrollmentResponse"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/requests/{reqId}":
+    delete:
+      tags:
+        - Workflow
+      summary: Delete a workflow request
+      description: The server will attempt to stop processing the requested workflow
+        request.
+      operationId: deleteOneMediaRequest
+      parameters:
+        - name: reqId
+          in: path
+          description: The submitted workflow's returned reqId that you want to stop
+            processing.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int32
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/requests/{reqId}/{fileId}":
+    delete:
+      tags:
+        - Workflow
+      summary: Delete a workflow request for a media file
+      description: The server will attempt to stop processing the requested media
+        file for the workflow request.
+      operationId: deleteRequest
+      parameters:
+        - name: reqId
+          in: path
+          description: The submitted workflow's returned reqId that you want to stop
+            processing.
+          required: true
+          schema:
+            type: string
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: mediaId
+          in: path
+          description: The mediaId for the file that you want to stop processing for
+            the reqId.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int32
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/sse/results/{reqId}":
+    get:
+      tags:
+        - Workflow
+      summary: Register an EventSource to receive Workflow results
+      description: "Swagger does not create an \n                    [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource).
+        \n                    If you try out this operation in this web page you will
+        **not** receive any Workflow results.<p>\n                    Click <a href=\"/client/sse-results.html\"
+        target=\"_blank\">here</a> to run a simple EventSource client \n                    where
+        you can register an EventSource and receive workflow results.<p> You can view
+        the Schema\n                    for the different **event** names by selecting
+        the *Media type* dropdown for the 200 response\n                    code that
+        is displayed below."
+      operationId: sseEvents
+      parameters:
+        - name: reqId
+          in: path
+          description: The submitted workflow's returned reqId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |-
+            <table border='1'><tr></tr><tr><td><b>Event</b></td><td>Description</td></tr><tr><td><b>analysis</b></td><td>The <i>error</i> field will only be included in the result if there was a processing error.</td></tr><tr><td><b>enrollment</b></td><td>The <i>error</i> field will only be included in the result if the Olive server returned an error.<p>
+            The <i>mediaNotEnrolled</i> map is only included if there was an error processing a media file
+            prior to the Olive server being called to process class enrollment. In which case, the key
+            will be the name of media file's id and the value will be the error message.</td></tr><tr><td><b>error_condition</b></td><td>The client's EventSource is trying to connect to the server, but the server is not
+            processing the request.<br> The client should <b>close</b> the EventSource.<br>
+            The <i>title</i> field will contain the reason for the error.</td></tr></table>
+          content:
+            'application/json | event: analysis':
+              schema:
+                "$ref": "#/components/schemas/WorkflowResult"
+            'application/json | event: enrollment':
+              schema:
+                "$ref": "#/components/schemas/WorkflowEnrollmentResult"
+            'application/json | event: error_condition':
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/status":
+    get:
+      tags:
+        - Debugging
+      summary: Get status information on running workflow requests
+      description: |-
+        This operation is used for debugging. The data structures returned from this operation
+        could change without notice.
+      operationId: getStatus
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/StatusReply"
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+  "/api/ping_sse/{reqId}":
+    get:
+      tags:
+        - Debugging
+      summary: Send a ping to an EventSource client
+      description: This operation is used for debugging and could change without notice.
+      operationId: pingSseClient
+      parameters:
+        - name: reqId
+          in: path
+          description: The submitted workflow's returned reqId who's SSE client you
+            want to ping.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+              examples:
+                '':
+                  value:
+                    title: An error message
+                    status: 0
+components:
+  schemas:
+    ErrorResponse:
+      required:
+        - status
+        - title
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        details:
+          type: object
+          additionalProperties:
+            type: string
+    MediaEntry:
+      required:
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    AnalysisData:
+      required:
+        - description
+        - id
+        - scoreType
+        - taskType
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        taskType:
+          type: string
+        scoreType:
+          type: string
+        classLabel:
+          "$ref": "#/components/schemas/ClassLabel"
+        classes:
+          type: array
+          items:
+            type: string
+        plugin:
+          "$ref": "#/components/schemas/Plugin"
+    ClassLabel:
+      type: object
+      properties:
+        singular:
+          type: string
+        plural:
+          type: string
+    EnrollmentData:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+        classLabel:
+          "$ref": "#/components/schemas/ClassLabel"
+        classes:
+          type: array
+          items:
+            type: string
+        plugin:
+          "$ref": "#/components/schemas/Plugin"
+    Plugin:
+      required:
+        - domain
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+        domain:
+          type: string
+    WorkflowData:
+      required:
+        - analyses
+        - description
+        - enrollments
+        - id
+        - name
+        - unenrollments
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        analyses:
+          type: array
+          items:
+            "$ref": "#/components/schemas/AnalysisData"
+        enrollments:
+          type: array
+          items:
+            "$ref": "#/components/schemas/EnrollmentData"
+        unenrollments:
+          type: array
+          items:
+            "$ref": "#/components/schemas/EnrollmentData"
+        error:
+          type: string
+    WorkflowAnalysisRequest:
+      type: object
+      properties:
+        clientMedia:
+          type: array
+          items:
+            type: string
+        serverMedia:
+          type: array
+          items:
+            type: string
+    ClientMedia:
+      required:
+        - id
+        - localId
+      type: object
+      properties:
+        id:
+          type: string
+        localId:
+          type: string
+    WorkflowRequestResponse:
+      required:
+        - clientMedia
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+        clientMedia:
+          type: array
+          items:
+            "$ref": "#/components/schemas/ClientMedia"
+    WorkflowEnrollmentRequest:
+      required:
+        - class
+      type: object
+      properties:
+        class:
+          type: string
+        clientMedia:
+          type: array
+          items:
+            type: string
+        serverMedia:
+          type: array
+          items:
+            type: string
+    UnEnrollmentResponse:
+      required:
+        - class
+        - plugin
+      type: object
+      properties:
+        class:
+          type: string
+        workflows:
+          type: array
+          items:
+            type: string
+        plugin:
+          "$ref": "#/components/schemas/Plugin"
+        error:
+          type: string
+    BBox:
+      required:
+        - x1
+        - x2
+        - y1
+        - y2
+      type: object
+      properties:
+        x1:
+          type: integer
+          format: int32
+        y1:
+          type: integer
+          format: int32
+        x2:
+          type: integer
+          format: int32
+        y2:
+          type: integer
+          format: int32
+    Score:
+      required:
+        - class
+        - score
+      type: object
+      properties:
+        class:
+          type: string
+        bbox:
+          "$ref": "#/components/schemas/BBox"
+        score:
+          type: number
+          format: double
+        startSec:
+          type: number
+          format: double
+        endSec:
+          type: number
+          format: double
+    ScorerResult:
+      required:
+        - taskId
+      type: object
+      properties:
+        taskId:
+          type: string
+        error:
+          type: string
+        text:
+          type: string
+        scores:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Score"
+    WorkflowResult:
+      required:
+        - mediaId
+        - results
+        - workflowId
+      type: object
+      properties:
+        workflowId:
+          type: string
+        mediaId:
+          type: string
+        results:
+          type: array
+          items:
+            "$ref": "#/components/schemas/ScorerResult"
+        error:
+          type: string
+    WorkflowEnrollmentResult:
+      required:
+        - class
+        - jobName
+        - mediaEnrolled
+        - plugin
+      type: object
+      properties:
+        class:
+          type: string
+        workflows:
+          type: array
+          items:
+            type: string
+        plugin:
+          "$ref": "#/components/schemas/Plugin"
+        jobName:
+          type: string
+        error:
+          type: string
+        mediaEnrolled:
+          type: array
+          items:
+            type: string
+        mediaNotEnrolled:
+          type: object
+          additionalProperties:
+            type: string
+    StatusReply:
+      required:
+        - requests
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            "$ref": "#/components/schemas/WorkFlowRequestStatus"
+    WorkFlowRequestStatus:
+      required:
+        - entries
+        - reqId
+        - sseSourceIsOpen
+        - workFlowId
+      type: object
+      properties:
+        reqId:
+          type: string
+        sseSourceIsOpen:
+          type: boolean
+        workFlowId:
+          type: string
+        classEnrollments:
+          type: array
+          items:
+            "$ref": "#/components/schemas/WorkflowEnrollmentStatus"
+        entries:
+          type: array
+          items:
+            "$ref": "#/components/schemas/WorkflowStatusEntry"
+    WorkflowEnrollmentStatus:
+      required:
+        - className
+        - entriesRegistered
+        - totalMediaEntries
+      type: object
+      properties:
+        className:
+          type: string
+        totalMediaEntries:
+          type: integer
+          format: int32
+        entriesRegistered:
+          type: integer
+          format: int32
+    WorkflowStatusEntry:
+      required:
+        - creationTimeIso
+        - isActivated
+        - isShuttingDown
+        - lastActiveTimeIso
+        - mediaPath
+        - sseRetries
+        - state
+      type: object
+      properties:
+        state:
+          type: string
+        mediaPath:
+          type: string
+        isActivated:
+          type: boolean
+        enrollmentClass:
+          type: string
+        sseRetries:
+          type: integer
+          format: int32
+        isShuttingDown:
+          type: boolean
+        creationTimeIso:
+          type: string
+          format: date-time
+        lastActiveTimeIso:
+          type: string
+          format: date-time
+        terminationException:
+          type: string

@@ -1,0 +1,1765 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>asr-dynapy-v3 (Automatic Speech Recognition) - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/css/swagger-ui.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="brown">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#asr-dynapy-v3-automatic-speech-recognition" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              asr-dynapy-v3 (Automatic Speech Recognition)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="dfa-global-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="lid-embedplda-v4.html" class="md-nav__link">
+      Language Identification (LID) GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gid-gb-v2.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="asr-whisper-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) whisper/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="asr-end2end-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR/Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-12" type="checkbox" id="nav-5-12" >
+    
+    <label class="md-nav__link" for="nav-5-12">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-12">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#version-changelog" class="md-nav__link">
+    Version Changelog
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domains" class="md-nav__link">
+    Domains
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputs" class="md-nav__link">
+    Inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    Outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functionality-traits" class="md-nav__link">
+    Functionality (Traits)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#language-dependence" class="md-nav__link">
+    Language Dependence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-of-vocabulary-oov-words-names" class="md-nav__link">
+    Out of Vocabulary (OOV) Words, Names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confidences-vs-word-posteriors" class="md-nav__link">
+    Confidences vs Word Posteriors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlap" class="md-nav__link">
+    Overlap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arabic-script-languages" class="md-nav__link">
+    Arabic Script Languages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-verbal-recognizer-output" class="md-nav__link">
+    Non-Verbal Recognizer Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-speech-duration" class="md-nav__link">
+    Minimum Speech Duration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-options" class="md-nav__link">
+    Global Options
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="asr-dynapy-v3-automatic-speech-recognition">asr-dynapy-v3 (Automatic Speech Recognition)</h1>
+<h2 id="version-changelog">Version Changelog</h2>
+<table>
+<thead>
+<tr>
+<th>Plugin Version</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v3.0.0</td>
+<td>Initial plugin release, published with OLIVE 5.2.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description">Description</h2>
+<p>Automatic Speech Recognition plugins perform speech-to-text conversion of speech contained within a submitted audio segment to create a transcript of what is being said. Currently the outputs are based on word-level transcriptions. ASR plugins are not-performing any translation, but simply speech-to-text in the native language. All ASR domains are language-dependent, and each one is meant to work only with a single, specific language.  </p>
+<p>This plugin builds from its predecessor, asr-dynapy-v2, and features bug fixes and compatibility updates, as well as 3 additional domains bringing new language capabilities. It is based on SRI's DynaSpeak recognition platform, features word-based region-scoring outputs and provides the capability to output a score for each timestamped word. This score represents a NN Confidence value if available, and will back off to Word Posterior score if the Confidence is not available.  If neither of these measures are available, the 'score' field will contain a -1.0. All domains described below currently report word posterior scores, but the plugin is capable of handling NN confidence values in updated domains that will be delivered in the future.</p>
+<p>Each domain in the plugin is specific to a single language, and is only capable of transcribing speech in that one language. See below for the domains (and languages) available for this plugin, along with additional details regarding each.</p>
+<p>All current domains are trained on conversational telephone speech, and will perform best on matched audio conditions, but are still capable of recognition in mismatched audio domains.</p>
+<p>Any input audio at a sample rate higher than 8000 Hz will be resampled and processed as 8 kHz audio. Any higher-frequency (&gt; 4 kHz) information will be discarded. </p>
+<p>All of the current domains are based on the time-delay neural networks (TDNN) architecture. Some of these domains are also chain models, which allow us to compute frames at a lower frequency without sacrificing accuracy, allowing faster processing speed thanks to less computation. The chain model domains use much deeper networks than previous technologies providing much better accuracy. Refer to the domains list below to view which domains are and aren't currently chain models.</p>
+<h2 id="domains">Domains</h2>
+<ul>
+<li>english-tdnnChain-tel-v1<ul>
+<li>English domain focused on conversational telephony speech. This domain features chain networks and reports word posterior scores.</li>
+</ul>
+</li>
+<li>farsi-tdnnChain-tel-v1<ul>
+<li>Farsi domain focused on conversational telephony speech. This domain now features chain networks and reports word posterior scores.</li>
+</ul>
+</li>
+<li>french-tdnnChain-tel-v2<ul>
+<li>French domain augmented with African-accented French data. This domain features chain  networks and reports word posterior scores.</li>
+</ul>
+</li>
+<li>iraqiArabic-tdnnChain-tel-v1<ul>
+<li>Iraqi Arabic dialect domain. This domain features chain networks and reports word posterior scores.</li>
+</ul>
+</li>
+<li>levantineArabic-tdnnChain-tel-v1<ul>
+<li>Levantine Arabic dialect domain. This domain features chain networks and reports word posterior scores.</li>
+</ul>
+</li>
+<li>mandarin-tdnnChain-tel-v1<ul>
+<li>Mandarin Chinese domain focused on conversational telephony speech. This domain features chain networks and reports word posterior scores.</li>
+</ul>
+</li>
+<li>pashto-tdnnChain-tel-v1<ul>
+<li>Pashto domain. This domain features chain networks and reports word posterior scores.</li>
+</ul>
+</li>
+<li>russian-tdnnChain-tel-v2<ul>
+<li>Russian domain focused on conversational telephony speech. This domain features chain networks and reports word posterior scores.  It also features a very large and complex language model that makes it quite memory-intensive to use. See the "Resources" Limitation listed below for more information. This domain has been significantly reduced both memory- and disk-footprint-wise from asr-dynapy-v2, but remains the largest domain within the plugin.</li>
+</ul>
+</li>
+<li>spanish-tdnnChain-tel-v1<ul>
+<li>Spanish domain focused on conversational telephony speech. This domain features chain networks and reports word posterior scores.</li>
+</ul>
+</li>
+</ul>
+<h2 id="inputs">Inputs</h2>
+<p>For scoring, an audio buffer or file. There is no verification performed by OLIVE or by ASR plugins that the audio passed as input is actually being spoken in the language that the domain is capable of recognizing.  The burden lies on the user to manually or automatically screen this audio before attempting to recognize.</p>
+<h2 id="outputs">Outputs</h2>
+<p>ASR plugins are region scorers, and as such will return a list of words, in the order they are spoken. Each detected word consists of timestamp regions in seconds (start and end time pairs), each with an accompanying score, along with the 'value' of that word. Each word output must be part of the vocabulary that specific language's domain was trained with. At this point, out-of-vocabulary words are not supported, so uncommon words, slang words, names, and some other vocabulary may not be able to be recognized by these plugins. If interested in this feature in the future, please <a href="../contact.html">contact us</a> to start a conversation about adding such functionality.</p>
+<p>Note that all current ASR plugin domains will output words in their 'native' script.  This means that for languages like English and Spanish, each word will be in ASCII text, with the Latin alphabet. Mandarin Chinese, Russian, and Farsi, however, words will be comprised of unicode characters in the native script.</p>
+<p>An example output excerpt for an English domain:</p>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.190 and 43.00000000
+    input-audio.wav 0.210 0.340 we&#39;re 44.00000000
+    input-audio.wav 0.330 0.460 going 97.00000000
+    input-audio.wav 0.450 0.520 to 97.00000000
+    input-audio.wav 0.510 0.940 fly 66.00000000
+    input-audio.wav 1.080 1.300 was 31.00000000
+    input-audio.wav 1.290 1.390 that 24.00000000
+    input-audio.wav 1.290 1.390 it 22.00000000
+    input-audio.wav 1.380 1.510 we&#39;re 27.00000000
+    input-audio.wav 1.500 1.660 going 97.00000000
+    input-audio.wav 1.650 1.720 to 98.00000000
+    input-audio.wav 1.710 1.930 fly 94.00000000
+    input-audio.wav 1.920 2.110 over 79.00000000
+    input-audio.wav 2.100 2.380 saint 93.00000000
+    input-audio.wav 2.370 2.950 louis 96.00000000
+</code></pre></div>
+
+<p>An example output excerpt for a Mandarin Chinese domain:</p>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.280 0.610 战斗 99.00000000
+    input-audio.wav 0.600 0.880 爆发 98.00000000
+    input-audio.wav 0.870 0.970 的 99.00000000
+    input-audio.wav 0.960 1.420 居民区 86.00000000
+    input-audio.wav 1.410 2.120 有很多 93.00000000
+    input-audio.wav 2.110 2.590 忠于 99.00000000
+    input-audio.wav 2.580 3.140 萨德尔 100.00000000
+    input-audio.wav 3.130 3.340 的 100.00000000
+    input-audio.wav 3.330 3.720 武装 55.00000000
+    input-audio.wav 3.710 4.190 份子 53.00000000
+</code></pre></div>
+
+<p>Note that for languages that read from right to left, the direction that text is rendered may appear to 'flip' when viewing the bare text output in a terminal or text editor that doesn't properly deal with the orientation switch mid-line in some operating systems. This can cause the order of the 'word' and 'score' fields to reverse relative to the output of left-to-right read languages, and appear like this Farsi output example:</p>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.480 58.00000000 خوب 
+    input-audio.wav 0.470 0.740 51.00000000 ای 
+    input-audio2.wav 0.00 0.320 100.00000000 آره 
+    input-audio2.wav 0.310 0.460 99.00000000 می 
+    input-audio2.wav 0.450 0.680 99.00000000 گم 
+    input-audio2.wav 0.670 0.880 73.00000000 چند 
+    input-audio2.wav 0.870 1.330 50.00000000 داره
+</code></pre></div>
+
+<p>This is a rendering problem only, however, and rest assured that if interacting with OLIVE through the API, all ordering is properly preserved. Most methods of automatically parsing the raw text output should also properly deal with the ordering, as column-based operators like awk are not affected by the visual order.</p>
+<h2 id="functionality-traits">Functionality (<a href="../traits.html">Traits</a>)</h2>
+<p>The functions of this plugin are defined by its Traits and implemented API messages. A list of these Traits is below, along with the corresponding API messages for each. Click the message name below to be brought to additional implementation details below.</p>
+<ul>
+<li><a href="../traits.html#regionscorer">REGION_SCORER</a> – Score all submitted audio, returning labeled regions within the submitted audio, where each region includes a detected topic of interest and corresponding score for this topic.<ul>
+<li><a href="../apiMessage.html#regionscorerrequest">RegionScorerRequest</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="compatibility">Compatibility</h2>
+<p>OLIVE 5.2+</p>
+<h2 id="limitations">Limitations</h2>
+<p>As the debut ASR plugin release for OLIVE, there are several known limitations that will impact the usage of this plugin.</p>
+<p>ASR is language dependent and also largely audio domain dependent. The domains that a plugin can effectively cover are largely determined by the data used to train the speech recognition system's acoustic model. The individual words that the plugin is capable of recognizing is determined by the vocabulary that the corresponding language model was trained with. This means that some uncommon or unofficial words, like slang or other types of colloquial speech, as well as names or places, may not be possible to be recognized by a plugin out-of-the-box. Several factors contirbute to what might limit the vocabulary of a language model, including the age of the text data used during development, the source or domain of this data (such as broadcast news transcript versus social media type posts).</p>
+<p>Regarding performance, ASR plugins are especially sensitive to the tradeoffs between accuracy performance and realistic resource requirement and runtime constraints. Typically larger, more resource-hungry models are capable of achieving greater accuracy overall, but at the expense of longer runtimes/slower performance, and higher memory requirements. SRI is able to tune our domains to balance these constraints and performance based on customer needs. </p>
+<h3 id="language-dependence">Language Dependence</h3>
+<p>Each domain of this ASR plugin is language specific, and is only capable of transcribing speech in a single language. There is no filter or any sort of verification performed by OLIVE to ensure that the speech passed to this domain is indeed of the correct language - this burden lies on the users to either manually or automatically triage input audio if the source language is unknown. An OLIVE Language ID plugin could be used as a front-end to triage out-of-domain languages before passing audio to the ASR plugin. </p>
+<h3 id="out-of-vocabulary-oov-words-names">Out of Vocabulary (OOV) Words, Names</h3>
+<p>The individual words that the plugin is capable of recognizing is determined by the vocabulary that the corresponding language model was trained with. This means that some uncommon or unofficial words, like slang or other types of colloquial speech, as well as names or places, may not be possible to be recognized by a plugin out-of-the-box. Several factors contirbute to what might limit the vocabulary of a language model, including the age of the text data used during development, the source or domain of this data (such as broadcast news transcript versus social media type posts), or pruning the vocabulary to increase processing speed and/or reduce memory requirements.</p>
+<p>At this time there is no provision in OLIVE for adding words or names to the vocabulary. Some of the models underlying this plugin support vocabulary addition like this, so it may be possible for this feature to be supported in the future with OLIVE modifications.</p>
+<h3 id="confidences-vs-word-posteriors">Confidences vs Word Posteriors</h3>
+<p>Some of the domains that will be delivered for this plugin will report DNN Confidence scores back as part of the output, as a sort of likelihood measure that the predicted word is correct. For other domains, these DNN confidence measures are not available, and Word Posterior scores are provided instead. Generally, the NN confidences are a more reliable score measure, but they require additional networks to be trained to compute, and the confidence networks are specific to the rest of the models within the domain and must be retrained each time. The five domains initially delivered with this plugin only report word posterior scores.</p>
+<h3 id="overlap">Overlap</h3>
+<p>To keep memory usage of the plugin under control, incoming audio is segmented into smaller chunks for processing, preventing large audio files from overwhelming system RAM during processing. This allows the plugin performance to be less dependent on the length of input audio, but transcription errors near these break points become much more likely, especially if a word happens to be split in the process. Often when chunking audio like this, the audio is split into chunks that overlap slightly, to minimize the chance of a split word causing errors, and give the recognizer another chance to correctly identify the word or words being spoken near the break points. Typically this requires some sort of duplicated recognition resolution or merging logic, for reconciling differences in recognition output within the overlapped sections. This feature has not yet been added to the plugin, which will be addressed in a future release. Due to the lack of overlap/conflict resolution, this plugin is currently configured to have 0 overlap between consecutive segments, and there may be transcription errors resulting from these audio chunk break points. </p>
+<h3 id="resources">Resources</h3>
+<p>The Russian domain, rus-tdnnChain-tel-v2, thanks to its large TDNN architecture, complex language model, and large vocabulary thanks to Russian's agglutinative, is currently tuned more for maximum accuracy performance than for speed or resource management. As a result, it currently has a rather high minimum memory requirement for execution, relative to other plugins. Roughly 9GB of free system memory is required as a baseline for performing recognition with this domain. </p>
+<h3 id="arabic-script-languages">Arabic Script Languages</h3>
+<p>Note that for the Farsi and Arabic domains, and for other languages that read from right to left, the direction that text is rendered may appear to 'flip' when viewing the bare text output in a terminal or text editor that doesn't properly deal with the orientation switch mid-line in some operating systems. This can cause the order of the 'word' and 'score' fields to reverse relative to the output of left-to-right read languages, and appear like this Farsi output example:</p>
+<div class="codehilite"><pre><span></span><code>    input-audio.wav 0.000 0.480 58.00000000 خوب 
+    input-audio.wav 0.470 0.740 51.00000000 ای 
+    input-audio2.wav 0.000 0.320 100.00000000 آره 
+    input-audio2.wav 0.310 0.460 99.00000000 می 
+    input-audio2.wav 0.450 0.680 99.00000000 گم 
+    input-audio2.wav 0.670 0.880 73.00000000 چند 
+    input-audio2.wav 0.870 1.330 50.00000000 داره
+</code></pre></div>
+
+<p>This is a rendering problem only, however, and rest assured that if interacting with OLIVE through the API, all ordering is properly preserved. Most methods of automatically parsing the raw text output should also properly deal with the ordering, as column-based operators like awk are not affected by the visual order.</p>
+<h3 id="non-verbal-recognizer-output">Non-Verbal Recognizer Output</h3>
+<p>Each recognizer's vocabulary may contain many non-verbal annotations that are valid potential word candidates that can show up in the transcription output. These include things like @reject@ or <unk> for words the recognizer cannot form a hypothesis for, and also includes notations for phenomena like hesitations or filled pauses. These may or may not be useful for a given user's task or use case, so it is currently left to the end user to decide how to process these non-verbal outputs/notations. </p>
+<h3 id="minimum-speech-duration">Minimum Speech Duration</h3>
+<p>The system will not attempt to perform speech recognition unless 0.31 seconds of speech of more is found in the file.</p>
+<h2 id="comments">Comments</h2>
+<h2 id="global-options">Global Options</h2>
+<p>The following options are available to this plugin, adjustable in the plugin's configuration file: <code>plugin_asr_dynapy_v1_config.py</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Option Name</th>
+<th>Description</th>
+<th>Default</th>
+<th>Expected Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sad_threshold</td>
+<td>Speech detection threshold: Higher value results in less speech being found and processed.</td>
+<td>0.0</td>
+<td>-4.0 to 4.0</td>
+</tr>
+<tr>
+<td>unicode_normalization</td>
+<td>Enable or disable unicode normalization on the plugin output for Arabic languages.</td>
+<td>None</td>
+<td>None (no normalization), "NFC", "NFD", "NFKC", or "NFKD".</td>
+</tr>
+</tbody>
+</table>
+<!---
+## Interface
+
+For command line interface use see the appropriate section of the [OLIVE CLI User Guide](../cli.md#automatic-speech-recognition). For API usage see the appropriate section of the [OLIVE Application Programming Interface Guide](../apiCode.md#automatic-speech-recognition-asr) - this is in development and will be released at a later date.
+--->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="../assets/javascript/iframe-worker.js"></script>
+<script src="../search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../search/search_index.js"></script>
+      
+        <script src="../assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

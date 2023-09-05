@@ -1,0 +1,3036 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>OLIVE Martini Docker Setup - OLIVE</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="brown">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olive-martini-docker-container-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE" class="md-header-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              OLIVE Martini Docker Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE" class="md-nav__button md-logo" aria-label="OLIVE">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        OLIVE Martini Docker Setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="martini.html" class="md-nav__link md-nav__link--active">
+      OLIVE Martini Docker Setup
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olive-martini-quick-start" class="md-nav__link">
+    OLIVE Martini Quick Start
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-install-and-launch-docker" class="md-nav__link">
+    Download, Install, and Launch Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-and-start-docker" class="md-nav__link">
+    Install and Start Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjust-docker-settings-ram-cores" class="md-nav__link">
+    Adjust Docker settings (RAM, Cores)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-an-olive-martini-package" class="md-nav__link">
+    Anatomy of an OLIVE Martini Package
+  </a>
+  
+    <nav class="md-nav" aria-label="Anatomy of an OLIVE Martini Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    api/
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs" class="md-nav__link">
+    docs/
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#martini" class="md-nav__link">
+    martini/
+  </a>
+  
+    <nav class="md-nav" aria-label="martini/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olive-martini-container-560tar" class="md-nav__link">
+    olive-martini-container-5.6.0.tar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#martinish-martinips1-martinibat" class="md-nav__link">
+    martini.sh - martini.ps1 / martini.bat
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivegui" class="md-nav__link">
+    OliveGUI/
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oliveappdata" class="md-nav__link">
+    oliveAppData/
+  </a>
+  
+    <nav class="md-nav" aria-label="oliveAppData/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    plugins/
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    workflows/
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-the-olive-martini-docker-image" class="md-nav__link">
+    Load the OLIVE Martini Docker Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-systems-note" class="md-nav__link">
+    Operating Systems Note
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-the-container" class="md-nav__link">
+    Controlling the Container
+  </a>
+  
+    <nav class="md-nav" aria-label="Controlling the Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    help
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start" class="md-nav__link">
+    start
+  </a>
+  
+    <nav class="md-nav" aria-label="start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-flags" class="md-nav__link">
+    Optional Flags
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional Flags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-access" class="md-nav__link">
+    GPU Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-encryption-server-side-only" class="md-nav__link">
+    TLS Encryption (Server-side Only)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-encryption-server-side-and-client-side" class="md-nav__link">
+    TLS Encryption (Server-side and Client-side)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-debug-mode" class="md-nav__link">
+    Server Debug Mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop" class="md-nav__link">
+    stop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    cli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net" class="md-nav__link">
+    net
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    log
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-container" class="md-nav__link">
+    Using The Container
+  </a>
+  
+    <nav class="md-nav" aria-label="Using The Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raven-web-ui" class="md-nav__link">
+    Raven Web UI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-olive-documentation" class="md-nav__link">
+    The OLIVE Documentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-olive-server" class="md-nav__link">
+    The OLIVE Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-olive-message-broker" class="md-nav__link">
+    The OLIVE Message Broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nightingale-forensic-ui" class="md-nav__link">
+    Nightingale Forensic UI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive-example-api-client-implementations" class="md-nav__link">
+    OLIVE Example API Client Implementations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-and-optional-usage-and-features" class="md-nav__link">
+    Advanced and Optional Usage and Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-ports-optional" class="md-nav__link">
+    Configuring Ports (Optional)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-plugins-workflows-and-documentation-optional" class="md-nav__link">
+    Configuring Plugins, Workflows, and Documentation (Optional)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-installation" class="md-nav__link">
+    Testing The Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-notes-troubleshooting" class="md-nav__link">
+    Final Notes / Troubleshooting
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-global-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-embedplda-v4.html" class="md-nav__link">
+      Language Identification (LID) GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-gb-v2.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-whisper-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) whisper/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR/Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-12" type="checkbox" id="nav-5-12" >
+    
+    <label class="md-nav__link" for="nav-5-12">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-12">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olive-martini-quick-start" class="md-nav__link">
+    OLIVE Martini Quick Start
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-install-and-launch-docker" class="md-nav__link">
+    Download, Install, and Launch Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-and-start-docker" class="md-nav__link">
+    Install and Start Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjust-docker-settings-ram-cores" class="md-nav__link">
+    Adjust Docker settings (RAM, Cores)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-an-olive-martini-package" class="md-nav__link">
+    Anatomy of an OLIVE Martini Package
+  </a>
+  
+    <nav class="md-nav" aria-label="Anatomy of an OLIVE Martini Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    api/
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs" class="md-nav__link">
+    docs/
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#martini" class="md-nav__link">
+    martini/
+  </a>
+  
+    <nav class="md-nav" aria-label="martini/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olive-martini-container-560tar" class="md-nav__link">
+    olive-martini-container-5.6.0.tar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#martinish-martinips1-martinibat" class="md-nav__link">
+    martini.sh - martini.ps1 / martini.bat
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivegui" class="md-nav__link">
+    OliveGUI/
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oliveappdata" class="md-nav__link">
+    oliveAppData/
+  </a>
+  
+    <nav class="md-nav" aria-label="oliveAppData/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    plugins/
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    workflows/
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-the-olive-martini-docker-image" class="md-nav__link">
+    Load the OLIVE Martini Docker Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-systems-note" class="md-nav__link">
+    Operating Systems Note
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlling-the-container" class="md-nav__link">
+    Controlling the Container
+  </a>
+  
+    <nav class="md-nav" aria-label="Controlling the Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    help
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start" class="md-nav__link">
+    start
+  </a>
+  
+    <nav class="md-nav" aria-label="start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-flags" class="md-nav__link">
+    Optional Flags
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional Flags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-access" class="md-nav__link">
+    GPU Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-encryption-server-side-only" class="md-nav__link">
+    TLS Encryption (Server-side Only)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-encryption-server-side-and-client-side" class="md-nav__link">
+    TLS Encryption (Server-side and Client-side)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-debug-mode" class="md-nav__link">
+    Server Debug Mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop" class="md-nav__link">
+    stop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    cli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net" class="md-nav__link">
+    net
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    log
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-container" class="md-nav__link">
+    Using The Container
+  </a>
+  
+    <nav class="md-nav" aria-label="Using The Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raven-web-ui" class="md-nav__link">
+    Raven Web UI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-olive-documentation" class="md-nav__link">
+    The OLIVE Documentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-olive-server" class="md-nav__link">
+    The OLIVE Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-olive-message-broker" class="md-nav__link">
+    The OLIVE Message Broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nightingale-forensic-ui" class="md-nav__link">
+    Nightingale Forensic UI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive-example-api-client-implementations" class="md-nav__link">
+    OLIVE Example API Client Implementations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-and-optional-usage-and-features" class="md-nav__link">
+    Advanced and Optional Usage and Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-ports-optional" class="md-nav__link">
+    Configuring Ports (Optional)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-plugins-workflows-and-documentation-optional" class="md-nav__link">
+    Configuring Plugins, Workflows, and Documentation (Optional)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-installation" class="md-nav__link">
+    Testing The Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-notes-troubleshooting" class="md-nav__link">
+    Final Notes / Troubleshooting
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olive-martini-docker-container-setup">OLIVE Martini Docker Container Setup</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This page guides through the installation, setup, and launching of a docker-container based OLIVE software package featuring the new "OLIVE Martini" container setup. This new delivery method includes the usual OLIVE server and plugin capabilities delivered in the past, but includes a new addition - Batch GUI capabilities powered by the new <a href="raven.html">Raven GUI</a> that can be accessed through your web browser. For instructions on how to use this new GUI once you have the software properly installed, check out the <a href="raven.html">Raven Web GUI</a> page.</p>
+<p>The overall installation process is very similar to previous Docker container based OLIVE deliveries in the past, with the main changes affecting how the OLIVE container is managed for startup, shutdown, etc.</p>
+<!--- <details markdown="1">
+    <summary>Docker Installation Instructions (Click to expand)</summary> --->
+
+<p>This page assumes you already have Docker installed and configured, or that you are already familiar with it. Some sections are collapsed by default to shift the OLIVE-specific info up, but they can be easily expanded for more details if necessary.</p>
+<h2 id="olive-martini-quick-start">OLIVE Martini Quick Start</h2>
+<!--- Attempting to address customer/Aaron complaint that this documentation is long and takes a bit to cover what most folks actually need. Maybe remove if seems out of place. --->
+
+<p>This briefly covers the steps necessary to get up and running with an OLIVE Martini to serve as a quick refresher for returning users or those simply wishing to start as quickly as possible. Please refer to the respective linked sections for each step if more information is needed, or if any trouble is encountered.</p>
+<ol>
+<li><a href="#download-install-and-launch-docker">Make sure Docker is installed</a></li>
+<li><a href="#anatomy-of-an-olive-martini-package">Unpack the delivery archive</a><ul>
+<li>Using <code>$ tar -xzf olive5.6.0-martini-2Jun2022.tar.gz</code></li>
+</ul>
+</li>
+<li><a href="#load-the-olive-martini-docker-image">Load the OLIVE Martini image</a><ul>
+<li><code>$ cd olive5.6.0/martini/</code></li>
+<li><code>docker load -i olive-martini-container-5.6.0.tar</code></li>
+</ul>
+</li>
+<li><a href="#start">Start the container</a><ul>
+<li><code>$ ./martini.sh start</code> or <code>$ .\martini.ps1 start</code></li>
+</ul>
+</li>
+<li><a href="#using-the-container">Use the container</a></li>
+<li><a href="#stop">When finished, stop the container</a><ul>
+<li><code>$ ./martini.sh stop</code> or <code>$ .\martini.ps1 stop</code></li>
+</ul>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">GPU Configuration Note</p>
+<p>If you wish for OLIVE to use GPUs for supported plugins, you must launch Martini with the <a href="#gpu-access"><code>--gpu</code>/<code>-gpu</code> flag</a>, and also be sure to configure compatible plugins to use the GPU as outlined in the <a href="gpu-config.html">GPU Plugin/Domain Configuration</a> documentation before launching Martini."</p>
+</div>
+<h2 id="download-install-and-launch-docker">Download, Install, and Launch Docker</h2>
+<p>If Docker is already installed and running, continue - if not, please expand the section below for setup instructions.</p>
+<details class="info"><summary>Docker Installation Instructions (Click to expand)</summary><h2 id="install-and-start-docker">Install and Start Docker</h2>
+<p>Before you can get started installing and running OLIVE, you'll need to make sure you have fully installed and configured Docker. The proper installation steps vary depending on your host OS, so please refer to the appropriate official Docker installation instructions:</p>
+<ul>
+<li><a href="https://docs.docker.com/desktop/install/windows-install/">Docker Desktop for Windows</a></li>
+<li><a href="https://docs.docker.com/desktop/install/mac-install/">Docker Desktop for macOS</a></li>
+<li><a href="https://docs.docker.com/engine/install/ubuntu/">Docker Engine for Ubuntu</a></li>
+</ul>
+<p>Docker for Ubuntu is especially important to follow the official steps closely, as there are additional important <a href="https://docs.docker.com/engine/install/linux-postinstall/">post-installation steps</a> to perform to make sure docker runs smoothly on your system.</p>
+<p>Note that if installing into an Ubuntu instance running on WSL2, <code>systemctl</code> is not used on such systems. This means that some of the commands provided in the Docker for Ubuntu instructions above may not succeed as written; notably for starting and stopping the Docker service. Please use <code>service</code> for these commands instead:</p>
+<div class="codehilite"><pre><span></span><code>$ sudo service docker start
+</code></pre></div>
+
+<p>In addition, if using Docker for Ubuntu, the Nvidia drivers must be installed separately. This doesn't seem to be necessary if using Docker Desktop. Instructions for this installation can be found <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker">here, from Nvidia</a>. </p>
+<p>Before moving on, be sure that the docker service has been started.</p>
+</details>
+<!--- First you will need to obtain and install Docker - this can be done in a number of ways, the easiest of which is likely through the Docker website. The Community Edition is free (though you now need to create an account with Docker to obtain it), should fulfill most or all OLIVE needs, and is available for several operating systems, including Windows 10.  Docker is available here - https://www.docker.com/community-edition and up-to-date [installation instructions](https://docs.docker.com/engine/install/) can be found from Docker.
+
+    ![Windows Hyper-V and Containers features](img/docker/win-hyper-v.png)
+
+    Once Docker is installed, launch it to proceed. When running Docker for the first time, if you are using a Windows OS, you may be prompted to enable some Windows features that are not enabled by default, but are required by Docker to run; Hyper-V and Containers. Select “Ok” and wait for the computer to restart to enable these features. Docker should automatically start up once the computer has restarted.  
+
+    ![Docker is running!](img/docker/win-docker-running.png) --->
+
+<!--- </details> --->
+
+<h2 id="adjust-docker-settings-ram-cores">Adjust Docker settings (RAM, Cores)</h2>
+<details class="info"><summary>Configure Docker-allocated Resources (Windows and macOS only) (Click to expand)</summary><p>If you are running Docker on Windows or MacOS, there may be some extra required configuration. By default, Docker is assigned one or two CPU cores, and only 2GB of memory. In order to effectively run the OLIVE docker container, you will need to increase the Memory allocated to Docker to at least 8 GB (or 16 GB for some plugins/tasks), depending on which plugins will be run.  If you have cores available, you can obtain greater performance by also increasing the CPU allocation. Allocating more cores and more memory will almost always improve OLIVE performance.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows</label><div class="tabbed-content">
+<p><img alt="Windows Docker Settings Access" src="img/docker/win-docker-settings-taskbar.png" /></p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">macOS</label><div class="tabbed-content">
+<p><img alt="macOS Docker Settings Access" src="img/docker/mac-docker-settings-notification-bar.png" /></p>
+</div>
+</div>
+<p>These settings are accessed by right clicking the Docker icon in the notification tray on Windows (notification bar if using MacOS), selecting ‘Settings’ and navigating to the ‘Advanced’ tab, then adjusting the CPU and Memory sliders as desired. </p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Windows</label><div class="tabbed-content">
+<p><img alt="Windows Docker Resource Settings Configuration" src="img/docker/win-docker-resources.png" /></p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">macOS</label><div class="tabbed-content">
+<p><img alt="macOS Docker Resource Settings Configuration" src="img/docker/mac-docker-resources.png" /></p>
+</div>
+</div>
+</details>
+<h2 id="anatomy-of-an-olive-martini-package">Anatomy of an OLIVE Martini Package</h2>
+<p>Once Docker is installed and properly configured, you can download and uncompress the OLIVE Docker package from the SRI-provided share link. The link, delivery method, and exact filenames will vary from delivery to delivery, but once you have downloaded and unpacked the software archive:</p>
+<div class="codehilite"><pre><span></span><code>$ tar -xzf olive5.6.0-martini-2Jun2022.tar.gz
+</code></pre></div>
+
+<p>You should find similar content to below unless told otherwise: </p>
+<ul>
+<li><code>olive5.6.0/</code><ul>
+<li><code>api/</code> - Directory containing the Python and Java OLIVE Client utilities</li>
+<li><code>docs/</code> - OLIVE documentation </li>
+<li><code>martini/</code><ul>
+<li><code>olive-martini-container-5.6.0.tar</code> - OLIVE Martini Docker container</li>
+<li><code>martini.sh</code> - Multi-purpose utility and management script for the OLIVE Martini Docker container on linux and macOS</li>
+<li><code>martini.ps1</code> / <code>martini.bat</code> - Same as above, but for Windows PowerShell</li>
+</ul>
+</li>
+<li><code>OliveGUI/</code> - (Optional) The OLIVE Nightingale Forensic GUI </li>
+<li><code>oliveAppData/</code><ul>
+<li><code>plugins/</code> - OLIVE Plugins directory; Actual plugins included will depend on the customer, mission, and delivery</li>
+<li><code>workflows/</code> - (Optional) Directory containing OLIVE workflows; actual included worfklows will depend on the customer, mission, and delivery</li>
+<li><code>certs</code> - (Optional) Directory to contain certificates, keys, passphrases if needed. This is where you will place certificates if using Martini with TLS. See the <a href="#tls-encryption-server-side-only">TLS startup flags</a> below for more details.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Expand the section below for more details on each component, or scroll to continue setup.</p>
+<details class="info"><summary>OLIVE Martini Component Details (Click to Expand)</summary><h3 id="api"><code>api/</code></h3>
+<p>This directory contains the <a href="clients.html">Python and Java OLIVE Client utilities</a> that interact with and task a running OLIVE/Martini server. The client documentation covers how to get started with these.</p>
+<h3 id="docs"><code>docs/</code></h3>
+<p>Contains the documentation you're currently browsing. Other versions can be viewed online at the <a href="https://sri-international.github.io/OLIVE/">OLIVE Software Documentation Page</a>, but the version delivered with OLIVE should be the most appropriate for your specific delivery.</p>
+<p>To view the documentation, open this page in a web browser:</p>
+<div class="codehilite"><pre><span></span><code>olive5.6.0/docs/index.html
+</code></pre></div>
+
+<p>Or follow the links given by the martini.sh startup output for the live-hosted local documentation.</p>
+<h3 id="martini"><code>martini/</code></h3>
+<p>Contains the core OLIVE server and utility components for running the OLIVE software. This includes the OLIVE Martini image itself, and the the management scripts to help start, monitor, configure, and stop the container.</p>
+<h4 id="olive-martini-container-560tar"><code>olive-martini-container-5.6.0.tar</code></h4>
+<p>Docker image that includes <a href="index.html">OLIVE</a>, the <a href="raven.html">Raven Web GUI</a>, the OLIVE Web Broker, and various other utilities, including an html server to host this documentation.</p>
+<h4 id="martinish-martinips1-martinibat"><code>martini.sh</code> - <code>martini.ps1</code> / <code>martini.bat</code></h4>
+<p>Multi-purpose utility and management script for the OLIVE Martini Docker container on linux and macOS (.sh) or Windows (.ps1 and .bat) respectively.</p>
+<h3 id="olivegui"><code>OliveGUI/</code></h3>
+<p>The OLIVE <a href="nightingale.html">Nightingale Forensic UI</a> for close file analysis, live streaming tasks, and other OLIVE GUI tasks.</p>
+<h3 id="oliveappdata"><code>oliveAppData/</code></h3>
+<p>This is the default location for the all important OLIVE <code>plugins</code> and <code>workflows</code>. Once you start using the system, it is also where the OLIVE server will start saving server logs, in a <code>server/</code> directory created here. </p>
+<h4 id="plugins"><code>plugins/</code></h4>
+<p>Included plugins are installed here - for more information on OLIVE plugins, refer to the <a href="plugins.html">OLIVE Plugin Overview</a>, the list of <a href="releasePlugins.html">released plugins</a>, or the individual documentation page of the plugin of interest from the navigation on the left.</p>
+<h4 id="workflows"><code>workflows/</code></h4>
+<p>If any workflows are included with your OLIVE package, they reside here. Workflows are powerful ways to combine different plugins and capabilities to perform multiple scoring requests at once, and/or perform complex routing operations like using Language ID results to choose whether or not to perform ASR, and which language to use if so.</p>
+</details>
+<h2 id="load-the-olive-martini-docker-image">Load the OLIVE Martini Docker Image</h2>
+<p>The first setup step is to load the OLIVE Martini Docker image. This is only necessary once. Open a command prompt (PowerShell in Windows or Terminal in linux/macOS), navigate to the directory containing the OLIVE Docker image, and follow the examples below.</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">linux / macOS</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">olive5</span><span class="o">.</span><span class="mf">6.0</span><span class="o">/</span><span class="n">martini</span>
+<span class="o">$</span> <span class="n">docker</span> <span class="nb">load</span> <span class="o">-</span><span class="n">i</span> <span class="n">olive</span><span class="o">-</span><span class="n">martini</span><span class="o">-</span><span class="n">container</span><span class="o">-</span><span class="mf">5.6</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">cd</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>\<span class="n">olive5</span><span class="o">.</span><span class="mf">6.0</span>\<span class="n">martini</span> 
+<span class="o">$</span> <span class="n">docker</span> <span class="nb">load</span> <span class="o">-</span><span class="n">i</span> <span class="n">olive</span><span class="o">-</span><span class="n">martini</span><span class="o">-</span><span class="n">container</span><span class="o">-</span><span class="mf">5.6</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span>
+</code></pre></div>
+
+</div>
+</div>
+<p>This operation can take some time; quite a few minutes on some machines, and you may not see feedback right away. Once you are returned to the command prompt, if there are no error messages, loading is complete and you can proceed.</p>
+<h2 id="operating-systems-note">Operating Systems Note</h2>
+<p>There are three provided <code>martini</code> management scripts:</p>
+<div class="codehilite"><pre><span></span><code>- martini.sh
+- martini.bat
+- martini.ps1
+</code></pre></div>
+
+<p>The functionality of each is intended to be identical, and these are provided as different options for different operating systems for convenience.</p>
+<p>The <code>martini.sh</code> script should be used for linux and for macOS. <code>martini.ps1</code> should be used when managing the OLIVE Martini container from Windows PowerShell, and <code>martini.bat</code>, which calls <code>martini.ps1</code> internally, should be used if <code>martini.ps1</code> cannot execute for permission reasons in PowerShell, and when managing OLIVE Martini from Windows Command Prompt (<code>cmd</code>). </p>
+<p>The examples below attempt to show all three being used, but in the text, they are refered to as simply <code>martini.sh</code> for brevity. Their features and functionality are the same.</p>
+<div class="admonition info">
+<p class="admonition-title">Windows vs macOS/Linux flag format</p>
+<p>Note that the one exception is the flag format. The Windows management use only a single '-' for flags, while the linux/macOS script uses two '--'. For example the '--gpu' optional flag for <code>./martini.sh start --gpu</code> to launch with GPU connections enabled becomes '-gpu' on Windows: <code>.\martini.ps1 start -gpu</code>"</p>
+</div>
+<hr />
+<h2 id="controlling-the-container">Controlling the Container</h2>
+<p>Controlling and managing the OLIVE Multi container is made much easier with the provided <code>martini.sh</code> management script. Using this script is as simple as running the script, and providing a command:</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh &lt;command<span class="se">\&gt;</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat &lt;command<span class="se">\&gt;</span>
+</code></pre></div>
+
+</div>
+</div>
+<p>The list of commands available to <code>martini.sh</code> are:</p>
+<ul>
+<li><code>cli</code> - Starts a shell on the container for debugging or operating the OLIVE CLI tools.</li>
+<li><code>help</code> - Display the martini.sh help statement (shown below)</li>
+<li><code>list</code> - List the running container(s), if any.</li>
+<li><code>log</code> - Display a snapshot of the OLIVE Server log in the terminal. Useful for experts for debugging.</li>
+<li><code>net</code> - Show the ports on the host that the container is listening on.</li>
+<li><code>start</code> - Start the container.</li>
+<li><code>stop</code> - Stop the container.</li>
+<li><code>status</code> - Show the status of the processes on the container.</li>
+<li><code>version</code> - Display the version information for the installed Martini components.</li>
+</ul>
+<p>More details for each command, how to use it, and the designed functionality can be found below.</p>
+<hr />
+<h3 id="help"><code>help</code></h3>
+<p>Prints out the <code>martini.sh</code> help statement, reminding the user of the available commands:</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="n">$</span> <span class="p">.</span><span class="o">/</span><span class="n">martini</span><span class="p">.</span><span class="n">sh</span> <span class="k">help</span>
+<span class="n">Supported</span> <span class="n">commands</span> <span class="n">include</span><span class="o">:</span> <span class="n">cli</span><span class="p">,</span> <span class="k">help</span><span class="p">,</span> <span class="k">list</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">net</span><span class="p">,</span> <span class="k">start</span><span class="p">,</span> <span class="k">stop</span><span class="p">,</span> <span class="k">status</span><span class="p">,</span> <span class="k">and</span> <span class="n">version</span><span class="p">.</span>    
+    <span class="n">martini</span><span class="p">.</span><span class="n">sh</span> <span class="n">cli</span><span class="o">:</span> <span class="k">Starts</span> <span class="n">a</span> <span class="n">shell</span> <span class="k">on</span> <span class="n">the</span> <span class="n">container</span> <span class="k">for</span> <span class="n">debugging</span><span class="p">.</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">sh</span> <span class="k">help</span><span class="o">:</span> <span class="n">Prints</span> <span class="k">out</span> <span class="k">help</span> <span class="n">information</span><span class="p">.</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">sh</span> <span class="k">list</span><span class="o">:</span> <span class="k">List</span> <span class="n">the</span> <span class="n">running</span> <span class="n">container</span><span class="p">.</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">sh</span> <span class="n">log</span><span class="o">:</span> <span class="n">Print</span> <span class="k">out</span> <span class="n">log</span> <span class="n">files</span> <span class="k">from</span> <span class="n">the</span> <span class="n">container</span><span class="p">.</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">sh</span> <span class="n">net</span><span class="o">:</span> <span class="n">Shows</span> <span class="n">the</span> <span class="n">ports</span> <span class="k">on</span> <span class="n">the</span> <span class="k">host</span> <span class="n">that</span> <span class="n">the</span> <span class="n">container</span> <span class="k">is</span> <span class="n">listening</span> <span class="k">on</span><span class="p">.</span> <span class="p">(</span><span class="n">requires</span> 
+        <span class="n n-Quoted">`netstat`</span> <span class="n">OS</span> <span class="n">utility</span> <span class="n">be</span> <span class="n">installed</span> <span class="k">for</span> <span class="n">proper</span> <span class="k">function</span><span class="p">)</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">sh</span> <span class="k">start</span><span class="o">:</span> <span class="k">Start</span> <span class="n">the</span> <span class="n">container</span><span class="p">.</span>
+        <span class="k">Optional</span> <span class="n">flags</span><span class="o">:</span>
+        <span class="o">--</span><span class="n">gpu</span><span class="o">:</span> <span class="k">Enable</span> <span class="n">Martini</span> <span class="n">access</span> <span class="k">to</span> <span class="n">GPUs</span><span class="p">,</span> <span class="k">if</span> <span class="n">available</span><span class="p">.</span> <span class="n">Be</span> <span class="n">sure</span> <span class="k">to</span> <span class="n">properly</span> <span class="n">configure</span> <span class="k">any</span> 
+                <span class="k">plugin</span><span class="o">/</span><span class="n">domains</span> <span class="k">to</span> <span class="n">be</span> <span class="n">used</span> <span class="k">with</span> <span class="n">GPU</span> <span class="n">devices</span> <span class="k">as</span> <span class="n">outlined</span> <span class="k">in</span> <span class="n">the</span> <span class="n">documentation</span><span class="p">.</span>
+        <span class="o">--</span><span class="n">tls_server_only</span><span class="o">:</span> <span class="n">The</span> <span class="k">server</span> <span class="n">will</span> <span class="n">be</span> <span class="n">configured</span> <span class="k">with</span> <span class="n">a</span> <span class="n">certificate</span> <span class="k">and</span> <span class="n">will</span> <span class="k">only</span> 
+                <span class="n">respond</span> <span class="k">to</span> <span class="n">HTTPS</span> <span class="n">requests</span><span class="p">;</span> <span class="n">clients</span> <span class="n">aren</span><span class="s1">&#39;t required to send certificate but must </span>
+<span class="s1">                use HTTPS protocol (one-way TLS)</span>
+<span class="s1">        --tls_server_and_client: Both the server and clients will need to communicate with </span>
+<span class="s1">                certificates over HTTPS (two-way TLS)</span>
+<span class="s1">        --debug: activate &#39;</span><span class="n">debug</span><span class="s1">&#39; mode for the OLIVE server. This will cause OLIVE to maintain</span>
+<span class="s1">                all OLIVE server logs to aid in troubleshooting and debugging.</span>
+<span class="s1">    martini.sh status: Shows status of the processes on the container.</span>
+<span class="s1">    martini.sh stop: Stop the container.</span>
+<span class="s1">    martini.sh version: Prints out version information.</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="n">$</span> <span class="p">.</span><span class="err">\</span><span class="n">martini</span><span class="p">.</span><span class="n">bat</span> <span class="k">help</span>
+<span class="n">Supported</span> <span class="n">commands</span> <span class="n">include</span><span class="o">:</span> <span class="n">cli</span><span class="p">,</span> <span class="k">help</span><span class="p">,</span> <span class="k">list</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">net</span><span class="p">,</span> <span class="k">start</span><span class="p">,</span> <span class="k">stop</span><span class="p">,</span> <span class="k">status</span><span class="p">,</span> <span class="k">and</span> <span class="n">version</span><span class="p">.</span>    
+    <span class="n">martini</span><span class="p">.</span><span class="n">bat</span> <span class="n">cli</span><span class="o">:</span> <span class="k">Starts</span> <span class="n">a</span> <span class="n">shell</span> <span class="k">on</span> <span class="n">the</span> <span class="n">container</span> <span class="k">for</span> <span class="n">debugging</span><span class="p">.</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">bat</span> <span class="k">help</span><span class="o">:</span> <span class="n">Prints</span> <span class="k">out</span> <span class="k">help</span> <span class="n">information</span><span class="p">.</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">bat</span> <span class="k">list</span><span class="o">:</span> <span class="k">List</span> <span class="n">the</span> <span class="n">running</span> <span class="n">container</span><span class="p">.</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">bat</span> <span class="n">log</span><span class="o">:</span> <span class="n">Print</span> <span class="k">out</span> <span class="n">log</span> <span class="n">files</span> <span class="k">from</span> <span class="n">the</span> <span class="n">container</span><span class="p">.</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">bat</span> <span class="n">net</span><span class="o">:</span> <span class="n">Shows</span> <span class="n">the</span> <span class="n">ports</span> <span class="k">on</span> <span class="n">the</span> <span class="k">host</span> <span class="n">that</span> <span class="n">the</span> <span class="n">container</span> <span class="k">is</span> <span class="n">listening</span> <span class="k">on</span><span class="p">.</span> <span class="p">(</span><span class="n">requires</span> 
+        <span class="n n-Quoted">`netstat`</span> <span class="n">OS</span> <span class="n">utility</span> <span class="n">be</span> <span class="n">installed</span> <span class="k">for</span> <span class="n">proper</span> <span class="k">function</span><span class="p">)</span>
+    <span class="n">martini</span><span class="p">.</span><span class="n">bat</span> <span class="k">start</span><span class="o">:</span> <span class="k">Start</span> <span class="n">the</span> <span class="n">container</span><span class="p">.</span>
+        <span class="k">Optional</span> <span class="n">flags</span><span class="o">:</span>
+        <span class="o">-</span><span class="n">gpu</span><span class="o">:</span> <span class="k">Enable</span> <span class="n">Martini</span> <span class="n">access</span> <span class="k">to</span> <span class="n">GPUs</span><span class="p">,</span> <span class="k">if</span> <span class="n">available</span><span class="p">.</span> <span class="n">Be</span> <span class="n">sure</span> <span class="k">to</span> <span class="n">properly</span> <span class="n">configure</span> <span class="k">any</span> 
+                <span class="k">plugin</span><span class="o">/</span><span class="n">domains</span> <span class="k">to</span> <span class="n">be</span> <span class="n">used</span> <span class="k">with</span> <span class="n">GPU</span> <span class="n">devices</span> <span class="k">as</span> <span class="n">outlined</span> <span class="k">in</span> <span class="n">the</span> <span class="n">documentation</span><span class="p">.</span>
+        <span class="o">-</span><span class="n">tls_server_only</span><span class="o">:</span> <span class="n">The</span> <span class="k">server</span> <span class="n">will</span> <span class="n">be</span> <span class="n">configured</span> <span class="k">with</span> <span class="n">a</span> <span class="n">certificate</span> <span class="k">and</span> <span class="n">will</span> <span class="k">only</span> 
+                <span class="n">respond</span> <span class="k">to</span> <span class="n">HTTPS</span> <span class="n">requests</span><span class="p">;</span> <span class="n">clients</span> <span class="n">aren</span><span class="s1">&#39;t required to send certificate but must </span>
+<span class="s1">                use HTTPS protocol (one-way TLS)</span>
+<span class="s1">        -tls_server_and_client: Both the server and clients will need to communicate with </span>
+<span class="s1">                certificates over HTTPS (two-way TLS)</span>
+<span class="s1">        -debug: activate &#39;</span><span class="n">debug</span><span class="s1">&#39; mode for the OLIVE server. This will cause OLIVE to maintain</span>
+<span class="s1">                all OLIVE server logs to aid in troubleshooting and debugging.</span>
+<span class="s1">    martini.bat status: Shows status of the processes on the container.</span>
+<span class="s1">    martini.bat stop: Stop the container.</span>
+<span class="s1">    martini.bat version: Prints out version information.</span>
+</code></pre></div>
+
+</div>
+</div>
+<hr />
+<h3 id="start"><code>start</code></h3>
+<p>Starts up a previously built and loaded container. Note that it can take several seconds for all the servers to start on the container. <!-- You can edit the <code>DELAY</code> variable at the top of your script to a number (discussed above), in which case this command will wait that many seconds before returning, so you can be sure the servers are running when the command returns. --></p>
+<p>Usage:</p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh start
+</code></pre></div>
+
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat start
+</code></pre></div>
+
+</div>
+</div>
+<h4 id="optional-flags">Optional Flags</h4>
+<p>Introduced with OLIVE 5.5.1, the <code>start</code> command now accepts four different optional startup flags.</p>
+<h5 id="gpu-access">GPU Access</h5>
+<p>This grants the OLIVE Martini access to GPUs, if available. Usage:</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh start --gpu
+</code></pre></div>
+
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat start -gpu
+</code></pre></div>
+
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">GPU Availability</p>
+<p>Note that if no GPUs are available on the machine, or the GPUs are not compatible with the OLIVE 5.6.0 software and this flag is used, startup of the Martini will fail!"</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Plugin GPU Configuration</p>
+<p>This flag allows the Martini container to access GPUs that may be available on the system, but does not reconfigure any plugins to use these GPUs. Please be sure to properly configure any plugin/domains to be used with GPU devices as outlined in the <a href="gpu-config.html">GPU Plugin/Domain Configuration</a> documentation. Without explicit configuration to use a GPU, whether by SRI before delivery or by the end user, no plugin will take advantage of available GPUs.</p>
+</div>
+<h5 id="tls-encryption-server-side-only">TLS Encryption (Server-side Only)</h5>
+<p>Configures the server to use one-way TLS, relying on a server-side for encrypted communication. The server will only respond to HTTPS requests. Clients aren't required to send a certificate, but must use HTTPS protocol. Usage:</p>
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh start --tls_server_only
+</code></pre></div>
+
+</div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat start -tls_server_only
+</code></pre></div>
+
+</div>
+</div>
+<p>Requires additional files for proper function, and for Martini to start at all if this option is enabled. All of these files must be placed in <code>olive5.6.0/oliveAppData/certs/</code>. The files are:</p>
+<ul>
+<li><strong>passwords.txt</strong><ul>
+<li>A file with passphrases for secret keys where each passphrase is specified on a separate line. Passphrases are tried in turn when loading the key. The file can be empty if passphrases are not required. </li>
+</ul>
+</li>
+<li><strong>server.crt</strong><ul>
+<li>A certificate in the PEM format. If intermediate certificates should be specified in addition to a primary certificate, they should be specified in the same file in the following order: the primary certificate comes first, then the intermediate certificates. </li>
+<li><strong>NOTE</strong>: You need to rename a copy of your certificate and put it in the <strong>/certs/</strong> directory mentioned above.</li>
+</ul>
+</li>
+<li><strong>server.key</strong><ul>
+<li>The secret key in the PEM format for the <strong>server.crt</strong>.</li>
+<li><strong>NOTE</strong>: You need to rename a copy of your certificate key and put it in the <strong>/certs/</strong> directory.</li>
+</ul>
+</li>
+</ul>
+<!--- info from ssl-info.md from David D to serve as reference for this section. delete when completed/verified.
+            2)  **olive-martini-5.5.rcTLS-files.tar** contains:
+                - This **martini.md** file
+                - **martini.sh**
+                martini.sh start [ssl | sslclient]: Start the container.
+                &nbsp;&nbsp;&nbsp;&nbsp;Optionally use HTTPS or HTTPS and require client-side certificates.
+                martini.sh stop: Stop the container
+                martini.sh help: Prints out help information.
+                - **/plugins/sad-dnn-v8.0.0/**
+                - **/workflows/SAD.workflow.json**
+                - **/nginx-files/**
+                - **/docs/**
+
+            The **nginx-files** directory contains:
+            - **passwords.txt**
+            - **nginx.no_ssl.conf**
+            - **nginx.ssl.conf**
+            - **nginx.ssl.client.conf**
+
+            The nginx ssl conf files expect to find the following files inside the nginx-files directory:
+            - **passwords.txt**
+            A file with passphrases for secret keys where each passphrase is specified on a separate line.
+            Passphrases are tried in turn when loading the key. The file can be empty if passphrases are
+            not required. This file is currently empty.
+            - **server.crt**
+            A certificate in the PEM format.
+            If intermediate certificates should be specified in addition to a primary certificate,
+            they should be specified in the same file in the following order:
+            the primary certificate comes first, then the intermediate certificates.
+            **NOTE**: You need to rename a copy of your certificate and put it in the **/nginx-files/** directory.
+            - **server.key**
+            The secret key in the PEM format for the **server.crt**.
+            **NOTE**: You need to rename a copy of your certificate key and put it in the **/nginx-files/** directory.
+
+            If you are requiring client-side certificates, nginx-files directory must also contain:
+            - **clientCA.crt**
+            A file with trusted CA certificates in the PEM format used to verify client certificates.
+            **NOTE**: You need to rename a copy of your file and put it in the **/nginx-files/** directory.
+
+
+--->
+
+<p>Please work with your IT department to obtain valid certificates.</p>
+<div class="admonition warning">
+<p class="admonition-title">HTTP / HTTPS Note:</p>
+<p>Note that if using TLS, the access points for the Raven UI and locally hosted documentation must use HTTPS instead of HTTP. For example, to access the Raven UI without TLS, the user can navigate to:</p>
+<div class="codehilite"><pre><span></span><code>http://localhost:5580
+</code></pre></div>
+
+<p>But when using TLS, access must be through HTTPS:</p>
+<div class="codehilite"><pre><span></span><code>https://localhost:5580
+</code></pre></div>
+
+<p>The links printed by the Martini startup should reflect this setting.</p>
+</div>
+<h5 id="tls-encryption-server-side-and-client-side">TLS Encryption (Server-side and Client-side)</h5>
+<p>Similar to the <code>--tls_server_only</code> flag described above, but instead activates two-way TLS. Both the server and client are required to provide a certificate, and all communication occurs over HTTPS. Usage:</p>
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh start --tls_server_and_client
+</code></pre></div>
+
+</div>
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat start -tls_server_and_client
+</code></pre></div>
+
+</div>
+</div>
+<p>Carries the same file and certificate requirements as <code>--tls_server_only</code>, but with the addition of the client providing their own valid certificate. The additional file requirement for two way TLS:</p>
+<ul>
+<li><strong>clientCA.crt</strong><ul>
+<li>A file with trusted CA certificates in the PEM format used to verify client certificates.</li>
+<li><strong>NOTE</strong>: You need to rename a copy of your file and put it in the <strong>/certs/</strong> directory mentioned above.</li>
+</ul>
+</li>
+</ul>
+<p>As always, please work with your IT department to obtain valid certificates.</p>
+<div class="admonition warning">
+<p class="admonition-title">HTTP / HTTPS Note:</p>
+<p>Note that if using TLS, the access points for the Raven UI and locally hosted documentation must use HTTPS instead of HTTP. For example, to access the Raven UI without TLS, the user can navigate to:</p>
+<div class="codehilite"><pre><span></span><code>http://localhost:5580
+</code></pre></div>
+
+<p>But when using TLS, access must be through HTTPS:</p>
+<div class="codehilite"><pre><span></span><code>https://localhost:5580
+</code></pre></div>
+
+<p>The links printed by the Martini startup should reflect this setting.</p>
+</div>
+<h5 id="server-debug-mode">Server Debug Mode</h5>
+<p>Activates 'debug' mode for the OLIVE server. This causes OLIVE to mantain all OLIVE server logs to aid in troubleshooting and debugging. These logs are stored in <code>olive5.6.0/oliveAppData/server/</code> by default. Without this flag, "failed" logs are retained, but logs for jobs deemed to be successful are deleted as tasks are completed to avoid clutter and confusion. Usage:</p>
+<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh start --debug
+</code></pre></div>
+
+</div>
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat start -debug
+</code></pre></div>
+
+</div>
+</div>
+<hr />
+<h3 id="stop"><code>stop</code></h3>
+<p>Stops a running container. </p>
+<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh stop
+</code></pre></div>
+
+</div>
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat stop
+</code></pre></div>
+
+</div>
+</div>
+<hr />
+<h3 id="status"><code>status</code></h3>
+<p><code>martini.sh status</code></p>
+<p>Prints out some information on the processes running, network ports, workflows and plugins which are active on the container.</p>
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh status
+Message brokers running:
+Processes:  <span class="m">1</span>
+Plugins:  aed-enrollable-v1.0.1 aln-waveformAlignment-v1.0.0 env-indoorOutdoor-v1.0.0 env-multiClass-v2.0.0 env-powerSupplyHum-v1.0.0 env-speakerCount-v1.0.0 lid-embedplda-v2.0.1 nsd-sadInverter-v1.0.0 sad-dnn-v7.0.1 sed-rmsEnergy-v1.0.0 sid-dplda-v2.0.1 voi-speakingStyle-v1.0.0 voi-vocalEffort-v1.0.1 vtd-dnn-v7.0.1
+Workflows:  Acoustic-Event-Detection.workflow Background-Noise-Detection.workflow SAD_SID_LID.workflow Speech-Analysis.workflow
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5589            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7905040</span>    <span class="m">72</span>/python
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5590            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7915534</span>    <span class="m">73</span>/python
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:8070            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7910329</span>    <span class="m">9</span>/python
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5004            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7917573</span>    <span class="m">138</span>/nginx: master p
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5005            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7914186</span>    <span class="m">15</span>/java
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:8080            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7917572</span>    <span class="m">138</span>/nginx: master p
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:80              <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7897930</span>    <span class="m">26</span>/httpd
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5588            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7915524</span>    <span class="m">16</span>/python
+unix  <span class="m">2</span>      <span class="o">[</span> ACC <span class="o">]</span>     STREAM     LISTENING     <span class="m">7915525</span>  <span class="m">16</span>/python            /tmp/executor_714acd0b-0d0d-4259-84c2-127b84b8d26c.pipe
+unix  <span class="m">2</span>      <span class="o">[</span> ACC <span class="o">]</span>     STREAM     LISTENING     <span class="m">7905043</span>  <span class="m">80</span>/python            /tmp/pymp-vu6okza8/listener-4e5_70ll
+Httpd <span class="o">(</span>web-ui<span class="o">)</span> servers running: <span class="m">6</span>
+Nginx <span class="o">(</span>reverse proxy<span class="o">)</span> server running: <span class="m">2</span>
+Olive servers running: <span class="m">12</span>
+Active Internet connections <span class="o">(</span>only servers<span class="o">)</span>
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5589            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5590            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:8070            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5004            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5005            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:8080            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:80              <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5588            <span class="m">0</span>.0.0.0:*               LISTEN
+</code></pre></div>
+
+</div>
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat start -tls_server_only
+Message brokers running:
+Processes:  <span class="m">1</span>
+Plugins:  aed-enrollable-v1.0.1 aln-waveformAlignment-v1.0.0 env-indoorOutdoor-v1.0.0 env-multiClass-v2.0.0 env-powerSupplyHum-v1.0.0 env-speakerCount-v1.0.0 lid-embedplda-v2.0.1 nsd-sadInverter-v1.0.0 sad-dnn-v7.0.1 sed-rmsEnergy-v1.0.0 sid-dplda-v2.0.1 voi-speakingStyle-v1.0.0 voi-vocalEffort-v1.0.1 vtd-dnn-v7.0.1
+Workflows:  Acoustic-Event-Detection.workflow Background-Noise-Detection.workflow SAD_SID_LID.workflow Speech-Analysis.workflow
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5589            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7905040</span>    <span class="m">72</span>/python
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5590            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7915534</span>    <span class="m">73</span>/python
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:8070            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7910329</span>    <span class="m">9</span>/python
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5004            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7917573</span>    <span class="m">138</span>/nginx: master p
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5005            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7914186</span>    <span class="m">15</span>/java
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:8080            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7917572</span>    <span class="m">138</span>/nginx: master p
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:80              <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7897930</span>    <span class="m">26</span>/httpd
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5588            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">0</span>          <span class="m">7915524</span>    <span class="m">16</span>/python
+unix  <span class="m">2</span>      <span class="o">[</span> ACC <span class="o">]</span>     STREAM     LISTENING     <span class="m">7915525</span>  <span class="m">16</span>/python            /tmp/executor_714acd0b-0d0d-4259-84c2-127b84b8d26c.pipe
+unix  <span class="m">2</span>      <span class="o">[</span> ACC <span class="o">]</span>     STREAM     LISTENING     <span class="m">7905043</span>  <span class="m">80</span>/python            /tmp/pymp-vu6okza8/listener-4e5_70ll
+Httpd <span class="o">(</span>web-ui<span class="o">)</span> servers running: <span class="m">6</span>
+Nginx <span class="o">(</span>reverse proxy<span class="o">)</span> server running: <span class="m">2</span>
+Olive servers running: <span class="m">12</span>
+Active Internet connections <span class="o">(</span>only servers<span class="o">)</span>
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5589            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5590            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:8070            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5004            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5005            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:8080            <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:80              <span class="m">0</span>.0.0.0:*               LISTEN
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:5588            <span class="m">0</span>.0.0.0:*               LISTEN
+</code></pre></div>
+
+</div>
+</div>
+<!---TODO: This tool needs better documentation. I can't document it though becuase I don't know what it's outputting or why. --->
+
+<hr />
+<h3 id="cli"><code>cli</code></h3>
+<p>Starts up a shell within the OLIVE Martini container. The container must already be running. This is typically used for internal testing and troubleshooting and is not meant to be used by end-users. You can use this shell to run Olive CLI commands, such as:</p>
+<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">macOS and linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>$ ./martini.sh cli
+<span class="c1"># Show the plugins installed on the container:</span>
+$ ls /home/olive/olive/plugins/
+
+<span class="c1"># Show the audio files on the container, which you can use as examples:</span>
+$ ls /olive-data/media/shared/
+
+<span class="c1"># Run an analysis</span>
+$ localanalyze /home/olive/olive/plugins/lid-embedplda-v2.0.1/domains/multi-v1 /olive-data/media/shared/Komodo_dragon_en.wav.lst
+
+<span class="c1"># See the results</span>
+$ more output.txt
+</code></pre></div>
+</div>
+<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat cli
+<span class="c1"># Show the plugins installed on the container:</span>
+$ ls /home/olive/olive/plugins/
+
+<span class="c1"># Show the audio files on the container, which you can use as examples:</span>
+$ ls /olive-data/media/shared/
+
+<span class="c1"># Run an analysis</span>
+$ localanalyze /home/olive/olive/plugins/lid-embedplda-v2.0.1/domains/multi-v1 /olive-data/media/shared/Komodo_dragon_en.wav.lst
+
+<span class="c1"># See the results</span>
+$ more output.txt
+</code></pre></div>
+</div>
+</div>
+<p>This can also be used for troubleshooting by advanced users. </p>
+<details class="tip"><summary>Advanced Martini Troubleshooting using <code>martini.sh cli</code></summary><p>When running with the <code>cli</code> command, your shell starts in <code>/opt/olive</code>. This is where the runtime is installed, and where things are run within the container.</p>
+<p>In <code>/opt/olive</code>:</p>
+<ul>
+<li>Running martini.sh status will print out what is running, and what network connections are active.  And looking at this script will tell you what should be running.</li>
+<li>Do not run martini-process.sh. That is run when the container starts.</li>
+</ul>
+<p>The <code>/home/olive/olive</code> directory is the other important directory. Here: </p>
+<ul>
+<li>The <code>martini-process.log</code> file is the output of the script which starts all servers.</li>
+<li>The <code>env.log</code> file (if it exists) are the shell variables set.</li>
+<li>The other log files here were started by each server.</li>
+<li>The <code>plugins/</code> directory contains all plugins.</li>
+<li>The <code>server/</code> directory contains server logs.</li>
+</ul>
+</details>
+<hr />
+<h3 id="net"><code>net</code></h3>
+<p>Lists the project network ports that are active on the host machine, the machine running the container.</p>
+<div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh net
+</code></pre></div>
+
+</div>
+<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat net
+</code></pre></div>
+
+</div>
+</div>
+<hr />
+<h3 id="list"><code>list</code></h3>
+<p>Lists the project containers that are running.</p>
+<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh list
+</code></pre></div>
+
+</div>
+<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat list
+</code></pre></div>
+
+</div>
+</div>
+<hr />
+<h3 id="log"><code>log</code></h3>
+<p><code>martini.sh log</code></p>
+<p>Displays the OLIVE Server log; useful for checking on the status of the OLIVE server in case of a malfunction, or troubleshooting unexpected behavior.</p>
+<div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh log
+</code></pre></div>
+
+</div>
+<input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><label for="__tabbed_16_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat log
+</code></pre></div>
+
+</div>
+</div>
+<p>This can be saved out to a local file by providing a filename after the <code>log</code> command:</p>
+<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh log &lt;logfile&gt;
+</code></pre></div>
+
+</div>
+<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat log &lt;logfile&gt;
+</code></pre></div>
+
+</div>
+</div>
+<p>And the shell can be attached to this log file and updated in real time with the <code>-f</code> flag after a local logfile name:</p>
+<div class="tabbed-set" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh log &lt;logfile&gt; -f
+</code></pre></div>
+
+</div>
+<input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><label for="__tabbed_18_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat log &lt;logfile&gt; -f
+</code></pre></div>
+
+</div>
+</div>
+<!--- TODO: better <logfile> -f documentation --->
+
+<hr />
+<h3 id="version"><code>version</code></h3>
+<p>Diplays the version information for the individual components of OLIVE:</p>
+<div class="tabbed-set" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">macOS and linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh version
+Martini v1.1.  Olive v5.3.0.  Broker v1.5.  Raven v0.2.0.
+</code></pre></div>
+
+</div>
+<input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><label for="__tabbed_19_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat version
+Martini v1.1.  Olive v5.3.0.  Broker v1.5.  Raven v0.2.0.
+</code></pre></div>
+
+</div>
+</div>
+<hr />
+<h2 id="using-the-container">Using The Container</h2>
+<p>Once you have started up the container using the <a href="#start"><code>martini.sh start</code></a> command described above, you are ready to begin using it. Your container has four different applications within it, which you can use - the <a href="raven.html">Raven Web UI</a>, the <a href="server.html">OLIVE Server itself</a>, the OLIVE Message Broker, and a web server hosting the OLIVE Documentation. In addition, most OLIVE deliveries typically ship with the interactive <a href="nightingale.html">Nightingale Forensic GUI</a> for performing close file analysis using OLIVE plugins and workflows, as well as both <a href="clients.html">Java and Python OLIVE Client</a> CLI example applications.</p>
+<p>Note that if you are attempting to connect from the same machine, you can access this feature at <code>localhost:5580</code>. If you are accessing from a different machine, you must use the full hostname, or IP address. For convenience, the <code>martini.sh</code> script outputs the hostname and corresponding port for several activities: </p>
+<div class="highlight"><pre><span></span><code>$ martini.sh start
+\Started the container.
+From this machine:
+    Run Nightingale (Olive GUI) using server localhost and port 5588.
+    Use a web browser to localhost:5570 to see the documentation.
+    Use a web browser to localhost:5580 to use the Raven Web UI.
+    If using the REST API point to the server running on localhost:5004.
+
+From any other machine:
+    Run Nightingale (Olive GUI) using server stauf-MBP16 and port 5588.
+    Use a web browser to stauf-MBP16:5570 to see the documentation.
+    Use a web browser to stauf-MBP16:5580 to use the Raven Web UI.
+    If using the REST API point to the server running on stauf-MBP16:5004.
+
+Installed plugins (mounted from /Users/astauf/olive/olive5.3.0/oliveAppData/plugins) are:
+asr-dynapy-v3.0.0        map-routerGlobal-v1.0.0
+dfa-cplda-v1.0.0         map-routerGlobal-v1.0.1
+dfa-speakerSpecific-v1.0.0   map-routerRegion-v1.0.0
+dfa-spoofnet-v1.0.0      pim-validateGlobal-v1.0.0
+enh-mmse-v2.0.2          qbe-ftdnnSmolive-v1.0.0
+env-audioQuality-v2.0.0      qua-analysis-v1.0.0
+fdi-pyEmbed-v1.0.0       qua-filter-v1.0.0
+fdv-pyEmbed-v1.0.0       red-transform-v1.0.0
+fri-pyEmbed-v1.0.0       sad-dnn-v7.0.2
+frv-pyEmbed-v1.0.0       sad-dnnSmolive-v1.0.0
+gdd-embedplda-v1.0.0         sdd-diarizeembed-v1.0.0
+gid-gb-v2.0.1            sdd-sbcEmbed-v2.0.3
+ldd-embedplda-v1.0.0         shl-sbcEmbed-v1.0.2
+ldd-embedplda-v1.0.1         sid-dplda-v2.0.2
+lid-embedplda-v3.0.0         sid-embed-v6.0.2
+lid-embedplda-v3.0.1         tpd-dynapy-v5.0.0
+lid-embedpldaSmolive-v1.0.0  vtd-dnn-v7.0.2
+
+Installed workflows (mounted from /Users/astauf/olive/olive5.3.0/oliveAppData/workflows) are:
+/opt/olive-broker/data/workflows/FaceDetection_Image_FDI.workflow.json
+/opt/olive-broker/data/workflows/FaceDetection_Video_FDV.workflow.json
+/opt/olive-broker/data/workflows/FaceRecognition_Image_FRI.workflow.json
+/opt/olive-broker/data/workflows/FaceRecognition_Video_FRV.workflow.json
+/opt/olive-broker/data/workflows/SID_quality-controlled.workflow.json
+/opt/olive-broker/data/workflows/SmartTranscriptionFull.workflow.json
+/opt/olive-broker/data/workflows/TPD-eng.workflow.json
+/opt/olive-broker/data/workflows/conditional_asr_v2.workflow.json
+/opt/olive-broker/data/workflows/quality-region-analysis-for-SID.workflow.json
+</code></pre></div>
+<p>Please choose the appropriate hostname and port number for your desired activity and host situation.</p>
+<h3 id="raven-web-ui"><a href="raven.html">Raven Web UI</a></h3>
+<p>To connect to the <a href="raven.html">Raven Web/Batch GUI</a>, open a web browser and navigate to URL <code>host</code>:5580. Once there, follow the on-screen prompts to drag-and-drop one or more audio files to the "local media" dropbox section, select one of the available workflows, and click on the action button in the lower right hand corner. More details for the Raven GUI can be found on its dedicated documentation page: <a href="raven.html">Raven Web UI</a>.</p>
+<h3 id="the-olive-documentation">The OLIVE Documentation</h3>
+<p>When the container is started, it launches a web server serving this documentation. To view the hosted version, navigate a web browser to URL <code>host</code>:5570. </p>
+<h3 id="the-olive-server">The OLIVE Server</h3>
+<p>This is used internally by the Olive Web UI and the Olive Message Broker. You can also write Python programs which make calls directly to the server. See seperate documentation on <a href="olivepy-api.html">olivepy API</a> for details.</p>
+<h3 id="the-olive-message-broker">The OLIVE Message Broker</h3>
+<p>This is used internally by the Olive Web UI.</p>
+<h3 id="nightingale-forensic-ui"><a href="nightingale.html">Nightingale Forensic UI</a></h3>
+<p>This GUI provides access to the full suite of available OLIVE plugins and workflows, for performing close file analysis. It offers powerful audio visualization tools, live streaming capabilities, and a number of other useful features. For more information on what Nightingale offers and how to get started using it, please refer to the <a href="nightingale.html">Nightingale GUI</a> dedicated documentation page.</p>
+<p>As a quick primer, the Nightingale UI is typically provided in:</p>
+<div class="codehilite"><pre><span></span><code>&lt;...&gt;/olive5.6.0/OliveGUI
+</code></pre></div>
+
+<p>Nightingale requires OpenJDK Java 11 or newer. Once this is installed, you can run it by navigating to:</p>
+<div class="codehilite"><pre><span></span><code>&lt;...&gt;/olive5.6.0/OliveGUI/bin/
+</code></pre></div>
+
+<p>And either double-clicking or running the <code>Nightingale</code> (macOS, linux) or <code>Nightingale.bat</code> (Windows) script appropriate for your OS.</p>
+<div class="tabbed-set" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><label for="__tabbed_20_1">macOS / linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./Nightingale
+</code></pre></div>
+
+</div>
+<input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><label for="__tabbed_20_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\N</span>ightingale.bat
+</code></pre></div>
+
+</div>
+</div>
+<p>info "Note that the Nightingale launcher scripts are designed to be launched from this <code>bin/</code> directory in order to properly link to other folders that it uses within this package, like the included workflows directory."</p>
+<h3 id="olive-example-api-client-implementations">OLIVE Example API Client Implementations</h3>
+<p>OLIVE is also generally shipped with example API Client implementations in both Java and python. They are usually included in:</p>
+<div class="codehilite"><pre><span></span><code>&lt;...&gt;/olive5.6.0/api/[java, python]
+</code></pre></div>
+
+<p>These can provide both a command-line-based method of interacting with the OLIVE server, and as integration examples providing templates or code bases for some integration teams.</p>
+<h2 id="advanced-and-optional-usage-and-features">Advanced and Optional Usage and Features</h2>
+<details class="info"><summary>Click to expand for a deeper dive on some Martini capabilities</summary><h2 id="configuring-ports-optional">Configuring Ports (Optional)</h2>
+<p>By default the container exposes seven ports on the host machine running the container: </p>
+<ul>
+<li>5588</li>
+<li>5589</li>
+<li>5004</li>
+<li>5005</li>
+<li>5570</li>
+<li>5580</li>
+<li>5888</li>
+</ul>
+<p>If you want to change them, there are two ways to do this:</p>
+<ol>
+<li>
+<p>You can directly edit the <code>martini.sh</code> or <code>martini.ps1</code> file to change these seven variables near the top of the file: </p>
+<ul>
+<li>OLIVE_HOST_PORT_OLIVESERVER</li>
+<li>OLIVE_HOST_PORT_OLIVESECOND</li>
+<li>OLIVE_HOST_PORT_TEST</li>
+<li>OLIVE_HOST_PORT_BROKER</li>
+<li>OLIVE_HOST_PORT_DOCSERVER</li>
+<li>OLIVE_HOST_PORT_WEBSERVER</li>
+<li>OLIVE_HOST_PORT_REVERSE_PROXY</li>
+</ul>
+<p>Note that if you are using Windows Command Prompt (cmd) or Windows PowerShell via <code>martini.bat</code>, edit the <code>martini.ps1</code> file, as it is called by <code>martini.bat</code> during operation. </p>
+<p>Doing this will use the new ports every time the container starts.</p>
+</li>
+<li>
+<p>Alternatively, you can set shell variables, with the same names as above, to the port numbers you want to use. This method will temporarily override the ports used to what you have set, but subsequent container starts will revert to the original, if the shell/environment variables are no longer set.</p>
+</li>
+</ol>
+<h2 id="configuring-plugins-workflows-and-documentation-optional">Configuring Plugins, Workflows, and Documentation (Optional)</h2>
+<p>If you are using the default installation, then no configuration is required. Your workflows must be in a directory called <code>oliveAppData/workflows/</code>, your documentation in a directory called <code>docs/</code>, and your plugins in a directory called <code>oliveAppData/plugins/</code>, and the <code>martini.sh</code> script in an <code>oliveMartini</code> directory that is adjacent to docs/ and oliveAppData/.</p>
+<p>By default, OLIVE Martini will store logs, enrollments and other overhead-related files to <code>oliveAppData/server/</code></p>
+<p>If your data is not located in these default locations, then you have two ways to configure the OLIVE Martini container (similar to configuring ports described above):</p>
+<ol>
+<li>
+<p>You can directly edit the <code>martini.sh</code> file to change these three variables near the top of the file: </p>
+<ul>
+<li><code>OLIVE_HOST_PLUGINS</code></li>
+<li><code>OLIVE_HOST_SERVER</code></li>
+<li><code>OLIVE_HOST_WORKFLOWS</code></li>
+<li><code>OLIVE_HOST_DOCSITE</code>  </li>
+</ul>
+<p>Doing this will use the new locations every time the container starts.</p>
+</li>
+<li>
+<p>You can set shell variables to the full path names of the locations of your plugins, workflows, and documentation.  Set these shell variables:</p>
+<ul>
+<li><code>OLIVE_HOST_PLUGINS</code></li>
+<li><code>OLIVE_HOST_SERVER</code></li>
+<li><code>OLIVE_HOST_WORKFLOWS</code></li>
+<li><code>OLIVE_HOST_DOCSITE</code>  </li>
+</ul>
+<p>But remember, neither of these is required, if your plugins, workflows, and documentation are all in the default locations.</p>
+</li>
+</ol>
+<p>Alternatively, changing MY_OLIVE_APP_DATA in the <code>martini.sh</code> script or setting the <code>OLIVE_APP_DATA</code> environment variable (by default set to <code>oliveAppData/</code>) will change most of these settings at once (excluding documentation) if it is desired to keep these resources together but in a different location.</p>
+<p>You can also (optionally) edit <code>martini.sh</code> to change the <code>DELAY</code> count. It can take a few to 10 seconds or so for all the servers to start on the container, depending on the hardware performing the operation. Normally the <code>martini.sh</code> returns immediately, even if the servers have not had time to start.  If you don't like that behavior, you can set the <code>DELAY</code> variable near the top of the file to the number of seconds it takes to start all the servers, usually 7 or 10 seconds. This would mean that the command will not return until the servers are actually up and running.</p>
+<h2 id="testing-the-installation">Testing The Installation</h2>
+<p>There are a few ways to quickly sanity check that the installation is properly configured, up and running.</p>
+<ul>
+<li>
+<p>Use a web browser to see what workflows are available.
+    Go to URL <code>host</code>:5004/api/workflows.  You should see json text describing the available workflows.</p>
+</li>
+<li>
+<p>Use a web browser to test the Olive Web UI.
+    Go to URL <code>host</code>:5580.  You should see a page with "SRI International" in the upper left corner, and a section for "Media" and a section for "Workflows". (See <a href="#raven-web-ui">below</a> for getting started with the Olive Web UI.)</p>
+</li>
+<li>
+<p>Use a web browser to look at the documentation.
+    Go to to URL <code>host</code>:5570.  You should see a web page titled "Open Language Interface for Voice Exploitation (OLIVE)".</p>
+</li>
+</ul>
+</details>
+<h2 id="final-notes-troubleshooting">Final Notes / Troubleshooting</h2>
+<p>There are a couple of known minor issues that may occur the first time you are starting the OLIVE Martini container on a new device. Since Docker will prompt asking for permission to share a few locations on the machine, in order to access the included plugins, workflows, and documentation, the container cannot initially read these and may report no plugins or workflows found at first. Once access is granted for Docker to share these locations, you should be able to check the plugins that are loaded by checking <code>martini log</code>, or in the extreme case, by stopping and restarting the container:</p>
+<div class="tabbed-set" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><label for="__tabbed_21_1">macOS / linux</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ ./martini.sh stop
+$ ./martini.sh start
+</code></pre></div>
+
+</div>
+<input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><label for="__tabbed_21_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>$ .<span class="se">\m</span>artini.bat stop
+$ .<span class="se">\m</span>artini.bat start
+</code></pre></div>
+
+</div>
+</div>
+<p>It can also take a moment for the <a href="raven.html">Raven UI</a> to populate the available Workflows on the bottom of the interface screen, especially the first time you are loading the web page. If this space is blank, please wait a moment (may take up to a minute on some systems) and/or refresh the page. </p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="index.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="install.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                OLIVE CentOS/RedHat 7 Native Setup (deprecated)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>
