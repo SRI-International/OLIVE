@@ -1,0 +1,2016 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Workflows - OLIVE 5.7.0 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="olive" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olive-workflow-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE 5.7.0 Documentation" class="md-header-nav__button md-logo" aria-label="OLIVE 5.7.0 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE 5.7.0 Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Workflows
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE 5.7.0 Documentation" class="md-nav__button md-logo" aria-label="OLIVE 5.7.0 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE 5.7.0 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Workflows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="workflows.html" class="md-nav__link md-nav__link--active">
+      Workflows
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-concepts-to-know" class="md-nav__link">
+    Useful Concepts to Know
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-workflow-definition" class="md-nav__link">
+    Creating a Workflow Definition
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a Workflow Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflowdefinition" class="md-nav__link">
+    WorkflowDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workfloworderdefinition" class="md-nav__link">
+    WorkflowOrderDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobdefinition" class="md-nav__link">
+    JobDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowtask" class="md-nav__link">
+    WorkflowTask
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datahandlerproperty" class="md-nav__link">
+    DataHandlerProperty
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-global-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-embedplda-v1.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-whisper-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) whisper/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-concepts-to-know" class="md-nav__link">
+    Useful Concepts to Know
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-workflow-definition" class="md-nav__link">
+    Creating a Workflow Definition
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a Workflow Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflowdefinition" class="md-nav__link">
+    WorkflowDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workfloworderdefinition" class="md-nav__link">
+    WorkflowOrderDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobdefinition" class="md-nav__link">
+    JobDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowtask" class="md-nav__link">
+    WorkflowTask
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datahandlerproperty" class="md-nav__link">
+    DataHandlerProperty
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olive-workflow-api">OLIVE Workflow API</h1>
+<!--- Split this into two... 1. General workflow info, 2. Integrating workflows with the python client --->
+
+<h2 id="introduction"><strong>Introduction</strong></h2>
+<p>The OLIVE Workflow API extends the <a href="apiInfo.html">OLIVE Enterprise API</a> to simplify working with an OLIVE server, allowing clients to request multiple OLIVE tasks with one API call.  This eliminates the more verbose and complex calls necessary when using the Enterprise API. In particular, this framework will encapsulate 'feeding' functionality, to link together tasks, like speech activity detection and a plugin that uses speech regions or frames in its processing, or to 'bundle' multiple requests in a single call, rather than having every API call to a plugin be a separate action. The Workflow API is based around binary or text "Workflow Definition" files that SRI distributes to clients.  These files contain a 'recipe' to be executed on an OLIVE server to perform analysis, enrollment, and eventually adaption using one or more audio files/inputs. This places the work of specifying how to execute a complex task to execute within the OLIVE server, instead of the client.    </p>
+<p>To use this API, a client submits the SRI provided Workflow Definition file to an OLIVE server.  The server verifies it can run the Workflow Definition through a process called "actualization".  If successful, an activated Workflow is returned to the client.  This activated Workflow is then ready for one or more analysis (or enrollment) requests.  These requests can be made numerous times with one or more audio submissions. </p>
+<p>OLIVE still supports the original <a href="apiInfo.html">OLIVE Enterprise API</a> that was based on creating and sending Google Protocol 
+Buffers (Protobuf) message for each request, so if desired, clients can combine classic OLIVE API calls with the 
+Workflow API to implement advanced functionality.   </p>
+<p>For advanced users, see <a href="#creating-a-workflow-definition">Creating a Workflow Definition</a> for information on composing your own Workflow Definition files. </p>
+<p>For more information about working with OLIVE, please see:</p>
+<ol>
+<li><a href="server.html">The OLIVE Server</a></li>
+<li><a href="plugins.html">The OLIVE Plugins</a></li>
+<li><a href="apiInfo.html">The OLIVE Enterprise API</a></li>
+</ol>
+<h2 id="useful-concepts-to-know"><strong>Useful Concepts to Know</strong></h2>
+<ul>
+<li>Workflow Definition - distributed as a file (text or binary) with these characteristics:<ul>
+<li>Similar to Plugins, Workflows are independent of the OLIVE software and can be updated and/or distributed outside of an OLIVE software release.</li>
+<li>Can be submitted to multiple OLIVE servers for actualization in parallel, where actualization is the process of verifying that the server can perform the activities defined in a Workflow Definition.     </li>
+<li>Each actualized Workflow is considered unique to the server where it was actualized, as it is possible the plugin/domain names could vary by each server that actualizes the same WorkflowDefinition   </li>
+<li>Most Workflow Definitions are implemented with the specific names of plugins/domains delivered with the OLIVE system. Changing the name of a plugin or domain will cause workflows that use them to cease to function. </li>
+</ul>
+</li>
+<li>Order: a set one or more jobs.  There are 3 supported Workflow orders: analysis, enrollment, and unenrollment.  Analysis orders require at least one data (audio) input, enrollment orders require one or more data (audio) inputs, plus a class ID, unenrollment inputs do not accept  data, only a class ID.</li>
+<li>Job: A set of tasks, plus depending on the order (analysis, enrollment, unenrollment) may include audio (data) and/or as class ID.  <ul>
+<li>An analysis order typically only includes one job, with that job accepting one audio input. </li>
+<li>An enrollment order may have multiple jobs, where each jobs has it's own set of tasks, one or more data/audio(s), and a class id (i.e. speaker name).  Only tasks that support the Class Enroller trait such as speaker enrollment for SID and language enrollment for LID can be part of an enrollment job.  Each enrollment job should support enrollment for a single class enroller.  This allows enrollments (such as for LID and SID) to be handled separately, since it is very unlikely the same audio and class id (speaker name/language name) would be used for both tasks.</li>
+<li>Unenrollment jobs are similar to enrollment jobs, except that do NOT consume audio/data.  They only accept a class ID</li>
+</ul>
+</li>
+<li>Tasks: at the lowest level, a Workflow is composed of one or more tasks, such as SAD, LID, SID, QBE, ASR, etc. A task typically maps to a traditional plugin/domain, but as we expand the capabilities of the Workflow API, 'tasks' are likely to include functionality that is not implemented by a traditional OLIVE plugin, but by private, helper, components that assist other tasks in the workflow but do not return values to the user.</li>
+</ul>
+<h2 id="limitations"><strong>Limitations</strong></h2>
+<p>The Workflow API is a new OLIVE extension whose interfaces are subject to change. This release covers two types of behavior: </p>
+<ol>
+<li>bundling of disparate tasks together into a single call and </li>
+<li>restricted feeding processes, wherein the output of one plugin may be fed into one or more other "downstream" plugins that will use this information in their processing. The most common example in this is SAD feeding other processes. The plugins that receive output from other plugins in a workflow must have an interface that accepts this input. I.e. to use SAD output the plugin must be designed to accept SAD input in addition to the usual audio inputs. Current workflows only allow for categorical feeding (e.g. SAD output always goes to SID input) but not conditional feeding behavior (audio goes to the ASR English domain if LID detects file is English).</li>
+</ol>
+<p>The most common example in this is SAD feeding other processes. The plugins that receive output from other plugins in a workflow must have an interface that accepts this input. I.e. to use SAD output the downstream plugin(s) must be designed to accept SAD input in addition to the usual audio inputs. Current workflows only allow for categorical feeding (e.g. SAD output always goes to SID input) but not conditional feeding behavior (audio goes to the ASR English domain if LID detects file is English).</p>
+<p>Further, the current implementation of workflows does not support tasks that create entirely new domains, like adaptation. This is much easier to accomplish with a direct call to the plugin, as bundling and feeding behavior is not relevant to this activity.</p>
+<hr />
+<h2 id="creating-a-workflow-definition"><strong>Creating a Workflow Definition</strong></h2>
+<p>Internally, the OLIVE design uses a simple kitchen metaphor, which is expressed in the elements that compose an OLIVE workflow.  If one thinks of OLIVE as a kitchen, orders are submitted to OLIVE, which are then extracted into jobs that are cooked/executed (as tasks).  In this analogy, when authoring OLIVE workflows you are authoring both a menu and a recipe.  Clients  use the Workflow to request an order (analysis, enrollment, unenrollment), while the Workflow also includes the recipe to cook/execute those orders.  </p>
+<p>The "job" portion of a Workflow is used to build a simple directed acyclic graph (DAG) within OLIVE.  This DAG, which OLIVE refers to as a "Job Graph", allows data to be shared by multiple tasks, while also allowing connections between these tasks.  When connected, the outputs of upstream tasks (tasks that have been executed) and provided to downstream tasks (tasks that have not yet been executed).  For example the output of a SAD task can be supplied to one or more downstream tasks such as LID or SID, so those tasks do not have to internally run SAD.  </p>
+<p>To enable this complexity, the workflow recipe defines a set of elements/objects:</p>
+<ul>
+<li>WorkflowDefinition - The outer container for all orders and their jobs (Job Graphs)  </li>
+<li>WorkflowOrderDefinition - Used to group jobs into processing pipelines for analysis, enrollment, or unenrollment activities </li>
+<li>JobDefinition - Defines the set of tasks that are executed in a DAG and how task output is shared/returned.  To simplify authoring, tasks in a job are executed sequentially.  </li>
+<li>WorkflowTask - The task that is executed, which is usually implemented by a plugin</li>
+</ul>
+<!---
+<div class="highlight"><pre><span></span><code>graph TD
+A[WorkflowDefinition] 
+B[WorkflowOrderDefinition]
+C[JobDefinition]
+D[WorkflowTask]
+A --- B --- C --- D
+</code></pre></div>
+--->
+
+<p><img alt="Workflow Elements Diagram" src="img/workflow_elements.jpg" /></p>
+<p>A quick note on the structure of elements:  The WorkflowDefinition, WorkflowOrderDefinition, JobDefinition, and WorkflowTask are all based on a Protobuf message of the same name in the Enterprise API.  Should you have questions about these elements it maybe be helpful to refer to these protobuf messages; however, the relationship between these messages/elements is not clear when looking at the Enterprise API messages, so the tables below include a "cardinality" column to make it clearer about the relationship between these elements. </p>
+<h3 id="workflowdefinition"><strong>WorkflowDefinition</strong></h3>
+<p>At the top-level, the Workflow Definition element includes these required and optional fields:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Cardinality</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order</td>
+<td>WorkflowOrderDefinition</td>
+<td>1 to 3</td>
+<td>See WorkflowOrderDefinition below.  There must be one or more of these elements</td>
+</tr>
+<tr>
+<td>actualized</td>
+<td>boolean</td>
+<td>1</td>
+<td>Always set to 'false' when creating a new Workflow.  This is an internal field set by the OLIVE server when actualized</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>0 or 1</td>
+<td>An optional user defined version number for this workflow</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>0 or 1</td>
+<td>An optional description of this workflow</td>
+</tr>
+<tr>
+<td>created</td>
+<td>DateTime</td>
+<td>0 or 1</td>
+<td>An optional date this workflow was created</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>DateTime</td>
+<td>0 or 1</td>
+<td>An optional date this workflow was updated</td>
+</tr>
+</tbody>
+</table>
+<p>An example Workflow Definition element (the WorkflowOrderDefinition element(s) within order defined later to avoid confusion )</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+ <span class="nt">&quot;order&quot;</span><span class="p">:</span> <span class="p">[],</span>
+ <span class="nt">&quot;actualized&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+ <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Example of a Workflow Definition Object&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2021</span><span class="p">,</span>
+  <span class="nt">&quot;month&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+  <span class="nt">&quot;day&quot;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+  <span class="nt">&quot;hour&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="nt">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;sec&quot;</span><span class="p">:</span> <span class="mi">0</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="workfloworderdefinition"><strong>WorkflowOrderDefinition</strong></h3>
+<p>Within a WorkflowDefinition element there can be 1 to 3 WorkflowOrderDefinition elements defined (one for analysis, one for enrollment, and one for unenrollment).  The WorkflowOrderDefinition includes these required and optional fields:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Cardinality</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>workflow_type</td>
+<td>WorkflowType</td>
+<td>1</td>
+<td>One of: 'WORKFLOW_ANALYSIS_TYPE', 'WORKFLOW_ENROLLMENT_TYPE', or 'WORKFLOW_UNENROLLMENT_TYPE'</td>
+</tr>
+<tr>
+<td>job_definition</td>
+<td>JobDefinition</td>
+<td>1 or more</td>
+<td>See JobDefinition element below.  An order must have at least one job</td>
+</tr>
+<tr>
+<td>order_name</td>
+<td>JobDefinition</td>
+<td>1 or more</td>
+<td>See JobDefinition element below.  An order must have at least one job</td>
+</tr>
+</tbody>
+</table>
+<p>Below is an example of a WorkflowOrderDefinition (JobDefinition element(s) defined later).  1 to 3 of these elements can be added to a WorkflowDefintion:</p>
+<div class="highlight"><pre><span></span><code> <span class="p">{</span>
+   <span class="nt">&quot;workflow_type&quot;</span><span class="p">:</span> <span class="s2">&quot;WORKFLOW_ANALYSIS_TYPE&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;job_definition&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nt">&quot;order_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Analysis Order&quot;</span>
+   <span class="p">}</span>   
+</code></pre></div>
+<h3 id="jobdefinition"><strong>JobDefinition</strong></h3>
+<p>One or more JobDefinition elements must be added to WorkflowOrderDefinition element (see above). This element includes these required and optional fields: </p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Cardinality</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>job_name</td>
+<td>string</td>
+<td>1</td>
+<td>A unique name for this job</td>
+</tr>
+<tr>
+<td>tasks</td>
+<td>WorkflowTask</td>
+<td>1 or more</td>
+<td>See the WorkflowTask below.  There must be at least one task defined for a Job.  Assume tasks are executed in the order they are defined in this list.</td>
+</tr>
+<tr>
+<td>data_properties</td>
+<td>DataHandlerProperty</td>
+<td>1</td>
+<td>See DataHandlerProperty below.  This defines the data (normally audio) properties for all tasks in this job</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>0 or 1</td>
+<td>An optional description</td>
+</tr>
+<tr>
+<td>processing_type</td>
+<td>WorkflowJobType</td>
+<td>1</td>
+<td>Optional, do not specify unless creating a conditional workflow.  The default value is "MERGE", with allowable values: "MERGE", "PARALLEL", or "SEQUENTIAL". See section on conditional workflows</td>
+</tr>
+<tr>
+<td>conditional_job_output</td>
+<td>boolean</td>
+<td>0 or 1</td>
+<td>Optional, do not specify unless creating a conditional workflow.  See section on conditional workflows</td>
+</tr>
+<tr>
+<td>dynamic_job_name</td>
+<td>string</td>
+<td>0 or 1</td>
+<td>Optional, do not specify unless creating a conditional workflow.  See section on conditional workflows</td>
+</tr>
+<tr>
+<td>resolved</td>
+<td>bool</td>
+<td>0 or 1</td>
+<td>DO NOT SET.  This value is assgiend by the server</td>
+</tr>
+<tr>
+<td>transfer_result_labels</td>
+<td>string</td>
+<td>1</td>
+<td>Optional, do not specify unless creating a conditional workflow.  See section on conditional workflows</td>
+</tr>
+</tbody>
+</table>
+<p>Here is an example of JobDefinition element (the WorkflowTask and DataHandlerProperty elements are defined below). One or more of these elements must be added to a WorkflowOrderDefinition.  </p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+    <span class="p">{</span>
+         <span class="nt">&quot;job_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SAD, LID, SID analysis with LID and SID enrollment&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;tasks&quot;</span><span class="p">:</span> <span class="p">[],</span>
+         <span class="nt">&quot;data_properties&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">]</span> 
+</code></pre></div>
+<h3 id="workflowtask"><strong>WorkflowTask</strong></h3>
+<p>One or more WorkflowTask elements must be defined for a <a href="#JobDefinition">JobDefinition</a> element (see above).  This element includes these required and optional fields:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Cardinality</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message_type</td>
+<td>MessageType</td>
+<td>1</td>
+<td>The type of the task. One of: "REGION_SCORER_REQUEST", "GLOBAL_SCORER_REQUEST",  "FRAME_SCORER_REQUEST", "AUDIO_ALIGN_REQUEST", "CLASS_MODIFICATION_REQUEST", "CLASS_REMOVAL_REQUEST", or "PLUGIN_2_PLUGIN_REQUEST"</td>
+</tr>
+<tr>
+<td>message_data</td>
+<td>varies</td>
+<td>1</td>
+<td>This element contains values based on the message type.  For non-enrollment requests this is a dictionary that contains the keys 'plugin', and 'domain'  For enrollment tasks, the dictionary also includes "class id": "None"</td>
+</tr>
+<tr>
+<td>trait_output</td>
+<td>TraitType</td>
+<td>1</td>
+<td>Classifies the type of output produced by this task.  Must be one of: "GLOBAL_SCORER", 'REGION_SCORER', 'FRAME_SCORER', "CLASS_MODIFIER", "PLUGIN_2_PLUGIN", "AUDIO_ALIGNMENT_SCORER"</td>
+</tr>
+<tr>
+<td>task</td>
+<td>string</td>
+<td>1</td>
+<td>A label used to define the task type.  By convention of one: "SAD", "LID", "SID", "LDD", "SDD", "QBE", "ASR", etc; however, one can define your own type name.  For example if you prefere "STT" to "ASR"</td>
+</tr>
+<tr>
+<td>consumer_data_label</td>
+<td>string</td>
+<td>1</td>
+<td>This task consumes data data input having this name, which is 'audio' for almost all tasks.  If using a non 'audio' lable, then this value must match a 'consumer_data_label' used in the workflow's DataHandlerProperty.</td>
+</tr>
+<tr>
+<td>consumer_result_label</td>
+<td>string</td>
+<td>1</td>
+<td>The unique name assigned to this task.  Each task in a job must specify a unique name, which is often the same as task.  One can also consider this 'task_id'</td>
+</tr>
+<tr>
+<td>return_result</td>
+<td>bool</td>
+<td>0 or 1</td>
+<td>If true, then output produced by this task is returned to the client.</td>
+</tr>
+<tr>
+<td>option_mappings</td>
+<td>OptionMap</td>
+<td>0 or more</td>
+<td>This is used to connect the outputs from one or more upstream tasks to this (plugin) task.  If one or more values are defined in this mapping, then any upstream (completed) tasks that produced output (defined by the tasks 'consumer_result_label') matching the value of 'workflow_keyword_name' are added to the option dictionary as 'plugin_keyword_name'.</td>
+</tr>
+<tr>
+<td>allow_failure</td>
+<td>bool</td>
+<td>zero or 1</td>
+<td>If true, then this task can fail without stopping the execution of workflow.  If false then  a failure of this task will prevent downstream tasks/jobs from being ran</td>
+</tr>
+<tr>
+<td>supported_options</td>
+<td>OptionDefinition</td>
+<td>0 or more</td>
+<td>DO NOT SET.  This is set by the server when the workflow is actualized, letting clients know the options supported by the plugin/task available on the server</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>0 or 1</td>
+<td>NOT YET SUPPORTED - class IDs can be added to the message_data section (if supported by the message type)</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>0 or 1</td>
+<td>An optional description of this task</td>
+</tr>
+</tbody>
+</table>
+<p>Example of defining a SAD task:</p>
+<div class="highlight"><pre><span></span><code> <span class="p">{</span>
+   <span class="nt">&quot;message_type&quot;</span><span class="p">:</span> <span class="s2">&quot;REGION_SCORER_REQUEST&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;message_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;plugin&quot;</span><span class="p">:</span> <span class="s2">&quot;sad-dnn-v7.0.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-v1&quot;</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;trait_output&quot;</span><span class="p">:</span> <span class="s2">&quot;REGION_SCORER&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;task&quot;</span><span class="p">:</span> <span class="s2">&quot;SAD&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;consumer_data_label&quot;</span><span class="p">:</span> <span class="s2">&quot;audio&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;consumer_result_label&quot;</span><span class="p">:</span> <span class="s2">&quot;SAD&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;return_result&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+</code></pre></div>
+<p>Example of defining an enrollment task for a LID plugin (note the inclusion of class_id in the message_data element):</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+       <span class="nt">&quot;message_type&quot;</span><span class="p">:</span> <span class="s2">&quot;CLASS_MODIFICATION_REQUEST&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;message_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;plugin&quot;</span><span class="p">:</span> <span class="s2">&quot;lid-embedplda-v2.0.1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-v1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span>
+       <span class="p">},</span>
+       <span class="nt">&quot;trait_output&quot;</span><span class="p">:</span> <span class="s2">&quot;CLASS_MODIFIER&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;task&quot;</span><span class="p">:</span> <span class="s2">&quot;LID&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;consumer_data_label&quot;</span><span class="p">:</span> <span class="s2">&quot;audio&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;consumer_result_label&quot;</span><span class="p">:</span> <span class="s2">&quot;LID_Enroll&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;return_result&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+       <span class="nt">&quot;allow_failure&quot;</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">}</span>
+</code></pre></div>
+<h3 id="datahandlerproperty"><strong>DataHandlerProperty</strong></h3>
+<p>The JobDefinition element requires a DataHandlerProperty element that defines the type of data (currently only supporting 'audio') data handling properties used by tasks in the job. This element includes these required and optional fields:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Cardinality</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>min_number_inputs</td>
+<td>int</td>
+<td>1</td>
+<td>The minimum number of data inputs required for a job.  This value can be 0, but almost all tasks require 1 audio input.  An audio comparison task is one of the few tasks  that will require 2 inputs</td>
+</tr>
+<tr>
+<td>max_number_inputs</td>
+<td>int</td>
+<td>0 or 1</td>
+<td>Optional value, for furture use of batch processing of tasks that consume more than one input.  This specifies the max number of data inputs consumed by task(s) in the job when doing batch processing, but is not currently used by any tasks</td>
+</tr>
+<tr>
+<td>type</td>
+<td>InputDataType</td>
+<td>1</td>
+<td>For now use "AUDIO", but can be one of "AUDIO", "VIDEO", "TEXT", or "IMAGE"</td>
+</tr>
+<tr>
+<td>preprocessing_required</td>
+<td>boolean</td>
+<td>1</td>
+<td>Set to 'true'.  Not configurable at this time</td>
+</tr>
+<tr>
+<td>resample_rate</td>
+<td>int</td>
+<td>0 or 1</td>
+<td>Do not specify.  Currently a value of 8000 is used</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>MultiChannelMode</td>
+<td>0 or 1</td>
+<td>One of "MONO", "SPLIT", or "SELECTED".  This determines how multi channel audio is handled in a workflow, with "MONO" being the default.  In "MONO" mode, any multi channel data/audio is converted to mono when processed by task(s) in this job.  For "SPLIT" each channel is handled by the task(s) in this job, so there is a set of results for each channel.  For "SELECTED" a channel number must be provided when packaing the audio for the workflow and that channel is used for the job task(s)</td>
+</tr>
+<tr>
+<td>consumer_data_label</td>
+<td>string</td>
+<td>0 or 1</td>
+<td>Data supplied for Analysis, Enrollment, or Unenrollment is labeled by this name when passed to tasks within the job.  Bu default use a value of 'audio'</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+ <span class="nt">&quot;data_properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;min_number_inputs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;AUDIO&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;preprocessing_required&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;MONO&quot;</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="traits.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                OLIVE Plugin Traits
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="apiCode.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                JOlive Primer
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2182 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>`olivepy` `utils` module - OLIVE 5.7.0 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/css/swagger-ui.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="olive" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olivepy-utils-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../index.html" title="OLIVE 5.7.0 Documentation" class="md-header-nav__button md-logo" aria-label="OLIVE 5.7.0 Documentation">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE 5.7.0 Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              `olivepy` `utils` module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="OLIVE 5.7.0 Documentation" class="md-nav__button md-logo" aria-label="OLIVE 5.7.0 Documentation">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE 5.7.0 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../martini.html" class="md-nav__link">
+      OLIVE Martini Docker Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../install.html" class="md-nav__link">
+      OLIVE CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/dfa-global-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/gid-embedplda-v1.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/asr-whisper-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) whisper/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/asr-end2end-v1.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyutilspem" class="md-nav__link">
+    olivepy.utils.pem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.utils.pem" class="md-nav__link">
+    olivepy.utils.pem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.utils.pem.Pem" class="md-nav__link">
+    Pem
+  </a>
+  
+    <nav class="md-nav" aria-label="Pem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.utils.pem.Pem.get_maximum_duration" class="md-nav__link">
+    get_maximum_duration()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.utils.pem.Pem.get_minimum_duration" class="md-nav__link">
+    get_minimum_duration()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.utils.pem.PemRecord" class="md-nav__link">
+    PemRecord
+  </a>
+  
+    <nav class="md-nav" aria-label="PemRecord">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.utils.pem.PemRecord.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.utils.pem.PemRecord.split_channels" class="md-nav__link">
+    split_channels()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepyutilsutils" class="md-nav__link">
+    olivepy.utils.utils
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.utils.utils" class="md-nav__link">
+    olivepy.utils.utils
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.utils.utils.parse_json_options" class="md-nav__link">
+    parse_json_options()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.utils.utils.parse_json_options_as_dict" class="md-nav__link">
+    parse_json_options_as_dict()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.utils.utils.parse_pem_file" class="md-nav__link">
+    parse_pem_file()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olivepy-utils-module"><code>olivepy</code> <code>utils</code> module</h1>
+<h2 id="olivepyutilspem"><code>olivepy.utils.pem</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.utils.pem"></a>
+    <div class="doc doc-contents first">
+
+      <p>Encapsulate pem file IO</p>
+<p>Abstracts reading from and writing to PEM files and should provide common
+operations on PEM records such as duration(). The str() method of this class
+will result in a string that is legal PEM format. All operations are performed
+in memory so don't use any extraordinarily huge PEM files.</p>
+<p>Each line in a PEM file has: filename, channel, class_label, start_t, end_t</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.utils.pem.Pem" class="doc doc-heading">
+        <code>
+Pem        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.utils.pem.Pem.get_maximum_duration" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_maximum_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get duration of maxium duration record in PEM.
+Intended only for cases where PEM contains only one ID.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>olivepy/utils/pem.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_maximum_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get duration of maxium duration record in PEM.</span>
+<span class="sd">    Intended only for cases where PEM contains only one ID.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__record_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__record_map</span><span class="p">[</span><span class="nb">id</span><span class="p">]:</span>
+            <span class="n">this_duration</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">duration</span><span class="p">())</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">this_duration</span> <span class="o">&gt;</span> <span class="n">duration</span><span class="p">):</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">this_duration</span>
+
+    <span class="k">return</span> <span class="n">duration</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.utils.pem.Pem.get_minimum_duration" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_minimum_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get duration of minimum duration record in PEM.
+Intended only for cases where PEM contains only one ID.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>olivepy/utils/pem.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_minimum_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get duration of minimum duration record in PEM.</span>
+<span class="sd">    Intended only for cases where PEM contains only one ID.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_total_duration</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__record_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__record_map</span><span class="p">[</span><span class="nb">id</span><span class="p">]:</span>
+            <span class="n">this_duration</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">duration</span><span class="p">())</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">this_duration</span> <span class="o">&lt;</span> <span class="n">duration</span><span class="p">):</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">this_duration</span>
+
+    <span class="k">return</span> <span class="n">duration</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.utils.pem.PemRecord" class="doc doc-heading">
+        <code>
+PemRecord        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The underlying PEM container</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.utils.pem.PemRecord.__init__" class="doc doc-heading">
+<code class="codehilite language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">start_t</span><span class="p">,</span> <span class="n">end_t</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>id</code></td>
+        <td></td>
+        <td><p>generally the filename</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>channel</code></td>
+        <td></td>
+        <td><p>the channel (if stereo).  May be a string list (i.e. "1,2").  No validation is done for the channel value</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>label</code></td>
+        <td></td>
+        <td><p>a "class" label for this segment.  Examples include speaker, language, speech, etc</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>start_t</code></td>
+        <td></td>
+        <td><p>the start time in seconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>end_t</code></td>
+        <td></td>
+        <td><p>the end time in seconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>decimal</code></td>
+        <td></td>
+        <td><p>if true, value is stored as a float</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/utils/pem.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">start_t</span><span class="p">,</span> <span class="n">end_t</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">    :param id: generally the filename</span>
+<span class="sd">    :param channel:  the channel (if stereo).  May be a string list (i.e. &quot;1,2&quot;).  No validation is done for the channel value</span>
+<span class="sd">    :param label: a &quot;class&quot; label for this segment.  Examples include speaker, language, speech, etc</span>
+<span class="sd">    :param start_t: the start time in seconds</span>
+<span class="sd">    :param end_t: the end time in seconds</span>
+<span class="sd">    :param decimal: if true, value is stored as a float</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">id</span>      <span class="o">=</span> <span class="nb">id</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">channel</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">label</span>   <span class="o">=</span> <span class="n">label</span>
+    <span class="c1"># Using Decimal instead of floats made the code 100x slower</span>
+    <span class="c1"># Use floats for now in the intrest of speed</span>
+
+    <span class="k">if</span> <span class="n">decimal</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_t</span> <span class="o">=</span> <span class="n">start_t</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_t</span>   <span class="o">=</span> <span class="n">end_t</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">start_t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_t</span>   <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">end_t</span><span class="p">)</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_t</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_t</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Start is after end in PemRecord: </span><span class="si">{self}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">vars</span><span class="p">()))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.utils.pem.PemRecord.split_channels" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">split_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Split the channel into an array, so that if a channel value of '1,2' is supplied it is returned as an array [1,2]</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>an array of channel numbers</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/utils/pem.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">split_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Split the channel into an array, so that if a channel value of &#39;1,2&#39; is supplied it is returned as an array [1,2]</span>
+<span class="sd">    :return: an array of channel numbers</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="c1"># convert to a list</span>
+        <span class="n">channels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)))</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unsupported channel value: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">channels</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h2 id="olivepyutilsutils"><code>olivepy.utils.utils</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.utils.utils"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.utils.utils.parse_json_options" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_json_options</span><span class="p">(</span><span class="n">option_str</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Parse options from a json string.  Intended to be used for workflow options that may be grouped by one or more
+tasks. Options can be passed in a couple of different structures. In the more complicated case they can be a list
+of dictionaries, that specify the task/job name these options are used for, for example: '[{"task":"SAD", "options":{"filter_length":99, "interpolate":1.0}}]'
+They can also be passed in a simple dictionary, like:  '{"filter_length":99, "interpolate":1.0, "name":"midge"}'.
+In the former example, options are only passed to the job/task specified.  In the latter case, these options are
+passed to all tasks.  In both cases, OLIVE will only pass options to a task if the task supports that option name</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>option_str</code></td>
+        <td></td>
+        <td><p>the options to parse</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/utils/utils.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_json_options</span><span class="p">(</span><span class="n">option_str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse options from a json string.  Intended to be used for workflow options that may be grouped by one or more</span>
+<span class="sd">    tasks. Options can be passed in a couple of different structures. In the more complicated case they can be a list</span>
+<span class="sd">    of dictionaries, that specify the task/job name these options are used for, for example: &#39;[{&quot;task&quot;:&quot;SAD&quot;, &quot;options&quot;:{&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0}}]&#39;</span>
+<span class="sd">    They can also be passed in a simple dictionary, like:  &#39;{&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0, &quot;name&quot;:&quot;midge&quot;}&#39;.</span>
+<span class="sd">    In the former example, options are only passed to the job/task specified.  In the latter case, these options are</span>
+<span class="sd">    passed to all tasks.  In both cases, OLIVE will only pass options to a task if the task supports that option name</span>
+
+<span class="sd">    :param option_str: the options to parse</span>
+
+<span class="sd">    :return a list of OptionValue objects created from the JSON option input</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Examples of inputs to handle:</span>
+    <span class="c1"># [{&quot;task&quot;:&quot;SAD&quot;, &quot;options&quot;:{&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0}}]&#39;</span>
+    <span class="c1"># &#39;{&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0, &quot;name&quot;:&quot;midge&quot;}&#39;</span>
+    <span class="c1"># &#39;[{&quot;task&quot;:&quot;LID&quot;, &quot;options&quot;: {&quot;filter_length&quot;:99, &quot;interpolate&quot;:11.0, &quot;test_name&quot;:&quot;midge&quot;}}]&#39;</span>
+    <span class="c1"># &#39;[{&quot;job&quot;:&quot;SAD LID Job&quot;, &quot;task&quot;:&quot;LID&quot;, &quot;options&quot;: {&quot;filter_length&quot;:99, &quot;interpolate&quot;:11.0, &quot;test_name&quot;:&quot;midge&quot;}}]&#39;</span>
+
+    <span class="c1"># Parse options</span>
+    <span class="n">json_opts</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">option_str</span><span class="p">)</span>
+    <span class="n">out_opts</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Options can be a list of task specific options</span>
+    <span class="c1"># currently we don&#39;t support task specific options so just create one dictionary of name/value options</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">json_opts</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">json_opts</span><span class="p">:</span>
+            <span class="n">in_opts</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;options&#39;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">in_opts</span><span class="p">:</span>
+                <span class="c1"># print(&quot;\t{} = {}, value type: {}&quot;.format(opt, in_opts[opt], type(in_opts[opt])))</span>
+                <span class="n">opt_msg</span> <span class="o">=</span> <span class="n">olivepb</span><span class="o">.</span><span class="n">OptionValue</span><span class="p">()</span>
+                <span class="n">opt_msg</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">opt</span>
+                <span class="n">opt_msg</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">in_opts</span><span class="p">[</span><span class="n">opt</span><span class="p">])</span>
+                <span class="c1"># optionally check if this option is restricted to a job/task:</span>
+                <span class="k">if</span> <span class="s1">&#39;task&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="n">opt_msg</span><span class="o">.</span><span class="n">task_filter_name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;task&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="s1">&#39;job&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="n">opt_msg</span><span class="o">.</span><span class="n">job_filter_name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">]</span>
+                <span class="n">out_opts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opt_msg</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># or options that are applied to each task, which is just a simple dictionary</span>
+        <span class="c1"># like: {&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0}</span>
+        <span class="c1"># OLIVE wil internally ignore these options if the keyname does not match one of the option name</span>
+        <span class="c1"># a plugin supports for the requested trait (i.e. plugin.get_region_scoring_opts()</span>
+        <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">json_opts</span><span class="p">:</span>
+            <span class="n">opt_msg</span> <span class="o">=</span> <span class="n">olivepb</span><span class="o">.</span><span class="n">OptionValue</span><span class="p">()</span>
+            <span class="n">opt_msg</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">opt</span>
+            <span class="n">opt_msg</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">json_opts</span><span class="p">[</span><span class="n">opt</span><span class="p">])</span>
+            <span class="n">out_opts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opt_msg</span><span class="p">)</span>
+            <span class="c1"># print(&quot;\t{} = {}, value type: {}&quot;.format(opt, json_opts[opt], type(json_opts[opt])))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final json options: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_opts</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">out_opts</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.utils.utils.parse_json_options_as_dict" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_json_options_as_dict</span><span class="p">(</span><span class="n">option_str</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Parse options from a json string.  Intended to be used for workflow options that may be grouped by one or more
+tasks. Options can be passed in a couple of different structures. In the more complicated case they can be a list
+of dictionaries, that specify the task/job name these options are used for, for example: '[{"task":"SAD", "options":{"filter_length":99, "interpolate":1.0}}]'
+They can also be passed in a simple dictionary, like:  '{"filter_length":99, "interpolate":1.0, "name":"midge"}'.
+In the former example, options are only passed to the job/task specified.  In the latter case, these options are
+passed to all tasks.  In both cases, OLIVE will only pass options to a task if the task supports that option name</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>option_str</code></td>
+        <td></td>
+        <td><p>the options to parse</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>a dictionary of options name/value pairs</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/utils/utils.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_json_options_as_dict</span><span class="p">(</span><span class="n">option_str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse options from a json string.  Intended to be used for workflow options that may be grouped by one or more</span>
+<span class="sd">    tasks. Options can be passed in a couple of different structures. In the more complicated case they can be a list</span>
+<span class="sd">    of dictionaries, that specify the task/job name these options are used for, for example: &#39;[{&quot;task&quot;:&quot;SAD&quot;, &quot;options&quot;:{&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0}}]&#39;</span>
+<span class="sd">    They can also be passed in a simple dictionary, like:  &#39;{&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0, &quot;name&quot;:&quot;midge&quot;}&#39;.</span>
+<span class="sd">    In the former example, options are only passed to the job/task specified.  In the latter case, these options are</span>
+<span class="sd">    passed to all tasks.  In both cases, OLIVE will only pass options to a task if the task supports that option name</span>
+
+<span class="sd">    :param option_str: the options to parse</span>
+
+<span class="sd">    :return: a dictionary of options name/value pairs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Parse options</span>
+    <span class="n">json_opts</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">option_str</span><span class="p">)</span>
+    <span class="n">out_opts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="c1"># Options can be a list of task specific options</span>
+    <span class="c1"># currently we don&#39;t support task specific options so just create one dictionary of name/value options</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">json_opts</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">json_opts</span><span class="p">:</span>
+            <span class="n">in_opts</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;options&#39;</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found </span><span class="si">{}</span><span class="s2"> options for task: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">in_opts</span><span class="p">),</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;task&#39;</span><span class="p">]))</span>
+            <span class="n">out_opts</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">in_opts</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">in_opts</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">, value type: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">in_opts</span><span class="p">[</span><span class="n">opt</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">in_opts</span><span class="p">[</span><span class="n">opt</span><span class="p">])))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># or options that are applied to each task, which is just a simple dictionary</span>
+        <span class="c1"># like: {&quot;filter_length&quot;:99, &quot;interpolate&quot;:1.0}</span>
+        <span class="c1"># OLIVE wil internally ignore these options if the keyname does not match one of the option name</span>
+        <span class="c1"># a plugin supports for the requested trait (i.e. plugin.get_region_scoring_opts()</span>
+        <span class="n">out_opts</span> <span class="o">=</span> <span class="n">json_opts</span>
+        <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">json_opts</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">, value type: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">json_opts</span><span class="p">[</span><span class="n">opt</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">json_opts</span><span class="p">[</span><span class="n">opt</span><span class="p">])))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final json options: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_opts</span><span class="p">))</span>
+    <span class="k">return</span>  <span class="n">out_opts</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.utils.utils.parse_pem_file" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_pem_file</span><span class="p">(</span><span class="n">data_lines</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Parse a PEM file, grouping the results by audio file and channel.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data_lines</code></td>
+        <td></td>
+        <td><p>the data line to parse</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>a dictionary of audio files to score and the channel region: # {'filename': {channel: {class_id : [(start_region, end_region, class_id)]} } }</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/utils/utils.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_pem_file</span><span class="p">(</span><span class="n">data_lines</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse a PEM file, grouping the results by audio file and channel.</span>
+
+<span class="sd">    :param data_lines: the data line to parse</span>
+
+<span class="sd">    :return:  a dictionary of audio files to score and the channel region:</span>
+<span class="sd">    # {&#39;filename&#39;: {channel: {class_id : [(start_region, end_region, class_id)]} } }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#  We process by file and channel - the class/label is ignored</span>
+    <span class="n">regions</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">input_pem</span> <span class="o">=</span> <span class="n">Pem</span><span class="p">()</span>
+    <span class="n">input_pem</span><span class="o">.</span><span class="n">add_records_from_data_lines</span><span class="p">(</span><span class="n">data_lines</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">input_pem</span><span class="o">.</span><span class="n">get_ids</span><span class="p">():</span>
+        <span class="n">audio_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+        <span class="c1"># Create a dictionary of the regions specified for the the current file</span>
+        <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="n">input_pem</span><span class="o">.</span><span class="n">get_records</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+            <span class="c1"># channel could be a list...</span>
+            <span class="n">channels</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+                <span class="c1"># convert to a list</span>
+                <span class="n">channels</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">))</span>
+
+            <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+                <span class="n">channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unsupported channel value: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rec</span><span class="o">.</span><span class="n">channel</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">ch</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">]:</span>
+                    <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">][</span><span class="n">ch</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+                <span class="n">class_id</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">label</span>
+                <span class="k">if</span> <span class="n">class_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">][</span><span class="n">ch</span><span class="p">]:</span>
+                    <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">][</span><span class="n">ch</span><span class="p">][</span><span class="n">class_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="n">regions</span><span class="p">[</span><span class="n">audio_id</span><span class="p">][</span><span class="n">ch</span><span class="p">][</span><span class="n">class_id</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">rec</span><span class="o">.</span><span class="n">start_t</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">end_t</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">regions</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="../assets/javascript/iframe-worker.js"></script>
+<script src="../search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../search/search_index.js"></script>
+      
+        <script src="../assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>
