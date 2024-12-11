@@ -1,0 +1,318 @@
+/* code font */
+@font-face {
+    font-family: "Neue Machina Plain";
+    font-style: normal;
+    font-weight: 100 300;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMachina-PlainLight.woff2") format("woff2");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Machina Plain";
+    font-style: normal;
+    font-weight: 400 500;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMachina-PlainRegular.otf") format("opentype");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Machina Plain";
+    font-style: normal;
+    font-weight: 600;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMachina-PlainSemibold.woff2") format("woff2");
+    font-stretch: normal;
+}
+@font-face{
+    font-family: "Neue Machina Plain";
+    font-style: normal;
+    font-weight: 700 900;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMachina-PlainUltrabold.otf") format("opentype");
+    font-stretch:normal;
+}
+/* code font italic */
+@font-face {
+    font-family: "Neue Machina Plain";
+    font-style: italic;
+    font-weight: 100 300;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMachina-PlainLightItalic.woff2") format("woff2");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Machina Plain";
+    font-style: italic;
+    font-weight: 400 500;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMachina-PlainRegularItalic.otf") format("opentype");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Machina Plain";
+    font-style: italic;
+    font-weight: 600;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMachina-PlainSemiboldItalic.woff2") format("woff2");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Machina Plain";
+    font-style: italic;
+    font-weight: 700 900;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMachina-PlainUltraboldItalic.otf") format("opentype");
+    font-stretch: normal;
+}
+/* text font */
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: normal;
+    font-weight: 100 300;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMontreal-Thin.otf") format("opentype");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: normal;
+    font-weight: 400;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMontreal-Book.woff2") format("woff2");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: normal;
+    font-weight: 500;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMontreal-Medium.woff2") format("woff2");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: normal;
+    font-weight: 600 900;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMontreal-Bold.woff2") format("woff2");
+    font-stretch: normal;
+}
+/* text font italic */
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: italic;
+    font-weight: 100 300;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMontreal-BookItalic.woff2") format("woff2");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: italic;
+    font-weight: 400;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMontreal-Italic.otf") format("opentype");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: italic;
+    font-weight: 500;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMontreal-MediumItalic.woff2") format("woff2");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: italic;
+    font-weight: 600;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMontreal-SemiBoldItalic.otf") format("opentype");
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: italic;
+    font-weight: 700 900;
+    font-display: fallback;
+    src: url("../assets/fonts/PPNeueMontreal-BoldItalic.woff2") format("woff2");
+    font-stretch: normal;
+}
+
+
+[data-md-color-scheme="sri"] {
+    --md-primary-fg-color: #e9e9e4;
+    --md-primary-bg-color: black;
+    --md-accent-fg-color: black;
+    --md-typeset-a-color: black;
+    --md-default-fg-color--light: black;
+    --md-typeset-table-color: black;
+    --md-typeset-table-color--light: #e9e9e4;
+}
+
+[data-md-color-scheme="olive"] {
+    --md-primary-fg-color: #dad7cd; 
+    --md-primary-fg-color--light:  #A3B18a;
+    --md-primary-fg-color--dark:  #344E41;;
+    --md-primary-bg-color: #344E41;
+    --md-accent-fg-color: #3A5A40;
+    --md-typeset-a-color: #344E41;
+    --md-default-fg-color--light: #3a5a40;
+    --md-typeset-table-color: #588157;
+    --md-typeset-table-color--light: #A3B18a;
+    --md-footer-bg-color--dark: #A3b18a;
+    --md-footer-bg-color: #344e41;
+}
+/* https://coolors.co/palette/dad7cd-a3b18a-588157-3a5a40-344e41 */
+/* alternate - https://coolors.co/palette/cad2c5-84a98c-52796f-354f52-2f3e46 */
+
+/* setup default fonts */
+:root {
+    --md-text-font: "Neue Montreal", "Arial", "Open Sans", "Helvetica", sans-serif;
+    --md-code-font: "Neue Machina Plain", "Andale Mono", monospace;
+}
+
+/* common style between links in the regular text content
+   and the navigation links, e.g., table of contents on the right */
+a::after, .md-nav a::after, .md-nav label.md-nav__link::after {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    content: '';
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    transition: transform 0.25s ease-out;
+}
+
+/* links appearing in the main text content area */
+a {
+    display: inline-block;
+    position: relative;
+}
+a:hover::after {
+    transform: scaleX(0);
+}
+
+/* links under the navigation section on the left and right */
+.md-nav a, .md-nav__title, .md-nav__link {
+    font-family: var(--md-code-font);
+}
+
+.md-nav a, .md-nav label {
+    display: inline-block;
+    position: relative;
+}
+
+.md-header a::after {
+    display: none;
+} 
+
+/* BICOE
+.md-nav a::after, .md-header a::after {
+    display: none;
+} 
+*/
+
+.md-nav a::after,  .md-nav label.md-nav__link::after {
+    transform: scaleX(0);
+}
+.md-nav a:hover::after,  .md-nav label.md-nav__link:hover::after {
+    transform: scaleX(1);
+}
+.md-nav__item .md-nav__link--active, .md-nav__item .md-nav__link--active code {
+    font-weight: 600;
+}
+
+/* header bar's search field */
+.md-search__form, .md-search__form:hover {
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+/* search field's placeholder text (i.e., "Search") color & font */
+.md-search__input::placeholder, .md-search__input~.md-search__icon {
+    color: #dad7cd;
+    font-family: var(--md-code-font);
+}
+
+
+.md-search__input {
+    background-color: #344e41;
+}
+
+/* title header text */
+.md-typeset h1, .md-typeset h2 {
+    font-weight: 800;
+}
+
+/* info section at the bottom of keyboard shortcut page */
+.md-typeset .admonition, .md-typeset details {
+    background-color: var(--md-primary-fg-color);
+    border-radius: 0;
+}
+.md-typeset .admonition.info, .md-typeset details.info {
+    border-color: black;
+}
+.md-typeset .info>.admonition-title, .md-typeset .info>summary {
+    background-color: transparent;
+    border-color: var(--md-primary-bg-color);
+}
+/* info section `i` icon at the beginning of the line */
+.md-typeset .info>.admonition-title:before,.md-typeset .info>summary:before {
+    background-color: black;
+}
+
+/* release note page's expandable old release section */
+.md-typeset .note>.admonition-title, .md-typeset .note>summary {
+    background-color: var(--md-primary-fg-color);
+}
+.md-typeset .admonition.note, .md-typeset details.note {
+    border-color: black;
+}
+/* release note expandable section's icon color */
+.md-typeset .note>.admonition-title:before, .md-typeset .note>summary:before {
+    background-color: black;
+}
+/* release note expandable section's right-most arrow color */
+.md-typeset .note>.admonition-title:after, .md-typeset .note>summary:after {
+    color: black;
+}
+
+/* date stamp at the end of each page */
+.git-revision-date-localized-plugin-date {
+    font-family: var(--md-code-font);
+}
+
+/* footer */
+.md-footer {
+    background-color: #344E41;
+}
+.md-footer-meta {
+    background-color: transparent;
+}
+
+/* footer's regular text */
+.md-copyright {
+    color: black;
+    font-family: var(--md-code-font);
+}
+.md-copyright
+.md-copyright a:after {
+    background-color: black;
+}
+/* footer's "Materials for MkDocs" link */
+html .md-footer-meta.md-typeset a, html .md-footer-meta.md-typeset a:hover {
+    color: black;
+}
+
+.md-typeset .twemoji {
+    /* font-size: 0.75em; */
+    --md-icon-size: 0.9em;
+    height: var(--md-icon-size);
+    vertical-align: baseline;
+    margin-right: 6px;
+}

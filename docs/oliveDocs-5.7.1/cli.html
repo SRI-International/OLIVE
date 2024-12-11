@@ -1,0 +1,3437 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Command Line Tools (Deprecated) - OLIVE 5.7.1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="olive" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olive-command-line-interface-guide-legacy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE 5.7.1 Documentation" class="md-header-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE 5.7.1 Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Command Line Tools (Deprecated)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE 5.7.1 Documentation" class="md-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE 5.7.1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="windows.html" class="md-nav__link">
+      Windows Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      Martini (Docker) Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Command Line Tools (Deprecated)
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="cli.html" class="md-nav__link md-nav__link--active">
+      Command Line Tools (Deprecated)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    1: Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-command-line-testing-and-analysis" class="md-nav__link">
+    2: Command Line Testing and Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="2: Command Line Testing and Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-enrollment-with-localenroll" class="md-nav__link">
+    A.  Enrollment with localenroll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-scoring-and-processing-with-localanalyze" class="md-nav__link">
+    B.  Scoring and processing with localanalyze
+  </a>
+  
+    <nav class="md-nav" aria-label="B.  Scoring and processing with localanalyze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-invoking-localanalyze" class="md-nav__link">
+    I. Invoking localanalyze
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-output" class="md-nav__link">
+    II.    Output
+  </a>
+  
+    <nav class="md-nav" aria-label="II.    Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-scoring-types" class="md-nav__link">
+    Plugin Scoring Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-scorer-output" class="md-nav__link">
+    Global Scorer Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-scorer-output" class="md-nav__link">
+    Region Scorer Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame-scorer-output" class="md-nav__link">
+    Frame Scorer Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-to-audio-output" class="md-nav__link">
+    Audio to Audio Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-command-line-field-adaptation" class="md-nav__link">
+    3: Command Line Field Adaptation
+  </a>
+  
+    <nav class="md-nav" aria-label="3: Command Line Field Adaptation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-command-line-field-adaptation-overview" class="md-nav__link">
+    A.  Command Line Field Adaptation Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-invoking-localtrain" class="md-nav__link">
+    B.  Invoking localtrain
+  </a>
+  
+    <nav class="md-nav" aria-label="B.  Invoking localtrain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-examples" class="md-nav__link">
+    i. Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="i. Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sad-adaptation-example" class="md-nav__link">
+    SAD Adaptation Example:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-lid-trainingadaptation" class="md-nav__link">
+    C.  LID Training/Adaptation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-log-files" class="md-nav__link">
+    4: Log Files
+  </a>
+  
+    <nav class="md-nav" aria-label="4: Log Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-olive-command-line-logging" class="md-nav__link">
+    a.  OLIVE Command Line Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-rotating-log-files" class="md-nav__link">
+    b.  Rotating Log Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-plugin-appendix" class="md-nav__link">
+    5: Plugin Appendix
+  </a>
+  
+    <nav class="md-nav" aria-label="5: Plugin Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-types-and-acronyms" class="md-nav__link">
+    Plugin Types and Acronyms
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Types and Acronyms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speech-activity-detection-sad" class="md-nav__link">
+    Speech Activity Detection (SAD)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speaker-identification-sid" class="md-nav__link">
+    Speaker Identification (SID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trial-based-calibration-speaker-identification-sid-tbc" class="md-nav__link">
+    Trial-based Calibration Speaker Identification (SID TBC)
+  </a>
+  
+    <nav class="md-nav" aria-label="Trial-based Calibration Speaker Identification (SID TBC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speech-detection-output" class="md-nav__link">
+    Speech Detection Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistent-i-vectors" class="md-nav__link">
+    Persistent I-Vectors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trial-based-calibration" class="md-nav__link">
+    Trial-based Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dnn-assisted-trial-based-calibration" class="md-nav__link">
+    DNN-assisted Trial-based Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normal-trial-based-calibration" class="md-nav__link">
+    Normal Trial-based Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-calibration" class="md-nav__link">
+    Global Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-parameters" class="md-nav__link">
+    Optional Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-trial-output" class="md-nav__link">
+    Verification Trial Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speaker-diarization-and-detection-sdd" class="md-nav__link">
+    Speaker Diarization and Detection (SDD)
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaker Diarization and Detection (SDD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sdd-execution-modes" class="md-nav__link">
+    SDD Execution Modes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-identification-lid" class="md-nav__link">
+    Language Identification (LID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyword-spotting-kws" class="md-nav__link">
+    Keyword Spotting (KWS)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-speech-recognition-asr" class="md-nav__link">
+    Automatic Speech Recognition (ASR)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-by-example-keyword-spotting-qbe" class="md-nav__link">
+    Query by Example Keyword Spotting (QBE)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-identification-tid" class="md-nav__link">
+    Topic Identification (TID)
+  </a>
+  
+    <nav class="md-nav" aria-label="Topic Identification (TID)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-background-example-information" class="md-nav__link">
+    Important Background Example Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gender-identification-gid" class="md-nav__link">
+    Gender Identification (GID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancement-enh" class="md-nav__link">
+    Enhancement (ENH)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-testing" class="md-nav__link">
+    6: Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="6: Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-benchmarking-setup-hardwaresoftware" class="md-nav__link">
+    a.  Benchmarking Setup (Hardware/Software)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-plugin-memory-usage-results" class="md-nav__link">
+    b.  Plugin Memory Usage Results
+  </a>
+  
+    <nav class="md-nav" aria-label="b.  Plugin Memory Usage Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sad" class="md-nav__link">
+    SAD
+  </a>
+  
+    <nav class="md-nav" aria-label="SAD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sad-memory-usage-mb" class="md-nav__link">
+    SAD Memory Usage (MB)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-plugin-speed-analysis-results" class="md-nav__link">
+    c.  Plugin Speed Analysis Results
+  </a>
+  
+    <nav class="md-nav" aria-label="c.  Plugin Speed Analysis Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-speed-statistics-reported-in-times-faster-than-real-time" class="md-nav__link">
+    Plugin Speed Statistics Reported in Times Faster than Real Time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-global-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-embedplda-v1.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-whisper-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) whisper/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v3.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    1: Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-command-line-testing-and-analysis" class="md-nav__link">
+    2: Command Line Testing and Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="2: Command Line Testing and Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-enrollment-with-localenroll" class="md-nav__link">
+    A.  Enrollment with localenroll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-scoring-and-processing-with-localanalyze" class="md-nav__link">
+    B.  Scoring and processing with localanalyze
+  </a>
+  
+    <nav class="md-nav" aria-label="B.  Scoring and processing with localanalyze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-invoking-localanalyze" class="md-nav__link">
+    I. Invoking localanalyze
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-output" class="md-nav__link">
+    II.    Output
+  </a>
+  
+    <nav class="md-nav" aria-label="II.    Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-scoring-types" class="md-nav__link">
+    Plugin Scoring Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-scorer-output" class="md-nav__link">
+    Global Scorer Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-scorer-output" class="md-nav__link">
+    Region Scorer Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame-scorer-output" class="md-nav__link">
+    Frame Scorer Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-to-audio-output" class="md-nav__link">
+    Audio to Audio Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-command-line-field-adaptation" class="md-nav__link">
+    3: Command Line Field Adaptation
+  </a>
+  
+    <nav class="md-nav" aria-label="3: Command Line Field Adaptation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-command-line-field-adaptation-overview" class="md-nav__link">
+    A.  Command Line Field Adaptation Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-invoking-localtrain" class="md-nav__link">
+    B.  Invoking localtrain
+  </a>
+  
+    <nav class="md-nav" aria-label="B.  Invoking localtrain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-examples" class="md-nav__link">
+    i. Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="i. Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sad-adaptation-example" class="md-nav__link">
+    SAD Adaptation Example:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-lid-trainingadaptation" class="md-nav__link">
+    C.  LID Training/Adaptation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-log-files" class="md-nav__link">
+    4: Log Files
+  </a>
+  
+    <nav class="md-nav" aria-label="4: Log Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-olive-command-line-logging" class="md-nav__link">
+    a.  OLIVE Command Line Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-rotating-log-files" class="md-nav__link">
+    b.  Rotating Log Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-plugin-appendix" class="md-nav__link">
+    5: Plugin Appendix
+  </a>
+  
+    <nav class="md-nav" aria-label="5: Plugin Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-types-and-acronyms" class="md-nav__link">
+    Plugin Types and Acronyms
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Types and Acronyms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speech-activity-detection-sad" class="md-nav__link">
+    Speech Activity Detection (SAD)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speaker-identification-sid" class="md-nav__link">
+    Speaker Identification (SID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trial-based-calibration-speaker-identification-sid-tbc" class="md-nav__link">
+    Trial-based Calibration Speaker Identification (SID TBC)
+  </a>
+  
+    <nav class="md-nav" aria-label="Trial-based Calibration Speaker Identification (SID TBC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speech-detection-output" class="md-nav__link">
+    Speech Detection Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistent-i-vectors" class="md-nav__link">
+    Persistent I-Vectors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trial-based-calibration" class="md-nav__link">
+    Trial-based Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dnn-assisted-trial-based-calibration" class="md-nav__link">
+    DNN-assisted Trial-based Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normal-trial-based-calibration" class="md-nav__link">
+    Normal Trial-based Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-calibration" class="md-nav__link">
+    Global Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-parameters" class="md-nav__link">
+    Optional Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-trial-output" class="md-nav__link">
+    Verification Trial Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speaker-diarization-and-detection-sdd" class="md-nav__link">
+    Speaker Diarization and Detection (SDD)
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaker Diarization and Detection (SDD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sdd-execution-modes" class="md-nav__link">
+    SDD Execution Modes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-identification-lid" class="md-nav__link">
+    Language Identification (LID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyword-spotting-kws" class="md-nav__link">
+    Keyword Spotting (KWS)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-speech-recognition-asr" class="md-nav__link">
+    Automatic Speech Recognition (ASR)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-by-example-keyword-spotting-qbe" class="md-nav__link">
+    Query by Example Keyword Spotting (QBE)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-identification-tid" class="md-nav__link">
+    Topic Identification (TID)
+  </a>
+  
+    <nav class="md-nav" aria-label="Topic Identification (TID)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-background-example-information" class="md-nav__link">
+    Important Background Example Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gender-identification-gid" class="md-nav__link">
+    Gender Identification (GID)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancement-enh" class="md-nav__link">
+    Enhancement (ENH)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-testing" class="md-nav__link">
+    6: Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="6: Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-benchmarking-setup-hardwaresoftware" class="md-nav__link">
+    a.  Benchmarking Setup (Hardware/Software)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-plugin-memory-usage-results" class="md-nav__link">
+    b.  Plugin Memory Usage Results
+  </a>
+  
+    <nav class="md-nav" aria-label="b.  Plugin Memory Usage Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sad" class="md-nav__link">
+    SAD
+  </a>
+  
+    <nav class="md-nav" aria-label="SAD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sad-memory-usage-mb" class="md-nav__link">
+    SAD Memory Usage (MB)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-plugin-speed-analysis-results" class="md-nav__link">
+    c.  Plugin Speed Analysis Results
+  </a>
+  
+    <nav class="md-nav" aria-label="c.  Plugin Speed Analysis Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-speed-statistics-reported-in-times-faster-than-real-time" class="md-nav__link">
+    Plugin Speed Statistics Reported in Times Faster than Real Time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olive-command-line-interface-guide-legacy">OLIVE Command Line Interface Guide (Legacy)</h1>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>Note that the tools described below are legacy tools that are mostly used for internal testing and development. With docker-based deliveries, these utilities are difficult to access and have many performance tradeoffs versus using the OLIVE server through a client - they should not be used for integration, only for very basic experimentation. The functionality offered by these should instead be accessed through the provided Java example client (OliveAnalyze, OliveEnroll, etc.) or Python example client (olivepyanalyze, olivepyenroll, etc.). Documentation for these utilities is under construction and will be provided soon - but each utility has a <code>help</code> statement that provides instructions for running each. </p>
+<h2 id="introduction">Introduction</h2>
+<p>This document describes running the OLIVE (formerly SCENIC) system from a command line. Our command line applications are geared toward a variety of specialized users such as researchers, system evaluators (i.e. Leidos for the DARPA RATS program), and testers. Casual users should consider using our graphical application. However, our command line applications can function as general-purpose tools, but may require specially formatted files such the RATS XML files for audio analysis and LDC-format TSV files for training annotations. </p>
+<h2 id="1-overview">1: Overview</h2>
+<p>OLIVE command line interface (CLI) tools include:</p>
+<ul>
+<li><code>localenroll</code> – Used to enroll ‘targets’ into the system, such as a target speaker for speaker identification (SID), a topic of interest for topic identification (TID), or a keyword or phrase of interest for query-by-example keyword spotting (QBE).</li>
+<li><code>localanalyze</code> – Used to query the OLIVE server to score audio to find speech with a speech activity detection (SAD) plugin, report scores for potential speakers or languages of interest for SID or language identification (LID) plugins, report likelihood and location(s) of conversation topics or keywords of interest (TID, QBE, KWS). </li>
+<li><code>localtrain</code> – Used to train or adapt plugins that support the LearningTrait (SupervisedAdapter, SupervisedTrainer, or UnsupervisedAdapter) with examples of new audio conditions to improve performance in such conditions.  Also used to add new language recognition capabilities to a LID plugin, and to retrain the background models of a SID plugin to prepare it for new audio conditions. Training and adaptation are not available in all plugins, please refer to individual plugin documentation or plugin capabilities matrix to verify availability of training or adaptation.</li>
+</ul>
+<h2 id="2-command-line-testing-and-analysis">2: Command Line Testing and Analysis</h2>
+<h3 id="a-enrollment-with-localenroll">A.  Enrollment with <code>localenroll</code></h3>
+<p>The <code>localenroll</code> command is used to enroll audio for SID and TID.  It can be invoked from a BASH or C-shell terminal. It takes a simply formatted text file as input and does not produce an output file. </p>
+<p>The audio enrollment list input file is formatted as one or more newline-separated lines containing a path to an audio file and a class or model ID, which can be a speaker name, topic name, or query name for SID, TID, and QBE respectively.  A general example is given below, and more details and plugin-specific enrollment information are provided in the appropriate section in the Plugin Appendix.</p>
+<p>Format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_path&gt; &lt;model_id&gt;
+</code></pre></div>
+
+<p>Example enrollment list file (SID):</p>
+<div class="codehilite"><pre><span></span><code>/data/speaker1/audiofile1.wav speaker1
+/data/speaker1/audiofile2.wav speaker1
+/data/speaker7/audiofile1.wav speaker7
+</code></pre></div>
+
+<p>The basic syntax for calling <code>localenroll</code> (more details and options below) is: </p>
+<div class="codehilite"><pre><span></span><code>$ ./localenroll &lt;path_to_plugin_domain&gt; &lt;path_to_enrollment_file&gt;
+</code></pre></div>
+
+<p>Where an example of that may be:</p>
+<div class="codehilite"><pre><span></span><code>$ ./localenroll plugins/sid-embed-v1/domains/multi-v1/ /data/sid/smoke_enroll.lst
+</code></pre></div>
+
+<p>The numerous options available in <code>localenroll</code> can be seen by executing <code>localenroll</code> --help, the output of which is shown below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">usage</span><span class="o">:</span> <span class="n">localenroll</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">options</span> <span class="n">OPTIONS_PATH</span><span class="o">]</span> <span class="o">[--</span><span class="n">timeout</span> <span class="n">TIMEOUT</span><span class="o">]</span>
+                   <span class="o">[--</span><span class="n">version</span><span class="o">]</span> <span class="o">[--</span><span class="n">log</span> <span class="n">LOG_FILE</span><span class="o">]</span> <span class="o">[--</span><span class="n">work_dir</span> <span class="n">WORK_DIR</span><span class="o">]</span>
+                   <span class="o">[--</span><span class="n">jobs</span> <span class="n">JOBS</span><span class="o">]</span> <span class="o">[--</span><span class="n">debug</span><span class="o">]</span> <span class="o">[--</span><span class="n">nochildren</span><span class="o">]</span> <span class="o">[--</span><span class="n">quiet</span><span class="o">]</span>
+                   <span class="o">[--</span><span class="n">verbose</span><span class="o">]</span> <span class="o">[--</span><span class="n">purge</span><span class="o">]</span>
+                   <span class="n">plugin_domain_path</span> <span class="n">enrollment_file</span>
+
+<span class="n">positional</span> <span class="k">arguments</span><span class="o">:</span>
+  <span class="n">plugin_domain_path</span>    <span class="n">path</span> <span class="n">to</span> <span class="n">plugin</span> <span class="n">domain</span> <span class="n">used</span> <span class="k">for</span> <span class="n">analysis</span>
+  <span class="n">enrollment_file</span>       <span class="n">List</span> <span class="n">of</span> <span class="n">enrollments</span> <span class="n">of</span> <span class="n">the</span> <span class="n">form</span> <span class="o">&lt;</span><span class="n">audio_path</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">class_id</span><span class="o">&gt;</span> <span class="n">OR</span> <span class="n">a</span> <span class="n">PEM</span> <span class="n">formatted</span> <span class="n">file</span> <span class="n">of</span> <span class="n">the</span> <span class="n">form</span>
+                        <span class="o">&lt;</span><span class="n">audio_path</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">channel</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">class_id</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">start</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">end</span><span class="o">&gt;</span>
+
+<span class="n">optional</span> <span class="k">arguments</span><span class="o">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="o">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="k">this</span> <span class="n">help</span> <span class="n">message</span> <span class="n">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">options</span> <span class="n">OPTIONS_PATH</span>
+                        <span class="n">Optional</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">name</span><span class="o">/</span><span class="n">value</span> <span class="n">pairs</span><span class="o">.</span> <span class="n">The</span> <span class="n">option</span>
+                        <span class="n">file</span> <span class="n">must</span> <span class="n">have</span> <span class="n">a</span> <span class="n">configuration</span> <span class="n">section</span> <span class="n">named</span>
+                        <span class="n">enrollment</span><span class="o">.</span><span class="na">Only</span> <span class="n">values</span> <span class="n">from</span> <span class="n">the</span> <span class="n">enrollment</span> <span class="n">section</span> <span class="n">are</span>
+                        <span class="n">read</span>
+  <span class="o">--</span><span class="n">timeout</span> <span class="n">TIMEOUT</span>     <span class="n">timeout</span><span class="o">,</span> <span class="k">in</span> <span class="n">seconds</span><span class="o">,</span> <span class="k">for</span> <span class="n">all</span> <span class="n">jobs</span> <span class="n">regardless</span> <span class="n">of</span> <span class="n">the</span>
+                        <span class="n">audio</span> <span class="n">duration</span><span class="o">.</span> <span class="n">otherwise</span> <span class="n">the</span> <span class="n">job</span> <span class="n">will</span> <span class="n">timeout</span> <span class="n">based</span>
+                        <span class="n">on</span> <span class="n">the</span> <span class="n">duration</span> <span class="n">of</span> <span class="n">audio</span> <span class="n">to</span> <span class="n">process</span> <span class="n">and</span> <span class="n">the</span> <span class="n">domain</span><span class="s1">&#39;s</span>
+<span class="s1">                        timeout_weight</span>
+<span class="s1">  --version             show program&#39;</span><span class="n">s</span> <span class="n">version</span> <span class="n">number</span> <span class="n">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">log</span> <span class="n">LOG_FILE</span><span class="o">,</span> <span class="o">-</span><span class="n">l</span> <span class="n">LOG_FILE</span>
+                        <span class="n">path</span> <span class="n">to</span> <span class="n">output</span> <span class="n">log</span> <span class="n">file</span>
+  <span class="o">--</span><span class="n">work_dir</span> <span class="n">WORK_DIR</span><span class="o">,</span> <span class="o">-</span><span class="n">w</span> <span class="n">WORK_DIR</span>
+                        <span class="n">path</span> <span class="n">to</span> <span class="n">work</span> <span class="n">dir</span>
+  <span class="o">--</span><span class="n">jobs</span> <span class="n">JOBS</span><span class="o">,</span> <span class="o">-</span><span class="n">j</span> <span class="n">JOBS</span>  <span class="n">specify</span> <span class="n">number</span> <span class="n">of</span> <span class="n">parallel</span> <span class="n">JOBS</span> <span class="n">to</span> <span class="n">run</span><span class="o">;</span> <span class="k">default</span> <span class="k">is</span> <span class="n">the</span>
+                        <span class="n">number</span> <span class="n">of</span> <span class="n">local</span> <span class="n">processors</span>
+  <span class="o">--</span><span class="n">debug</span><span class="o">,</span> <span class="o">-</span><span class="n">d</span>           <span class="n">debug</span> <span class="n">mode</span> <span class="n">prevents</span> <span class="n">deletion</span> <span class="n">of</span> <span class="n">logs</span> <span class="n">and</span> <span class="n">intermediate</span>
+                        <span class="n">files</span> <span class="n">on</span> <span class="n">success</span>
+  <span class="o">--</span><span class="n">nochildren</span>          <span class="n">Perform</span> <span class="n">sequential</span> <span class="o">(</span><span class="n">local</span><span class="o">)</span> <span class="n">processing</span> <span class="n">without</span> <span class="n">creating</span>
+                        <span class="n">jobs</span> <span class="k">as</span> <span class="n">sub</span> <span class="n">processes</span> <span class="k">for</span> <span class="n">ease</span> <span class="n">of</span> <span class="n">debugging</span> <span class="o">(</span><span class="n">IPython</span><span class="o">)</span>
+                        <span class="n">at</span> <span class="n">the</span> <span class="n">expense</span> <span class="n">of</span> <span class="n">speed</span><span class="o">/</span><span class="n">parallelization</span>
+  <span class="o">--</span><span class="n">quiet</span><span class="o">,</span> <span class="o">-</span><span class="n">q</span>           <span class="n">turn</span> <span class="n">off</span> <span class="n">progress</span> <span class="n">bar</span> <span class="n">display</span>
+  <span class="o">--</span><span class="n">verbose</span><span class="o">,</span> <span class="o">-</span><span class="n">v</span>         <span class="n">Print</span> <span class="n">logging</span> <span class="n">to</span> <span class="n">the</span> <span class="n">terminal</span><span class="o">.</span> <span class="n">Overrides</span> <span class="o">--</span><span class="n">quiet</span>
+  <span class="o">--</span><span class="n">purge</span><span class="o">,</span> <span class="o">-</span><span class="n">p</span>           <span class="n">purge</span> <span class="n">the</span> <span class="n">work</span> <span class="n">dir</span> <span class="n">before</span> <span class="n">starting</span>
+</code></pre></div>
+
+<h3 id="b-scoring-and-processing-with-localanalyze">B.  Scoring and processing with <code>localanalyze</code></h3>
+<h4 id="i-invoking-localanalyze">I. Invoking <code>localanalyze</code></h4>
+<p>The <code>localanalyze</code> utility is used to perform OLIVE scoring and analysis with most plugins (SAD, SID, SDD, LID, KWS, QBE, GID, TID), or processing with an ENH plugin, all on list-based input files.  It can be invoked from a BASH or C-shell terminal. A path to a valid OLIVE plugin and domain as well as an audio paths input file are required for all tasks.  For some plugins, like LID and SID, an optional IDs input file can be specified via the --class_ids argument to limit which languages or speakers are scored.  This IDs input file is also how a keyword spotting plugin is informed what the keywords of interest are for a given analysis. </p>
+<p>The exact details for invoking <code>localanalyze</code> will depend upon the plugin technology being used, and may vary slightly depending upon the options available to each individual plugin, but the general format for running this utility is:</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze &lt;path_to_plugin_domain&gt; &lt;list_of_files_to_analyze_or_process&gt;
+</code></pre></div>
+
+<p>With an example (SID):</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze plugins/sid-embed-v1/domains/multi-v1/ /data/sid/test_data.lst
+</code></pre></div>
+
+<p>The format of the audio input file is simply a list of one or more newline-separated lines containing a path to an audio file:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_path&gt;
+</code></pre></div>
+
+<p>Example audio input file:</p>
+<div class="codehilite"><pre><span></span><code>/data/sid/test/unknownSpkr1.wav
+/data/sid/test/unknownSpkr27.wav
+</code></pre></div>
+
+<p>As mentioned above, if you would only like to score a subset of the enrolled speakers or languages, you can optionally pass a list of these identifiers as a newline-separated list text file, with the --class_ids command line argument.  This same argument is how you select keywords to search for when running <code>localanalyze</code> with a keyword spotting plugin (see KWS section in the Plugin Appendix for more information).</p>
+<p>IDs List Format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;id_1&gt;
+&lt;id_2 (opt)&gt;
+&lt;id_N (opt)&gt;
+</code></pre></div>
+
+<p>A Speaker Identification IDs example:</p>
+<div class="codehilite"><pre><span></span><code>Chris 
+Billy
+Spkr3
+</code></pre></div>
+
+<p>A Keyword Spotting IDs example: </p>
+<div class="codehilite"><pre><span></span><code>turn left
+torpedo
+watermelon
+</code></pre></div>
+
+<p>Example (KWS) of a <code>localanalyze</code> call with the --class_ids argument:</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze --class_ids search_list.lst plugins/kws-batch-v9/domains/eng-tel-v1/ /data/kws/test/test-audio.lst
+</code></pre></div>
+
+<p>Note that re-running <code>localanalyze</code> will overwrite the contents of the output.txt file or OUTPUT directory, depending on what type of plugin is being run.</p>
+<p>The OLIVE usage/help statement for <code>localanalyze</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">usage</span><span class="o">:</span> <span class="n">localanalyze</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">output</span> <span class="n">OUTPUT_PATH</span><span class="o">]</span> <span class="o">[--</span><span class="n">thresholds</span> <span class="n">THRESHOLDS</span><span class="o">]</span>
+                <span class="o">[--</span><span class="n">class_ids</span> <span class="n">ID_LIST_PATH</span><span class="o">]</span> <span class="o">[--</span><span class="n">options</span> <span class="n">OPTIONS_PATH</span><span class="o">]</span>
+                <span class="o">[--</span><span class="n">regions</span> <span class="n">REGION_PATH</span><span class="o">]</span> <span class="o">[--</span><span class="n">timeout</span> <span class="n">TIMEOUT</span><span class="o">]</span> <span class="o">[--</span><span class="n">version</span><span class="o">]</span>
+                <span class="o">[--</span><span class="n">log</span> <span class="n">LOG_FILE</span><span class="o">]</span> <span class="o">[--</span><span class="n">work_dir</span> <span class="n">WORK_DIR</span><span class="o">]</span> <span class="o">[--</span><span class="n">jobs</span> <span class="n">JOBS</span><span class="o">]</span>
+                <span class="o">[--</span><span class="n">debug</span><span class="o">]</span> <span class="o">[--</span><span class="n">nochildren</span><span class="o">]</span> <span class="o">[--</span><span class="n">quiet</span><span class="o">]</span> <span class="o">[--</span><span class="n">verbose</span><span class="o">]</span> <span class="o">[--</span><span class="n">purge</span><span class="o">]</span>
+                <span class="n">plugin_domain_path</span> <span class="n">audio_paths_file</span>
+
+<span class="n">positional</span> <span class="k">arguments</span><span class="o">:</span>
+  <span class="n">plugin_domain_path</span>    <span class="n">path</span> <span class="n">to</span> <span class="n">plugin</span> <span class="n">domain</span> <span class="n">used</span> <span class="k">for</span> <span class="n">analysis</span>
+  <span class="n">audio_paths_file</span>      <span class="n">List</span> <span class="n">of</span> <span class="n">audio</span> <span class="n">files</span> <span class="n">to</span> <span class="n">analyze</span> <span class="n">OR</span> <span class="n">a</span> <span class="n">PEM</span> <span class="n">formatted</span> <span class="n">file</span>
+                        <span class="n">of</span> <span class="n">the</span> <span class="n">form</span> <span class="o">&lt;</span><span class="n">audio_path</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">channel</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">class_id</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">start</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">end</span><span class="o">&gt;</span>
+
+<span class="n">optional</span> <span class="k">arguments</span><span class="o">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="o">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="k">this</span> <span class="n">help</span> <span class="n">message</span> <span class="n">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">output</span> <span class="n">OUTPUT_PATH</span><span class="o">,</span> <span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT_PATH</span>
+                        <span class="n">path</span> <span class="n">to</span> <span class="n">output</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+  <span class="o">--</span><span class="n">thresholds</span> <span class="n">THRESHOLDS</span>
+                        <span class="n">Optional</span> <span class="n">comma</span><span class="o">-</span><span class="n">separated</span> <span class="n">threshold</span> <span class="n">values</span> <span class="n">to</span> <span class="n">apply</span> <span class="n">to</span>
+                        <span class="n">frame</span><span class="o">-</span><span class="n">level</span> <span class="n">scores</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">g</span><span class="o">.</span> <span class="mf">0.0</span><span class="o">,</span><span class="mf">1.5</span><span class="o">.</span> <span class="n">Use</span> <span class="n">syntax</span> <span class="s1">&#39;--</span>
+<span class="s1">                        thresholds=&#39;</span> <span class="k">for</span> <span class="n">negative</span> <span class="n">values</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">g</span>
+                        <span class="o">--</span><span class="n">thresholds</span><span class="o">=-</span><span class="mf">2.0</span><span class="o">,-</span><span class="mf">1.0</span>
+  <span class="o">--</span><span class="n">class_ids</span> <span class="n">ID_LIST_PATH</span><span class="o">,</span> <span class="o">-</span><span class="n">i</span> <span class="n">ID_LIST_PATH</span>
+                        <span class="n">Optional</span> <span class="n">file</span> <span class="n">that</span> <span class="n">specifies</span> <span class="kd">class</span> <span class="n">ids</span> <span class="n">to</span> <span class="n">be</span> <span class="n">scored</span><span class="o">.</span>
+                        <span class="n">E</span><span class="o">.</span><span class="na">g</span><span class="o">.</span> <span class="n">limit</span> <span class="n">the</span> <span class="n">speakers</span> <span class="n">that</span> <span class="n">scored</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">options</span> <span class="n">OPTIONS_PATH</span>
+                        <span class="n">Optional</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">plugin</span> <span class="n">specific</span> <span class="n">name</span><span class="o">/</span><span class="n">value</span>
+                        <span class="n">pairs</span><span class="o">.</span> <span class="n">The</span> <span class="n">option</span> <span class="n">file</span> <span class="n">may</span> <span class="n">have</span> <span class="n">more</span> <span class="n">or</span> <span class="n">more</span> <span class="n">section</span>
+                        <span class="n">headings</span> <span class="n">s</span> <span class="k">for</span> <span class="k">each</span> <span class="n">plugin</span> <span class="n">type</span><span class="o">.</span> <span class="n">Common</span> <span class="n">section</span> <span class="n">names</span>
+                        <span class="n">are</span> <span class="s1">&#39;frame scoring&#39;</span><span class="o">,</span> <span class="o">,</span><span class="s1">&#39;global scoring&#39;</span> <span class="n">or</span> <span class="s1">&#39;region</span>
+<span class="s1">                        scoring&#39;</span>
+  <span class="o">--</span><span class="n">regions</span> <span class="n">REGION_PATH</span><span class="o">,</span> <span class="o">-</span><span class="n">r</span> <span class="n">REGION_PATH</span>
+                        <span class="n">Optional</span> <span class="n">flag</span> <span class="n">indicating</span> <span class="n">that</span> <span class="n">the</span> <span class="n">audio</span> <span class="n">paths</span> <span class="n">file</span>
+                        <span class="n">should</span> <span class="n">be</span> <span class="n">supplemented</span> <span class="k">with</span> <span class="n">regions</span> <span class="n">from</span> <span class="n">a</span> <span class="n">PEM</span>
+                        <span class="n">formated</span> <span class="n">file</span><span class="o">,</span> <span class="n">it</span> <span class="k">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">the</span> <span class="n">plugin</span> <span class="n">to</span> <span class="n">utilize</span> <span class="n">these</span>
+                        <span class="n">regions</span> <span class="n">to</span> <span class="n">supplement</span> <span class="n">its</span> <span class="n">scoring</span><span class="o">.</span> <span class="n">This</span> <span class="n">flag</span> <span class="k">is</span>
+                        <span class="n">ignored</span> <span class="k">if</span> <span class="n">the</span> <span class="n">audio</span> <span class="n">input</span> <span class="n">list</span> <span class="o">(</span><span class="n">audio_paths_file</span><span class="o">)</span> <span class="k">is</span>
+                        <span class="n">a</span> <span class="n">PEM</span> <span class="n">formatted</span> <span class="n">file</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">timeout</span> <span class="n">TIMEOUT</span>     <span class="n">timeout</span><span class="o">,</span> <span class="k">in</span> <span class="n">seconds</span><span class="o">,</span> <span class="k">for</span> <span class="n">all</span> <span class="n">jobs</span> <span class="n">regardless</span> <span class="n">of</span> <span class="n">the</span>
+                        <span class="n">audio</span> <span class="n">duration</span><span class="o">.</span> <span class="n">otherwise</span> <span class="n">the</span> <span class="n">job</span> <span class="n">will</span> <span class="n">timeout</span> <span class="n">based</span>
+                        <span class="n">on</span> <span class="n">the</span> <span class="n">duration</span> <span class="n">of</span> <span class="n">audio</span> <span class="n">to</span> <span class="n">process</span> <span class="n">and</span> <span class="n">the</span> <span class="n">domain</span><span class="s1">&#39;s</span>
+<span class="s1">                        timeout_weight</span>
+<span class="s1">  --version             show program&#39;</span><span class="n">s</span> <span class="n">version</span> <span class="n">number</span> <span class="n">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">log</span> <span class="n">LOG_FILE</span><span class="o">,</span> <span class="o">-</span><span class="n">l</span> <span class="n">LOG_FILE</span>
+                        <span class="n">path</span> <span class="n">to</span> <span class="n">output</span> <span class="n">log</span> <span class="n">file</span>
+  <span class="o">--</span><span class="n">work_dir</span> <span class="n">WORK_DIR</span><span class="o">,</span> <span class="o">-</span><span class="n">w</span> <span class="n">WORK_DIR</span>
+                        <span class="n">path</span> <span class="n">to</span> <span class="n">work</span> <span class="n">dir</span>
+  <span class="o">--</span><span class="n">jobs</span> <span class="n">JOBS</span><span class="o">,</span> <span class="o">-</span><span class="n">j</span> <span class="n">JOBS</span>  <span class="n">specify</span> <span class="n">number</span> <span class="n">of</span> <span class="n">parallel</span> <span class="n">JOBS</span> <span class="n">to</span> <span class="n">run</span><span class="o">;</span> <span class="k">default</span> <span class="k">is</span> <span class="n">the</span>
+                        <span class="n">number</span> <span class="n">of</span> <span class="n">local</span> <span class="n">processors</span>
+  <span class="o">--</span><span class="n">debug</span><span class="o">,</span> <span class="o">-</span><span class="n">d</span>           <span class="n">debug</span> <span class="n">mode</span> <span class="n">prevents</span> <span class="n">deletion</span> <span class="n">of</span> <span class="n">logs</span> <span class="n">and</span> <span class="n">intermediate</span>
+                        <span class="n">files</span> <span class="n">on</span> <span class="n">success</span>
+  <span class="o">--</span><span class="n">nochildren</span>          <span class="n">Perform</span> <span class="n">sequential</span> <span class="o">(</span><span class="n">local</span><span class="o">)</span> <span class="n">processing</span> <span class="n">without</span> <span class="n">creating</span>
+                        <span class="n">jobs</span> <span class="k">as</span> <span class="n">sub</span> <span class="n">processes</span> <span class="k">for</span> <span class="n">ease</span> <span class="n">of</span> <span class="n">debugging</span> <span class="o">(</span><span class="n">IPython</span><span class="o">)</span>
+                        <span class="n">at</span> <span class="n">the</span> <span class="n">expense</span> <span class="n">of</span> <span class="n">speed</span><span class="o">/</span><span class="n">parallelization</span>
+  <span class="o">--</span><span class="n">quiet</span><span class="o">,</span> <span class="o">-</span><span class="n">q</span>           <span class="n">turn</span> <span class="n">off</span> <span class="n">progress</span> <span class="n">bar</span> <span class="n">display</span>
+  <span class="o">--</span><span class="n">verbose</span><span class="o">,</span> <span class="o">-</span><span class="n">v</span>         <span class="n">Print</span> <span class="n">logging</span> <span class="n">to</span> <span class="n">the</span> <span class="n">terminal</span><span class="o">.</span> <span class="n">Overrides</span> <span class="o">--</span><span class="n">quiet</span>
+  <span class="o">--</span><span class="n">purge</span><span class="o">,</span> <span class="o">-</span><span class="n">p</span>           <span class="n">purge</span> <span class="n">the</span> <span class="n">work</span> <span class="n">dir</span> <span class="n">before</span> <span class="n">starting</span>
+</code></pre></div>
+
+<h4 id="ii-output">II.    Output</h4>
+<h6 id="plugin-scoring-types">Plugin Scoring Types</h6>
+<p>In general, the output format and location of a call to <code>localanalyze</code> will depend on the type of ‘scorer’ the plugin being used is.  There are currently four types of plugins in OLIVE:</p>
+<ul>
+<li>Global scorer<ul>
+<li>Any plugin that reports a single score for a given model over the entire test audio file is a global scoring plugin.  Currently SID, LID, and GID are the only global scoring plugins.  Every input test audio file will be assigned a single score for each enrolled target model, as measured by looking at the entire file at once.</li>
+<li>Example – sid-embed-v1, lid-embed-v1</li>
+</ul>
+</li>
+<li>Region scorer<ul>
+<li>Region scoring plugins are capable of considering each audio file in small pieces at a time.  Scores are reported for enrolled target models along with the location within that audio file that they are thought to occur.  This allows OLIVE to pinpoint individual keywords or phrases or pick out one specific speaker in a recording where several people may be talking.  TID, SDD, QBE, and KWS are all region scorers.</li>
+<li>Example – sdd-embed-v1, qbe-tdnn-v4, kws-batch-v9</li>
+</ul>
+</li>
+<li>Frame scorer<ul>
+<li>A frame scoring plugin provides a score for every ‘frame’ of audio within every test file passed to <code>localanalyze</code>.  This allows OLIVE to find distinct regions of speech with high precision in recordings with noise and/or silence. SAD is a frame scoring plugin.  It is also possible to apply a threshold to a frame scoring plugin at run-time to report regions of detection instead of frame scores.  For a plugin like SAD, this allows OLIVE to provide output in the form of speech regions. A frame is a short segment of audio that typically consists of 10 milliseconds of audio (100 frames per second).</li>
+<li>Example – sad-dnn-v4</li>
+</ul>
+</li>
+<li>Audio to audio<ul>
+<li>This plugin takes an audio file as input, and also returns an audio file as output. Currently the only plugins that fall into this category are speech/audio enhancement plugins, where the goal is removing noise and distortion from an audio file to improve the human listening experience and intelligibility.</li>
+</ul>
+</li>
+<li>Example – enh-mmse-v1</li>
+</ul>
+<h6 id="global-scorer-output">Global Scorer Output</h6>
+<p>In the case of global scorers like LID and SID, the output file, which by default is called output.txt, contains one or more lines containing the audio path, speaker/language ID (class id), and the score:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_path&gt; &lt;class_id&gt; &lt;score&gt;
+</code></pre></div>
+
+<p>The name and location of the output file can be overridden by passing it as the argument to the <code>-o</code> or <code>--output</code> argument when calling <code>localanalyze</code>. To see specific examples for each plugin type, please refer to the appropriate section of the Plugin Appendix.</p>
+<h6 id="region-scorer-output">Region Scorer Output</h6>
+<p>Region scoring plugins will generate a single output file, that is also called output.txt by default, just like global scorers.  The file looks very similar to a global scorer’s output, but includes a temporal component to each line that represents the start and end of each scored region.  In practice, this looks like:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="n">audio_path</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">region_start_timestamp</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">region_end_timestamp</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">class_id</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">score</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<p>Each test file can have multiple regions where scores are reported, depending on the individual plugin.   The region boundary timestamps are in seconds.  Specific examples can be found in the Plugin Appendix at the end of this document.</p>
+<h6 id="frame-scorer-output">Frame Scorer Output</h6>
+<p>In the case of frame scorers like SAD, an output file is generated for each audio input file, where each audio output file contains a score for each frame in the audio input.  There is one frame score per line.  Alternatively, an option exists to produce segmentation scores from SAD results by using the --threshold argument.  When using the --threshold argument, the output file adheres to standard 5-column PEM format.
+Without supplying a threshold to <code>localanalyze</code>, the frame scorer output looks like this:</p>
+<div class="codehilite"><pre><span></span><code>&lt;frame_1_score&gt;
+&lt;frame_2_score&gt;
+…
+&lt;frame_N_score&gt;
+</code></pre></div>
+
+<p>When a threshold is provided, the output file will resemble the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">channel</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">label</span> <span class="p">(</span><span class="err">“</span><span class="n">speech</span><span class="err">”</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">speech</span> <span class="n">region</span> <span class="n">start</span> <span class="kt">time</span> <span class="p">(</span><span class="n">seconds</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="k">end</span> <span class="kt">time</span> <span class="p">(</span><span class="n">seconds</span><span class="p">)</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<h6 id="audio-to-audio-output">Audio to Audio Output</h6>
+<p>An audio-to-audio plugin takes an audio file as input and returns a corresponding audio file as output.  Currently, this plugin type is used to supply enhancement capabilities to OLIVE, to allow OLIVE to improve the quality, intelligibility, or just general human listening experience for an audio file.  By default, each output audio file is created in an OUTPUT directory in the location that <code>localanalyze</code> was invoked. Within the OUTPUT directory, the folder structure of the original input audio file is preserved. </p>
+<p>This means that if the input audio file was:</p>
+<div class="codehilite"><pre><span></span><code>/data/enhancement-test/test_file1.wav
+</code></pre></div>
+
+<p>Then the enhanced output file will be found by default in:</p>
+<div class="codehilite"><pre><span></span><code>./OUTPUT/data/enhancement-test/test_file1.wav
+</code></pre></div>
+
+<h2 id="3-command-line-field-adaptation">3: Command Line Field Adaptation</h2>
+<h3 id="a-command-line-field-adaptation-overview">A.  Command Line Field Adaptation Overview</h3>
+<p>In general, training and adaptation are very resource and time intensive operations. Very large amounts of RAM are used at certain steps in training. When attempting to train or adapt, the machine should be dedicated to that operation. </p>
+<p>If the plugin path contains a domain then adaptation is implied, otherwise training is implied. The high-level difference between training and adaptation is that adaptation will use the new data supplied during adaptation in addition to the data already used to train the model used by the plugin/domain.  Training, on the other hand, ignores the data originally used for training a model and retrains from scratch using only the new data provided.  When performing training, none of the data in the base plugin will be used, but the feature configs will.  Check the plugin’s traits to determine if full training and/or adaptation are supported.  </p>
+<h3 id="b-invoking-localtrain">B.  Invoking localtrain</h3>
+<p>Not to be confused with enrollment, the <code>localtrain</code> command line application is used to perform field adaptations for SAD, LID &amp; SID. localtrain takes a plugin or plugin_domain path, and one or more data input files formatted for:</p>
+<ul>
+<li>Unsupervised data - a newline separated list of audio file paths </li>
+<li>Supervised data with file level annotations - a newline separated list of audio files paths with a class Id (i.e. “audio_file1.flac fas\n”)</li>
+<li>Supervised data with region level annotations - a newline separated list of audio file paths, start time (seconds), end time (seconds), and class ID (i.e.  “audio_file1.flac 1.25 3.5 fas\n”)</li>
+</ul>
+<p>If multiple data files are specified then they must all use the same annotation format.</p>
+<p>The <code>localtrain</code> utility outputs a new domain in the plugin path. The details of the <code>localtrain</code> executable are below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">usage</span><span class="o">:</span> <span class="n">localtrain</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">--</span><span class="n">domain</span><span class="o">-</span><span class="n">id</span> <span class="n">DOMAIN_ID</span> <span class="o">[--</span><span class="n">overwrite</span><span class="o">]</span> <span class="o">[--</span><span class="n">preprocess</span><span class="o">]</span>
+                  <span class="o">[--</span><span class="n">finalize</span><span class="o">]</span> <span class="o">[--</span><span class="n">unique</span><span class="o">]</span> <span class="o">[--</span><span class="n">options</span> <span class="n">OPTIONS_PATH</span><span class="o">]</span>
+                  <span class="o">[--</span><span class="n">timeout</span> <span class="n">TIMEOUT</span><span class="o">]</span> <span class="o">[--</span><span class="n">version</span><span class="o">]</span> <span class="o">[--</span><span class="n">log</span> <span class="n">LOG_FILE</span><span class="o">]</span>
+                  <span class="o">[--</span><span class="n">work_dir</span> <span class="n">WORK_DIR</span><span class="o">]</span> <span class="o">[--</span><span class="n">jobs</span> <span class="n">JOBS</span><span class="o">]</span> <span class="o">[--</span><span class="n">debug</span><span class="o">]</span> <span class="o">[--</span><span class="n">nochildren</span><span class="o">]</span>
+                  <span class="o">[--</span><span class="n">quiet</span><span class="o">]</span> <span class="o">[--</span><span class="n">verbose</span><span class="o">]</span> <span class="o">[--</span><span class="n">purge</span><span class="o">]</span>
+                  <span class="n">plugin_or_domain_path</span> <span class="n">data</span> <span class="o">[</span><span class="n">data</span> <span class="o">...]</span>
+
+<span class="n">Train</span> <span class="n">or</span> <span class="n">adapt</span> <span class="n">OLIVE</span> <span class="n">audio</span> <span class="n">recognition</span> <span class="n">systems</span>
+
+<span class="n">positional</span> <span class="k">arguments</span><span class="o">:</span>
+  <span class="n">plugin_or_domain_path</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">plugin</span> <span class="n">or</span> <span class="n">domain</span><span class="o">.</span> <span class="n">A</span> <span class="n">plugin</span> <span class="n">path</span> <span class="n">implies</span>
+                        <span class="n">full</span> <span class="n">training</span><span class="o">.</span> <span class="n">A</span> <span class="n">domain</span> <span class="n">path</span> <span class="n">implies</span> <span class="n">adaptation</span> <span class="n">of</span> <span class="n">the</span>
+                        <span class="n">specified</span> <span class="n">domain</span><span class="o">.</span>
+  <span class="n">data</span>                  <span class="n">paths</span> <span class="n">to</span> <span class="n">data</span> <span class="n">files</span> <span class="k">for</span> <span class="n">training</span><span class="o">/</span><span class="n">adapation</span><span class="o">.</span> <span class="n">The</span> <span class="n">files</span>
+                        <span class="n">can</span> <span class="n">have</span> <span class="n">one</span> <span class="n">of</span> <span class="n">three</span> <span class="n">forms</span><span class="o">.</span> <span class="mi">1</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">audio_path</span><span class="o">&gt;\</span><span class="n">n</span> <span class="mi">2</span><span class="o">:</span>
+                        <span class="o">&lt;</span><span class="n">audio_path</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">class_id</span><span class="o">&gt;\</span><span class="n">n</span> <span class="mi">3</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">audio_path</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">class_id</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="n">start</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">end</span><span class="o">&gt;</span> <span class="o">\</span><span class="n">n</span><span class="o">.</span> <span class="n">The</span> <span class="n">first</span> <span class="n">form</span> <span class="n">has</span> <span class="n">no</span> <span class="n">annotations</span>
+                        <span class="n">and</span> <span class="n">implies</span> <span class="n">unsupervised</span><span class="o">.</span> <span class="n">The</span> <span class="n">second</span> <span class="n">form</span> <span class="n">provides</span> <span class="k">for</span>
+                        <span class="n">file</span><span class="o">-</span><span class="n">level</span> <span class="n">annotations</span> <span class="k">while</span> <span class="n">the</span> <span class="n">third</span> <span class="n">form</span> <span class="n">supports</span>
+                        <span class="n">region</span><span class="o">-</span><span class="n">level</span> <span class="n">annotations</span><span class="o">.</span> <span class="n">Start</span> <span class="n">and</span> <span class="n">end</span> <span class="n">times</span> <span class="n">should</span>
+                        <span class="n">be</span> <span class="k">in</span> <span class="n">seconds</span><span class="o">.</span> <span class="n">If</span> <span class="n">multiple</span> <span class="n">files</span> <span class="n">are</span> <span class="n">specified</span><span class="o">,</span> <span class="n">they</span>
+                        <span class="n">must</span> <span class="n">have</span> <span class="n">the</span> <span class="n">same</span> <span class="n">form</span><span class="o">.</span>
+
+<span class="n">optional</span> <span class="k">arguments</span><span class="o">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="o">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="k">this</span> <span class="n">help</span> <span class="n">message</span> <span class="n">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">domain</span><span class="o">-</span><span class="n">id</span> <span class="n">DOMAIN_ID</span>
+                        <span class="n">The</span> <span class="n">id</span> <span class="n">of</span> <span class="n">the</span> <span class="k">new</span> <span class="n">domain</span> <span class="n">you</span><span class="s1">&#39;re creating through</span>
+<span class="s1">                        training or adaptation. Should be a string that is</span>
+<span class="s1">                        somewhat descriptive of the conditions</span>
+<span class="s1">  --overwrite           Forcefully overwite an existing domain</span>
+<span class="s1">  --preprocess          Pre-process audio only, do not finalize</span>
+<span class="s1">                        training/adaptation</span>
+<span class="s1">  --finalize            Pre-process audio only, do not finalize</span>
+<span class="s1">                        training/adaptation</span>
+<span class="s1">  --unique              gurantees log files are written to unique</span>
+<span class="s1">                        directoires/files. Helpful when running in SGE mode</span>
+<span class="s1">  --options OPTIONS_PATH</span>
+<span class="s1">                        Optional file containing plugin specific name/value</span>
+<span class="s1">                        pairs. The option file must have one or more sections</span>
+<span class="s1">                        for each plugin type. Common section names are</span>
+<span class="s1">                        &#39;</span><span class="n">supervised</span> <span class="n">trainer</span><span class="s1">&#39;, ,&#39;</span><span class="n">supervised</span> <span class="n">adapter</span><span class="s1">&#39;,</span>
+<span class="s1">                        &#39;</span><span class="n">unsupervised</span> <span class="n">trainer</span><span class="s1">&#39; or &#39;</span><span class="n">unsupervised</span> <span class="n">adapter</span><span class="s1">&#39;</span>
+<span class="s1">  --timeout TIMEOUT     timeout, in seconds, for all jobs regardless of the</span>
+<span class="s1">                        audio duration. otherwise the job will timeout based</span>
+<span class="s1">                        on the duration of audio to process and the domain&#39;</span><span class="n">s</span>
+                        <span class="n">timeout_weight</span>
+  <span class="o">--</span><span class="n">version</span>             <span class="n">show</span> <span class="n">program</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">version</span> <span class="n">number</span> <span class="n">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">log</span> <span class="n">LOG_FILE</span><span class="o">,</span> <span class="o">-</span><span class="n">l</span> <span class="n">LOG_FILE</span>
+                        <span class="n">path</span> <span class="n">to</span> <span class="n">output</span> <span class="n">log</span> <span class="n">file</span>
+  <span class="o">--</span><span class="n">work_dir</span> <span class="n">WORK_DIR</span><span class="o">,</span> <span class="o">-</span><span class="n">w</span> <span class="n">WORK_DIR</span>
+                        <span class="n">path</span> <span class="n">to</span> <span class="n">work</span> <span class="n">dir</span>
+  <span class="o">--</span><span class="n">jobs</span> <span class="n">JOBS</span><span class="o">,</span> <span class="o">-</span><span class="n">j</span> <span class="n">JOBS</span>  <span class="n">specify</span> <span class="n">number</span> <span class="n">of</span> <span class="n">parallel</span> <span class="n">JOBS</span> <span class="n">to</span> <span class="n">run</span><span class="o">;</span> <span class="k">default</span> <span class="k">is</span> <span class="n">the</span>
+                        <span class="n">number</span> <span class="n">of</span> <span class="n">local</span> <span class="n">processors</span>
+  <span class="o">--</span><span class="n">debug</span><span class="o">,</span> <span class="o">-</span><span class="n">d</span>           <span class="n">debug</span> <span class="n">mode</span> <span class="n">prevents</span> <span class="n">deletion</span> <span class="n">of</span> <span class="n">logs</span> <span class="n">and</span> <span class="n">intermediate</span>
+                        <span class="n">files</span> <span class="n">on</span> <span class="n">success</span>
+  <span class="o">--</span><span class="n">nochildren</span>          <span class="n">Perform</span> <span class="n">sequential</span> <span class="o">(</span><span class="n">local</span><span class="o">)</span> <span class="n">processing</span> <span class="n">without</span> <span class="n">creating</span>
+                        <span class="n">jobs</span> <span class="k">as</span> <span class="n">sub</span> <span class="n">processes</span> <span class="k">for</span> <span class="n">ease</span> <span class="n">of</span> <span class="n">debugging</span> <span class="o">(</span><span class="n">IPython</span><span class="o">)</span>
+                        <span class="n">at</span> <span class="n">the</span> <span class="n">expense</span> <span class="n">of</span> <span class="n">speed</span><span class="o">/</span><span class="n">parallelization</span>
+  <span class="o">--</span><span class="n">quiet</span><span class="o">,</span> <span class="o">-</span><span class="n">q</span>           <span class="n">turn</span> <span class="n">off</span> <span class="n">progress</span> <span class="n">bar</span> <span class="n">display</span>
+  <span class="o">--</span><span class="n">verbose</span><span class="o">,</span> <span class="o">-</span><span class="n">v</span>         <span class="n">Print</span> <span class="n">logging</span> <span class="n">to</span> <span class="n">the</span> <span class="n">terminal</span><span class="o">.</span> <span class="n">Overrides</span> <span class="o">--</span><span class="n">quiet</span>
+  <span class="o">--</span><span class="n">purge</span><span class="o">,</span> <span class="o">-</span><span class="n">p</span>           <span class="n">purge</span> <span class="n">the</span> <span class="n">work</span> <span class="n">dir</span> <span class="n">before</span> <span class="n">starting</span>
+</code></pre></div>
+
+<p>In order to use an adapted system plugin, simply pass the full path of the domain generated by <code>localtrain</code> to <code>localenroll</code> or <code>localanalyze</code> as the plugin_domain_path argument.  For training, do not include the domain in the plugin path.</p>
+<p>When running on a SGE, you may split the audio processing from the finalization step by using the --preprocess flag to first pre-process audio files, then use invoke <code>localtrain</code> with the --finalize argument to finalize training.   </p>
+<p>Guidelines for the minimum amount of audio data required to successfully execute <code>localtrain</code> are listed in the table below. </p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Operation</th>
+<th>Speech Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SAD</td>
+<td>Adapt to new channel</td>
+<td>1h</td>
+</tr>
+<tr>
+<td>LID</td>
+<td>Adapt to new channel</td>
+<td>20m</td>
+</tr>
+<tr>
+<td>LID</td>
+<td>Train a new language</td>
+<td>3h</td>
+</tr>
+<tr>
+<td>SID</td>
+<td>Adapt to new channel</td>
+<td>1h</td>
+</tr>
+</tbody>
+</table>
+<h4 id="i-examples">i. Examples</h4>
+<h5 id="sad-adaptation-example">SAD Adaptation Example:</h5>
+<div class="codehilite"><pre><span></span><code>$ localtrain ./plugins/sad-dnn-v1/domains/ptt-v1/ adaptation-data.lst
+</code></pre></div>
+
+<p>Where each line of adaptation-data.lst has the following format:</p>
+<div class="codehilite"><pre><span></span><code>/path/to/audio.wav label
+</code></pre></div>
+
+<h3 id="c-lid-trainingadaptation">C.  LID Training/Adaptation</h3>
+<p>When training new channel conditions, it is recommended to train all supported languages in the LID model to produce the best results.  The out of set language is labeled as ‘xxx’.  Use this language ID when training to add languages that you do not want to target in the LID task but are known to be in the test dataset.</p>
+<h2 id="4-log-files">4: Log Files</h2>
+<h3 id="a-olive-command-line-logging">a.  OLIVE Command Line Logging</h3>
+<p>When executing <code>localtrain</code>, <code>localenroll</code>, and <code>localanalyze</code>, here are three named log files that may be of interest should something go awry. </p>
+<ol>
+<li>The top-level log file: This log file corresponds to the -l option to the <code>localtrain</code>, <code>localenroll</code>, and <code>localanalyze</code> utilities.  By default, it is named the same as the utility being used with “.log” appended (i.e. localanalyze.log when running <code>localanalyze</code>) and will be written to the directory from which you executed the utility. </li>
+<li>The pool executor log file:  This file will be written to [work_directory]/logs/pool_executor.log, where work_directory corresponds to the -w option to <code>localtrain</code>/<code>localenroll</code>/<code>localanalyze</code> and defaults to your current directory/WORK. The pool executor log file is the best log file to look at if unexpected errors occur. It corresponds to our internal job scheduler also known as the pool executor.</li>
+<li>The pool monitor log file:  This file will be written to [work_directory]/logs/pool_monitor.log, where work_directory corresponds to the -w option to the  <code>localtrain</code>, <code>localenroll</code>, <code>localanalyze</code> utilities and defaults to your current directory/WORK/. This log contains stats about memory and CPU utilization. </li>
+</ol>
+<p>All three of these log files will exhibit log rotation behavior. </p>
+<p>In the event of errors, <code>[work_directory]/logs</code> may also contain log files named <code>[order_id].failed</code>, where <code>order_id</code> generally corresponds to the file names of the audio files being used for adaptation/training, enrollment, or analysis. The id can be used to tie errors in the pool executor log file to the “.failed” log files. </p>
+<p>If you run the OLIVE CLI utilities in debug mode (-d), all log files will be maintained, even if they were successful. </p>
+<h3 id="b-rotating-log-files">b.  Rotating Log Files</h3>
+<p>OLIVE employs rotating log files in many places. In this context, rotating refers to a log file that is rewritten each time the application is run. The old log file, if any, is renamed with an integer suffix denoting how many invocations in the past it corresponds to. For instance, if you run <code>localanalyze</code> and don’t specify a -l option, you’ll get the default <code>localanalyze.log</code> file. If <code>localanalyze.log</code> already exists, it is moved to <code>localanalyze.log.1</code>. The system will keep the 10 most recent log files. A file named localanalyze.log.8 means that the file corresponds to eight invocations ago.</p>
+<h2 id="5-plugin-appendix">5: Plugin Appendix</h2>
+<h3 id="plugin-types-and-acronyms">Plugin Types and Acronyms</h3>
+<p>Currently, OLIVE supports the plugin technologies listed in the following list.  For operating instructions that apply to only a specific technology, refer to that section within this appendix.</p>
+<ul>
+<li>SAD – Speech activity detection. </li>
+<li>SID – Speaker identification.</li>
+<li>LID – Language identification.</li>
+<li>KWS – Keyword spotting.</li>
+<li>QBE – Query by example based keyword spotting.</li>
+<li>TID – Topic identification.</li>
+<li>SDD – Speaker diarization and detection.</li>
+<li>GID – Gender identification.</li>
+<li>ENH – Speech and audio enhancement.</li>
+</ul>
+<h4 id="speech-activity-detection-sad">Speech Activity Detection (SAD)</h4>
+<p>SAD plugins are frame scorers that take an audio list file and annotate the presence and location of speech in each audio file in that list.  In standard operation, SAD plugins produce a single output file for each input file, by default in a directory called OUTPUT in the location <code>localanalyze</code> was called from.  Output files carry the name of the original input file, but with a new extension “.scores” – for example, audioFile1.wav will become audioFile1.wav.scores, saved inside OUTPUT/.  The format of these results files is a newline separated list of numerical values representing the likelihood that each 10ms frame of the audio file contains speech.  Typically, a score above 0 represents speech detection, and a score below 0 represents no speech.</p>
+<p>SAD analysis example:</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze /plugins/sad-dnn-v4/domains/ptt-v1/ /data/sad/test/test-audio.lst
+</code></pre></div>
+
+<p>Output files:</p>
+<div class="codehilite"><pre><span></span><code>OUTPUT/audioFile1.wav.scores
+OUTPUT/audioFile2.wav.scores
+</code></pre></div>
+
+<p>Example audioFile1.wav.scores contents:</p>
+<div class="codehilite"><pre><span></span><code>-0.22624
+-0.10081
+0.00925
+0.12365
+</code></pre></div>
+
+<p>Alternatively, SAD plugins can be run with the <code>--thresholds</code> flag to have <code>localanalyze</code> automatically convert the frame scores to regions of speech, by applying the provided threshold.</p>
+<p>SAD analysis example using thresholds:</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze --thresholds<span class="o">=</span><span class="m">0</span>.0 /plugins/sad-dnn-v4/domains/ptt-v1/ /data/sad/test/test-audio.lst
+</code></pre></div>
+
+<p>This will provide a single output file in OUTPUT directory corresponding to the provided threshold: 0.0.pem.  If more than one threshold is provided, there will be a PEM file placed into OUTPUT corresponding to each provided threshold.</p>
+<p>Example PEM output:</p>
+<div class="codehilite"><pre><span></span><code>/data/sad/test/audioFile1.wav 1 speech 63.110 66.060
+/data/sad/test/audioFile1.wav 1 speech 66.510 69.230
+/data/sad/test/audioFile1.wav 1 speech 93.480 96.090
+/data/sad/test/audioFile1.wav 1 speech 96.570 100.760
+</code></pre></div>
+
+<p>Note that if negative thresholds are to be used, it is very important to specify the thresholds using an ‘=’ character.  For example, this threshold specification is valid:</p>
+<div class="codehilite"><pre><span></span><code>--thresholds=-2.0,4.0
+</code></pre></div>
+
+<p>And this is not valid:</p>
+<div class="codehilite"><pre><span></span><code>--thresholds -2.0,4.0
+</code></pre></div>
+
+<p>If only thresholds of 0 or above are going to be used, it is acceptable to omit the equals sign.</p>
+<h4 id="speaker-identification-sid">Speaker Identification (SID)</h4>
+<p>SID plugins are global scorers that take an audio list file and return a score for each enrolled speaker model scored against the audio in each input audio file.  Generally, a score above 0 for an enrolled speaker model represents that speaker being detected in the respective audio file.  In order to perform analysis on a file with a SID plugin you must first enroll one or more target speakers.  </p>
+<p>The enrollment list file for a SID plugin follows this format for each line:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;speaker_id&gt;
+</code></pre></div>
+
+<p>An example enroll.lst:</p>
+<div class="codehilite"><pre><span></span><code>/data/spkr_example_audio_5760.wav UIM1
+/data/spkr_example_audio_5761.wav UIM1
+/data/spkr_example_audio_5762.wav John
+/data/spkr_example_audio_5763.wav John
+</code></pre></div>
+
+<p>Enrolling these speakers with <code>localenroll</code>:</p>
+<div class="codehilite"><pre><span></span><code>$ localenroll /path/to/plugins/sid-embed-v2/domains/multi-v1/ enroll.lst
+</code></pre></div>
+
+<p>Example <code>localanalyze</code> call:  </p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze ./plugins/sid-embed-v2/domains/multi-v1/ ./data/sid/test/testAudio.lst
+</code></pre></div>
+
+<p>By default, the output of this call is written to output.txt in the directory the command was run.</p>
+<p>The format of output.txt contains one line for each enrolled speaker model, for each input audio file, and the corresponding score: </p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;speaker_id&gt; &lt;score&gt;
+</code></pre></div>
+
+<p>Example output.txt: </p>
+<div class="codehilite"><pre><span></span><code>/data/sid/audio/file1.wav speaker1 -0.5348
+/data/sid/audio/file1.wav speaker2 3.2122
+/data/sid/audio/file1.wav speaker3 -5.5340
+/data/sid/audio/file2.wav speaker1 0.5333
+/data/sid/audio/file2.wav speaker2 -4.9444
+/data/sid/audio/file2.wav speaker3 -2.6564
+</code></pre></div>
+
+<h4 id="trial-based-calibration-speaker-identification-sid-tbc">Trial-based Calibration Speaker Identification (SID TBC)</h4>
+<p>Trial-based Calibration SID plugins are identified by ‘tbc’ in the plugin name.  They are used very similarly to a basic SID plugin, using <code>localenroll</code> and <code>localanalyze</code> just like the examples shown in the previous example.  The benefit of TBC plugins is that they allow OLIVE to perform calibration at test-time, based on the actual data conditions being encountered, rather than being forced to use a single, global calibration model that has been trained a priori.  The basics of TBC enrollment and testing follow the previous SID examples, but the additional options and outputs available to TBC are detailed below.</p>
+<p>The standard approach to calibration uses a “one size fits all” calibration model based on the developer’s best understanding of potential operating conditions. This is problematic when the user either doesn’t know ahead of time what likely conditions are, or when operating conditions may vary widely. Trial-based calibration was developed as a means of providing calibration that is responsive to the particular conditions of a trial, and adapts its calibration model based on the conditions encountered. There are two ways we have developed to do this. The first draws from a pool of available data (either provided by the developer or augmented with user-provided data) and uses measures of the conditions found within this data and the trial conditions to build an ideal calibration set on the fly. This is useful in that this approach can also determine when a trial CANNOT be calibrated, and to measure the success of calibration when it is possible. The clear downside of this approach is that it is quite slow. A second approach to TBC is to use a model that has used a DNN to learn to predict both calibration parameters and confidence from large sets of trials and available calibration data. This approach is very fast (about 5000 times faster than the first approach) but has the downside that expanding the calibration set by the user’s data isn’t possible.  This plug-in provides both approaches in the TBC plug-in, as two separate domains.</p>
+<p>In addition to the output score file detailed in the SID section, TBC plugins have additional possible outputs.</p>
+<h5 id="speech-detection-output">Speech Detection Output</h5>
+<p>Segmentation files are used to label time regions in the speech signal.</p>
+<p>We use this format for voice activity detection (VAD).</p>
+<p>If an output_ivs_dump_path is provided as an option to <code>localenroll</code> or <code>localanalyze</code>, the system will produce this file in a folder corresponding to the wav_id for all registered waveforms.</p>
+<p>The format is the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">md5sum</span> <span class="nv">start</span> <span class="k">end</span> <span class="ss">(</span><span class="nv">in</span> <span class="nv">seconds</span><span class="ss">)</span>
+</code></pre></div>
+
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>b5ae06002383da6c74a7b8424c5fb9282859cca36750565bfb80a13ab732fc57 0.060 0.060
+b5ae06002383da6c74a7b8424c5fb9282859cca36750565bfb80a13ab732fc57 0.090 0.090
+b5ae06002383da6c74a7b8424c5fb9282859cca36750565bfb80a13ab732fc57 0.110 0.170
+b5ae06002383da6c74a7b8424c5fb9282859cca36750565bfb80a13ab732fc57 0.200 0.200
+b5ae06002383da6c74a7b8424c5fb9282859cca36750565bfb80a13ab732fc57 0.560 3.550
+</code></pre></div>
+
+<h5 id="persistent-i-vectors">Persistent I-Vectors</h5>
+<p>For both <code>localenroll</code> and <code>localanalyze</code>, if the output_ivs_dump_path is defined via an options file with the --options flag, an i-vector from each audio file is saved in this directory for re-use. This reduces unnecessary computation when there exists overlap between lists of wave files to be processed. For instance, if the enroll and test wave file lists are identical (i.e., the case of an exhaustive comparison of a set of files), i-vector persistence will reduce overall computation by almost a factor of 2 since i-vector extraction consumes more of the computation required for an evaluation. I-vectors will be saved in a sub-directory of output_ivs_dump_path based on the base name of the wave file.</p>
+<p>In addition to this optional feature, the enrollment vectors are loaded in memory prior to verification and if the md5sum of a test audio file matches one used in the enrollment process, the corresponding vector will be used instead of re-processing the audio. This is because vector extraction is identical between enrollment and verification.</p>
+<h5 id="trial-based-calibration">Trial-based Calibration</h5>
+<p>Trial-based calibration (TBC) does not change the way calibration works but changes the way calibration is used.  It relaxes the constraint on the system developers to train a calibration model that is ideally matched to the end use conditions.  Rather than train a calibration model a priori, the system postpones this training until the conditions of the particular verification trial are known to the system; a trial consists of comparing test audio to an enrolled speaker model.  The goal of trial-based calibration is to use information about the trial to generate an ideal calibration set for the trial conditions using the reservoir of possible calibration audio files available.  Using this set, a calibration model tailored to the conditions of the trial can be trained and used to effectively calibrate the verification score. </p>
+<p>The TBC operation and output differs from traditional SID plugins; it may choose to reject a trial and NOT output a score if insufficient data is available for calibrating for those conditions. For instance, the output may look similar to the following:</p>
+<div class="codehilite"><pre><span></span><code>waves/T6_ACK2.sph T6 0.0 -inf Unable to calibrate with only 8 relevant target trials (20 needed with similarity above 3.00)
+waves/T6_ACK3.sph T1 0.0 -inf Unable to calibrate with only 12 relevant target trials (20 needed with similarity above 3.00)sed 0 segments in calibration
+waves/T6_ACK3.sph T2 0.0 -inf Unable to calibrate with only 3 relevant target trials (20 needed with similarity above 3.00)sed 0 segments in calibration
+waves/T6_ACK3.sph T3 0.0 -inf Unable to calibrate with only 0 relevant target trials (20 needed with similarity above 3.00)sed 0 segments in calibration
+waves/T6_ACK3.sph T4 0.0 -inf Unable to calibrate with only 2 relevant target trials (20 needed with similarity above 3.00)sed 0 segments in calibration
+waves/T6_ACK3.sph T5 0.0 -inf Unable to calibrate with only 8 relevant target trials (20 needed with similarity above 3.00)sed 0 segments in calibration
+waves/T6_ACK3.sph T6 0.0 -inf Unable to calibrate with only 9 relevant target trials (20 needed with similarity above 3.00)sed 0 segments in calibration
+waves/T4_ACK3.sph T5 0.96153318882 4.04821968079 Used 95 target trials in calibration
+waves/T4_RC.sph T4 3.46785068512 4.07499170303 Used 95 target trials in calibration
+waves/T5_Tip2.sph T5 8.90770149231 4.07352733612 Used 98 target trials in calibration
+waves/T5_RC.sph T5 10.2386112213 4.03855705261 Used 47 target trials in calibration
+waves/T4_Tip2.sph T4 10.8663234711 4.07404613495 Used 218 target trials in calibration
+waves/T4_Tip1.sph T4 11.793006897 3.98730397224 Used 164 target trials in calibration
+waves/T4_ACK2.sph T4 11.8091144562 3.90610170364 Used 119 target trials in calibration
+waves/T4_ACK1.sph T4 12.2115001678 4.16342687607 Used 208 target trials in calibration
+waves/T5_ACK1.sph T5 13.8099250793 3.99625587463 Used 99 target trials in calibration
+waves/T5_Tip1.sph T5 14.9411458969 3.96994686127 Used 83 target trials in calibration
+waves/T4_ACK3.sph T4 16.003446579 4.05554199219 Used 146 target trials in calibration
+</code></pre></div>
+
+<p>The output follows the structure:</p>
+<div class="codehilite"><pre><span></span><code>&lt;testwave&gt; &lt;modelid&gt; &lt;score&gt; &lt;confidence&gt; &lt;info&gt;
+</code></pre></div>
+
+<p>In the instance of insufficient calibration segments being located, a score of 0.0 and a calibration confidence of -inf is given. In contrast, when sufficient data is found for calibration, the number of segments used in calibration is reported.</p>
+<p>There exist two options for applying calibration with the current plugin: DNN-assisted TBC, normal TBC, or global calibration. Each of these options use duration information to reduce the impact of duration variation impacting calibration performance. Note that changing calibration domains does NOT require re-enrollment of models as these are done in a domain-independent way for any TBC-enabled plugin.</p>
+<h5 id="dnn-assisted-trial-based-calibration">DNN-assisted Trial-based Calibration</h5>
+<p>DNN-assisted TBC is invoked by passing the tbcdnn-v1 domain to <code>localanalyze</code>. This is a very fast and newly pioneered effort by SRI to reduce the computation needed to apply dynamic calibration methods to speaker recognition and operates with very low overhead compared to global calibration, and yet significantly benefits calibration performance in varying conditions or conditions that differ from the development conditions.</p>
+<div class="codehilite"><pre><span></span><code>localanalyze ... &lt;plugin&gt;/domains/tbcdnn-v1 test.lst
+</code></pre></div>
+
+<h5 id="normal-trial-based-calibration">Normal Trial-based Calibration</h5>
+<p>TBC is applied by default with the 'sid-embedDnnTbc-v1' plugin. The data within the domain (such as 'tbc-v1') is used as candidate calibration data.</p>
+<div class="codehilite"><pre><span></span><code>localanalyze ... &lt;plugin&gt;/domains/tbc-v1 test.lst
+</code></pre></div>
+
+<p>TBC is applied to verification scores on a trial-by-trial basis. As such, verification using TBC will operate at a speed much slower than global or DNN-assisted TBC depending on the size and make-up of the TBC data. This should be considered when using TBC in a cluster environment where it is the number of trials (model vs test comparisons) that determine the running time instead of the number of test files.</p>
+<h5 id="global-calibration">Global Calibration</h5>
+<p>Each domain can be used to invoke global calibration. This is particularly useful for user-defined data as it provides a rapid means of improving calibration performance without a dramatic increase in computation time. In this case, verification will operate at a much faster pace since TBC is essentially disabled and the global calibration model parameters are applied to all scores. In order to invoke global calibration, and optional parameter must be passed to <code>localanalyze</code> via an options file:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">echo</span><span class="w"> </span><span class="s">&quot;[global scoring]</span>
+<span class="n">global_calibration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="s">&quot; &gt; options.lst</span>
+<span class="n">localanalyze</span><span class="w"> </span><span class="o">--</span><span class="n">options</span><span class="w"> </span><span class="n">options</span><span class="p">.</span><span class="n">lst</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="o">&lt;</span><span class="n">plugin</span><span class="o">&gt;/</span><span class="n">domains</span><span class="o">/</span><span class="n">tbc</span><span class="o">-</span><span class="n">v1</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">lst</span><span class="w"></span>
+</code></pre></div>
+
+<h5 id="optional-parameters">Optional Parameters</h5>
+<p>The TBC-based plugins offer several tunable parameters via the options parameter to <code>localenroll</code> or <code>localanalyze</code>. These can be passed to the enrollment phase or verification phase by preceding the options in an ascii text file as such:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="n">options</span><span class="p">.</span><span class="n">lst</span><span class="w"></span>
+<span class="p">[</span><span class="n">enrollment</span><span class="p">]</span><span class="w"></span>
+<span class="p">...</span><span class="n">enrollment</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">line</span><span class="p">...</span><span class="w"></span>
+<span class="p">[</span><span class="n">global</span><span class="w"> </span><span class="n">scoring</span><span class="p">]</span><span class="w"></span>
+<span class="p">...</span><span class="n">verification</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">line</span><span class="p">...</span><span class="w"></span>
+</code></pre></div>
+
+<p>The optional parameters and their purpose are provided below.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">tbc_confidence_threshold</span> <span class="o">=</span> <span class="mi">3</span>.<span class="mi">0</span>, # <span class="nv">Similarity</span> <span class="nv">threshold</span> <span class="k">for</span> <span class="nv">processing</span> <span class="nv">a</span> <span class="nv">trial</span> <span class="nv">with</span> <span class="nv">TBC</span>
+<span class="nv">score_threshold</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">0</span>,          # <span class="nv">Score</span> <span class="nv">offset</span> <span class="nv">subtracted</span> <span class="nv">from</span> <span class="nv">output</span> <span class="nv">LLRs</span> <span class="nv">to</span> <span class="nv">assist</span> <span class="nv">in</span> <span class="nv">making</span> <span class="mi">0</span> <span class="nv">threshold</span> <span class="nv">output</span>
+<span class="nv">tgt_max</span> <span class="o">=</span> <span class="mi">300</span>,                  # <span class="nv">The</span> <span class="nv">maxmimum</span> <span class="nv">number</span> <span class="nv">of</span> <span class="nv">target</span> <span class="nv">trials</span> <span class="nv">used</span> <span class="k">for</span> <span class="nv">TBC</span> <span class="nv">of</span> <span class="nv">a</span> <span class="nv">trial</span>
+<span class="nv">imp_max</span> <span class="o">=</span> <span class="mi">3000</span>,                 # <span class="nv">The</span> <span class="nv">maxmimum</span> <span class="nv">number</span> <span class="nv">of</span> <span class="nv">impostor</span> <span class="nv">trials</span> <span class="nv">used</span> <span class="k">for</span> <span class="nv">TBC</span> <span class="nv">of</span> <span class="nv">a</span> <span class="nv">trial</span>
+<span class="nv">tgt_imp_min</span> <span class="o">=</span> <span class="mi">20</span>,               # <span class="nv">The</span> <span class="nv">mimum</span> <span class="nv">number</span> <span class="nv">of</span> <span class="nv">relevant</span> <span class="nv">target</span> <span class="nv">and</span> <span class="nv">impostor</span> <span class="nv">calibration</span> <span class="nv">trials</span> <span class="nv">needed</span> <span class="nv">to</span> <span class="nv">use</span> <span class="nv">TBC</span> <span class="ss">(</span><span class="nv">rejected</span> <span class="nv">otherwise</span><span class="ss">)</span>
+<span class="nv">global_calibration</span> <span class="o">=</span> <span class="nv">False</span>,     # <span class="nv">Apply</span> <span class="nv">global</span> <span class="nv">calibration</span> <span class="nv">instead</span> <span class="nv">of</span> <span class="nv">TBC</span>
+<span class="nv">ivs_dump_path</span> <span class="o">=</span> <span class="nv">None</span>,           # <span class="nv">Output</span> <span class="nv">path</span> <span class="k">for</span> <span class="nv">dumping</span> <span class="nv">vectors</span> <span class="nv">and</span> <span class="nv">meta</span> <span class="nv">information</span>
+<span class="nv">sad_threshold</span>   <span class="o">=</span> <span class="mi">0</span>.<span class="mi">5</span>,          # <span class="nv">Threshold</span> <span class="k">for</span> <span class="nv">speech</span> <span class="nv">activity</span> <span class="nv">detection</span> <span class="ss">(</span><span class="nv">higher</span> <span class="nv">results</span> <span class="nv">in</span> <span class="nv">less</span> <span class="nv">speech</span><span class="ss">)</span>
+<span class="nv">sad_filter</span>      <span class="o">=</span> <span class="mi">1</span>,            # <span class="nv">Smoothing</span> <span class="nv">of</span> <span class="nv">LLRs</span> <span class="nv">from</span> <span class="nv">SAD</span> <span class="nv">DNN</span> <span class="nv">prior</span> <span class="nv">to</span> <span class="nv">thresholding</span>
+<span class="nv">sad_interpolate</span> <span class="o">=</span> <span class="mi">1</span>,            # <span class="k">If</span> <span class="o">&gt;</span> <span class="mi">1</span>, <span class="nv">a</span> <span class="nv">speed</span> <span class="nv">up</span> <span class="nv">of</span> <span class="nv">SAD</span> <span class="nv">by</span> <span class="nv">interpolating</span> <span class="nv">values</span> <span class="nv">between</span> <span class="nv">frames</span> <span class="ss">(</span><span class="mi">4</span> <span class="nv">works</span> <span class="nv">well</span><span class="ss">)</span>
+</code></pre></div>
+
+<p>Utilizing these parameters in an options file may look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">echo</span><span class="w"> </span><span class="s">&quot;[enrollment]</span>
+<span class="n">sad_threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="w"></span>
+<span class="n">ivs_dump_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">embeddings</span><span class="w"></span>
+<span class="p">[</span><span class="n">global</span><span class="w"> </span><span class="n">scoring</span><span class="p">]</span><span class="w"></span>
+<span class="n">sad_threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="w"></span>
+<span class="n">ivs_dump_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">embeddings</span><span class="w"></span>
+<span class="n">tgt_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w"></span>
+<span class="n">tgt_imp_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="s">&quot; &gt; options.lst</span>
+
+<span class="n">localenroll</span><span class="w"> </span><span class="o">--</span><span class="n">options</span><span class="w"> </span><span class="n">options</span><span class="p">.</span><span class="n">lst</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="o">&lt;</span><span class="n">plugin</span><span class="o">&gt;/</span><span class="n">domains</span><span class="o">/&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="w"> </span><span class="n">enroll</span><span class="p">.</span><span class="n">lst</span><span class="w"></span>
+<span class="n">localanalyze</span><span class="w"> </span><span class="o">--</span><span class="n">options</span><span class="w"> </span><span class="n">options</span><span class="p">.</span><span class="n">lst</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="o">&lt;</span><span class="n">plugin</span><span class="o">&gt;/</span><span class="n">domains</span><span class="o">/&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">lst</span><span class="w"></span>
+</code></pre></div>
+
+<h5 id="verification-trial-output">Verification Trial Output</h5>
+<p>The format for the verification trial is the following. Note that for global calibration, the optional parameters (calibration_confidence and calibration_remarks) are not output.</p>
+<p>Output format:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">wav_id</span><span class="w"> </span><span class="n">speaker_id</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="p">[</span><span class="n">calibration_confidence</span><span class="w"> </span><span class="n">calibration_remarks</span><span class="p">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>Here is an example of score executed with Global Calibration:</p>
+<div class="codehilite"><pre><span></span><code>waves/T1_ACK1.sph T6 5.19274568558
+waves/T1_ACK1.sph T4 1.204241395
+waves/T1_ACK1.sph T5 1.69025540352
+</code></pre></div>
+
+<p>Here is an example of scores executed with DNN-assisted TBC:</p>
+<div class="codehilite"><pre><span></span><code>waves/T1_ACK1.sph T6 5.19274568558 4.42 Used DNN-assisted TBC with confidence 5.751
+waves/T1_ACK1.sph T4 1.204241395   5.12 Used DNN-assisted TBC with confidence 3.122
+waves/T1_ACK1.sph T5 0.0 -inf Unable to calibrate with confidence above threshold (3.00)
+</code></pre></div>
+
+<p>Here is an example of scores executed with normal TBC:</p>
+<div class="codehilite"><pre><span></span><code>waves/T1_ACK1.sph T6 5.19274568558 4.42 Used 67 target trials in calibration
+waves/T1_ACK1.sph T4 1.204241395   5.12 Used 73 target trials in calibration
+waves/T1_ACK1.sph T5 0.0 -inf Unable to calibrate with only 8 relevant target trials (20 needed with similarity above 3.00)
+</code></pre></div>
+
+<h4 id="speaker-diarization-and-detection-sdd">Speaker Diarization and Detection (SDD)</h4>
+<p>The overall goal of SDD plugins is to detect regions of speech within an audio recording that are associated with different speakers, and then identify those speakers if possible. SDD plugins have three different modes of operation, as outlined below.  Changing the execution mode for SDD is done by passing an options file to <code>localanalyze</code> as an argument to the --options flag.  The main behavior and premise of the technology and plugin remain the same, but each mode changes the format and information contained in the output file.  </p>
+<p>Running the SDD plugin is very similar to running SID plugins, with the same syntax for enrollment and testing.  Currently, training or adaptation through <code>localtrain</code> is not supported, but enrolling new speakers and testing against enrolled speakers is as simple as:</p>
+<div class="codehilite"><pre><span></span><code>$ localenroll /path/to/plugins/sdd-embed-v1/domains/multi-v1/ enrollmentAudio.lst 
+$ localanalyze /path/to/plugins/sdd-embed-v1/domains/multi-v1/ testAudio.lst
+</code></pre></div>
+
+<p>The enrollment and test audio file lists in this example follow the same format as the lists used by SID plugins, described above. By default, if run as above with no options, the plugin will run in Speaker Detection mode, and provide the output described above.  In order to run in SID or SID Exhaustive mode, you will need to provide an options file to specify that behavior:</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze --options options.lst /path/to/plugins/sdd-embed-v1/domains/multi-v1/ testAudio.lst
+</code></pre></div>
+
+<p>Where options.lst is a text file with contents similar to:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[region scoring]</span>
+<span class="na">mode: SID_EXHAUSTIVE</span>
+<span class="na">sad_threshold: 0.0</span>
+<span class="na">diarization_max_num_speakers: 2</span>
+</code></pre></div>
+
+<p>The [region scoring] header is alerting the plugin that the options are being passed for scoring, and all of the parameters shown above (sad_threshold, diarization_max_num_speakers, mode) are optional parameters.  The mode option controls the output behavior as described above, and the possible options are SID, SID_EXHAUSTIVE, and SPEAKER_DETECTION, and described directly below. </p>
+<p>The sad_threshold defaults to 2.0, and is used to fine tune the threshold for the internal speech activity detection plugin if necessary.  The parameter diarization_max_num_speakers defaults to 4, and is the largest number of speakers the plugin will attempt to consider when clustering segments within the file.</p>
+<h5 id="sdd-execution-modes">SDD Execution Modes</h5>
+<p>To facilitate the understanding of each mode’s output, consider that speech from an audio file is made up of clusters of speakers, and each cluster will have one or more contiguous segment of speech.</p>
+<ul>
+<li>SPEAKER_DETECTION<ul>
+<li>The goal of Speaker Detection is to show the most probable speaker model for each segment of the input audio file.  As output, this mode gives one line per segment within the file, along with the top scoring enrolled model for the cluster that segment belongs to, and that cluster's score for the given model. Note that many scores will be repeated in the output file, since each segment in the cluster shares the same score for a given speaker model. This mode is performed by default if no options file with a mode override is given.</li>
+</ul>
+</li>
+<li>SID<ul>
+<li>This mode is meant for triaging large amounts of audio files when the main goal is just finding which of these files may contain speech from one of the enrolled speakers.  The output is the maximum score for each enrolled speaker within the audio file after scoring against each cluster in the file, as well as the timestamps for the beginning and end of the longest segment within the cluster that scored the highest for that model. This gives a specific segment to spot check and evaluate the plugin's decision if needed.</li>
+</ul>
+</li>
+<li>SID_EXHAUSTIVE<ul>
+<li>When using SID Exhaustive, each diarized cluster is scored against each enrolled model. The output is a complete listing for every speech segment of the input audio file, the score from testing every enrolled model against the cluster that the segment belongs to. Many scores will be repeated in the output file, since each segment in the cluster shares the same score.  In this example, Chris and Jimmy are the only enrolled models, and 5 total segments were identified within the file.</li>
+</ul>
+</li>
+</ul>
+<h4 id="language-identification-lid">Language Identification (LID)</h4>
+<p>LID plugins are global scorers that act very similar to SID with respect to scoring, except that each score corresponds to a language model rather than a speaker model.  In most cases, LID plugins will be delivered from SRI with a set of languages already enrolled.  Languages can be added to some plugins by the user if enough appropriate data is available, through the <code>localtrain</code> CLI call.  Details on this will be added to this document in a later revision.</p>
+<p>Example <code>localanalyze</code> call:  </p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze /path/to/plugins/lid-embed-v2/domains/multi-v1/ testAudio.lst
+</code></pre></div>
+
+<p>Output format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;language_id&gt; &lt;score&gt;
+</code></pre></div>
+
+<p>Output example:</p>
+<div class="codehilite"><pre><span></span><code>/data/lid/audio/file1.wav fre -0.5348
+/data/lid/audio/file1.wav eng 3.2122
+/data/lid/audio/file1.wav spa -5.5340
+/data/lid/audio/file1.wav rus 0.5333
+/data/lid/audio/file1.wav ara -4.9444
+/data/lid/audio/file2.wav fre -2.6564
+</code></pre></div>
+
+<h4 id="keyword-spotting-kws">Keyword Spotting (KWS)</h4>
+<p>KWS is an automatic speech recognition (ASR) based approach to detecting spoken keywords in audio.  Rather than enrolling target keywords from audio, as you would with query-by-example, telling the plugin what keywords to search for is done by passing an IDs file to <code>localanalyze</code>.  The format of the IDs file is:</p>
+<p>IDs List Format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;id_1&gt;
+&lt;id_2 (opt)&gt;
+&lt;id_N (opt)&gt;
+</code></pre></div>
+
+<p>A Keyword Spotting IDs example, search_list.lst: </p>
+<div class="codehilite"><pre><span></span><code>remote
+torpedo
+voice recognition
+</code></pre></div>
+
+<p>Example KWS <code>localanalyze</code> call with the --class_ids argument:</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze --class_ids search_list.lst /path/to/plugins/kws-batch-v9/domains/eng-tel-v1/ /data/kws/test/testAudio.lst
+</code></pre></div>
+
+<p>The output format for KWS plugins is identical to that of QBE.  It is written to output.txt by default and follows this format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;start_time_s&gt; &lt;end_time_s&gt; &lt;keyword_id&gt; &lt;score&gt;
+</code></pre></div>
+
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>/data/kws/testFile1.wav 7.170 7.570 remote 1.0
+/data/kws/testFile1.wav 10.390 10.930 remote 0.693357
+/data/kws/testFile1.wav 1.639 2.549 voice recognition 1.0
+</code></pre></div>
+
+<h4 id="automatic-speech-recognition-asr">Automatic Speech Recognition (ASR)</h4>
+<p>Automatic Speech Recognition plugins perform speech-to-text conversion of speech contained within a submitted audio segment to create a transcript of what is being said. Currently the outputs are based on word-level transcriptions. ASR plugins are not-performing any translation, but simply speech-to-text in the native language. All ASR domains are language-dependent, and each one is meant to work only with a single, specific language. </p>
+<p>ASR plugins do not require any enrollment of words (like QBE) or specification of words of interest (like traditional KWS), but instead rely on the vocabulary model built into the domain to define the list of available words. All that is necessary for scoring an audio file for ASR is a list of input files to be scored, which follows the format below.</p>
+<p>Generic input audio list format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audioFile_1&gt;
+&lt;audioFile_2 (opt)&gt;
+...
+&lt;audioFile_N (opt)&gt;
+</code></pre></div>
+
+<p>A specific example of this, called testAudio.lst, might look like: </p>
+<div class="codehilite"><pre><span></span><code>/data/asr/testFile1.wav
+/data/asr/testFile2.wav
+/data/asr/testFile3.wav
+</code></pre></div>
+
+<p>Note that if the files are not contained within the directory that localanalyze is being run from, or if a relative path from that location is not provided, the full file path to each file is necessary.</p>
+<p>An example ASR <code>localanalyze</code> call:</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze /home/user/oliveAppData/plugins/asr-dynapy-v1/domains/eng-tdnnChain-tel-v1/ /data/asr/test/testAudio.lst
+</code></pre></div>
+
+<p>The output format for KWS plugins is identical to that of QBE and other region-scoring OLIVE plugins. ASR plugins are region scorers, and as such will return a list of words, in the order they are spoken. Each detected word consists of timestamp regions in seconds (start and end time pairs), each with an accompanying score, along with the 'value' of that word. Each word output must be part of the vocabulary that specific language's domain was trained with. At this point, out-of-vocabulary words are not supported, so uncommon words, slang words, names, and some other vocabulary may not be able to be recognized by these plugins.</p>
+<p>Note that all current ASR plugin domains will output words in their 'native' script. This means that for languages like English and Spanish, each word will be in ASCII text, with the Latin alphabet. Mandarin Chinese, Russian, and Farsi, however, words will be comprised of unicode characters in the native script.</p>
+<p>Output is written to output.txt by default and follows this format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;start_time_s&gt; &lt;end_time_s&gt; &lt;word&gt; &lt;score&gt;
+</code></pre></div>
+
+<p>An example in English:</p>
+<div class="codehilite"><pre><span></span><code>/data/asr/testEnglish1.wav 0.000 0.190 and 43.00000000
+/data/asr/testEnglish1.wav 0.210 0.340 we&#39;re 44.00000000
+/data/asr/testEnglish1.wav 0.330 0.460 going 97.00000000
+/data/asr/testEnglish1.wav 0.450 0.520 to 97.00000000
+/data/asr/testEnglish1.wav 0.510 0.940 fly 66.00000000
+/data/asr/testEnglish1.wav 1.080 1.300 was 31.00000000
+/data/asr/testEnglish1.wav 1.290 1.390 that 24.00000000
+/data/asr/testEnglish1.wav 1.290 1.390 it 22.00000000
+/data/asr/testEnglish1.wav 1.380 1.510 we&#39;re 27.00000000
+/data/asr/testEnglish1.wav 1.500 1.660 going 97.00000000
+/data/asr/testEnglish1.wav 1.650 1.720 to 98.00000000
+/data/asr/testEnglish1.wav 1.710 1.930 fly 94.00000000
+/data/asr/testEnglish1.wav 1.920 2.110 over 79.00000000
+/data/asr/testEnglish1.wav 2.100 2.380 saint 93.00000000
+/data/asr/testEnglish1.wav 2.370 2.950 louis 96.00000000
+</code></pre></div>
+
+<p>An example output excerpt for a Mandarin Chinese domain:</p>
+<div class="codehilite"><pre><span></span><code>/data/asr/testMandarin1.wav 0.280 0.610 战斗 99.00000000
+/data/asr/testMandarin1.wav 0.600 0.880 爆发 98.00000000
+/data/asr/testMandarin1.wav 0.870 0.970 的 99.00000000
+/data/asr/testMandarin1.wav 0.960 1.420 居民区 86.00000000
+/data/asr/testMandarin1.wav 1.410 2.120 有很多 93.00000000
+/data/asr/testMandarin1.wav 2.110 2.590 忠于 99.00000000
+/data/asr/testMandarin1.wav 2.580 3.140 萨德尔 100.00000000
+/data/asr/testMandarin1.wav 3.130 3.340 的 100.00000000
+/data/asr/testMandarin1.wav 3.330 3.720 武装 55.00000000
+/data/asr/testMandarin1.wav 3.710 4.190 份子 53.00000000
+</code></pre></div>
+
+<p>Note that for languages that read from right to left, the direction that text is rendered may appear to 'flip' when viewing the bare text output in a terminal or text editor that doesn't properly deal with the orientation switch mid-line in some operating systems. This can cause the order of the 'word' and 'score' fields to reverse relative to the output of left-to-right read languages, and appear like this Farsi output example:</p>
+<div class="codehilite"><pre><span></span><code>/data/asr/testFarsi1.wav 0.000 0.480 58.00000000 خوب 
+/data/asr/testFarsi1.wav 0.470 0.740 51.00000000 ای 
+/data/asr/testFarsi1.wav 0.000 0.320 100.00000000 آره 
+/data/asr/testFarsi1.wav 0.310 0.460 99.00000000 می 
+/data/asr/testFarsi1.wav 0.450 0.680 99.00000000 گم 
+/data/asr/testFarsi1.wav 0.670 0.880 73.00000000 چند 
+/data/asr/testFarsi1.wav 0.870 1.330 50.00000000 داره
+</code></pre></div>
+
+<p>This is a rendering problem only, however, and rest assured that if interacting with OLIVE through the API, all ordering is properly preserved. Most methods of automatically parsing the raw text output should also properly deal with the ordering, as column-based operators like awk are not affected by the visual order.</p>
+<h4 id="query-by-example-keyword-spotting-qbe">Query by Example Keyword Spotting (QBE)</h4>
+<p>Query by example is a specific type of keyword spotting plugin that searches for keywords matching a spoken word or phrase example, rather than from a text example like traditional KWS.  This means that it is necessary to enroll keywords into the system from audio examples with <code>localenroll</code> before using QBE to search audio for these keywords or phrases.  Enrollment follows the same format as enrolling speakers into a SID plugin, with the enrollment audio list following this format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;keyword_id&gt;
+</code></pre></div>
+
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>/data/qbe/enroll/watermelon_example1.wav Watermelon
+/data/qbe/enroll/watermelon_example2.wav Watermelon
+/data/qbe/enroll/airplane_example.wav Airplane
+/data/qbe/enroll/keyword_example.wav Keyword
+</code></pre></div>
+
+<p>Note that currently each enrollment audio file must contain ONLY the keyword that is desired to be enrolled.  Also note that the text label in the second column of the enrollment file is only for user readability and is not used by the system when determining what to search the audio file for.</p>
+<p>The output of QBE follows the format of the traditional KWS output exactly:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;start_time_s&gt; &lt;end_time_s&gt; &lt;keyword_id&gt; &lt;score&gt;
+</code></pre></div>
+
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>/data/qbe/test/testFile1.wav 0.630 1.170 Airplane 4.37324614709
+/data/qbe/test/testFile2.wav 0.350 1.010 Watermelon -1.19732598006
+</code></pre></div>
+
+<h4 id="topic-identification-tid">Topic Identification (TID)</h4>
+<p>Topic Identification plugins attempt to detect and categorize the topic being discussed within an audio recording from a known and pre-enrolled set of available topics, and report this topic (if any are detected) to the user.  Each domain of a TID plugin is language-dependent, and should display the target language as the first string of the domain’s name. </p>
+<p>Some TID plugins may be delivered with pre-enrolled topics – please consult the documentation that accompanied your delivery if you are unsure if this is the case.  If no topics are enrolled, however, or if you wish to enroll new topics, the format is very similar to enrolling new speakers into a SID plugin, and follows the same CLI call structure, with one caveat. </p>
+<div class="codehilite"><pre><span></span><code>$ localenroll --local <span class="nv">$domain</span> <span class="nv">$enroll_list</span>
+</code></pre></div>
+
+<p>Due to limitations with the current TID technology, enrollment must be performed with the --local flag set.  This limits OLIVE to serialized processing, which will process the enrollment slightly slower, but avoid resource-competition issues that may cause the system to become unstable and crash.</p>
+<p>Enrollment audio lists for TID follow the same format as SID, but substitute a topic name for a speaker label.  Note: in the current version, we require the user to provide audio examples that are primarily about the topic of interest as enrollment examples.  If there are significant portions of an audio file that are off-topic, we suggest the file be cut and fed as separate examples.</p>
+<p>Enroll list format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;topic_id&gt;
+</code></pre></div>
+
+<p>Example:
+    /tid/enroll/topic_example_audio_5760.wav Travel
+    /tid/enroll/topic_example_audio_5761.wav Travel
+    /tid/enroll/topic_example_audio_5762.wav Travel
+    /tid/enroll/topic_example_audio_5763.wav Travel</p>
+<p>To run TID, once target topics have been enrolled, the call to <code>localanalyze</code> is very similar to other plugin types, with the current plugin again requiring the --local flag.</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze --local /path/to/plugins/tid-svm-v2/domains/r-tel-v1/ testAudio.lst
+</code></pre></div>
+
+<p>As with the SID and LID plugins, by default the plugin’s output will be written to the file “output.txt” in the directory <code>localanalyze</code> was called from.  This can be overridden by passing <code>localanalyze</code> the -o flag, as well as an alternate file to save the results to.  The TID results structure is very similar to KWS, with the following format for each line:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio_file_path&gt; &lt;start_time_s&gt; &lt;end_time_s&gt; &lt;topic_id&gt; &lt;confidence_score&gt;
+</code></pre></div>
+
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>/data/tid-example_wavs/20110511_GET-TOGETHER.wav 18.790 55.300 transportation 0.0222
+/data/tid-example_wavs/20110511_TRANSPORTATION.wav 4.010 19.140 transportation 0.4532
+</code></pre></div>
+
+<p>The start and end timestamps above are provided in seconds. The <topic> will be displayed as it was supplied in the second column of the enrollment list.  The <confidence_score> will be between 0 and 1, and marks the confidence of the system in the decision of this topic.</p>
+<p>Please note that output.txt will be overwritten by each successive experiment.  Please back it up or use the -o <output> option to <code>localanalyze</code> if you would like to save the results.</p>
+<p>Also note that the start and end times for each topic refer to the chunk in each audio that has the highest probability of being about that topic. Currently, we report only ONE such segment per file in order to help the user locate the most useful part. The score associated with that segment is global, in that it represents the likelihood that this topic is present anywhere in the document.</p>
+<h5 id="important-background-example-information">Important Background Example Information</h5>
+<p>In order to train a Topic detector, we currently use an SVM classifier. This model uses "positive" examples of the topic as provided by the user during the enrollment phase, as well as "negative" examples to model what is <em>not</em> the topic. Those negative examples can be crucial to the performance of the final system. Currently, those "negative" examples come pre-processed as a python numpy archive and cannot be modified by the user explicitly.</p>
+<p>We do provide two different numpy archives that can be tried by a user:</p>
+<ol>
+<li>BG_RUS001-train-acc+neg-no-travel.npz (default)</li>
+<li>BG_RUS001-train-test-random-all-chunk-plugin.npz</li>
+</ol>
+<p>Archive 2) includes only data from the RUS001 conversational corpus, which didn't have very topic-specific prompts. Archive 1) includes a mix of RUS001 data as well as a subset of the RU_CTS conversational corpus which was topic annotated. </p>
+<p>We excluded examples pertaining to 'TRAVEL' in this archive, but this archive contains conversations about the following (loosely defined) topics:</p>
+<ul>
+<li>ACTIVITIES</li>
+<li>BIRTHDAY_WISHES</li>
+<li>CHILDREN</li>
+<li>ECONOMY</li>
+<li>EDUCATION</li>
+<li>ENTERTAINMENT</li>
+<li>FOOD_DRINK</li>
+<li>FRIENDS_RELATIVES</li>
+<li>GET-TOGETHER</li>
+<li>HEALTH</li>
+<li>HOME</li>
+<li>HOME_MAINTENANCE</li>
+<li>IMMIGRATION</li>
+<li>LANGUAGE_COMMUNICATION</li>
+<li>LEISURE</li>
+<li>LIFE_PHILOSOPHY_RELATIONSHIPS</li>
+<li>LOCATION_DESCRIPTION</li>
+<li>MARRIAGE</li>
+<li>MOOD_PHYSICAL</li>
+<li>MOVING_HOMES</li>
+<li>MUSIC</li>
+<li>PERFORMANCE_REHEARSAL</li>
+<li>PETS</li>
+<li>POLITICS</li>
+<li>PROJECT</li>
+<li>READING_WRITING</li>
+<li>RELIGION_HOLIDAY</li>
+<li>SPEECH_COLLECTION_PROJECT</li>
+<li>TECHNOLOGY</li>
+<li>TRANSPORTATION</li>
+<li>TV_MOVIES</li>
+<li>WEATHER_CLIMATE</li>
+<li>WORK</li>
+</ul>
+<p>If the topic you are training for is very similar to a topic listed above, it might be worth it trying archive (2) as well. In the future, we will provide the opportunity for the user to feed his own negative examples.</p>
+<h4 id="gender-identification-gid">Gender Identification (GID)</h4>
+<p>Gender ID plugins allow for triage of audio files to identify only those containing speakers of a certain gender. For scoring files, gender identification plugins operate in the same manner as SID and LID plugins. GID plugins are delivered with two pre-enrolled classes; ‘m’ and ‘f’, for male and female, respectively, so user-side enrollment is not necessary.  To score files with a GID plugin using <code>localanalyze</code>, use the following syntax:</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze /path/to/plugins/gid-gb-v1/domains/clean-v1/  testAudio.lst
+</code></pre></div>
+
+<p>Where the output follows this format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;audio file 1&gt; m &lt;male likelihood score&gt;
+&lt;audio file 1&gt; f &lt;female likelihood score&gt;
+… 
+&lt;audio file N&gt; m &lt;male likelihood score&gt;
+&lt;audio file N&gt; f &lt;female likelihood score&gt;
+</code></pre></div>
+
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>/data/gender/m-testFile1.wav m 0.999999777927
+/data/gender/m-testFile1.wav f -0.22073142865
+</code></pre></div>
+
+<h4 id="enhancement-enh">Enhancement (ENH)</h4>
+<p>Enhancement or AudioConverter plugins are audio-to-audio plugins that take an audio file as input and provide a second audio file as output.  Currently they are used to enhance the input audio file, for listening comfort and/or intelligibility.  By default, each output audio file is created in an OUTPUT directory in the location that <code>localanalyze</code> was invoked. Within the OUTPUT directory, the folder structure of the original input audio file is preserved.  </p>
+<p>This means that if the input audio file was:</p>
+<div class="codehilite"><pre><span></span><code>/data/enhancement-test/test_file1.wav
+</code></pre></div>
+
+<p>Then the enhanced output file will be found by default in:</p>
+<div class="codehilite"><pre><span></span><code>./OUTPUT/data/enhancement-test/test_file1.wav
+</code></pre></div>
+
+<p>Running speech enhancement is as simple as:</p>
+<div class="codehilite"><pre><span></span><code>$ localanalyze /path/to/plugins/enh-mmse-v1/domains/multi-v1/ inputAudio.lst
+</code></pre></div>
+
+<p>In addition, you can pass an optional PEM file that specifies optional regions to the plugin – the current enhancement plugin uses this file to pass the ‘noise regions’ to OLIVE to allow the plugin to build a noise profile for more accurate characterization and removal of the noise present in that audio file. </p>
+<h2 id="6-testing">6: Testing</h2>
+<p>In this section you will find a description of benchmarking that is performed with each release of OLIVE to measure the performance of each plugin with respect to speed and memory usage.  The hardware and software details used for these results are provided in the next section, with each of the current plugins’ memory and speed results following.</p>
+<h3 id="a-benchmarking-setup-hardwaresoftware">a.  Benchmarking Setup (Hardware/Software)</h3>
+<p>Each data point below was obtained by running the OLIVE 4.9.1 software with a 4.8.0 runtime that has been patched to 4.9.1 (contains libraries needed by the new Topic Identification and Enhancement plugins).  Tests were performed on the CentOS 7 operating system, on a Gigabyte BRIX GB-BXI7-5500.  This machine has 16GB RAM available, and an Intel i7-5500U processor, which is a dual core (quad-thread) processor that runs at 2.4 GHz base (3.0 GHz turbo).</p>
+<h3 id="b-plugin-memory-usage-results">b.  Plugin Memory Usage Results</h3>
+<p>These results were generated by running several files through each plugin via the OLIVE CLI using <code>localanalyze</code>, one at a time, while measuring the memory used by the localanalyze utility.  The files vary in length from 10 seconds through 4 hours, and this allows us to see how each plugin handles scaling the audio file length up, and also compare overall resource utilization between individual plugins.  The values reported for each plugin and audio file are the peak memory usage, in MB – lower values are better.  Note that this report is for processing a single file at a time and is representative of memory utilization that can be expected for serialized processing, or processing on a machine with a single processing core.  Parallel processing can cause memory usage to rise.</p>
+<p><strong>TODO: Need to put the charts/resuts in here!</strong></p>
+<h4 id="sad">SAD</h4>
+<h5 id="sad-memory-usage-mb">SAD Memory Usage (MB)</h5>
+<table>
+<thead>
+<tr>
+<th><em>Plugin</em></th>
+<th>sad-dnn-v4</th>
+<th>sad-dnn-v4</th>
+<th>sad-dnn-v4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Domain</em></td>
+<td>digPtt-v1</td>
+<td>ptt-v1</td>
+<td>tel-v1</td>
+</tr>
+<tr>
+<td>10s</td>
+<td>142</td>
+<td>142</td>
+<td>142</td>
+</tr>
+<tr>
+<td>1 min</td>
+<td>158</td>
+<td>158</td>
+<td>158</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>221</td>
+<td>221</td>
+<td>221</td>
+</tr>
+<tr>
+<td>30 min</td>
+<td>408</td>
+<td>408</td>
+<td>408</td>
+</tr>
+<tr>
+<td>2 hr</td>
+<td>1,262</td>
+<td>1,262</td>
+<td>1,262</td>
+</tr>
+<tr>
+<td>4 hr</td>
+<td>2,377</td>
+<td>2,377</td>
+<td>2,377</td>
+</tr>
+</tbody>
+</table>
+<!--- TODO - Memory Stats
+
+
+#### SID 
+##### SID Memory Usage (MB) 
+
+
+
+SID
+
+
+
+LID
+
+
+
+QBE
+--->
+
+<h3 id="c-plugin-speed-analysis-results">c.  Plugin Speed Analysis Results</h3>
+<p>The following charts show the speed performance of the current release of each OLIVE plugin.  Values are reported as the speed of the plugin in ‘times faster than real time’ and represent how fast the plugin is able to process the input audio data, with respect to the length of that data – higher is better.  Each plugin is fed 10 hours of total data consisting of roughly 4-minute audio cuts to achieve this measurement.  For this test, OLIVE has been limited to using a single core for processing, in order to keep measurements and results consistent.  Note that enabling parallel processing if multiple CPU cores are available will improve performance.</p>
+<h4 id="plugin-speed-statistics-reported-in-times-faster-than-real-time">Plugin Speed Statistics Reported in Times Faster than Real Time</h4>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Domain</th>
+<th align="right">Speed (x RT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sad-dnn-v4</td>
+<td>digPtt-v1</td>
+<td align="right">104.8</td>
+</tr>
+<tr>
+<td>sad-dnn-v4</td>
+<td>ptt-v1</td>
+<td align="right">111.5</td>
+</tr>
+<tr>
+<td>sad-dnn-v4</td>
+<td>tel-v1</td>
+<td align="right">117.0</td>
+</tr>
+<tr>
+<td>sid-embed-v2</td>
+<td>multi-v1</td>
+<td align="right">51.6</td>
+</tr>
+<tr>
+<td>sid-embedDnnTbc-v1</td>
+<td>tbc-v1</td>
+<td align="right">43.9</td>
+</tr>
+<tr>
+<td>sid-embedDnnTbc-v1</td>
+<td>tbcdnn-v1</td>
+<td align="right">64.5</td>
+</tr>
+<tr>
+<td>sid-embedTbc-v1</td>
+<td>tbc-v1</td>
+<td align="right">40.2</td>
+</tr>
+<tr>
+<td>lid-embed-v2</td>
+<td>multi-v1</td>
+<td align="right">39.7</td>
+</tr>
+<tr>
+<td>kws-batch-v9</td>
+<td>eng-tel-v1</td>
+<td align="right">1.11</td>
+</tr>
+<tr>
+<td>kws-batch-v9</td>
+<td>eng-tel-v2</td>
+<td align="right">1.09</td>
+</tr>
+<tr>
+<td>kws-batch-v9</td>
+<td>f-tel-v1</td>
+<td align="right">1.23</td>
+</tr>
+<tr>
+<td>kws-batch-v9</td>
+<td>r-tel-v1</td>
+<td align="right">1.61</td>
+</tr>
+<tr>
+<td>kws-batch-v9</td>
+<td>r-tel-v2</td>
+<td align="right">1.61</td>
+</tr>
+<tr>
+<td>qbe-tdnn-v4</td>
+<td>digPtt-v1</td>
+<td align="right">15.2</td>
+</tr>
+<tr>
+<td>qbe-tdnn-v4</td>
+<td>multi-v1</td>
+<td align="right">16.1</td>
+</tr>
+</tbody>
+</table>
+<!---
+**TODO: Need to put the charts/resuts in here, too!**
+
+--->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="clients.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Java and Python CLI Client Utilities
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="redaction.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Speaker Redaction
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

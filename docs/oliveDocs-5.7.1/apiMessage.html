@@ -1,0 +1,7787 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Enterprise API Message Reference - OLIVE 5.7.1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="olive" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olive-api-message-protocol-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE 5.7.1 Documentation" class="md-header-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE 5.7.1 Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Enterprise API Message Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE 5.7.1 Documentation" class="md-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE 5.7.1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="windows.html" class="md-nav__link">
+      Windows Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      Martini (Docker) Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" checked>
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Enterprise API Message Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="apiMessage.html" class="md-nav__link md-nav__link--active">
+      Enterprise API Message Reference
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#oliveproto-protocol-buffer-definitions" class="md-nav__link">
+    olive.proto Protocol Buffer Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-management-messages" class="md-nav__link">
+    Server Management Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Management Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getactiverequest" class="md-nav__link">
+    GetActiveRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getactiveresult" class="md-nav__link">
+    GetActiveResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getstatusrequest" class="md-nav__link">
+    GetStatusRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getstatusresult" class="md-nav__link">
+    GetStatusResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heartbeat" class="md-nav__link">
+    Heartbeat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serverstats" class="md-nav__link">
+    ServerStats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadplugindomainrequest" class="md-nav__link">
+    LoadPluginDomainRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadplugindomainresult" class="md-nav__link">
+    LoadPluginDomainResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeplugindomainrequest" class="md-nav__link">
+    RemovePluginDomainRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeplugindomainresult" class="md-nav__link">
+    RemovePluginDomainResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugindirectoryrequest" class="md-nav__link">
+    PluginDirectoryRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugindirectoryresult" class="md-nav__link">
+    PluginDirectoryResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canceljobsrequest" class="md-nav__link">
+    CancelJobsRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canceljobsresult" class="md-nav__link">
+    CancelJobsResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-scorer-messages" class="md-nav__link">
+    Global Scorer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Global Scorer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globalscore" class="md-nav__link">
+    GlobalScore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalscorerrequest" class="md-nav__link">
+    GlobalScorerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalscorerresult" class="md-nav__link">
+    GlobalScorerResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#region-scorer-messages" class="md-nav__link">
+    Region Scorer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Region Scorer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regionscore" class="md-nav__link">
+    RegionScore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regionscorerrequest" class="md-nav__link">
+    RegionScorerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regionscorerresult" class="md-nav__link">
+    RegionScorerResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frame-scorer-messages" class="md-nav__link">
+    Frame Scorer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Frame Scorer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framescorerrequest" class="md-nav__link">
+    FrameScorerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescorerresult" class="md-nav__link">
+    FrameScorerResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescores" class="md-nav__link">
+    FrameScores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounding-box-messages" class="md-nav__link">
+    Bounding Box Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Bounding Box Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boundingboxscorerrequest" class="md-nav__link">
+    BoundingBoxScorerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundingboxscorerresult" class="md-nav__link">
+    BoundingBoxScorerResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundingboxscore" class="md-nav__link">
+    BoundingBoxScore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-transformation-messages" class="md-nav__link">
+    Text Transformation Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Transformation Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#texttransformationrequest" class="md-nav__link">
+    TextTransformationRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#texttransformationresult" class="md-nav__link">
+    TextTransformationResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#texttransformation" class="md-nav__link">
+    TextTransformation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-alignment-messages" class="md-nav__link">
+    Audio Alignment  Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Alignment  Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audioalignmentscorerequest" class="md-nav__link">
+    AudioAlignmentScoreRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioalignmentscoreresult" class="md-nav__link">
+    AudioAlignmentScoreResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioalignmentscore" class="md-nav__link">
+    AudioAlignmentScore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-comparer-messages" class="md-nav__link">
+    Global Comparer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Global Comparer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globalcomparerreport" class="md-nav__link">
+    GlobalComparerReport
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalcomparerrequest" class="md-nav__link">
+    GlobalComparerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalcomparerresult" class="md-nav__link">
+    GlobalComparerResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reporttype" class="md-nav__link">
+    ReportType
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#class-modifier-messages" class="md-nav__link">
+    Class Modifier Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Class Modifier Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classmodificationrequest" class="md-nav__link">
+    ClassModificationRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classmodificationresult" class="md-nav__link">
+    ClassModificationResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classremovalrequest" class="md-nav__link">
+    ClassRemovalRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classremovalresult" class="md-nav__link">
+    ClassRemovalResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioresult" class="md-nav__link">
+    AudioResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-converter-messages" class="md-nav__link">
+    Audio Converter Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Converter Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audiomodification" class="md-nav__link">
+    AudioModification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiomodificationrequest" class="md-nav__link">
+    AudioModificationRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiomodificationresult" class="md-nav__link">
+    AudioModificationResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-vectorizer-messages" class="md-nav__link">
+    Audio Vectorizer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Vectorizer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audiovector" class="md-nav__link">
+    AudioVector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pluginaudiovectorrequest" class="md-nav__link">
+    PluginAudioVectorRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pluginaudiovectorresult" class="md-nav__link">
+    PluginAudioVectorResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vectorresult" class="md-nav__link">
+    VectorResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classexportrequest" class="md-nav__link">
+    ClassExportRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classexportresult" class="md-nav__link">
+    ClassExportResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classimportrequest" class="md-nav__link">
+    ClassImportRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classimportresult" class="md-nav__link">
+    ClassImportResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrollmentmodel" class="md-nav__link">
+    EnrollmentModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updater-messages" class="md-nav__link">
+    Updater Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Updater Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applyupdaterequest" class="md-nav__link">
+    ApplyUpdateRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applyupdateresult" class="md-nav__link">
+    ApplyUpdateResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getupdatestatusrequest" class="md-nav__link">
+    GetUpdateStatusRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getupdatestatusresult" class="md-nav__link">
+    GetUpdateStatusResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    DateTime
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-trait-messages" class="md-nav__link">
+    Learning Trait Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Learning Trait Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preprocessaudioadaptrequest" class="md-nav__link">
+    PreprocessAudioAdaptRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessaudioadaptresult" class="md-nav__link">
+    PreprocessAudioAdaptResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supervised-adapter-messages" class="md-nav__link">
+    Supervised Adapter Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Supervised Adapter Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supervisedadaptationrequest" class="md-nav__link">
+    SupervisedAdaptationRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supervisedadaptationresult" class="md-nav__link">
+    SupervisedAdaptationResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classannotation" class="md-nav__link">
+    ClassAnnotation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioannotation" class="md-nav__link">
+    AudioAnnotation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-messages" class="md-nav__link">
+    Workflow Messages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-types" class="md-nav__link">
+    Basic Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trait" class="md-nav__link">
+    Trait
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin" class="md-nav__link">
+    Plugin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain" class="md-nav__link">
+    Domain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envelope" class="md-nav__link">
+    Envelope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenicmessage" class="md-nav__link">
+    ScenicMessage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messagetype" class="md-nav__link">
+    MessageType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optiontype" class="md-nav__link">
+    OptionType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traittype" class="md-nav__link">
+    TraitType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasktype" class="md-nav__link">
+    TaskType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optiondefinition" class="md-nav__link">
+    OptionDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionvalue" class="md-nav__link">
+    OptionValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputdatatype" class="md-nav__link">
+    InputDataType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputtype" class="md-nav__link">
+    InputType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobclass" class="md-nav__link">
+    JobClass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskclass" class="md-nav__link">
+    TaskClass
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-types" class="md-nav__link">
+    Shared Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio" class="md-nav__link">
+    Audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotationregion" class="md-nav__link">
+    AnnotationRegion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiobuffer" class="md-nav__link">
+    AudioBuffer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioencodingtype" class="md-nav__link">
+    AudioEncodingType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiobitdepth" class="md-nav__link">
+    AudioBitDepth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binaryannotation" class="md-nav__link">
+    BinaryAnnotation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binarybuffer" class="md-nav__link">
+    BinaryBuffer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binarymedia" class="md-nav__link">
+    BinaryMedia
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundingbox" class="md-nav__link">
+    BoundingBox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadatatype" class="md-nav__link">
+    MetadataType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booleanmetadata" class="md-nav__link">
+    BooleanMetadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doublemetadata" class="md-nav__link">
+    DoubleMetadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integermetadata" class="md-nav__link">
+    IntegerMetadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listmetadata" class="md-nav__link">
+    ListMetadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringmetadata" class="md-nav__link">
+    StringMetadata
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalar-value-types" class="md-nav__link">
+    Scalar Value Types
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-global-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-embedplda-v1.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-whisper-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) whisper/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v3.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#oliveproto-protocol-buffer-definitions" class="md-nav__link">
+    olive.proto Protocol Buffer Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-management-messages" class="md-nav__link">
+    Server Management Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Management Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getactiverequest" class="md-nav__link">
+    GetActiveRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getactiveresult" class="md-nav__link">
+    GetActiveResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getstatusrequest" class="md-nav__link">
+    GetStatusRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getstatusresult" class="md-nav__link">
+    GetStatusResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heartbeat" class="md-nav__link">
+    Heartbeat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serverstats" class="md-nav__link">
+    ServerStats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadplugindomainrequest" class="md-nav__link">
+    LoadPluginDomainRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadplugindomainresult" class="md-nav__link">
+    LoadPluginDomainResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeplugindomainrequest" class="md-nav__link">
+    RemovePluginDomainRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeplugindomainresult" class="md-nav__link">
+    RemovePluginDomainResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugindirectoryrequest" class="md-nav__link">
+    PluginDirectoryRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugindirectoryresult" class="md-nav__link">
+    PluginDirectoryResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canceljobsrequest" class="md-nav__link">
+    CancelJobsRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canceljobsresult" class="md-nav__link">
+    CancelJobsResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-scorer-messages" class="md-nav__link">
+    Global Scorer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Global Scorer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globalscore" class="md-nav__link">
+    GlobalScore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalscorerrequest" class="md-nav__link">
+    GlobalScorerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalscorerresult" class="md-nav__link">
+    GlobalScorerResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#region-scorer-messages" class="md-nav__link">
+    Region Scorer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Region Scorer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regionscore" class="md-nav__link">
+    RegionScore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regionscorerrequest" class="md-nav__link">
+    RegionScorerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regionscorerresult" class="md-nav__link">
+    RegionScorerResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frame-scorer-messages" class="md-nav__link">
+    Frame Scorer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Frame Scorer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framescorerrequest" class="md-nav__link">
+    FrameScorerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescorerresult" class="md-nav__link">
+    FrameScorerResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescores" class="md-nav__link">
+    FrameScores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounding-box-messages" class="md-nav__link">
+    Bounding Box Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Bounding Box Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boundingboxscorerrequest" class="md-nav__link">
+    BoundingBoxScorerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundingboxscorerresult" class="md-nav__link">
+    BoundingBoxScorerResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundingboxscore" class="md-nav__link">
+    BoundingBoxScore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-transformation-messages" class="md-nav__link">
+    Text Transformation Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Transformation Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#texttransformationrequest" class="md-nav__link">
+    TextTransformationRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#texttransformationresult" class="md-nav__link">
+    TextTransformationResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#texttransformation" class="md-nav__link">
+    TextTransformation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-alignment-messages" class="md-nav__link">
+    Audio Alignment  Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Alignment  Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audioalignmentscorerequest" class="md-nav__link">
+    AudioAlignmentScoreRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioalignmentscoreresult" class="md-nav__link">
+    AudioAlignmentScoreResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioalignmentscore" class="md-nav__link">
+    AudioAlignmentScore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-comparer-messages" class="md-nav__link">
+    Global Comparer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Global Comparer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globalcomparerreport" class="md-nav__link">
+    GlobalComparerReport
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalcomparerrequest" class="md-nav__link">
+    GlobalComparerRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalcomparerresult" class="md-nav__link">
+    GlobalComparerResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reporttype" class="md-nav__link">
+    ReportType
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#class-modifier-messages" class="md-nav__link">
+    Class Modifier Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Class Modifier Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classmodificationrequest" class="md-nav__link">
+    ClassModificationRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classmodificationresult" class="md-nav__link">
+    ClassModificationResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classremovalrequest" class="md-nav__link">
+    ClassRemovalRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classremovalresult" class="md-nav__link">
+    ClassRemovalResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioresult" class="md-nav__link">
+    AudioResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-converter-messages" class="md-nav__link">
+    Audio Converter Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Converter Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audiomodification" class="md-nav__link">
+    AudioModification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiomodificationrequest" class="md-nav__link">
+    AudioModificationRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiomodificationresult" class="md-nav__link">
+    AudioModificationResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-vectorizer-messages" class="md-nav__link">
+    Audio Vectorizer Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Vectorizer Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audiovector" class="md-nav__link">
+    AudioVector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pluginaudiovectorrequest" class="md-nav__link">
+    PluginAudioVectorRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pluginaudiovectorresult" class="md-nav__link">
+    PluginAudioVectorResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vectorresult" class="md-nav__link">
+    VectorResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classexportrequest" class="md-nav__link">
+    ClassExportRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classexportresult" class="md-nav__link">
+    ClassExportResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classimportrequest" class="md-nav__link">
+    ClassImportRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classimportresult" class="md-nav__link">
+    ClassImportResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrollmentmodel" class="md-nav__link">
+    EnrollmentModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updater-messages" class="md-nav__link">
+    Updater Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Updater Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applyupdaterequest" class="md-nav__link">
+    ApplyUpdateRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applyupdateresult" class="md-nav__link">
+    ApplyUpdateResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getupdatestatusrequest" class="md-nav__link">
+    GetUpdateStatusRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getupdatestatusresult" class="md-nav__link">
+    GetUpdateStatusResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    DateTime
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-trait-messages" class="md-nav__link">
+    Learning Trait Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Learning Trait Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preprocessaudioadaptrequest" class="md-nav__link">
+    PreprocessAudioAdaptRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessaudioadaptresult" class="md-nav__link">
+    PreprocessAudioAdaptResult
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supervised-adapter-messages" class="md-nav__link">
+    Supervised Adapter Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Supervised Adapter Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supervisedadaptationrequest" class="md-nav__link">
+    SupervisedAdaptationRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supervisedadaptationresult" class="md-nav__link">
+    SupervisedAdaptationResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classannotation" class="md-nav__link">
+    ClassAnnotation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioannotation" class="md-nav__link">
+    AudioAnnotation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-messages" class="md-nav__link">
+    Workflow Messages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-types" class="md-nav__link">
+    Basic Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trait" class="md-nav__link">
+    Trait
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin" class="md-nav__link">
+    Plugin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain" class="md-nav__link">
+    Domain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envelope" class="md-nav__link">
+    Envelope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenicmessage" class="md-nav__link">
+    ScenicMessage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messagetype" class="md-nav__link">
+    MessageType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optiontype" class="md-nav__link">
+    OptionType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traittype" class="md-nav__link">
+    TraitType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasktype" class="md-nav__link">
+    TaskType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optiondefinition" class="md-nav__link">
+    OptionDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionvalue" class="md-nav__link">
+    OptionValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputdatatype" class="md-nav__link">
+    InputDataType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputtype" class="md-nav__link">
+    InputType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobclass" class="md-nav__link">
+    JobClass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskclass" class="md-nav__link">
+    TaskClass
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-types" class="md-nav__link">
+    Shared Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audio" class="md-nav__link">
+    Audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotationregion" class="md-nav__link">
+    AnnotationRegion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiobuffer" class="md-nav__link">
+    AudioBuffer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioencodingtype" class="md-nav__link">
+    AudioEncodingType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audiobitdepth" class="md-nav__link">
+    AudioBitDepth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binaryannotation" class="md-nav__link">
+    BinaryAnnotation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binarybuffer" class="md-nav__link">
+    BinaryBuffer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binarymedia" class="md-nav__link">
+    BinaryMedia
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundingbox" class="md-nav__link">
+    BoundingBox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadatatype" class="md-nav__link">
+    MetadataType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booleanmetadata" class="md-nav__link">
+    BooleanMetadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doublemetadata" class="md-nav__link">
+    DoubleMetadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integermetadata" class="md-nav__link">
+    IntegerMetadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listmetadata" class="md-nav__link">
+    ListMetadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringmetadata" class="md-nav__link">
+    StringMetadata
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalar-value-types" class="md-nav__link">
+    Scalar Value Types
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olive-api-message-protocol-documentation">OLIVE API Message Protocol Documentation</h1>
+<hr />
+<!--
+###### TODO: Make it explicit for each Request/Result pair that it directly corresponds to its other half. Link between them. Make more explicit what each request does, and what each reply consists of (i.e. for GlobalScorerResult, either link to the traits.md#globalscorer section for example output, or directly include an example.) 
+-->
+
+<h2 id="oliveproto-protocol-buffer-definitions">olive.proto Protocol Buffer Definitions</h2>
+<p>The messages defined on this page are what define the OLIVE Enterprise API.  These messages are how a client application will interact with and provide tasks to an OLIVE Server. The format used by the OLIVE API is based on the <a href="https://developers.google.com/protocol-buffers">Google Protocol Buffer</a>.</p>
+<p>For more information on how to integrate the ability to send and receive these messages into a client application using a provided Client API implementation from SRI, refer to the <a href="apiCode.html">Integrating the (Java) Client API</a> Guide.</p>
+<p>For more information on creating your own reference implementation with the functionality of these messages, head over to the <a href="apiBuildReferenceImp.html">Creating an API Reference Implementation</a> page that offers guidelines and information.</p>
+<h2 id="server-management-messages">Server Management Messages</h2>
+<h3 id="getactiverequest">GetActiveRequest</h3>
+<p>Message to request the list of ScenicMessages that are still active</p>
+<h3 id="getactiveresult">GetActiveResult</h3>
+<p>Response to <a href="#getactiverequest">GetActiveRequest</a> containing the ScenicMessages that are still active</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message_id</td>
+<td>string </td>
+<td>repeated </td>
+<td>List containing the IDs of each message still being processed on the server</td>
+</tr>
+<tr>
+<td>total_num </td>
+<td>string</td>
+<td>required</td>
+<td>Total number of messages still being processed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="getstatusrequest">GetStatusRequest</h3>
+<p>Request a simple server status message, similar to a heartbeat except the request reply is sent on the status port and is requested by the client</p>
+<h3 id="getstatusresult">GetStatusResult</h3>
+<p>The result of a GetStatusRequest</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num_pending</td>
+<td>uint32</td>
+<td>required</td>
+<td>The number of pending jobs</td>
+</tr>
+<tr>
+<td>num_busy</td>
+<td>uint32</td>
+<td>required</td>
+<td>the number of active jobs</td>
+</tr>
+<tr>
+<td>num_finished</td>
+<td>uint32</td>
+<td>required</td>
+<td>The number of finished jobs</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>optional</td>
+<td>The OLIVE server version</td>
+</tr>
+</tbody>
+</table>
+<h3 id="heartbeat">Heartbeat</h3>
+<p>A <code>heartbeat</code> Message, acknowledging that the server is running, this message is continuously broadcast by the server on it's status port (this is the only message sent on the status port)</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stats</td>
+<td><a href="#serverstats">ServerStats</a></td>
+<td>optional</td>
+<td>The current status of the server, optional since status is not available when the server first starts, but a heartbeat is still sent</td>
+</tr>
+<tr>
+<td>logdir</td>
+<td>string </td>
+<td>required </td>
+<td>The location where the server writes it log files</td>
+</tr>
+</tbody>
+</table>
+<h3 id="serverstats">ServerStats</h3>
+<p>Current status of the OLIVE server, sent as part of a Heatbeat message.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cpu_percent</td>
+<td><a href="#float">float</a></td>
+<td>required</td>
+<td>The current percentage of CPU used</td>
+</tr>
+<tr>
+<td>cpu_average</td>
+<td><a href="#float">float</a></td>
+<td>required</td>
+<td>The average CPU percentage used since the server was started</td>
+</tr>
+<tr>
+<td>mem_percent</td>
+<td><a href="#float">float</a></td>
+<td>required</td>
+<td>The percentage of memory used</td>
+</tr>
+<tr>
+<td>max_mem_percent</td>
+<td><a href="#float">float</a></td>
+<td>required</td>
+<td>The most memory used since the server was started</td>
+</tr>
+<tr>
+<td>swap_percent</td>
+<td><a href="#float">float</a></td>
+<td>required</td>
+<td>The current swap used</td>
+</tr>
+<tr>
+<td>max_swap_percent</td>
+<td><a href="#float">float</a></td>
+<td>required</td>
+<td>The max (most) swap space used since the server was started</td>
+</tr>
+<tr>
+<td>pool_busy</td>
+<td><a href="#uint32">uint32</a></td>
+<td>required</td>
+<td>The number of jobs currently running on the server</td>
+</tr>
+<tr>
+<td>pool_pending</td>
+<td><a href="#uint32">uint32</a></td>
+<td>required</td>
+<td>The number of jobs queued on the server</td>
+</tr>
+<tr>
+<td>pool_finished</td>
+<td><a href="#uint32">uint32</a></td>
+<td>required</td>
+<td>The number of jobs completed</td>
+</tr>
+<tr>
+<td>pool_reinit</td>
+<td><a href="#bool">bool</a></td>
+<td>required</td>
+<td>The number of jobs that need to be re-ran</td>
+</tr>
+<tr>
+<td>max_num_jobs</td>
+<td><a href="#uint32">uint32</a></td>
+<td>optional</td>
+<td>The max number of concurrent jobs</td>
+</tr>
+<tr>
+<td>server_version</td>
+<td><a href="#string">string</a></td>
+<td>optional</td>
+<td>The current version of the server</td>
+</tr>
+</tbody>
+</table>
+<h3 id="loadplugindomainrequest">LoadPluginDomainRequest</h3>
+<p>Request a plugin be pre-loaded to optimize later score request(s)</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+</tbody>
+</table>
+<h3 id="loadplugindomainresult">LoadPluginDomainResult</h3>
+<p>Acknowledgment that a plugin is being loaded</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>successful</td>
+<td>bool</td>
+<td>required</td>
+<td>True if the request is being loaded (but receipt of this message does not guarantee the plugin has finished loaded)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="removeplugindomainrequest">RemovePluginDomainRequest</h3>
+<p>Unload (remove from memory) a previously loaded plugin.  Use to free resources on the server or force reloading of a plugin/domain</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin to remove</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>optional</td>
+<td>The domain to remove, if omitted all domains removed for this plugin.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="removeplugindomainresult">RemovePluginDomainResult</h3>
+<p>Acknowledgment that a plugin/domain has been removed (unloaded)</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>successful</td>
+<td>bool</td>
+<td>required</td>
+<td>True if the plugin was been removed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="plugindirectoryrequest">PluginDirectoryRequest</h3>
+<p>Use a PluginDirectoryRequest message to receive the list of plugins available on the server. A Plugin performs tasks such as SAD, LID, SID, or KWS. There may be multiple plugins registered for a given task. A plugin typically has one or more Domains. Plugins contain the code of the recognizer, while Domains correspond to a particular training or adaptation sessions. Domains therefore represent the data/conditions. A plugin and domain together are necessary to perform scoring. </p>
+<h3 id="plugindirectoryresult">PluginDirectoryResult</h3>
+<p>The collection of plugins available on the server, response to <a href="#plugindirectoryrequest">PluginDirectoryRequest</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugins</td>
+<td><a href="#plugin">Plugin</a></td>
+<td>repeated</td>
+<td>The available plugins</td>
+</tr>
+</tbody>
+</table>
+<h3 id="canceljobsrequest">CancelJobsRequest</h3>
+<p>Request to cancel jobs on the server.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server_wide</td>
+<td>bool</td>
+<td>required</td>
+<td>True will cancel all the client's jobs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="canceljobsresult">CancelJobsResult</h3>
+<p>Response to <a href="#canceljobsrequest">CancelJobsRequest</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info</td>
+<td>string</td>
+<td>optional</td>
+<td>Any information in response to the canceled job request</td>
+</tr>
+</tbody>
+</table>
+<!---
+
+
+## Workflow Messages
+
+## Workflow Analysis Messages
+
+## Workflow Enrollment Messages
+
+## Workflow Utility Messages
+
+## Workflow Internal (Hidden Messages)
+
+
+
+
+
+
+### AbstractWorkflowPluginTask
+This &#39;task&#39; is used when creating a WorkflowDefinition deployed to multiple clients independent of a server.
+A server, when resolving (interpreting) a &#39;deployed&#39; WorkflowDefinition  will instantiate this tasks into an
+executable (concrete) plugin task (i.e. such as a FrameScorerRequest).  This can be task could also be
+considered a &#39;meta&#39; task.  A WorkflowDefnition with one or more AbstractWorkflowPluginTask elements is considered
+an interpereted workflow (maybe use a better name than interpereted???)
+
+WorkflowAbstractPlugin - lets the server/workflow pick the plugin based on criteria
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| plugin_criteria | [SelectionCriteria](#com.sri.speech.olive.api.SelectionCriteria) | repeated | Use this criteria to provide additional filtering of the available plugins/domains: |
+| domain_criteria | [SelectionCriteria](#com.sri.speech.olive.api.SelectionCriteria) | repeated |  |
+| required_options | [string](#string) | repeated | the options a plugin must support; |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.AnalysisWorkflow"></a>
+
+### AnalysisWorkflow
+Conditional example: diarize audio, then do LID on segments. Finally, translate segments based on LID result.
+So must do DIA and LID in one job, then a second job is created that uses the output of Job 1 to choose
+language specific domain to perform translation
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| plugin | [string](#string) | required | The origin plugin |
+| domain | [string](#string) | required | The origin domain |
+
+
+
+
+<a name="com.sri.speech.olive.api.JobDefinition"></a>
+
+### JobDefinition
+The basic work group in a Workflow, defines the tasks to run for the data input(s)
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| job_name | [string](#string) | required | This should be a unique name within the workflow |
+| tasks | [WorkflowTask](#com.sri.speech.olive.api.WorkflowTask) | repeated | The list of work to be done for this workflow (workflow job nodes) |
+| data_properties | [DataHandlerProperty](#com.sri.speech.olive.api.DataHandlerProperty) | required | Could a job consume multiple data types? |
+| description | [string](#string) | optional | An optional description of this job |
+
+
+
+<a name="com.sri.speech.olive.api.OliveNodeWorkflow"></a>
+
+### OliveNodeWorkflow
+An &#34;olive pit&#34; this is an internal node that handles a task within a workflow but outside the plugin framework.
+Often used as a bridge between plugin results or to prepare input for a plugin
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| label | [string](#string) | required | the name/label for this internal node |
+| node_handler | [string](#string) | required | the OLIVE handler |
+| option | [OptionValue](#com.sri.speech.olive.api.OptionValue) | repeated | required string node_result_handler = 3; // the OLIVE handler that converts results in a protobuf message. Options for this task |
+| class_id | [string](#string) | repeated | An optional list of classes supported by this non-plugin node |
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowAdaptRequest"></a>
+
+### WorkflowAdaptRequest
+How is this different from a normal adapt request...  I assume we/the API keeps track of annots
+
+finalize, annotations, workspace, if preprocessing, the API takes care of appending annotations.
+When finalizing the API applies the annotations that have been created/built.  Returns either annots, or
+final plugin name...  If only doing pre-processing then need to return the annots to the client and they must
+supply those for the next pre-process request or to finalize.
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowAdaptResult"></a>
+
+### WorkflowAdaptResult
+Response to a WorkflowAdaptRequest
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowAnalysisRequest"></a>
+
+### WorkflowAnalysisRequest
+An analysis request assembled by a client that includes the server instantiated WorkflowDefintion(s) plus
+data (audio) and any plugin/workflow options.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| workflow_definition | [WorkflowDefinition](#com.sri.speech.olive.api.WorkflowDefinition) | required | Currently, only one WorkflowDefinition is supported, but this could be a repeated field in the future if/when we support multiple (parallel) jobs in a workflow such as processing LID on merged/mono audio while also processing SID for each channel, then returning the |
+| workflow_data_input | [WorkflowDataRequest](#com.sri.speech.olive.api.WorkflowDataRequest) | repeated |  |
+| option | [OptionValue](#com.sri.speech.olive.api.OptionValue) | repeated | Any options specified for this workflow |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowAnalysisResult"></a>
+
+### WorkflowAnalysisResult
+The Job Response in a WorkflowAnalysisRequest, where a job is one or more tasks applied to a common set of data
+input(s).
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| job_result | [WorkflowJobResult](#com.sri.speech.olive.api.WorkflowJobResult) | repeated | One or more results |
+| error | [string](#string) | optional | If set the workflow could not be executed |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowClassStatusRequest"></a>
+
+### WorkflowClassStatusRequest
+Request current class IDs for the job/tasks in a WorkflowDefinition.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| workflow_definition | [WorkflowDefinition](#com.sri.speech.olive.api.WorkflowDefinition) | required |  |
+| type | [WorkflowType](#com.sri.speech.olive.api.WorkflowType) | optional | Classes supported for this workflow type, Analysis workflows by default |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowClassStatusResult"></a>
+
+### WorkflowClassStatusResult
+The current Class IDs available for analysis in a workflow
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| job_class | [JobClass](#com.sri.speech.olive.api.JobClass) | repeated |  |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowDataRequest"></a>
+
+### WorkflowDataRequest
+Data (usually audio) included in a workflow
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data_id | [string](#string) | required | A label/name for this data, this ID should be unique to the workflow job this data is part of. For example, for audio data this could be the name of the file where the audio originated |
+| data_type | [InputDataType](#com.sri.speech.olive.api.InputDataType) | required | The type of data serialzied in this message (audio, text, image, video) |
+| workflow_data | [bytes](#bytes) | required | The workflow data, usually Audio but can be other types |
+| consumer_data_label | [string](#string) | optional | The keyword name used for this data input, downstream tasks can consume this input using this key |
+| job_name | [string](#string) | optional | If specified, limits this data to tasks belonging to this job name |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowDataResult"></a>
+
+### WorkflowDataResult
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data_id | [string](#string) | required | The label/name given to the data (WorkflowDataRequest.data_id) |
+| msg_type | [MessageType](#com.sri.speech.olive.api.MessageType) | required | The type of data serialized in this message |
+| result_data | [bytes](#bytes) | required | The workflow data, usually a PreprocessedAudioResult message but can be other types |
+| error | [string](#string) | optional | An error message if the audio could not be pre-processed |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowDefinition"></a>
+
+### WorkflowDefinition
+A Workflow can have upto 3 orders, one for Analysis, Enrollment, and/or Adaptation.  Each order can have multiple
+jobs, where a job is one or more tasks associated with data input(s).
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| order | [WorkflowOrderDefinition](#com.sri.speech.olive.api.WorkflowOrderDefinition) | repeated | A collection of jobs grouped by &#39;order&#39; where an order is |
+| actualized | [bool](#bool) | required | If true, this WorkflowDefinition was submitted to an OLVE server, which verified it |
+| version | [string](#string) | optional | Metadata about this Workflow Definition |
+| description | [string](#string) | optional |  |
+| created | [DateTime](#com.sri.speech.olive.api.DateTime) | optional |  |
+| updated | [DateTime](#com.sri.speech.olive.api.DateTime) | optional | Actualized date? |
+| server_id | [string](#string) | optional | When supported this is the ID of the server that actualized this WD |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowEnrollAdditionResult"></a>
+
+### WorkflowEnrollAdditionResult
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| successful | [bool](#bool) | required | Whether or not the individual enrollment succeeded |
+| message | [string](#string) | optional | Description of what occurred for this enrollment |
+| label | [string](#string) | optional | The optional name/label of the data added |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowEnrollRequest"></a>
+
+### WorkflowEnrollRequest
+... so far seems like a ClassModificationRequest
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| workflow_definition | [WorkflowDefinition](#com.sri.speech.olive.api.WorkflowDefinition) | required |  |
+| workflow_data_input | [WorkflowDataRequest](#com.sri.speech.olive.api.WorkflowDataRequest) | repeated |  |
+| class_id | [string](#string) | required |  |
+| option | [OptionValue](#com.sri.speech.olive.api.OptionValue) | repeated | Any options specified for this workflow |
+| task_name | [string](#string) | repeated | Enroll for these tasks (jobs?) in the workflow |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowEnrollResult"></a>
+
+### WorkflowEnrollResult
+Response to a WorkflowEnrollRequest
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| error | [string](#string) | optional | repeated WorkflowEnrollAdditionResult addition_result = 1; // One or more enrollment addition results repeated WorkflowDataResult data_results = 3; // Information about data used in the enrollment
+
+If set the workflow could not be executed |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowJobResult"></a>
+
+### WorkflowJobResult
+The results of task(s) in a job using a set of data.  So for a SAD/LID/SID workflow there would be 3 task results
+and one data_result value
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| job_name | [string](#string) | required | The name from the JobDefinition (may not be unique in the returned job results due to the MultiChannelMode) |
+| task_results | [WorkflowTaskResult](#com.sri.speech.olive.api.WorkflowTaskResult) | repeated | One or more task results from the workflow |
+| data_results | [WorkflowDataResult](#com.sri.speech.olive.api.WorkflowDataResult) | repeated | Information about the |
+| error | [string](#string) | optional |  |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowOrderDefinition"></a>
+
+### WorkflowOrderDefinition
+A Workflow recipe contains one or more jobs to perform an analysis, enrollment, or adaption.  Where each job has
+one or more tasks.  (Currently only one job per order/recipe is supported)
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| workflow_type | [WorkflowType](#com.sri.speech.olive.api.WorkflowType) | required | The type of workflow to perform (analysis, enrollment, adapt) |
+| job_definition | [JobDefinition](#com.sri.speech.olive.api.JobDefinition) | repeated | The list of work to be done for this workflow (workflow job |
+| processing_type | [WorkflowJobType](#com.sri.speech.olive.api.WorkflowJobType) | required | Internal fields:
+
+How to handle multiple workflow jobs when creating an order(s) in OLIVE. Not yet supported just use MERGE for now |
+| transfer_result_labels | [string](#string) | repeated | The names of task results to transfer/carry over from a completed job to a |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowRequest"></a>
+
+### WorkflowRequest
+Message used by a client to submit a WorkflowDefinition to be resolved (actualized) by the server.  The server
+resolves any &#39;abstract&#39; tasks in the WorkflowDefinition, creating concerte tasks that specify a plugin/domain.
+
+WorkflowResoulutionReqeust - to actualize a plugin
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| workflow_definition | [WorkflowDefinition](#com.sri.speech.olive.api.WorkflowDefinition) | required  |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowResult"></a>
+
+### WorkflowResult
+Response to a Workflow request message, contains the actualized workflow
+fixme: this message is still awkward... shouldn&#39;t be a Workflow, how to support analysis/enrollment/adapt
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| workflow | [WorkflowDefinition](#com.sri.speech.olive.api.WorkflowDefinition) | optional | An actualized workflow that can be executed on the OLIVE server when combined with data inputs |
+| error | [string](#string) | optional | If set, a description of the error when actualizing a workflow |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowTask"></a>
+
+### WorkflowTask
+The WorkflowTask describes a unit of work to accomplish a plugin task or an inter-plugin task (OLIVE pit/pimento).
+Similar to ScenicMessage, a  WorkflowTask is a wrapper around a serialized abstract or concrete taks (so message_data
+can contains a serialized AbstractWorkflowPluginTask message, FrameScorerReqeust, GlobalScorerReqeust, etc).
+
+Tasks assume to consume an data input (audio, text, video, or even the results of a previous task) and produce a result
+that can be consumed by a downstream (executed after this task) task.  The &#39;consumer&#39; lable values let tasks have
+configurable options for the names of data they consume and the result they advertise for consumption by other tasks.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message_type | [MessageType](#com.sri.speech.olive.api.MessageType) | required | the type of message (FrameScorer, RegionScorer, etc) |
+| message_data | [bytes](#bytes) | required | the message data, deserialized according to message type. |
+| trait_output | [TraitType](#com.sri.speech.olive.api.TraitType) | required | Internal values
+
+The type of output produced by this task (i.e. Frame scores)  |
+| task | [string](#string) | required | The type of task to perform |
+| consumer_data_label | [string](#string) | required | Consumes data having this label. Default value is &#39;audio&#39;. |
+| consumer_result_label | [string](#string) | required | Results from this task are identifed by this keyword/label (aka the task label). This label |
+| return_result | [bool](#bool) | optional | If specified, this output is returned to the client |
+| option_mappings | [OptionMap](#com.sri.speech.olive.api.OptionMap) | repeated | used to map the workflow options to an option key/value recognized by a plugin |
+| allow_failure | [bool](#bool) | optional | If task fails should the job continue? True by default, otherwise if False then entire workflow fails on an error for this task. |
+| supported_options | [OptionMap](#com.sri.speech.olive.api.OptionMap) | optional | Optional public values - |
+| class_id | [string](#string) | repeated |  |
+| description | [string](#string) | optional | An optional description of this task |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowTaskResult"></a>
+
+### WorkflowTaskResult
+Part of an WorkflowAnalysisResult message - The analysis task (FrameScorerResult, GlobalScorerResult, etc)
+that was part of a Workflow Analysis request.  Results are only returned if requested in the origional Workflow,
+so every task in Workflow/WorkflowDefinition may not have a corresponding result
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| task_name | [string](#string) | required | The name of this task (from the WorkflowTask&#39;s consumer_result_label) |
+| task_trait | [TraitType](#com.sri.speech.olive.api.TraitType) | required | This task&#39;s trait (can also be inferred from the message type) |
+| task_type | [string](#string) | required | This task&#39;s type (SAD, LID, etc) |
+| message_type | [MessageType](#com.sri.speech.olive.api.MessageType) | required | the type of message |
+| message_data | [bytes](#bytes) | required | the message data, deserialized according to message type. |
+| error | [string](#string) | optional | If set this task failed with this error message |
+
+
+
+<a name="com.sri.speech.olive.api.MultiChannelMode"></a>
+
+### MultiChannelMode
+Workflow(?) Input Processing Types
+The various modes for handling (pre-processing) multi-channel prior to submitting to a plugin(s)
+Other names:  PreprocessChannelMode
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| MONO | 1 | Merge multi-channel input into a mono input before sending to the pluin(s). This is the default mode: |
+| IMMUTABLE | 2 | All channels in the input are passed to the plugin(s) |
+| SPLIT | 3 | Process each channel separately, plugin(s) invoked for each channel (the job tasks are duplicated for each channel) |
+| SELECTED | 4 | A specific channel (provided separately) is passed to the plugin |
+
+
+
+
+
+
+
+
+
+## Workflow Utility/Support Messages
+
+<a name="com.sri.speech.olive.api.ConditionalSelectionCriteria"></a>
+
+### ConditionalSelectionCriteria
+
+Message used to filter plugins/domains from a set of plugin scores.  Can be used to find match a result from a
+completed plugin job and then use the plugin/domain criteria to finalize the plugin selection.
+Assumes plugin results have an id/name and an optional score that.  Should a score match the expected name/value
+in this message then the the plugin/domain criteria at bottom can be used to make a final plugin selection
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| expected_result_name | [string](#string) | required | Use the &#39;result&#39; selection criteria to find a matching result then use the plugin/domain criteria to finalize the plugin selection. Lets us do somethig like: if result matches &#39;eng&#39; and value is &gt;= 0 |
+| name_criteria | [SelectionCriteria](#com.sri.speech.olive.api.SelectionCriteria) | required | IS eng-uk, START eng, etc |
+| expected_value | [float](#float) | optional | Optional threshold for result selection for a result value 0 |
+| value_criteria | [SelectionCriteria](#com.sri.speech.olive.api.SelectionCriteria) | optional | this &gt;= expected value |
+| plugin_criteria | [SelectionCriteria](#com.sri.speech.olive.api.SelectionCriteria) | repeated | If result criteria above is met, then use this criteria to finalize the plugin/domain selection likely have already have selected the plugin from the min criteria |
+| domain_criteria | [SelectionCriteria](#com.sri.speech.olive.api.SelectionCriteria) | repeated | filter domain options - STARTS with eng-mul |
+
+
+
+
+<a name="com.sri.speech.olive.api.ConditionalWorkflowPluginTask"></a>
+
+### ConditionalWorkflowPluginTask
+
+This &#39;task&#39; is used to select a plugin/domain in &#39;real time&#39; based on the results of a completed task(s).  This task
+is used for workflows that cannot fully actualize a WorkflowDefinition because the plugin selection depends on the
+the results of a previous plugin task.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| min_criteria | [AbstractWorkflowPluginTask](#com.sri.speech.olive.api.AbstractWorkflowPluginTask) | required | Provides an initial, but incomplete plugin/domain selection criteria |
+| input_type | [TraitType](#com.sri.speech.olive.api.TraitType) | required | For example this might select a KWS plugin but the domain can not be selected until the LID results are available. The type of input data, the data input label is defined in the parent WorkflowTask |
+| result_criteria | [ConditionalSelectionCriteria](#com.sri.speech.olive.api.ConditionalSelectionCriteria) | repeated | Attempt to match the results from an upstream plugin with one of the elements in result_criteria, if a match is found then the contained plugin/domain criteria is used to finalize the plugin/domain selection |
+| allowable_error | [bool](#bool) | optional | fixme: replace with parent task&#39;s. If true, then failure to find a plugin/domain that matches the selection |
+
+
+
+
+
+
+<a name="com.sri.speech.olive.api.DataHandlerProperty"></a>
+
+### DataHandlerProperty
+
+Each job in a receipe can have unique data properties
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| min_number_inputs | [uint32](#uint32) | required | The minimum number of data inputs required for a job. Can be zero |
+| max_number_inputs | [uint32](#uint32) | optional | Optional, if not specifed we assume one input. Used to limit the number of batch jobs |
+| type | [InputDataType](#com.sri.speech.olive.api.InputDataType) | required | The type of data (audio, text, image, etc) |
+| preprocessing_required | [bool](#bool) | required | True if pre-processing of this data is required, normally audio is always preprocessed, but we let that be configurable and other data types will not need preprocessing |
+| resample_rate | [int32](#int32) | optional | Optional properties for handling audio inputs. If set, resample audio to this sample rate. By default audio is resampled to 8K |
+| mode | [MultiChannelMode](#com.sri.speech.olive.api.MultiChannelMode) | optional | Mode for handling/pre-processing multi-channel input for a plugin(s). |
+
+<a name="com.sri.speech.olive.api.OptionMap"></a>
+
+### OptionMap
+Used to map a result or option in a workflow to the option name used by a plugin  (i.e. SAD_FRAMES --&gt; SAD)
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| workflow_keyword_name | [string](#string) | required | The name (key) for this option used by the workflow |
+| plugin_keyword_name | [string](#string) | required | The corresponding name used by the plugin (or other node) |
+
+
+<a name="com.sri.speech.olive.api.SelectionCriteria"></a>
+
+### SelectionCriteria
+Message used to classify how a plugin/domain is selected
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| type | [SelectionType](#com.sri.speech.olive.api.SelectionType) | required | the type of selection filtering to apply |
+| value | [string](#string) | optional | Specified when selection type is matching a string value |
+
+<a name="com.sri.speech.olive.api.SelectionType"></a>
+
+### SelectionType
+The types of selection/filtering supported for selecting an abstract workflow task
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SELECTION_IS | 1 | string name must fully match criteria value |
+| SELECTION_CONTAINS | 2 | string name must contain the criteria value |
+| SELECTION_STARTS | 3 | string name must begin with criteria value |
+| SELECTION_ENDS | 4 | string name must end with criteria value |
+| SELECTION_NEWEST_VERSION | 5 | NON-String criteria values - these are kind of odd, as they are aggregate criteria that must be applied to to the set of plugins - maybe we should break these out but then the message gets real ugly... use the newest version |
+| SELECTION_OLDEST_VERSION | 6 | use the oldest version |
+| SELECTION_GREATER_THAN | 7 | Criteria for plugin results, don&#39;t used yet. numerical value must be greater than criteria value |
+| SELECTION_GREATER_THAN_EQUAL | 8 | numerical value must be greater than or equal to criteria value |
+| SELECTION_LESS_THAN | 9 | numerical value must be less than criteria value |
+| SELECTION_LESS_THAN_EQUAL | 10 | numerical value must be less or equal to criteria value |
+| SELECTION_EQUAL | 11 | numerical values must match (use IS to match strings) |
+
+
+<a name="com.sri.speech.olive.api.WorkflowJobType"></a>
+
+### WorkflowJobType
+Options for handling Workflows with multiple WorkflowJobs.  Where is a job is a set of tasks operating on
+a common data input
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| MERGE | 1 | Attempt to create one OLIVE job for all WorkflowJobs |
+| PARALLEL | 2 | Create an OLIVE job for each WorkflowJob that may run in parallel and no not share task results |
+| SEQUENTIAL | 3 | Execute WorkflowJobs in sequence, with the results from the previous job(s) feeding into |
+
+
+
+<a name="com.sri.speech.olive.api.WorkflowType"></a>
+
+### WorkflowType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| WORKFLOW_ANALYSIS_TYPE | 1 |  |
+| WORKFLOW_ENROLLMENT_TYPE | 2 |  |
+| WORKFLOW_ADAPT_TYPE | 3 |  |
+
+
+
+
+
+
+
+
+
+
+
+--->
+
+<h2 id="global-scorer-messages">Global Scorer Messages</h2>
+<p><strong>GlobalScorer</strong> is an OLIVE Plugin Trait defining a/the type of scoring the plugin is capable of. For more details about what it means to be a GlobalScorer, refer to the relevant section of the <a href="traits.html#globalscorer">Plugin Traits</a> page.</p>
+<p>For an example of the code that would be used to build and submit a <strong>GlobalScorer</strong> request, refer to the relevant section of the <a href="apiCode.html#global-score-request">Integrating the (Java) Client API</a> Guide.</p>
+<h3 id="globalscore">GlobalScore</h3>
+<p>The global score for a class</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>required</td>
+<td>The class</td>
+</tr>
+<tr>
+<td>score </td>
+<td>float</td>
+<td>required</td>
+<td>The score associated with the class</td>
+</tr>
+<tr>
+<td>confidence</td>
+<td>float</td>
+<td>optional</td>
+<td>An optional confidence value when part of a calibration report</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td>optional</td>
+<td>An optional suggested action when part of a calibration report</td>
+</tr>
+</tbody>
+</table>
+<h3 id="globalscorerrequest">GlobalScorerRequest</h3>
+<p>Request global scoring using the specified plugin.  The plugin must implement the GlobalScorer trait to handle this request. If this request is successful, then one set of scores is returned since the audio submission is assumed to be mono.  If submitting multichannel audio then the audio is merged (unless a channel specified in the Audio message, then that channel is used) to produce one set of global scores.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin to invoke</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>audio</td>
+<td><a href="#audio">Audio</a></td>
+<td>optional</td>
+<td>The audio to analyze/score. Either audio or vector must be set.</td>
+</tr>
+<tr>
+<td>vector</td>
+<td><a href="#audiovector">AudioVector</a></td>
+<td>optional</td>
+<td>The preprocessed audio vector to analyze/score. Either audio or vector must be set.</td>
+</tr>
+<tr>
+<td>option</td>
+<td><a href="#optionvalue">OptionValue</a></td>
+<td>repeated</td>
+<td>Any options specified</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>repeated</td>
+<td>Optionally specify the classes to be scored</td>
+</tr>
+</tbody>
+</table>
+<h3 id="globalscorerresult">GlobalScorerResult</h3>
+<p>The result from a GlobalScorerRequest, having zero or more GlobalScore elements</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td><a href="#globalscore">GlobalScore</a></td>
+<td>repeated</td>
+<td>The class scores</td>
+</tr>
+</tbody>
+</table>
+<h2 id="region-scorer-messages">Region Scorer Messages</h2>
+<p><strong>RegionScorer</strong> is an OLIVE Plugin Trait defining a/the type of scoring the plugin is capable of. For more details about what it means to be a RegionScorer, refer to the relevant section of the <a href="traits.html#regionscorer">Plugin Traits</a> page.</p>
+<p>For an example of the code that would be used to build and submit a <strong>RegionScorer</strong> request, refer to the relevant section of the <a href="apiCode.html#region-score-request">Integrating the (Java) Client API</a> Guide.</p>
+<h3 id="regionscore">RegionScore</h3>
+<p>The basic unit of a region score.  There may be multiple RegionScore values in a RegionScorerResult </p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start_t</td>
+<td>int32</td>
+<td>required</td>
+<td>Begin-time of the region (in seconds)</td>
+</tr>
+<tr>
+<td>end_t</td>
+<td>int32</td>
+<td>required</td>
+<td>End-time of the region (in seconds)</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>required</td>
+<td>Class ID associated with region</td>
+</tr>
+<tr>
+<td>score</td>
+<td>float</td>
+<td>optional</td>
+<td>Optional score associated with the class_id label</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regionscorerrequest">RegionScorerRequest</h3>
+<p>Request region scoring for the specified plugin/domain.  The plugin must implement the RegionScorer trait to handle this request.  If this request is successful, then one set of scores is returned since the audio submission is assumed to be mono.  If submitting multichannel audio then the audio is merged (unless a channel specified in the Audio message, then that channel is used) to produce one set of region scores.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin to invoke</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>audio</td>
+<td><a href="#audio">Audio</a></td>
+<td>required</td>
+<td>The audio to analyze/score</td>
+</tr>
+<tr>
+<td>option </td>
+<td><a href="#optionvalue">OptionValue</a></td>
+<td>repeated</td>
+<td>Any options specified</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>repeated</td>
+<td>Optionally specify the classes to be scored</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regionscorerresult">RegionScorerResult</h3>
+<p>The set of region score results, response to RegionScorerRequest</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>region </td>
+<td><a href="#regionscore">RegionScore</a></td>
+<td>repeated</td>
+<td>The scored regions</td>
+</tr>
+</tbody>
+</table>
+<h2 id="frame-scorer-messages">Frame Scorer Messages</h2>
+<p><strong>FrameScorer</strong> is an OLIVE Plugin Trait defining a/the type of scoring the plugin is capable of. For more details about what it means to be a FrameScorer, refer to the relevant section of the <a href="traits.html#framescorer">Plugin Traits</a> page.</p>
+<p>For an example of the code that would be used to build and submit a <strong>FrameScorer</strong> request, refer to the relevant section of the <a href="apiCode.html#frame-score-request">Integrating the (Java) Client API</a> Guide.</p>
+<h3 id="framescorerrequest">FrameScorerRequest</h3>
+<p>Request frame scoring using the specified plugin and audio. The plugin must implement the FrameScorer trait to handle this request. If this request is successful, then one set of scores is returned since the audio submission is  assumed to be mono.  If submitting multichannel audio then the audio is merged (unless a channel specified in the Audio message, then that channel is used) to produce one set of frame scores.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin to invoke</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>audio</td>
+<td><a href="#audio">Audio</a></td>
+<td>required</td>
+<td>The audio to analyze/score</td>
+</tr>
+<tr>
+<td>option</td>
+<td><a href="#optionvalue">OptionValue</a></td>
+<td>repeated</td>
+<td>Any options specified</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>repeated</td>
+<td>Optionally specify the classes to be scored</td>
+</tr>
+</tbody>
+</table>
+<h3 id="framescorerresult">FrameScorerResult</h3>
+<p>The results from a FrameScorerRequest</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="#framescores">FrameScores</a></td>
+<td>repeated</td>
+<td>List of frame scores by class_id</td>
+</tr>
+</tbody>
+</table>
+<h3 id="framescores">FrameScores</h3>
+<p>The basic unit of a frame score, returned in a FrameScorerRequest</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>required</td>
+<td>The class ID to which the frame scores pertain</td>
+</tr>
+<tr>
+<td>frame_rate</td>
+<td>int32</td>
+<td>required</td>
+<td>The number of frames per second</td>
+</tr>
+<tr>
+<td>frame_offset</td>
+<td>double</td>
+<td>required</td>
+<td>The offset to the center of the frame 'window'</td>
+</tr>
+<tr>
+<td>score </td>
+<td>double </td>
+<td>repeated</td>
+<td>The frame-level scores for the class_id</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bounding-box-messages">Bounding Box Messages</h2>
+<h3 id="boundingboxscorerrequest">BoundingBoxScorerRequest</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin to score</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>data</td>
+<td><a href="#binarymedia">BinaryMedia</a></td>
+<td>optional</td>
+<td>The image or video to analyze/score</td>
+</tr>
+<tr>
+<td>option</td>
+<td><a href="#optionvalue">OptionValue</a></td>
+<td>repeated</td>
+<td>Any options specified</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>repeated</td>
+<td>Optionally specify the classes to be scored</td>
+</tr>
+</tbody>
+</table>
+<h3 id="boundingboxscorerresult">BoundingBoxScorerResult</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>region</td>
+<td><a href="#boundingboxscore">BoundingBoxScore</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="boundingboxscore">BoundingBoxScore</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>required</td>
+<td>The class ID associated with this region where the object is detected (default is 'face' for non-enrollable box scores)</td>
+</tr>
+<tr>
+<td>bbox</td>
+<td><a href="#boundingbox">BoundingBox</a></td>
+<td>required</td>
+<td>Defines the area where the object is detected.. is this a single or repeated field???</td>
+</tr>
+<tr>
+<td>score</td>
+<td>float</td>
+<td>required</td>
+<td>Score associated with the identified object</td>
+</tr>
+<tr>
+<td>time_region</td>
+<td><a href="#annotationregion">AnnotationRegion</a></td>
+<td>optional</td>
+<td>Video will have either a timestamp or start/end time (seconds) of when the object was identified. For FDI and FRI (image) there will be no regions.  FDV has a single timestamp, and FRV has a start/end time region.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="text-transformation-messages">Text Transformation Messages</h2>
+<p><strong>TextTransformer</strong> is an OLIVE Plugin Trait for scoring using text (instead of audio).  For more details about what it means to be a TextTransformer, refer to the relevant section of the <a href="traits.html#texttransformer">Plugin Traits</a> page.</p>
+<p><a name="texttransformationrequest"></a></p>
+<h3 id="texttransformationrequest">TextTransformationRequest</h3>
+<p>Request the transformation of a text/string using MT</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The plugin to invoke</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>text</td>
+<td><a href="#string">string</a></td>
+<td>optional</td>
+<td>The string text to analyze/score, Optional as of OLIVE 5.0 since data input(s) can be specified as part of a workflow</td>
+</tr>
+<tr>
+<td>option</td>
+<td><a href="#optionvalue">OptionValue</a></td>
+<td>repeated</td>
+<td>Any options specified</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td><a href="#string">string</a></td>
+<td>repeated</td>
+<td>Optionally specify the classes to be scored</td>
+</tr>
+</tbody>
+</table>
+<p><a name="texttransformationresult"></a></p>
+<h3 id="texttransformationresult">TextTransformationResult</h3>
+<p>The response to a TextTransformationRequest</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transformation</td>
+<td><a href="#texttransformation">TextTransformation</a></td>
+<td>repeated</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="texttransformation"></a></p>
+<h2 id="texttransformation">TextTransformation</h2>
+<p>The text value returned in a TextTransformationResult</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class_id</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>A classifier for this result, usually just &#39;text&#39;</td>
+</tr>
+<tr>
+<td>transformed_text</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The text result</td>
+</tr>
+<tr>
+<td>start_t</td>
+<td>float</td>
+<td>optional</td>
+<td>Begin-time of the region (in seconds) transformed - Likely only available via a workflow</td>
+</tr>
+<tr>
+<td>end_t</td>
+<td>float</td>
+<td>optional</td>
+<td>End-time of the region (in seconds) - Likely only available via a workflow</td>
+</tr>
+<tr>
+<td>source_class_id string</td>
+<td>optional</td>
+<td>An optional classifier for the original result, such as 'Spanish' if converting from  Spanish to English</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="audio-alignment-messages">Audio Alignment  Messages</h2>
+<p><strong>AudioAlignmentScorer</strong> is an OLIVE Plugin Trait for alignment of two or more audio inputs.  For more details about what it means to be a TextTransformer, refer to the relevant section of the <a href="traits.html#texttransformer">Plugin Traits</a> page.</p>
+<p><a name="audioalignmentscorerequest"></a></p>
+<h3 id="audioalignmentscorerequest">AudioAlignmentScoreRequest</h3>
+<p>Request the alignment of two or more audio inputs</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The plugin to invoke</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>audios</td>
+<td><a href="#audio">Audio</a></td>
+<td>repeated</td>
+<td>The audio to analyze/score, Optional as of OLIVE 5.0 since Audio can be specified</td>
+</tr>
+<tr>
+<td>option</td>
+<td><a href="#optionvalue">OptionValue</a></td>
+<td>repeated</td>
+<td>as part of a workflow. If specified there should be two or more audio inputs</td>
+</tr>
+</tbody>
+</table>
+<p>Any options specified |
+| class_id | <a href="#string">string</a> | repeated | Optionally specify the classes to be scored |</p>
+<p><a name="audioalignmentscoreresult"></a></p>
+<h3 id="audioalignmentscoreresult">AudioAlignmentScoreResult</h3>
+<p>The result of a AudioAlignmentScoreRequest</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scores</td>
+<td><a href="#audioalignmentscore">AudioAlignmentScore</a></td>
+<td>repeated</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="audioalignmentscore"></a></p>
+<h3 id="audioalignmentscore">AudioAlignmentScore</h3>
+<p>A score in an AudioAlignmentScoreResult</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reference_audio_label</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The source or reference audio name (file 1)</td>
+</tr>
+<tr>
+<td>other_audio_label</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The name of the audio input in comparison (file 2)</td>
+</tr>
+<tr>
+<td>shift_offset</td>
+<td><a href="#float">float</a></td>
+<td>required</td>
+<td>shift offset between the audion in the reference and</td>
+</tr>
+<tr>
+<td>confidence</td>
+<td><a href="#float">float</a></td>
+<td>required</td>
+<td>The confidence of this score</td>
+</tr>
+</tbody>
+</table>
+<h2 id="global-comparer-messages">Global Comparer Messages</h2>
+<h3 id="globalcomparerreport">GlobalComparerReport</h3>
+<p>The visual representation of a global comparison</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="#reporttype">ReportType</a></td>
+<td>required</td>
+<td>The type of report (normally a PDF)</td>
+</tr>
+<tr>
+<td>report_data</td>
+<td><a href="#bytes">bytes</a></td>
+<td>required</td>
+<td>The serialized report</td>
+</tr>
+</tbody>
+</table>
+<h3 id="globalcomparerrequest">GlobalComparerRequest</h3>
+<p>Request the comparison of two audio submission.  The plugin must implement the GlobalComparer trait to handle this request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The plugin to invoke</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>audio_one</td>
+<td><a href="#audio">Audio</a></td>
+<td>required</td>
+<td>One of two audio submissions to analyze/score.</td>
+</tr>
+<tr>
+<td>audio_two</td>
+<td><a href="#audio">Audio</a></td>
+<td>required</td>
+<td>One of two audio submissions to analyze/score.</td>
+</tr>
+<tr>
+<td>option</td>
+<td><a href="#optionvalue">OptionValue</a></td>
+<td>repeated</td>
+<td>Any options specified</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td><a href="#string">string</a></td>
+<td>repeated</td>
+<td>Optionally specify the classes to be scored // todo remove!</td>
+</tr>
+</tbody>
+</table>
+<h3 id="globalcomparerresult">GlobalComparerResult</h3>
+<p>The result of a GlobalComparerRequest</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>results</td>
+<td><a href="#metadata">Metadata</a></td>
+<td>repeated</td>
+<td>The metadata/scores returned from a global compare analysis</td>
+</tr>
+<tr>
+<td>report</td>
+<td><a href="#globalcomparerreport">GlobalComparerReport</a></td>
+<td>repeated</td>
+<td>A comparison report generated by the plugin</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reporttype">ReportType</h3>
+<p>Possible report formats</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDF</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>GIF</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>JPEG</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIFF</td>
+<td>5</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="class-modifier-messages">Class Modifier Messages</h2>
+<h3 id="classmodificationrequest">ClassModificationRequest</h3>
+<p>Request a modification of a class for the specified plugin. The plugin must implement the ClassModifier Trait to handle this request.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>required</td>
+<td>The ID of the class being enrolled/modified</td>
+</tr>
+<tr>
+<td>addition</td>
+<td><a href="#audio">Audio</a></td>
+<td>repeated</td>
+<td>List of Audio, action pairs to apply to the class</td>
+</tr>
+<tr>
+<td>removal</td>
+<td><a href="#audio">Audio</a></td>
+<td>repeated</td>
+<td>List of Audio, action pairs to apply to the class</td>
+</tr>
+<tr>
+<td>addition_vector</td>
+<td><a href="#audiovector">AudioVector</a></td>
+<td>repeated</td>
+<td>List of preprocessed audio vector to apply to the class</td>
+</tr>
+<tr>
+<td>finalize</td>
+<td>bool</td>
+<td>optional</td>
+<td>Whether or not to finalize the class. You can send multiple ClassModificationRequests and only finalize on the last request for efficiency. Default: true</td>
+</tr>
+<tr>
+<td>option</td>
+<td><a href="#optionvalue">OptionValue</a></td>
+<td>repeated</td>
+<td>Any modification options</td>
+</tr>
+<tr>
+<td>addition_media</td>
+<td><a href="#binarymedia">BinaryMedia</a></td>
+<td>repeated</td>
+<td>List of generic binary data for class enrollment</td>
+</tr>
+<tr>
+<td>bounding_box</td>
+<td><a href="#boundingbox">BoundingBox</a></td>
+<td>repeated</td>
+<td>List of bounding boxes for imagery enrollment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classmodificationresult">ClassModificationResult</h3>
+<p>Response to <a href="#classmodificationrequest">ClassModificationRequest</a>.  </p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addition_result</td>
+<td><a href="#audioresult">AudioResult</a></td>
+<td>repeated</td>
+<td>Provides feedback about the success/failure of individual audio additions</td>
+</tr>
+<tr>
+<td>removal_result</td>
+<td><a href="#audioresult">AudioResult</a></td>
+<td>repeated</td>
+<td>Provides feedback about the success/failure of individual audio removals</td>
+</tr>
+<tr>
+<td>vector_addition_result</td>
+<td><a href="#audioresult">AudioResult</a></td>
+<td>repeated</td>
+<td>Provides feedback about the success/failure of individual audio vector additions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classremovalrequest">ClassRemovalRequest</h3>
+<p>Request removal of a class in the specified plugin/domain</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>required</td>
+<td>The id of the class to be removed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classremovalresult">ClassRemovalResult</h3>
+<p>Response to <a href="#classremovalrequest">ClassRemovalRequest</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>optional</td>
+<td>The ID of the class from the request</td>
+</tr>
+<tr>
+<td>successful</td>
+<td>bool</td>
+<td>optional</td>
+<td>Whether the removal was successful or not</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>optional</td>
+<td>Description of what occured (mostly populated when unsuccessful)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audioresult">AudioResult</h3>
+<p>The feedback/description of class modification for a result in a ClassModificationResult message</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>successful</td>
+<td>bool</td>
+<td>required</td>
+<td>Whether or not the individual audio succeeded</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>optional</td>
+<td>Description of what occurred on this audio</td>
+</tr>
+</tbody>
+</table>
+<h2 id="audio-converter-messages">Audio Converter Messages</h2>
+<h3 id="audiomodification">AudioModification</h3>
+<p>The contents of an AudioModificationResult.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>audio</td>
+<td><a href="#audiobuffer">AudioBuffer</a></td>
+<td>required</td>
+<td>The transformed audio</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>required</td>
+<td>Description of how this audio was transformed, or an error description. Not sure if needed?</td>
+</tr>
+<tr>
+<td>scores</td>
+<td><a href="#metadata">Metadata</a></td>
+<td>repeated</td>
+<td>Zero or more scores (metadata) about the modifed audio. Metadata is a list of name/value pairs.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audiomodificationrequest">AudioModificationRequest</h3>
+<p>Request enhancement (modification) of the submitted audio.  The plugin must support the AudioConverter trait to support this request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>requested_channels</td>
+<td><a href="#uint32">uint32</a></td>
+<td>required</td>
+<td>Convert audio to have this number of channels</td>
+</tr>
+<tr>
+<td>requested_rate</td>
+<td><a href="#uint32">uint32</a></td>
+<td>required</td>
+<td>Convert audio to this sample rate</td>
+</tr>
+<tr>
+<td>modifications</td>
+<td><a href="#audio">Audio</a></td>
+<td>repeated</td>
+<td>List of Audio, action pairs to apply to the class - may have to limit to one audio submission per request, not sure how to handle multiple results</td>
+</tr>
+<tr>
+<td>option</td>
+<td><a href="#optionvalue">OptionValue</a></td>
+<td>repeated</td>
+<td>Any options specified</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audiomodificationresult">AudioModificationResult</h3>
+<p>The result of an AudioModificationRequest</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>successful</td>
+<td>bool</td>
+<td>required</td>
+<td>Whether or not the individual audio modification succeeded</td>
+</tr>
+<tr>
+<td>modification_result</td>
+<td><a href="#audiomodification">AudioModification</a></td>
+<td>repeated</td>
+<td>Provides feedback about the success/failure of individual audio additions.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="audio-vectorizer-messages">Audio Vectorizer Messages</h2>
+<h3 id="audiovector">AudioVector</h3>
+<p>Represents audio preprocessed by a plugin/domain.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The origin plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The origin domain</td>
+</tr>
+<tr>
+<td>data</td>
+<td>bytes</td>
+<td>required</td>
+<td>The audio vector data, varies by plugin</td>
+</tr>
+<tr>
+<td>params</td>
+<td><a href="#metadata">Metadata</a></td>
+<td>repeated</td>
+<td>Name/value parameter data generated by the plugin and needed for later processing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pluginaudiovectorrequest">PluginAudioVectorRequest</h3>
+<p>Request one or more audio submissions be vectorized (preprocesssed) by the specified plugin. The resulting vectorized audio can only be processed by the same plugin. A plugin must support the AudioVectorizer Trait to support this request.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>addition</td>
+<td><a href="#audio">Audio</a></td>
+<td>repeated</td>
+<td>List of Audio to process</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pluginaudiovectorresult">PluginAudioVectorResult</h3>
+<p>The result of a PluginAudioVectorRequest, containing a set of VectorResults</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vector_result</td>
+<td><a href="#vectorResult">VectorResult</a></td>
+<td>repeated</td>
+<td>The results of processing the submitted audio. One result per audio addition.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vectorresult">VectorResult</h3>
+<p>The status of the vector request, and if successful includes an AudioVector</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>successful</td>
+<td>bool</td>
+<td>required</td>
+<td>Whether or not the audio was successfully processed</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>optional</td>
+<td>Description of what occurred to cause an error</td>
+</tr>
+<tr>
+<td>audio_vector</td>
+<td><a href="#audiovector">AudioVector</a> </td>
+<td>optional</td>
+<td>If successful, the vectorized audio</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classexportrequest">ClassExportRequest</h3>
+<p>Exports an existing class enrollment (i.e. speaker enrollment) from the server for the specified class_id.  The plugin must support the ClassExporter trait to handle this request.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>required</td>
+<td>The ID of the class model to export</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classexportresult">ClassExportResult</h3>
+<p>The result of an enrollment export</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>successful</td>
+<td>bool</td>
+<td>required</td>
+<td>Whether or not the individual audio succeeded</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>optional</td>
+<td>Description of what occurred to cause an error</td>
+</tr>
+<tr>
+<td>enrollment</td>
+<td><a href="#enrollmentmodel">EnrollmentModel</a></td>
+<td>optional</td>
+<td>If successful, then this is the exported model for the specified class.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classimportrequest">ClassImportRequest</h3>
+<p>Used to import an enrollment model (exported via a ClassExportRequest).  Only plugins that support the ClassExporter trait can handle this request.  Only import an enrollment into the same plugin AND domain as previously exported.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>optional</td>
+<td>Import the model using this class name, instead of the original name</td>
+</tr>
+<tr>
+<td>enrollment</td>
+<td><a href="#enrollmentmodel">EnrollmentModel</a></td>
+<td>required</td>
+<td>the enrollment to import</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classimportresult">ClassImportResult</h3>
+<p>The status of a ClassImportRequest.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>successful</td>
+<td>bool</td>
+<td>required</td>
+<td>Whether or not the import succeeded</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>optional</td>
+<td>Description of what occurred to cause an error</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enrollmentmodel">EnrollmentModel</h3>
+<p>An enrollment model for a specific plugin and domain.  This is used to save a current enrollment or restore a class enrollment via a ClassImportRequest.  This model is not used as an AudioVector in a scoring requests.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The origin plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The origin domain</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>required</td>
+<td>the class_id of the enrollment</td>
+</tr>
+<tr>
+<td>data</td>
+<td>bytes</td>
+<td>required</td>
+<td>The enrollment model data</td>
+</tr>
+<tr>
+<td>params</td>
+<td><a href="#metadata">Metadata</a></td>
+<td>repeated</td>
+<td>Name/value parameter data generated by the plugin and needed for later processing</td>
+</tr>
+</tbody>
+</table>
+<h2 id="updater-messages">Updater Messages</h2>
+<h3 id="applyupdaterequest">ApplyUpdateRequest</h3>
+<p>Used to request an update of a Plugin that supports the Update trait.  Use GetUpdateStatusRequest to check if a plugin is ready for an update, otherwise this request is ignored by the server/plugin</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin to apply the update</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>params</td>
+<td><a href="#metadata">Metadata</a></td>
+<td>repeated</td>
+<td>Name/value options, plugin dependent</td>
+</tr>
+</tbody>
+</table>
+<h3 id="applyupdateresult">ApplyUpdateResult</h3>
+<p>This message is immediately returned after an ApplyUpdateRequest,  as the updating process can take an extended time range to complete.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>successful</td>
+<td>bool</td>
+<td>required</td>
+<td>True if the plugin is being updated</td>
+</tr>
+</tbody>
+</table>
+<h3 id="getupdatestatusrequest">GetUpdateStatusRequest</h3>
+<p>Used to request the status for a Plugin that supports the Update trait</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+</tbody>
+</table>
+<h3 id="getupdatestatusresult">GetUpdateStatusResult</h3>
+<p>The result of a GetUpdateStatusRequest message.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>update_ready</td>
+<td>bool</td>
+<td>required</td>
+<td>True if the plugin has determiend it is ready for an update</td>
+</tr>
+<tr>
+<td>last_update</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>optional</td>
+<td>The date of the last update, if any</td>
+</tr>
+<tr>
+<td>params</td>
+<td><a href="#metadata">Metadata</a></td>
+<td>repeated</td>
+<td>Zero or Metadata values describing the update status of the plugin. Metadata is a list of name/value pairs.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="datetime">DateTime</h3>
+<p>Date and time info</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year</td>
+<td>uint32</td>
+<td>required</td>
+<td>Year</td>
+</tr>
+<tr>
+<td>month</td>
+<td>uint32</td>
+<td>required</td>
+<td>Month</td>
+</tr>
+<tr>
+<td>day</td>
+<td>uint32</td>
+<td>required</td>
+<td>Day</td>
+</tr>
+<tr>
+<td>hour</td>
+<td>uint32</td>
+<td>required</td>
+<td>Hour</td>
+</tr>
+<tr>
+<td>min</td>
+<td>uint32</td>
+<td>required</td>
+<td>Minute</td>
+</tr>
+<tr>
+<td>sec</td>
+<td>uint32</td>
+<td>required</td>
+<td>Seconds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="learning-trait-messages">Learning Trait Messages</h2>
+<p>These messages are used by plugins that support adaptation and/or training.</p>
+<h3 id="preprocessaudioadaptrequest">PreprocessAudioAdaptRequest</h3>
+<p>Request preprocessing of this audio submission, which may be part of an adaptation set. Adaptation can be unsupervised (neither class_id, start_t, and end_t set) or supervised by setting class_id or class_id, start_t, and end_t. Adaptation should be finalized by calling either SupervisedAdaptationRequest or UnsupervisedAdaptationRequest. Plugins must support either the SupervisedAdapter or UnsupervisedAdapter trait to handle this request.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain</td>
+</tr>
+<tr>
+<td>audio</td>
+<td><a href="#audio">Audio</a></td>
+<td>required</td>
+<td>The submitted audio</td>
+</tr>
+<tr>
+<td>adapt_space</td>
+<td>string</td>
+<td>required</td>
+<td>A unique name for the client where pre-processed data is stored</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>optional</td>
+<td>The id of the class annotation being preprocessed (supervised training)</td>
+</tr>
+<tr>
+<td>start_t</td>
+<td>uint32</td>
+<td>optional</td>
+<td>Begin-time of the region (in seconds)</td>
+</tr>
+<tr>
+<td>end_t</td>
+<td>uint32</td>
+<td>optional</td>
+<td>End-time of the region (in seconds)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="preprocessaudioadaptresult">PreprocessAudioAdaptResult</h3>
+<p>The result of a PreprocessAudioAdaptRequest</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>audio_id</td>
+<td>string</td>
+<td>required</td>
+<td>The ID of the preprocessed audio</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>double</td>
+<td>required</td>
+<td>The duration of the audio</td>
+</tr>
+</tbody>
+</table>
+<!--
+### PreprocessAudioTrainRequest
+
+Request preprocessing of this audio submission, which is part of a training set. Supervised training is required. For supervised training set either class_id is OR class_id, start_t, and end_t. Training should be finalized by calling SupervisedTrainingRequest. Unsupervised training is NOT supported. Plugins must support the SupervisedTrainer trait to handle this request
+
+Field | Type | Label | Description
+--- | --- | --- | --- 
+plugin | string | required | The plugin
+audio | [Audio](#audio) | required | The submitted Audio
+train_space | string | required | A unique name for the client where pre-processed data is stored. This could be a UUID used for all requests in set of training files
+class_id | string | optional | The id of the class annotation being preprocessed (supervised training)
+start_t | uint32 | optional | Begin-time of the region (in milliseconds)
+end_t | uint32 | optional | End-time of the region (in milliseconds)
+
+### PreprocessAudioTrainResult
+
+The result of a PreprocessAudioTrainRequest
+
+Field | Type | Label | Description
+--- | --- | --- | --- 
+audio_id | string | required | The ID of the preprocessed audio
+duration | double | required | The duration of the audio processed
+
+## Supervised Trainer Messages
+
+Note that these messages are deprecated and are only still included for backwards compatibility.
+
+### SupervisedTrainingRequest
+
+Finalize training of the specified plugin using audio preprocessed using calls to PreprocessAudioTrainRequest. The plugin must implement the SupervisedTrainer to handle this request
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| plugin | [string](#string) | required | The plugin to invoke |
+| new_domain | [string](#string) | required | The new domain name |
+| class_annotations | [ClassAnnotation](#classannotation) | repeated | The annotations to use for training, audio annotations are created via PreprocessAudioTrainRequest calls |
+| train_space | [string](#string) | required | The location (adapt space) where pre-processed data is stored (created via calls to PreprocessAudioTrainRequest) |
+
+### SupervisedTrainingResult
+
+Acknowledgement that training successfully completed
+
+
+Field | Type | Label | Description
+--- | --- | --- | --- 
+new_domain | string | required | Confirmation of the new domain name
+
+-->
+
+<h2 id="supervised-adapter-messages">Supervised Adapter Messages</h2>
+<h3 id="supervisedadaptationrequest">SupervisedAdaptationRequest</h3>
+<p>Finalize adaptation of the specified plugin/domain using audio preprocessed using calls to PreprocessAudioAdaptRequest. The plugin must implement the SupervisedAdapter trait to handle this request.</p>
+<p>When you adapt or train, you are creating a new domain for the target plugin, that is based on the domain passed in to the 'domain' field of this call. This new domain is specific to a plugin, so it is created within the plugin, and will be named with the string passed to SupervisedAdaptationRequest as 'new_domain'.</p>
+<p>To actually use this new domain, future scoring or enrollment requests must specify this new domain name, instead of the original, using the value specified during adaptation as the 'new_domain' field. To have access to this new domain, either restart the server, or send a <a href="#removeplugindomainrequest">RemovePluginDomainRequest</a> message to the server, which will force a reload of that plugin.</p>
+<p>Upon successful completion of SupervisedAdaptationRequest, a <a href="#supervisedadaptationresult">SupervisedAdaptationResult</a> message should be received, containing the path to the newly created domain on the server's file system.</p>
+<p>The file sizes of the actual models will not change as a result of adaptation. Rather, the values stored inside these files will. </p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin</td>
+<td>string</td>
+<td>required</td>
+<td>The plugin to invoke</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>required</td>
+<td>The domain to adapt</td>
+</tr>
+<tr>
+<td>new_domain</td>
+<td>string</td>
+<td>required</td>
+<td>the new domain name</td>
+</tr>
+<tr>
+<td>class_annotations</td>
+<td><a href="#classannotation">ClassAnnotation</a></td>
+<td>repeated</td>
+<td>The annotations to use for adaptation, audio annotations are created via PreprocessAudioAdaptRequest calls</td>
+</tr>
+<tr>
+<td>adapt_space</td>
+<td>string</td>
+<td>required</td>
+<td>A unique name for the client where pre-processed data is stored</td>
+</tr>
+</tbody>
+</table>
+<h3 id="supervisedadaptationresult">SupervisedAdaptationResult</h3>
+<p>Acknowledgment message that adaptation successfully completed. Informs the client of the full path of the new domain created by the <a href="#supervisedadaptationrequest">SupervisedAdaptationRequest</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>new_domain </td>
+<td>string</td>
+<td>required</td>
+<td>Confirmation of the new domain name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classannotation">ClassAnnotation</h3>
+<p>Set of annotations for a class</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class_id</td>
+<td>string</td>
+<td>required</td>
+<td>The class ID (such as speaker name or language name)</td>
+</tr>
+<tr>
+<td>annotations</td>
+<td><a href="#audioannotation">AudioAnnotation</a></td>
+<td>repeated</td>
+<td>the set of all audio annotations for this class.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audioannotation">AudioAnnotation</h3>
+<p>A set of audio annotations for a specific audio submission</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>audio_id</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The audio ID returned in a PreprocessAudioAdaptResult or PreprocessAudioTrainResult message</td>
+</tr>
+<tr>
+<td>regions</td>
+<td><a href="#annotationregion">AnnotationRegion</a></td>
+<td>repeated</td>
+<td>Set of annotations</td>
+</tr>
+</tbody>
+</table>
+<!--
+## Unsupervised Adapter Messages
+
+Note that these messages are deprecated and are only still included for backwards compatibility.
+
+### UnsupervisedAdaptationRequest
+
+Finalize adaptation of the specified plugin/domain using audio preprocessed via calls to PreprocessAudioAdaptRequest and located in adapt_space.  The plugin must implement the UnsupervisedAdapter trait to handle this request
+
+Field | Type | Label | Description
+--- | --- | --- | --- 
+plugin | string | required | The plugin to invoke
+domain | string | required | The domain to adapt
+new_domain | string | required | The new domain
+adapt_space | string | required | The location (adapt space) where pre-processed data is stored
+
+### UnsupervisedAdaptationResult
+
+Acknowledgment that adaptation successfully completed
+
+Field | Type | Label | Description
+--- | --- | --- | --- 
+new_domain | string | required | Confirmation of the new domain name
+
+-->
+
+<h2 id="workflow-messages"><strong>Workflow Messages</strong></h2>
+<p>Not yet defined</p>
+<h2 id="basic-types">Basic Types</h2>
+<h3 id="trait">Trait</h3>
+<p>A Trait implemented by a plugin</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="#traittype">TraitType</a> </td>
+<td>optional</td>
+<td>The trait type</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#optiondefinition">OptionDefinition</a></td>
+<td>repeated</td>
+<td>Any options specific to this plugin's implementation of the trait</td>
+</tr>
+</tbody>
+</table>
+<h3 id="plugin">Plugin</h3>
+<p>The description of a plugin</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>optional</td>
+<td>The id of the plugin</td>
+</tr>
+<tr>
+<td>task</td>
+<td>string</td>
+<td>optional</td>
+<td>e.g. LID, SID, SAD, KWS, AED, etc.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>optional</td>
+<td>Display label for plugin</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>string</td>
+<td>optional</td>
+<td>A brief description of how the plugin works/technologies it employs.</td>
+</tr>
+<tr>
+<td>vendor</td>
+<td>string</td>
+<td>optional</td>
+<td>A brief description of how the plugin works/technologies it employs.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><a href="#domain">Domain</a></td>
+<td>repeated</td>
+<td>The domains owned by this plugin</td>
+</tr>
+<tr>
+<td>trait</td>
+<td><a href="#trait">Trait</a></td>
+<td>repeated</td>
+<td>The traits (capabilities) of this plugin</td>
+</tr>
+</tbody>
+</table>
+<h3 id="domain">Domain</h3>
+<p>A description of a domain.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>optional </td>
+<td>The ID of the domain</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>optional</td>
+<td>Display label for the domain</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>string</td>
+<td>optional</td>
+<td>A brief description of the domain conditions</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td>string </td>
+<td>repeated</td>
+<td>The list of classes known to this domain</td>
+</tr>
+</tbody>
+</table>
+<h3 id="envelope">Envelope</h3>
+<p>Every message passed between the server and client is an instance of Envelope. An Envelope can contain multiple ScenicMessage instances, so it's important to iterate through them all when you receive an Envelope.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><a href="#scenicmessage">ScenicMessage</a></td>
+<td>repeated</td>
+<td>The messages to be sent</td>
+</tr>
+<tr>
+<td>sender_id</td>
+<td>string</td>
+<td>required</td>
+<td>string description of the message sender</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scenicmessage">ScenicMessage</h3>
+<p>A ScenicMessage represents a single logical message between a client and server. It is placed within an Envelope. It contains nested messages in serialized form. The message_type field is used to determine the type of the nested data. Not all ScenicMessage instance will have message_data, and some may have multiple, but they will all be of the same type. It depends on the value of message_type. </p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message_id</td>
+<td>string</td>
+<td>required</td>
+<td>id issued by client (and unique to that client) used to track a request. Any reply for that request will have the same id.</td>
+</tr>
+<tr>
+<td>message_type</td>
+<td><a href="#messagetype">MessageType</a> </td>
+<td>required</td>
+<td>type of message</td>
+</tr>
+<tr>
+<td>message_data</td>
+<td>bytes</td>
+<td>repeated</td>
+<td>nested message data that can be deserialized according to message_type. Some messages do not have nested data, some have multiple records</td>
+</tr>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>optional</td>
+<td>error message; if present an error has occurred on the server</td>
+</tr>
+<tr>
+<td>info</td>
+<td>string</td>
+<td>optional</td>
+<td>informational message, typically used to explain why message_data is empty but no error is reported</td>
+</tr>
+</tbody>
+</table>
+<p><a name="com.sri.speech.olive.api.MessageType"></a></p>
+<h3 id="messagetype">MessageType</h3>
+<p>The MessageType enum provides a value for each top-level SCENIC message. It is used within a ScenicMessage to indicate the type of the serialized message contained therein.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PLUGIN_DIRECTORY_REQUEST</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>PLUGIN_DIRECTORY_RESULT</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>GLOBAL_SCORER_REQUEST</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>GLOBAL_SCORER_RESULT</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>REGION_SCORER_REQUEST</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>REGION_SCORER_RESULT</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>FRAME_SCORER_REQUEST</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>FRAME_SCORER_RESULT</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_MODIFICATION_REQUEST</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_MODIFICATION_RESULT</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_REMOVAL_REQUEST</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_REMOVAL_RESULT</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>GET_ACTIVE_REQUEST</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>GET_ACTIVE_RESULT</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td>LOAD_PLUGIN_REQUEST</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>LOAD_PLUGIN_RESULT</td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td>GET_STATUS_REQUEST</td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td>GET_STATUS_RESULT</td>
+<td>18</td>
+<td></td>
+</tr>
+<tr>
+<td>HEARTBEAT</td>
+<td>19</td>
+<td></td>
+</tr>
+<tr>
+<td>PREPROCESS_AUDIO_TRAIN_REQUEST</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr>
+<td>PREPROCESS_AUDIO_TRAIN_RESULT</td>
+<td>21</td>
+<td></td>
+</tr>
+<tr>
+<td>PREPROCESS_AUDIO_ADAPT_REQUEST</td>
+<td>22</td>
+<td></td>
+</tr>
+<tr>
+<td>PREPROCESS_AUDIO_ADAPT_RESULT</td>
+<td>23</td>
+<td></td>
+</tr>
+<tr>
+<td>SUPERVISED_TRAINING_REQUEST</td>
+<td>24</td>
+<td></td>
+</tr>
+<tr>
+<td>SUPERVISED_TRAINING_RESULT</td>
+<td>25</td>
+<td></td>
+</tr>
+<tr>
+<td>SUPERVISED_ADAPTATION_REQUEST</td>
+<td>26</td>
+<td></td>
+</tr>
+<tr>
+<td>SUPERVISED_ADAPTATION_RESULT</td>
+<td>27</td>
+<td></td>
+</tr>
+<tr>
+<td>UNSUPERVISED_ADAPTATION_REQUEST</td>
+<td>28</td>
+<td></td>
+</tr>
+<tr>
+<td>UNSUPERVISED_ADAPTATION_RESULT</td>
+<td>29</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_ANNOTATION</td>
+<td>30</td>
+<td></td>
+</tr>
+<tr>
+<td>AUDIO_ANNOTATION</td>
+<td>31</td>
+<td></td>
+</tr>
+<tr>
+<td>ANNOTATION_REGION</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>REMOVE_PLUGIN_REQUEST</td>
+<td>33</td>
+<td></td>
+</tr>
+<tr>
+<td>REMOVE_PLUGIN_RESULT</td>
+<td>34</td>
+<td></td>
+</tr>
+<tr>
+<td>AUDIO_MODIFICATION_REQUEST</td>
+<td>35</td>
+<td></td>
+</tr>
+<tr>
+<td>AUDIO_MODIFICATION_RESULT</td>
+<td>36</td>
+<td></td>
+</tr>
+<tr>
+<td>PLUGIN_AUDIO_VECTOR_REQUEST</td>
+<td>37</td>
+<td></td>
+</tr>
+<tr>
+<td>PLUGIN_AUDIO_VECTOR_RESULT</td>
+<td>38</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_EXPORT_REQUEST</td>
+<td>39</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_EXPORT_RESULT</td>
+<td>40</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_IMPORT_REQUEST</td>
+<td>41</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_IMPORT_RESULT</td>
+<td>42</td>
+<td></td>
+</tr>
+<tr>
+<td>APPLY_UPDATE_REQUEST</td>
+<td>43</td>
+<td></td>
+</tr>
+<tr>
+<td>APPLY_UPDATE_RESULT</td>
+<td>44</td>
+<td></td>
+</tr>
+<tr>
+<td>GET_UPDATE_STATUS_REQUEST</td>
+<td>45</td>
+<td></td>
+</tr>
+<tr>
+<td>GET_UPDATE_STATUS_RESULT</td>
+<td>46</td>
+<td></td>
+</tr>
+<tr>
+<td>GLOBAL_COMPARER_REQUEST</td>
+<td>47</td>
+<td></td>
+</tr>
+<tr>
+<td>GLOBAL_COMPARER_RESULT</td>
+<td>48</td>
+<td></td>
+</tr>
+<tr>
+<td>AUDIO_ALIGN_REQUEST</td>
+<td>68</td>
+<td></td>
+</tr>
+<tr>
+<td>AUDIO_ALIGN_RESULT</td>
+<td>69</td>
+<td></td>
+</tr>
+<tr>
+<td>TEXT_TRANSFORM_REQUEST</td>
+<td>70</td>
+<td></td>
+</tr>
+<tr>
+<td>TEXT_TRANSFORM_RESULT</td>
+<td>71</td>
+<td></td>
+</tr>
+<tr>
+<td>PREPROCESSED_AUDIO_RESULT</td>
+<td>72</td>
+<td></td>
+</tr>
+<tr>
+<td>DYNAMIC_PLUGIN_REQUEST</td>
+<td>73</td>
+<td></td>
+</tr>
+<tr>
+<td>PLUGIN_2_PLUGIN_REQUEST</td>
+<td>74</td>
+<td></td>
+</tr>
+<tr>
+<td>PLUGIN_2_PLUGIN_RESULT</td>
+<td>75</td>
+<td></td>
+</tr>
+<tr>
+<td>WORKFlOW_TEXT_RESULT</td>
+<td>76</td>
+<td></td>
+</tr>
+<tr>
+<td>SCORE_OUTPUT_TRANSFORMER_REQUEST</td>
+<td>77</td>
+<td></td>
+</tr>
+<tr>
+<td>SCORE_OUTPUT_TRANSFORMER_RESULT</td>
+<td>78</td>
+<td></td>
+</tr>
+<tr>
+<td>DATA_OUTPUT_TRANSFORMER_REQUEST</td>
+<td>79</td>
+<td></td>
+</tr>
+<tr>
+<td>DATA_OUTPUT_TRANSFORMER_RESULT</td>
+<td>80</td>
+<td></td>
+</tr>
+<tr>
+<td>BOUNDING_BOX_REQUEST</td>
+<td>81</td>
+<td></td>
+</tr>
+<tr>
+<td>BOUNDING_BOX_RESULT</td>
+<td>82</td>
+<td></td>
+</tr>
+<tr>
+<td>BINARY_MEDIA_RESULT</td>
+<td>83</td>
+<td></td>
+</tr>
+<tr>
+<td>START_STREAMING_REQUEST</td>
+<td>84</td>
+<td></td>
+</tr>
+<tr>
+<td>START_STREAMING_RESULT</td>
+<td>85</td>
+<td></td>
+</tr>
+<tr>
+<td>AUDIO_STREAM</td>
+<td>86</td>
+<td></td>
+</tr>
+<tr>
+<td>REGION_SCORER_STREAMING_REQUEST</td>
+<td>87</td>
+<td></td>
+</tr>
+<tr>
+<td>REGION_SCORER_STREAMING_RESULT</td>
+<td>88</td>
+<td></td>
+</tr>
+<tr>
+<td>GLOBAL_SCORER_STREAMING_REQUEST</td>
+<td>89</td>
+<td></td>
+</tr>
+<tr>
+<td>GLOBAL_SCORER_STREAMING_RESULT</td>
+<td>90</td>
+<td></td>
+</tr>
+<tr>
+<td>TEXT_TRANSFORMER_STREAMING_REQUEST</td>
+<td>91</td>
+<td></td>
+</tr>
+<tr>
+<td>TEXT_TRANSFORMER_STREAMING_RESULT</td>
+<td>92</td>
+<td></td>
+</tr>
+<tr>
+<td>STOP_STREAMING_REQUEST</td>
+<td>93</td>
+<td></td>
+</tr>
+<tr>
+<td>STOP_STREAMING_RESULT</td>
+<td>94</td>
+<td></td>
+</tr>
+<tr>
+<td>FLUSH_STREAMING_REQUEST</td>
+<td>95</td>
+<td></td>
+</tr>
+<tr>
+<td>FLUSH_STREAMING_RESULT</td>
+<td>96</td>
+<td></td>
+</tr>
+<tr>
+<td>SYNC_STREAMING_REQUEST</td>
+<td>97</td>
+<td></td>
+</tr>
+<tr>
+<td>DRAIN_STREAMING_REQUEST</td>
+<td>98</td>
+<td></td>
+</tr>
+<tr>
+<td>DRAIN_STREAMING_RESULT</td>
+<td>99</td>
+<td></td>
+</tr>
+<tr>
+<td>CANCEL_JOBS_REQUEST</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>CANCEL_JOBS_RESULT</td>
+<td>101</td>
+<td></td>
+</tr>
+<tr>
+<td>INVALID_MESSAGE</td>
+<td>102</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!--- | WORKFLOW_REQUST | 49 |  |
+| WORKFLOW_RESULT | 50 |  |
+| WORKFLOW_ANALYSIS_REQUST | 51 |  |
+| WORKFLOW_ANALYSIS_RESULT | 52 |  |
+| WORKFLOW_ENROLL_REQUST | 53 |  |
+| WORKFLOW_ENROLL_RESULT | 54 |  |
+| WORKFLOW_ADAPT_REQUST | 55 |  |
+| WORKFLOW_ADAPT_RESULT | 56 |  |
+| WORKFLOW_DEFINITION | 57 |  |
+| WORKFLOW_TASK | 58 |  |
+| ABSTRACT_WORKFLOW_TASK | 59 |  |
+| CONDITIONAL_WORKFLOW_TASK | 60 |  |
+| OLIVE_NODE | 61 |  |
+| WORKFLOW_JOB_RESULT | 62 |  |
+| WORKFLOW_TASK_RESULT | 63 |  |
+| WORKFLOW_DATA_REQUEST | 64 |  |
+| WORKFLOW_DATA_RESULT | 65 |  |
+| WORKFLOW_CLASS_REQUEST | 66 |  |
+| WORKFLOW_CLASS_RESULT | 67 |  | --->
+
+<h3 id="optiontype">OptionType</h3>
+<p>Classifies how a OptionDefinition (TraitOption) should be represented in a UI widget</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BOOLEAN </td>
+<td>1 </td>
+<td></td>
+</tr>
+<tr>
+<td>CHOICE </td>
+<td>2 </td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="traittype">TraitType</h3>
+<p>The list of possible traits that a plugin can implement</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GLOBAL_SCORER</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>REGION_SCORER</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>FRAME_SCORER</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_ENROLLER</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_MODIFIER</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>SUPERVISED_TRAINER</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>SUPERVISED_ADAPTER</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>UNSUPERVISED_ADAPTER</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>AUDIO_CONVERTER</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>AUDIO_VECTORIZER</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>CLASS_EXPORTER</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>UPDATER</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>LEARNING_TRAIT</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>GLOBAL_COMPARER</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td>TEXT_TRANSFORMER</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>AUDIO_ALIGNMENT_SCORER</td>
+<td>16</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tasktype">TaskType</h3>
+<!---, you might want to enroll and adapt on these types, no? -->
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SAD</td>
+<td>1</td>
+<td>Speech Activity Detection</td>
+</tr>
+<tr>
+<td>SID</td>
+<td>2</td>
+<td>Speaker ID</td>
+</tr>
+<tr>
+<td>SDD</td>
+<td>3</td>
+<td>Speaker ID, but output in regions</td>
+</tr>
+<tr>
+<td>LID</td>
+<td>4</td>
+<td>Language ID</td>
+</tr>
+<tr>
+<td>LDD</td>
+<td>5</td>
+<td>Language ID, but output in regions</td>
+</tr>
+<tr>
+<td>KWS</td>
+<td>6</td>
+<td>Keyword Spotting</td>
+</tr>
+<tr>
+<td>TPD</td>
+<td>7</td>
+<td>Topic Detection</td>
+</tr>
+<tr>
+<td>VTD</td>
+<td>8</td>
+<td>Voice Type Discrimination</td>
+</tr>
+<tr>
+<td>GID</td>
+<td>9</td>
+<td>Gender ID</td>
+</tr>
+<tr>
+<td>GDD</td>
+<td>10</td>
+<td>Gender ID, but output in regions</td>
+</tr>
+<tr>
+<td>ASR</td>
+<td>11</td>
+<td>Automatic Speech Recognition</td>
+</tr>
+<tr>
+<td>ENH</td>
+<td>12</td>
+<td>Audio Enhancement</td>
+</tr>
+<tr>
+<td>CMP</td>
+<td>13</td>
+<td>Audio Comparison</td>
+</tr>
+<tr>
+<td>SDD</td>
+<td>14</td>
+<td>Speaker Detection</td>
+</tr>
+<tr>
+<td>DIA</td>
+<td>15</td>
+<td>Diarization</td>
+</tr>
+<tr>
+<td>QBE</td>
+<td>16</td>
+<td>Query by Example</td>
+</tr>
+<tr>
+<td>SHL</td>
+<td>17</td>
+<td>Speaker Highlighing</td>
+</tr>
+<tr>
+<td>FID</td>
+<td>18</td>
+<td>Face ID</td>
+</tr>
+<tr>
+<td>TMT</td>
+<td>19</td>
+<td>Text Machine Translation</td>
+</tr>
+<tr>
+<td>ALN</td>
+<td>20</td>
+<td>Audio Alignment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optiondefinition">OptionDefinition</h3>
+<p>A plugin TraitOption, describing how a plugin trait is used</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>The name/ID of the option</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>required</td>
+<td>Display label for the option</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>string</td>
+<td>optional</td>
+<td>A description of the option</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#optiontype">OptionType</a></td>
+<td>required</td>
+<td>The type of the option (boolean, choice/drop-down, etc)</td>
+</tr>
+<tr>
+<td>choice</td>
+<td>string</td>
+<td>repeated</td>
+<td>Optional list of choices used by CHOICE type options</td>
+</tr>
+<tr>
+<td>default</td>
+<td>string</td>
+<td>optional </td>
+<td>The default option in the list of Options</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optionvalue">OptionValue</h3>
+<p>A name/value property pair</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>The name/ID of the option</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>required</td>
+<td>The option value as a string</td>
+</tr>
+</tbody>
+</table>
+<p><a name="com.sri.speech.olive.api.InputDataType"></a></p>
+<h3 id="inputdatatype">InputDataType</h3>
+<p>Workflow(?) Input Data Types</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUDIO</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>VIDEO</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>IMAGE</td>
+<td>4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="com.sri.speech.olive.api.InputType"></a></p>
+<h3 id="inputtype">InputType</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FRAME</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>REGION</td>
+<td>2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="com.sri.speech.olive.api.JobClass"></a></p>
+<h3 id="jobclass">JobClass</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>job_name</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The parent job name in a Workflow JobDefinition</td>
+</tr>
+<tr>
+<td>task</td>
+<td><a href="#com.sri.speech.olive.api.TaskClass">TaskClass</a></td>
+<td>repeated</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="com.sri.speech.olive.api.TaskClass"></a></p>
+<h3 id="taskclass">TaskClass</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>task_name</td>
+<td><a href="#string">string</a></td>
+<td>required</td>
+<td>The ID from the associated WorkflowTask (consumer_result_label)</td>
+</tr>
+<tr>
+<td>class_id</td>
+<td><a href="#string">string</a></td>
+<td>repeated</td>
+<td>Zero or more class IDs available to this task. Some tasks do not support classes</td>
+</tr>
+<tr>
+<td>class_label</td>
+<td><a href="#string">string</a></td>
+<td>optional</td>
+<td>An optional label/name to describe the classes used by this task such a &#39;speaker&#39; or &#39;language&#39;</td>
+</tr>
+<tr>
+<td>classes_label</td>
+<td><a href="#string">string</a></td>
+<td>optional</td>
+<td>The speaker label when refering to plural classes, such as speakers, or languages</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shared-types">Shared Types</h2>
+<h3 id="audio">Audio</h3>
+<p>Represents an audio. Can either refer to a local file or embed an audio buffer directly.
+The path and audioSamples fields should be treated as mutually exclusive, with one and
+only one of these fields implemented</p>
+<p>For more information regarding what types of audio are currently supported by the OLIVE server, see the <a href="audioFormats.html">Supported Audio Formats</a> page.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td><a href="#string">string</a></td>
+<td>optional</td>
+<td>Path to the audio file represented by this record (if not specified then audio is input as a buffer)</td>
+</tr>
+<tr>
+<td>audioSamples</td>
+<td><a href="#audiobuffer">AudioBuffer</a></td>
+<td>optional</td>
+<td>Audio included as a buffer (if not specified, then path must be set)</td>
+</tr>
+<tr>
+<td>selected_channel</td>
+<td><a href="#uint32">uint32</a></td>
+<td>optional</td>
+<td>Optional - if using multi-channel audio and &#39;mode&#39; is SELECTED, then this channel is provided to the plugin(s).</td>
+</tr>
+<tr>
+<td>regions</td>
+<td><a href="#annotationregion">AnnotationRegion</a></td>
+<td>repeated</td>
+<td>Optional annotated regions for this audio</td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#string">string</a></td>
+<td>optional</td>
+<td>Optional - label used to identify this audio input</td>
+</tr>
+</tbody>
+</table>
+<h3 id="annotationregion">AnnotationRegion</h3>
+<p>A single pair of timestamps (start and end) that make up an annotated region. Timestamps are in seconds.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start_t</td>
+<td>uint32</td>
+<td>required</td>
+<td>Begin-time of the region (in seconds)</td>
+</tr>
+<tr>
+<td>end_t</td>
+<td>uint32</td>
+<td>required</td>
+<td>End-time of the region (in seconds)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audiobuffer">AudioBuffer</h3>
+<p>Audio is contained in a buffer (and the path filed is NOT set in Audio) - by default the audio in the buffer should be PCM encoded, unless the buffer contains a serialized file (unencoded) in which case the <code>serialized_file</code> must be set to true.  If the data has been decoded and is not PCM encoded data, then the encoding field must be specified</p>
+<p>For more information regarding what types of audio are currently supported by the OLIVE server, see the <a href="audioFormats.html">Supported Audio Formats</a> page.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>channels</td>
+<td><a href="#uint32">uint32</a></td>
+<td>optional</td>
+<td>The number of channels contained in data, ignored for serialized buffers</td>
+</tr>
+<tr>
+<td>samples</td>
+<td><a href="#uint32">uint32</a></td>
+<td>optional</td>
+<td>The number of samples (in each channel), ignored for serialized buffers</td>
+</tr>
+<tr>
+<td>rate</td>
+<td><a href="#uint32">uint32</a></td>
+<td>optional</td>
+<td>The sample rate, ignored for serialized buffers</td>
+</tr>
+<tr>
+<td>bit_depth</td>
+<td><a href="#audiobitdepth">AudioBitDepth</a></td>
+<td>optional</td>
+<td>The number of bits in each sample, ignored for serialized buffers</td>
+</tr>
+<tr>
+<td>data</td>
+<td><a href="#bytes">bytes</a></td>
+<td>required</td>
+<td>Should be channels * samples long, striped by channels</td>
+</tr>
+<tr>
+<td>serialized_file</td>
+<td><a href="#bool">bool</a></td>
+<td>optional</td>
+<td>Optional - true if data contains a serialized buffer</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td><a href="#audioencodingtype">AudioEncodingType</a></td>
+<td>optional</td>
+<td>Optional - Not Yet supported - the audio encoding type. Assumed to be PCM if not specified. Ignored for serialized buffer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audioencodingtype">AudioEncodingType</h3>
+<p>Audio encoding types</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PCMU8</td>
+<td>1 </td>
+<td></td>
+</tr>
+<tr>
+<td>PCMS8</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>PCM16</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>PCM24</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>PCM32</td>
+<td>5 </td>
+<td></td>
+</tr>
+<tr>
+<td>FLOAT32</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>FLOAT64</td>
+<td>7 </td>
+<td></td>
+</tr>
+<tr>
+<td>ULAW</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>ALAW</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>IMA_ADPCM</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>MS_ADPCM </td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>GSM610</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>G723_24 </td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>G721_32</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td>DWW12</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>DWW16 </td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td>DWW24 </td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td>VORBIS</td>
+<td>18</td>
+<td></td>
+</tr>
+<tr>
+<td>VOX_ADPCM </td>
+<td>19</td>
+<td></td>
+</tr>
+<tr>
+<td>DPCM16 </td>
+<td>20</td>
+<td></td>
+</tr>
+<tr>
+<td>DPCM8 </td>
+<td>21</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="audiobitdepth">AudioBitDepth</h3>
+<p>Number of bits in each audio sample</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BIT_DEPTH_8</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>BIT_DEPTH_16</td>
+<td>2 </td>
+<td></td>
+</tr>
+<tr>
+<td>BIT_DEPTH_24</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>BIT_DEPTH_32</td>
+<td>4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="binaryannotation">BinaryAnnotation</h3>
+<p>Annotation for any binary media.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>task_label</td>
+<td>string</td>
+<td>optional</td>
+<td>When used in a workflow, restrict these annotations to this task (consumer_result_label). If not set, these annotaions are used for all task in a workflow</td>
+</tr>
+<tr>
+<td>regions</td>
+<td><a href="#annotationregion">AnnotationRegion</a></td>
+<td>repeated</td>
+<td>Audio annotations</td>
+</tr>
+<tr>
+<td>bbox</td>
+<td><a href="#boundingbox">BoundingBox</a></td>
+<td>repeated</td>
+<td>Optional regions for visual media</td>
+</tr>
+<tr>
+<td>region_label</td>
+<td>string</td>
+<td>optional</td>
+<td>An optional label this set of annotations, if not specified 'region' is used</td>
+</tr>
+</tbody>
+</table>
+<h3 id="binarybuffer">BinaryBuffer</h3>
+<p>Support data being sent as a binary buffer.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>bytes</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>frames_per_second</td>
+<td>uint32</td>
+<td>optional</td>
+<td>The frames per second (if audio)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="binarymedia">BinaryMedia</h3>
+<p>A generic binary media type.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>string</td>
+<td>optional</td>
+<td>Path to the data file represented by this record (if not specified then data is input as a buffer)</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td><a href="#binarybuffer">BinaryBuffer</a></td>
+<td>optional</td>
+<td>Data included as a serialized buffer (if not specified, then path must be set)</td>
+</tr>
+<tr>
+<td>regions</td>
+<td><a href="#binaryannotation">BinaryAnnotation</a></td>
+<td>repeated</td>
+<td>Optional annotated regions for the data - repeated in case we need multiple region (like 'region', 'speaker')</td>
+</tr>
+<tr>
+<td>selected_channel</td>
+<td>uint32</td>
+<td>optional</td>
+<td>If using multi-channel data then this channel should be used for processing.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>optional</td>
+<td>Label used to identify this data input</td>
+</tr>
+</tbody>
+</table>
+<h3 id="boundingbox">BoundingBox</h3>
+<p>A bounding box.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x1</td>
+<td>int32</td>
+<td>required</td>
+<td>Top left x</td>
+</tr>
+<tr>
+<td>y1</td>
+<td>int32</td>
+<td>required</td>
+<td>Top left y</td>
+</tr>
+<tr>
+<td>x2</td>
+<td>int32</td>
+<td>required</td>
+<td>Bottom right x</td>
+</tr>
+<tr>
+<td>y2</td>
+<td>int32</td>
+<td>required</td>
+<td>Bottom right y</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metadata">Metadata</h3>
+<p>The parent container for Metadata so that typed name/value properties can be transported in a generalized way</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="#metadatatype">MetadataType</a></td>
+<td>required</td>
+<td>Indicates the type of this metadata, so it can be deserialized to the appropriate type</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>The name (key) for this metadata</td>
+</tr>
+<tr>
+<td>value</td>
+<td>bytes</td>
+<td>required</td>
+<td>The value is one of MetadataType, must be deserialized by the client into the type specified by type</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metadatatype">MetadataType</h3>
+<p>Data types supported in an AudioModificationResult's metadata:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STRING_META</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>INTEGER_META </td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>DOUBLE_META</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>BOOLEAN_META</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>LIST_META</td>
+<td>5</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="booleanmetadata">BooleanMetadata</h3>
+<p>Value as boolean</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>bool</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="doublemetadata">DoubleMetadata</h3>
+<p>Value as a double</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>double</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="integermetadata">IntegerMetadata</h3>
+<p>Value as an integer</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>int32</td>
+<td>required </td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="listmetadata">ListMetadata</h3>
+<p>Value as list of Metadata values</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="#metadatatype">MetadataType</a></td>
+<td>repeated</td>
+<td>The type for the corresponding element</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#bytes">bytes</a></td>
+<td>repeated</td>
+<td>The value is one or more MetadataType elements, each element must be deserialized by the client into the type specified by type. For example, for the type, STRING_META, deserialize data as StringMetadata</td>
+</tr>
+</tbody>
+</table>
+<h3 id="stringmetadata">StringMetadata</h3>
+<p>Value as a string</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="scalar-value-types">Scalar Value Types</h2>
+<table>
+<thead>
+<tr>
+<th>.proto Type</th>
+<th>Notes</th>
+<th>C++ Type</th>
+<th>Java Type</th>
+<th>Python Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a name="double" /> double</td>
+<td></td>
+<td>double</td>
+<td>double</td>
+<td>float</td>
+</tr>
+<tr>
+<td><a name="float" /> float</td>
+<td></td>
+<td>float</td>
+<td>float</td>
+<td>float</td>
+</tr>
+<tr>
+<td><a name="int32" /> int32</td>
+<td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+<td>int32</td>
+<td>int</td>
+<td>int</td>
+</tr>
+<tr>
+<td><a name="int64" /> int64</td>
+<td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+<td>int64</td>
+<td>long</td>
+<td>int/long</td>
+</tr>
+<tr>
+<td><a name="uint32" /> uint32</td>
+<td>Uses variable-length encoding.</td>
+<td>uint32</td>
+<td>int</td>
+<td>int/long</td>
+</tr>
+<tr>
+<td><a name="uint64" /> uint64</td>
+<td>Uses variable-length encoding.</td>
+<td>uint64</td>
+<td>long</td>
+<td>int/long</td>
+</tr>
+<tr>
+<td><a name="sint32" /> sint32</td>
+<td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+<td>int32</td>
+<td>int</td>
+<td>int</td>
+</tr>
+<tr>
+<td><a name="sint64" /> sint64</td>
+<td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+<td>int64</td>
+<td>long</td>
+<td>int/long</td>
+</tr>
+<tr>
+<td><a name="fixed32" /> fixed32</td>
+<td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+<td>uint32</td>
+<td>int</td>
+<td>int</td>
+</tr>
+<tr>
+<td><a name="fixed64" /> fixed64</td>
+<td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+<td>uint64</td>
+<td>long</td>
+<td>int/long</td>
+</tr>
+<tr>
+<td><a name="sfixed32" /> sfixed32</td>
+<td>Always four bytes.</td>
+<td>int32</td>
+<td>int</td>
+<td>int</td>
+</tr>
+<tr>
+<td><a name="sfixed64" /> sfixed64</td>
+<td>Always eight bytes.</td>
+<td>int64</td>
+<td>long</td>
+<td>int/long</td>
+</tr>
+<tr>
+<td><a name="bool" /> bool</td>
+<td></td>
+<td>bool</td>
+<td>boolean</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><a name="string" /> string</td>
+<td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+<td>string</td>
+<td>String</td>
+<td>str/unicode</td>
+</tr>
+<tr>
+<td><a name="bytes" /> bytes</td>
+<td>May contain any arbitrary sequence of bytes.</td>
+<td>string</td>
+<td>ByteString</td>
+<td>str</td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="apiBuildReferenceImp.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Building an API Reference Implementation
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="restApi.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                OLIVE REST API
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

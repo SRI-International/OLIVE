@@ -1,0 +1,2719 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>olivepy Primer - OLIVE 5.7.1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="olive" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#integrating-with-the-olive-python-api-olivepy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE 5.7.1 Documentation" class="md-header-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE 5.7.1 Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              olivepy Primer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE 5.7.1 Documentation" class="md-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE 5.7.1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="windows.html" class="md-nav__link">
+      Windows Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      Martini (Docker) Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" checked>
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        olivepy Primer
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="olivepyPrimer.html" class="md-nav__link md-nav__link--active">
+      olivepy Primer
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    Quickstart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#establish-server-connection" class="md-nav__link">
+    Establish Server Connection
+  </a>
+  
+    <nav class="md-nav" aria-label="Establish Server Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tls-encrypted-connections" class="md-nav__link">
+    TLS Encrypted Connections
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-available-plugins" class="md-nav__link">
+    Request Available Plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-submission-guidelines" class="md-nav__link">
+    Audio Submission Guidelines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronous-vs-asynchronous-message-submission" class="md-nav__link">
+    Synchronous vs. Asynchronous Message Submission
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame-score-request" class="md-nav__link">
+    Frame Score Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-score-request" class="md-nav__link">
+    Global Score Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-score-request" class="md-nav__link">
+    Region Score Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrollments" class="md-nav__link">
+    Enrollments
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enroll" class="md-nav__link">
+    Enroll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unenroll" class="md-nav__link">
+    Unenroll
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-integration" class="md-nav__link">
+    Workflow Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quickstart_1" class="md-nav__link">
+    Quickstart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializing-a-workflow" class="md-nav__link">
+    Initializing a Workflow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packaging-audio" class="md-nav__link">
+    Packaging Audio
+  </a>
+  
+    <nav class="md-nav" aria-label="Packaging Audio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-channel-audio" class="md-nav__link">
+    Multi-channel Audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-annotations" class="md-nav__link">
+    Audio Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submitting-audio" class="md-nav__link">
+    Submitting Audio
+  </a>
+  
+    <nav class="md-nav" aria-label="Submitting Audio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch-request" class="md-nav__link">
+    Batch request
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrollments_1" class="md-nav__link">
+    Enrollments
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enroll_1" class="md-nav__link">
+    Enroll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unenroll_1" class="md-nav__link">
+    Unenroll
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsing-workflow-responses" class="md-nav__link">
+    Parsing Workflow Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-cancellation-request" class="md-nav__link">
+    Job Cancellation Request
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-global-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-embedplda-v1.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-whisper-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) whisper/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v3.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    Quickstart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#establish-server-connection" class="md-nav__link">
+    Establish Server Connection
+  </a>
+  
+    <nav class="md-nav" aria-label="Establish Server Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tls-encrypted-connections" class="md-nav__link">
+    TLS Encrypted Connections
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-available-plugins" class="md-nav__link">
+    Request Available Plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-submission-guidelines" class="md-nav__link">
+    Audio Submission Guidelines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronous-vs-asynchronous-message-submission" class="md-nav__link">
+    Synchronous vs. Asynchronous Message Submission
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame-score-request" class="md-nav__link">
+    Frame Score Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-score-request" class="md-nav__link">
+    Global Score Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-score-request" class="md-nav__link">
+    Region Score Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrollments" class="md-nav__link">
+    Enrollments
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enroll" class="md-nav__link">
+    Enroll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unenroll" class="md-nav__link">
+    Unenroll
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-integration" class="md-nav__link">
+    Workflow Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quickstart_1" class="md-nav__link">
+    Quickstart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializing-a-workflow" class="md-nav__link">
+    Initializing a Workflow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packaging-audio" class="md-nav__link">
+    Packaging Audio
+  </a>
+  
+    <nav class="md-nav" aria-label="Packaging Audio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-channel-audio" class="md-nav__link">
+    Multi-channel Audio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-annotations" class="md-nav__link">
+    Audio Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submitting-audio" class="md-nav__link">
+    Submitting Audio
+  </a>
+  
+    <nav class="md-nav" aria-label="Submitting Audio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch-request" class="md-nav__link">
+    Batch request
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enrollments_1" class="md-nav__link">
+    Enrollments
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enroll_1" class="md-nav__link">
+    Enroll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unenroll_1" class="md-nav__link">
+    Unenroll
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsing-workflow-responses" class="md-nav__link">
+    Parsing Workflow Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-cancellation-request" class="md-nav__link">
+    Job Cancellation Request
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="integrating-with-the-olive-python-api-olivepy">Integrating with the OLIVE Python API (olivepy)</h1>
+<p><code>olivepy</code> is an OLIVE Python API that's built on top of the OLIVE Enterprise API. </p>
+<div class="admonition info">
+<p class="admonition-title">New Python integrators are advised to read through the <a href="apiInfo.html">Enterprise API Primer</a> for an overview of key concepts that also apply to <code>olivepy</code>.</p>
+</div>
+<h2 id="installation"><strong>Installation</strong></h2>
+<p><code>olivepy</code> is distributed as a Python wheel package for easy installation. To install, navigate into the <code>api</code> folder distributed with your OLIVE delivery, and install it using your native <code>pip3</code>:</p>
+<div class="highlight"><pre><span></span><code>    $ pip3 install olivepy-*-py3-none-any.whl
+</code></pre></div>
+<!---
+Or if installing on CentOS, the wheel package includes all 3rd party dependencies, so OlivePy can be installed on a standalone (no Internet) system: 
+
+<div class="highlight"><pre><span></span><code> pip3 install -r requirements.txt --use-wheel --no-index --find-links wheelhouse olivepy-5.3.0-py3-none-any.whl
+</code></pre></div>
+
+This installs OLIVE and its dependencies into your local Python distribution. 
+--->
+
+<div class="admonition info">
+<p class="admonition-title">A source distribution is also available as <code>olivepy-*.tar.gz</code>, but it should only be needed for unique operating environments and most clients should use the wheel instead.</p>
+</div>
+<h2 id="dependencies"><strong>Dependencies</strong></h2>
+<p><code>olivepy</code> direct dependencies include:</p>
+<ul>
+<li>protobuf</li>
+<li>soundfile</li>
+<li>numpy</li>
+<li>requests</li>
+<li>zmq</li>
+</ul>
+<p>These will be downloaded by <code>pip</code> when the <code>olivepy</code> package is installed.</p>
+<h2 id="integration"><strong>Integration</strong></h2>
+<h3 id="quickstart"><strong>Quickstart</strong></h3>
+<p>Here's a complete example for those in a hurry:</p>
+<!-- This examples is from api/reference/python/quickstart.py -->
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">olivepy.api.olive_async_client</span> <span class="kn">import</span> <span class="n">AsyncOliveClient</span>
+<span class="kn">from</span> <span class="nn">olivepy.messaging.msgutil</span> <span class="kn">import</span> <span class="n">package_audio</span><span class="p">,</span> <span class="n">serialize_audio</span><span class="p">,</span> <span class="n">InputTransferType</span>
+<span class="kn">from</span> <span class="nn">olivepy.messaging.olive_pb2</span> <span class="kn">import</span> <span class="n">Audio</span>
+
+<span class="c1"># connect</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Client connected...&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-- Connection Information --&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Client: </span><span class="si">{</span><span class="n">client</span><span class="o">.</span><span class="n">client_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Server: </span><span class="si">{</span><span class="n">client</span><span class="o">.</span><span class="n">server_address</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Port: </span><span class="si">{</span><span class="n">client</span><span class="o">.</span><span class="n">server_status_port</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># find a Language ID (LID) plugin</span>
+<span class="n">plugin_request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request_plugins</span><span class="p">()</span>
+<span class="n">plugin_response</span> <span class="o">=</span> <span class="n">plugin_request</span><span class="o">.</span><span class="n">get_response</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="n">plugin_response</span><span class="o">.</span><span class="n">plugins</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">plugin</span><span class="o">.</span><span class="n">task</span> <span class="o">==</span> <span class="s2">&quot;LID&quot;</span><span class="p">:</span>
+        <span class="n">plugin_id</span> <span class="o">=</span> <span class="n">plugin</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">plugin_domain</span> <span class="o">=</span> <span class="n">plugin</span><span class="o">.</span><span class="n">domain</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">break</span>
+
+<span class="c1"># run Language ID (LID) on serialized audio file</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-- Language ID Results --&quot;</span><span class="p">)</span>
+<span class="n">packaged_audio</span> <span class="o">=</span> <span class="n">package_audio</span><span class="p">(</span><span class="n">Audio</span><span class="p">(),</span> <span class="n">serialize_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">)</span>
+<span class="n">analyze_request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">analyze_global</span><span class="p">(</span><span class="n">plugin_id</span><span class="p">,</span> <span class="n">plugin_domain</span><span class="p">,</span> <span class="n">packaged_audio</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">analyze_response</span> <span class="o">=</span> <span class="n">analyze_request</span><span class="o">.</span><span class="n">get_response</span><span class="p">()</span>
+
+<span class="n">top_scoring</span> <span class="o">=</span> <span class="n">analyze_response</span><span class="o">.</span><span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">analyze_response</span><span class="o">.</span><span class="n">score</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score</span><span class="o">.</span><span class="n">class_id</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">score</span><span class="o">.</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">score</span><span class="o">.</span><span class="n">score</span> <span class="o">&gt;</span> <span class="n">top_scoring</span><span class="o">.</span><span class="n">score</span><span class="p">:</span>
+        <span class="n">top_scoring</span> <span class="o">=</span> <span class="n">score</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top scoring: </span><span class="si">{</span><span class="n">top_scoring</span><span class="o">.</span><span class="n">class_id</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">top_scoring</span><span class="o">.</span><span class="n">score</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># disconnect</span>
+<span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Client disconnected!&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="establish-server-connection"><strong>Establish Server Connection</strong></h3>
+<p>Before making any task request, a client must establish a connection with the server. By default, the OLIVE server listens on ports 5588 (request port) and 5589 (status port) for client connection and status requests. These ports are configurable, but if the server has not been instructed to change its listening ports, the code below should establish a connection. </p>
+<!-- This example is from  api/reference/python/establish_server_connection.py -->
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">olivepy.api.olive_async_client</span> <span class="kn">import</span> <span class="n">AsyncOliveClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="o">...</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</code></pre></div>
+<p>The request port (5588 by default) is used for call and response messages. Each request message sent to this port is guaranteed a response from the server (this is why the messages in the <a href="apiMessage.html">API Message Reference</a> are often suffixed with 'Request' and 'Result'). There is no need to poll the server for information on a submitted request, as the result/response for the a request is returned to the client as soon as it is available. </p>
+<p>The status port (5589 by default) is used by the Server to publish health and status messages (Heartbeat) to client(s). Clients can not send requests on this port.</p>
+<h4 id="tls-encrypted-connections"><strong>TLS Encrypted Connections</strong></h4>
+<p>As of 5.6.0, olivepy supports TLS encrypted communication with the OLIVE Server.</p>
+<div class="admonition info">
+<p class="admonition-title">Encrypted connections require the OLIVE Server to be configured and started with TLS.  For example, OLIVE Martini must be started with the flag  <code>--tls_server_only</code> or <code>--tls_server_and_client</code>.</p>
+</div>
+<p>By default, OLIVE listens on port <code>5588</code> for encrypted connections.</p>
+<p>To set up a encrypted connection using olivepy, connect to the server with <code>client.secure_connect()</code> function and provide the required PEM (<code>*.crt</code> and <code>*.key</code>) certificate arguments:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">olivepy.api.olive_async_client</span> <span class="kn">import</span> <span class="n">AsyncOliveClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">secure_connect</span><span class="p">(</span>
+  <span class="n">certfile</span><span class="o">=</span><span class="s2">&quot;path/to/certificate.crt&quot;</span><span class="p">,</span> 
+  <span class="n">keyfile</span><span class="o">=</span><span class="s2">&quot;/path/to/keyfile.key&quot;</span><span class="p">,</span> 
+  <span class="n">password</span><span class="o">=</span><span class="s2">&quot;keyfilePassword&quot;</span><span class="p">,</span> 
+  <span class="n">ca_bundle_path</span><span class="o">=</span><span class="s2">&quot;path/to/cert/authority.crt&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Connecting to the OLIVE Server using TLS encryption takes slightly longer than a standard non-encrypted connection; however, after the initial connection is made, all subsequent requests will run over TLS with no time penalty.</p>
+<h3 id="request-available-plugins"><strong>Request Available Plugins</strong></h3>
+<p>In order to submit most server requests, the client must specify the plugin and domain to handle the request. To obtain the handle of a targeted plugin, the client first requests a list of all currently available valid plugins from the server. From the returned plugins list, the client looks up the specific plugin handle by the plugin's unique name (id) and its associated trait for the task to be performed. This handle can then be used in a future request message sent to the server.</p>
+<!-- This example is from api/reference/python/request-available-plugins.py -->
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">olivepy.api.olive_async_client</span> <span class="kn">import</span> <span class="n">AsyncOliveClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="n">plugin_request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request_plugins</span><span class="p">()</span>
+<span class="n">plugin_response</span> <span class="o">=</span> <span class="n">plugin_request</span><span class="o">.</span><span class="n">get_response</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="n">plugin_response</span><span class="o">.</span><span class="n">plugins</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Plugin </span><span class="si">{</span><span class="n">plugin</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">plugin</span><span class="o">.</span><span class="n">task</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">plugin</span><span class="o">.</span><span class="n">group</span><span class="si">}</span><span class="s1">) </span><span class="si">{</span><span class="n">plugin</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s1"> has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">plugin</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span><span class="si">}</span><span class="s1"> domain(s):&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">plugin</span><span class="o">.</span><span class="n">domain</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Domain: </span><span class="si">{</span><span class="n">domain</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">, Description: </span><span class="si">{</span><span class="n">domain</span><span class="o">.</span><span class="n">desc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</code></pre></div>
+<p>The targeted plugin's <code>id</code> and <code>domain</code> can then be used with subsequent requests.</p>
+<div class="admonition info">
+<p class="admonition-title">Note</p>
+<p>Each plugin has additional useful information that can be retrieved as needed:</p>
+<ul>
+<li><code>task</code>: The type of task (e.g. LID, SID, SAD, KWS, AED, etc.)</li>
+<li><code>trait</code>: See <a href="traits.html">Traits</a></li>
+<li><code>group</code>: Allows additional grouping of plugins such as Keyword, Speaker, Language, etc</li>
+</ul>
+</div>
+<h3 id="audio-submission-guidelines"><strong>Audio Submission Guidelines</strong></h3>
+<p>One of the core client activities is submitting Audio with a request. <code>olivepy</code> provides three ways for a client to package audio data to send to the OLIVE server:</p>
+<ul>
+<li>file path</li>
+<li>buffer of raw audio sample data</li>
+<li>serialized file buffer object</li>
+</ul>
+<p>The enum <code>InputTransferType</code> is used to specify they type of audio transfer to use.</p>
+<p>When the client and the OLIVE server share the same file system, the easiest way for the client to send audio data to the server is by specifying the audio's file path on disk along with <code>InputTransferType.PATH</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">packaged_audio</span> <span class="o">=</span> <span class="n">package_audio</span><span class="p">(</span><span class="n">Audio</span><span class="p">(),</span> <span class="s2">&quot;/home/olive/samples/Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span><span class="p">)</span>
+</code></pre></div>
+<p>When the client and the server don't share the same file system, as in the case of a client making a remote connection to the OLIVE server running in docker (Martini), it is necessary to send the client's local audio files using <code>InputTransferType.SERIALIZED</code> or <code>InputTransferType.DECODED</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">packaged_audio</span> <span class="o">=</span> <span class="n">package_audio</span><span class="p">(</span><span class="n">Audio</span><span class="p">(),</span> <span class="n">serialize_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Serialized Buffer Note</p>
+<p>Sending audio data as a serialized file buffer ensures that all audio header information is provided intact to the server. This allows the server to properly decode and process the audio once its received, since it can directly access the bit depth, encoding type, sample rate and other necessary information from the header itself. The tradeoff with serialized files is that there may be additional overhead needed to process the audio into a consumable form. If the client and server reside on the same hardware and file system, it is advisable to simply pass filepaths when possible. This saves the memory overhead burden of both the client and server loading audio into memory.</p>
+</div>
+<p>When using 16-bit PCM .wav files, or if first processing audio samples to be in one of the <a href="server.html#audio-formats">formats supported by the OLIVE server</a>, it's also possible to pass a non-serialized buffer of raw samples along with <code>InputTransferType.DECODED</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">packaged_audio</span> <span class="o">=</span> <span class="n">package_audio</span><span class="p">(</span><span class="n">Audio</span><span class="p">(),</span> <span class="n">audio_samples</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">InputTransferType</span><span class="o">.</span><span class="n">DECODED</span><span class="p">,</span> <span class="n">num_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">1080</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Buffer of Raw Samples Caution</p>
+<p>When submitting audio to the server as a buffer of raw samples, it is important to include information characterizing the audio, such as the bit depth, audio encoding, sample rate, and number of channels, to ensure the server knows how to properly treat the buffer it receives.</p>
+</div>
+<h3 id="synchronous-vs-asynchronous-message-submission"><strong>Synchronous vs. Asynchronous Message Submission</strong></h3>
+<p><code>olivepy</code> allows the client to choose between processing a task request synchronously or asynchronously. Processing a task request synchronously means the client will block and wait for the task result to return before proceeding to other task requests. On the other hand, asynchronous processing means the client will not wait for the result to come back before moving on, allowing several jobs to be submitted in parallel. </p>
+<p>The <code>olivepy.api.olive_async_client.AsyncOliveClient</code> class supports <em>both</em> synchronous and synchronous submissions. Most requests sent to the server accept a <code>typing.Callable</code> that will be executed when the asynchronous request has been processed. When a synchronous request is desired (which is the case in most of the examples in this reference guide for conveience), then <code>None</code> needs to be explicitly passed in place of the argument reserved for the <code>typing.Callable</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Legacy OliveClient Note</p>
+<p>There is also a legacy <code>olivepy.api.oliveclient.OliveClient</code> that only supports synchronous submissions, but it will be deprecated in the future and all integrators are encouraged to switch over to the <code>AsyncOliveClient</code>.</p>
+</div>
+<h3 id="frame-score-request"><strong>Frame Score Request</strong></h3>
+<p>The snippet below submits a Frame Score Request to the connected server.</p>
+<!-- This example is from api/reference/python/frame_score_request.py -->
+<div class="highlight"><pre><span></span><code><span class="n">analyze_request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">analyze_frames</span><span class="p">(</span><span class="n">plugin_id</span><span class="p">,</span> <span class="n">plugin_domain</span><span class="p">,</span> <span class="n">packaged_audio</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">analyze_response</span> <span class="o">=</span> <span class="n">analyze_request</span><span class="o">.</span><span class="n">get_response</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">analyze_response</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">score</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;frame[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">]=</span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Note</p>
+<p>Only a plugin that support the FrameScorer trait can handle this request.</p>
+<p>See the <a href="apiMessage.html#frame-scorer-messages">Frame Scorer Messages</a> section of the <a href="apiMessage.html">Enterprise API Message Reference</a> for details about the <code>FrameScorerRequest</code> and <code>FrameScorerResult</code> objects.</p>
+</div>
+<h3 id="global-score-request"><strong>Global Score Request</strong></h3>
+<p>The snippet below submits a Global Score Request to the connected server.</p>
+<!-- This example is from api/reference/python/global_score_request.py -->
+<div class="highlight"><pre><span></span><code><span class="n">analyze_request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">analyze_global</span><span class="p">(</span><span class="n">plugin_id</span><span class="p">,</span> <span class="n">plugin_domain</span><span class="p">,</span> <span class="n">packaged_audio</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">analyze_response</span> <span class="o">=</span> <span class="n">analyze_request</span><span class="o">.</span><span class="n">get_response</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">analyze_response</span><span class="o">.</span><span class="n">score</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score</span><span class="o">.</span><span class="n">class_id</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">score</span><span class="o">.</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Note</p>
+<p>The code required to submit a GlobalScorerRequest message doesn't care what type of plugin is going to be doing the scoring, as long as the plugin implements the GlobalScorer Trait. This means that the exact same code can be used for submitting audio to global scoring SID plugins, LID plugins, or any other global scoring plugin.</p>
+<p>See the <a href="apiMessage.html#global-scorer-messages">Global Scorer Messages</a> section of the <a href="apiMessage.html">Enterprise API Message Reference</a> for details about the <code>GlobalScorerRequest</code> and <code>GlobalScorerResult</code> objects.</p>
+</div>
+<h3 id="region-score-request"><strong>Region Score Request</strong></h3>
+<p>The snippet below submits a Region Score Request to the connected server.</p>
+<!-- This example is from api/reference/python/region_score_request.py -->
+<div class="highlight"><pre><span></span><code><span class="n">analyze_request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">analyze_regions</span><span class="p">(</span><span class="n">plugin_id</span><span class="p">,</span> <span class="n">plugin_domain</span><span class="p">,</span> <span class="n">packaged_audio</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">analyze_response</span> <span class="o">=</span> <span class="n">analyze_request</span><span class="o">.</span><span class="n">get_response</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">analyze_response</span><span class="o">.</span><span class="n">region</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">region</span><span class="o">.</span><span class="n">start_t</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">region</span><span class="o">.</span><span class="n">end_t</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">secs </span><span class="si">{</span><span class="n">region</span><span class="o">.</span><span class="n">class_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Note</p>
+<p>Only a plugin that support the RegionScorer trait can handle this request.</p>
+<p>See the <a href="apiMessage.html#region-scorer-messages">Region Scorer Messages</a> section of the <a href="apiMessage.html">Enterprise API Message Reference</a> for details about the <code>RegionScorerRequest</code> and <code>RegionScorerResult</code> objects.</p>
+</div>
+<h3 id="enrollments"><strong>Enrollments</strong></h3>
+<p>See the appropriate section of the <a href="plugins.html">OLIVE Plugin Overview documentation</a> for a description of <a href="plugins.html#enrollments">Enrollments</a>. </p>
+<h4 id="enroll"><strong>Enroll</strong></h4>
+<p>The snippet below enrolls a sample audio file for speaker <code>EDMUND_YEO</code>:</p>
+<!-- This example is from api/reference/python/enrollment_request.py -->
+<div class="highlight"><pre><span></span><code><span class="c1"># submit enrollment (i.e. Class Modification Request) for Speaker ID plugin using a serialized audio file</span>
+<span class="n">class_modification_request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">enroll</span><span class="p">(</span><span class="n">plugin_id</span><span class="p">,</span> <span class="n">plugin_domain</span><span class="p">,</span> <span class="s2">&quot;EDMUND_YEO&quot;</span><span class="p">,</span> <span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">)</span>
+<span class="n">class_modification_response</span> <span class="o">=</span> <span class="n">class_modification_request</span><span class="o">.</span><span class="n">get_response</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">addition_result</span> <span class="ow">in</span> <span class="n">class_modification_response</span><span class="o">.</span><span class="n">addition_result</span><span class="p">:</span>
+    <span class="n">status_label</span> <span class="o">=</span> <span class="s2">&quot;succeeded&quot;</span> <span class="k">if</span> <span class="n">addition_result</span><span class="o">.</span><span class="n">successful</span> <span class="k">else</span> <span class="s2">&quot;failed&quot;</span>
+    <span class="n">additional_details</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Additional details for request: </span><span class="si">{</span><span class="n">addition_result</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">addition_result</span><span class="o">.</span><span class="n">message</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Update to </span><span class="si">{</span><span class="n">plugin_id</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">plugin_domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">status_label</span><span class="si">}</span><span class="s2">! </span><span class="si">{</span><span class="n">additional_details</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Not all plugins support enrollments. Refer to the individual plugin documentation to confirm if it supports class enrollment before proceeding.</p>
+</div>
+<h4 id="unenroll"><strong>Unenroll</strong></h4>
+<p>The snippet below unenrolls speaker <code>EDMUND_YEO</code>:</p>
+<!-- This example is from api/reference/python/unenrollment_request.py -->
+<div class="highlight"><pre><span></span><code><span class="c1"># submit unenrollment (i.e. Class Modification Request) for Speaker ID plugin for speaker</span>
+<span class="n">class_modification_request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">unenroll</span><span class="p">(</span><span class="n">plugin_id</span><span class="p">,</span> <span class="n">plugin_domain</span><span class="p">,</span> <span class="s2">&quot;EDMUND_YEO&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">class_modification_request</span><span class="o">.</span><span class="n">is_successful</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unenrollment was successful!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unenrollment failed with error: </span><span class="si">{</span><span class="n">class_modification_request</span><span class="o">.</span><span class="n">get_error</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="workflow-integration"><strong>Workflow Integration</strong></h2>
+<p>In addition to the basic API integration mechanisms described above, <code>olivepy</code> also supports OLIVE Workflows.</p>
+<p>See <a href="workflows.html">Workflows</a> for a primer on OLIVE Workflows and then continue reading below for <code>olivepy</code> specific details.</p>
+<h3 id="quickstart_1"><strong>Quickstart</strong></h3>
+<p>Here's a complete workflow example for those in a hurry:</p>
+<!-- This example is from api/reference/python/workflow_quickstart.py -->
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">olivepy.api.olive_async_client</span> <span class="kn">import</span> <span class="n">AsyncOliveClient</span>
+<span class="kn">from</span> <span class="nn">olivepy.api.workflow</span> <span class="kn">import</span> <span class="n">OliveWorkflowDefinition</span>
+<span class="kn">from</span> <span class="nn">olivepy.messaging.msgutil</span> <span class="kn">import</span> <span class="n">InputTransferType</span>
+
+<span class="c1"># connect</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="c1"># load the workflow_definition into the AsyncOliveClient to get a workflow helper object</span>
+<span class="n">workflow_definition</span> <span class="o">=</span> <span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;sad_lid_sid.workflow.json&quot;</span><span class="p">)</span>
+<span class="n">sad_lid_sid_workflow</span> <span class="o">=</span> <span class="n">workflow_definition</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+<span class="c1"># package audio as a serialized buffer</span>
+<span class="n">serialized_audio</span> <span class="o">=</span> <span class="n">sad_lid_sid_workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;Edmund_Yeo_voice_ch.wav&#39;</span><span class="p">))</span>
+
+<span class="c1"># submit workflow request on serialized audio file</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">sad_lid_sid_workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">([</span><span class="n">serialized_audio</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># disconnect</span>
+<span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="initializing-a-workflow"><strong>Initializing a Workflow</strong></h3>
+<p>As described in <a href="workflows.html">Workflows</a>, workflow logic is encapsulated in a Workflow Definition file distributed as either binary (i.e. <code>*.workflow</code> - deprecated) or JSON (i.e. <code>*.workflow.json</code>). Workflows are preconfigured to perform tasks such as Speech Activity Detection (SAD), Language Identification (LID), Speaker Identification (SID), etc. with a single call to the OLIVE server. These Workflow Definition files must be initialized (aka 'created') with the olivepy <code>client</code> before the workflow can be used.</p>
+<p>The snippet below initializes a workflow with the <code>client</code>:</p>
+<!-- This example is taken from workflow_quickstart.py -->
+
+<div class="highlight"><pre><span></span><code><span class="n">workflow_definition</span> <span class="o">=</span> <span class="n">OliveWorkflowDefinition</span><span class="p">(</span><span class="s2">&quot;sad_lid_sid.workflow.json&quot;</span><span class="p">)</span>
+<span class="n">sad_lid_sid_workflow</span> <span class="o">=</span> <span class="n">workflow_definition</span><span class="o">.</span><span class="n">create_workflow</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">A workflow 'helper' object (<code>OliveWorkflow</code>) is returned and is used to submit audio files directly to that workflow for analysis, enrollment, or unenrollment. In the snippet above, <code>sad_lid_sid_workflow</code> is the 'helper'.</p>
+</div>
+<h3 id="packaging-audio"><strong>Packaging Audio</strong></h3>
+<p>The same <a href="#audio-submission-guidelines"><strong>Audio Submission Guidelines</strong></a> discussed earlier in this guide apply to workflows and each of the following are supported for workflows:</p>
+<ul>
+<li><code>InputTransferType.PATH</code></li>
+<li><code>InputTransferType.SERIALIZED</code></li>
+<li><code>InputTransferType.DECODED</code></li>
+</ul>
+<p>The difference with workflows is that the workflow 'helper' is used to package audios rather than olivepy <code>client</code> directly; the audio is wrapped in a <code>WorkflowDataRequest</code> that is submitted to OLIVE for processing:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># package audio as a serialized buffer using the workflow &#39;helper&#39;</span>
+<span class="n">packaged_audio</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;Edmund_Yeo_voice_ch.wav&#39;</span><span class="p">))</span>
+</code></pre></div>
+<h4 id="multi-channel-audio"><strong>Multi-channel Audio</strong></h4>
+<p>The default workflow behavior is to merge multi-channel audio into a single channel, which is known as <code>MONO</code> mode. To perform analysis on each channel individually instead of a merged channel, the Workflow Definition must be authored with a mode of <code>SPLIT</code>. When using the split mode, each channel in a multi-channel audio input is "split" into a job.</p>
+<p>Here is a <code>mode</code> within a workflow definition file that merges multi-channel audio into a single channel audio input:</p>
+<div class="highlight"><pre><span></span><code>      <span class="nt">&quot;data_properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;min_number_inputs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;max_number_inputs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;AUDIO&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;preprocessing_required&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;resample_rate&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+        <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;MONO&quot;</span>
+      <span class="p">},</span>
+</code></pre></div>
+<p>... and one that handles each channel individually:</p>
+<div class="highlight"><pre><span></span><code>      <span class="nt">&quot;data_properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;min_number_inputs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;max_number_inputs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;AUDIO&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;preprocessing_required&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;resample_rate&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+        <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;SPLIT&quot;</span>
+      <span class="p">},</span>
+</code></pre></div>
+<h4 id="audio-annotations"><strong>Audio Annotations</strong></h4>
+<p>The audio submitted for analysis (or enrollment) can be annotated with start/end regions when packaging audio using the <code>package_audio()</code> function. The snippet below specifies two regions within a file:</p>
+<div class="highlight"><pre><span></span><code>    <span class="c1"># Provide annotations for two regions: 0.3 to 1.7 seconds, and 2.4 to 3.3 seconds in audio</span>
+    <span class="n">regions</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">),</span> <span class="p">(</span><span class="mf">2.4</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">)]</span>
+    <span class="n">packaged_audio</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="s1">&#39;Edmund_Yeo_voice_ch.wav&#39;</span><span class="p">,</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">AUDIO_SERIALIZED</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">regions</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="submitting-audio"><strong>Submitting Audio</strong></h3>
+<p>Submitting audio for analysis, enrollment, and unenrollment using workflows is supported.</p>
+<h4 id="analysis"><strong>Analysis</strong></h4>
+<p>The snippet below packages and submits an audio file to the workflow 'helper' for analysis:</p>
+<!-- This example is taken from api/reference/python/workflow_quickstart.py -->
+
+<div class="highlight"><pre><span></span><code><span class="c1"># package audio as a serialized buffer</span>
+<span class="n">serialized_audio</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;Edmund_Yeo_voice_ch.wav&#39;</span><span class="p">))</span>
+
+<span class="c1"># submit workflow request on serialized audio file</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">([</span><span class="n">serialized_audio</span><span class="p">])</span>
+</code></pre></div>
+<h5 id="batch-request"><strong>Batch request</strong></h5>
+<p>The <code>analyze</code> function accepts a <code>list</code> of audio files to so multiple files can be analyzed as a complete 'batch' request:</p>
+<!-- This example is taken from api/reference/python/workflow_analysis_request.py -->
+<div class="highlight"><pre><span></span><code><span class="c1"># package audio files for analysis</span>
+<span class="n">serialized_audio_1</span> <span class="o">=</span> <span class="n">sad_lid_sid_workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;Edmund_Yeo_voice_ch.wav&#39;</span><span class="p">))</span>
+<span class="n">serialized_audio_2</span> <span class="o">=</span> <span class="n">sad_lid_sid_workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_en.wav&quot;</span><span class="p">,</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;Edmund_Yeo_voice_en.wav&#39;</span><span class="p">))</span>
+
+<span class="c1"># submit workflow request on multiple serialized audio files</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">sad_lid_sid_workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">([</span><span class="n">serialized_audio_1</span><span class="p">,</span> <span class="n">serialized_audio_2</span><span class="p">])</span>
+</code></pre></div>
+<h4 id="enrollments_1"><strong>Enrollments</strong></h4>
+<h5 id="enroll_1"><strong>Enroll</strong></h5>
+<p>Some workflows support enrollment for one or more jobs. To list the jobs in a workflow that support enrollment, 
+use the <code>get_enrollment_job_names()</code> function:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Enrollment Jobs: </span><span class="si">{</span><span class="n">sid_enrollments_workflow</span><span class="o">.</span><span class="n">get_enrollment_job_names</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Enrollment jobs &#39;[&#39;SID Enrollment&#39;]&#39;</span>
+</code></pre></div>
+<p>To enroll a speaker via this workflow, use the workflow 'helper's <code>enroll</code> function:</p>
+<!-- This example is taken from api/reference/python/workflow_enrollment_request.py -->
+
+<div class="highlight"><pre><span></span><code><span class="c1"># find a Speaker Identification (SID) enrollment job name</span>
+<span class="k">for</span> <span class="n">enrollment_job_name</span> <span class="ow">in</span> <span class="n">sid_enrollments_workflow</span><span class="o">.</span><span class="n">get_enrollment_job_names</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">enrollment_job_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;SID&quot;</span><span class="p">):</span>
+        <span class="n">sid_enrollment_job_name</span> <span class="o">=</span> <span class="n">enrollment_job_name</span>
+        <span class="k">break</span>
+
+<span class="c1"># submit enrollment (i.e. Class Modification Request) for Speaker ID plugin using a serialized audio file</span>
+<span class="n">speaker_label</span> <span class="o">=</span> <span class="s2">&quot;EDMUND_YEO&quot;</span>
+<span class="n">packaged_audio</span> <span class="o">=</span> <span class="n">sid_enrollments_workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">))</span>
+
+<span class="n">class_modification_response</span> <span class="o">=</span> <span class="n">sid_enrollments_workflow</span><span class="o">.</span><span class="n">enroll</span><span class="p">([</span><span class="n">packaged_audio</span><span class="p">],</span> <span class="n">speaker_label</span><span class="p">,</span> <span class="p">[</span><span class="n">sid_enrollment_job_name</span><span class="p">])</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Since there was only one enrollment job in the workflow definition, the enrollment request could have been made without specifying the job name. However, it is a best practice to explicitly request the enrollment job by name.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Note also that not all workflows support enrollment. Please check that the workflow being used supports this before submitting an enrollment request.</p>
+</div>
+<p>To confirm the new speaker name was added:</p>
+<!-- This example is taken from api/reference/python/workflow_enrollment_request.py -->
+<div class="highlight"><pre><span></span><code><span class="n">sid_class_ids</span> <span class="o">=</span> <span class="n">sid_enrollments_workflow</span><span class="o">.</span><span class="n">get_analysis_class_ids</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sid_class_ids</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+<p>Which produces the following output:</p>
+<div class="highlight"><pre><span></span><code> <span class="p">{</span>
+ <span class="nt">&quot;job_class&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+   <span class="nt">&quot;job_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SID analysis&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;task&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;task_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SID&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;EDMUND_YEO&quot;</span>
+     <span class="p">]</span>
+    <span class="p">}</span>
+   <span class="p">]</span>
+  <span class="p">}</span>
+ <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">'Class ID' is a general term used to describe 'labels' that apply to the specific plugin. Here, <code>class_id</code> represents all the speaker labels that are enrolled.</p>
+</div>
+<h5 id="unenroll_1"><strong>Unenroll</strong></h5>
+<p>Workflow definitions that support enrollment often also support unenrollment. Similar to enrollment, use the <code>get_unenrollment_job_names()</code> to get a list of jobs that support unenrollment, send unenrollment requests to <code>unenroll</code>, and use <code>get_analysis_class_ids()</code> to list. Here is an example snippet of all three:</p>
+<!-- This example is from api/reference/python/workflow_unenrollment_request.py -->
+<div class="highlight"><pre><span></span><code><span class="c1"># find Speaker Identification (SID) unenrollment job name</span>
+<span class="k">for</span> <span class="n">unenrollment_job_name</span> <span class="ow">in</span> <span class="n">sid_enrollments_workflow</span><span class="o">.</span><span class="n">get_unenrollment_job_names</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">unenrollment_job_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;SID&quot;</span><span class="p">):</span>
+        <span class="n">sid_unenrollment_job_name</span> <span class="o">=</span> <span class="n">unenrollment_job_name</span>
+        <span class="k">break</span>
+
+<span class="c1"># submit unenrollment (i.e. Class Modification Request) for Speaker ID plugin</span>
+<span class="n">speaker_label</span> <span class="o">=</span> <span class="s2">&quot;EDMUND_YEO&quot;</span>
+<span class="n">class_modification_response</span> <span class="o">=</span> <span class="n">sid_enrollments_workflow</span><span class="o">.</span><span class="n">unenroll</span><span class="p">(</span><span class="n">speaker_label</span><span class="p">,</span> <span class="p">[</span><span class="n">sid_unenrollment_job_name</span><span class="p">])</span>
+
+<span class="n">sid_class_ids</span> <span class="o">=</span> <span class="n">sid_enrollments_workflow</span><span class="o">.</span><span class="n">get_analysis_class_ids</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sid_class_ids</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>    
+</code></pre></div>
+<p>Which produces the following output:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+ <span class="nt">&quot;job_class&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+   <span class="nt">&quot;job_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SID analysis&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;task&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;task_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SID&quot;</span>
+    <span class="p">}</span>
+   <span class="p">]</span>
+  <span class="p">}</span>
+ <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">There is no <code>class_id</code> attribute because the speaker was successfully unenrolled and there aren't any others enrolled in the system.</p>
+</div>
+<h3 id="parsing-workflow-responses"><strong>Parsing Workflow Responses</strong></h3>
+<p>A successful workflow request produces a response that includes information about the results. Information is grouped into one or more 'jobs', where a job is includes the name, tasks that were performed as part of the job, the results of each task, and potentially information about the input audio. </p>
+<p>For example the following code snippet:</p>
+<!-- This example is taken from api/reference/python/workflow_analysis_request.py -->
+<div class="highlight"><pre><span></span><code><span class="c1"># package audio files for analysis</span>
+<span class="n">serialized_audio_1</span> <span class="o">=</span> <span class="n">sad_lid_sid_workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;Edmund_Yeo_voice_ch.wav&#39;</span><span class="p">))</span>
+<span class="n">serialized_audio_2</span> <span class="o">=</span> <span class="n">sad_lid_sid_workflow</span><span class="o">.</span><span class="n">package_audio</span><span class="p">(</span><span class="s2">&quot;Edmund_Yeo_voice_en.wav&quot;</span><span class="p">,</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;Edmund_Yeo_voice_en.wav&#39;</span><span class="p">))</span>
+
+<span class="c1"># submit workflow request on multiple serialized audio files</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">sad_lid_sid_workflow</span><span class="o">.</span><span class="n">analyze</span><span class="p">([</span><span class="n">serialized_audio_1</span><span class="p">,</span> <span class="n">serialized_audio_2</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<p>would produce the following output:</p>
+<!--- Should we have this collapsed by default to save scrolling space/sanity/navigability? If so, put in a '??? info' block? --->
+
+<details><summary>Example Workflow Output (click to expand)</summary><div class="highlight"><pre><span></span><code><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;job_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SAD, LID, SID analysis&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;data_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;msg_type&quot;</span><span class="p">:</span> <span class="s2">&quot;PREPROCESSED_AUDIO_RESULT&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;MONO&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;merged&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+        <span class="nt">&quot;duration_seconds&quot;</span><span class="p">:</span> <span class="mf">29.2825</span><span class="p">,</span>
+        <span class="nt">&quot;number_channels&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Edmund_Yeo_voice_ch.wav&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;cbc95af3f693de48654a72ec288adb8ad182a8f86993a3d0d42e3e2a5b4d5548&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;tasks&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;SAD&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;task_trait&quot;</span><span class="p">:</span> <span class="s2">&quot;REGION_SCORER&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;task_type&quot;</span><span class="p">:</span> <span class="s2">&quot;SAD&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;message_type&quot;</span><span class="p">:</span> <span class="s2">&quot;REGION_SCORER_RESULT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;plugin&quot;</span><span class="p">:</span> <span class="s2">&quot;sad-dnn-v8.0.0&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-v1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;analysis&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;start_t&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="nt">&quot;end_t&quot;</span><span class="p">:</span> <span class="mf">28.95</span><span class="p">,</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;speech&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">0.0</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;LID&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;task_trait&quot;</span><span class="p">:</span> <span class="s2">&quot;GLOBAL_SCORER&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;task_type&quot;</span><span class="p">:</span> <span class="s2">&quot;LID&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;message_type&quot;</span><span class="p">:</span> <span class="s2">&quot;GLOBAL_SCORER_RESULT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;plugin&quot;</span><span class="p">:</span> <span class="s2">&quot;lid-embedplda-v4.0.0&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-v1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;analysis&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Mandarin&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">6.0677257</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Korean&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-1.3737706</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;English&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-4.7524</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Vietnamese&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-4.7861123</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Japanese&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-6.1542406</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Iraqi Arabic&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-8.356203</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Levantine Arabic&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-8.655978</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Tagalog&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-8.790578</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-9.969812</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Modern Standard Arabic&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-10.236586</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Iranian Persian&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-11.295098</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Amharic&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-12.617832</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-14.459879</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Portuguese&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-14.844175</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Russian&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-15.082703</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Pashto&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-15.151446</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;SID&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;task_trait&quot;</span><span class="p">:</span> <span class="s2">&quot;GLOBAL_SCORER&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;task_type&quot;</span><span class="p">:</span> <span class="s2">&quot;SID&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;message_type&quot;</span><span class="p">:</span> <span class="s2">&quot;GLOBAL_SCORER_RESULT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;plugin&quot;</span><span class="p">:</span> <span class="s2">&quot;sid-dplda-v3.0.0&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-v1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;analysis&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;EDMUND_YEO&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">10.516918</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;job_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SAD, LID, SID analysis&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;data_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Edmund_Yeo_voice_en.wav&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;msg_type&quot;</span><span class="p">:</span> <span class="s2">&quot;PREPROCESSED_AUDIO_RESULT&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;MONO&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;merged&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;sample_rate&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+        <span class="nt">&quot;duration_seconds&quot;</span><span class="p">:</span> <span class="mf">37.0825</span><span class="p">,</span>
+        <span class="nt">&quot;number_channels&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Edmund_Yeo_voice_en.wav&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;65a53db9b3ac1d1571082512cba37665634712738fed530ca00b3d5922e0d129&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;tasks&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;SAD&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;task_trait&quot;</span><span class="p">:</span> <span class="s2">&quot;REGION_SCORER&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;task_type&quot;</span><span class="p">:</span> <span class="s2">&quot;SAD&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;message_type&quot;</span><span class="p">:</span> <span class="s2">&quot;REGION_SCORER_RESULT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;plugin&quot;</span><span class="p">:</span> <span class="s2">&quot;sad-dnn-v8.0.0&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-v1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;analysis&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;start_t&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="nt">&quot;end_t&quot;</span><span class="p">:</span> <span class="mf">36.78</span><span class="p">,</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;speech&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">0.0</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;LID&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;task_trait&quot;</span><span class="p">:</span> <span class="s2">&quot;GLOBAL_SCORER&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;task_type&quot;</span><span class="p">:</span> <span class="s2">&quot;LID&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;message_type&quot;</span><span class="p">:</span> <span class="s2">&quot;GLOBAL_SCORER_RESULT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;plugin&quot;</span><span class="p">:</span> <span class="s2">&quot;lid-embedplda-v4.0.0&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-v1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;analysis&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;English&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">5.056248</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Levantine Arabic&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-1.0983323</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Tagalog&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-1.4544584</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Iraqi Arabic&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-1.7203265</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Vietnamese&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-1.7773396</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-2.4661431</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Korean&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-3.766336</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Mandarin&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-3.8002808</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Japanese&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-4.7714725</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Modern Standard Arabic&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-5.692904</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-6.5970984</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Iranian Persian&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-6.6558266</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Portuguese&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-8.045044</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Amharic&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-8.093353</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Pashto&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-9.445313</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Russian&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">-11.597008</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;SID&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;task_trait&quot;</span><span class="p">:</span> <span class="s2">&quot;GLOBAL_SCORER&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;task_type&quot;</span><span class="p">:</span> <span class="s2">&quot;SID&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;message_type&quot;</span><span class="p">:</span> <span class="s2">&quot;GLOBAL_SCORER_RESULT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;plugin&quot;</span><span class="p">:</span> <span class="s2">&quot;sid-dplda-v3.0.0&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-v1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;analysis&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nt">&quot;class_id&quot;</span><span class="p">:</span> <span class="s2">&quot;EDMUND_YEO&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">7.9177084</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+</details>
+<p>In the above output, note that the root array contains two objects because two audio files were submitted to the workflow. </p>
+<p>Each object contains information about job including the <code>job_name</code> that identifies which job was run, the <code>data</code> attribute that contains information about the input audio, and the <code>tasks</code> attribute has holds results of each task performed. </p>
+<p>Each task object with <code>tasks</code> has a <code>message_type</code> attribute identifies the type of output produced by the task which; it can be used to determine which fields will be available in the <code>analysis</code> attribute. See the <a href="apiMessage.html">Enterprise API Message Reference</a> for a reference on what data will be available for each message type (ex. <code>GlobalScorerResult</code> and <code>RegionScorerResult</code>)</p>
+<p>The results can be converted to a Python dict and iterated through programmatically:</p>
+<!-- This example is taken from api/reference/python/workflow_parse_analysis_results.py -->
+<div class="highlight"><pre><span></span><code><span class="c1"># convert to Python dict and iterate</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">to_json</span><span class="p">()):</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">task_type</span><span class="p">,</span> <span class="n">task_result</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">plugin</span> <span class="o">=</span> <span class="n">task_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;plugin&#39;</span><span class="p">]</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">task_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span>
+        <span class="n">analysis</span> <span class="o">=</span> <span class="n">task_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;analysis&#39;</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">task_type</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> using </span><span class="si">{</span><span class="n">plugin</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">analysis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Which produces the following output:</p>
+<div class="highlight"><pre><span></span><code><span class="n">SAD</span> <span class="n">on</span> <span class="n">Edmund_Yeo_voice_ch</span><span class="o">.</span><span class="n">wav</span> <span class="n">using</span> <span class="n">sad</span><span class="o">-</span><span class="n">dnn</span><span class="o">-</span><span class="n">v8</span><span class="mf">.0.0</span><span class="o">/</span><span class="n">multi</span><span class="o">-</span><span class="n">v1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;region&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;start_t&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;end_t&#39;</span><span class="p">:</span> <span class="mf">28.95</span><span class="p">,</span> <span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}]}</span>
+<span class="n">LID</span> <span class="n">on</span> <span class="n">Edmund_Yeo_voice_ch</span><span class="o">.</span><span class="n">wav</span> <span class="n">using</span> <span class="n">lid</span><span class="o">-</span><span class="n">embedplda</span><span class="o">-</span><span class="n">v4</span><span class="mf">.0.0</span><span class="o">/</span><span class="n">multi</span><span class="o">-</span><span class="n">v1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Mandarin&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mf">6.0677257</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Korean&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.3737706</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">4.7524</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Vietnamese&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">4.7861123</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Japanese&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">6.1542406</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Iraqi Arabic&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">8.356203</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Levantine Arabic&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">8.655978</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Tagalog&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">8.790578</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;French&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">9.969812</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Modern Standard Arabic&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">10.236586</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Iranian Persian&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">11.295098</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Amharic&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">12.617832</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Spanish&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">14.459879</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Portuguese&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">14.844175</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Russian&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">15.082703</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Pashto&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">15.151446</span><span class="p">}]}</span>
+<span class="n">SID</span> <span class="n">on</span> <span class="n">Edmund_Yeo_voice_ch</span><span class="o">.</span><span class="n">wav</span> <span class="n">using</span> <span class="n">sid</span><span class="o">-</span><span class="n">dplda</span><span class="o">-</span><span class="n">v3</span><span class="mf">.0.0</span><span class="o">/</span><span class="n">multi</span><span class="o">-</span><span class="n">v1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;EDMUND_YEO&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mf">10.516918</span><span class="p">}]}</span>
+<span class="n">SAD</span> <span class="n">on</span> <span class="n">Edmund_Yeo_voice_en</span><span class="o">.</span><span class="n">wav</span> <span class="n">using</span> <span class="n">sad</span><span class="o">-</span><span class="n">dnn</span><span class="o">-</span><span class="n">v8</span><span class="mf">.0.0</span><span class="o">/</span><span class="n">multi</span><span class="o">-</span><span class="n">v1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;region&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;start_t&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;end_t&#39;</span><span class="p">:</span> <span class="mf">36.78</span><span class="p">,</span> <span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}]}</span>
+<span class="n">LID</span> <span class="n">on</span> <span class="n">Edmund_Yeo_voice_en</span><span class="o">.</span><span class="n">wav</span> <span class="n">using</span> <span class="n">lid</span><span class="o">-</span><span class="n">embedplda</span><span class="o">-</span><span class="n">v4</span><span class="mf">.0.0</span><span class="o">/</span><span class="n">multi</span><span class="o">-</span><span class="n">v1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;English&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mf">5.056248</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Levantine Arabic&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0983323</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Tagalog&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.4544584</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Iraqi Arabic&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.7203265</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Vietnamese&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.7773396</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;French&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.4661431</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Korean&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">3.766336</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Mandarin&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">3.8002808</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Japanese&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">4.7714725</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Modern Standard Arabic&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">5.692904</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Spanish&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">6.5970984</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Iranian Persian&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">6.6558266</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Portuguese&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">8.045044</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Amharic&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">8.093353</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Pashto&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">9.445313</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;Russian&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">11.597008</span><span class="p">}]}</span>
+<span class="n">SID</span> <span class="n">on</span> <span class="n">Edmund_Yeo_voice_en</span><span class="o">.</span><span class="n">wav</span> <span class="n">using</span> <span class="n">sid</span><span class="o">-</span><span class="n">dplda</span><span class="o">-</span><span class="n">v3</span><span class="mf">.0.0</span><span class="o">/</span><span class="n">multi</span><span class="o">-</span><span class="n">v1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;class_id&#39;</span><span class="p">:</span> <span class="s1">&#39;EDMUND_YEO&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mf">7.9177084</span><span class="p">}]}</span>
+</code></pre></div>
+<hr />
+<h2 id="job-cancellation-request">Job Cancellation Request</h2>
+<p>OLIVE 5.6.0 introduced the ability to cancel pending or in-progress jobs with an API message request. Among other use cases, this can help recover from large mistakenly-submitted batch jobs, or cancel submissions that may be overcome-by-events, or any other reason a cancellation may be necessary, without requiring a server restart.</p>
+<p>The cancellation message request itself is rather simple:</p>
+<div class="highlight"><span class="filename">olivepy Job Cancellation</span><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">olivepy.api.olive_async_client</span> <span class="kn">import</span> <span class="n">AsyncOliveClient</span>
+
+<span class="c1"># connect</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">AsyncOliveClient</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="c1"># submit the cancellation request and disconnect</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">cancel_server_jobs</span><span class="p">(</span><span class="n">server_wide</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Server-wide jobs cancellation requested&#39;</span><span class="p">)</span>
+</code></pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="apiCode.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                JOlive Primer
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="olivepy-api.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                olivepy API Reference
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

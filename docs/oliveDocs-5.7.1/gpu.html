@@ -1,0 +1,1976 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>GPU-Capable OLIVE Docker Installation and Setup - OLIVE 5.7.1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="olive" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gpu-capable-olive-docker-installation-and-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE 5.7.1 Documentation" class="md-header-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE 5.7.1 Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              GPU-Capable OLIVE Docker Installation and Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE 5.7.1 Documentation" class="md-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE 5.7.1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="windows.html" class="md-nav__link">
+      Windows Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      Martini (Docker) Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-global-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-embedplda-v1.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-whisper-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) whisper/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v3.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#olive-folder-structure-overview" class="md-nav__link">
+    OLIVE Folder Structure Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-and-start-docker" class="md-nav__link">
+    Install and Start Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-and-launch-olive-docker" class="md-nav__link">
+    Build and Launch OLIVE Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-olive-server-configuration" class="md-nav__link">
+    Default OLIVE Server Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-olive-gpu-server" class="md-nav__link">
+    Interacting with OLIVE GPU Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-image-configuration" class="md-nav__link">
+    Docker Image Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Image Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    docker-compose.yml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposing-gpus-to-an-olive-server-cuda_visible_devices" class="md-nav__link">
+    Exposing GPU(s) to an OLIVE Server (CUDA_VISIBLE_DEVICES)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-location-olive_app_data" class="md-nav__link">
+    Plugin Location (OLIVE_APP_DATA)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-server-concurrent-processing-jobs-workers-experimental" class="md-nav__link">
+    GPU Server Concurrent Processing Jobs (--workers) [Experimental]
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-configuration-for-gpu-use" class="md-nav__link">
+    Plugin Configuration for GPU Use
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Configuration for GPU Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-gpu-usage-for-a-plugins-domain" class="md-nav__link">
+    Enable GPU usage for a plugin's domain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#currently-supported-gpu-plugins" class="md-nav__link">
+    Currently supported GPU plugins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olive-gpu-restrictions-and-configuration-notes" class="md-nav__link">
+    OLIVE GPU Restrictions and Configuration Notes
+  </a>
+  
+    <nav class="md-nav" aria-label="OLIVE GPU Restrictions and Configuration Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-compute-mode-default-vs-exclusive" class="md-nav__link">
+    GPU Compute Mode: "Default" vs "Exclusive"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-restrictions" class="md-nav__link">
+    Workflow Restrictions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="gpu-capable-olive-docker-installation-and-setup">GPU-Capable OLIVE Docker Installation and Setup</h1>
+<h2 id="olive-folder-structure-overview">OLIVE Folder Structure Overview</h2>
+<p>The initial release of GPU-enabled OLIVE follows the structure described below. Note that this is similar overall to previous deliveries but differs significantly from both native linux-based packages and docker-based packages in the past regarding how the server is started and managed. The important differences can be seen in the <code>oliveDocker/</code> directory. If the OLIVE package you were provided does not match this formatting, please refer to the appropriate setup guide for your delivery.</p>
+<p>The OLIVE delivery typically comes in a single archive:</p>
+<div class="codehilite"><pre><span></span><code>olive5.7.1-DDMonthYYYY.tar.gz
+</code></pre></div>
+
+<p>That unpacks into a structure resembling:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="nv">olive5</span>.<span class="mi">7</span>.<span class="mi">1</span>
+    <span class="o">-</span> <span class="nv">api</span> <span class="o">-</span> <span class="nv">Java</span> <span class="nv">and</span> <span class="nv">Python</span> <span class="nv">example</span> <span class="nv">client</span> <span class="nv">API</span> <span class="nv">implementation</span> <span class="nv">code</span> <span class="nv">and</span> <span class="nv">CLI</span> <span class="nv">client</span> <span class="nv">utilities</span>
+        <span class="o">-</span> <span class="nv">java</span>
+        <span class="o">-</span> <span class="nv">python</span>
+    <span class="o">-</span> <span class="nv">docs</span><span class="o">/</span> <span class="o">-</span> <span class="nv">Directory</span> <span class="nv">containing</span> <span class="nv">the</span> <span class="nv">OLIVE</span> <span class="nv">documentation</span> 
+         <span class="o">-</span> <span class="nv">index</span>.<span class="nv">html</span> <span class="o">-</span> <span class="nv">Open</span> <span class="nv">this</span> <span class="nv">in</span> <span class="nv">a</span> <span class="nv">web</span> <span class="nv">browser</span> <span class="nv">to</span> <span class="nv">view</span>
+    <span class="o">-</span> <span class="nv">oliveDocker</span><span class="o">/</span>
+        <span class="o">-</span> <span class="nv">olive</span><span class="o">+</span><span class="nv">runtime</span><span class="o">-</span><span class="mi">5</span>.<span class="mi">7</span>.<span class="mi">1</span><span class="o">-</span><span class="nv">Ubuntu</span><span class="o">-</span><span class="mi">20</span>.<span class="mi">04</span><span class="o">-</span><span class="nv">x86_64</span>.<span class="nv">tar</span>.<span class="nv">gz</span> <span class="o">-</span> <span class="nv">OLIVE</span> <span class="nv">Core</span> <span class="nv">Software</span> <span class="nv">and</span> <span class="nv">Runtime</span> <span class="nv">Bundle</span>
+        <span class="o">-</span> <span class="nv">Dockerfile</span>
+        <span class="o">-</span> <span class="nv">docker</span><span class="o">-</span><span class="nv">compose</span>.<span class="nv">yml</span>
+    <span class="o">-</span> <span class="nv">OliveGUI</span><span class="o">/</span> <span class="o">-</span> <span class="nv">The</span> <span class="nv">OLIVE</span> <span class="nv">Nightingale</span> <span class="nv">GUI</span> <span class="ss">(</span><span class="nv">not</span> <span class="nv">included</span> <span class="nv">in</span> <span class="nv">all</span> <span class="nv">deliveries</span><span class="ss">)</span>
+        <span class="o">-</span> <span class="nv">bin</span><span class="o">/</span>
+            <span class="o">-</span> <span class="nv">Nightingale</span>
+    <span class="o">-</span> <span class="nv">oliveAppData</span><span class="o">/</span>
+        <span class="o">-</span> <span class="nv">plugins</span><span class="o">/</span>
+            <span class="o">-</span> <span class="nv">sad</span><span class="o">-</span><span class="nv">dnn</span><span class="o">-</span><span class="nv">v7</span>.<span class="mi">0</span>.<span class="mi">0</span> <span class="ss">(</span><span class="nv">example</span><span class="ss">)</span> – <span class="nv">Speech</span> <span class="nv">Activity</span> <span class="nv">Detection</span> <span class="nv">plugin</span> 
+            <span class="o">-</span> <span class="nv">Actual</span> <span class="nv">plugins</span> <span class="nv">included</span> <span class="nv">will</span> <span class="nv">depend</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">customer</span>, <span class="nv">mission</span>, <span class="nv">and</span> <span class="nv">delivery</span>
+    <span class="o">-</span> <span class="nv">oliveAppDataGPU</span><span class="o">/</span>
+        <span class="o">-</span> <span class="nv">plugins</span><span class="o">/</span>
+            <span class="o">-</span> <span class="nv">asr</span><span class="o">-</span><span class="nv">end2end</span><span class="o">-</span><span class="nv">v1</span>.<span class="mi">0</span>.<span class="mi">0</span> <span class="ss">(</span><span class="nv">example</span><span class="ss">)</span> <span class="o">-</span> <span class="nv">Speech</span> <span class="nv">Recognition</span> <span class="ss">(</span><span class="k">end</span><span class="o">-</span><span class="nv">to</span><span class="o">-</span><span class="k">end</span><span class="ss">)</span> <span class="nv">plugin</span> <span class="nv">configured</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">on</span> <span class="nv">GPU</span>
+            <span class="o">-</span> <span class="nv">Actual</span> <span class="nv">plugins</span> <span class="nv">included</span> <span class="nv">will</span> <span class="nv">depend</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">customer</span>, <span class="nv">mission</span>, <span class="nv">and</span> <span class="nv">delivery</span>
+</code></pre></div>
+
+<p>The actual plugins included will vary from customer to customer, and may even vary between use case configurations within a customer integration.</p>
+<h2 id="install-and-start-docker">Install and Start Docker</h2>
+<p>Before you can get started installing and running OLIVE, you'll need to make sure you have fully installed and configured Docker. The proper installation steps vary depending on your host OS, so please refer to the appropriate official Docker installation instructions:</p>
+<ul>
+<li><a href="https://docs.docker.com/desktop/install/windows-install/">Docker Desktop for Windows</a></li>
+<li><a href="https://docs.docker.com/desktop/install/mac-install/">Docker Desktop for macOS</a></li>
+<li><a href="https://docs.docker.com/engine/install/ubuntu/">Docker Engine for Ubuntu</a></li>
+</ul>
+<p>Docker for Ubuntu is especially important to follow the official steps closely, as there are additional important <a href="https://docs.docker.com/engine/install/linux-postinstall/">post-installation steps</a> to perform to make sure docker runs smoothly on your system.</p>
+<p>Note that if installing into an Ubuntu instance running on WSL2, <code>systemctl</code> is not used on such systems. This means that some of the commands provided in the Docker for Ubuntu instructions above may not succeed as written; notably for starting and stopping the Docker service. Please use <code>service</code> for these commands instead:</p>
+<div class="codehilite"><pre><span></span><code>$ sudo service docker start
+</code></pre></div>
+
+<p>In addition, if using Docker for Ubuntu, the Nvidia drivers must be installed separately. This doesn't seem to be necessary if using Docker Desktop. Instructions for this installation can be found <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker">here, from Nvidia</a>. </p>
+<p>Before moving on, be sure that the docker service has been started.</p>
+<h2 id="build-and-launch-olive-docker">Build and Launch OLIVE Docker</h2>
+<p>The core of the OLIVE software is contained within <code>oliveDocker/olive+runtime-5.7.1-Ubuntu-20.04-x86_64.tar.gz</code> archive. Each delivery includes a docker-compose.yml and Dockerfile that informs Docker how to build and launch this into a running OLIVE server.</p>
+<p>The process for building the OLIVE image is:</p>
+<div class="codehilite"><pre><span></span><code>$ <span class="nb">cd</span> olive5.5.0/oliveDocker/
+$ docker compose build
+</code></pre></div>
+
+<p>This only needs to be performed once per machine.</p>
+<p>Once this is complete, launching the server can be done with the following command, from the same location:</p>
+<div class="codehilite"><pre><span></span><code>$ docker compose up
+</code></pre></div>
+
+<p>This call will start the OLIVE image and launch multiple OLIVE servers according to the configuration contained in <code>docker-compose.yml</code>; the default configuration is described below.</p>
+<h2 id="default-olive-server-configuration">Default OLIVE Server Configuration</h2>
+<p>As delivered, performing the steps above will launch two OLIVE servers. The first will only perform CPU processing, and has access to the plugins contained in:</p>
+<div class="codehilite"><pre><span></span><code>`olive5.7.1/oliveAppData/plugins/`
+</code></pre></div>
+
+<p>This server is analogous to previous Docker-based OLIVE deliveries. It listens on the same ports as before, and is configured the same way, such that the number of workers (concurrent server jobs) is automatically limited based on the number of threads available on the CPU hardware.</p>
+<p>The second server has access to the GPU and can use this if the plugin domains have been properly configured, and assumes there is only one GPU available, device <code>0</code> according to <code>nvidia-smi</code>. It can run with the plugins contained in:</p>
+<div class="codehilite"><pre><span></span><code>`olive5.7.1/oliveAppDataGPU/plugins/`
+</code></pre></div>
+
+<p>It listens on different ports (see next section), and is configured to have a single <code>worker</code> to stabilize GPU memory usage. This is a global setting for an OLIVE server, so separating the CPU and GPU plugins into separate OLIVE servers allows us to run the CPU server unthrottled, allowing a number of parallel jobs based on the number of cores or threads available on the host hardware, without being limited by the setting of the GPU server that is relying on a single (very fast) worker thread. By default, this initial delivery only includes a single plugin with domains configured and placed such that it will run on the GPU:</p>
+<ul>
+<li><a href="plugins/asr-end2end-v1.html">asr-end2end-v1.0.0</a></li>
+</ul>
+<p>See below for instructions on configuring others to run on the GPU, and a list of released GPU-capable plugins.</p>
+<h2 id="interacting-with-olive-gpu-server">Interacting with OLIVE GPU Server</h2>
+<p>Once an OLIVE 5.7.1 GPU-capable server is running, tasking it from a client is largely identical to before; whether from the Java or python client APIs or one of our GUIs. The only salient difference is that the multi-server approach means that each server is listening on a different set of ports. By default, those ports are:</p>
+<table>
+<thead>
+<tr>
+<th>Server</th>
+<th>Server Request Port</th>
+<th>Server Status Port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>5588</td>
+<td>5589</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>6588</td>
+<td>6589</td>
+</tr>
+</tbody>
+</table>
+<p>These are the defaults, which can be configured in the <code>docker-compose.yml</code> file as shown below. Be sure to route requests to the appropriate server. If using most of SRI's client utilities or UIs, the default ports used (5588/5589) will contact the CPU-only server. Sending requests to the GPU server instead will require a flag (i.e. <code>--port 6588</code> if using the <a href="#client.md">Java and Python client utilities</a>) or other configuration changes.</p>
+<h2 id="docker-image-configuration">Docker Image Configuration</h2>
+<!--- 
+#### Dockerfile
+
+<div class="highlight"><pre><span></span><code>FROM nvidia/cuda:11.6.0-devel-ubuntu20.04 AS base
+
+LABEL maintainer=olive-support@sri.com
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update &amp;&amp; apt-get install -y libglu1-mesa \
+            libglu1-mesa-dev libx11-6 libxi6 \
+            libxi-dev libxmu6 libxmu-dev libgl1 libgl-dev \
+            apt-utils rsync vim gawk fontconfig
+
+ARG olive_version=5.5.0-Ubuntu-20.04-x86_64
+ARG olive_runtime_version=5.5.0-Ubuntu-20.04-x86_64
+
+ADD olive+runtime-${olive_version}.tar.gz /opt/olive
+
+RUN mv /opt/olive/runtime-${olive_version}/olive-${olive_version} /opt/olive/
+
+ENV PATH=/opt/olive/runtime-${olive_version}/bin/:$PATH
+
+ENV OLIVE_RUNTIME=/opt/olive/runtime-${olive_runtime_version}
+ENV OLIVE=/opt/olive/olive-${olive_version}
+ENV PATH=/opt/olive/olive-${olive_version}/bin/:/opt/olive/runtime-${olive_runtime_version}/bin/:$PATH
+
+ENV PYTHONPATH=/opt/olive/:$OLIVE:$OLIVE/dnn:$PYTHONPATH
+
+ENV OPENBLAS_NUM_THREADS=1
+ENV MKL_NUM_THREADS=1
+ENV OMP_NUM_THREADS=1
+ENV HDF5_USE_FILE_LOCKING=FALSE
+
+RUN useradd olive; mkdir -p /home/olive/olive; chown -R olive /home/olive
+
+WORKDIR /home/olive
+
+ENTRYPOINT [ &quot;oliveserver&quot; ]
+</code></pre></div>
+--->
+
+<p>Configuration of the number and setup of OLIVE servers is controlled by settings within the included <code>docker-compose.yml</code> file. The entire file is displayed below, with excerpts showing which section is configuring the CPU server and the GPU server. This is followed by a section for each of the most important and likely to be altered variables. Note that none of this needs to be touched if running the default configuration, on the assumed default hardware (single-GPU machine).</p>
+<h3 id="docker-composeyml">docker-compose.yml</h3>
+<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Whole File</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.9&quot;</span>
+
+<span class="nt">x-common-variables</span><span class="p">:</span> <span class="nl">&amp;common-variables</span>
+  <span class="nt">FONTCONFIG_PATH</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/fonts/</span>
+  <span class="nt">FONTCONFIG_FILE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/fonts/fonts.conf</span>
+  <span class="nt">XDG_CACHE_HOME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+  <span class="nt">MPLCONFIGDIR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+
+<span class="nt">services</span><span class="p">:</span>
+  <span class="nt">runtime-cpu</span><span class="p">:</span>
+    <span class="nt">build</span><span class="p">:</span>
+      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+      <span class="nt">args</span><span class="p">:</span>
+        <span class="nt">gpu_or_cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gpu</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1000:1000</span>
+    <span class="nt">command</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--verbose&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--debug&quot;</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;5588:5588&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;5589:5589&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;5590:5590&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;5591:5591&quot;</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">../oliveAppData:/home/olive/olive</span>
+    <span class="nt">environment</span><span class="p">:</span> <span class="nv">*common-variables</span>
+    <span class="nt">shm_size</span><span class="p">:</span> <span class="s">&#39;4gb&#39;</span>
+  <span class="nt">runtime-gpu</span><span class="p">:</span>
+    <span class="nt">build</span><span class="p">:</span>
+      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+      <span class="nt">args</span><span class="p">:</span>
+        <span class="nt">gpu_or_cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gpu</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1000:1000</span>
+    <span class="nt">command</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--verbose&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--debug&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--workers=1&quot;</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;6588:5588&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;6589:5589&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;6590:5590&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;6591:5591&quot;</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">../oliveAppDataGPU:/home/olive/olive</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="nt">&lt;&lt;</span><span class="p">:</span> <span class="nv">*common-variables</span>
+      <span class="nt">CUDA_VISIBLE_DEVICES</span><span class="p">:</span> <span class="s">&#39;0&#39;</span>
+    <span class="nt">shm_size</span><span class="p">:</span> <span class="s">&#39;4gb&#39;</span>
+    <span class="nt">deploy</span><span class="p">:</span>
+      <span class="nt">resources</span><span class="p">:</span>
+        <span class="nt">reservations</span><span class="p">:</span>
+          <span class="nt">devices</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+              <span class="c1"># count: 1</span>
+              <span class="c1"># Can use &#39;count&#39; or explicity list device_ids</span>
+              <span class="c1"># How does device_ids and CUDA_VISIBLE_DEVICES match up?</span>
+              <span class="c1"># Do the indexes inside the container always start at 0?</span>
+              <span class="nt">device_ids</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;0&quot;</span><span class="p p-Indicator">]</span>
+              <span class="nt">capabilities</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">gpu</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">CPU Server Section</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+
+<span class="nt">services</span><span class="p">:</span>
+  <span class="nt">runtime-cpu</span><span class="p">:</span>
+    <span class="nt">build</span><span class="p">:</span>
+      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+      <span class="nt">args</span><span class="p">:</span>
+        <span class="nt">gpu_or_cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gpu</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1000:1000</span>
+    <span class="nt">command</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--verbose&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--debug&quot;</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;5588:5588&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;5589:5589&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;5590:5590&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;5591:5591&quot;</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">../oliveAppData:/home/olive/olive</span>
+    <span class="nt">environment</span><span class="p">:</span> <span class="nv">*common-variables</span>
+    <span class="nt">shm_size</span><span class="p">:</span> <span class="s">&#39;4gb&#39;</span>
+
+<span class="nn">...</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">GPU Server Section</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+
+<span class="nt">services</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">runtime-gpu</span><span class="p p-Indicator">:</span>
+    <span class="nt">build</span><span class="p">:</span>
+      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+      <span class="nt">args</span><span class="p">:</span>
+        <span class="nt">gpu_or_cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gpu</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1000:1000</span>
+    <span class="nt">command</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--verbose&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--debug&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;--workers=1&quot;</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;6588:5588&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;6589:5589&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;6590:5590&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;6591:5591&quot;</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">../oliveAppDataGPU:/home/olive/olive</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="nt">&lt;&lt;</span><span class="p">:</span> <span class="nv">*common-variables</span>
+      <span class="nt">CUDA_VISIBLE_DEVICES</span><span class="p">:</span> <span class="s">&#39;0&#39;</span>
+    <span class="nt">shm_size</span><span class="p">:</span> <span class="s">&#39;4gb&#39;</span>
+    <span class="nt">deploy</span><span class="p">:</span>
+      <span class="nt">resources</span><span class="p">:</span>
+        <span class="nt">reservations</span><span class="p">:</span>
+          <span class="nt">devices</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+              <span class="c1"># count: 1</span>
+              <span class="c1"># Can use &#39;count&#39; or explicity list device_ids</span>
+              <span class="c1"># How does device_ids and CUDA_VISIBLE_DEVICES match up?</span>
+              <span class="c1"># Do the indexes inside the container always start at 0?</span>
+              <span class="nt">device_ids</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;0&quot;</span><span class="p p-Indicator">]</span>
+              <span class="nt">capabilities</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">gpu</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</div>
+</div>
+<h3 id="exposing-gpus-to-an-olive-server-cuda_visible_devices">Exposing GPU(s) to an OLIVE Server (CUDA_VISIBLE_DEVICES)</h3>
+<!--- Available GPU Device(s) (CUDA_VISIBLE_DEVICES) --->
+
+<p>If your hardware contains multiple GPUs or if your GPU does not identify as device <code>0</code> for any reason, you may need to modify the CUDA_VISIBLE_DEVICES environment variable used by OLIVE GPU server and/or the <code>device_ids</code> argument in the resource allocation section of the <code>docker-compose.yml</code>.</p>
+<p>The former is controlled by: <code>services: runtime-gpu: environment: CUDA_VISIBLE_DEVICES</code></p>
+<p>And the latter by: <code>services: runtime-gpu: deploy: resources: reservations: devices: device_ids</code></p>
+<p>Both can be seen in the excerpt below:
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">runtime-gpu</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span>
+      <span class="nt">&lt;&lt;</span><span class="p">:</span> <span class="nv">*common-variables</span>
+      <span class="nt">CUDA_VISIBLE_DEVICES</span><span class="p">:</span> <span class="s">&#39;0&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="nt">deploy</span><span class="p">:</span>
+      <span class="nt">resources</span><span class="p">:</span>
+        <span class="nt">reservations</span><span class="p">:</span>
+          <span class="nt">devices</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+              <span class="c1"># count: 1</span>
+              <span class="c1"># Can use &#39;count&#39; or explicity list device_ids</span>
+              <span class="c1"># How does device_ids and CUDA_VISIBLE_DEVICES match up?</span>
+              <span class="c1"># Do the indexes inside the container always start at 0?</span>
+              <span class="nt">device_ids</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;0&quot;</span><span class="p p-Indicator">]</span>
+              <span class="nt">capabilities</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">gpu</span><span class="p p-Indicator">]</span>
+</code></pre></div></p>
+<p>For more information on how and why to set <code>CUDA_VISIBLE_DEVICES</code>, see <a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#env-vars">Nvidia's documentation</a>. This variable is used to control what GPU(s) the server is able to see and lean on during processing. Exposing a GPU device here makes the GPU visible to OLIVE, but does not force anything to run on it. For configuring a plugin/domain to use an available GPU, see the relevant section below.</p>
+<p>For more information about <code>device_ids</code>, how it should be set, and how this may interact with other settings, see the <a href="https://docs.docker.com/compose/gpu-support/">Docker documentation on GPU support</a>. This page also covers a possible, untested alternative, of using <code>count</code> instead of <code>device_ids</code>.</p>
+<p>Both of these arguments are controlling the container's GPU access; as such, these should likely match, and both pass the same list of GPUs and in the same order, but as each application and each customer's hardware setup and needs may vary, some testing and tweaking may be necessary on the client end to ensure the behavior is as desired. </p>
+<p>Note that these parameters identify a GPU by its device ID as reported by <code>nvidia-smi</code>. These can be verified by checking the top left entry for each GPU in the <code>nvidia-smi</code> output; an example is shown below.</p>
+<details class="info"><summary>nvidia-smi Example Output (Click to expand)</summary><div class="highlight"><pre><span></span><code>+-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.46       Driver Version: 495.46       CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:04:00.0 Off |                  N/A |
+| 20%   28C    P0    71W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  Off  | 00000000:05:00.0 Off |                  N/A |
+| 20%   28C    P0    73W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA GeForce ...  Off  | 00000000:08:00.0 Off |                  N/A |
+| 19%   28C    P0    73W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA GeForce ...  Off  | 00000000:09:00.0 Off |                  N/A |
+| 19%   28C    P0    73W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   4  NVIDIA GeForce ...  Off  | 00000000:84:00.0 Off |                  N/A |
+| 18%   26C    P0    71W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   5  NVIDIA GeForce ...  Off  | 00000000:85:00.0 Off |                  N/A |
+| 19%   27C    P0    71W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   6  NVIDIA GeForce ...  Off  | 00000000:88:00.0 Off |                  N/A |
+| 18%   28C    P0    71W / 250W |      0MiB / 12212MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   7  NVIDIA GeForce ...  Off  | 00000000:89:00.0 Off |                  N/A |
+| 17%   27C    P0    73W / 250W |      0MiB / 12212MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+</code></pre></div>
+</details>
+<h3 id="plugin-location-olive_app_data">Plugin Location (OLIVE_APP_DATA)</h3>
+<p>As described above, the default configuration separates CPU-configured plugins into <code>olive5.7.1/oliveAppData/plugins/</code> and GPU-enabled/configured plugins into <code>olive5.7.1/oliveAppDataGPU/plugins/</code>. If maintaining a two-server setup similar to the delivered configuration, these do not need to be changed. To convert a GPU-capable plugin from CPU, first it must be moved or placed into the <code>oliveAppDataGPU</code> plugins directory. </p>
+<div class="admonition info">
+<p class="admonition-title">Note that if moving a plugin that has enrollment capability, any enrolled models will not be transferred. Re-enrollment must be performed once the plugin is moved and reconfigured, or for advanced users, the enrollments can be moved separately.</p>
+</div>
+<p>If the name or location of the <code>oliveAppData</code> directories need to change for any reason, the <code>docker-compose.yml</code> must be updated to reflect this, specifically the <code>volumes</code> mounted for each server that are mapped to <code>/home/olive/olive/</code> within the containers. This excerpt shows where this is set for the GPU server:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">runtime-gpu</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="l l-Scalar l-Scalar-Plain">volumes</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">../oliveAppDataGPU:/home/olive/olive</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<h3 id="gpu-server-concurrent-processing-jobs-workers-experimental">GPU Server Concurrent Processing Jobs (--workers) <em>[Experimental]</em></h3>
+<p>If maximum batch throughput is important for your application, and it is known that memory requirements of your use case won't overwhelm the available memory of the GPU, the number of server workers for the GPU server can be increased. This is experimental and may affect overall server performance (speed) and stability. This setting controls the number of jobs the server can process simultaneously, and for GPU-enabled domains will increase the number of times the associated models are loaded into memory. As the percentage of used GPU memory increases, speed may decrease as less optimal pathways are used. This also increases the likelihood of ungracefully exhausting the available GPU memory, which may cause a system crash. The majority of the OLIVE 5.7.1 testing was performed with <code>--workers</code> set to <code>1</code>.</p>
+<p>To increase the number of server workers, increase the argument passed to the <code>--workers</code> flag in the <code>docker-compose.yml</code>, under <code>services: runtime-gpu: command:</code></p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">runtime-gpu</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span> 
+    <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="l l-Scalar l-Scalar-Plain">- &quot;--workers=1&quot;</span>
+</code></pre></div>
+<h2 id="plugin-configuration-for-gpu-use">Plugin Configuration for GPU Use</h2>
+<h3 id="enable-gpu-usage-for-a-plugins-domain">Enable GPU usage for a plugin's domain</h3>
+<p>To allow a plugin to run on an available GPU, it is crucial that the plugin:</p>
+<ol>
+<li>Is located in the plugins directory of a GPU enabled server (oliveAppDataGPU/plugins by default) </li>
+<li>Has each desired domain configured to choose a GPU device in its meta.conf file</li>
+<li>Only has domains configured to select GPU device(s) that are properly exposed to the server via CUDA_VISIBLE_DEVICES and Docker's device_ids</li>
+</ol>
+<p>More information for <a href="#plugin-location-olive_app_data">#1</a> and <a href="#exposing-gpus-to-an-olive-server-cuda_visible_devices">#3</a> can be found in the appropriate sections above. Be sure to move the plugin to <code>oliveAppDataGPU/plugins/</code> when reconfiguring, and restarting any running servers. Be sure to double-check that the device(s) you are configuring each plugin domain to use are actually exposed to the server that will be using that plugin/domain.</p>
+<p>Configuring a plugin to use a GPU is done at the <em>domain</em> level, by changing the <code>device</code> variable assignment within the domain's <code>meta.conf</code> file. By default, most plugins have this variable assigned to <code>cpu</code>, and as such the domain will run on CPU only, even when running within a GPU-enabled OLIVE server. To assign a domain access to a GPU, change this <code>device</code> assignment from <code>cpu</code> to <code>gpuN</code> where <code>N</code> is the device ID of the GPU to run on, as reported by <code>nvidia-smi</code> (more info <a href="#exposing-gpus-to-an-olive-server-cuda_visible_devices#exposing-gpus-to-an-olive-server-cuda_visible_devices">here</a>). As already discussed it is critical that the device assigned to the domain is exposed to the OLIVE server that will be running this domain.</p>
+<p>Most hardware setups will only have a single GPU available, so enabling this is simply replacing <code>cpu</code> with <code>gpu0</code>.</p>
+<p>As an example, the meta.conf for the <code>english-v1</code> domain of <code>asr-end2end-v1.0.0</code> in its off-the-shelf format is shown below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">label</span><span class="o">:</span> <span class="n">english</span><span class="o">-</span><span class="n">v1</span>
+<span class="n">description</span><span class="o">:</span> <span class="n">Large</span> <span class="n">vocabulary</span> <span class="n">English</span> <span class="n">wav2vec2</span> <span class="n">model</span> <span class="k">for</span> <span class="n">both</span> <span class="mi">8</span><span class="n">K</span> <span class="n">and</span> <span class="mi">16</span><span class="n">K</span> <span class="n">data</span>
+<span class="n">resample_rate</span><span class="o">:</span> <span class="mi">8000</span>
+<span class="n">language</span><span class="o">:</span> <span class="n">English</span>
+<span class="n">device</span><span class="o">:</span> <span class="n">cpu</span>
+</code></pre></div>
+
+<p>To instead configure this domain to run on the GPU with ID #0, as it is when delivered with OLIVE 5.7.1, this domain then becomes:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">label</span><span class="o">:</span> <span class="n">english</span><span class="o">-</span><span class="n">v1</span>
+<span class="n">description</span><span class="o">:</span> <span class="n">Large</span> <span class="n">vocabulary</span> <span class="n">English</span> <span class="n">wav2vec2</span> <span class="n">model</span> <span class="k">for</span> <span class="n">both</span> <span class="mi">8</span><span class="n">K</span> <span class="n">and</span> <span class="mi">16</span><span class="n">K</span> <span class="n">data</span>
+<span class="n">resample_rate</span><span class="o">:</span> <span class="mi">8000</span>
+<span class="n">language</span><span class="o">:</span> <span class="n">English</span>
+<span class="n">device</span><span class="o">:</span> <span class="n">gpu0</span>
+</code></pre></div>
+
+<div class="admonition info">
+<p class="admonition-title">Each <em>domain</em> must be configured separately. If within a single plugin, one domain is configured for GPU, the others don't automatically start using a GPU. By default they will still run on CPU, which for most plugins will run significantly more slowly. By extension, it is <em>not</em> necessary for all domains of a plugin to run on the same GPU.</p>
+</div>
+<p>Having this device assignment at the domain level allows the distribution of domains across multiple GPUs. For example, if multiple GPUs are available on a system, lower-memory-usage plugins like SAD, SID, and LID may share a single GPU, while heavier plugins like ASR or MT can be flexible enough to assign different language domains of each plugin across multiple GPUs, spreading the memory load to minimize the chance of exhausting GPU memory, while also saving lost time frequently loading and unloading models.</p>
+<p>Building off of the example above, if we wanted to run the <code>russian-v1</code> domain of the same ASR plugin on GPU device #2, so that <code>english-v1</code> and <code>russian-v1</code> don't compete with respect to GPU memory, the <code>russian-v1</code> domain would look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">label</span><span class="o">:</span> <span class="n">russian</span><span class="o">-</span><span class="n">v1</span>
+<span class="n">description</span><span class="o">:</span> <span class="n">Large</span> <span class="n">vocabulary</span> <span class="n">Russian</span> <span class="n">wav2vec2</span> <span class="n">model</span> <span class="k">for</span> <span class="n">both</span> <span class="mi">8</span><span class="n">K</span> <span class="n">and</span> <span class="mi">16</span><span class="n">K</span> <span class="n">data</span>
+<span class="n">resample_rate</span><span class="o">:</span> <span class="mi">8000</span>
+<span class="n">language</span><span class="o">:</span> <span class="n">Russian</span>
+<span class="n">device</span><span class="o">:</span> <span class="n">gpu2</span>
+</code></pre></div>
+
+<p>Note that in these examples, GPU device 0 and GPU device 2 must both be listed in <code>CUDA_VISIBLE_DEVICES</code> and <code>device_ids</code> as <a href="#exposing-gpus-to-an-olive-server-cuda_visible_devices">outlined above</a>. </p>
+<details class="info"><summary>Example docker-compose.yml modification</summary><p>``` yaml
+...
+services:
+  ...
+  runtime-gpu:
+    ...
+    environment:
+      &lt;&lt;: *common-variables
+      CUDA_VISIBLE_DEVICES: '0,2'
+    ...
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              # count: 1
+              # Can use 'count' or explicity list device_ids
+              # How does device_ids and CUDA_VISIBLE_DEVICES match up?
+              # Do the indexes inside the container always start at 0?
+              device_ids: ['0', '2']
+              capabilities: [gpu]</p>
+</details>
+<p>The exact ideal configuration may vary greatly depending on specific customer use case and mission needs.</p>
+<h3 id="currently-supported-gpu-plugins">Currently supported GPU plugins</h3>
+<p>Please refer to <a href="gpu-config.html#currently-supported-gpu-plugins">the GPU Configuration documentation</a> for a list of currently supported GPU plugins.</p>
+<h2 id="olive-gpu-restrictions-and-configuration-notes">OLIVE GPU Restrictions and Configuration Notes</h2>
+<h3 id="gpu-compute-mode-default-vs-exclusive">GPU Compute Mode: "Default" vs "Exclusive"</h3>
+<p>The OLIVE software currently assumes that any available GPUs are in the "default" mode. In testing, some configurations of number of OLIVE server workers have been found to cause unexpected issues if the GPUs are configured to be running in "Exclusive" mode. If possible, please configure GPUs that OLIVE will be using in "Default" mode, and if this is not possible, please ensure that the number of workers for the GPU-enabled server is specified to be 1. This is configured in the provided docker-compose.yml file.</p>
+<p>To check the mode of your GPU, you can view the <code>Compute Mode</code> field of the <code>nvidia-smi</code> command output. Please refer to <a href="https://www.nvidia.com/content/Control-Panel-Help/vLatest/en-us/mergedProjects/nvwks/To_change_the_usage_mode_of_a_GPU.htm">Nvidia's instructions for Nvidia Control Panel</a> or the <a href="https://developer.download.nvidia.com/compute/DCGM/docs/nvidia-smi-367.38.pdf">Usage instructions for nvidia-smi</a> for more information on how to set these modes.</p>
+<h3 id="workflow-restrictions">Workflow Restrictions</h3>
+<p>Plugins can't currently pass jobs between separate OLIVE servers. This means that if you have a workflow that requires several plugins, each of those plugins must be visible to the OLIVE server that is receiving the workflow job request. If your current configuration separates any of these plugins, your plugins directories must be reconfigured so that all required plugins are colocated within the same server. </p>
+<p>There are two possible workarounds. The first would be disabling GPU capabilities in some plugins and moving them to the CPU <code>oliveAppData/</code> directory, which may cause them to run much more slowly, but will allow full job parallelization. An alternative would be to move CPU-only plugins into the GPU-enabled server, leaving them configured to run on the CPU. This would allow the GPU-enabled plugins to run at full speed, but would limit parallel processing due to having a single <code>worker</code> thread.</p>
+<p>Future work in OLIVE hopes to address these first-release GPU limitations to reduce and eventually eliminate workarounds and restrictions like this.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

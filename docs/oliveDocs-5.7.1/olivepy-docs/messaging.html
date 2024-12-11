@@ -1,0 +1,4760 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>`olivepy` `messaging` module - OLIVE 5.7.1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/css/swagger-ui.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="olive" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olivepy-messaging-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../index.html" title="OLIVE 5.7.1 Documentation" class="md-header-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE 5.7.1 Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              `olivepy` `messaging` module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="OLIVE 5.7.1 Documentation" class="md-nav__button md-logo" aria-label="OLIVE 5.7.1 Documentation">
+      
+  <img src="../assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE 5.7.1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../windows.html" class="md-nav__link">
+      Windows Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../martini.html" class="md-nav__link">
+      Martini (Docker) Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../install.html" class="md-nav__link">
+      CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/dfa-global-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/dfa-speakerSpecific-phonetic-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection Speaker Specific Phonetic (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/sdd-diarizeEmbedSmolive-v1.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/ldd-embedpldaSmolive-v1.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/gid-embedplda-v1.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/qbe-ftdnnSmolive-v1.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/asr-whisper-v2.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) whisper/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/asr-end2end-v3.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#olivepymessagingmsgutil" class="md-nav__link">
+    olivepy.messaging.msgutil
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.msgutil" class="md-nav__link">
+    olivepy.messaging.msgutil
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.msgutil.AllowableErrorFromServer" class="md-nav__link">
+    AllowableErrorFromServer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.msgutil.AudioTransferType" class="md-nav__link">
+    AudioTransferType
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.msgutil.ExceptionFromServer" class="md-nav__link">
+    ExceptionFromServer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.msgutil.InputTransferType" class="md-nav__link">
+    InputTransferType
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.msgutil.OliveInputDataType" class="md-nav__link">
+    OliveInputDataType
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.msgutil.package_audio" class="md-nav__link">
+    package_audio()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.msgutil.package_binary_media" class="md-nav__link">
+    package_binary_media()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.msgutil.serialize_audio" class="md-nav__link">
+    serialize_audio()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepymessagingolive_pb2" class="md-nav__link">
+    olivepy.messaging.olive_pb2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.olive_pb2" class="md-nav__link">
+    olivepy.messaging.olive_pb2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepymessagingresponse" class="md-nav__link">
+    olivepy.messaging.response
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.response" class="md-nav__link">
+    olivepy.messaging.response
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveClassStatusResponse" class="md-nav__link">
+    OliveClassStatusResponse
+  </a>
+  
+    <nav class="md-nav" aria-label="OliveClassStatusResponse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveClassStatusResponse.get_workflow_type" class="md-nav__link">
+    get_workflow_type()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveClassStatusResponse.parse_from_response" class="md-nav__link">
+    parse_from_response()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveClassStatusResponse.to_json" class="md-nav__link">
+    to_json()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveServerResponse" class="md-nav__link">
+    OliveServerResponse
+  </a>
+  
+    <nav class="md-nav" aria-label="OliveServerResponse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveServerResponse.get_response" class="md-nav__link">
+    get_response()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveServerResponse.get_workflow_type" class="md-nav__link">
+    get_workflow_type()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveServerResponse.parse_from_response" class="md-nav__link">
+    parse_from_response()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveServerResponse.to_json" class="md-nav__link">
+    to_json()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowActualizedResponse" class="md-nav__link">
+    OliveWorkflowActualizedResponse
+  </a>
+  
+    <nav class="md-nav" aria-label="OliveWorkflowActualizedResponse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.get_analysis_jobs" class="md-nav__link">
+    get_analysis_jobs()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.get_request_jobs" class="md-nav__link">
+    get_request_jobs()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.is_allowable_error" class="md-nav__link">
+    is_allowable_error()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.parse_from_response" class="md-nav__link">
+    parse_from_response()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowActualizedResponse.to_json" class="md-nav__link">
+    to_json()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse" class="md-nav__link">
+    OliveWorkflowAnalysisResponse
+  </a>
+  
+    <nav class="md-nav" aria-label="OliveWorkflowAnalysisResponse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_jobs" class="md-nav__link">
+    get_analysis_jobs()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_task_result" class="md-nav__link">
+    get_analysis_task_result()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_request_jobs" class="md-nav__link">
+    get_request_jobs()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.is_allowable_error" class="md-nav__link">
+    is_allowable_error()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.parse_from_response" class="md-nav__link">
+    parse_from_response()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowAnalysisResponse.to_json" class="md-nav__link">
+    to_json()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowEnrollmentResponse" class="md-nav__link">
+    OliveWorkflowEnrollmentResponse
+  </a>
+  
+    <nav class="md-nav" aria-label="OliveWorkflowEnrollmentResponse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowEnrollmentResponse.is_allowable_error" class="md-nav__link">
+    is_allowable_error()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowEnrollmentResponse.parse_from_response" class="md-nav__link">
+    parse_from_response()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.OliveWorkflowEnrollmentResponse.to_json" class="md-nav__link">
+    to_json()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.get_workflow_job_names" class="md-nav__link">
+    get_workflow_job_names()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.get_workflow_job_tasks" class="md-nav__link">
+    get_workflow_job_tasks()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olivepy.messaging.response.get_workflow_jobs" class="md-nav__link">
+    get_workflow_jobs()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olivepy-messaging-module"><code>olivepy</code> <code>messaging</code> module</h1>
+<h2 id="olivepymessagingmsgutil"><code>olivepy.messaging.msgutil</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.messaging.msgutil"></a>
+    <div class="doc doc-contents first">
+
+      <p>Contains data structures that map message_type enum values
+to protobuf types and vice versa. Should be updated whenever
+new message types are added.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.msgutil.AllowableErrorFromServer" class="doc doc-heading">
+        <code>
+AllowableErrorFromServer            (<span title="Exception">Exception</span>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>This exception means that the server could not complete a request; however, the reason it could not do isn't
+considered an error.  This special case most often occurs when requesting analysis of a submission that contains
+no speech, in which case the analysis could not complete since there was not speech and not due to an error running
+the plugin.  Otherwise, this is identical to Python's plain old Exception</p>
+
+
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.msgutil.AudioTransferType" class="doc doc-heading">
+        <code>
+AudioTransferType            (<span title="enum.Enum">Enum</span>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The method used to send audio to the OLIVE server.   There are three options for sending audio to the server:</p>
+<ol>
+<li>
+<p>AUDIO_PATH: Send the path of the audio file to the server.  NOTE: If using this option, the path must be
+accessible to the server</p>
+</li>
+<li>
+<p>AUDIO_DECODED: Send the audio as a buffer of decoded samples (PCM-16).  This option is not well supported
+by this client since it does not</p>
+</li>
+<li>
+<p>AUDIO_SERIALIZED: Send the file as a binary buffer</p>
+</li>
+</ol>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.msgutil.ExceptionFromServer" class="doc doc-heading">
+        <code>
+ExceptionFromServer            (<span title="Exception">Exception</span>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>This exception means that an error occured on the server side, and this error is
+   being sent "up the chain" on the client side.  Otherwise, it is identical to
+   Python's plain old Exception</p>
+
+
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.msgutil.InputTransferType" class="doc doc-heading">
+        <code>
+InputTransferType            (<span title="enum.Enum">Enum</span>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The method used to send audio/data to the OLIVE server.   There are three options for sending data to the server:</p>
+<ol>
+<li>
+<p>PATH: Send the path of the audio file to the server.  NOTE: If using this option, the path must be
+accessible to the server</p>
+</li>
+<li>
+<p>DECODED: Send the audio as a buffer of decoded samples (PCM-16).  This option is not well supported
+by this client since it does not</p>
+</li>
+<li>
+<p>SERIALIZED: Send the file as a binary buffer</p>
+</li>
+</ol>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.msgutil.OliveInputDataType" class="doc doc-heading">
+        <code>
+OliveInputDataType            (<span title="enum.Enum">Enum</span>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The type of input data send to the OLIVE server.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.messaging.msgutil.package_audio" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">package_audio</span><span class="p">(</span><span class="n">audio_msg</span><span class="p">,</span> <span class="n">audio_data</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">selected_channel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=&lt;</span><span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span><span class="p">:</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">num_channels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">validate_local_path</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>audio_msg</code></td>
+        <td><code>Audio</code></td>
+        <td><p>the Olive Audio message to populate</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>audio_data</code></td>
+        <td><code>~AnyStr</code></td>
+        <td><p>either a filename or binary buffer</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>annotations</code></td>
+        <td></td>
+        <td><p>a list of tuple start/end regions (in seconds)</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>selected_channel</code></td>
+        <td></td>
+        <td><p>if audio_data is multi-channel then select this channel for processing</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>mode</code></td>
+        <td></td>
+        <td><p>the submission mode: pathname, serialized, samples</p></td>
+        <td><code>&lt;InputTransferType.PATH: 1&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>num_channels</code></td>
+        <td></td>
+        <td><p>the number of channels in the audio</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>sample_rate</code></td>
+        <td></td>
+        <td><p>the sample rate of the audio</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>num_samples</code></td>
+        <td></td>
+        <td><p>the number of samples in the audio.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>validate_local_path</code></td>
+        <td></td>
+        <td><p>if sending audio as a path, throw an exception if the file does not exist. We let this be an option for the possible case where the client may want to provide a path on the server's filesystem, but not the local filesystem.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>a valid Audio message</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/msgutil.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">package_audio</span><span class="p">(</span><span class="n">audio_msg</span><span class="p">:</span> <span class="n">Audio</span><span class="p">,</span>
+                  <span class="n">audio_data</span><span class="p">:</span> <span class="n">AnyStr</span><span class="p">,</span>
+                  <span class="n">annotations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">selected_channel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">mode</span><span class="o">=</span><span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span><span class="p">,</span>
+                  <span class="n">num_channels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">sample_rate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">num_samples</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">validate_local_path</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param audio_msg: the Olive Audio message to populate</span>
+<span class="sd">    :param audio_data:  either a filename or binary buffer</span>
+<span class="sd">    :param annotations: a list of tuple start/end regions (in seconds)</span>
+<span class="sd">    :param selected_channel: if audio_data is multi-channel then select this channel for processing</span>
+<span class="sd">    :param mode: the submission mode: pathname, serialized, samples</span>
+<span class="sd">    :param num_channels: the number of channels in the audio</span>
+<span class="sd">    :param sample_rate: the sample rate of the audio</span>
+<span class="sd">    :param num_samples: the number of samples in the audio.</span>
+<span class="sd">    :param validate_local_path: if sending audio as a path, throw an exception if the file does not exist. We let this be an option for the possible case where the client may want to provide a path on the server&#39;s filesystem, but not the local filesystem.</span>
+
+<span class="sd">    :return: a valid Audio message</span>
+
+<span class="sd">    :raises Exception if unable to package the audio for the specified mode.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span> <span class="ow">and</span> <span class="n">mode</span> <span class="o">!=</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">DECODED</span> <span class="ow">and</span> <span class="n">mode</span> <span class="o">!=</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="s1">&#39;Called package_audio with an unknown mode. Must be PATH, DECODED, or SERIALIZED.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># only supporting pathname now</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">validate_local_path</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">audio_data</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="s2">&quot;Error creating an OLIVE Audio message, the Audio file &#39;</span><span class="si">{}</span><span class="s2">&#39; does not exist.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">audio_data</span><span class="p">))</span>
+
+        <span class="n">audio_msg</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">audio_data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">audio_buffer</span> <span class="o">=</span> <span class="n">audio_msg</span><span class="o">.</span><span class="n">audioSamples</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">audio_data</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="c1"># audio has already been converted to a buffer... no need to change</span>
+            <span class="n">audio_buffer</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">audio_data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Assume we have a filename with we will serialize (decoded samples not supported)</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Converting &#39;</span><span class="si">{}</span><span class="s2">&#39; into a decoded buffer is not supported.  Client must &quot;</span>
+                                <span class="s2">&quot;manually decode the file and pass bytes to package_audio()&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">audio_data</span><span class="p">))</span>
+            <span class="n">buffer</span> <span class="o">=</span> <span class="n">serialize_audio</span><span class="p">(</span><span class="n">audio_data</span><span class="p">)</span>
+            <span class="n">audio_buffer</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">buffer</span>
+
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">:</span>
+            <span class="c1"># olive.proto says these are all ignored for serialized buffers:</span>
+            <span class="c1"># channels, rate, bitdepth, channels</span>
+            <span class="n">audio_buffer</span><span class="o">.</span><span class="n">serialized_file</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">DECODED</span><span class="p">:</span>
+            <span class="c1"># This mode assumes the client has passed in a numpy array of samples, but we don&#39;t assume numpy is</span>
+            <span class="c1"># installed for all clients so we don&#39;t do checks in ths this code</span>
+
+            <span class="c1"># Get the data as shorts:</span>
+            <span class="c1"># not if audio_data.dtype.kind == np.dtype(np.integer).kind:</span>
+            <span class="c1"># audio_data = audio_data.astype( np.int16 ).flatten().tolist()</span>
+            <span class="c1"># raise Exception(&quot;Error: Transferring decoded samples not supported&quot;)</span>
+
+            <span class="n">problem</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">num_channels</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">num_channels</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">problem</span> <span class="o">+=</span> <span class="s1">&#39;channel &#39;</span>
+            <span class="k">if</span> <span class="n">sample_rate</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">sample_rate</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">problem</span> <span class="o">+=</span> <span class="s1">&#39;sample_rate &#39;</span>
+            <span class="k">if</span> <span class="n">num_samples</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">num_samples</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">problem</span> <span class="o">+=</span> <span class="s1">&#39;num_samples&#39;</span>
+            <span class="k">if</span> <span class="n">problem</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Error: can not create an OLIVE audio message from decoded samples because missing required argument(s): </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">problem</span><span class="p">))</span>
+            <span class="n">audio_buffer</span><span class="o">.</span><span class="n">serialized_file</span>    <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">audio_buffer</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="n">num_channels</span>
+            <span class="n">audio_buffer</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">sample_rate</span>
+            <span class="n">audio_buffer</span><span class="o">.</span><span class="n">samples</span> <span class="o">=</span> <span class="n">num_samples</span>
+            <span class="n">audio_buffer</span><span class="o">.</span><span class="n">bit_depth</span> <span class="o">=</span> <span class="n">BIT_DEPTH_16</span>
+            <span class="n">audio_buffer</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">PCM16</span>
+
+    <span class="k">if</span> <span class="n">annotations</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">:</span>
+            <span class="c1"># np.float32(a[0] would be better but can we assume numpy is installed?</span>
+            <span class="n">region</span> <span class="o">=</span> <span class="n">audio_msg</span><span class="o">.</span><span class="n">regions</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+            <span class="n">region</span><span class="o">.</span><span class="n">start_t</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">region</span><span class="o">.</span><span class="n">end_t</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">selected_channel</span><span class="p">:</span>
+        <span class="c1"># we can&#39;t do much validation, but if they selected a channel and specified the number of channels</span>
+        <span class="k">if</span> <span class="n">num_channels</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">selected_channel</span> <span class="o">&gt;</span> <span class="n">num_channels</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="s2">&quot;Error: can not select channel &#39;</span><span class="si">{}</span><span class="s2">&#39; if audio only contains &#39;</span><span class="si">{}</span><span class="s2">&#39; channel(s)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">selected_channel</span><span class="p">,</span> <span class="n">num_channels</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">selected_channel</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                <span class="s2">&quot;Error: invalid value for selected channel &#39;</span><span class="si">{}</span><span class="s2">&#39;.  Channel must be 1 or higher &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">selected_channel</span><span class="p">))</span>
+
+        <span class="n">audio_msg</span><span class="o">.</span><span class="n">selected_channel</span> <span class="o">=</span> <span class="n">selected_channel</span>
+
+    <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+        <span class="n">audio_msg</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+
+    <span class="k">return</span> <span class="n">audio_msg</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.messaging.msgutil.package_binary_media" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">package_binary_media</span><span class="p">(</span><span class="n">binary_media_msg</span><span class="p">,</span> <span class="n">media_data</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=&lt;</span><span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span><span class="p">:</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">validate_local_path</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">selected_channel</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>binary_media_msg</code></td>
+        <td><code>BinaryMedia</code></td>
+        <td><p>the Olive BinaryMedia message to populate</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>media_data</code></td>
+        <td><code>~AnyStr</code></td>
+        <td><p>either a filename or binary buffer</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>annotations</code></td>
+        <td></td>
+        <td><p>a list of tuple start/end regions (in seconds)</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>mode</code></td>
+        <td></td>
+        <td><p>the submission mode: pathname, serialized, samples</p></td>
+        <td><code>&lt;InputTransferType.PATH: 1&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>validate_local_path</code></td>
+        <td></td>
+        <td><p>if sending audio as a path, throw an exception if the file does not exist. We let this be an option for the possible case where the client may want to provide a path on the server's filesystem, but not the local filesystem.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>a valid Audio message</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/msgutil.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">package_binary_media</span><span class="p">(</span><span class="n">binary_media_msg</span><span class="p">:</span> <span class="n">BinaryMedia</span><span class="p">,</span>
+                         <span class="n">media_data</span><span class="p">:</span> <span class="n">AnyStr</span><span class="p">,</span>
+                         <span class="n">annotations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                         <span class="n">mode</span><span class="o">=</span><span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span><span class="p">,</span>
+                         <span class="n">validate_local_path</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                         <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                         <span class="n">selected_channel</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param binary_media_msg: the Olive BinaryMedia message to populate</span>
+<span class="sd">    :param media_data: either a filename or binary buffer</span>
+<span class="sd">    :param annotations: a list of tuple start/end regions (in seconds)</span>
+<span class="sd">    :param mode: the submission mode: pathname, serialized, samples</span>
+<span class="sd">    :param validate_local_path: if sending audio as a path, throw an exception if the file does not exist. We let this be an option for the possible case where the client may want to provide a path on the server&#39;s filesystem, but not the local filesystem.</span>
+
+<span class="sd">    :return: a valid Audio message</span>
+
+<span class="sd">    :raises Exception if unable to package the audio for the specified mode.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;adding binary media&quot;</span><span class="p">)</span>
+    <span class="c1"># todo support selected channel (if audio is to be handled form this data), label, and annotations</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span>  <span class="ow">and</span> <span class="n">mode</span> <span class="o">!=</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="s1">&#39;Called package_visual_media with an unknown mode. Must be AUDIO_PATH, or AUDIO_SERIALIZED.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># only supporting pathname now</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">PATH</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">validate_local_path</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">media_data</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="s2">&quot;Error creating an OLIVE media message, the Audio file &#39;</span><span class="si">{}</span><span class="s2">&#39; does not exist.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">media_data</span><span class="p">))</span>
+
+        <span class="n">binary_media_msg</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">media_data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">media_buffer</span> <span class="o">=</span> <span class="n">binary_media_msg</span><span class="o">.</span><span class="n">buffer</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">media_data</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="c1"># audio has already been converted to a buffer... no need to change</span>
+            <span class="n">media_buffer</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">media_data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Assume we have a filename with we will serialize (decoded samples not supported)</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="n">InputTransferType</span><span class="o">.</span><span class="n">SERIALIZED</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Converting &#39;</span><span class="si">{}</span><span class="s2">&#39; into a decoded buffer is not supported.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">media_data</span><span class="p">))</span>
+            <span class="n">buffer</span> <span class="o">=</span> <span class="n">serialize_audio</span><span class="p">(</span><span class="n">media_data</span><span class="p">)</span>
+            <span class="n">media_buffer</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">buffer</span>
+
+    <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+        <span class="n">binary_media_msg</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+    <span class="k">if</span> <span class="n">selected_channel</span><span class="p">:</span>
+        <span class="n">binary_media_msg</span><span class="o">.</span><span class="n">selected_channel</span> <span class="o">=</span> <span class="n">selected_channel</span>
+
+    <span class="k">if</span> <span class="n">annotations</span><span class="p">:</span>
+        <span class="n">classic_region</span> <span class="o">=</span> <span class="n">binary_media_msg</span><span class="o">.</span><span class="n">regions</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">:</span>
+            <span class="c1"># np.float32(a[0] would be better but can we assume numpy is installed?</span>
+            <span class="n">region</span> <span class="o">=</span> <span class="n">classic_region</span><span class="o">.</span><span class="n">regions</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+            <span class="c1"># print(&quot;Adding region: {} to {}&quot;.format(a[0], a[1]))</span>
+            <span class="n">region</span><span class="o">.</span><span class="n">start_t</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">region</span><span class="o">.</span><span class="n">end_t</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">binary_media_msg</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.messaging.msgutil.serialize_audio" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">serialize_audio</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Helper function used to read in an audio file and output a serialized buffer.  Can be used with package_audio()     when using the AUDIO_SERIALIZED mode and the audio input has not already been serialized</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>filename</code></td>
+        <td><code>str</code></td>
+        <td><p>the local path to the file to serialize</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>~AnyStr</code></td>
+      <td><p>the contents of the file as a byte buffer, otherwise an exception if the file can not be opened.      This buffer contains the raw content of the file, it does NOT contain encoded samples</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/msgutil.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">serialize_audio</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyStr</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper function used to read in an audio file and output a serialized buffer.  Can be used with package_audio() \</span>
+<span class="sd">    when using the AUDIO_SERIALIZED mode and the audio input has not already been serialized</span>
+
+<span class="sd">    :param filename: the local path to the file to serialize</span>
+
+<span class="sd">    :return: the contents of the file as a byte buffer, otherwise an exception if the file can not be opened.  \</span>
+<span class="sd">    This buffer contains the raw content of the file, it does NOT contain encoded samples</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">filename</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="s2">&quot;Error serializing an audio file, the  file &#39;</span><span class="si">{}</span><span class="s2">&#39; does not exist.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">serialized_buffer</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># return the buffer</span>
+    <span class="k">return</span> <span class="n">serialized_buffer</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h2 id="olivepymessagingolive_pb2"><code>olivepy.messaging.olive_pb2</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.messaging.olive_pb2"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h2 id="olivepymessagingresponse"><code>olivepy.messaging.response</code></h2>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="olivepy.messaging.response"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.response.OliveClassStatusResponse" class="doc doc-heading">
+        <code>
+OliveClassStatusResponse            (<a title="olivepy.messaging.response.OliveServerResponse" href="#olivepy.messaging.response.OliveServerResponse">OliveServerResponse</a>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The  container/wrapper for WorkflowClassStatusResult from an OLIVE server (when using the AsyncOliveClient).  This is
+intended to make it easier for clients to handle the traditional (original) protobuf message results (such as
+RegionScorerResult) returned from the server.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveClassStatusResponse.get_workflow_type" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_workflow_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the type of workflow done in this response (analysis, enrollment, adaptation)</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>A WorkflowType: WORKFLOW_ANALYSIS_TYPE, WORKFLOW_ENROLLMENT_TYPE, WORKFLOW_ADAPT_TYPE or an Exception if an non-workflow response message was wrapped</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_workflow_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">WORKFLOW_ANALYSIS_TYPE</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveClassStatusResponse.parse_from_response" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create this response from the</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>request</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>response</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>message</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+    <span class="n">OliveServerResponse</span><span class="o">.</span><span class="n">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_error</span><span class="p">():</span>
+        <span class="k">return</span>
+
+    <span class="n">status_result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">jc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="o">.</span><span class="n">job_class</span><span class="p">:</span>
+        <span class="n">job_name</span> <span class="o">=</span> <span class="n">jc</span><span class="o">.</span><span class="n">job_name</span>
+        <span class="n">job_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_job_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">job_name</span><span class="p">)</span>
+
+        <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_JOB_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">job_name</span>
+        <span class="c1"># we have a list of data items:</span>
+        <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_TASkS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">status_result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job_dict</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">task_class</span> <span class="ow">in</span> <span class="n">jc</span><span class="o">.</span><span class="n">task</span><span class="p">:</span>
+            <span class="n">task_class_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="n">task_class</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+            <span class="k">del</span> <span class="n">task_class_dict</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">task_class</span><span class="o">.</span><span class="n">task_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_TASkS</span><span class="p">]:</span>
+                <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_TASkS</span><span class="p">][</span><span class="n">task_class</span><span class="o">.</span><span class="n">task_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_TASkS</span><span class="p">][</span><span class="n">task_class</span><span class="o">.</span><span class="n">task_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_class_dict</span><span class="p">)</span>
+            <span class="c1">#job_dict[KEY_TASkS].append({task_class.task_name: task_class_dict})</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span> <span class="o">=</span> <span class="n">status_result</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveClassStatusResponse.to_json" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate the response as a JSON string</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>indent</code></td>
+        <td></td>
+        <td><p>if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code>None</code> is the most compact             representation. A negative value will return the JSON document</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the Workflow response as as JSON string:</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Generate the response as a JSON string</span>
+<span class="sd">       :param indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with \</span>
+<span class="sd">       that indent level. An indent level of 0 will only insert newlines. ``None`` is the most compact  \</span>
+<span class="sd">       representation. A negative value will return the JSON document</span>
+
+<span class="sd">       :return: the Workflow response as as JSON string:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># consider setting preserving_proto_field_name to true</span>
+    <span class="c1"># return json.dumps(json.loads(MessageToJson(self._response, preserving_proto_field_name=True)), indent=indent)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_error</span><span class="p">():</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_error</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">indent</span> <span class="ow">and</span> <span class="n">indent</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.response.OliveServerResponse" class="doc doc-heading">
+        <code>
+OliveServerResponse        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The default container/wrapper for responses from an OLIVE server (when using the AsyncOliveClient).  This is
+intended to make it easier for clients to handle the traditional (original) protobuf message results (such as
+RegionScorerResult) returned from the server.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveServerResponse.get_response" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_response</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>The Protobuf message returned from the OLIVE server</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_response</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Protobuf message returned from the OLIVE server</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># todo exception if none?</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveServerResponse.get_workflow_type" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_workflow_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the type of workflow done in this response (analysis, enrollment, adaptation)</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>A WorkflowType: WORKFLOW_ANALYSIS_TYPE, WORKFLOW_ENROLLMENT_TYPE, WORKFLOW_ADAPT_TYPE or an Exception if an non-workflow response message was wrapped</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_workflow_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the type of workflow done in this response (analysis, enrollment, adaptation)</span>
+
+<span class="sd">    :return: A WorkflowType: WORKFLOW_ANALYSIS_TYPE, WORKFLOW_ENROLLMENT_TYPE, WORKFLOW_ADAPT_TYPE or an Exception if an non-workflow response message was wrapped</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No valid response&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">WorkflowAnalysisRequest</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">WORKFLOW_ANALYSIS_TYPE</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">WorkflowEnrollRequest</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">WORKFLOW_ENROLLMENT_TYPE</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">WorkflowAdaptRequest</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">WORKFLOW_ADAPT_TYPE</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">WorkflowUnenrollRequest</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">WORKFLOW_UNENROLLMENT_TYPE</span>
+
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unknown Workflow Message: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">)))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveServerResponse.parse_from_response" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create this response from the</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>request</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>response</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>message</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create this response from the</span>
+<span class="sd">    :param request:</span>
+<span class="sd">    :param response:</span>
+<span class="sd">    :param message:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_request</span> <span class="o">=</span> <span class="n">request</span>
+    <span class="k">if</span> <span class="n">message</span><span class="p">:</span>
+        <span class="c1"># No results due to error</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_iserror</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="n">message</span>
+        <span class="c1"># self._request = request</span>
+    <span class="k">if</span> <span class="n">response</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">HasField</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_iserror</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># we assume no errors</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_issuccessful</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="c1"># Some messages have no error field</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_issuccessful</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_response</span> <span class="o">=</span> <span class="n">response</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveServerResponse.to_json" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate the response as a JSON string</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>indent</code></td>
+        <td></td>
+        <td><p>if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code>None</code> is the most compact             representation. A negative value will return the JSON document</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the response as as JSON string:</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Generate the response as a JSON string</span>
+<span class="sd">       :param indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with \</span>
+<span class="sd">       that indent level. An indent level of 0 will only insert newlines. ``None`` is the most compact  \</span>
+<span class="sd">       representation. A negative value will return the JSON document</span>
+
+<span class="sd">       :return: the response as as JSON string:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#consider setting preserving_proto_field_name to true</span>
+    <span class="k">if</span> <span class="n">indent</span> <span class="ow">and</span> <span class="n">indent</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.response.OliveWorkflowActualizedResponse" class="doc doc-heading">
+        <code>
+OliveWorkflowActualizedResponse            (<a title="olivepy.messaging.response.OliveServerResponse" href="#olivepy.messaging.response.OliveServerResponse">OliveServerResponse</a>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Extracts info from an actualized workflow definition</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowActualizedResponse.get_analysis_jobs" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_analysis_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the names of analysis jobs.  Typically a workflow has just one job with multiple tasks, the most likely
+reason to have multiple jobs is for workflows using multi-channel audio so there may be a set of job tasks for
+each channel of audio submitted.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>a list of job names in the analysis</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_analysis_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the names of analysis jobs.  Typically a workflow has just one job with multiple tasks, the most likely</span>
+<span class="sd">    reason to have multiple jobs is for workflows using multi-channel audio so there may be a set of job tasks for</span>
+<span class="sd">    each channel of audio submitted.</span>
+
+<span class="sd">    :return: a list of job names in the analysis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_JOB_NAME</span><span class="p">]</span> <span class="k">for</span> <span class="n">job_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">]</span>
+
+
+    <span class="c1">#todo get analysis job name(s)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowActualizedResponse.get_request_jobs" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_request_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>return the jobs in the original request for the specified analysis type</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>workflow_type</code></td>
+        <td></td>
+        <td><p>the type of workflow (i.e. WORKFLOW_ANALYSIS_TYPE)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the list of jobs for this type</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_request_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    return the jobs in the original request for the specified analysis type</span>
+
+<span class="sd">    :param workflow_type: the type of workflow (i.e. WORKFLOW_ANALYSIS_TYPE)</span>
+
+<span class="sd">    :return: the list of jobs for this type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_workflow_jobs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="o">.</span><span class="n">workflow_definition</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No jobs for the requested workflow type: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow_type</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowActualizedResponse.is_allowable_error" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">is_allowable_error</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>true if this response failed with an allowable error</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_allowable_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    :return: true if this response failed with an allowable error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isallowable_error</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowActualizedResponse.parse_from_response" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create this response from the</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>request</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>response</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>message</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+    <span class="n">OliveServerResponse</span><span class="o">.</span><span class="n">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+
+    <span class="c1"># Now create a JSON representation from the response</span>
+    <span class="c1"># we will walk the tree and deserialize any encoded messages</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_error</span><span class="p">():</span>
+        <span class="c1"># todo provide error info in JSON?</span>
+        <span class="k">return</span>
+
+        <span class="c1"># make a new message for this type...</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">WorkflowActualizeRequest</span><span class="p">):</span>
+        <span class="c1"># we received an some other workflow message so se don&#39;t need to convert it to json...</span>
+        <span class="k">return</span>
+
+    <span class="c1"># we only parse the analyze part now</span>
+
+    <span class="n">analysis_task</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">workflow_analysis_order_msg</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="o">.</span><span class="n">workflow</span><span class="o">.</span><span class="n">order</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">workflow_type</span> <span class="o">==</span> <span class="n">WORKFLOW_ANALYSIS_TYPE</span><span class="p">:</span>
+            <span class="n">workflow_analysis_order_msg</span> <span class="o">=</span> <span class="n">order</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">workflow_analysis_order_msg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># no analysis results</span>
+        <span class="k">return</span>
+
+    <span class="c1"># for job in self._response.job_result:</span>
+    <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">workflow_analysis_order_msg</span><span class="o">.</span><span class="n">job_definition</span><span class="p">:</span>
+        <span class="c1"># create a dictionary for each job result</span>
+        <span class="n">job_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">job_name</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">job_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_job_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">job_name</span><span class="p">)</span>
+
+        <span class="c1"># and a dictionary of tasks:</span>
+        <span class="c1"># job_dict[KEY_TASkS] = {}</span>
+        <span class="c1"># add to our results - in most cases we will have just one job</span>
+        <span class="n">analysis_task</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job_dict</span><span class="p">)</span>
+
+        <span class="c1"># get data handling info for this job</span>
+        <span class="n">data_prop</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">data_properties</span>
+        <span class="n">job_dict</span><span class="p">[</span><span class="s1">&#39;Data Input&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="n">data_prop</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="c1"># if data_prop.mode == SPLIT:</span>
+        <span class="c1">#     # Hack to make split/mulit-channel mode more clear</span>
+        <span class="c1">#     job_dict[&#39;data&#39;][&#39;mode&#39;] = &#39;SPLIT: Process each channel as a job&#39;</span>
+
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">job</span><span class="o">.</span><span class="n">tasks</span><span class="p">:</span>
+            <span class="n">task_result_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+            <span class="c1"># Deserialize message_data, and replace it in the task_result_dict</span>
+            <span class="n">task_type_msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_serialized_message</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">message_type</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">message_data</span><span class="p">)</span>
+            <span class="n">task_result_dict</span><span class="p">[</span><span class="n">KEY_JOB_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">job_name</span>
+            <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;analysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="n">task_type_msg</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+            <span class="k">del</span> <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;message_data&#39;</span><span class="p">]</span>
+
+            <span class="n">job_dict</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">consumer_result_label</span><span class="p">]</span> <span class="o">=</span> <span class="n">task_result_dict</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span> <span class="o">=</span> <span class="n">analysis_task</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowActualizedResponse.to_json" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate the response as a JSON string</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>indent</code></td>
+        <td></td>
+        <td><p>if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code>None</code> is the most compact             representation. A negative value will return the JSON document</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the Workflow response as as JSON string:</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Generate the response as a JSON string</span>
+<span class="sd">       :param indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with \</span>
+<span class="sd">       that indent level. An indent level of 0 will only insert newlines. ``None`` is the most compact  \</span>
+<span class="sd">       representation. A negative value will return the JSON document</span>
+
+<span class="sd">       :return: the Workflow response as as JSON string:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">indent</span> <span class="ow">and</span> <span class="n">indent</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># return json.dumps(json.loads(MessageToJson(self._json_result, preserving_proto_field_name=False)), indent=indent)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.response.OliveWorkflowAnalysisResponse" class="doc doc-heading">
+        <code>
+OliveWorkflowAnalysisResponse            (<a title="olivepy.messaging.response.OliveServerResponse" href="#olivepy.messaging.response.OliveServerResponse">OliveServerResponse</a>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The default container/wrapper for responses from an OLIVE server (when using the AsyncOliveClient).  This is
+intended to make it easier for clients to handle the traditional (original) protobuf message results (such as
+RegionScorerResult) returned from the server.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_jobs" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_analysis_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the names of analysis jobs.  Typically a workflow has just one job with multiple tasks, the most likely
+reason to have multiple jobs is for workflows using multi-channel audio so there may be a set of job tasks for
+each channel of audio submitted.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>a list of job names in the analysis</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_analysis_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the names of analysis jobs.  Typically a workflow has just one job with multiple tasks, the most likely</span>
+<span class="sd">    reason to have multiple jobs is for workflows using multi-channel audio so there may be a set of job tasks for</span>
+<span class="sd">    each channel of audio submitted.</span>
+
+<span class="sd">    :return: a list of job names in the analysis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_JOB_NAME</span><span class="p">]</span> <span class="k">for</span> <span class="n">job_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">]</span>
+
+
+    <span class="c1">#todo get analysis job name(s)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_analysis_task_result" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_analysis_task_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_name</span><span class="p">,</span> <span class="n">task_name</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get the result(s) for the specified job_name and task_name, also include the data used for this task.  If
+the workflow analyzes each channel in multi-channel data then there can be multiple jobs with the
+same name.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>job_name</code></td>
+        <td></td>
+        <td><p>for convenience can be None, since there is normally only one job.  But if the workflow has multiple jobs then a valid name must be specified.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>task_name</code></td>
+        <td></td>
+        <td><p>the name to the task</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>a list of dictionaries, where each dictionary in the list includes the results for the specified task and a list of the data analyzed by this task, such as [ {task_name:{}, data:[] }]</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_analysis_task_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_name</span><span class="p">,</span> <span class="n">task_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the result(s) for the specified job_name and task_name, also include the data used for this task.  If</span>
+<span class="sd">    the workflow analyzes each channel in multi-channel data then there can be multiple jobs with the</span>
+<span class="sd">    same name.</span>
+
+<span class="sd">    :param job_name: for convenience can be None, since there is normally only one job.  But if the workflow has multiple jobs then a valid name must be specified.</span>
+<span class="sd">    :param task_name: the name to the task</span>
+
+<span class="sd">    :return: a list of dictionaries, where each dictionary in the list includes the results for the specified task and a list of the data analyzed by this task, such as [ {task_name:{}, data:[] }]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">job_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">job_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_default_job_name</span><span class="p">()</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">job_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">job_name</span> <span class="o">==</span> <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_JOB_NAME</span><span class="p">]:</span>
+            <span class="n">task_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="c1"># there may be one or more result for task_name</span>
+            <span class="n">task_dict</span><span class="p">[</span><span class="n">task_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_TASkS</span><span class="p">][</span><span class="n">task_name</span><span class="p">]</span>
+            <span class="n">task_dict</span><span class="p">[</span><span class="n">KEY_DATA</span><span class="p">]</span> <span class="o">=</span> <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_DATA</span><span class="p">]</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_dict</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.get_request_jobs" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_request_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>return the jobs in the original request for the specified analysis type</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>workflow_type</code></td>
+        <td></td>
+        <td><p>the type of workflow (i.e. WORKFLOW_ANALYSIS_TYPE)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the list of jobs for this type</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_request_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    return the jobs in the original request for the specified analysis type</span>
+
+<span class="sd">    :param workflow_type: the type of workflow (i.e. WORKFLOW_ANALYSIS_TYPE)</span>
+
+<span class="sd">    :return: the list of jobs for this type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_workflow_jobs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="o">.</span><span class="n">workflow_definition</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No jobs for the requested workflow type: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workflow_type</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.is_allowable_error" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">is_allowable_error</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>true if this response failed with an allowable error</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_allowable_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :return: true if this response failed with an allowable error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isallowable_error</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.parse_from_response" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create this response from the</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>request</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>response</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>message</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+    <span class="n">OliveServerResponse</span><span class="o">.</span><span class="n">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+    <span class="c1"># Now create a JSON representation from the response</span>
+    <span class="c1"># we will walk the tree and deserialize any encoded messages</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_error</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="o">=</span><span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_error</span><span class="p">()</span>
+        <span class="k">return</span>
+
+    <span class="c1"># make a new message for this type...</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">WorkflowActualizeRequest</span><span class="p">):</span>
+        <span class="c1"># we received an actualized workflow, so se don&#39;t need to convert it to json...</span>
+        <span class="k">return</span>
+
+    <span class="c1"># this should only contain an analysis request... but check just in case:</span>
+    <span class="n">wk_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_workflow_type</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">wk_type</span> <span class="o">==</span> <span class="n">WORKFLOW_ANALYSIS_TYPE</span> <span class="ow">or</span> <span class="n">wk_type</span> <span class="o">==</span> <span class="n">WORKFLOW_ENROLLMENT_TYPE</span> <span class="ow">or</span> <span class="n">wk_type</span> <span class="o">==</span> <span class="n">WORKFLOW_UNENROLLMENT_TYPE</span><span class="p">:</span>
+        <span class="c1"># analysis is a list of dictionary elements, which looks like: [ {job_name: X, data: [], tasks: {}} ]</span>
+        <span class="c1"># there is a dictionary for each job, but due to the way jobs work in OLIVE for mulit-channel data we</span>
+        <span class="c1"># consider a jobs to be unique by a combination of job_name plus data, so multiples dictionary elements may</span>
+        <span class="c1"># have the same job_name, but will have different data properties (channel numbers)</span>
+
+        <span class="c1"># get the analysis job order from the original request:</span>
+
+        <span class="n">analysis_result</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># or enrollment/unenrollment result</span>
+        <span class="c1"># analysis_result[&#39;jobs&#39;] = []</span>
+        <span class="c1"># analysis_result[&#39;data inputs&#39;] = []</span>
+        <span class="n">job_requests</span> <span class="o">=</span> <span class="n">get_workflow_jobs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="o">.</span><span class="n">workflow_definition</span><span class="p">,</span> <span class="n">wk_type</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="o">.</span><span class="n">job_result</span><span class="p">:</span>
+            <span class="c1"># create a dictionary for each job result</span>
+            <span class="n">job_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="n">job_name</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">job_name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_job_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">job_name</span><span class="p">)</span>
+
+
+            <span class="c1"># job_dict[job_name] = dict()</span>
+            <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_JOB_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">job_name</span>
+
+            <span class="k">if</span> <span class="n">job</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+                <span class="n">job_dict</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">error</span>
+
+            <span class="c1"># we have a list of data items:</span>
+            <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_DATA</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># and a dictionary of tasks: (although note  it is possible to have multiple tasks with the same name, so a task has a list of results)</span>
+            <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_TASkS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="c1"># add to our results - in most cases we will have just one job</span>
+            <span class="n">analysis_result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job_dict</span><span class="p">)</span>
+
+            <span class="c1"># get the tasks for the current (and likely, only) job:</span>
+            <span class="n">task_requests</span> <span class="o">=</span> <span class="n">get_workflow_job_tasks</span><span class="p">(</span><span class="n">job_requests</span><span class="p">,</span> <span class="n">job_name</span><span class="p">)</span>
+            <span class="c1"># task_result_dict = dict()</span>
+            <span class="c1"># I don&#39;t think this can happen yet:</span>
+            <span class="c1"># if job.HasField(&#39;error&#39;):</span>
+            <span class="c1">#     Allowable job error</span>
+            <span class="c1">#</span>
+
+            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">job</span><span class="o">.</span><span class="n">task_results</span><span class="p">:</span>
+                <span class="n">task_result_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+                <span class="c1"># check if this task failed with an error</span>
+                <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">HasField</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">):</span>
+                    <span class="c1"># Allowable error</span>
+                    <span class="k">if</span> <span class="n">KEY_ERROR</span> <span class="ow">in</span> <span class="n">job_dict</span><span class="p">:</span>
+                        <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_ERROR</span><span class="p">]</span> <span class="o">=</span> <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_ERROR</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="n">error</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_ERROR</span><span class="p">]</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">error</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_isallowable_error</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="c1"># should have an empty message data;</span>
+                    <span class="k">del</span> <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;message_data&#39;</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">job_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allowable_failed_job_tasks</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_allowable_failed_job_tasks</span><span class="p">[</span><span class="n">job_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_allowable_failed_job_tasks</span><span class="p">[</span><span class="n">job_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">task_name</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Deserialize message_data, and replace it in the task_result_dict</span>
+                    <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">message_type</span> <span class="ow">in</span> <span class="n">msgutil</span><span class="o">.</span><span class="n">debug_message_map</span><span class="p">:</span>
+                        <span class="c1"># Get the pimiento message (debug only - these messages are not guaranteed to be supported</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CLG special msg type: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msgutil</span><span class="o">.</span><span class="n">MessageType</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">message_type</span><span class="p">)))</span>
+                        <span class="n">pimiento_msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_serialized_message</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">message_type</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">message_data</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">message_type</span> <span class="o">==</span> <span class="n">DATA_OUTPUT_TRANSFORMER_RESULT</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">pimiento_msg</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="n">TEXT</span><span class="p">:</span>
+                                <span class="c1"># only supported type for now...</span>
+                                <span class="n">pie_data_msg</span> <span class="o">=</span> <span class="n">WorkflowTextResult</span><span class="p">()</span>
+                                <span class="n">pie_data_msg</span><span class="o">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">pimiento_msg</span><span class="o">.</span><span class="n">message_data</span><span class="p">)</span>
+                                <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;analysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+                                    <span class="n">MessageToJson</span><span class="p">(</span><span class="n">pie_data_msg</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unsupported debug message type: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msgutil</span><span class="o">.</span><span class="n">InputDataType</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="n">pimiento_msg</span><span class="o">.</span><span class="n">data_type</span><span class="p">)))</span>
+                        <span class="k">elif</span> <span class="n">task</span><span class="o">.</span><span class="n">message_type</span> <span class="o">==</span> <span class="n">SCORE_OUTPUT_TRANSFORMER_RESULT</span><span class="p">:</span>
+                            <span class="c1"># these should be standard trait message</span>
+                            <span class="n">pie_score_msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_serialized_message</span><span class="p">(</span><span class="n">pimiento_msg</span><span class="o">.</span><span class="n">message_type</span><span class="p">,</span> <span class="n">pimiento_msg</span><span class="o">.</span><span class="n">message_data</span><span class="p">)</span>
+                            <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;analysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+                                <span class="n">MessageToJson</span><span class="p">(</span><span class="n">pie_score_msg</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">task_type_msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_serialized_message</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">message_type</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">message_data</span><span class="p">)</span>
+                        <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;analysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+                            <span class="n">MessageToJson</span><span class="p">(</span><span class="n">task_type_msg</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+
+                    <span class="c1"># Should we create special handlers for analysis results, like we sort global score results,</span>
+                    <span class="c1"># but what should be do with an AUDIO_MODIFICATION_RESULT?</span>
+                    <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">message_type</span> <span class="o">==</span> <span class="n">GLOBAL_SCORER_RESULT</span><span class="p">:</span>
+                        <span class="c1"># Sort region scores</span>
+                        <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;analysis&#39;</span><span class="p">][</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;analysis&#39;</span><span class="p">][</span><span class="s1">&#39;score&#39;</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="n">sort_global_scores</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+                    <span class="c1"># messageData has been replaced with the actual task</span>
+                    <span class="k">del</span> <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;message_data&#39;</span><span class="p">]</span>
+                    <span class="c1"># taskName is the key, so remove it:</span>
+                    <span class="k">del</span> <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">]</span>
+
+                <span class="c1"># check if we need to add the plugin/domain name</span>
+                <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">task_name</span> <span class="ow">in</span> <span class="n">task_requests</span><span class="p">:</span>
+                    <span class="n">orig_task</span> <span class="o">=</span> <span class="n">task_requests</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">task_name</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">orig_task</span><span class="o">.</span><span class="n">message_type</span> <span class="ow">in</span> <span class="n">msgutil</span><span class="o">.</span><span class="n">plugin_message_map</span><span class="p">:</span>
+                        <span class="c1"># Get the original task</span>
+                        <span class="n">task_req_msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_serialized_message</span><span class="p">(</span><span class="n">orig_task</span><span class="o">.</span><span class="n">message_type</span><span class="p">,</span> <span class="n">orig_task</span><span class="o">.</span><span class="n">message_data</span><span class="p">)</span>
+                        <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;plugin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">task_req_msg</span><span class="o">.</span><span class="n">plugin</span>
+                        <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">task_req_msg</span><span class="o">.</span><span class="n">domain</span>
+                        <span class="k">if</span> <span class="n">orig_task</span><span class="o">.</span><span class="n">message_type</span> <span class="o">==</span> <span class="n">CLASS_MODIFICATION_REQUEST</span> <span class="ow">or</span> <span class="n">orig_task</span><span class="o">.</span><span class="n">message_type</span> <span class="o">==</span> <span class="n">CLASS_REMOVAL_REQUEST</span><span class="p">:</span>
+                            <span class="c1"># add class ID</span>
+                            <span class="n">task_result_dict</span><span class="p">[</span><span class="s1">&#39;class_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="o">.</span><span class="n">class_id</span>
+
+                <span class="c1"># print(&quot;adding {} as {}&quot;.format(task_result_dict, task.task_name))</span>
+                <span class="c1"># fixme: there can be multiple taks with the same name if conditions in a workflow caused the task to be ran twice</span>
+                <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">task_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_TASkS</span><span class="p">]:</span>
+                    <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_TASkS</span><span class="p">][</span><span class="n">task</span><span class="o">.</span><span class="n">task_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_TASkS</span><span class="p">][</span><span class="n">task</span><span class="o">.</span><span class="n">task_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_result_dict</span><span class="p">)</span>
+                <span class="c1">#job_dict[KEY_TASkS].append({task.task_name: task_result_dict})</span>
+
+            <span class="c1"># A job usually has one data input/output, but we handle as if there are multiple</span>
+            <span class="k">for</span> <span class="n">data_result</span> <span class="ow">in</span> <span class="n">job</span><span class="o">.</span><span class="n">data_results</span><span class="p">:</span>
+                <span class="n">data_result_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="n">data_result</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                <span class="c1"># Deserialize the data portion</span>
+                <span class="n">data_type_msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_serialized_message</span><span class="p">(</span><span class="n">data_result</span><span class="o">.</span><span class="n">msg_type</span><span class="p">,</span> <span class="n">data_result</span><span class="o">.</span><span class="n">result_data</span><span class="p">)</span>
+                <span class="k">del</span> <span class="n">data_result_dict</span><span class="p">[</span><span class="s1">&#39;result_data&#39;</span><span class="p">]</span>
+                <span class="c1"># del data_result_dict[&#39;dataId&#39;] # redundant into, used as the key</span>
+                <span class="c1"># data_result_dict[&#39;data&#39;] = json.loads(MessageToJson(data_type_msg))</span>
+                <span class="n">data_result_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="n">data_type_msg</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+                <span class="n">job_dict</span><span class="p">[</span><span class="n">KEY_DATA</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_result_dict</span><span class="p">)</span>
+                <span class="c1"># analysis_result[&#39;data inputs&#39;].append(data_result_dict)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span> <span class="o">=</span> <span class="n">analysis_result</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowAnalysisResponse.to_json" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate the workflow as a JSON string
+:indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code>None</code> is the most compact             representation. A negative value will return the JSON document</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the Workflow Definition as as JSON string:</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Generate the workflow as a JSON string</span>
+<span class="sd">       :indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with \</span>
+<span class="sd">       that indent level. An indent level of 0 will only insert newlines. ``None`` is the most compact  \</span>
+<span class="sd">       representation. A negative value will return the JSON document</span>
+
+<span class="sd">       :return: the Workflow Definition as as JSON string:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># return json.dumps(self._json_result, indent=indent, ensure_ascii=False)</span>
+
+    <span class="k">if</span> <span class="n">indent</span> <span class="ow">and</span> <span class="n">indent</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="c1"># return json.dumps(json.loads(MessageToJson(self._json_result, preserving_proto_field_name=True)), indent=indent, ensure_ascii=False)</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="olivepy.messaging.response.OliveWorkflowEnrollmentResponse" class="doc doc-heading">
+        <code>
+OliveWorkflowEnrollmentResponse            (<a title="olivepy.messaging.response.OliveServerResponse" href="#olivepy.messaging.response.OliveServerResponse">OliveServerResponse</a>)
+        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>The  container/wrapper for responses from an OLIVE server (when using the AsyncOliveClient) for enrollment.  This is
+intended to make it easier for clients to handle the traditional (original) protobuf message results (such as
+RegionScorerResult) returned from the server.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowEnrollmentResponse.is_allowable_error" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">is_allowable_error</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>true if this message failed with an allowable error</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_allowable_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    :return: true if this message failed with an allowable error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isallowable_error</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowEnrollmentResponse.parse_from_response" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create this response from the</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>request</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>response</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>message</code></td>
+        <td></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+    <span class="n">OliveServerResponse</span><span class="o">.</span><span class="n">parse_from_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+
+    <span class="c1"># Now create a JSON representation from the response</span>
+    <span class="c1"># we will  the tree and deserialize any encoded messages</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_error</span><span class="p">():</span>
+        <span class="c1"># todo provide error info in JSON</span>
+        <span class="k">return</span>
+
+    <span class="c1"># make a new message for this type...</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">WorkflowActualizeRequest</span><span class="p">):</span>
+        <span class="c1"># we received an actualized workflow, so se don&#39;t need to convert it to json...</span>
+        <span class="k">return</span>
+
+    <span class="c1"># this should only contain an analysis request... but check just in case:</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_workflow_type</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="n">WORKFLOW_ENROLLMENT_TYPE</span><span class="p">:</span>
+        <span class="c1"># not much info in an enrollment response...</span>
+
+        <span class="n">enroll_result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="o">.</span><span class="n">HasField</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">):</span>
+            <span class="n">enroll_result</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="o">.</span><span class="n">error</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">enroll_result</span><span class="p">[</span><span class="s1">&#39;successful&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span> <span class="o">=</span> <span class="n">enroll_result</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="olivepy.messaging.response.OliveWorkflowEnrollmentResponse.to_json" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate the response as a JSON string</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>indent</code></td>
+        <td></td>
+        <td><p>if a non-negative integer, then JSON array elements and object members will be pretty-printed with            that indent level. An indent level of 0 will only insert newlines. <code>None</code> is the most compact             representation. A negative value will return the JSON document</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>the Workflow response as as JSON string:</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Generate the response as a JSON string</span>
+<span class="sd">       :param indent:  if a non-negative integer, then JSON array elements and object members will be pretty-printed with \</span>
+<span class="sd">       that indent level. An indent level of 0 will only insert newlines. ``None`` is the most compact  \</span>
+<span class="sd">       representation. A negative value will return the JSON document</span>
+
+<span class="sd">       :return: the Workflow response as as JSON string:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#consider setting preserving_proto_field_name to true</span>
+    <span class="c1"># return json.dumps(json.loads(MessageToJson(self._json_result, preserving_proto_field_name=True)), indent=indent)</span>
+
+    <span class="k">if</span> <span class="n">indent</span> <span class="ow">and</span> <span class="n">indent</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">MessageToJson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">,</span> <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_json_result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.messaging.response.get_workflow_job_names" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_workflow_job_names</span><span class="p">(</span><span class="n">workflow_definition</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>parse a workflow definition, returning a list of job definition name  (job_name)</p>
+<p>return [job_name] for the requested workflow_type</p>
+
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_workflow_job_names</span><span class="p">(</span><span class="n">workflow_definition</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; parse a workflow definition, returning a list of job definition name  (job_name)</span>
+
+<span class="sd">     return [job_name] for the requested workflow_type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rtn_job_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">workflow_definition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">workflow_definition</span><span class="o">.</span><span class="n">order</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">workflow_type</span> <span class="o">==</span> <span class="n">workflow_type</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">order</span><span class="o">.</span><span class="n">job_definition</span><span class="p">:</span>
+                    <span class="n">rtn_job_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">job_name</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rtn_job_names</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.messaging.response.get_workflow_job_tasks" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_workflow_job_tasks</span><span class="p">(</span><span class="n">jobs</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Fetch the tasks from a job</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>jobs</code></td>
+        <td></td>
+        <td><p>a dictionary of WorkflowTasks, indexed by a job names</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>job_name</code></td>
+        <td></td>
+        <td><p>find tasks that belong to a job having this name. This can be None if there is only one job</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>a dictionary of WorkflowTask indexed by the task's consumer_result_label for the specified job.  An exception is thrown if there are multiple jobs but no job_name was specified</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_workflow_job_tasks</span><span class="p">(</span><span class="n">jobs</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fetch the tasks from a job</span>
+
+<span class="sd">    :param jobs: a dictionary of WorkflowTasks, indexed by a job names</span>
+<span class="sd">    :param job_name: find tasks that belong to a job having this name. This can be None if there is only one job</span>
+<span class="sd">    :return: a dictionary of WorkflowTask indexed by the task&#39;s consumer_result_label for the specified job.  An exception is thrown if there are multiple jobs but no job_name was specified</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">job_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">jobs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># hack to make it easier to fetch data since most workflows only have one job</span>
+            <span class="n">job_name</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">jobs</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Must specify a job name when there are multiple JobDefinitions in a Workflow&quot;</span><span class="p">)</span>
+
+    <span class="n">rtn_tasks</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="c1">#  and job_name is None:</span>
+    <span class="k">if</span> <span class="n">job_name</span> <span class="ow">in</span> <span class="n">jobs</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">workflow_task</span> <span class="ow">in</span> <span class="n">jobs</span><span class="p">[</span><span class="n">job_name</span><span class="p">]:</span>
+            <span class="n">rtn_tasks</span><span class="p">[</span><span class="n">workflow_task</span><span class="o">.</span><span class="n">consumer_result_label</span><span class="p">]</span> <span class="o">=</span> <span class="n">workflow_task</span>
+    <span class="c1"># CLG: I don&#39;t think we need to generate a message/warning if a task name isn&#39;t in the original jobs since we can</span>
+    <span class="c1"># have dynamic jobs and with streaming jobs are very dynamic</span>
+    <span class="c1"># else:</span>
+    <span class="c1">#     print(&quot;Job &#39;{}&#39; not one of the expected job names: {}&quot;.format(job_name, list(jobs.keys())))</span>
+
+    <span class="k">return</span> <span class="n">rtn_tasks</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="olivepy.messaging.response.get_workflow_jobs" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_workflow_jobs</span><span class="p">(</span><span class="n">workflow_definition</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>parse a workflow definition, returning a dictionary  indexed job (definition) name (job_name) and a list of      WorkflowTask elements.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>workflow_definition</code></td>
+        <td></td>
+        <td><p>find jobs in this workflow definition</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>workflow_type</code></td>
+        <td></td>
+        <td><p>the type of workflow order (analysis, enrollment, unenrollment)  return {job_name: [WorkflowTask]} for the requested workflow_type</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>olivepy/messaging/response.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_workflow_jobs</span><span class="p">(</span><span class="n">workflow_definition</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; parse a workflow definition, returning a dictionary  indexed job (definition) name (job_name) and a list of \</span>
+<span class="sd">     WorkflowTask elements.</span>
+
+<span class="sd">     :param workflow_definition: find jobs in this workflow definition</span>
+<span class="sd">     :param workflow_type: the type of workflow order (analysis, enrollment, unenrollment)</span>
+
+<span class="sd">     return {job_name: [WorkflowTask]} for the requested workflow_type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rtn_jobs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">workflow_definition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">workflow_definition</span><span class="o">.</span><span class="n">order</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">workflow_type</span> <span class="o">==</span> <span class="n">workflow_type</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">order</span><span class="o">.</span><span class="n">job_definition</span><span class="p">:</span>
+                    <span class="n">rtn_jobs</span><span class="p">[</span><span class="n">job</span><span class="o">.</span><span class="n">job_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">tasks</span>
+
+    <span class="k">return</span> <span class="n">rtn_jobs</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="../assets/javascript/iframe-worker.js"></script>
+<script src="../search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../search/search_index.js"></script>
+      
+        <script src="../assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>
