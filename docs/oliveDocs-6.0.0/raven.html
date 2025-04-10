@@ -1,0 +1,2149 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Raven Batch Web GUI - OLIVE 6.0.0 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffc105">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="amber" data-md-color-accent="yellow">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#raven-web-graphical-user-interface" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE 6.0.0 Documentation" class="md-header-nav__button md-logo" aria-label="OLIVE 6.0.0 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE 6.0.0 Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Raven Batch Web GUI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE 6.0.0 Documentation" class="md-nav__button md-logo" aria-label="OLIVE 6.0.0 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE 6.0.0 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="windows.html" class="md-nav__link">
+      Windows Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      Martini (Docker) Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Raven Batch Web GUI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="raven.html" class="md-nav__link md-nav__link--active">
+      Raven Batch Web GUI
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#raven-web-gui-overview" class="md-nav__link">
+    Raven Web GUI Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olive-tlssecure-mode-disclaimer" class="md-nav__link">
+    OLIVE TLS/Secure Mode Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-raven-web-gui-for-analysis" class="md-nav__link">
+    Using the Raven Web GUI for Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Raven Web GUI for Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-add-media" class="md-nav__link">
+    1. Add Media
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Add Media">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-media" class="md-nav__link">
+    Local Media
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-media" class="md-nav__link">
+    Remote Media
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-select-an-available-olive-workflow-from-the-workflows-list" class="md-nav__link">
+    2. Select an available OLIVE Workflow from the Workflows List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-submit-analysis-job" class="md-nav__link">
+    3. Submit Analysis Job
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-results" class="md-nav__link">
+    Analyzing Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stereo-media-with-raven-ui" class="md-nav__link">
+    Stereo Media with Raven UI
+  </a>
+  
+    <nav class="md-nav" aria-label="Stereo Media with Raven UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stereo-handling-configuration" class="md-nav__link">
+    Stereo Handling Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stereo-results-display" class="md-nav__link">
+    Stereo Results Display
+  </a>
+  
+    <nav class="md-nav" aria-label="Stereo Results Display">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mono-media-results" class="md-nav__link">
+    Mono Media Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-channel-media-results" class="md-nav__link">
+    Left Channel Media Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-channel-media-results" class="md-nav__link">
+    Right Channel Media Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-from-both-channels" class="md-nav__link">
+    Results from Both Channels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#savingexporting-results" class="md-nav__link">
+    Saving/Exporting Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importingrecalling-past-results" class="md-nav__link">
+    Importing/Recalling Past Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enrollment-and-unenrollment" class="md-nav__link">
+    Enrollment and Unenrollment
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollment and Unenrollment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enrollment" class="md-nav__link">
+    Enrollment
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enrollment-type" class="md-nav__link">
+    Enrollment Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-name-mapping" class="md-nav__link">
+    Class Name Mapping
+  </a>
+  
+    <nav class="md-nav" aria-label="Class Name Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-name" class="md-nav__link">
+    Class Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delimiter" class="md-nav__link">
+    Delimiter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-mapping-file" class="md-nav__link">
+    Class Mapping File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unenrollment" class="md-nav__link">
+    Unenrollment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-end2end-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-embed-v2.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embed-v2.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-embedplda-v1.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnn-v2.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-12" type="checkbox" id="nav-5-12" >
+    
+    <label class="md-nav__link" for="nav-5-12">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-12">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR and Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#raven-web-gui-overview" class="md-nav__link">
+    Raven Web GUI Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olive-tlssecure-mode-disclaimer" class="md-nav__link">
+    OLIVE TLS/Secure Mode Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-raven-web-gui-for-analysis" class="md-nav__link">
+    Using the Raven Web GUI for Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Raven Web GUI for Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-add-media" class="md-nav__link">
+    1. Add Media
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Add Media">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-media" class="md-nav__link">
+    Local Media
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-media" class="md-nav__link">
+    Remote Media
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-select-an-available-olive-workflow-from-the-workflows-list" class="md-nav__link">
+    2. Select an available OLIVE Workflow from the Workflows List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-submit-analysis-job" class="md-nav__link">
+    3. Submit Analysis Job
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-results" class="md-nav__link">
+    Analyzing Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stereo-media-with-raven-ui" class="md-nav__link">
+    Stereo Media with Raven UI
+  </a>
+  
+    <nav class="md-nav" aria-label="Stereo Media with Raven UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stereo-handling-configuration" class="md-nav__link">
+    Stereo Handling Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stereo-results-display" class="md-nav__link">
+    Stereo Results Display
+  </a>
+  
+    <nav class="md-nav" aria-label="Stereo Results Display">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mono-media-results" class="md-nav__link">
+    Mono Media Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-channel-media-results" class="md-nav__link">
+    Left Channel Media Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-channel-media-results" class="md-nav__link">
+    Right Channel Media Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-from-both-channels" class="md-nav__link">
+    Results from Both Channels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#savingexporting-results" class="md-nav__link">
+    Saving/Exporting Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importingrecalling-past-results" class="md-nav__link">
+    Importing/Recalling Past Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enrollment-and-unenrollment" class="md-nav__link">
+    Enrollment and Unenrollment
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollment and Unenrollment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enrollment" class="md-nav__link">
+    Enrollment
+  </a>
+  
+    <nav class="md-nav" aria-label="Enrollment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enrollment-type" class="md-nav__link">
+    Enrollment Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-name-mapping" class="md-nav__link">
+    Class Name Mapping
+  </a>
+  
+    <nav class="md-nav" aria-label="Class Name Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-name" class="md-nav__link">
+    Class Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delimiter" class="md-nav__link">
+    Delimiter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-mapping-file" class="md-nav__link">
+    Class Mapping File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unenrollment" class="md-nav__link">
+    Unenrollment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="raven-web-graphical-user-interface">Raven Web Graphical User Interface</h1>
+<!--- Test of the swagger renderer
+
+
+
+<link type="text/css" rel="stylesheet" href="assets/css/swagger-ui.css">
+<div id="swagger-ui">
+</div>
+<script src="assets/js/swagger-ui-bundle.js" charset="UTF-8"></script>
+<script>
+    const ui = SwaggerUIBundle({
+    url: 'olive-message-broker-api.yaml',
+    dom_id: '#swagger-ui',
+    })
+</script>
+
+
+--->
+
+<h2 id="raven-web-gui-overview">Raven Web GUI Overview</h2>
+<p>The Raven Web GUI is a User Interface designed to primarily facilitate "batch runs" consisting of a large number of files through "workflows" consisting of multiple technologies. The Raven GUI can be used to run either local audio or serverside/shared audio through one of several preconfigured HLT workflows.  </p>
+<p>Below is a basic example of the Raven Web GUI landing page:</p>
+<p><img alt="Raven Landing Page" src="img/raven/raven-landing.png" /></p>
+<h2 id="olive-tlssecure-mode-disclaimer">OLIVE TLS/Secure Mode Disclaimer</h2>
+<p>If you have launched OLIVE / Martini with TLS enabled for secure communication, you will need to install a valid client certificate (with respect to the certificates Martini is using) into your browser before you will be able to access Raven. </p>
+<p>Please work with your IT department to obtain valid certificates.</p>
+<h2 id="using-the-raven-web-gui-for-analysis">Using the Raven Web GUI for Analysis</h2>
+<p>In order to submit audio to a workflow on the WebGUI you must:</p>
+<ol>
+<li>Add Media</li>
+<li>Select an available OLIVE Workflow from the Workflows List</li>
+<li>Submit the analysis request</li>
+</ol>
+<h3 id="1-add-media">1. Add Media</h3>
+<p>There are two ways to do this. <code>Local Media</code> and <code>Remote Media</code>.</p>
+<h4 id="local-media">Local Media</h4>
+<p>The primary method is by using the "Local Media" tab, and adding media to the job by dragging them into the <code>Drop your media / text files here or browse</code> box, or by clicking within this box to open a file browser dialog to select files.</p>
+<p><img alt="Add Media Popup" src="img/raven/analysis-submission-add-media-popup.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note!<p>If dragging files in, make sure to 'drop' them on the box. If the box is missed, and the files are dropped elsewhere on the Raven page, the browser itself will attempt to open the media files, instead of adding them to the submission. </p>
+<p><img alt="Add Media File Box" src="img/raven/add-media-box.png" />"</p>
+</p>
+</div>
+<p>As of the OLIVE 5.6.0 release, files can now be added incrementally, i.e. dragged in one at a time or in multiple batches. However, due to browser limitations, duplicate filenames are not allowed within the same request, even if they are unique files from a different location on disk. If duplicate files are detected, the user must resolve the conflict with one of the following actions:</p>
+<ol>
+<li>Rename the new file</li>
+<li>Overwrite the old file with the new file in the submission</li>
+<li>Delete the new file from the submission</li>
+</ol>
+<p><img alt="Duplicate Filename Dialog" src="img/raven/add-media-duplicate-filename.png" /></p>
+<p>Once media is added and chosen, proceed to <a href="#2-select-an-available-olive-workflow-from-the-workflows-list">step #2</a>. </p>
+<p><img alt="Add Media Filled Dialog" src="img/raven/analysis-submission-media-added.png" /></p>
+<h4 id="remote-media">Remote Media</h4>
+<p>If many files or large files are intended to be processed, or the same files will be processed many times - and if the OLIVE server shares a file system with the audio file location, the "Remote Media" feature is provided as a convenience to save the overhead of uploading files through the browser with Raven for each analysis submission. To use this feature, first the audio must be copied, moved, or linked to a location that is mounted by the OLIVE Martini container. </p>
+<p>By default, Raven will look in this location for files to populate the "Remote Media" tab:</p>
+<div class="codehilite"><pre><span></span><code>    olive6.0.0/oliveAppData/olive-data/media/shared/
+</code></pre></div>
+
+<p>For convenience, once the OLIVE Martini container is started for the first time, this location is created if it doesn't exist already. Any files here should be automatically added to the "Remote Media" tab in Raven and be allowable choices as Raven input.</p>
+<p><img alt="Remote Media Closed Folders" src="img/raven/add-media-remote-media.png" /></p>
+<p>Advanced users may be able to mount additional volumes and configure this to a different location. Please contact SRI if this is a requirement.</p>
+<p><img alt="Remote Media Filled Selection" src="img/raven/add-media-remote-media-filled.png" /></p>
+<p>Once the desired audio is selected, job submission is exactly as <a href="#using-the-raven-web-gui">previously described</a>.</p>
+<h3 id="2-select-an-available-olive-workflow-from-the-workflows-list">2. Select an available OLIVE Workflow from the Workflows List</h3>
+<p>Below the Media panel, a list of available, validated workflows is displayed. When first connecting to the Raven UI, it has to query the server to retrieve a list of valid, available workflows - this can take a few moments, and the UI will prompt with a "Please wait while workflows are loading ..." message until this handshake is completed.</p>
+<p>Once the list is provided, select the desired workflow and move to the next step. Each workflow displays the workflow name, and information about which Tasks it performs (i.e. plugins it runs, or results it provides).</p>
+<p><img alt="Workflow Selected" src="img/raven/analysis-submission-workflow-selected.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Note!<p>If any workflows fail to validate, due to missing plugins or for any other reason, they can be revealed by clicking the 3-vertical-dot icon next to the Workflows title. There will be a message offering more details on why a given workflow is unavailable when selected. This message should only be encountered by advanced users.</p>
+<p><img alt="View Inactive Workflows" src="img/raven/to-see-invalid-workflows.png" /></p>
+</p>
+</div>
+<h3 id="3-submit-analysis-job">3. Submit Analysis Job</h3>
+<p>Once the job is configured, it can be submitted for analysis clicking the <code>Analyze</code> button beneath the desired workflow.</p>
+<p><img alt="Analyze Button" src="img/raven/rocket-expanded.png" /></p>
+<h2 id="analyzing-results">Analyzing Results</h2>
+<p>After running a set of data through a workflow you'll be directed to the results page which displays the HLT results for all plugins within the workflow that was run for each file that was submitted.  The results page has a menu bar with several different ways to organize the files and scores on the page.  </p>
+<p><img alt="Results" src="img/raven/analysis-results.png" /></p>
+<!--- TODO: Document all of the filtering options and playback options --->
+
+<!--- 
+
+- Click a word to play it
+- Click a class to bring up highlights on the waveform of the detected locations
+- filter results
+- Sort results
+
+Also need to document Canceling jobs
+
+
+--->
+
+<h2 id="stereo-media-with-raven-ui">Stereo Media with Raven UI</h2>
+<p>OLIVE 5.7.1 introduced the ability to change how Raven will treat stereo audio through a settings panel available at the top of the UI.</p>
+<p>The default behavior prior to this release was for all files to be merged to mono and then processed as single channel audio files. Now, users can specify to use this legacy behavior, specify one or the other channel to process, or split the audio and process both channels independently.</p>
+<h3 id="stereo-handling-configuration">Stereo Handling Configuration</h3>
+<p>To access the Raven configuration options, select <code>Settings</code> from the top right of the Raven landing page.</p>
+<p><img alt="Raven Menu Highlighted" src="img/raven/raven-menu.png" /></p>
+<p>Then select the "Stereo Media" dropdown:</p>
+<p><img alt="Raven Settings" src="img/raven/raven-stereo-settings.png" /></p>
+<p>And choose from the following options:</p>
+<p><img alt="Raven Stereo Options" src="img/raven/raven-stereo-options.png" /></p>
+<ul>
+<li>Merge to mono
+        - This is the default/legacy behavior of the Raven UI, and the standard behavior of the Nightingale UI. Both channels of the stereo audio are merged into one and processed as one job. </li>
+<li>Left channel only
+        - This method will isolate the left channel of the input audio and report analysis results on just this channel. Nothing from the right channel will be scored or reported on, it is all discarded.</li>
+<li>Right channel only
+        - Identical to the previous option, but focusing on the right channel.</li>
+<li>Both channels independently
+        - This method retains the separation of both channels of the input audio and submits each side as a separate job. Results are reported on the analysis page for both channels. The next section outlines how to identify stereo results in the Raven Analysis display, and how to tell which results belong to which channel.</li>
+</ul>
+<h3 id="stereo-results-display">Stereo Results Display</h3>
+<p>There is now a small addition to the Filename heading for each media analysis result after running a workflow with Raven that allows users to distinguish between mono and stereo media files, and also to determine which channel the displayed results belong to. This addition is a small speaker iconograph, located to the right of the filename:</p>
+<p><img alt="Raven Stereo Icon" src="img/raven/raven-stereo-split-zoomedout-crop.png" /></p>
+<p>There are three possible icons for this location. </p>
+<h4 id="mono-media-results">Mono Media Results</h4>
+<p>A single, wider speaker indicates that the media was either mono audio to begin with, or was processed with the original "merge to mono" method. There will be only one analysis result entry displayed for this file. Here is an example of this:</p>
+<p><img alt="Raven Stereo Mono" src="img/raven/raven-stereo-merge-to-mono-results.png" /></p>
+<h4 id="left-channel-media-results">Left Channel Media Results</h4>
+<p>A pair of speakers indicates that the media was originally stereo, and that one of the stereo-preserving processing options was chosen. If the left speaker is darker and bolder, with the right grayed out, that indicates that the results in this entry pertain to the <em>left</em> channel of the input media. If "Left channel only" processing was selected for the <a href="#stereo-handling-configuration">stereo handling configuration</a>, there will be only one results entry for this file. If "Both channels independently" was selected, this represents the results for the left channel, and there will be another results entry with the same File name containing the results from the right.</p>
+<p><img alt="Raven Stereo Left" src="img/raven/raven-stereo-left-channel-results.png" /></p>
+<h4 id="right-channel-media-results">Right Channel Media Results</h4>
+<p>If the right speaker is darker and bolder, with the left grayed out, that indicates that the results in this entry pertain to the <em>right</em> channel of the input media. If "Right channel only" processing was selected for the <a href="#stereo-handling-configuration">stereo handling configuration</a>, there will be only one results entry for this file. If "Both channels independently" was selected, this represents the results for the right channel, and there will be another results entry with the same File name containing the results from the left.</p>
+<p><img alt="Raven Stereo Right" src="img/raven/raven-stereo-right-channel-results.png" /></p>
+<h4 id="results-from-both-channels">Results from Both Channels</h4>
+<p>This shows an example where "<em>Both channels independently</em>" was selected, and the results for both channels of the input file can be clearly seen in the Raven analysis display:</p>
+<p><img alt="Raven Stereo Split Results" src="img/raven/raven-stereo-split-zoomedout.png" /></p>
+<h2 id="savingexporting-results">Saving/Exporting Results</h2>
+<p>Raven now offers the capability of exporting batch results to an archive that can be later re-ingested by Raven to recall or revisit the results of an OLIVE Workflow analysis request without repeating the processing.</p>
+<p>To export results, once you the batch submission has completed, select the "Save Results" option adjacent to the Workflow name at the top of the results page:</p>
+<p><img alt="Results Save Button" src="img/raven/results-save-results-button.png" /> </p>
+<p>This will save a <code>.olive</code> results bundle to your browser's default "Downloads" location. The name will include the date and time the submission was performed, and will resemble:  <code>olive_result_2023-08-14T21_57_12.olive</code>. You are free to rename as desired after the download completes.</p>
+<div class="admonition note">
+<p class="admonition-title">Due to web browser file permission access limitations, for audio to be reviewable in the context of the results at a later time, all submitted audio must be saved with these results. For batches of many files, or file batches containing very large files, this bundle can be quite large.</p>
+</div>
+<h2 id="importingrecalling-past-results">Importing/Recalling Past Results</h2>
+<p>To revisit saved results, select the <code>Open</code> menu item from the top right of the Raven landing page:</p>
+<p><img alt="Results Load Previous Button" src="img/raven/results-load-previous-button.png" /></p>
+<p>And choose to import the file saved in the <a href="#savingexporting-results">saving/exporting</a> step above. The bundle should be unpacked and populate the <code>Analysis</code> page just as it appeared directly after processing the files initially.</p>
+<!-- maybe TODO - screenshot re-showing the loaded results? -->
+
+<h2 id="enrollment-and-unenrollment">Enrollment and Unenrollment</h2>
+<p>Raven now supports enrollment directly into qualifying plugins, without creating a workflow beforehand.</p>
+<div class="admonition warning">
+<p class="admonition-title">Enrollment and unenrollment is performed on a <em>plugin</em> and <em>domain</em> level; not on the workflow level. This means that if you enroll a model using a workflow, it's actually enrolling for the specific plugin/domain that that workflow is using, and will be accessible if running that plugin directly, or if running other workflows that call on this plugin. For example, if you enroll a new speaker using a workflow enrollment, it is enrolled into the same location that it would be if enrolling with that plugin directly, and scores for the new model will be reported if scoring with this plugin directly. Workflow enrollment/unenrollment is provided as a convenience.</p>
+</div>
+<h3 id="enrollment">Enrollment</h3>
+<p>Enrolling through Raven is a similar process to scoring. Begin by adding media to the job <a href="#1-add-media">as described above</a>, and then selecting the <code>Plugins</code> tab in the Workflows / Plugins pane, and then choose <code>Enroll</code> from the Plugin you're interested in enrolling to:</p>
+<p><img alt="Enrollment Button" src="img/raven/enrollment-button.png" /></p>
+<p>This will present the Enrollment Configuration dialog, that allows enrollments.</p>
+<p><img alt="Enrollment Dialog" src="img/raven/enrollment-dialog.png" /></p>
+<h4 id="enrollment-type">Enrollment Type</h4>
+<p>First, the "Enrollment Type" must be chosen. This determines what the enrollments for this job will represent, and each enrollment job can have only one type. Most workflows will also only have one "Type" available, so this step should be simple. The most common "Enrollment Type" is going to be "Speaker", for enrolling candidates into Speaker Identification or Speaker Detection plugins. You may encounter "Keyword" enrollment types if the workflow is configured to use Query-by-Example Keyword Spotting, for example.</p>
+<h4 id="class-name-mapping">Class Name Mapping</h4>
+<p>The next section configures how to select and assign class names to the enrolled models. There are a few options provided for convenience. After configuring this section, select "Submit" to continue.</p>
+<h5 id="class-name">Class Name</h5>
+<p>If all data is one "Speaker" (or whatever the corresponding Enrollment Type class is), this method can be used. The user inputs a single class name that is used for all of the enrollment input. If there are multiple classes that are going to be enrolled, each class requires a separate enrollment request when using this method. </p>
+<p><img alt="Enrollment Class Name Screenshot" src="img/raven/enrollment-class-name.png" /></p>
+<p>You can choose to augment an existing class enrollment, by choosing it from the drop-down. Or select "Add a new class" to enroll a new class completely.</p>
+<h5 id="delimiter">Delimiter</h5>
+<p>If the input data filenames are already named in such a way that the start of the filename corresponds to the desired name of the enrollment class, the 'Delimiter' mapping mode may be used. This mode will use a character input by the user to split a filename and automatically extract a class name to use for enrollment. This allows many files from different classes all to be enrolled at once.</p>
+<p><img alt="Enrollment Delimiter Screenshot" src="img/raven/enrollment-delimiter.png" /></p>
+<p>As an example, if the chosen delimiter was <code>-</code>, and the input filenames:</p>
+<div class="codehilite"><pre><span></span><code>    philip-radio_21Aug2023.wav
+    philip-studioMic_12Nov2021.wav
+    george-unknown.wav
+    suzie-greetingCard_storytime.wav
+</code></pre></div>
+
+<p>This would allow <code>philip</code>, <code>george</code>, and <code>suzie</code> to all be enrolled with a single Raven submission.</p>
+<div class="admonition info">
+<p class="admonition-title">The beginning part of the media file name until the first occurrence of the delimiter character will be used as the class name. That is, if the delimiter is "-", and the file names are "jane-california-1.wav" and "john-oregon-1.wav", "jane-california-1.wav" is enrolled with the class, "jane", and "john-oregon-1.wav" is enrolled with the class, "john".</p>
+</div>
+<h5 id="class-mapping-file">Class Mapping File</h5>
+<p>The most flexible method of assigning class names is using a Class Mapping File. This allows the user to provide a text file listing all of the input files, and manually assigning an enrollment class name for each. If the input data isn't named in a manner that suits the delimiter method, and several different classes need to be enrolled, this is the best option.</p>
+<p>The <code>Class Mapping File</code> formatting is a tab-separated, two column list, where the columns are:</p>
+<div class="codehilite"><pre><span></span><code>    &lt;input filename 1&gt;  &lt;className A&gt;
+    &lt;input filename 2&gt;  &lt;className B&gt;
+    ...
+    &lt;input filename N&gt;  &lt;className Z&gt;
+</code></pre></div>
+
+<p>It is possible to mix and match multiple files for a given classname, and as many distinct classes as desired as long as the mapping file follows the format above. An example:</p>
+<div class="codehilite"><pre><span></span><code>    20131212T064501UTC_10831_A.wav  philip
+    20131212T084501UTC_10856_A.wav  philip
+    20131212T101501UTC_10870_A.wav  suzie
+    20131212T104501UTC_10876_A.wav  chuck
+    20131212T111501UTC_10878_A.wav  suzie
+    20131212T114501UTC_10880_A.wav  aaron
+    20131212T134501UTC_10884_A.wav  philip
+</code></pre></div>
+
+<p>No part of the filename is used to assign or determine the enrollment class name.</p>
+<p>Note that every input filename must be accounted for in the Class Mapping File.</p>
+<p><img alt="Enrollment Class Mapping Screenshot" src="img/raven/enrollment-class-mapping-file.png" /></p>
+<h3 id="unenrollment">Unenrollment</h3>
+<p>Unenrollment is used to remove a previously enrolled class from the system. It is the only Raven job submission feature that is accessible without adding media. To reach it first select the <code>Plugins</code> tab in the Workflows / Plugins pane, and then choose <code>Unenroll</code> from the Plugin you're interested in unenrolling from. This will present the Unenrollment Configuration dialog.</p>
+<p>To proceed, choose the desired class type (again, likely "Speaker") from the dropdown list that corresponds to the unenrollment action to perform. Next, select the class </p>
+<p><img alt="Unenrollment Dialog" src="img/raven/unenrollment-dialog.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Only single-class unenrollment is currently supported through Raven. If multiple unenrollments are to be performed, they must be submitted one at a time.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Currently, a class must be enrolled in its entirety, even if several audio files contributed to its enrollment - support is not in place to selectively remove audio from an enrollment.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="nightingale.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Nightingale GUI
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="clients.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Java and Python CLI Client Utilities
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>

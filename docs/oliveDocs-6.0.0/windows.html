@@ -1,0 +1,1889 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/olive-leaf-md copy-version-agnostic.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Windows Setup - OLIVE 6.0.0 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffc105">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/swagger-ui.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="amber" data-md-color-accent="yellow">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#olive-on-windows-setup-and-usage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="OLIVE 6.0.0 Documentation" class="md-header-nav__button md-logo" aria-label="OLIVE 6.0.0 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            OLIVE 6.0.0 Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Windows Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="OLIVE 6.0.0 Documentation" class="md-nav__button md-logo" aria-label="OLIVE 6.0.0 Documentation">
+      
+  <img src="assets/images/olive-leaf-md copy-version-agnostic.ico" alt="logo">
+
+    </a>
+    OLIVE 6.0.0 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Administration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Administration" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Administration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Installation/Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Installation/Setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Installation/Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Windows Setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="windows.html" class="md-nav__link md-nav__link--active">
+      Windows Setup
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-and-assumptions" class="md-nav__link">
+    Requirements and Assumptions
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements and Assumptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-os-requirements" class="md-nav__link">
+    Windows OS Requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-requirements" class="md-nav__link">
+    GPU Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launcher" class="md-nav__link">
+    Launcher
+  </a>
+  
+    <nav class="md-nav" aria-label="Launcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#launcher-anatomy" class="md-nav__link">
+    Launcher Anatomy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-management" class="md-nav__link">
+    Server Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-configuration-and-info" class="md-nav__link">
+    GPU Configuration and Info
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive-uis" class="md-nav__link">
+    OLIVE UIs
+  </a>
+  
+    <nav class="md-nav" aria-label="OLIVE UIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nightingale" class="md-nav__link">
+    Nightingale
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raven-ui" class="md-nav__link">
+    Raven UI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstallation" class="md-nav__link">
+    Uninstallation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="martini.html" class="md-nav__link">
+      Martini (Docker) Setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="install.html" class="md-nav__link">
+      CentOS/RedHat 7 Native Setup (deprecated)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="gpu-config.html" class="md-nav__link">
+      GPU Plugin Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="server.html" class="md-nav__link">
+      Server Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="hardware.html" class="md-nav__link">
+      OLIVE System Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Usage
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Usage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      User Interfaces
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interfaces" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        User Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="nightingale.html" class="md-nav__link">
+      Nightingale GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="raven.html" class="md-nav__link">
+      Raven Batch Web GUI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="clients.html" class="md-nav__link">
+      Java and Python CLI Client Utilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="cli.html" class="md-nav__link">
+      Command Line Tools (Deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="redaction.html" class="md-nav__link">
+      Speaker Redaction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="audioFormats.html" class="md-nav__link">
+      Supported Audio Formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Integration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Enterprise API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Enterprise API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Enterprise API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiInfo.html" class="md-nav__link">
+      Enterprise API Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiBuildReferenceImp.html" class="md-nav__link">
+      Building an API Reference Implementation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiMessage.html" class="md-nav__link">
+      Enterprise API Message Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="restApi.html" class="md-nav__link">
+      OLIVE REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="traits.html" class="md-nav__link">
+      OLIVE Plugin Traits
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="workflows.html" class="md-nav__link">
+      Workflows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Java API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        Java API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="apiCode.html" class="md-nav__link">
+      JOlive Primer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Python API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python API" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        Python API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepyPrimer.html" class="md-nav__link">
+      olivepy Primer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="olivepy-api.html" class="md-nav__link">
+      olivepy API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Plugins
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="releasePlugins.html" class="md-nav__link">
+      Release Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" >
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Speech
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speech" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Speech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sad-dnn-v8.html" class="md-nav__link">
+      Speech Activity Detection (SAD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/vtd-dnn-v7.html" class="md-nav__link">
+      Voice Type Discrimination (VTD)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/dfa-end2end-v1.html" class="md-nav__link">
+      Deep Fake Audio Detection (DFA)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Speaker
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Speaker" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        Speaker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sid-dplda-v3.html" class="md-nav__link">
+      Speaker Identification (SID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/sdd-embed-v2.html" class="md-nav__link">
+      Speaker Detection (SDD) Low Resource
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/shl-sbcEmbed-v1.html" class="md-nav__link">
+      Speaker Highlighting (SHL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" >
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Language
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Language" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/lid-hdplda-v2.html" class="md-nav__link">
+      Language Identification (LID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/ldd-embed-v2.html" class="md-nav__link">
+      Lanugage Detection (LDD) Low Resource
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6" >
+    
+    <label class="md-nav__link" for="nav-5-6">
+      Gender
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Gender" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        Gender
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gid-embedplda-v1.html" class="md-nav__link">
+      Gender Identification (GID)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/gdd-embedplda-v1.html" class="md-nav__link">
+      Gender Detection (GDD)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7" >
+    
+    <label class="md-nav__link" for="nav-5-7">
+      Keyword
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Keyword" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon"></span>
+        Keyword
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/qbe-ftdnn-v2.html" class="md-nav__link">
+      Query By Example (QBE)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8" >
+    
+    <label class="md-nav__link" for="nav-5-8">
+      Transcription
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Transcription" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon"></span>
+        Transcription
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-end2end-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR) end2end/GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/asr-dynapy-v4.html" class="md-nav__link">
+      Automatic Speech Recognition (ASR)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9" >
+    
+    <label class="md-nav__link" for="nav-5-9">
+      Translation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Translation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon"></span>
+        Translation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tmt-ctranslate-v1.html" class="md-nav__link">
+      Text Machine Translation (TMT)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" >
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Manipulation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Manipulation" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Manipulation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/red-transform-v1.html" class="md-nav__link">
+      Redaction (RED) Transformation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11" >
+    
+    <label class="md-nav__link" for="nav-5-11">
+      Imagery
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Imagery" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon"></span>
+        Imagery
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdi-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Image (FDI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fdv-pyEmbed-v1.html" class="md-nav__link">
+      Face Detection Video (FDV)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/fri-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Image (FRI)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/frv-pyEmbed-v1.html" class="md-nav__link">
+      Face Recognition Video (FRV)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-12" type="checkbox" id="nav-5-12" >
+    
+    <label class="md-nav__link" for="nav-5-12">
+      Topic
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topic" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-12">
+        <span class="md-nav__icon md-icon"></span>
+        Topic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-dynapy-v5.html" class="md-nav__link">
+      Topic Detection (TPD) ASR-based
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="plugins/tpd-fusion-v1.html" class="md-nav__link">
+      Topic Detection (TPD) ASR and Acoustic Fusion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="glossary.html" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="contact.html" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-and-assumptions" class="md-nav__link">
+    Requirements and Assumptions
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements and Assumptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-os-requirements" class="md-nav__link">
+    Windows OS Requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-requirements" class="md-nav__link">
+    GPU Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launcher" class="md-nav__link">
+    Launcher
+  </a>
+  
+    <nav class="md-nav" aria-label="Launcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#launcher-anatomy" class="md-nav__link">
+    Launcher Anatomy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-management" class="md-nav__link">
+    Server Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-configuration-and-info" class="md-nav__link">
+    GPU Configuration and Info
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olive-uis" class="md-nav__link">
+    OLIVE UIs
+  </a>
+  
+    <nav class="md-nav" aria-label="OLIVE UIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nightingale" class="md-nav__link">
+    Nightingale
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raven-ui" class="md-nav__link">
+    Raven UI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstallation" class="md-nav__link">
+    Uninstallation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="olive-on-windows-setup-and-usage">OLIVE on Windows Setup and Usage</h1>
+<h2 id="introduction">Introduction</h2>
+<p>With the release of version 5.7.1, OLIVE now supports natively running on the Windows operating system. The Windows native OLIVE release simplifies the installation, management, and launching of OLIVE and OLIVE components by providing an OS-integrated installer tool, and a new GUI-based launcher utility. The streamlined procedure for using these new features is outlined below.</p>
+<h2 id="requirements-and-assumptions">Requirements and Assumptions</h2>
+<p>This release was built with specific hardware and OS targets in mind. Compatibility assumes a 64-bit Intel CPU architecture, and an available Nvidia GPU meeting the requirements below. The software can be run without a GPU, but may require reconfiguration, or <a href="#gpu-configuration-and-info">disabling the GPU configuration</a> through the OLIVE Windows Launcher, and the speed performance of certain plugins (especially ASR) will be impacted.</p>
+<h3 id="windows-os-requirements">Windows OS Requirements</h3>
+<p>OLIVE on Windows has targeted Windows 11 version 23H2 for compatibility. All testing was performed on this version.</p>
+<h3 id="gpu-requirements">GPU Requirements</h3>
+<p>In order for a GPU to be used by OLIVE, it must be an Nvidia GPU with the appropriate drivers installed. We have tested to verifty compatibility with:</p>
+<ul>
+<li>NVIDIA GPU Driver version R535 or greater (primarily tested using 546.01, 556.12, 566)</li>
+<li>NVIDIA CUDA 12.2 or higher (primarily tested using CUDA 12.3, 12.5)</li>
+</ul>
+<p>Due to the volume of GPUs available on the market, we cannot guarantee that all models are supported, or that all will perform acceptably speed-wise. Most of our testing was performed on high-end laptop class GPUs like the RTX 3080-Ti, with 16GB of available VRAM. Lower amounts of available GPU memory may limit how many GPU-utilizing plugins can be loaded into memory at one time.</p>
+<h2 id="installation">Installation</h2>
+<p>The distribution format for the OLIVE Windows installer is a single zip archive. </p>
+<p><img alt="Windows Package Receipt" src="img/windows/package-receipt.png" /></p>
+<p>This archive contains the installation script, and several binary files used by it during installation. This can be seen once the deliverable is unzipped by selecting the archive and either right clicking then selecting "Extract all" from the context menu, or selecting "Extract all" from the top function bar in Explorer:</p>
+<!---
+=== "Unzip OLIVE Archive"
+    ![Windows Package Unzip](img/windows/package-unzip.png)
+
+=== "Package Contents"
+    ![Windows Package Unzipped](img/windows/package-unzipped.png)
+--->
+
+<p><img alt="Windows Installer Package" src="img/windows/package-composite.png" /></p>
+<p>To begin the install process, doubleclick the "OLIVE-6.0.0-Installer.exe" application in the resulting folder.</p>
+<details class="info"><summary>Windows Defender Note (Click to expand)</summary><p>Because SRI is not submitting OLIVE to Microsoft for malware analysis, the <a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/virus-and-threat-protection/microsoft-defender-smartscreen/">Windows Defender SmartScreen</a> may flag it as an "Unrecognized App" and provide a warning pop-up and prevent the OLIVE install from beginning. To proceed past this, choose "More info" and then "Run anyway."</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows protected your PC</label><div class="tabbed-content">
+<p><img alt="Windows Installer - Defender1" src="img/windows/installer-defender1.png" /></p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Run anyway</label><div class="tabbed-content">
+<p><img alt="Windows Installer - Defender2" src="img/windows/installer-defender2.png" /></p>
+</div>
+</div>
+</details>
+<p>Once the installer starts up, the user will be prompted to provide an installation location for OLIVE. By default, this will be the current user's Local AppData directory:</p>
+<p><code>C:\Users\&lt;username&gt;\AppData\Local\Programs\OLIVE</code></p>
+<p>But any location with the appropriate permissions for the current user should be valid. Next, the user will be prompted to choose whether or not they would like a desktop icon created (recommended), and then installation progresses as expected for a standard Windows installation package.</p>
+<div class="tabbed-set" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Choose Installation Location</label><div class="tabbed-content">
+<p><img alt="Windows Installer - Choose Location" src="img/windows/installer-choose-location.png" /></p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Choose Additonal Options (Desktop Shortcut)</label><div class="tabbed-content">
+<p><img alt="Windows Installer - Options" src="img/windows/installer-options.png" /></p>
+</div>
+<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Ready to Install</label><div class="tabbed-content">
+<p><img alt="Windows Installer - Ready to Install" src="img/windows/installer-ready.png" /></p>
+</div>
+<input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><label for="__tabbed_2_4">Preparing to Install</label><div class="tabbed-content">
+<p><img alt="Windows Installer - Preparing To Install" src="img/windows/installer-preparing-to-install.png" /></p>
+</div>
+<input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><label for="__tabbed_2_5">Installing</label><div class="tabbed-content">
+<p><img alt="Windows Installer - In Progress" src="img/windows/installer-in-progress.png" /></p>
+</div>
+<input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><label for="__tabbed_2_6">Setup has finished</label><div class="tabbed-content">
+<p><img alt="Windows Installer - Finished" src="img/windows/installer-finished.png" /></p>
+</div>
+</div>
+<p>Now installation is complete, and OLIVE should be ready for execution. The contents of the installation should resemble this screenshot: </p>
+<p><img alt="Windows Installer - Post Install Contents" src="img/windows/installer-post-install-contents.png" /></p>
+<p>But no manual intervention or configuration in this location should be needed, unless performing a <a href="#gpu-configuration-and-info">specialty GPU configuration</a>, installing new separately-delivered plugins, or trying to retrieve logs for troubleshooting.</p>
+<p>The screenshot also shows the <code>unins000.exe</code> uninstaller executable that can be run manually as an alternative to the <a href="#uninstallation">Windows uninstall procedure</a> outlined below.</p>
+<p>After installation, if the option for creating it was selected, there will be an <code>OLIVE on Windows</code> shortcut/icon on the Desktop that can be used to access the <a href="#launcher">OLIVE Launcher</a> to get started using OLIVE.</p>
+<p><img alt="Windows Desktop Icon" src="img/windows/desktop-icon-alternate.png" /></p>
+<h2 id="launcher">Launcher</h2>
+<p>The OLIVE launcher can be accessed in several different ways:</p>
+<ul>
+<li>Double-clicking the OLIVE Desktop Icon</li>
+<li>Finding OLIVE in the Windows App List</li>
+<li>Accessing OLIVE in the Windows Start Menu</li>
+</ul>
+<div class="tabbed-set" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Desktop Icon</label><div class="tabbed-content">
+<p><img alt="Windows Desktop Icon" src="img/windows/desktop-icon-alternate.png" /></p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">App List</label><div class="tabbed-content">
+<p><img alt="Windows App List" src="img/windows/launcher-app-list.png" /></p>
+</div>
+<input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><label for="__tabbed_3_3">Start Menu</label><div class="tabbed-content">
+<p><img alt="Windows Start Menu" src="img/windows/launcher-start-menu.png" /></p>
+</div>
+</div>
+<h3 id="launcher-anatomy">Launcher Anatomy</h3>
+<p>No matter which method you use to access the OLIVE Launcher, you're greeted with the same screen:</p>
+<p><img alt="Windows Launcher Landing" src="img/windows/launcher-landing-markup.png" /></p>
+<p>There are controls that provide access to:</p>
+<ol>
+<li>Starting (and Stopping) the OLIVE server</li>
+<li>Launching Nightingale UI</li>
+<li>Launching / Accessing the Raven Batch UI</li>
+<li>Disabling GPU configuration</li>
+<li>Accessing GPU hardware information for troubleshooting</li>
+<li>OLIVE log display window for status and troubleshooting</li>
+</ol>
+<p>The next section covers using these functions.</p>
+<h3 id="server-management">Server Management</h3>
+<p>Starting and stopping the OLIVE server is done with the <code>Start</code> and <code>Stop</code> buttons in the lower right.</p>
+<p>Clicking <code>Start</code> will trigger launching the OLIVE server, which will be up and waiting for a connection from one of the OLIVE UIs, or any other properly configured external client.</p>
+<p><img alt="Windows Launcher - Start Server" src="img/windows/launcher-start-server.png" /></p>
+<!---
+![Windows Launcher Server Starting](img/windows/launcher-server-starting.png)
+![Windows Launcher Server Started](img/windows/launcher-server-started.png)
+
+--->
+
+<p>Likewise, clicking <code>Stop</code> will shut down this server:</p>
+<p><img alt="Windows Launcher - Stop Server" src="img/windows/launcher-stop-server.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>Stop</code> will NOT shut down Nightingale, but it will sever Nightingale's connection to the OLIVE server, so no new OLIVE queries will be available until OLIVE server is restarted.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Likewise, <code>Stop</code> will NOT close down any browser tabs that have already loaded Raven UI, but it will be shutting down the service that is hosting the UI, so any operation or page refresh in Raven that occurs after OLIVE server shutdown will fail.</p>
+</div>
+<h4 id="gpu-configuration-and-info">GPU Configuration and Info</h4>
+<p>By default, OLIVE 6.0.0 Windows distribution packages are configured assuming that a single Nvidia GPU is available on the hardware OLIVE will be installed on, and will be leveraging this for key plugins where a GPU makes a significant difference in the execution speed of the provided plugins. Namely, the end-to-end ASR plugin. If a GPU is not available, OLIVE can still be run, but at the cost of speed for these plugins. A <code>Use GPU</code> toggle has been provided to quickly disable this GPU configuration in such instances (<a href="#launcher-anatomy">shown here as #4</a>). Un-selecting this toggle will bypass any OLIVE configuration setup, and re-set all plugins to use CPU only.</p>
+<p>The launcher also provides a <code>GPU Info</code> button (<a href="#launcher-anatomy">shown here as #5</a>). This button opens a pop-up info display:</p>
+<p><img alt="Windows Launcher GPU Info" src="img/windows/launcher-gpu-info2.png" /></p>
+<p>This display can be useful when troubleshooting if OLIVE is having trouble accessing a GPU, perhaps for missing, incompatible, or improper GPU driver installation, or help diagnose if the GPU is running out of available memory; whether from OLIVE tasks or some other application using it.</p>
+<p>If for some reason there is one or more compatible GPUs available, but the provided GPU configuration isn't appropriate, the configuration assigning GPU device resources to different plugin domains can be modified. Please follow the <a href="gpu-config.html#plugin-domain-configuration-for-gpu-use">standard GPU Configuration instructions</a>, with the important caveat that the location of the <code>olive.conf</code> file is different for Windows. By default, the file will be located in:</p>
+<div class="codehilite"><pre><span></span><code>    C:\Users\&lt;username&gt;\AppData\Local\Programs\OLIVE\oliveAppData\olive.conf
+</code></pre></div>
+
+<p>If a custom installation location was chosen at installation time, the file will instead be located at:</p>
+<div class="codehilite"><pre><span></span><code>    &lt;user-selected-install-location&gt;\OLIVE\oliveAppData\olive.conf
+</code></pre></div>
+
+<h3 id="olive-uis">OLIVE UIs</h3>
+<h4 id="nightingale">Nightingale</h4>
+<p>Choose the <code>Launch Nightingale</code> button to launch Nightingale. Nightingale will start up and automatically attempt to establish a connection to the OLIVE server running on the machine.</p>
+<p><img alt="Windows Launcher - Nightingale" src="img/windows/launcher-nightingale-launch-multi.png" /></p>
+<!---
+![Windows Launcher - Nightingale Start](img/windows/launcher-nightingale.png)
+![Windows Launcher - Nightingale Started](img/windows/nightingale.png)
+--->
+
+<p>Refer to the <a href="nightingale.html">primary Nightingale documentation</a> for usage instructions.</p>
+<h4 id="raven-ui">Raven UI</h4>
+<p>Choose the <code>Launch Raven UI</code> button to launch a brower tab directed to the port where OLIVE Web Broker is serving the Raven UI. The default system browser will be used.</p>
+<p><img alt="Windows launcher - Raven UI" src="img/windows/launcher-raven-launch-multi.png" /></p>
+<!---
+![Windows Launcher - Raven Start](img/windows/launcher-raven.png)
+![Windows Launcher - Raven Started](img/windows/launcher-raven-launch.png)
+--->
+
+<p>Refer to the <a href="raven.html">primary Raven UI documentation</a> for Raven UI usage instructions.</p>
+<h2 id="uninstallation">Uninstallation</h2>
+<p>Uninstallation is now performed through the native Windows "Add or remove programs" Control Panel feature. To uninstall, open the Windows system Settings, and navigate to the "Apps" pane, and "Installed Apps" list. Alternately, use the Windows search feature to look for "Add or remove programs" to navigate directly here.</p>
+<p>Enter "OLIVE" in the search field:</p>
+<p><img alt="Windows Uninstall - Find OLIVE" src="img/windows/uninstall-remove-programs1.png" /></p>
+<p>Then select the 3-dot menu and choose "Uninstall."</p>
+<p><img alt="Windows Uninstall - Find OLIVE 2" src="img/windows/uninstall-remove-programs2.png" /></p>
+<p>Confirm that you're sure you want to remove:</p>
+<p><img alt="Windows Uninstall - Are You Sure?" src="img/windows/uninstall-are-you-sure.png" /></p>
+<p>Wait for the uninstaller to complete:</p>
+<p><img alt="Windows Uninstall - In Progress" src="img/windows/uninstall-in-progress.png" /></p>
+<p>Where you're given the Uninstall Success message.</p>
+<p><img alt="Windows Uninstall - Success" src="img/windows/uninstall-success.png" /></p>
+<p>OLIVE is now uninstalled.</p>
+<div class="admonition info">
+<p class="admonition-title">Enrollments and Server Logs</p>
+<p>Note that by design, the OLIVE uninstall process currently leaves enrollments (such as speakers or keywords of interest) behind - this is in case a user would like to consult the logs for troubleshooting information, or in case they would like to carry enrollments forward into a new OLIVE version or transfer to another machine. These files can be manually removed by navigating to the install location (default is C:\Users\<username>\AppData\Local\Programs\OLIVE) and removing it.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="index.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="martini.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Martini (Docker) Setup
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+
+<script src="assets/javascript/iframe-worker.js"></script>
+<script src="search/search_index.js"></script>
+
+
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="assets/js/swagger-ui-bundle.js"></script>
+      
+    
+  </body>
+</html>
